@@ -243,10 +243,10 @@ http://demo.qa.sba-one.net/
 ### Roadmaps & Todos
 
 - [ ] Add the code to make it work with IE
-- [ ] Move the test url to the property file
+- [X] Move the test url to the property file
 - [ ] Improve the documentation
 - [ ] Make the code structure work with IE/Chrome/Firefox
-- [ ] Use just one project structure (no need to have DEV/QA/Staging) and deploy from one code but using different configuration
+- [X] Use just one project structure (no need to have DEV/QA/Staging) and deploy from one code but using different configuration
 - [ ] Struct the shared code properly (e.g. `src/main/java/*` vs `src/test/java/*`)
 - [ ] Remove all hard-coded constants that are not portable and error-proned to failures
 - [ ] Many other improvement like proper code style guide (PMD), bugs analysist (FindBugs), etc
