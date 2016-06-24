@@ -1,0 +1,8 @@
+#!/bin/bash
+# Then get the dependencies
+mvn dependency:sources
+
+mvn clean test install
+
+# Or even make it possible to open the Java file in Eclipse
+mvn eclipse:eclipse

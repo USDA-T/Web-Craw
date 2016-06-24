@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>gov.sba.test</groupId>
+    <artifactId>sba_automation</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <properties>
+    <daversion>${project.parent.version}</daversion>
+  </properties>
+  <artifactId>development</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>Development Automation</name>
+  <dependencies>
+    <!-- added for SBA -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-examples</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-excelant</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml-schemas</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-scratchpad</artifactId>
+      <version>3.11</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>2.53.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-server</artifactId>
+      <version>2.53.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.0.2</version>
+    </dependency>
+    <!-- Added for SBA -->
+    <!-- <dependency> -->
+    <!--   <groupId>org.apache.commons</groupId> -->
+    <!--   <artifactId>commons&#45;email</artifactId> -->
+    <!--   <version>1.1</version> -->
+    <!--   <scope>compile</scope> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!--   <groupId>org.codehaus.plexus</groupId> -->
+    <!--   <artifactId>plexus&#45;utils</artifactId> -->
+    <!--   <version>1.5.1</version> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!--   <groupId>javax.servlet.jsp</groupId> -->
+    <!--   <artifactId>jsp&#45;api</artifactId> -->
+    <!--   <version>2.1</version> -->
+    <!--   <scope>compile</scope> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!--   <groupId>commons&#45;io</groupId> -->
+    <!--   <artifactId>commons&#45;io</artifactId> -->
+    <!--   <version>1.4</version> -->
+    <!-- </dependency> -->
+    <!-- <dependency> -->
+    <!--   <groupId>org.springframework</groupId> -->
+    <!--   <artifactId>spring&#45;aop</artifactId> -->
+    <!--   <version>2.5.6</version> -->
+    <!-- </dependency> -->
+    <!-- dependency with classifier -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <classifier>jdk15</classifier>
+      <version>5.9</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
