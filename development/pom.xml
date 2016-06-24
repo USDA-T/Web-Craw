@@ -72,35 +72,6 @@
       <artifactId>log4j-core</artifactId>
       <version>2.0.2</version>
     </dependency>
-    <!-- Added for SBA -->
-    <!-- <dependency> -->
-    <!--   <groupId>org.apache.commons</groupId> -->
-    <!--   <artifactId>commons&#45;email</artifactId> -->
-    <!--   <version>1.1</version> -->
-    <!--   <scope>compile</scope> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!--   <groupId>org.codehaus.plexus</groupId> -->
-    <!--   <artifactId>plexus&#45;utils</artifactId> -->
-    <!--   <version>1.5.1</version> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!--   <groupId>javax.servlet.jsp</groupId> -->
-    <!--   <artifactId>jsp&#45;api</artifactId> -->
-    <!--   <version>2.1</version> -->
-    <!--   <scope>compile</scope> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!--   <groupId>commons&#45;io</groupId> -->
-    <!--   <artifactId>commons&#45;io</artifactId> -->
-    <!--   <version>1.4</version> -->
-    <!-- </dependency> -->
-    <!-- <dependency> -->
-    <!--   <groupId>org.springframework</groupId> -->
-    <!--   <artifactId>spring&#45;aop</artifactId> -->
-    <!--   <version>2.5.6</version> -->
-    <!-- </dependency> -->
-    <!-- dependency with classifier -->
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>

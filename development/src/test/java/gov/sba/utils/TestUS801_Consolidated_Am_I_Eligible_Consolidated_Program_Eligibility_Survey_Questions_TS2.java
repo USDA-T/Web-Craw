@@ -1,19 +1,18 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import junit.framework.TestCase;
 
-public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS2 extends TestCase {
+public class TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS2 extends TestCase {
   private static WebDriver mydriver;
 
   @BeforeClass
@@ -26,8 +25,13 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
 
   @Before
   public void setUp() throws Exception {
-    TestHelpers.initSystemConfig();
-    mydriver = new FirefoxDriver();
+	  // TODO: may be this should be adjust this to include the browser itself in the parameter
+	  TestHelpers.initSystemConfig();
+	  if (System.getenv("browser") == "Firefox") {
+		  mydriver = new FirefoxDriver();
+	  } else {
+		  mydriver = new ChromeDriver();
+	  }
 
     //mydriver.get("https://staging-certify.sba.gov/");
     mydriver.get("http://localhost:3000/");
@@ -65,7 +69,7 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
     mydriver.findElement(By.xpath(".//*[@id='us_citizen']/div[1]/div[1]/div/button[2]")).click();
     // Verify searched results.
     String actual_Text1= mydriver.findElement(By.cssSelector("span.message")).getText();
-    String expected_Text1="XXXX---In order to participate in SBA small business programs, the qualifying individual(s) of the firm must be U.S. citizens.";
+    String expected_Text1="In order to participate in SBA small business programs, the qualifying individual(s) of the firm must be U.S. citizens.";
     assertEquals(actual_Text1, expected_Text1);
 
     mydriver.findElement(By.linkText("Exit")).click();
