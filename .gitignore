@@ -1,1 +1,3 @@
 target/
+# Per-user configuration will be ignored
+src/main/resources/default.properties

@@ -1,6 +1,6 @@
 ### README.md
 
-Let's improve QA Automation and make it possible for all team members (Dev/QA)
+Let's improve QA Automation and make it possible for all team members in Dev/QA to use it effectively.
 
 ### Installation
 
@@ -19,26 +19,32 @@ For those who using MacOS you should be able to `brew install` these packages.
 #### Basic Setup
 
 - Add [Apache Maven][] to your path e.g. `mvn` command
+
 - Add [Google Web Driver][] or [Firefox Web Driver][] to your path
 
-- Edit the content of the file [development/src/main/resources/default.properties](development/src/main/resources/default.properties)
-- Update the the content of the file [development/src/test/resources/default.properties](development/src/test/resources/default.properties)
+- Copy the example property file [development/src/main/resources/default.properties.example](development/src/main/resources/default.properties.example)
 
 To use point to your current appropriate driver e.g.
-For me I have the following setup
+
+```sh
+# Copy the example configuration from the template
+cp src/main/resources/default.properties.examples src/main/resources/default.properties
+```
+For me I have the following setup in my `src/main/resources/default.properties`
 
 ```properties
 ## Default browser one of 'Firefox' or 'Chrome' (for now IE will be added shortly)
 browser=Chrome
+#browser=Firefox
 
 ## Setting specific to Google Chrome (EDIT TO YOUR CORRECT PATH)
-webdriver.chrome.driver=/home/bchoomnuan/bin/chromedriver
+webdriver.chrome.driver=/usr/sbin/chromedriver
 
 ## Setting specific to Firefox (EDIT TO YOUR CORRECT PATH)
 webdriver.firefox.bin=/home/bchoomnuan/apps/firefox/firefox
 webdriver.firefox.port=7046
 
-## URL under test
+## URL under test for different environment
 base_url_development=http://localhost:3000/
 base_url_qa=https://certify.qa.sba-one.net/
 base_url_staging=https://staging-certify.sba.gov/
@@ -48,7 +54,7 @@ base_url_staging=https://staging-certify.sba.gov/
 
 - To run the test against the server running locally (for local development)
 
-You will need to edit the following line in `src/test/java/gov/sba/utils/TestUS801_*.java`
+You will need to edit the following line in `src/test/java/gov/sba/utils/Test*.java`
 
 - To execute the test from command line
 
