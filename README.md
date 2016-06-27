@@ -155,6 +155,12 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 ```
 
+### Best Practices
+
+- Avoid using `System.out.println()` use `logger.info()`, `logger.debug()` instead (see `TestHelpers.java` for example)
+- Use appropriate logger e.g. `logger.info()` vs `logger.debug()`
+- Avoid using the long name for class but instead rename the class to some context that make sense (Java standard)
+
 ### Roadmaps & Todos
 
 - [X] Move the test url to the property file
@@ -164,6 +170,7 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 - [ ] Add the code to make it work with Internet Explorer
 - [ ] Add the code to make it work with Safari
 - [ ] Struct the shared code properly (e.g. `src/main/java/*` vs `src/test/java/*`)
+- [X] Add proper logging framework avoid the need for `System.out.println()`
 - [ ] Remove all hard-coded constants that are not portable and error-proned to failures
 - [ ] Many other improvement like proper code style guide (PMD), bugs analysist (FindBugs), etc
 

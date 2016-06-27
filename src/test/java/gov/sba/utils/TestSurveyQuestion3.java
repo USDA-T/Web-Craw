@@ -8,10 +8,15 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import junit.framework.TestCase;
 //TODO: this name is too long, not follow Java naming convention, consider change this please!
-public class TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3
-		extends TestCase {
+// public class TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3
+public class TestSurveyQuestion3 extends TestCase {
+  private static final Logger logger = LogManager.getLogger(TestSurveyQuestion3.class.getName());
+
 	private static WebDriver webDriver;
 
 	@BeforeClass
@@ -37,8 +42,7 @@ public class TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibili
 	@Test
 	public void testUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3_MainTest()
 			throws Exception {
-		System.out.println(
-				"User is NOT eligible for Any of the programs because user answer NO for Qs2: 8(a), WOSB, EDWOSB & Hob-zone");
+		logger.info("User is NOT eligible for Any of the programs because user answer NO for Qs2: 8(a), WOSB, EDWOSB & Hob-zone");
 
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.

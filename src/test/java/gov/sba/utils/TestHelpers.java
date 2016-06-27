@@ -7,7 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class TestHelpers {
+  private static final Logger logger = LogManager.getLogger(TestHelpers.class.getName());
+
 	//TODO: may be rename this to RAILS_ENV to make it consistent with Rails
 	final public static String TEST_ENV = "TEST_ENV";
 	final public static String BROWSER = "browser";
@@ -32,7 +37,7 @@ public class TestHelpers {
 			envUnderTest = "development";
     }
 
-    System.out.println("Your system under test :" + envUnderTest);
+    logger.info("Your system under test :" + envUnderTest);
 	  System.setProperty(TEST_ENV, envUnderTest);
 
 		String testUrl = props.getProperty(BASE_URL + envUnderTest);
@@ -41,7 +46,7 @@ public class TestHelpers {
 			throw new RuntimeException("You need to setup the '" + BASE_URL + envUnderTest + "' in your default.properties file");
 		}
 
-		System.out.println("FYI: your test URL:" + testUrl);
+		logger.info("FYI: your test URL:" + testUrl);
 
 		// Set it so that we can use it later
 		System.setProperty(BASE_URL + envUnderTest, testUrl);
@@ -62,6 +67,7 @@ public class TestHelpers {
 			configKeys = new String[] {
 				// TODO: add IE specific settings
 			};
+            logger.error("TODO: add IE driver support here");
 			throw new RuntimeException("IE is currently not supported, will be added later!");
 		default:
 			throw new RuntimeException("Unknown browser: " + browser);
@@ -77,7 +83,7 @@ public class TestHelpers {
 
 	private static void setSystemProperties(String[] configKeys, Properties props) {
 		for (String confKey : configKeys) {
-			System.out.println("FYI: update system property: " + confKey + "->" + props.getProperty(confKey));
+			logger.info("FYI: update system property: " + confKey + "->" + props.getProperty(confKey));
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
 	}
