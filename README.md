@@ -84,84 +84,47 @@ Then import the project to your Eclipse IDE
 
 If you have everything setup correctly you should see something like the following:
 
+The result of `./run-test-development`
 
 ```
-$mvn test
 [INFO] Scanning for projects...
-[INFO] ------------------------------------------------------------------------
-[INFO] Reactor Build Order:
-[INFO]
-[INFO] SBA Automation Modules
-[INFO] Production
-[INFO] Development Automation
 [INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building SBA Automation Modules 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ sba_automation ---
+[INFO] Deleting /home/bchoomnuan/codes/sba/sba-automation/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.244 s
+[INFO] Finished at: 2016-06-27T13:15:00-04:00
+[INFO] Final Memory: 8M/303M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
-[INFO] Building Production 1.0-SNAPSHOT
+[INFO] Building SBA Automation Modules 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO]
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ production ---
-[INFO] Deleting /home/bchoomnuan/codes/sba/sba-automation/production/target
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ production ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/bchoomnuan/codes/sba/sba-automation/production/src/main/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ production ---
-[INFO] No sources to compile
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ production ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/bchoomnuan/codes/sba/sba-automation/production/src/test/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ production ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 31 source files to /home/bchoomnuan/codes/sba/sba-automation/production/target/test-classes
-[INFO]
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ production ---
-[INFO] Surefire report directory: /home/bchoomnuan/codes/sba/sba-automation/production/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running TestSuite
-Configuring TestNG with: org.apache.maven.surefire.testng.conf.TestNGMapConfigurator@7506e922
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.182 sec
-
-Results :
-
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO]
-[INFO] ------------------------------------------------------------------------
-[INFO] Building Development Automation 1.0-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO]
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ development ---
-[INFO] Deleting /home/bchoomnuan/codes/sba/sba-automation/development/target
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ development ---
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ sba_automation ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 1 resource
 [INFO]
-[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ development ---
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ sba_automation ---
 [INFO] No sources to compile
 [INFO]
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ development ---
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ sba_automation ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 2 resources
 [INFO]
-[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ development ---
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ sba_automation ---
 [INFO] Changes detected - recompiling the module!
-[INFO] Compiling 3 source files to /home/bchoomnuan/codes/sba/sba-automation/development/target/test-classes
+[INFO] Compiling 3 source files to /home/bchoomnuan/codes/sba/sba-automation/target/test-classes
 [INFO]
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ development ---
-[INFO] Surefire report directory: /home/bchoomnuan/codes/sba/sba-automation/development/target/surefire-reports
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ sba_automation ---
+[INFO] Surefire report directory: /home/bchoomnuan/codes/sba/sba-automation/target/surefire-reports
 
 -------------------------------------------------------
  T E S T S
@@ -169,84 +132,37 @@ Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
 Running TestSuite
 Configuring TestNG with: org.apache.maven.surefire.testng.conf.TestNGMapConfigurator@7ab2bfe1
 Configuring TestNG with: org.apache.maven.surefire.testng.conf.TestNGMapConfigurator@3f0ee7cb
+Your system under test :development
 FYI: your test URL:http://localhost:3000/
-FYI: update system property: webdriver.chrome.driver->/home/bchoomnuan/bin/chromedriver
+FYI: update system property: webdriver.chrome.driver->/usr/sbin/chromedriver
 User is NOT eligible for Any of the programs because user answer NO for Qs2: 8(a), WOSB, EDWOSB & Hob-zone
+Your system under test :development
 FYI: your test URL:http://localhost:3000/
-FYI: update system property: webdriver.chrome.driver->/home/bchoomnuan/bin/chromedriver
+FYI: update system property: webdriver.chrome.driver->/usr/sbin/chromedriver
 User is NOT eligible(due to NO for Qs1) for Any of the programs 8(a), WOSB, EDWOSB & Hob-zone
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.105 sec <<< FAILURE!
-testUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3_MainTest(gov.sba.utils.TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3)  Time elapsed: 16.719 sec  <<< FAILURE!
-org.openqa.selenium.ElementNotVisibleException: element not visible
-  (Session info: chrome=51.0.2704.103)
-  (Driver info: chromedriver=2.22.397932 (282ed7cf89cf0053b6542e0d0f039d4123bbb6ad),platform=Linux 4.4.13-1-lts x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 18 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
-System info: host: 'sbadev', ip: '127.0.0.1', os.name: 'Linux', os.arch: 'amd64', os.version: '4.4.13-1-lts', java.version: '1.8.0_92'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, chrome={chromedriverVersion=2.22.397932 (282ed7cf89cf0053b6542e0d0f039d4123bbb6ad), userDataDir=/tmp/.com.google.Chrome.tp63Wp}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=51.0.2704.103, platform=LINUX, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: aef3c11068def763849a1fef2ca0c1c4
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:327)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:85)
-	at gov.sba.utils.TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3.testUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3_MainTest(TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3.java:94)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 20.961 sec
 
 Results :
 
-Failed tests:   testUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3_MainTest(gov.sba.utils.TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS3): element not visible(..)
-
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
-[INFO] Reactor Summary:
-[INFO]
-[INFO] SBA Automation Modules ............................. SUCCESS [  0.158 s]
-[INFO] Production ......................................... SUCCESS [  3.538 s]
-[INFO] Development Automation ............................. FAILURE [ 21.589 s]
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[INFO] Total time: 23.777 s
+[INFO] Finished at: 2016-06-27T13:15:25-04:00
+[INFO] Final Memory: 20M/271M
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 25.397 s
-[INFO] Finished at: 2016-06-24T16:49:52-04:00
-[INFO] Final Memory: 21M/273M
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project development: There are test failures.
-[ERROR]
-[ERROR] Please refer to /home/bchoomnuan/codes/sba/sba-automation/development/target/surefire-reports for the individual test results.
-[ERROR] -> [Help 1]
-[ERROR]
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR]
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
-[ERROR]
-[ERROR] After correcting the problems, you can resume the build with the command
-[ERROR]   mvn <goals> -rf :development
-```
-
-### Some useful links
-
-```
-http://certify.qa.sba-one.net/
-http://staging.qa.sba-one.net/
-http://demo.qa.sba-one.net/
 ```
 
 ### Roadmaps & Todos
 
-- [ ] Add the code to make it work with IE
 - [X] Move the test url to the property file
-- [ ] Improve the documentation
-- [ ] Make the code structure work with IE/Chrome/Firefox
 - [X] Use just one project structure (no need to have DEV/QA/Staging) and deploy from one code but using different configuration
+- [X] Add the code to make it work with Chrome
+- [X] Add the code to make it work with Firefox
+- [ ] Add the code to make it work with Internet Explorer
+- [ ] Add the code to make it work with Safari
 - [ ] Struct the shared code properly (e.g. `src/main/java/*` vs `src/test/java/*`)
 - [ ] Remove all hard-coded constants that are not portable and error-proned to failures
 - [ ] Many other improvement like proper code style guide (PMD), bugs analysist (FindBugs), etc
