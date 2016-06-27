@@ -12,11 +12,10 @@ public class TestHelpers {
 	final public static String TEST_ENV = "TEST_ENV";
 	final public static String BROWSER = "browser";
 	final public static String BASE_URL = "base_url_";
-	
+
 	public static WebDriver getDefaultWebDriver() {
 		Properties props = new Properties();
 		WebDriver driver = null;
-
 		try {
 			props.load(TestHelpers.class.getResourceAsStream("/default.properties"));
 		} catch (IOException e) {
@@ -25,24 +24,25 @@ public class TestHelpers {
 
 		// Setup the configuration based on the browser we are using
 		String browser = props.getProperty(BROWSER);
-
 		System.setProperty(BROWSER, browser);
-
 		String envUnderTest = System.getenv(TEST_ENV);
-		
+
+    // Default to 'development' if none is provided
 		if (envUnderTest == null) {
 			envUnderTest = "development";
-			System.setProperty(TEST_ENV, envUnderTest);
-		}
+    }
+
+    System.out.println("Your system under test :" + envUnderTest);
+	  System.setProperty(TEST_ENV, envUnderTest);
 
 		String testUrl = props.getProperty(BASE_URL + envUnderTest);
-		
+
 		if (testUrl == null) {
 			throw new RuntimeException("You need to setup the '" + BASE_URL + envUnderTest + "' in your default.properties file");
 		}
-		
+
 		System.out.println("FYI: your test URL:" + testUrl);
-		
+
 		// Set it so that we can use it later
 		System.setProperty(BASE_URL + envUnderTest, testUrl);
 
@@ -74,7 +74,7 @@ public class TestHelpers {
 	public static String getBaseUrl() {
 		return System.getProperty(TestHelpers.BASE_URL + System.getProperty(TEST_ENV));
 	}
-	
+
 	private static void setSystemProperties(String[] configKeys, Properties props) {
 		for (String confKey : configKeys) {
 			System.out.println("FYI: update system property: " + confKey + "->" + props.getProperty(confKey));
