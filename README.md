@@ -161,11 +161,14 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 ```
 
-### Best Practices
+### Recommendation
 
 - Avoid using `System.out.println()` use `logger.info()`, `logger.debug()` instead (see `TestHelpers.java` for example)
 - Use appropriate logger e.g. `logger.info()` vs `logger.debug()`
 - Avoid using the long name for class but instead rename the class to some context that make sense (Java standard)
+- Test should be small and make use of proper assertion method e.g. `assertEqual()`, `assertTrue()`, etc
+- Proper use of Java package name e.g. `gov.sba.utils`, `gov.sba.automation`, `gov.sba.automation.wosb` etc
+- No hard-coded values for a particular system (development, qa, staging) must be removed. Make use of property file for this task.
 
 ### Roadmaps & Todos
 
