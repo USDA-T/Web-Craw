@@ -22,13 +22,13 @@ For those who using MacOS you should be able to `brew install` these packages.
 
 - Add [Google Web Driver][] or [Firefox Web Driver][] to your path
 
-- Copy the example property file [development/src/main/resources/default.properties.example](development/src/main/resources/default.properties.example)
+- Copy the example property file [development/src/main/resources/default-example.properties](development/src/main/resources/default-example.properties)
 
 To use point to your current appropriate driver e.g.
 
 ```sh
 # Copy the example configuration from the template
-cp src/main/resources/default.properties.examples src/main/resources/default.properties
+cp src/main/resources/default-example.properties.examples src/main/resources/default.properties
 ```
 For me I have the following setup in my `src/main/resources/default.properties`
 
@@ -192,3 +192,16 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [Firefox Web Driver]: https://github.com/SeleniumHQ/selenium/wiki/FirefoxDriver
 [Apache Maven]: https://maven.apache.org/
 [Firefox 35.0.1]: https://ftp.mozilla.org/pub/firefox/releases/35.0.1/linux-x86_64/en-US/
+
+### Useful Links
+
+#### Safari Driver
+
+- [Safari Driver - main page](https://github.com/SeleniumHQ/selenium/wiki/SafariDriver)
+- [Safari Driver - properties](https://github.com/SeleniumHQ/selenium/wiki/DesiredCapabilities#safari-specific)
+
+#### Chrome Driver
+
+#### Firefox Driver
+
+#### PhantomJS Driver

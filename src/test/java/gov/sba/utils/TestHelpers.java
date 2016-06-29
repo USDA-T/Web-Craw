@@ -2,18 +2,19 @@ package gov.sba.utils;
 
 import java.io.IOException;
 import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 public class TestHelpers {
-  private static final Logger logger = LogManager.getLogger(TestHelpers.class.getName());
+	private static final Logger logger = LogManager.getLogger(TestHelpers.class.getName());
 
-	//TODO: may be rename this to RAILS_ENV to make it consistent with Rails
+	// TODO: may be rename this to RAILS_ENV to make it consistent with Rails
 	final public static String TEST_ENV = "TEST_ENV";
 	final public static String BROWSER = "browser";
 	final public static String BASE_URL = "base_url_";
@@ -32,47 +33,61 @@ public class TestHelpers {
 		System.setProperty(BROWSER, browser);
 		String envUnderTest = System.getenv(TEST_ENV);
 
-    // Default to 'development' if none is provided
+		// Default to 'development' if none is provided
 		if (envUnderTest == null) {
 			envUnderTest = "development";
-    }
+		}
 
-    logger.info("Your system under test :" + envUnderTest);
-	  System.setProperty(TEST_ENV, envUnderTest);
+		logger.info("Your system under test :" + envUnderTest);
+		System.setProperty(TEST_ENV, envUnderTest);
 
 		String testUrl = props.getProperty(BASE_URL + envUnderTest);
 
 		if (testUrl == null) {
-			throw new RuntimeException("You need to setup the '" + BASE_URL + envUnderTest + "' in your default.properties file");
+			throw new RuntimeException(
+					"You need to setup the '" + BASE_URL + envUnderTest + "' in your default.properties file");
 		}
 
 		logger.info("FYI: your test URL:" + testUrl);
+		logger.info("FYI: you are using the browser: " + browser);
 
 		// Set it so that we can use it later
 		System.setProperty(BASE_URL + envUnderTest, testUrl);
 
 		String[] configKeys;
 		switch (browser) {
-		case "Chrome":
+		case "chrome":
 			configKeys = new String[] { "webdriver.chrome.driver" };
 			setSystemProperties(configKeys, props);
 			driver = new ChromeDriver();
 			break;
-		case "Firefox":
+		case "firefox":
 			configKeys = new String[] { "webdriver.firefox.bin", "webdriver.firefox.port" };
 			setSystemProperties(configKeys, props);
 			driver = new FirefoxDriver();
 			break;
-		case "IE":
+		case "phantomjs":
 			configKeys = new String[] {
-				// TODO: add IE specific settings
+              //Note: add PhantomJS specific setting if any
+            };
+			setSystemProperties(configKeys, props);
+			driver = new PhantomJSDriver();
+      break;
+		case "ie":
+			configKeys = new String[] {
+              //Note: add IE specific setting if any
 			};
-            logger.error("TODO: add IE driver support here");
 			throw new RuntimeException("IE is currently not supported, will be added later!");
 		default:
 			throw new RuntimeException("Unknown browser: " + browser);
-		}
-		;
+		};
+
+        // NOTE: additional settings to make the driver more robust
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
 		return driver;
 	}
@@ -83,7 +98,7 @@ public class TestHelpers {
 
 	private static void setSystemProperties(String[] configKeys, Properties props) {
 		for (String confKey : configKeys) {
-			logger.info("FYI: update system property: " + confKey + "->" + props.getProperty(confKey));
+			logger.info("FYI: Update system property :" + confKey + "=" + props.getProperty(confKey));
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
 	}
