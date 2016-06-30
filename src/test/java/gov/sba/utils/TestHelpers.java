@@ -61,28 +61,33 @@ public class TestHelpers {
 			setSystemProperties(configKeys, props);
 			driver = new ChromeDriver();
 			break;
-		case "firefox":
-			configKeys = new String[] { "webdriver.firefox.bin", "webdriver.firefox.port" };
-			setSystemProperties(configKeys, props);
+		case "firefox":			
+			if (TestHelpers.isUnix(TestHelpers.systemType())) {
+				// Need to provide specific type information for Linux
+				configKeys = new String[] { "webdriver.firefox.bin", "webdriver.firefox.port" };
+				setSystemProperties(configKeys, props);
+			}
+			
+			// TODO: verify if we need to do the same for MacOs?
 			driver = new FirefoxDriver();
 			break;
 		case "phantomjs":
 			configKeys = new String[] {
-              //Note: add PhantomJS specific setting if any
-            };
+				// Note: add PhantomJS specific setting if any
+			};
 			setSystemProperties(configKeys, props);
 			driver = new PhantomJSDriver();
-      break;
+			break;
 		case "ie":
 			configKeys = new String[] {
-              //Note: add IE specific setting if any
+					// Note: add IE specific setting if any
 			};
 			throw new RuntimeException("IE is currently not supported, will be added later!");
 		default:
 			throw new RuntimeException("Unknown browser: " + browser);
 		};
 
-        // NOTE: additional settings to make the driver more robust
+		// NOTE: additional settings to make the driver more robust
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
@@ -101,5 +106,24 @@ public class TestHelpers {
 			logger.info("FYI: Update system property :" + confKey + "=" + props.getProperty(confKey));
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
+	}
+	
+	// For OS detection
+	private static String systemType() {
+		return System.getProperty("os.name").toLowerCase();
+	}
+
+	@SuppressWarnings("unused")
+	private static boolean isWindows(String osName) {
+		return (osName.indexOf("win") >= 0);
+	}
+
+	@SuppressWarnings("unused")
+	private static boolean isMac(String osName) {
+		return (osName.indexOf("mac") >= 0);
+	}
+
+	private static boolean isUnix(String osName) {
+		return (osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0);
 	}
 }
