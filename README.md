@@ -90,6 +90,10 @@ Then import the project to your Eclipse IDE
 
 - If you have any problems please let me know via HipChat or just call me
 
+- You may also like to add the `M2_REPO` variables to point to `~/.m2/repository/`
+
+  See [How to add M2_REPO classpath variable to Eclipse IDE](http://www.mkyong.com/maven/how-to-configure-m2_repo-variable-in-eclipse-ide/) for detail.
+
 ### Sample sessions
 
 If you have everything setup correctly you should see something like the following:
@@ -216,3 +220,8 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 #### PhantomJS Driver
 
 - [PhantomJS](http://phantomjs.org/) the headless browser
+
+### Additional Tips for Windows based environment
+
+- [How to install Maven on Windows](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
+- [Git for Windows](https://git-for-windows.github.io/)
