@@ -20,7 +20,11 @@ For those who using MacOS you should be able to `brew install` these packages.
 
 - Add [Apache Maven][] to your path e.g. `mvn` command
 
+If you are using Windows, you can use this [excellent guide](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
+
 - Add [Google Web Driver][] or [Firefox Web Driver][] to your path
+
+For Windows you can
 
 - Copy the example property file [development/src/main/resources/default-example.properties](development/src/main/resources/default-example.properties)
 
@@ -176,11 +180,12 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 - [X] Use just one project structure (no need to have DEV/QA/Staging) and deploy from one code but using different configuration
 - [X] Add the code to make it work with Chrome
 - [X] Add the code to make it work with Firefox
+- [X] Add the code to make it work with Safari
+- [X] Add the code to make it work with PhantomJS
 - [ ] Add the code to make it work with Internet Explorer
-- [ ] Add the code to make it work with Safari
-- [ ] Struct the shared code properly (e.g. `src/main/java/*` vs `src/test/java/*`)
 - [X] Add proper logging framework avoid the need for `System.out.println()`
-- [ ] Remove all hard-coded constants that are not portable and error-proned to failures
+- [X] Remove all hard-coded constants that are not portable and error-proned to failures
+- [X] Struct the shared code properly (e.g. `src/main/java/*` vs `src/test/java/*`)
 - [ ] Many other improvement like proper code style guide (PMD), bugs analysist (FindBugs), etc
 
 ### Notes
@@ -202,6 +207,12 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 #### Chrome Driver
 
+- [Google Chrome Driver](https://sites.google.com/a/chromium.org/chromedriver/)
+
 #### Firefox Driver
 
+- If you are on Linux system, you may like to install Firefox version 35.0.1 instead of the lastest version
+
 #### PhantomJS Driver
+
+- [PhantomJS](http://phantomjs.org/) the headless browser
