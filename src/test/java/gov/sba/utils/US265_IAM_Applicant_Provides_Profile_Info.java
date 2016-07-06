@@ -15,7 +15,8 @@ import org.openqa.selenium.WebElement;
 //import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class US265_IAM_Applicant_Provides_Profile_Info {
-	private static final Logger logger = LogManager.getLogger(TestSurveyQuestion2.class.getName());
+	private static final Logger logger = LogManager
+			.getLogger(US265_IAM_Applicant_Provides_Profile_Info.class.getName());
 	private static WebDriver webDriver;
 	String MyUrl;
 	String Username;
@@ -26,8 +27,8 @@ public class US265_IAM_Applicant_Provides_Profile_Info {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		//webDriver = new FirefoxDriver();
-		//MyUrl = "http://max.gov/";
+		// webDriver = new FirefoxDriver();
+		// MyUrl = "http://max.gov/";
 		Username = "Deric.nguni@sba.gov";
 		Password = "Montana$74045883";
 
@@ -39,8 +40,8 @@ public class US265_IAM_Applicant_Provides_Profile_Info {
 	@Test
 	public void US265_IAM_Applicant_Provides_Profile_Info_Maintest() throws Exception {
 		// Navigate the MAX.gov landing page.
-		//webDriver.navigate().to(MyUrl);
-		//webDriver.manage().window().maximize();
+		// webDriver.navigate().to(MyUrl);
+		// webDriver.manage().window().maximize();
 		// Verify and click on the Login button.
 		Thread.sleep(5000);
 		logger.info("US265 test.max.gov");
@@ -113,7 +114,7 @@ public class US265_IAM_Applicant_Provides_Profile_Info {
 
 	@After
 	public void US265_IAM_Applicant_Provides_Profile_Info_Teardown() throws Exception {
-		
+
 		webDriver.quit();
 
 	}

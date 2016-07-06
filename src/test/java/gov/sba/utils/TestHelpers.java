@@ -61,19 +61,19 @@ public class TestHelpers {
 			setSystemProperties(configKeys, props);
 			driver = new ChromeDriver();
 			break;
-		case "firefox":			
+		case "firefox":
 			if (TestHelpers.isUnix(TestHelpers.systemType())) {
 				// Need to provide specific type information for Linux
 				configKeys = new String[] { "webdriver.firefox.bin", "webdriver.firefox.port" };
 				setSystemProperties(configKeys, props);
 			}
-			
+
 			// TODO: verify if we need to do the same for MacOs?
 			driver = new FirefoxDriver();
 			break;
 		case "phantomjs":
 			configKeys = new String[] {
-				// Note: add PhantomJS specific setting if any
+					// Note: add PhantomJS specific setting if any
 			};
 			setSystemProperties(configKeys, props);
 			driver = new PhantomJSDriver();
@@ -85,7 +85,8 @@ public class TestHelpers {
 			throw new RuntimeException("IE is currently not supported, will be added later!");
 		default:
 			throw new RuntimeException("Unknown browser: " + browser);
-		};
+		}
+		;
 
 		// NOTE: additional settings to make the driver more robust
 		driver.manage().deleteAllCookies();
@@ -107,7 +108,7 @@ public class TestHelpers {
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
 	}
-	
+
 	// For OS detection
 	private static String systemType() {
 		return System.getProperty("os.name").toLowerCase();

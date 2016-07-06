@@ -43,44 +43,46 @@ public class TestEdwosbPartnershipTest extends TestCase {
 	@Test
 	public void testMainLogic() throws Exception {
 
-		//Login to dashboard.
-	   	PartnershiploginPage partnershiplogin=new PartnershiploginPage(webDriver);
-	   	partnershiplogin.Partnershiplogin();
-	   	Thread.sleep(3000);
-	   	if(webDriver.getPageSource().contains("Signed in successfully")){
-	   		webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
-	   	}
-	   	else{
-	   		System.out.println("Successful sign in alert message not present");
-	   	}
-	   	Thread.sleep(3000);
+		// Login to dashboard.
+		PartnershiploginPage partnershiplogin = new PartnershiploginPage(webDriver);
+		partnershiplogin.Partnershiplogin();
+		Thread.sleep(3000);
+		if (webDriver.getPageSource().contains("Signed in successfully")) {
+			webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
+		} else {
+			System.out.println("Successful sign in alert message not present");
+		}
+		Thread.sleep(3000);
 
-	   	//Verify if there is an existing certification on the dashboard and delete to start a new certification.
-	   	if(webDriver.getPageSource().contains("Draft")){
-	   		webDriver.findElement(By.linkText("Delete")).click();
-	   		webDriver.switchTo().alert().accept();
-	           try{
-	           	Thread.sleep(5000);
-	           }catch(InterruptedException e){
-	   	e.printStackTrace();}
-	           webDriver.navigate().refresh();
-	   	}
-	   	else{
-	   		logger.info("There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
-	   	}
-	   	Thread.sleep(7000);
+		// Verify if there is an existing certification on the dashboard and
+		// delete to start a new certification.
+		if (webDriver.getPageSource().contains("Draft")) {
+			webDriver.findElement(By.linkText("Delete")).click();
+			webDriver.switchTo().alert().accept();
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			webDriver.navigate().refresh();
+		} else {
+			logger.info(
+					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
+		}
+		Thread.sleep(7000);
 
-	   	// Locate the Certifications on the dashboard, click on it and select EDWOSB to continue.
-	   	webDriver.findElement(By.linkText("Certifications")).click();
-	   	webDriver.findElement(By.linkText("EDWOSB")).click();
-	   	Thread.sleep(2000);
+		// Locate the Certifications on the dashboard, click on it and select
+		// EDWOSB to continue.
+		webDriver.findElement(By.linkText("Certifications")).click();
+		webDriver.findElement(By.linkText("EDWOSB")).click();
+		Thread.sleep(2000);
 
-	   	//Corp test for 1st person.
-	   	PartnershipquestionsPage partnershipquestions=new PartnershipquestionsPage(webDriver);
-	   	partnershipquestions.Partnershipquestions();
-	   	    //Financial section.
-	   		FinancialsectionPage financialsection=new FinancialsectionPage(webDriver);
-	   		financialsection.Financialsection();
+		// Corp test for 1st person.
+		PartnershipquestionsPage partnershipquestions = new PartnershipquestionsPage(webDriver);
+		partnershipquestions.Partnershipquestions();
+		// Financial section.
+		FinancialsectionPage financialsection = new FinancialsectionPage(webDriver);
+		financialsection.Financialsection();
 
 	}
 }

@@ -11,9 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class Analyst_search_View_vendors_Record_Regression_1 {
-	
 
-	private static final Logger logger = LogManager.getLogger(TestSurveyQuestion2.class.getName());
+	private static final Logger logger = LogManager
+			.getLogger(Analyst_search_View_vendors_Record_Regression_1.class.getName());
 
 	private static WebDriver webDriver;
 
