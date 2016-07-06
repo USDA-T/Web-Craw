@@ -18,5 +18,9 @@ target/
 src/main/resources/default.properties
 
 # Generated files
+.metadata
+.project
 .classpath
 .project
+.metadata
+.recommenders/
