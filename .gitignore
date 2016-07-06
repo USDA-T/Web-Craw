@@ -20,3 +20,9 @@ src/main/resources/default.properties
 # Generated files
 .classpath
 .project
+# Eclipse's configuration
+.metadata
+.project
+.classpath
+
+.recommenders
