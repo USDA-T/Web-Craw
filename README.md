@@ -225,3 +225,20 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 - [How to install Maven on Windows](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 - [Git for Windows](https://git-for-windows.github.io/)
+
+#### How to properly raise pull request
+
+As this is the shared repository and we trying to remove any duplication as much as possible I propose the
+follow guide line to make it easy for everyone going forward.
+
+- Please create your branch of the `develop` branch of the repository
+- Once you complete your story/implementation the please raise your pull request (PR) against `develop` branch not `master`
+- Make sure that your PR can run against `development`, `qa` and `staging`
+  * e.g. development means running against localhost (e.g. have the Rails server running locally, if you can) if not the code must
+  be able to run and pass on both [QA](https://cerfify.qa.sba-one.net) or [Staging](https://staging-certify.sba.net)
+
+  * To run test against the two servers (QA/Staging) just change the `default.properties` file to point to use the right URL, or use
+  the correct script (e.g. `./run-test-staging` , or `./run-test-qa`)
+
+- Try to keep the Git history clean by squash your commit together when it make sense don't publish your `work-in-progress` commits to
+  the shared remote repository. This will make it easy to review/rebase if any conflict arise.
