@@ -279,3 +279,14 @@ public void testSomethingThatCouldFailed() {
 - Avoid the use of if/else in the test and directly use the assertion
 
 TODO: example will be added here shortly
+
+- Properly expanded the import statements when possible (good to have)
+
+```
+// Use
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+// ...
+// instead of just
+import static org.junit.Assert.*
+```
