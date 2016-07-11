@@ -40,6 +40,7 @@ public class TestHelpers {
 
 		logger.info("Your system under test :" + envUnderTest);
 		System.setProperty(TEST_ENV, envUnderTest);
+		logger.info("Setting environment:" + TEST_ENV + " to " + envUnderTest);
 
 		String testUrl = props.getProperty(BASE_URL + envUnderTest);
 
