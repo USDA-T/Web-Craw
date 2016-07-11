@@ -8,7 +8,6 @@ public class LogincorpPage {
 
 	public LogincorpPage(WebDriver driver) {
 		this.webDriver = driver;
-
 	}
 
 	public void Logincorp() throws Exception {
@@ -27,7 +26,6 @@ public class LogincorpPage {
 
 	private void assertEquals(String actual_Text4, String expected_Text4) {
 		// TODO Auto-generated method stub
-
 	}
-
+	
 }

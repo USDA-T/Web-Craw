@@ -388,3 +388,39 @@ public void testUnhappyPath02() throws Exception {
   // Your other tests
 }
 ```
+
+#### Misc Findings
+
+- In java all of the `TODO` must be addressed
+
+```java
+// Some where I found some code like this which is not accessible anywhere
+@Rule
+public ErrorCollector errorCollector = new ErrorCollector();
+
+
+// see: AnalystLoginPage.java
+private void assertEquals(String actualText, String expectedText) {
+   //TODO: Auto-generated method stub
+}
+```
+
+- Don't use `if-then-else` in your test, use assertion library directly
+
+e.g. Dont' do this 
+```java
+if (webDriver.getPageSource().contains("Signed in successfully")) {
+   // avoid the side-effect in the test!
+    webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
+} else {
+    System.out.println("Successful sign in alert message not present");
+}
+```
+
+Instead try using assertion directly
+
+```java
+assertTrue(webDriver.getPageSource().contains("Signed in successfully"));
+```
+
+If the test fail, then we will know based on the above assertion

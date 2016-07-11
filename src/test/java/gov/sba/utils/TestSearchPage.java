@@ -10,12 +10,15 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.utils.helpers.LoginHelpers;
+import gov.sba.utils.helpers.LoginInfo;
 import junit.framework.TestCase;
 
 public class TestSearchPage extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
 	private static WebDriver webDriver;
-
+	private static LoginInfo loginInfo;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -29,6 +32,10 @@ public class TestSearchPage extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		
+		// Get the login based on the environment under test (e.g. 'development', 'qa', 'staging')
+		logger.info("FYI: your environment under test:" + System.getProperty(TestHelpers.TEST_ENV));
+		loginInfo = LoginHelpers.getLoginCredentials(System.getProperty(TestHelpers.TEST_ENV));
 	}
 
 	@After
@@ -38,9 +45,19 @@ public class TestSearchPage extends TestCase {
 
 	@Test
 	public void testMainLogic() throws Exception {
+		logger.info("FYI: using test login   : " + loginInfo.getLoginName());
+		logger.info("FYI: using test password: " + loginInfo.getPassword());
+
 		webDriver.findElement(By.xpath(".//*[@id=\"gov_login_box\"]/form[1]/button")).click();
-		webDriver.findElement(By.name("user[email]")).sendKeys("analyst1@mailinator.com");
-		webDriver.findElement(By.name("user[password]")).sendKeys("password");
+		
+		// NOTE: original code with hard-coded values
+		// webDriver.findElement(By.name("user[email]")).sendKeys("analyst1@mailinator.com");
+		// webDriver.findElement(By.name("user[password]")).sendKeys("password");
+		
+		// NOTE: new code with proper login logic captured
+		webDriver.findElement(By.name("user[email]")).sendKeys(loginInfo.getLoginName());
+		webDriver.findElement(By.name("user[password]")).sendKeys(loginInfo.getPassword());
+		
 		webDriver.findElement(By.id("business_signin")).click();
 		String url = webDriver.getCurrentUrl();
 		assertTrue(url.contains("dashboard"));
