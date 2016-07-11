@@ -242,3 +242,40 @@ follow guide line to make it easy for everyone going forward.
 
 - Try to keep the Git history clean by squash your commit together when it make sense don't publish your `work-in-progress` commits to
   the shared remote repository. This will make it easy to review/rebase if any conflict arise.
+
+### Guideline on how to write a better test
+
+This is just a general rules that I learnt as a Java/JEE developer for sometime in the past
+this is by no mean hard/fast rules but it is quite common Java's practices that I gained
+with experience working in the field. Hopefully we could use some of this as a guide in improving
+our QA automation project.
+
+- How to test for something that could potentially failed
+
+```java
+// If we run this test then this should pass as the code should raise exception
+// thus the `expected` will be validated
+@Test(expected=IndexOutOfBoundException.class)
+public void testSomethingThatCouldFailed() {
+   List emptyList = new ArrayList();
+   Object o = emptyList.get(0);
+}
+
+// If we are not using annotation in Java then
+//
+@Test
+public void testSomethingThatCouldFailed() {
+   try {
+     // Your tested code
+     List emptyList = new ArrayList();
+     Object o = emptyList.get(0);
+     fail("My method didn't thrown when I expected it to");
+   } catch (Exception e) {
+     // expected so do nothing
+   }
+}
+```
+
+- Avoid the use of if/else in the test and directly use the assertion
+
+TODO: example will be added here shortly
