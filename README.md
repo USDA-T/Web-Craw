@@ -250,7 +250,7 @@ this is by no mean hard/fast rules but it is quite common Java's practices that 
 with experience working in the field. Hopefully we could use some of this as a guide in improving
 our QA automation project.
 
-- How to test for something that could potentially failed
+#### How to test for something that could potentially failed
 
 ```java
 // If we run this test then this should pass as the code should raise exception
@@ -276,7 +276,7 @@ public void testSomethingThatCouldFailed() {
 }
 ```
 
-- Avoid putting the hard-coded values in the test/setup
+#### Avoid putting the hard-coded values in the test/setup
 
 e.g. Avoid writing something like
 
@@ -326,22 +326,24 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.*
 ```
 
-- Follow Java/JUnit common/best practices when  possible
+#### JUnit - use the proper `setUp()`, `tearDown()`, `setUpBeforeClass()`, `tearDownAfterClass()` appropriately
 
- ** Use the proper `setUp()`, `tearDown()`, `setUpBeforeClass()`, `tearDownAfterClass()` appropriately
- ** Breake your test to logical/sensible unit, don't' put everything in one big tests
+For example see [src/test/java/gov/sba/utils/TestSearchPage.java](src/test/java/gov/sba/utils/TestSearchPage.java)
 
 ```java
 // In JUnit the following are common practices when create the tests
 // It is so common that if you create the new JUnit test file, this code will
 // be generated for your from your IDE (Eclipse/IntelliJ)
+// See: the example in
 
 @BeforeClass
 public static void setUpBeforeClass() throws Exception {
+  // Add code here to setup something that need to be done before all of the tests
 }
 
 @AfterClass
 public static void tearDownAfterClass() throws Exception {
+  // Add code here to properly cleanup after all of the tests has been ran
 }
 
 @Before
@@ -356,7 +358,16 @@ public void tearDown() throws Exception {
   // This is the code that should cleanup after each test
   webDriver.quit();
 }
+```
 
+#### JUnit - break your test into small logical unit when possible
+
+When writing your test, it is better to only write keep your test small to
+validate the simplest possible path (happy/unhappy), don't just write one big test
+for everything.
+
+```java
+// ...
 @Test
 public void testHappyPath01() throws Exception {
    // Your normal test code here
