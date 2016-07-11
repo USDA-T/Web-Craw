@@ -325,3 +325,55 @@ import static org.junit.Assert.assertFalse;
 // instead of just
 import static org.junit.Assert.*
 ```
+
+- Follow Java/JUnit common/best practices when  possible
+
+ ** Use the proper `setUp()`, `tearDown()`, `setUpBeforeClass()`, `tearDownAfterClass()` appropriately
+ ** Breake your test to logical/sensible unit, don't' put everything in one big tests
+
+```java
+// In JUnit the following are common practices when create the tests
+// It is so common that if you create the new JUnit test file, this code will
+// be generated for your from your IDE (Eclipse/IntelliJ)
+
+@BeforeClass
+public static void setUpBeforeClass() throws Exception {
+}
+
+@AfterClass
+public static void tearDownAfterClass() throws Exception {
+}
+
+@Before
+public void setUp() throws Exception {
+  // This is the code that run before each test
+  webDriver = TestHelpers.getDefaultWebDriver();
+  // more code here
+}
+
+@After
+public void tearDown() throws Exception {
+  // This is the code that should cleanup after each test
+  webDriver.quit();
+}
+
+@Test
+public void testHappyPath01() throws Exception {
+   // Your normal test code here
+}
+
+@Test
+public void testHappyPath02() throws Exception {
+   // Your normal test code here
+}
+
+@Test
+public void testUnhappyPath01() throws Exception {
+  // Your other tests
+}
+
+@Test
+public void testUnhappyPath02() throws Exception {
+  // Your other tests
+}
+```
