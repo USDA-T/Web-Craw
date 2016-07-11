@@ -276,9 +276,44 @@ public void testSomethingThatCouldFailed() {
 }
 ```
 
-- Avoid the use of if/else in the test and directly use the assertion
+- Avoid putting the hard-coded values in the test/setup
 
-TODO: example will be added here shortly
+e.g. Avoid writing something like
+
+```java
+// Avoid writing
+@Before
+public void setup() throws Exception {
+  // Common code re-use patterns as example
+  webDriver = TestHelpers.getDefaultWebDriver();
+  webDriver.manage().window().maximize();
+
+  // Note: hard-coded value, we will not be able to use this code easily between
+  // different environment
+  myUrl = "https://max.gov/"
+  userName = "SomeUserName";
+  password = "SomPassword";
+}
+```
+
+Instead try to capture the to the shared/reusable class/modules like
+
+```
+@Before
+public void setup() throws Exception {
+  // Common code re-use patterns as example
+  webDriver = TestHelpers.getDefaultWebDriver();
+  webDriver.manage().window().maximize();
+
+  // Note: hard-coded value, we will not be able to use this code easily between
+  // different environment  e.g. `environment = "DEV" or "QA", "Staging", etc
+  loginHelpers = LoginHelpers.loginCredentials(environment)
+
+  myUrl = loginHelpers.getTestUrl();
+  userName = loginHelpers.getTestUserName();
+  password = loginHelpers.getPassword();
+}
+```
 
 - Properly expanded the import statements when possible (good to have)
 
