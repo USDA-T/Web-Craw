@@ -225,3 +225,103 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 - [How to install Maven on Windows](http://www.mkyong.com/maven/how-to-install-maven-in-windows/)
 - [Git for Windows](https://git-for-windows.github.io/)
+
+#### How to properly raise pull request
+
+As this is the shared repository and we trying to remove any duplication as much as possible I propose the
+follow guide line to make it easy for everyone going forward.
+
+- Please create your branch of the `develop` branch of the repository
+- Once you complete your story/implementation the please raise your pull request (PR) against `develop` branch not `master`
+- Make sure that your PR can run against `development`, `qa` and `staging`
+  * e.g. development means running against localhost (e.g. have the Rails server running locally, if you can) if not the code must
+  be able to run and pass on both [QA](https://cerfify.qa.sba-one.net) or [Staging](https://staging-certify.sba.net)
+
+  * To run test against the two servers (QA/Staging) just change the `default.properties` file to point to use the right URL, or use
+  the correct script (e.g. `./run-test-staging` , or `./run-test-qa`)
+
+- Try to keep the Git history clean by squash your commit together when it make sense don't publish your `work-in-progress` commits to
+  the shared remote repository. This will make it easy to review/rebase if any conflict arise.
+
+### Guideline on how to write a better test
+
+This is just a general rules that I learnt as a Java/JEE developer for sometime in the past
+this is by no mean hard/fast rules but it is quite common Java's practices that I gained
+with experience working in the field. Hopefully we could use some of this as a guide in improving
+our QA automation project.
+
+- How to test for something that could potentially failed
+
+```java
+// If we run this test then this should pass as the code should raise exception
+// thus the `expected` will be validated
+@Test(expected=IndexOutOfBoundException.class)
+public void testSomethingThatCouldFailed() {
+   List emptyList = new ArrayList();
+   Object o = emptyList.get(0);
+}
+
+// If we are not using annotation in Java then
+//
+@Test
+public void testSomethingThatCouldFailed() {
+   try {
+     // Your tested code
+     List emptyList = new ArrayList();
+     Object o = emptyList.get(0);
+     fail("My method didn't thrown when I expected it to");
+   } catch (Exception e) {
+     // expected so do nothing
+   }
+}
+```
+
+- Avoid putting the hard-coded values in the test/setup
+
+e.g. Avoid writing something like
+
+```java
+// Avoid writing
+@Before
+public void setup() throws Exception {
+  // Common code re-use patterns as example
+  webDriver = TestHelpers.getDefaultWebDriver();
+  webDriver.manage().window().maximize();
+
+  // Note: hard-coded value, we will not be able to use this code easily between
+  // different environment
+  myUrl = "https://max.gov/"
+  userName = "SomeUserName";
+  password = "SomPassword";
+}
+```
+
+Instead try to capture the to the shared/reusable class/modules like
+
+```
+@Before
+public void setup() throws Exception {
+  // Common code re-use patterns as example
+  webDriver = TestHelpers.getDefaultWebDriver();
+  webDriver.manage().window().maximize();
+
+  // Note: hard-coded value, we will not be able to use this code easily between
+  // different environment  e.g. `environment = "DEV" or "QA", "Staging", etc
+  loginHelpers = LoginHelpers.loginCredentials(environment)
+
+  myUrl = loginHelpers.getTestUrl();
+  userName = loginHelpers.getTestUserName();
+  password = loginHelpers.getPassword();
+}
+```
+
+- Properly expanded the import statements when possible (good to have)
+
+```
+// Use
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+// ...
+// instead of just
+import static org.junit.Assert.*
+```
