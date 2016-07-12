@@ -1,9 +1,12 @@
 package gov.sba.utils.helpers;
 
-import java.io.IOException;
-import java.util.Properties;
-import java.util.Scanner;
+import java.io.FileReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,19 +22,19 @@ public class LoginHelpers {
 		logger.info("Your environment: " + environment);
 
 		switch (environment) {
-		case Constants.ENV_DEVELOPMENT :
+		case Constants.ENV_DEVELOPMENT:
 			// TODO: read from property file so that no re-compile needed
-			loginInfo.setLoginName("analyst1@mailinator.com");
+			loginInfo.setEmail("analyst1@mailinator.com");
 			loginInfo.setPassword("password");
 			break;
 		case Constants.ENV_QA:
 			// TODO: read from property file so that no re-compile needed
-			loginInfo.setLoginName("deric");
+			loginInfo.setEmail("deric");
 			loginInfo.setPassword("password-for-qa");
 			break;
 		case Constants.ENV_STAGING:
 			// TODO: read from property file so that no re-compile needed
-			loginInfo.setLoginName("deric");
+			loginInfo.setEmail("deric");
 			loginInfo.setPassword("password-for-staging");
 			break;
 		default:
@@ -40,23 +43,59 @@ public class LoginHelpers {
 
 		return loginInfo;
 	}
-	
-	public static void readCsv() throws Exception {
+
+	public static List<LoginData> loadFixtures() throws Exception {
 		// Make sure that we have the TEST_ENV set
 		TestHelpers.loadDefaultProperties();
+		String fixturesFile = "fixtures_" + System.getProperty(Constants.TEST_ENV) + ".csv";
+
+		// TODO: may be load this through the getResourceAsStream() e.g.
+		// classPath instead?
+		Reader in = new FileReader("src/main/resources/" + fixturesFile);
+		// email,password,duns_number,tax_identifier,col5,businessType
+
+		Iterable<CSVRecord> records = CSVFormat.RFC4180
+				.withHeader("email", "password", "duns_number", "tax_identifier", "misc_info", "business_type").parse(in);
 		
-		String fixturesFile = "/fixtures_" + System.getProperty(Constants.TEST_ENV) + ".csv";
-		System.out.println("Your fixture path: " + fixturesFile);
-		Scanner scanner = new Scanner(LoginHelpers.class.getResourceAsStream(fixturesFile));
-		scanner.useDelimiter(",");
-		while (scanner.hasNext()) {
-			System.out.print(scanner.next() + "|");
+		List <LoginData> logins = new ArrayList<LoginData>();
+		
+		for (CSVRecord record : records) {
+
+			String email = record.get("email");
+			String password = record.get("password");
+			String dunsNumber = record.get("duns_number");
+			String taxIdentifier = record.get("tax_identifier");
+			String miscInfo = record.get("misc_info");
+			String businessType = record.get("business_type");
+			
+			LoginData current = new LoginData();
+			
+			// TODO: use debug when done!
+			logger.info("-----------------------------");
+			logger.info("email          :" + email);
+			logger.info("password       :" + password);
+			logger.info("duns_number    :" + dunsNumber);
+			logger.info("tax_identifier :" + taxIdentifier);
+			logger.info("col5           :" + miscInfo);
+			logger.info("business_type  :" + businessType);
+			
+			current.setEmail(email);
+			current.setPassword(password);
+			current.setDunsNumber(dunsNumber);
+			current.setTaxIdentifier(taxIdentifier);
+			current.setMiscInfo(miscInfo);
+			current.setBusinessType(businessType);
+			
+			logins.add(current);
 		}
-		scanner.close();
+		
+		return logins;
+		
 	}
-	
-	// TODO: for testing only!
+
+	// TODO: for testing only, remove when done!
 	public static void main(String[] args) throws Exception {
-		LoginHelpers.readCsv();
+		List<LoginData> result = LoginHelpers.loadFixtures();
+		System.out.println(result.get(1));
 	}
 }

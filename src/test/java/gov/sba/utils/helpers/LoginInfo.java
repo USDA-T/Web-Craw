@@ -6,17 +6,17 @@ public class LoginInfo {
 	public LoginInfo() {	
 	}
 	
-	public LoginInfo(String loginName, String password) {
-		this.data.loginName = loginName;
+	public LoginInfo(String email, String password) {
+		this.data.email = email;
 		this.data.password = password;
 	}
 
-	public String getLoginName() {
-		return data.loginName;
+	public String getEmail() {
+		return data.email;
 	}
 
-	public void setLoginName(String loginName) {
-		this.data.loginName = loginName;
+	public void setEmail(String email) {
+		this.data.email = email;
 	}
 
 	public String getPassword() {

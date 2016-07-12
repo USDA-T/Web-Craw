@@ -45,7 +45,7 @@ public class TestSearchPage extends TestCase {
 
 	@Test
 	public void testMainLogic() throws Exception {
-		logger.info("FYI: using test login   : " + loginInfo.getLoginName());
+		logger.info("FYI: using test login   : " + loginInfo.getEmail());
 		logger.info("FYI: using test password: " + loginInfo.getPassword());
 
 		webDriver.findElement(By.xpath(".//*[@id=\"gov_login_box\"]/form[1]/button")).click();
@@ -55,7 +55,7 @@ public class TestSearchPage extends TestCase {
 		// webDriver.findElement(By.name("user[password]")).sendKeys("password");
 		
 		// NOTE: new code with proper login logic captured
-		webDriver.findElement(By.name("user[email]")).sendKeys(loginInfo.getLoginName());
+		webDriver.findElement(By.name("user[email]")).sendKeys(loginInfo.getEmail());
 		webDriver.findElement(By.name("user[password]")).sendKeys(loginInfo.getPassword());
 		
 		webDriver.findElement(By.id("business_signin")).click();
