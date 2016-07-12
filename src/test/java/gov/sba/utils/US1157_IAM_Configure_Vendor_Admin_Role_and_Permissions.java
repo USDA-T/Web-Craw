@@ -34,8 +34,8 @@ public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
 
 		// Login to Vendor Admin Dashboard.
 		Thread.sleep(4000);
-		LogincorpPage login = new LogincorpPage(webDriver);
-		login.Logincorp();
+		LoginPage login = new LoginPage(webDriver);
+		login.Login();
 		if (webDriver.getPageSource().contains("Draft")) {
 			webDriver.findElement(By.linkText("Delete")).click();
 			webDriver.switchTo().alert().accept();

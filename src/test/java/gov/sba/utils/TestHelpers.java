@@ -97,7 +97,7 @@ public class TestHelpers {
 
 	private static void setSystemProperties(String[] configKeys, Properties props) {
 		for (String confKey : configKeys) {
-			logger.info("FYI: Update system property :" + confKey + "=" + props.getProperty(confKey));
+			logger.info("Update system property :" + confKey + "=" + props.getProperty(confKey));
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
 	}

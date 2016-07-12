@@ -10,28 +10,22 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9 {
+public class US801_Am_I_Eligible_TS9 {
 	private static final Logger logger = LogManager.getLogger(Edith_Password_Regression_Test_1.class.getName());
 
 	public WebDriver webDriver;
 	String NAICS;
 
 	@Before
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_Setup()
-			throws Exception {
+	public void Setup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 		NAICS = "335932";
-
 	}
 
 	@Test
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_MainTest()
-			throws Exception {
-		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
-		// page.
-
+	public void MainTest() throws Exception {
 		logger.info("User is eligible for ALL programs, 8(a), WOSB, EDWOSB & Hob-zone");
 		// Locate the Am I Eligible or the Find Out button on the
 		webDriver.findElement(By.linkText("Am I eligible?")).click();
@@ -301,15 +295,7 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
 				.getText();
 		String expected_Text34 = "Do you identify as one of the following?";
 		assertEquals(actual_Text34, expected_Text34);
-		// Verify the detail meaning for the 11th question.
-		// String
-		// actual_Text35=mydriver.findElement(By.cssSelector("#socially_disadvantaged
-		// > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul
-		// > li")).getText();
-		// String expected_Text35="There is a �one time use of eligibility�
-		// restriction for individuals and firms to participate in the 8(a) BD
-		// Program.";
-		// assertEquals(actual_Text35, expected_Text35);
+		
 		String actual_Text36 = webDriver
 				.findElement(By.xpath("//div[@id='socially_disadvantaged']/div/div[2]/ul/li[2]")).getText();
 		String expected_Text36 = "This applies to any business that previously participated in the 8(a) BD Program, even if ownership and control of the firm has completely changed.";
@@ -479,8 +465,7 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
 	}
 
 	@After
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_End_Test()
-			throws Exception {
+	public void EndTest() throws Exception {
 		webDriver.quit();
 	}
 

@@ -1,5 +1,7 @@
 package gov.sba.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,13 +10,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import junit.framework.TestCase;
 
-//TODO: this name is too long, not follow Java naming convention, consider change this please!
-// TestUS801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS2
 public class TestEdwosbPartnershipTest extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestEdwosbPartnershipTest.class.getName());
 

@@ -1,33 +1,33 @@
 package gov.sba.utils;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.utils.helpers.LoginHelpers;
+
 public class AnalystloginPage {
+	private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+
 	WebDriver webDriver;
 
 	public AnalystloginPage(WebDriver webDriver) {
 		this.webDriver = webDriver;
-
 	}
 
 	public void Analystlogin() throws Exception {
-		webDriver.findElement(By.cssSelector("button.usa-button.hp-login-btn")).click();
-		Thread.sleep(5000);
-		String actual_Text4 = webDriver.findElement(By.cssSelector("span.blue-bar-text")).getText();
-		String expected_Text4 = "Sign in to certify.SBA.gov";
-		assertEquals(actual_Text4, expected_Text4);
-		webDriver.findElement(By.xpath(".//*[@id='user_email']")).sendKeys("analyst1@mailinator.com");
-		// Step 2. Locate the password search box and enter a valid password.
-		webDriver.findElement(By.xpath(".//*[@id='user_password']")).sendKeys("password");
-		// Step 3. Locate the Sign-in button and click on it to login.
-		webDriver.findElement(By.xpath(".//*[@id='business_signin']")).click();
+		logger.debug("Using test login   : " + LoginHelpers.getLoginData().getEmail());
+		logger.debug("Using test password: " + LoginHelpers.getLoginData().getPassword());
 
+		webDriver.findElement(By.xpath(".//*[@id=\"gov_login_box\"]/form[1]/button")).click();
+
+		webDriver.findElement(By.name("user[email]")).sendKeys(LoginHelpers.getLoginData().getEmail());
+		webDriver.findElement(By.name("user[password]")).sendKeys(LoginHelpers.getLoginData().getPassword());
+		
+		webDriver.findElement(By.id("business_signin")).click();
+		String url = webDriver.getCurrentUrl();
+		org.junit.Assert.assertTrue(url.contains("dashboard"));
 	}
-
-	private void assertEquals(String actual_Text4, String expected_Text4) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }

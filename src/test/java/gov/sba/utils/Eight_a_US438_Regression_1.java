@@ -1,6 +1,7 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,9 +11,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_Regression_1 {
+public class Eight_a_US438_Regression_1 {
 	private static final Logger logger = LogManager
-			.getLogger(Analyst_search_View_vendors_Record_Regression_1.class.getName());
+			.getLogger(Eight_a_US438_Regression_1.class.getName());
 
 	public WebDriver webDriver;
 	// String myurl;
@@ -35,8 +36,8 @@ public class Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_R
 		// Step 1. Open Firefox browser and navigate to url.
 
 		Thread.sleep(2000);
-		LogincorpPage login = new LogincorpPage(webDriver);
-		login.Logincorp();
+		LoginPage login = new LoginPage(webDriver);
+		login.Login();
 		Thread.sleep(3000);
 		assertFalse(webDriver.getPageSource().contains("Signed in successfully"));
 

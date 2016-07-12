@@ -250,6 +250,72 @@ this is by no mean hard/fast rules but it is quite common Java's practices that 
 with experience working in the field. Hopefully we could use some of this as a guide in improving
 our QA automation project.
 
+#### Naming things in Java (class, variables, etc)
+
+##### The common style guide for naming things in Java are using snake case
+
+Please use
+
+```java
+// Good : naming using camelCase
+public class TestUs1157 {
+  // ...
+}
+```
+
+Instead of
+
+```java
+// Bad: not using camelCase
+public class Test_Us1157_Something {
+  // ...
+}
+
+// Bad: not properly use camelCase
+public class EdithpasswordPage {
+}
+
+// Good:
+public class EditPasswordPage {
+
+}
+```
+##### The JUnit test class shourd start with `TestSomething` like `TestSearchPage`
+
+The helper class that can be named without the `Test*` keyword, like `LoginHelper.java` etc.
+
+##### The same rules should be used when naming the variable but the first letter must be lower case
+
+```java
+// Bad : not using the camelCase
+String expected_Text4 = "some text";
+
+// Bad : not start with lower case
+String ExpectedText4 = "some other text";
+
+// Good: camelCase started with lower case
+String expectedText = "some other text";
+```
+
+##### Keep the variable/class name short avoid writing long class name
+
+Most of the time we refer to the story by the number in Rally system, we might as well
+use this to name the class to reflect the story under test. (Open to discussion)
+
+```java
+// Good: short and no extra stuffs needed
+public TestUs1157 {
+
+}
+
+// Bad: the name is too long and does not use camelCase
+public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
+}
+```
+
+The benefit from using the shorter variable is that when we use `logger.info()` or `logger.debug()`
+we can see the result nicely in the console. So my advise is to keep this short.
+
 #### How to test for something that could potentially failed
 
 ```java
@@ -298,7 +364,7 @@ public void setup() throws Exception {
 
 Instead try to capture the to the shared/reusable class/modules like
 
-```
+```java
 @Before
 public void setup() throws Exception {
   // Common code re-use patterns as example
@@ -317,14 +383,17 @@ public void setup() throws Exception {
 
 - Properly expanded the import statements when possible (good to have)
 
-```
+```java
 // Use
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
-// ...
+
 // instead of just
 import static org.junit.Assert.*
 ```
+
+The existing codes are now properly expanded, please keep expanding the import statement when bringing in
+new dependency.
 
 #### JUnit - use the proper `setUp()`, `tearDown()`, `setUpBeforeClass()`, `tearDownAfterClass()` appropriately
 
@@ -389,9 +458,42 @@ public void testUnhappyPath02() throws Exception {
 }
 ```
 
-#### Misc Findings
+#### Do things the Java-ways please
 
-- In java all of the `TODO` must be addressed
+Please don't name your class like
+
+```java
+public class Analyst_search_View_vendors_Record_Regression_1 {
+  //...
+}
+```
+
+but instead name your class like
+
+```java
+public class AnalystSearchViewVendorsRecordRegression1 {
+  //..
+}
+```
+
+#### Name your JUnit test class start with `Test*` e.g.
+
+```
+public class TestAnalystSearchViewVendorsRecordRegression1 {
+```
+
+- Please don't swallow Java exception e.g.
+
+```java
+try {
+   // some code that could fail
+} catch (SomeException e) {
+  // don't just printStrackTrace()
+  // re-raise exception or log the errors properly!
+}
+```
+
+#### In Java all of the `TODO` must be addressed or remove they are [Technical Debts](https://en.wikipedia.org/wiki/Technical_debt)
 
 ```java
 // Some where I found some code like this which is not accessible anywhere
@@ -405,9 +507,9 @@ private void assertEquals(String actualText, String expectedText) {
 }
 ```
 
-- Don't use `if-then-else` in your test, use assertion library directly
+#### Don't use `if-then-else` in your test, use assertion library directly
 
-e.g. Dont' do this 
+e.g. Dont' do this
 ```java
 if (webDriver.getPageSource().contains("Signed in successfully")) {
    // avoid the side-effect in the test!
@@ -424,3 +526,14 @@ assertTrue(webDriver.getPageSource().contains("Signed in successfully"));
 ```
 
 If the test fail, then we will know based on the above assertion
+
+#### Remove unused comments or extra blank lines
+
+Please don't add extra empty lines to the code, try to keep it clean.
+
+#### Try to keep the logger to the minimum and use appropriate level of logging
+
+- Use `logger.info()` only for things that you really need to show all the time.
+- Use `logger.debug()` or remove your `logger.info()` when you work out the details of the problem.
+
+#### More Stuffs will goes here
