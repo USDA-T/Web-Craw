@@ -389,9 +389,44 @@ public void testUnhappyPath02() throws Exception {
 }
 ```
 
-#### Misc Findings
+#### Misc Findings (WIPs)
 
-- In java all of the `TODO` must be addressed
+- Do things the Java-ways please
+
+Please don't name your class like
+
+```java
+public class Analyst_search_View_vendors_Record_Regression_1 {
+  //...
+}
+```
+
+but instead name your class like
+
+```java
+public class AnalystSearchViewVendorsRecordRegression1 {
+  //..
+}
+```
+
+- Name your JUnit test class start with `Test*` e.g.
+
+```
+public class TestAnalystSearchViewVendorsRecordRegression1 {
+```
+
+- Please don't swallow Java exception e.g.
+
+```java
+try {
+   // some code that could fail
+} catch (SomeException e) {
+  // don't just printStrackTrace()
+  // re-raise exception or log the errors properly!
+}
+```
+
+- In Java all of the `TODO` must be addressed
 
 ```java
 // Some where I found some code like this which is not accessible anywhere
@@ -407,7 +442,7 @@ private void assertEquals(String actualText, String expectedText) {
 
 - Don't use `if-then-else` in your test, use assertion library directly
 
-e.g. Dont' do this 
+e.g. Dont' do this
 ```java
 if (webDriver.getPageSource().contains("Signed in successfully")) {
    // avoid the side-effect in the test!
