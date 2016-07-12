@@ -34,8 +34,8 @@ public class TestSearchPage extends TestCase {
 		webDriver.manage().window().maximize();
 		
 		// Get the login based on the environment under test (e.g. 'development', 'qa', 'staging')
-		logger.info("FYI: your environment under test:" + System.getProperty(TestHelpers.TEST_ENV));
-		loginInfo = LoginHelpers.getLoginCredentials(System.getProperty(TestHelpers.TEST_ENV));
+		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
+		loginInfo = LoginHelpers.getLoginCredentials(System.getProperty(Constants.TEST_ENV));
 	}
 
 	@After
