@@ -1,4 +1,5 @@
-+jw_llc@mailinator.com,password,135453634,123456789,A12345678,llc
+email,password,duns_number,tax_identifier,misc_info,businessType
+jw_llc@mailinator.com,password,135453634,123456789,A12345678,llc
 jw_corp@mailinator.com,password,937861917,123456789,A12345678,corp
 jw_part@mailinator.com,password,794188439,123456789,A12345678,partnership
 jw@mailinator.com,password,911481635,123456789,A12345678,corp
