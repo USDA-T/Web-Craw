@@ -1,15 +1,2 @@
 email,password,duns_number,tax_identifier,misc_info,businessType
-jw_llc@mailinator.com,password,135453634,123456789,A12345678,llc
-jw_corp@mailinator.com,password,937861917,123456789,A12345678,corp
-jw_part@mailinator.com,password,794188439,123456789,A12345678,partnership
-jw@mailinator.com,password,911481635,123456789,A12345678,corp
-zobayear_llc@mailinator.com,password,153566257,123456789,A12345678,llc
-zobayear_corp@mailinator.com ,password,182431789,123456789,A12345678,corp
-zobayear_scorp@mailinator.com ,password,167853155,123456789,A12345678,s-corp
-zobayear_partnership@mailinator.com,password,172115728,123456789,A12345678,partnership
-staging@mailinator.com,password,112286644,123456789,A12345678,s-corp
-staging2@mailinator.com,password,137151292,123456789,A12345678,s-corp
-staging3@mailinator.com,password,129913885,123456789,A12345678,llc
-akanamontana@gmail.com,password,275276652,123456789,A12345678,s-corp
-akanamontana@mailinator.com,password,245652494,123456789,A12345678,llc
-partnership1@mailinator.com,password,245652495,123456789,A12345678,llc 
+analyst1@mailinator.com,password,135453634,123456789,A12345678,llc

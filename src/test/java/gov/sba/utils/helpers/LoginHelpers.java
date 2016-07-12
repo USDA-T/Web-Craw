@@ -16,32 +16,9 @@ import gov.sba.utils.TestHelpers;
 public class LoginHelpers {
 	private static final Logger logger = LogManager.getLogger(LoginHelpers.class.getName());
 
-	public static LoginInfo getLoginCredentials(String environment) throws Exception {
-		LoginInfo loginInfo = new LoginInfo();
-
-		logger.info("Your environment: " + environment);
-
-		switch (environment) {
-		case Constants.ENV_DEVELOPMENT:
-			// TODO: read from property file so that no re-compile needed
-			loginInfo.setEmail("analyst1@mailinator.com");
-			loginInfo.setPassword("password");
-			break;
-		case Constants.ENV_QA:
-			// TODO: read from property file so that no re-compile needed
-			loginInfo.setEmail("deric");
-			loginInfo.setPassword("password-for-qa");
-			break;
-		case Constants.ENV_STAGING:
-			// TODO: read from property file so that no re-compile needed
-			loginInfo.setEmail("deric");
-			loginInfo.setPassword("password-for-staging");
-			break;
-		default:
-			throw new Exception("Invalid environment, must be one of 'development', 'qa', or 'staging'");
-		}
-
-		return loginInfo;
+	public static LoginData getLoginData() throws Exception {
+		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
+		return loginFixtures.get(0);
 	}
 
 	public static List<LoginData> loadFixtures() throws Exception {
@@ -52,32 +29,29 @@ public class LoginHelpers {
 		// TODO: may be load this through the getResourceAsStream() e.g.
 		// classPath instead?
 		Reader in = new FileReader("src/main/resources/" + fixturesFile);
-		// email,password,duns_number,tax_identifier,col5,businessType
 
-		Iterable<CSVRecord> records = CSVFormat.RFC4180
-				.withHeader("email", "password", "duns_number", "tax_identifier", "misc_info", "business_type").parse(in);
+		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 		
 		List <LoginData> logins = new ArrayList<LoginData>();
 		
 		for (CSVRecord record : records) {
 
-			String email = record.get("email");
-			String password = record.get("password");
-			String dunsNumber = record.get("duns_number");
-			String taxIdentifier = record.get("tax_identifier");
-			String miscInfo = record.get("misc_info");
-			String businessType = record.get("business_type");
+			String email = record.get(0);    
+			String password = record.get(1); 
+			String dunsNumber = record.get(2); 
+			String taxIdentifier = record.get(3);
+			String miscInfo = record.get(4); 
+			String businessType = record.get(5);
 			
 			LoginData current = new LoginData();
-			
-			// TODO: use debug when done!
-			logger.info("-----------------------------");
-			logger.info("email          :" + email);
-			logger.info("password       :" + password);
-			logger.info("duns_number    :" + dunsNumber);
-			logger.info("tax_identifier :" + taxIdentifier);
-			logger.info("col5           :" + miscInfo);
-			logger.info("business_type  :" + businessType);
+
+			logger.debug("-----------------------------");
+			logger.debug("email          :" + email);
+			logger.debug("password       :" + password);
+			logger.debug("duns_number    :" + dunsNumber);
+			logger.debug("tax_identifier :" + taxIdentifier);
+			logger.debug("misc_info      :" + miscInfo);
+			logger.debug("business_type   :" + businessType);
 			
 			current.setEmail(email);
 			current.setPassword(password);
@@ -96,6 +70,6 @@ public class LoginHelpers {
 	// TODO: for testing only, remove when done!
 	public static void main(String[] args) throws Exception {
 		List<LoginData> result = LoginHelpers.loadFixtures();
-		System.out.println(result.get(1));
+		System.out.println(result.get(0));
 	}
 }
