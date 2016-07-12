@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Constants {
+	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(Constants.class.getName());
 
 	final public static String TEST_ENV = "TEST_ENV";

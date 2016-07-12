@@ -10,15 +10,14 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9 {
+public class US801_Am_I_Eligible_TS9 {
 	private static final Logger logger = LogManager.getLogger(Edith_Password_Regression_Test_1.class.getName());
 
 	public WebDriver webDriver;
 	String NAICS;
 
 	@Before
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_Setup()
-			throws Exception {
+	public void Setup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
@@ -27,8 +26,7 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
 	}
 
 	@Test
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_MainTest()
-			throws Exception {
+	public void MainTest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 
@@ -479,8 +477,7 @@ public class US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_S
 	}
 
 	@After
-	public void US801_Consolidated_Am_I_Eligible_Consolidated_Program_Eligibility_Survey_Questions_TS9_End_Test()
-			throws Exception {
+	public void EndTest() throws Exception {
 		webDriver.quit();
 	}
 
