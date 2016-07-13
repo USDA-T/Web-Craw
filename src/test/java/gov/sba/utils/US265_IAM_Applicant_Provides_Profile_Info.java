@@ -109,13 +109,10 @@ public class US265_IAM_Applicant_Provides_Profile_Info {
 
 	private void assertElementPresent(WebElement findElement) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@After
 	public void US265_IAM_Applicant_Provides_Profile_Info_Teardown() throws Exception {
-
 		webDriver.quit();
-
 	}
 }

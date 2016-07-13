@@ -57,7 +57,6 @@ public class US1168_IAM_Configure_SBA_Ops_Support_Role_and_Permissions_MVP {
 
 	private void verifyTrue(String string, WebElement findElement) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@After

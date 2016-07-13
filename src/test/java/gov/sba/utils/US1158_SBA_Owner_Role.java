@@ -1,6 +1,6 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -138,12 +138,10 @@ public class US1158_SBA_Owner_Role {
 
 	private void assertElementpresent(String string, WebElement findElement) {
 		// TODO Auto-generated method stub
-
 	}
 
 	private void assertValueEquals(String actual_Text, String expected_Text) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@After
