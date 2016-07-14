@@ -7,12 +7,12 @@ import org.openqa.selenium.WebDriver;
 
 import gov.sba.utils.helpers.LoginHelpers;
 
-public class LogincorpPage {
+public class LoginPage {
 	private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
 
 	WebDriver webDriver;
 
-	public LogincorpPage(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 		this.webDriver = driver;		
 		// Get the login based on the environment under test (e.g. 'development', 'qa', 'staging')
 		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
@@ -21,7 +21,7 @@ public class LogincorpPage {
 
 	
 
-	public void Logincorp() throws Exception {
+	public void Login() throws Exception {
 		logger.info("FYI: using test login   : " + LoginHelpers.getLoginData().getEmail());
 		logger.info("FYI: using test password: " + LoginHelpers.getLoginData().getPassword());
 

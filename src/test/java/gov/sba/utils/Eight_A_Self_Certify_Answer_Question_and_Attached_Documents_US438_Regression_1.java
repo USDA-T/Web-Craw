@@ -35,8 +35,8 @@ public class Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_R
 		// Step 1. Open Firefox browser and navigate to url.
 
 		Thread.sleep(2000);
-		LogincorpPage login = new LogincorpPage(webDriver);
-		login.Logincorp();
+		LoginPage login = new LoginPage(webDriver);
+		login.Login();
 		Thread.sleep(3000);
 		assertFalse(webDriver.getPageSource().contains("Signed in successfully"));
 
