@@ -16,7 +16,7 @@ public class TestHelpers {
 	final public static String BASE_URL = "base_url_";
 
 	public static WebDriver getDefaultWebDriver() {
-		Properties props = loadDefaultProperties(); //new Properties();
+		Properties props = loadDefaultProperties(); // new Properties();
 		WebDriver driver = null;
 
 		// Setup the configuration based on the browser we are using
@@ -101,7 +101,7 @@ public class TestHelpers {
 			System.setProperty(confKey, props.getProperty(confKey));
 		}
 	}
-	
+
 	public static Properties loadDefaultProperties() {
 		Properties props = new Properties();
 		try {
@@ -132,4 +132,5 @@ public class TestHelpers {
 	private static boolean isUnix(String osName) {
 		return (osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0);
 	}
+
 }

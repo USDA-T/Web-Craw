@@ -30,10 +30,10 @@ public class TestSearchPage extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		
-		// Get the login based on the environment under test (e.g. 'development', 'qa', 'staging')
+
+		// Get the login based on the environment under test (e.g.
+		// 'development', 'qa', 'staging')
 		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
-		//loginInfo = LoginHelpers.getLoginCredentials(System.getProperty(Constants.TEST_ENV));
 	}
 
 	@After
@@ -50,9 +50,10 @@ public class TestSearchPage extends TestCase {
 
 		webDriver.findElement(By.name("user[email]")).sendKeys(LoginHelpers.getLoginData().getEmail());
 		webDriver.findElement(By.name("user[password]")).sendKeys(LoginHelpers.getLoginData().getPassword());
-		
+
 		webDriver.findElement(By.id("business_signin")).click();
 		String url = webDriver.getCurrentUrl();
 		assertTrue(url.contains("dashboard"));
 	}
+
 }

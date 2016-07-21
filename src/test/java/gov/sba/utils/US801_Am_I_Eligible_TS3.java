@@ -1,5 +1,6 @@
 package gov.sba.utils;
 import static org.junit.Assert.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;

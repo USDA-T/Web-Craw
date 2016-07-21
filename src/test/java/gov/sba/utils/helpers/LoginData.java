@@ -2,13 +2,13 @@ package gov.sba.utils.helpers;
 
 public class LoginData {
 
-	public String email; 
-	public String password; 
+	public String email;
+	public String password;
 	public String dunsNumber;
-	public String taxIdentifier; 
-	public String miscInfo; //TODO: find out this value, and rename the field accordingly! 
-	public String businessType; 
-	
+	public String taxIdentifier;
+	public String miscInfo;
+	public String businessType;
+
 	public LoginData() {
 	}
 
@@ -76,5 +76,5 @@ public class LoginData {
 		return "LoginData [email=" + email + ", password=" + password + ", dunsNumber=" + dunsNumber
 				+ ", taxIdentifier=" + taxIdentifier + ", miscInfo=" + miscInfo + ", businessType=" + businessType
 				+ "]";
-	}	
+	}
 }

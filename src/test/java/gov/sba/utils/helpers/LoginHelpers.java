@@ -31,45 +31,39 @@ public class LoginHelpers {
 		Reader in = new FileReader("src/main/resources/" + fixturesFile);
 
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
-		
-		List <LoginData> logins = new ArrayList<LoginData>();
-		
+
+		List<LoginData> logins = new ArrayList<LoginData>();
+
 		for (CSVRecord record : records) {
 
-			String email = record.get(0);    
-			String password = record.get(1); 
-			String dunsNumber = record.get(2); 
+			String email = record.get(0);
+			String password = record.get(1);
+			String dunsNumber = record.get(2);
 			String taxIdentifier = record.get(3);
-			String miscInfo = record.get(4); 
+			String miscInfo = record.get(4);
 			String businessType = record.get(5);
-			
+
 			LoginData current = new LoginData();
 
-			logger.debug("-----------------------------");
 			logger.debug("email          :" + email);
 			logger.debug("password       :" + password);
 			logger.debug("duns_number    :" + dunsNumber);
 			logger.debug("tax_identifier :" + taxIdentifier);
 			logger.debug("misc_info      :" + miscInfo);
 			logger.debug("business_type   :" + businessType);
-			
+
 			current.setEmail(email);
 			current.setPassword(password);
 			current.setDunsNumber(dunsNumber);
 			current.setTaxIdentifier(taxIdentifier);
 			current.setMiscInfo(miscInfo);
 			current.setBusinessType(businessType);
-			
+
 			logins.add(current);
 		}
-		
+
 		return logins;
-		
+
 	}
 
-	// TODO: for testing only, remove when done!
-	public static void main(String[] args) throws Exception {
-		List<LoginData> result = LoginHelpers.loadFixtures();
-		System.out.println(result.get(0));
-	}
 }

@@ -3,6 +3,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import gov.sba.utils.helpers.LoginHelpers;
 public class LoginPage {
 	private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());

@@ -1,17 +1,20 @@
 package gov.sba.utils;
 
 import static org.junit.Assert.assertTrue;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class FinancialsectionPage {
-	private static final Logger logger = LogManager
-			.getLogger(FinancialsectionPage.class.getName());
+	private static final Logger logger = LogManager.getLogger(FinancialsectionPage.class.getName());
 	WebDriver webDriver;
+
 	public FinancialsectionPage(WebDriver mydriver) {
 		this.webDriver = mydriver;
 	}
+
 	public void Financialsection() throws Exception {
 		Thread.sleep(3000);
 		// Locate section for 'Cash on Hand' enter all valid data as required.
@@ -72,28 +75,15 @@ public class FinancialsectionPage {
 		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
 		// Select NO for the two question on Retirement Accounts.
 		webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
-		// mydriver.findElement(By.xpath(".//*[@id='answers_41_details_table_wrapper']/div/a[1]/span")).click();
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_total_value']")).sendKeys("80000");
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_contributions_thus_far']")).sendKeys("80000");
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_date_of_initial_contribution']")).clear();
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_date_of_initial_contribution']")).sendKeys("06/09/2016");
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_investment_company']")).sendKeys("21
-		// cenyury");
-		// mydriver.findElement(By.xpath("html/body/div[3]/div/div/div/div[1]/div[4]/div[3]/button")).click();
+
 		Thread.sleep(4000);
+
 		webDriver.findElement(By.xpath(".//*[@id='answers[42][value]']/label[2]")).click();
-		// .findElement(By.xpath(".//*[@id='answers[42][value]']/label[1]")).click();
-		// mydriver.findElement(By.xpath(".//*[@id='answers_42_details_table_wrapper']/div/a[1]/span")).click();
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_total_value']")).sendKeys("50000");
-		//// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_initial_contribution']")).sendKeys("40000");
-		// mydriver.findElement(By.xpath(".//*[@id='DTE_Field_investment_company']")).sendKeys("21
-		// century");
-		// mydriver.findElement(By.xpath("html/body/div[3]/div/div/div/div[1]/div[4]/div[3]/button")).click();
+
 		Thread.sleep(4000);
+
 		webDriver.findElement(By.name("commit")).click();
-		// Select Yes for the two question on Life Insurance.
-		// Locate and select yes for question Do you have life insurance policy
-		// that has a cash surrender value.
+
 		webDriver.findElement(By.xpath(".//*[@id='answers[43][value]']/label[1]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_43_details_table_wrapper']/div/a[1]/span")).click();
 		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_company_name']")).sendKeys("21 century");
@@ -378,8 +368,8 @@ public class FinancialsectionPage {
 		String expected_Text5 = "Accept";
 		assertEquals(actual_Text5, expected_Text5);
 	}
+
 	private void assertEquals(String actual_Text1, String expected_Text1) {
 		// TODO Auto-generated method stub
-
 	}
 }
