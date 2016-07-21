@@ -1,48 +1,30 @@
 package gov.sba.utils;
-
 import static org.junit.Assert.assertEquals;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.firefox.FirefoxDriver;
-
-public class US265_IAM_Applicant_Provides_Profile_Info {
+public class Us265IAMProfileInfo {
 	private static final Logger logger = LogManager
-			.getLogger(US265_IAM_Applicant_Provides_Profile_Info.class.getName());
+			.getLogger(Us265IAMProfileInfo.class.getName());
 	private static WebDriver webDriver;
-	String MyUrl;
 	String Username;
 	String Password;
-
 	@Before
-	public void US265_IAM_Applicant_Provides_Profile_Info_setup() throws Exception {
+	public void seUup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		// webDriver = new FirefoxDriver();
-		// MyUrl = "http://max.gov/";
 		Username = "Deric.nguni@sba.gov";
 		Password = "Montana$74045883";
-
 	}
-
-	@Rule
-	public ErrorCollector erroeCollector = new ErrorCollector();
-
 	@Test
-	public void US265_IAM_Applicant_Provides_Profile_Info_Maintest() throws Exception {
+	public void mainTest() throws Exception {
 		// Navigate the MAX.gov landing page.
-		// webDriver.navigate().to(MyUrl);
-		// webDriver.manage().window().maximize();
-		// Verify and click on the Login button.
 		Thread.sleep(5000);
 		logger.info("US265 test.max.gov");
 		assertElementPresent(webDriver.findElement(By.id("homepage-login-button")));
@@ -101,18 +83,14 @@ public class US265_IAM_Applicant_Provides_Profile_Info {
 		String actual_Text10 = webDriver.findElement(By.id("max-profile-country")).getText();
 		String expected_Text10 = "US";
 		assertEquals(actual_Text10, expected_Text10);
-
 		// Logout.
-		webDriver.findElement(By.id("nav-header-signout")).click();
-
+    	webDriver.findElement(By.id("nav-header-signout")).click();
 	}
-
 	private void assertElementPresent(WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
-
 	@After
-	public void US265_IAM_Applicant_Provides_Profile_Info_Teardown() throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 }

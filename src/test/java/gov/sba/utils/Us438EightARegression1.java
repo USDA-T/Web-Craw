@@ -1,8 +1,5 @@
 package gov.sba.utils;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,51 +7,44 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class Eight_a_US438_Regression_1 {
+public class Us438EightARegression1 {
 	private static final Logger logger = LogManager
-			.getLogger(Eight_a_US438_Regression_1.class.getName());
-
+			.getLogger(Us438EightARegression1.class.getName());
 	public WebDriver webDriver;
-	// String myurl;
-	// String email;
-	// String password;
-
 	@Before
-	public void Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_Regression_Setup() throws Exception {
-
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-
 	}
-
 	@Test
 	// US
-	public void Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_Regression_Maintest()
+	public void mainTest()
 			throws Exception {
 		// Step 1. Open Firefox browser and navigate to url.
-
 		Thread.sleep(2000);
 		LoginPage login = new LoginPage(webDriver);
 		login.Login();
 		Thread.sleep(3000);
 		assertFalse(webDriver.getPageSource().contains("Signed in successfully"));
-
 		Thread.sleep(3000);
-
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
-		assertTrue(webDriver.getPageSource().contains("Draft"));
-		webDriver.findElement(By.xpath(".//*[@id='dashboard-index']/div[5]/table/tbody/tr[1]/td[4]/a[2]")).click();
-		webDriver.switchTo().alert().accept();
 		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+			assertTrue(webDriver.getPageSource().contains("Draft"));
+			webDriver.findElement(By.linkText("Delete")).click();
+			webDriver.switchTo().alert().accept();
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			webDriver.navigate().refresh();
+		} catch (Error e) {
+			logger.info(
+					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
+		}	
 		webDriver.navigate().refresh();
-
 		Thread.sleep(7000);
 		// Step 5. Locate and click the Certifications button, from the
 		// drop-down, select EDWOSB.
@@ -76,7 +66,6 @@ public class Eight_a_US438_Regression_1 {
 		webDriver.findElement(By.name("selector")).click();
 		Thread.sleep(5000);
 		webDriver.findElement(By.id("document_library_attach")).click();
-
 		// Step 10. Verify that document is attached.
 		System.out.println(webDriver.findElement(By.xpath(".//*[@id='tentatively_attached']/tbody/tr/td")).getText());
 		Thread.sleep(5000);
@@ -87,17 +76,13 @@ public class Eight_a_US438_Regression_1 {
 		// document upload.
 		assertTrue(webDriver.getPageSource().contains("Review"));
 		logger.info("Document successfully uploaded, Pass");
-
 		// Step 16. Locate the sign-out button and click on it.
 		webDriver.findElement(By.linkText("Logout")).click();
 		Thread.sleep(3000);
 	}
-
 	@After
-	public void Eight_A_Self_Certify_Answer_Question_and_Attached_Documents_US438_Regression_Endtest()
+	public void tearDown()
 			throws Exception {
 		webDriver.close();
-
 	}
-
 }

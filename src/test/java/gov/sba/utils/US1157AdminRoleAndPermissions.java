@@ -1,42 +1,32 @@
 package gov.sba.utils;
-
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ErrorCollector;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
-	private static final Logger logger = LogManager.getLogger(Edith_Password_Regression_Test_1.class.getName());
-
+public class US1157AdminRoleAndPermissions {
+	private static final Logger logger = LogManager.getLogger(US1157AdminRoleAndPermissions.class.getName());
 	private static WebDriver webDriver;
-
 	@Before
-	public void US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions_setup() throws Exception {
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
-
-	@Rule
-	public ErrorCollector erroeCollector = new ErrorCollector();
-
 	@Test
-	public void US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions_Maintest() throws Exception {
+	public void mainTest() throws Exception {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
-
 		// Login to Vendor Admin Dashboard.
 		Thread.sleep(4000);
 		LoginPage login = new LoginPage(webDriver);
 		login.Login();
-		if (webDriver.getPageSource().contains("Draft")) {
+		try{
+		assertTrue(webDriver.getPageSource().contains("Draft"));
 			webDriver.findElement(By.linkText("Delete")).click();
 			webDriver.switchTo().alert().accept();
 			try {
@@ -45,7 +35,7 @@ public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
 				e.printStackTrace();
 			}
 			webDriver.navigate().refresh();
-		} else {
+		} catch (Error e){
 			logger.info(
 					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
 		}
@@ -117,9 +107,7 @@ public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
 		// Duns
 		assertElementpresent(
 				webDriver.findElement(By.xpath("//article[@id='dashboard-index']/div[3]/div[2]/div/p[2]/span")));
-
 		// ***add view more view less .
-
 		// Verify that Vendor Admin is able to edit passphrase.
 		assertElementpresent(webDriver.findElement(By.linkText("Edit Passphrase")));
 		String actual_Text6 = webDriver.findElement(By.linkText("Edit Passphrase")).getText();
@@ -132,19 +120,14 @@ public class US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions {
 		String actual_Text7 = webDriver.findElement(By.cssSelector("h2.usa-heading")).getText();
 		String expected_Text7 = "Edit Passphrase";
 		assertEquals(actual_Text7, expected_Text7);
-
 		// Logout.
 		webDriver.findElement(By.linkText("Logout")).click();
-
 	}
-
 	private void assertElementpresent(WebElement findElement) {
 		// TODO Auto-generated method stub
-
 	}
-
 	@After
-	public void US1157_IAM_Configure_Vendor_Admin_Role_and_Permissions_Teardown() throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 }

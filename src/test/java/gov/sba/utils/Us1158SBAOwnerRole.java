@@ -1,6 +1,8 @@
 package gov.sba.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,30 +12,23 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class US1158_SBA_Owner_Role {
-	private static final Logger logger = LogManager.getLogger(US1158_SBA_Owner_Role.class.getName());
-
+public class Us1158SBAOwnerRole {
+	private static final Logger logger = LogManager.getLogger(Us1158SBAOwnerRole.class.getName());
 	private static WebDriver webDriver;
-	String myurl;
 	String Duns;
 	String B_N;
-
 	@Before
-	public void US1158_SBA_Owner_Role_Setup() throws Exception {
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 		Duns = "275276652";
 		B_N = "Entity 37 Legal";
-
 	}
-
 	@Test
-	public void US1158_SBA_Owner_Role_MainTest() throws Exception {
+	public void mainTest() throws Exception {
 		// Notes; Role Most be assigned at the database and validated at the
 		// front end.
-
 		// Open Firefox,Chrome or IE and navigate the certify.SBA.gov login
 		// page.
 		Thread.sleep(4000);
@@ -42,11 +37,7 @@ public class US1158_SBA_Owner_Role {
 		AnalystloginPage analystlogin = new AnalystloginPage(webDriver);
 		analystlogin.Analystlogin();
 		Thread.sleep(3000);
-		if (webDriver.getPageSource().contains("Signed in successfully")) {
-			webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
-		} else {
-			logger.info("Successful sign in alert message not present");
-		}
+		assertFalse(webDriver.getPageSource().contains("Signed in successfully"));
 		Thread.sleep(3000);
 		// Locate the search for vendor search box and enter a valid Duns
 		// number.
@@ -57,13 +48,8 @@ public class US1158_SBA_Owner_Role {
 		// duns number is thesame on the search result.
 		webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).clear();
 		Thread.sleep(4000);
-		if (webDriver.getPageSource().contains("275276652")) {
+		assertTrue(webDriver.getPageSource().contains("275276652"));
 			logger.info("The saerch results maches the business for the searched Duns number, Pass.");
-
-		} else {
-			logger.info("The saerch results does not mache the business for the searched Duns number, Failed");
-			webDriver.quit();
-		}
 		Thread.sleep(4000);
 		// Locate the search for vendor search box and enter a valid business
 		// name.
@@ -92,7 +78,6 @@ public class US1158_SBA_Owner_Role {
 				.getText();
 		String expected_Text3 = "Entity 37 Address Line 1\nWASHINGTON, DC 20004";
 		assertEquals(actual_Text3, expected_Text3);
-
 		// Loacte the view profile button and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='view_business_profile']")).click();
 		Thread.sleep(3000);
@@ -130,22 +115,17 @@ public class US1158_SBA_Owner_Role {
 		String actual_Text6 = webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1")).getText();
 		String expected_Text6 = "Case Overview";
 		assertEquals(actual_Text6, expected_Text6);
-
 		// logout.
 		webDriver.findElement(By.linkText("Logout")).click();
-
 	}
-
 	private void assertElementpresent(String string, WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
-
 	private void assertValueEquals(String actual_Text, String expected_Text) {
 		// TODO Auto-generated method stub
 	}
-
 	@After
-	public void US1158_SBA_Owner_Role_EndTest() throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 
