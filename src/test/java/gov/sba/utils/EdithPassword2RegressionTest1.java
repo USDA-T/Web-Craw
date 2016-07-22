@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class EdithPassword2RegressionTest1 {
 	private static final Logger logger = LogManager.getLogger(EdithPassword2RegressionTest1.class.getName());
 	private static WebDriver webDriver;
@@ -20,6 +21,7 @@ public class EdithPassword2RegressionTest1 {
 	String Old_PassW;
 	String New_PassW;
 	String New_PassW2;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -30,6 +32,7 @@ public class EdithPassword2RegressionTest1 {
 		New_PassW = "The Quick Brown Fox Jumps Over The Lazy";
 		New_PassW2 = "The Quick Brown Fox Jumps Over The Lazy";
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// Open Firefox,Chrome,and IE and navigate to the valid url.
@@ -43,8 +46,8 @@ public class EdithPassword2RegressionTest1 {
 		webDriver.findElement(By.xpath(".//*[@id='business_signin']")).click();
 		Thread.sleep(4000);
 		Thread.sleep(3000);
-		try{
-		assertTrue(webDriver.getPageSource().contains("Invalid email or password"));
+		try {
+			assertTrue(webDriver.getPageSource().contains("Invalid email or password"));
 			webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
 			// Locate the email search box and enter a valid email.
 			webDriver.findElement(By.xpath(".//*[@id='user_email']")).sendKeys(Email);
@@ -92,9 +95,9 @@ public class EdithPassword2RegressionTest1 {
 			Thread.sleep(3000);
 			// Verify that User sees alert message 'Your account has been
 			// updated successfully'.
-				assertTrue(webDriver.getPageSource().contains("Your account has been updated successfully."));
-				logger.info("User change password Successfully");
-				webDriver.findElement(By.id("labelid")).click();
+			assertTrue(webDriver.getPageSource().contains("Your account has been updated successfully."));
+			logger.info("User change password Successfully");
+			webDriver.findElement(By.id("labelid")).click();
 			// Locate the logout button and click on it then log back in with
 			// the new password.
 			webDriver.findElement(By.linkText("Logout")).click();
@@ -110,11 +113,10 @@ public class EdithPassword2RegressionTest1 {
 			Thread.sleep(3000);
 			// Verify that user logged in successfully with the new updated
 			// password.
-				assertTrue(webDriver.getPageSource().contains("112286644"));
-				logger.info("Password Update is Successful");
+			assertTrue(webDriver.getPageSource().contains("112286644"));
+			logger.info("Password Update is Successful");
 			return;
-		}
-		catch (Error e){
+		} catch (Error e) {
 			logger.info("First attempt to log-in with current password was successful, PASS");
 		}
 		Thread.sleep(4000);
@@ -175,9 +177,10 @@ public class EdithPassword2RegressionTest1 {
 		Thread.sleep(5000);
 		// Verify that user logged in successfully with the new updated
 		// password.
-			assertTrue(webDriver.getPageSource().contains("112286644"));
-			logger.info("Password Update is Successful");
+		assertTrue(webDriver.getPageSource().contains("112286644"));
+		logger.info("Password Update is Successful");
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

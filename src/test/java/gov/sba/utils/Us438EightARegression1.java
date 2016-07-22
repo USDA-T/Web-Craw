@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -9,20 +10,21 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class Us438EightARegression1 {
-	private static final Logger logger = LogManager
-			.getLogger(Us438EightARegression1.class.getName());
+	private static final Logger logger = LogManager.getLogger(Us438EightARegression1.class.getName());
 	public WebDriver webDriver;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	// US
-	public void mainTest()
-			throws Exception {
+	public void mainTest() throws Exception {
 		// Step 1. Open Firefox browser and navigate to url.
 		Thread.sleep(2000);
 		LoginPage login = new LoginPage(webDriver);
@@ -45,7 +47,7 @@ public class Us438EightARegression1 {
 		} catch (Error e) {
 			logger.info(
 					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
-		}	
+		}
 		webDriver.navigate().refresh();
 		Thread.sleep(7000);
 		// Step 5. Locate and click the Certifications button, from the
@@ -82,9 +84,9 @@ public class Us438EightARegression1 {
 		webDriver.findElement(By.linkText("Logout")).click();
 		Thread.sleep(3000);
 	}
+
 	@After
-	public void tearDown()
-			throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.close();
 	}
 }

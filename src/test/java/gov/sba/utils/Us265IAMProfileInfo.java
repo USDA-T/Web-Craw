@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,12 +10,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 public class Us265IAMProfileInfo {
-	private static final Logger logger = LogManager
-			.getLogger(Us265IAMProfileInfo.class.getName());
+	private static final Logger logger = LogManager.getLogger(Us265IAMProfileInfo.class.getName());
 	private static WebDriver webDriver;
 	String Username;
 	String Password;
+
 	@Before
 	public void seUup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -23,6 +25,7 @@ public class Us265IAMProfileInfo {
 		Username = "Deric.nguni@sba.gov";
 		Password = "Montana$74045883";
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// Navigate the MAX.gov landing page.
@@ -85,11 +88,13 @@ public class Us265IAMProfileInfo {
 		String expected_Text10 = "US";
 		assertEquals(actual_Text10, expected_Text10);
 		// Logout.
-    	webDriver.findElement(By.id("nav-header-signout")).click();
+		webDriver.findElement(By.id("nav-header-signout")).click();
 	}
+
 	private void assertElementPresent(WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

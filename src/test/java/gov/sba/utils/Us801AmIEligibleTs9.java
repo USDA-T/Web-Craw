@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,15 +9,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class Us801AmIEligibleTs9 {
 	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs9.class.getName());
 	public WebDriver webDriver;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		logger.info("User is eligible for ALL programs, 8(a), WOSB, EDWOSB & Hob-zone");
@@ -287,7 +291,7 @@ public class Us801AmIEligibleTs9 {
 				.getText();
 		String expected_Text34 = "Do you identify as one of the following?";
 		assertEquals(actual_Text34, expected_Text34);
-		
+
 		String actual_Text36 = webDriver
 				.findElement(By.xpath("//div[@id='socially_disadvantaged']/div/div[2]/ul/li[2]")).getText();
 		String expected_Text36 = "This applies to any business that previously participated in the 8(a) BD Program, even if ownership and control of the firm has completely changed.";
@@ -451,6 +455,7 @@ public class Us801AmIEligibleTs9 {
 		String expected_Text7 = "Based on the information you provided, you may be eligible for the EDWOSB program.";
 		assertEquals(actual_Text7, expected_Text7);
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

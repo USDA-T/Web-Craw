@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,16 +9,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class US801_Am_I_Eligible_TS3 {
-	private static final Logger logger = LogManager
-			.getLogger(US801_Am_I_Eligible_TS3.class.getName());
+	private static final Logger logger = LogManager.getLogger(US801_Am_I_Eligible_TS3.class.getName());
 	public WebDriver webDriver;
+
 	@Before
 	public void setup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
@@ -74,6 +77,7 @@ public class US801_Am_I_Eligible_TS3 {
 		// Click on the Exit button.
 		webDriver.findElement(By.linkText("Exit")).click();
 	}
+
 	@After
 	public void teardown() throws Exception {
 		webDriver.quit();

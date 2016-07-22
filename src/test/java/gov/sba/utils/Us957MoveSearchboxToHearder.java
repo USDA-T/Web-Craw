@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -12,12 +13,14 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+
 public class Us957MoveSearchboxToHearder {
 	private static final Logger logger = LogManager.getLogger(Us957MoveSearchboxToHearder.class.getName());
 	private static WebDriver webDriver;
 	String DUNS;
 	String Invalid_DUNS;
 	private StringBuffer verificationErrors = new StringBuffer();
+
 	@Before
 	public void setUp() {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -27,6 +30,7 @@ public class Us957MoveSearchboxToHearder {
 		DUNS = "275276652";
 		Invalid_DUNS = "123456789";
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// Step 1 - Open QA site
@@ -248,8 +252,7 @@ public class Us957MoveSearchboxToHearder {
 		webDriver.findElement(By.linkText("View summary")).click();
 		// Step 42 - Verify that the Economically Disadvantaged Women-Owned
 		// Small Business Program Certification is displayed
-		logger.info(
-				"\nStep 42 - Verify that the Women-Owned Small Business Program Certification is displayed");
+		logger.info("\nStep 42 - Verify that the Women-Owned Small Business Program Certification is displayed");
 		webDriver.getPageSource().contains("Women-Owned Small Business Program Certification");
 		logger.info(webDriver.findElement(By.cssSelector(".wosb-detail-page>table>tbody>tr>td>h2")).getText());
 		// Click the fa-search Icon
@@ -328,10 +331,12 @@ public class Us957MoveSearchboxToHearder {
 		Thread.sleep(3000);
 		logger.info("END OF TEST");
 	}
+
 	@After
 	public void tearDown() {
 		String verificationErrorString = verificationErrors.toString();
-		assertTrue(verificationErrorString != null); {
+		assertTrue(verificationErrorString != null);
+		{
 			logger.info("Success: " + verificationErrorString);
 		}
 		webDriver.quit();

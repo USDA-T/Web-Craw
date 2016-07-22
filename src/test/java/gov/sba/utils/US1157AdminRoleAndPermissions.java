@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -10,15 +11,18 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 public class US1157AdminRoleAndPermissions {
 	private static final Logger logger = LogManager.getLogger(US1157AdminRoleAndPermissions.class.getName());
 	private static WebDriver webDriver;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
@@ -26,8 +30,8 @@ public class US1157AdminRoleAndPermissions {
 		Thread.sleep(4000);
 		LoginPage login = new LoginPage(webDriver);
 		login.Login();
-		try{
-		assertTrue(webDriver.getPageSource().contains("Draft"));
+		try {
+			assertTrue(webDriver.getPageSource().contains("Draft"));
 			webDriver.findElement(By.linkText("Delete")).click();
 			webDriver.switchTo().alert().accept();
 			try {
@@ -36,7 +40,7 @@ public class US1157AdminRoleAndPermissions {
 				e.printStackTrace();
 			}
 			webDriver.navigate().refresh();
-		} catch (Error e){
+		} catch (Error e) {
 			logger.info(
 					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
 		}
@@ -124,9 +128,11 @@ public class US1157AdminRoleAndPermissions {
 		// Logout.
 		webDriver.findElement(By.linkText("Logout")).click();
 	}
+
 	private void assertElementpresent(WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

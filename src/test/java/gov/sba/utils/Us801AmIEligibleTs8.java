@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,19 +10,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class Us801AmIEligibleTs8 {
 	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs8.class.getName());
 	public WebDriver webDriver;
 	String naics;
+
 	@Before
-	public void setUp()throws Exception {
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-     	naics = "335932";
+		naics = "335932";
 	}
+
 	@Test
-	public void mainTest()throws Exception {
+	public void mainTest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info("User is NOT eligible for Any of the programs (Due to NO for Qs6) 8(a), WOSB, EDWOSB & Hob-zone");
@@ -131,8 +135,7 @@ public class Us801AmIEligibleTs8 {
 		// Verify that user is being navigated to the 13th question because
 		// user select NO for the 10th question.
 		assertTrue(webDriver.getPageSource().contains("Do you identify as one of the following"));
-		logger.info(
-				"User Successfully navigated to the 13th question ':Do you identify as one of the following?'");
+		logger.info("User Successfully navigated to the 13th question ':Do you identify as one of the following?'");
 		Thread.sleep(4000);
 		// Locate the 13th question and select NO and verify the More Detail
 		// meaning of the question.
@@ -184,7 +187,10 @@ public class Us801AmIEligibleTs8 {
 		String More_Details1;
 		More_Details1 = webDriver.findElement(By.xpath(".//*[@id='address_in_hubzone']/div[1]/div[2]")).getText();
 		logger.info("The Detail meaning for question 15th is" + More_Details1);
-		webDriver.findElement(By.cssSelector("#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > div.answer > button.no_button")).click();
+		webDriver
+				.findElement(By.cssSelector(
+						"#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > div.answer > button.no_button"))
+				.click();
 		Thread.sleep(4000);
 		// Verify searched results.
 		Thread.sleep(4000);
@@ -201,9 +207,9 @@ public class Us801AmIEligibleTs8 {
 		String expected_Text7 = "Based on the information you provided, you may not be eligible for the HUBZone Program:";
 		assertEquals(actual_Text7, expected_Text7);
 	}
+
 	@After
-	public void tearDown()throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 }
-

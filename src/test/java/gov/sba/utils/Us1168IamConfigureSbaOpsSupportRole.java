@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
@@ -7,10 +8,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 public class Us1168IamConfigureSbaOpsSupportRole {
 	private static WebDriver webDriver;
 	String Email;
 	String Passphrase;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -19,6 +22,7 @@ public class Us1168IamConfigureSbaOpsSupportRole {
 		Email = "opssupport1@mailinator.com";
 		Passphrase = "password";
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
@@ -39,9 +43,11 @@ public class Us1168IamConfigureSbaOpsSupportRole {
 		// Logout.
 		webDriver.findElement(By.linkText("Logout")).click();
 	}
+
 	private void verifyTrue(String string, WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

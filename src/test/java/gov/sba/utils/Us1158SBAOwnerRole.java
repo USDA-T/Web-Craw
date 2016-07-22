@@ -12,11 +12,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 public class Us1158SBAOwnerRole {
 	private static final Logger logger = LogManager.getLogger(Us1158SBAOwnerRole.class.getName());
 	private static WebDriver webDriver;
 	String Duns;
 	String B_N;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -25,6 +27,7 @@ public class Us1158SBAOwnerRole {
 		Duns = "275276652";
 		B_N = "Entity 37 Legal";
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		// Notes; Role Most be assigned at the database and validated at the
@@ -49,7 +52,7 @@ public class Us1158SBAOwnerRole {
 		webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).clear();
 		Thread.sleep(4000);
 		assertTrue(webDriver.getPageSource().contains("275276652"));
-			logger.info("The saerch results maches the business for the searched Duns number, Pass.");
+		logger.info("The saerch results maches the business for the searched Duns number, Pass.");
 		Thread.sleep(4000);
 		// Locate the search for vendor search box and enter a valid business
 		// name.
@@ -118,12 +121,15 @@ public class Us1158SBAOwnerRole {
 		// logout.
 		webDriver.findElement(By.linkText("Logout")).click();
 	}
+
 	private void assertElementpresent(String string, WebElement findElement) {
 		// TODO Auto-generated method stub
 	}
+
 	private void assertValueEquals(String actual_Text, String expected_Text) {
 		// TODO Auto-generated method stub
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

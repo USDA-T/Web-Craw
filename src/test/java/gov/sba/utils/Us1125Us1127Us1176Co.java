@@ -1,6 +1,9 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
+
 import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,15 +11,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class Us1125Us1127Us1176Co {
 	private static final Logger logger = LogManager.getLogger(Us1125Us1127Us1176Co.class.getName());
 	public WebDriver webDriver;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		String actual_Text = null;
@@ -37,7 +43,7 @@ public class Us1125Us1127Us1176Co {
 		actual_Text = webDriver.findElement(By.cssSelector("h1.usa-heading")).getText();
 		expected_Text = "Request access to view records";
 		assertEquals(actual_Text, expected_Text);
-		//Verify text
+		// Verify text
 		actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
 		expected_Text = "Use this form to request access to a small business's WOSB or EDWOSB eligibility documentation. Once complete, the form will send an email to the small business that asks them to log in to certify.sba.gov and approve or reject your request for access. You must provide the following information to request access:";
 		assertEquals(actual_Text, expected_Text);
@@ -88,7 +94,7 @@ public class Us1125Us1127Us1176Co {
 		java.util.Iterator<String> i1 = S1.iterator();
 		while (i1.hasNext()) {
 			String Second_window = i1.next();
-			if(!main_window.equalsIgnoreCase(Second_window)) {
+			if (!main_window.equalsIgnoreCase(Second_window)) {
 				webDriver.switchTo().window(Second_window);
 				Thread.sleep(1000);
 				logger.info("After switching title is =" + webDriver.getTitle());
@@ -109,6 +115,7 @@ public class Us1125Us1127Us1176Co {
 		expected_Text = "Review vendor certifications";
 		assertEquals(actual_Text, expected_Text);
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

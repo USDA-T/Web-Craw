@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,15 +10,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 public class Us801AmIEligibleTs5 {
 	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs5.class.getName());
 	public WebDriver webDriver;
+
 	@Before
 	public void setup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void maintest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
@@ -75,6 +79,7 @@ public class Us801AmIEligibleTs5 {
 		assertEquals(actual_Text1, expected_Text1);
 		webDriver.findElement(By.linkText("Exit")).click();
 	}
+
 	@After
 	public void teardown() throws Exception {
 		webDriver.quit();
