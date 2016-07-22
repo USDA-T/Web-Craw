@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class US801_Am_I_Eligible_TS3 {
-	private static final Logger logger = LogManager.getLogger(US801_Am_I_Eligible_TS3.class.getName());
+public class US801AmIEligibleTs3 {
+	private static final Logger logger = LogManager.getLogger(US801AmIEligibleTs3.class.getName());
 	public WebDriver webDriver;
 
 	@Before

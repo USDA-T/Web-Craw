@@ -12,8 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class US1157AdminRoleAndPermissions {
-	private static final Logger logger = LogManager.getLogger(US1157AdminRoleAndPermissions.class.getName());
+public class Us1157AdminRoleAndPermissions {
+	private static final Logger logger = LogManager.getLogger(Us1157AdminRoleAndPermissions.class.getName());
 	private static WebDriver webDriver;
 
 	@Before

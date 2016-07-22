@@ -3,10 +3,10 @@ package gov.sba.utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class PartnershipquestionsPage {
+public class PartnershipQuestionsPage {
 	WebDriver mydriver;
 
-	public PartnershipquestionsPage(WebDriver mydriver) {
+	public PartnershipQuestionsPage(WebDriver mydriver) {
 		this.mydriver = mydriver;
 
 	}

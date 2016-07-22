@@ -13,8 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Us1158SBAOwnerRole {
-	private static final Logger logger = LogManager.getLogger(Us1158SBAOwnerRole.class.getName());
+public class Us1158SbaOwnerRole {
+	private static final Logger logger = LogManager.getLogger(Us1158SbaOwnerRole.class.getName());
 	private static WebDriver webDriver;
 	String Duns;
 	String B_N;

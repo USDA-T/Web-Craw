@@ -41,7 +41,7 @@ public class TestEdwosbPartnershipTest extends TestCase {
 	public void testMainLogic() throws Exception {
 
 		// Login to dashboard.
-		PartnershiploginPage partnershiplogin = new PartnershiploginPage(webDriver);
+		PartnershipLoginPage partnershiplogin = new PartnershipLoginPage(webDriver);
 		partnershiplogin.Partnershiplogin();
 		Thread.sleep(3000);
 		if (webDriver.getPageSource().contains("Signed in successfully")) {
@@ -75,10 +75,10 @@ public class TestEdwosbPartnershipTest extends TestCase {
 		Thread.sleep(2000);
 
 		// Corp test for 1st person.
-		PartnershipquestionsPage partnershipquestions = new PartnershipquestionsPage(webDriver);
+		PartnershipQuestionsPage partnershipquestions = new PartnershipQuestionsPage(webDriver);
 		partnershipquestions.Partnershipquestions();
 		// Financial section.
-		FinancialsectionPage financialsection = new FinancialsectionPage(webDriver);
+		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();
 
 	}
