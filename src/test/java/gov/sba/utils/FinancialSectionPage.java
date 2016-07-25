@@ -31,7 +31,7 @@ public class FinancialSectionPage {
 		// and enter the information as required.
 		webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000");
 		// Locate the Continue button and click on it to continue.
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate section for Other Source of Income enter all valid data as
 		// required.
 		// Locate the Salary search box and enter salary.
@@ -72,7 +72,7 @@ public class FinancialSectionPage {
 		webDriver.findElement(By.xpath("html/body/div[3]/div/div/div/div[1]/div[4]/div[3]/button")).click();
 		// locate the 'CONTINUE' button at the right bottom of the page and
 		// click on it to save
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Select NO for the two question on Retirement Accounts.
 		webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
 
