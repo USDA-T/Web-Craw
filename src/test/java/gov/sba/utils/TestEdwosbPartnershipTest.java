@@ -56,7 +56,7 @@ public class TestEdwosbPartnershipTest extends TestCase {
 		webDriver.findElement(By.linkText("Certifications")).click();
 		webDriver.findElement(By.linkText("EDWOSB")).click();
 		Thread.sleep(2000);
-		// Corp test for 1st person.
+		// partnership test for 1st person.
 		PartnershipQuestionsPage partnershipquestions = new PartnershipQuestionsPage(webDriver);
 		partnershipquestions.Partnershipquestions();
 		// Financial section.
