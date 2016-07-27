@@ -17,7 +17,7 @@ public class UswdsEdwosbScorpTest {
 		webDriver.manage().window().maximize();
 	}
 	@Test
-	public void testMainLogic() throws Exception {
+	public void mainTest() throws Exception {
 		// Login to dashboard.
 		LoginPage login = new LoginPage(webDriver);
 		login.Login();
