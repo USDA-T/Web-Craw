@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-public class TestEdwosbScorpTest {
-	private static final Logger logger = LogManager.getLogger(TestEdwosbPartnershipTest.class.getName());
+public class UswdsLLcRegressionTest {
+	private static final Logger logger = LogManager.getLogger(UswdsEdwosbPartnershipTest.class.getName());
 	private static WebDriver webDriver;
 	@Before
 	public void setUp() throws Exception {
@@ -44,9 +44,9 @@ public class TestEdwosbScorpTest {
 		webDriver.findElement(By.linkText("Certifications")).click();
 		webDriver.findElement(By.linkText("EDWOSB")).click();
 		Thread.sleep(2000);
-		// Corp test for 1st person.
-		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
-		scorpQuestions.ScorpQuestions();
+		// LLc test questions section.
+		LlcquestionsPage llcquestions = new LlcquestionsPage(webDriver);
+		llcquestions.Llcquestions();
 		// Financial section.
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();

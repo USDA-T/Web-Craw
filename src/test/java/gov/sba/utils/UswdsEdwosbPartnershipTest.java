@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import junit.framework.TestCase;
-public class TestEdwosbPartnershipTest extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestEdwosbPartnershipTest.class.getName());
+public class UswdsEdwosbPartnershipTest extends TestCase {
+	private static final Logger logger = LogManager.getLogger(UswdsEdwosbPartnershipTest.class.getName());
 	private static WebDriver webDriver;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
