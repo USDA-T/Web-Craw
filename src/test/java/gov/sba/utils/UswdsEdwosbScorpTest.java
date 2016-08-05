@@ -41,8 +41,7 @@ public class UswdsEdwosbScorpTest {
 		Thread.sleep(7000);
 		// Locate the Certifications on the dashboard, click on it and select
 		// EDWOSB to continue.
-		webDriver.findElement(By.linkText("Certifications")).click();
-		webDriver.findElement(By.linkText("EDWOSB")).click();
+		webDriver.findElement(By.xpath("//article[@id='main-content']/section/article/div[4]/h3/a[2]/b")).click();
 		Thread.sleep(2000);
 		// Corp test for 1st person.
 		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);

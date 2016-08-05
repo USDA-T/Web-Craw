@@ -41,7 +41,7 @@ public class US801AmIEligibleTs2 {
 		String expected_Text3 = "A Citizen means a person born or naturalized in the United States. Resident ailens and holders of permanent visas are not considered to be citizens. 13 C.F.R. 127.102";
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the No button.
-		webDriver.findElement(By.xpath(".//*[@id='us_citizen']/div[1]/div[1]/div/button[2]")).click();
+		webDriver.findElement(By.id("no_button_us_citizen")).click();
 		// Verify searched results.
 		String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
 		String expected_Text1 = "In order to participate in SBA small business programs, the qualifying individual(s) of the firm must be U.S. citizens.";

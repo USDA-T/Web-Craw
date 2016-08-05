@@ -9,15 +9,17 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Us801AmIEligibleTs6 {
-	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs6.class.getName());
+public class Us801AmIEligibleTs7 {
+	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs7.class.getName());
 	public WebDriver webDriver;
+	String naics;
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		naics = "335932";
 	}
 
 	@Test
@@ -25,7 +27,7 @@ public class Us801AmIEligibleTs6 {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info(
-				"User is NOT eligible for Any of the programs because user answer NO for Qs5: 8(a), WOSB, EDWOSB & Hob-zone");
+				"User is NOT eligible for Any of the programs because user answer NO for Qs6: 8(a), WOSB, EDWOSB & Hob-zone");
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
@@ -110,12 +112,29 @@ public class Us801AmIEligibleTs6 {
 		String expected_Text13 = "None";
 		assertEquals(actual_Text13, expected_Text13);
 		Thread.sleep(4000);
-		webDriver.findElement(By.id("no_button_us_business")).click();
+		webDriver.findElement(By.id("yes_button_us_business")).click();
+		Thread.sleep(4000);
+		// Locate the 6th question and select Yes and verify the More Detail
+		// meaning of the question.
+		String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div/p")).getText();
+		String expected_Text14 = "Is the firm considered small in accordance with its primary North American Industry Classification System (NAICS) code?";
+		assertEquals(actual_Text14, expected_Text14);
+		logger.info("6th question was validated");
+		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li")).getText();
+		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at13 CFR § 121.104and13 CFR § 121.106.";
+		assertEquals(actual_Text15, expected_Text15);
+		String actual_Text16 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li[2]"))
+				.getText();
+		String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available athttp://www.census.gov/eos/www/naics/";
+		assertEquals(actual_Text16, expected_Text16);
+		Thread.sleep(4000);
+		webDriver.findElement(By.id("no_button_small_naics")).click();
 		// Verify searched results.
-		String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
-		String expected_Text1 = "In order to participate in SBA small business programs, the firm must have a place of business in the U.S. or make a significant contribution to the U.S. economy.";
-		assertEquals(actual_Text1, expected_Text1);
+		String actual_Text17 = webDriver.findElement(By.cssSelector("span.message")).getText();
+		String expected_Text17 = "In order to participate in SBA small business programs, the firm must be designated as small in accordance with its primary NAICS code.";
+		assertEquals(actual_Text17, expected_Text17);
 		webDriver.findElement(By.linkText("Exit")).click();
+
 	}
 
 	@After

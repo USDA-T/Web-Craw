@@ -16,55 +16,52 @@ public class ScorpQuestionsPage {
 		// click on it to continue.
 		webDriver.findElement(By.xpath(".//*[@id='new_sba_application']/input[3]")).click();
 		// Locate the 8(a) question and select No and continue.
-		String actual_Text1 = webDriver.findElement(By.xpath(".//*[@id='answers_8aq1']/div/fieldset/legend")).getText();
-		String expected_Text1 = "The concern is currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and the 51% owner is a woman or women, or an economically disadvantaged woman or women. ";
+		String actual_Text1 = webDriver.findElement(By.cssSelector("h4")).getText();
+		String expected_Text1 = "The concern is currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and the 51% owner is a woman or women, or an economically disadvantaged woman or women.";
 		assertEquals(actual_Text1, expected_Text1);
 		// Verify the More detail meaning for the 8(A) question.
-		String actual_Text2 = webDriver.findElement(By.xpath(".//*[@id='collapsible-65']/div/p")).getText();
+		String actual_Text2 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text2 = "If your company has already been approved by the 8(a) Program and confirmed 51% ownership is a woman or an economically disadvantaged woman, you already qualify for the WOSB Program. Please upload or attach your original 8(a) Acceptance Letter and a copy of your most recent updated Annual 8(a) Letter, and click the “Save and Continue” button to complete the WOSB or EDWOSB self-certification process.";
 		assertEquals(actual_Text2, expected_Text2);
-		webDriver.findElement(By.xpath(".//*[@id='answers[65][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.id("answers_65_value_no")).click();
+		webDriver.findElement(By.name("commit")).click();
 		logger.info("  8(a) question has been answered");
 		// Locate the Third Party Certification, question1 and select No and
 		// continue.
-		String actual_Text3 = webDriver.findElement(By.xpath(".//*[@id='answers_tpc1_q1']/div/fieldset/legend"))
-				.getText();
+		String actual_Text3 = webDriver.findElement(By.cssSelector("h4")).getText();
 		String expected_Text3 = "The concern is certified as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act, by an SBA-approved third-party certifier.";
 		assertEquals(actual_Text3, expected_Text3);
 		// Verify the detail meaning for the third party question.
-		String actual_Text = webDriver.findElement(By.xpath(".//*[@id='collapsible-66']/div/p[1]")).getText();
+		String actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text = "A Women-owned small business and economically disadvantaged women-owned small business may self-certify for the WOSB Program through this website or they may elect to use the services of a Third Party Certifier (TPC) to demonstrate eligibility. There is no requirement to use a TPC. However, if you have engaged a SBA-approved TPC to review your company information, you need to provide a copy of the most recent Third Party Certificate provided by the TPC and the Annual TCP Certificate if applicable.\n\nA concern that seeks EDWOSB or WOSB Certification from an SBA-approved certifier must submit its application directly to the approved certifier in accordance with the specific application procedures of the particular certifier. Any interested party may obtain such certification information and application by contacting the approved certifier at the address provided on SBA’s list of approved certifiers.\n\nThe only SBA Approved Third Party Certifiers are:";
 		assertEquals(actual_Text, expected_Text);
-		webDriver.findElement(By.xpath(".//*[@id='answers[66][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.id("answers_66_value_no")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Non-qualification question,Verify,select No and continue.
-		String actual_Text4 = webDriver.findElement(By.xpath(".//*[@id='answers_tpc3_q1']/div/fieldset/legend"))
-				.getText();
+		String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
 		String expected_Text4 = "The concern is in receipt of a decision by an SBA-approved third-party certifier that the concern does not qualify as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act.";
 		assertEquals(actual_Text4, expected_Text4);
 		// Verify the more detail for the Non-qualification question.
-		String actual_Text5 = webDriver.findElement(By.xpath(".//*[@id='collapsible-68']/div/p")).getText();
+		String actual_Text5 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text5 = "Being denied eligibility by one of the SBA approved TPCs does not necessarily prevent you from qualifying for a self-certification if the circumstances of denial have changed. Any concern determined not to be a qualified WOSB or EDWOSB may request that SBA conduct an examination to determine its WOSB or EDWOSB eligibility at any time once it believes in good faith that it satisfies all of the eligibility requirements to qualify as an WOSB or EDWOSB.";
 		assertEquals(actual_Text5, expected_Text5);
-		webDriver.findElement(By.xpath(".//*[@id='answers[68][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.id("answers_68_value_no")).click();
+		webDriver.findElement(By.name("commit")).click();
 		logger.info("  Third Party questions have been answered");
 		// Locate the Three Business Corporation and S-Corp(Stocks) question
 		// 1,2and2, Verify select N/A and continue.
-		String actual_Text6 = webDriver.findElement(By.xpath(".//*[@id='answers_corp1_q1']/div/fieldset/legend"))
-				.getText();
+		String actual_Text6 = webDriver.findElement(By.cssSelector("h4")).getText();
 		String expected_Text6 = "Does the corporation's stock ledger and stock certificates evidence that women own at least 51% of all outstanding stock?";
 		assertEquals(actual_Text6, expected_Text6);
 		// Verify the more detail meaning for the S-Corp questions.
-		String actual_Text7 = webDriver.findElement(By.className("usa-alert-body")).getText();
+		String actual_Text7 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text7 = "Do not consider unexercised stock options that are held by women. If you can answer yes” to this question, please return to question 1 and 2 and recalculate your answers.";
 		assertEquals(actual_Text7, expected_Text7);
 		webDriver.findElement(By.xpath(".//*[@id='answers[69][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("Testing");
 		webDriver.findElement(By.xpath(".//*[@id='answers[70][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers[71][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		logger.info("  Business questions have been answered");
 		// Locate the Corporation Ownership question 1,Verify, select No and
 		// continue.
@@ -77,7 +74,7 @@ public class ScorpQuestionsPage {
 		String expected_Text9 = "In determining unconditional ownership of the concern, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. 13 CFR 127.201(f).";
 		assertEquals(actual_Text9, expected_Text9);
 		webDriver.findElement(By.xpath(".//*[@id='answers[73][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Ownership & Control question, Verify, select No and
 		// continue.
 		logger.info(webDriver.findElement(By.xpath(".//*[@id='answers_corp5_q1']/div/fieldset/legend")).getText());
@@ -91,7 +88,7 @@ public class ScorpQuestionsPage {
 		assertEquals(actual_Text11, expected_Text11);
 		webDriver.findElement(By.xpath(".//*[@id='answers[75][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_75_comment']")).sendKeys("Testing");
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Citizenship & Ownership question 1and2, Verify,select No
 		// and continue.
 		String actual_Text12 = webDriver.findElement(By.xpath(".//*[@id='answers_oper1_q1']/div/fieldset/legend"))
@@ -109,7 +106,7 @@ public class ScorpQuestionsPage {
 		assertEquals(actual_Text13, expected_Text13);
 		webDriver.findElement(By.xpath(".//*[@id='answers[80][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers[81][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Businesses & Trusts questions,Verify, select No for both
 		// and continue.
 		String actual_Text14 = webDriver.findElement(By.xpath(".//*[@id='answers_oper2_q1']/div/fieldset/legend"))
@@ -131,7 +128,7 @@ public class ScorpQuestionsPage {
 		assertEquals(actual_Text17, expected_Text17);
 		webDriver.findElement(By.xpath(".//*[@id='answers[82][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers[83][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Operations & Management questions, Verify, select No for
 		// both and continue.
 		// 1st question
@@ -154,7 +151,7 @@ public class ScorpQuestionsPage {
 		String expected_Text22 = "(Resume Optional) The woman must have managerial experience of the extent and complexity needed to run the concern. The woman manager need not have the technical expertise or possess the required license to be found to control the concern if she can demonstrate that she has ultimate managerial and supervisory control over those who possess the required licenses or technical expertise. However, if a man possesses the required license and has an equity interest in the concern, he may be found to control the concern.";
 		assertEquals(actual_Text22, expected_Text22);
 		webDriver.findElement(By.xpath(".//*[@id='answers[85][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Expertise & Employment questions, Verify, select No for
 		// both and continue.
 		// 1st question.
@@ -177,7 +174,7 @@ public class ScorpQuestionsPage {
 		String expected_Text26 = "The woman or economically disadvantaged woman who holds the highest officer position of the concern must manage it on a fulltime basis and devote full-time to the business concern during the normal working hours of business concerns in the same or similar line of business.";
 		assertEquals(actual_Text26, expected_Text26);
 		webDriver.findElement(By.xpath(".//*[@id='answers[87][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		logger.info("  Operations questions have been answered");
 		// Locate the Highest Officer & Control questions,Verify, select No for
 		// both and continue.
@@ -201,7 +198,7 @@ public class ScorpQuestionsPage {
 		String expected_Text30 = "The management and daily business operations of the concern must be controlled by one or more women or economically disadvantaged women. Control means that both the long-term decision making and the day-to-day management and administration of the business operations must be conducted by one or more women or economically disadvantaged women.";
 		assertEquals(actual_Text30, expected_Text30);
 		webDriver.findElement(By.xpath(".//*[@id='answers[89][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the SBA Exam & Daily Operations questions,Verify, select No
 		// for both and continue.
 		// 1st question.
@@ -225,7 +222,7 @@ public class ScorpQuestionsPage {
 		assertEquals(actual_Text34, expected_Text34);
 		webDriver.findElement(By.xpath(".//*[@id='answers[91][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_91_comment']")).sendKeys("Testing");
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Net Worth questions,Verify, select No for both and
 		// continue.
 		// 1st question.
@@ -248,7 +245,7 @@ public class ScorpQuestionsPage {
 		String expected_Text38 = "Please provide the last three (3) Federal Tax Returns Form 1040 (pages 1 & 2 only), schedules, W-2s, and completed IRS FORM 4506-T for all women owners and their spouses.\n\nThe personal financial condition of the woman claiming economic disadvantage, including her personal income for the past three years (including bonuses, and the value of company stock given in lieu of cash), her personal net worth and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged";
 		assertEquals(actual_Text38, expected_Text38);
 		webDriver.findElement(By.xpath(".//*[@id='answers[93][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Adjusted Gross Income questions,verify, select No for both
 		// and continue.
 		// 1st question.
@@ -272,7 +269,7 @@ public class ScorpQuestionsPage {
 		String expected_Text42 = "When considering a woman's personal income, if the adjusted gross yearly income averaged over the three years preceding the certification exceeds $350,000, SBA will presume that she is not economically disadvantaged.\n\nNOTE: The presumption may be rebutted (determined invalid) by a showing that this income level was unusual and not likely to occur in the future; that losses commensurate with and directly related to the earnings were suffered, or by evidence that the income is not indicative of lack of economic disadvantage.";
 		assertEquals(actual_Text42, expected_Text42);
 		webDriver.findElement(By.xpath(".//*[@id='answers[95][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Fair Market Value questions,verify select No and continue.
 		String actual_Text43 = webDriver
 				.findElement(By.xpath(".//*[@id='answers_woman_assets_less_than_6m']/div/fieldset/legend")).getText();
@@ -283,7 +280,7 @@ public class ScorpQuestionsPage {
 		String expected_Text44 = "A woman will generally not be considered economically disadvantaged if the fair market value of all her assets (including her primary residence and the value of the business concern) exceeds $6 million.\n\nFunds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining a woman's net worth. In order to properly assess whether funds invested in a retirement account may be excluded from a woman's net worth, she must provide information about the terms and restrictions of the account to SBA and certify that the retirement account is legitimate.";
 		assertEquals(actual_Text44, expected_Text44);
 		webDriver.findElement(By.xpath(".//*[@id='answers[96][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		// Locate the Assets questions,verify, select and No for both and
 		// continue.
 		// 1st question.
@@ -308,7 +305,7 @@ public class ScorpQuestionsPage {
 		String expected_Text48 = "Assets that a woman claiming economic disadvantage transferred within two years of the date of the concern's certification will be attributed to the woman claiming economic disadvantage if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
 		assertEquals(actual_Text48, expected_Text48);
 		webDriver.findElement(By.xpath(".//*[@id='answers[98][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 		logger.info("EDWOSB application questions have been answered");
 		// Validate that user successfully navigated to the Financial Data
 		// section.
@@ -316,17 +313,6 @@ public class ScorpQuestionsPage {
 		String expected_Text49 = "Financial Data";
 		assertEquals(actual_Text49, expected_Text49);
 		// Validate the Personal Information.
-		// String
-		// actual_Text50=mydriver.findElement(By.xpath(".//*[@id='answers_owners']/div/fieldset/p[1]")).getText();
-		// String expected_Text50="This section must be completed by each
-		// individual claiming economic disadvantage in connection with the 8(a)
-		// Program and/or the Women-Owned Small Business Federal Contract
-		// Program. If married, the spouse must complete this section, except
-		// when the individual and the spouse are legally separated. If
-		// separated, provide copy of separation document.";
-		// assertEquals(actual_Text50, expected_Text50);
-		// Locate the 'Add New Person' button at the bottom of the personal
-		// information and click on it.
 		webDriver.findElement(By.id("answers_99_value_new_button")).click();
 		Thread.sleep(2000);
 		// Verify that the section to Create new record is been seen by user and
@@ -353,6 +339,6 @@ public class ScorpQuestionsPage {
 		webDriver.findElement(By.xpath(".//*[@id='answers[100][value]']/label[2]")).click();
 		// Locate the Continue Button and click on it to continue.
 		Thread.sleep(3000);
-		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		webDriver.findElement(By.name("commit")).click();
 	}
 }

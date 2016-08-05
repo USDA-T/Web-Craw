@@ -45,7 +45,7 @@ public class US801AmIEligibleTs3 {
 		String expected_Text3 = "A Citizen means a person born or naturalized in the United States. Resident ailens and holders of permanent visas are not considered to be citizens. 13 C.F.R. 127.102";
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the Yes button.
-		webDriver.findElement(By.xpath(".//*[@id='us_citizen']/div[1]/div[1]/div/button[1]")).click();
+		webDriver.findElement(By.cssSelector("button.yes_button")).click();
 		Thread.sleep(5000);
 		// Locate the 2nd question and select No and verify the More Detail
 		// meaning of the question.
@@ -66,10 +66,9 @@ public class US801AmIEligibleTs3 {
 				.findElement(By.xpath("//div[@id='unconditional_direct_51_percent']/div/div[2]/ul/li[3]")).getText();
 		String expected_error5 = "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
 		assertEquals(actual_error5, expected_error5);
-		Thread.sleep(4000);
+		Thread.sleep(3000);
 		// verify and click on the No button.
-		webDriver.findElement(By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/div/button[2]"))
-				.click();
+		webDriver.findElement(By.id("no_button_unconditional_direct_51_percent")).click();
 		// Verify searched results.
 		String actual_error7 = webDriver.findElement(By.cssSelector("span.message")).getText();
 		String expected_error7 = "In order to participate in SBA small business programs, the owner or owners of the firm must be unconditional and direct.";
