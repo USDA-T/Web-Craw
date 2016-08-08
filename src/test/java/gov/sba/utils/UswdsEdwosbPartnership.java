@@ -10,16 +10,17 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
-public class UswdsLLcRegressionTest {
-	private static final Logger logger = LogManager.getLogger(UswdsLLcRegressionTest.class.getName());
+public class UswdsEdwosbPartnership {
+	private static final Logger logger = LogManager.getLogger(UswdsEdwosbPartnership.class.getName());
 	private static WebDriver webDriver;
+
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
+
 	@Test
 	public void mainTest() throws Exception {
 		String Actual_Text = null;
@@ -79,13 +80,14 @@ public class UswdsLLcRegressionTest {
 			assertEquals(Actual_Text, Expected_Text);
 		}
 		Thread.sleep(2000);
-		// LLc test questions section.
-		LlcquestionsPage llcquestions = new LlcquestionsPage(webDriver);
-		llcquestions.Llcquestions();
+		// partnership test for 1st person.
+		PartnershipQuestionsPage partnershipquestions = new PartnershipQuestionsPage(webDriver);
+		partnershipquestions.Partnershipquestions();
 		// Financial section.
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();
