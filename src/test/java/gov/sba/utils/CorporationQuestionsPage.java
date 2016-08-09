@@ -79,26 +79,6 @@ public class CorporationQuestionsPage {
 		// Locate the Ownership & Control question, Verify, select No and
 		// continue.
 		Thread.sleep(3000);
-		// String actual_Text10 =
-		// webDriver.findElement(By.cssSelector("h4")).getText();
-		// String expected_Text10 = "If a corporation, the articles of
-		// incorporation and any amendments, articles of conversion, by-laws and
-		// amendments, shareholder meeting minutes showing director elections,
-		// shareholder meeting minutes showing officer elections, organizational
-		// meeting minutes, all issued stock certificates, stock ledger,
-		// buy-sell agreements, stock transfer agreements, voting agreements,
-		// and documents relating to stock options, including the right to
-		// convert non-voting stock or debentures into voting stock evidence
-		// that one or more women or economically disadvantaged women control
-		// the Board of Directors of the concern. \n \nWomen are considered to
-		// control the Board of Directors when either: (1) one or more women or
-		// economically disadvantaged women own at least 51% of all voting stock
-		// of the concern, are on the Board of Directors and have the percentage
-		// of voting stock necessary to overcome any super majority voting
-		// requirements; or (2) women or economically disadvantaged women
-		// comprise the majority of voting directors through actual numbers or,
-		// where permitted by state law, through weighted voting.";
-		// assertEquals(actual_Text10, expected_Text10);
 		// Verify the more detail meaning for the Ownership & Control question.
 		String actual_Text11 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text11 = "Upload a copy of the Joint Venture (JV) Agreement if applicable, all stock certificates issued, including the front and back copies signed in accord with the by-laws (this also applies to all cancelled stock certs), articles of Incorporation and any Amendments, and any By-laws and any Amendments.";
