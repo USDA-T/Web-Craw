@@ -21,7 +21,7 @@ public class CorporationQuestionsPage {
 		assertEquals(actual_Text1, expected_Text1);
 		// Verify the More detail meaning for the 8(A) question.
 		String actual_Text2 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text2 = "If your company has already been approved by the 8(a) Program and confirmed 51% ownership is a woman or an economically disadvantaged woman, you already qualify for the WOSB Program. Please upload or attach your original 8(a) Acceptance Letter and a copy of your most recent updated Annual 8(a) Letter, and click the ìSave and Continueî button to complete the WOSB or EDWOSB self-certification process.";
+		String expected_Text2 = "If your company has already been approved by the 8(a) Program and confirmed 51% ownership is a woman or an economically disadvantaged woman, you already qualify for the WOSB Program. Please upload or attach your original 8(a) Acceptance Letter and a copy of your most recent updated Annual 8(a) Letter, and click the ‚ÄúSave and Continue‚Äù button to complete the WOSB or EDWOSB self-certification process.";
 		assertEquals(actual_Text2, expected_Text2);
 		webDriver.findElement(By.id("answers_65_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
@@ -33,7 +33,7 @@ public class CorporationQuestionsPage {
 		assertEquals(actual_Text3, expected_Text3);
 		// Verify the detail meaning for the third party question.
 		String actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text = "A Women-owned small business and economically disadvantaged women-owned small business may self-certify for the WOSB Program through this website or they may elect to use the services of a Third Party Certifier (TPC) to demonstrate eligibility. There is no requirement to use a TPC. However, if you have engaged a SBA-approved TPC to review your company information, you need to provide a copy of the most recent Third Party Certificate provided by the TPC and the Annual TCP Certificate if applicable.\n\nA concern that seeks EDWOSB or WOSB Certification from an SBA-approved certifier must submit its application directly to the approved certifier in accordance with the specific application procedures of the particular certifier. Any interested party may obtain such certification information and application by contacting the approved certifier at the address provided on SBAís list of approved certifiers.\n\nThe only SBA Approved Third Party Certifiers are:";
+		String expected_Text = "A Women-owned small business and economically disadvantaged women-owned small business may self-certify for the WOSB Program through this website or they may elect to use the services of a Third Party Certifier (TPC) to demonstrate eligibility. There is no requirement to use a TPC. However, if you have engaged a SBA-approved TPC to review your company information, you need to provide a copy of the most recent Third Party Certificate provided by the TPC and the Annual TCP Certificate if applicable.\n\nA concern that seeks EDWOSB or WOSB Certification from an SBA-approved certifier must submit its application directly to the approved certifier in accordance with the specific application procedures of the particular certifier. Any interested party may obtain such certification information and application by contacting the approved certifier at the address provided on SBA‚Äôs list of approved certifiers.\n\nThe only SBA Approved Third Party Certifiers are:";
 		assertEquals(actual_Text, expected_Text);
 		webDriver.findElement(By.id("answers_66_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
@@ -55,7 +55,7 @@ public class CorporationQuestionsPage {
 		assertEquals(actual_Text6, expected_Text6);
 		// Verify the more detail meaning for the Corporation questions.
 		String actual_Text7 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text7 = "Do not consider unexercised stock options that are held by women. If you can answer yesî to this question, please return to question 1 and 2 and recalculate your answers.";
+		String expected_Text7 = "Do not consider unexercised stock options that are held by women. If you can answer yes‚Äù to this question, please return to question 1 and 2 and recalculate your answers.";
 		assertEquals(actual_Text7, expected_Text7);
 		webDriver.findElement(By.xpath(".//*[@id='answers[69][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("Testing");
@@ -321,6 +321,7 @@ public class CorporationQuestionsPage {
 		webDriver.findElement(By.cssSelector("button.btn")).click();
 		// Select No for question Is anyone listed above divorced? If yes,
 		// please provide separation documents.
+		Thread.sleep(3000);
 		webDriver.findElement(By.id("answers_100_value_no")).click();
 		webDriver.findElement(By.id("answers_100_value_no")).click();
 		// Locate the Continue Button and click on it to continue.
