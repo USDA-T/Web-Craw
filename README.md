@@ -197,7 +197,7 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 * For Linux the test will work properly for older version of Firefox e.g. 35.0.1 e.g. [Firefox 35.0.1][] (tested)
 
 [Google Web Driver]: https://sites.google.com/a/chromium.org/chromedriver/downloads
-[IE Web Web Driver]: http://selenium-release.storage.googleapis.com/index.html
+([IE Web Web Driver]: http://selenium-release.storage.googleapis.com/index.html)
 [Firefox Web Driver]: https://github.com/SeleniumHQ/selenium/wiki/FirefoxDriver
 [Apache Maven]: https://maven.apache.org/
 [Firefox 35.0.1]: https://ftp.mozilla.org/pub/firefox/releases/35.0.1/linux-x86_64/en-US/
