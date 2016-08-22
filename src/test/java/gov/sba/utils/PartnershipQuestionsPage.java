@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class PartnershipQuestionsPage {
-	private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
+	private static final Logger logger = LogManager.getLogger(PartnershipQuestionsPage.class.getName());
 	WebDriver webDriver;
 
 	public PartnershipQuestionsPage(WebDriver mydriver) {
