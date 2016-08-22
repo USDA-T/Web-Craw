@@ -20,7 +20,10 @@ public class LoginHelpers {
 		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
 		return loginFixtures.get(3);
 	}
-
+	public static LoginData getLoginDataWithIndex(int passed_Index_Number) throws Exception {
+		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
+		return loginFixtures.get(passed_Index_Number);
+		}
 	public static List<LoginData> loadFixtures() throws Exception {
 		// Make sure that we have the TEST_ENV set
 		TestHelpers.loadDefaultProperties();
