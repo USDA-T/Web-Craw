@@ -49,24 +49,24 @@ public class FinancialSectionPage {
 		// Locate and YES for question 'Do you have any notes receivable from
 		// others?'.
 		webDriver.findElement(By.xpath(".//*[@id='answers[40][value]']/label[1]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='answers_40_details_table_wrapper']/div/a[1]/span")).click();
+		webDriver.findElement(By.cssSelector("span")).click();
 		logger.info(
 				"User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
 		Thread.sleep(3000);
 		// Locate the 'Name of Debtor' search box and enter a valid name.
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_debtor_name']")).sendKeys("John Mall");
+		webDriver.findElement(By.id("DTE_Field_debtor_name")).sendKeys("John Mall");
 		// Locate the 'Address of Debtor' search box and enter a valid address.
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_debtor_address']")).sendKeys("8765 Kings st MD 23445");
+		webDriver.findElement(By.id("DTE_Field_debtor_address")).sendKeys("8765 Kings st MD 23445");
 		// Locate the 'Original Balance' search box and enter a valid balance.
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_original_balance']")).sendKeys("80000");
+		webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("80000");
 		// Locate the 'Current Balance' Search box and enter a valid balance.
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_current_balance']")).sendKeys("40000");
+		webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("40000");
 		// Locate the 'Payment Amount(Calculated Annually)' and enter a valid
 		// Amount.
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_pay_amount']")).sendKeys("60000");
+		webDriver.findElement(By.id("DTE_Field_pay_amount")).sendKeys("60000");
 		// Locate the 'How Secured or Endorsed / Type of Collateral' search box
 		// and enter a valid Collateral type(s).
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_collateral_type']")).sendKeys("secured");
+		webDriver.findElement(By.id("DTE_Field_collateral_type")).sendKeys("secured");
 		// Locate the 'Create' button at the Right bottom of the Create new
 		// entry page and click on it .
 		webDriver.findElement(By.cssSelector("button.btn")).click();
@@ -85,12 +85,12 @@ public class FinancialSectionPage {
 
 		webDriver.findElement(By.name("commit")).click();
 
-		webDriver.findElement(By.xpath(".//*[@id='answers[43][value]']/label[1]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='answers_43_details_table_wrapper']/div/a[1]/span")).click();
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_company_name']")).sendKeys("21 century");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_cash_surrender_value']")).sendKeys("40000");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_face_amount']")).sendKeys("5000");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_beneficiaries']")).sendKeys("John Peter");
+		webDriver.findElement(By.id("answers_43_value_yes")).click();
+		webDriver.findElement(By.cssSelector("span")).click();
+		webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
+		webDriver.findElement(By.id("DTE_Field_cash_surrender_value")).sendKeys("40000");
+		webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("5000");
+		webDriver.findElement(By.id("DTE_Field_beneficiaries")).sendKeys("John Peter");
 		webDriver.findElement(By.cssSelector("button.btn")).click();
 		Thread.sleep(5000);
 		// Locate and select yes for question, Do you have loan against a life
@@ -101,13 +101,13 @@ public class FinancialSectionPage {
 		webDriver.findElement(By.name("commit")).click();
 		// Select Yes for the Stock and Bonds Section.
 		webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='answers_46_details_table_wrapper']/div/a[1]/span")).click();
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_securities_name']")).sendKeys("Test Testing");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_total_value']")).sendKeys("50000");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_num_of_shares']")).sendKeys("60");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_cost']")).sendKeys("59000");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_market_value']")).sendKeys("98000");
-		webDriver.findElement(By.xpath(".//*[@id='DTE_Field_interest_dividends']")).sendKeys("76000");
+		webDriver.findElement(By.cssSelector("span")).click();
+		webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test Testing");
+		webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("50000");
+		webDriver.findElement(By.id("DTE_Field_num_of_shares")).sendKeys("60");
+		webDriver.findElement(By.id("DTE_Field_cost")).sendKeys("59000");
+		webDriver.findElement(By.id("DTE_Field_market_value")).sendKeys("98000");
+		webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000");
 		webDriver.findElement(By.cssSelector("button.btn")).click();
 		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
@@ -147,100 +147,96 @@ public class FinancialSectionPage {
 		webDriver.findElement(By.name("commit")).click();
 		Thread.sleep(3000);
 		// Beginning Test For Personal Property.
-		try {
-			assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
-			logger.info("User is being navigated to the Personal Property section, PASS");
-			webDriver.findElement(By.xpath(".//*[@id='answers[51][value]']/label[1]")).click();
-			// Locate the New button on the data table and click on it to add
-			// information.
-			webDriver.findElement(By.xpath(".//*[@id='answers_51_details_table_wrapper']/div/a[1]")).click();
-			// Locate current value search box and enter a valid value for you
-			// automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_current_value']")).sendKeys("70000");
-			// Locate the Loan Balance search box and enter a valid balance.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_loan_balance']")).sendKeys("40000");
-			// Locate the description of asset search box and enter the
-			// make,model and year of your automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_asset_description']")).sendKeys("nissan maxima");
-			// Locate the payment amount search box and enter the annual payment
-			// amount for the automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_payment_amount']")).sendKeys("30000");
-			// Locate the Create button and click on it.
-			Thread.sleep(3000);
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-			Thread.sleep(3000);
-			// Select Yes for question; 'Does any of the above listed property
-			// is pledged as security?'.
-			webDriver.findElement(By.xpath(".//*[@id='answers[52][value]']/label[1]")).click();
-			webDriver.findElement(By.xpath(".//*[@id='answers[52][value]']/label[1]")).click();
-			// Locate the new button on the data table and click on it to enter
-			// data.
-			webDriver.findElement(By.xpath(".//*[@id='answers_52_details_table_wrapper']/div/a[1]/span")).click();
-			// Locate the Name of lien Holder search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_lien_holder_name']")).sendKeys("Paul Lu");
-			// Locate the amount of lien search box and enter a valid amount.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_lien_amount']")).sendKeys("40000");
-			// Locate the Terms of Payment search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_pay_terms']")).sendKeys("4years");
-			Thread.sleep(3000);
-			// Locate the Create button and click on it.
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-			Thread.sleep(3000);
-			// Select yes for question; 'Are any leans delinquent?'.
-			webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
-			webDriver.findElement(By.xpath(".//*[@id='answers_53_comment']")).sendKeys("Testing");
-			Thread.sleep(3000);
-			// Select yes for question; 'Do you own any other personal property
-			// or assets?'.
-			webDriver.findElement(By.xpath(".//*[@id='answers[54][value]']/label[1]")).click();
-			// Locate the new button on the data table and click on it to add
-			// another data for personal property.
-			webDriver.findElement(By.xpath(".//*[@id='answers_54_details_table_wrapper']/div/a[1]")).click();
-			Thread.sleep(3000);
-			// Locate current value search box and enter a valid value for you
-			// automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_current_value']")).sendKeys("6000");
-			// Locate the Loan Balance search box and enter a valid balance.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_loan_balance']")).sendKeys("100000");
-			// Locate the description of asset search box and enter the
-			// make,model and year of your automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_asset_description']")).sendKeys("Toyota Lover");
-			// Locate the payment amount search box and enter the annual payment
-			// amount for the automobile.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_payment_amount']")).sendKeys("400000");
-			// Locate the Create button and click on it.
-			Thread.sleep(3000);
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-			Thread.sleep(3000);
-			// Select Yes for question; 'Does any of the above listed property
-			// is pledged as security?'.
-			webDriver.findElement(By.xpath(".//*[@id='answers[55][value]']/label[1]")).click();
-			// Locate the new button on the data table and click on it to enter
-			// data.
-			webDriver.findElement(By.xpath(".//*[@id='answers_55_details_table_wrapper']/div/a[1]")).click();
-			// Locate the Name of lien Holder search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_lien_holder_name']")).sendKeys("john mill");
-			// Locate the amount of lien search box and enter a valid amount.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_lien_amount']")).sendKeys("40000");
-			// Locate the Terms of Payment search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_pay_terms']")).sendKeys("2years");
-			Thread.sleep(3000);
-			// Locate the Create button and click on it.
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-			Thread.sleep(3000);
-			// Select yes for question; 'Are any leans delinquent?'.
-			webDriver.findElement(By.xpath(".//*[@id='answers[56][value]']/label[1]")).click();
-			webDriver.findElement(By.xpath(".//*[@id='answers_56_comment']")).sendKeys("testing");
-			Thread.sleep(3000);
-			// Locate the continue button and click on it.
-			webDriver.findElement(By.name("commit")).click();
-			Thread.sleep(3000);
-			// Locate the continue button and click on it.
-			webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
-			Thread.sleep(3000);
-		} catch (Error e) {
-			logger.info("The personal Property Section is not Present, Failed");
-		}
+
+		assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
+		logger.info("User is being navigated to the Personal Property section, PASS");
+		webDriver.findElement(By.xpath(".//*[@id='answers[51][value]']/label[1]")).click();
+		// Locate the New button on the data table and click on it to add
+		// information.
+		webDriver.findElement(By.xpath("//span")).click();
+		// Locate current value search box and enter a valid value for you
+		// automobile.
+		webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000");
+		// Locate the Loan Balance search box and enter a valid balance.
+		webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("40000");
+		// Locate the description of asset search box and enter the
+		// make,model and year of your automobile.
+		webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("nissan maxima");
+		// Locate the payment amount search box and enter the annual payment
+		// amount for the automobile.
+		webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("30000");
+		// Locate the Create button and click on it.
+		Thread.sleep(3000);
+		webDriver.findElement(By.cssSelector("button.btn")).click();
+		Thread.sleep(3000);
+		// Select Yes for question; 'Does any of the above listed property
+		// is pledged as security?'.
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
+		// Locate the new button on the data table and click on it to enter
+		// data.
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
+		// Locate the Name of lien Holder search box and enter a valid data.
+		webDriver.findElement(By.id("DTE_Field_lien_holder_name")).sendKeys("Paul Lu");
+		// Locate the amount of lien search box and enter a valid amount.
+		webDriver.findElement(By.id("DTE_Field_lien_amount")).sendKeys("40000");
+		// Locate the Terms of Payment search box and enter a valid data.
+		webDriver.findElement(By.id("DTE_Field_pay_terms")).sendKeys("4years");
+		Thread.sleep(3000);
+		// Locate the Create button and click on it.
+		webDriver.findElement(By.cssSelector("button.btn")).click();
+		Thread.sleep(3000);
+		// Select yes for question; 'Are any leans delinquent?'.
+		webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
+		webDriver.findElement(By.id("answers_53_comment")).sendKeys("Testing");
+		Thread.sleep(3000);
+		// Select yes for question; 'Do you own any other personal property
+		// or assets?'.
+		webDriver.findElement(By.xpath(".//*[@id='answers[54][value]']/label[1]")).click();
+		// Locate the new button on the data table and click on it to add
+		// another data for personal property.
+		webDriver.findElement(By.xpath("//div[3]/div/a/span")).click();
+		Thread.sleep(3000);
+		// Locate current value search box and enter a valid value for you
+		// automobile.
+		webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("6000");
+		// Locate the Loan Balance search box and enter a valid balance.
+		webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("100000");
+		// Locate the description of asset search box and enter the
+		// make,model and year of your automobile.
+		webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("Toyota Lover");
+		// Locate the payment amount search box and enter the annual payment
+		// amount for the automobile.
+		webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("400000");
+		// Locate the Create button and click on it.
+		Thread.sleep(3000);
+		webDriver.findElement(By.cssSelector("button.btn")).click();
+		Thread.sleep(3000);
+		// Select Yes for question; 'Does any of the above listed property
+		// is pledged as security?'.
+		webDriver.findElement(By.xpath(".//*[@id='answers[55][value]']/label[1]")).click();
+		// Locate the new button on the data table and click on it to enter
+		// data.
+		webDriver.findElement(By.xpath("//div[5]/fieldset/div[2]/div[2]/div/a/span")).click();
+		// Locate the Name of lien Holder search box and enter a valid data.
+		webDriver.findElement(By.id("DTE_Field_lien_holder_name")).sendKeys("john mill");
+		// Locate the amount of lien search box and enter a valid amount.
+		webDriver.findElement(By.id("DTE_Field_lien_amount")).sendKeys("40000");
+		// Locate the Terms of Payment search box and enter a valid data.
+		webDriver.findElement(By.id("DTE_Field_pay_terms")).sendKeys("2years");
+		Thread.sleep(3000);
+		// Locate the Create button and click on it.
+		webDriver.findElement(By.cssSelector("button.btn")).click();
+		Thread.sleep(3000);
+		// Select yes for question; 'Are any leans delinquent?'.
+		webDriver.findElement(By.xpath(".//*[@id='answers[56][value]']/label[1]")).click();
+		webDriver.findElement(By.id("answers_56_comment")).sendKeys("testing");
+		Thread.sleep(3000);
+		// Locate the continue button and click on it.
+		webDriver.findElement(By.name("commit")).click();
+		Thread.sleep(3000);
+		// Locate the continue button and click on it.
+		webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
+		Thread.sleep(3000);
 		// Verify that User navigate to the Next section of 'Notes Payable' in
 		// form 413 successfully.
 		try {
@@ -277,57 +273,49 @@ public class FinancialSectionPage {
 			logger.info("User did Not successfully navigated to the section 'Assessed Taxes' on Form 413, Failed");
 		}
 		// Verify data table and complete it if taxes were unpaid.
-		try {
-			assertTrue(webDriver.getPageSource().contains("Include only assessed taxes that are unpaid"));
-			logger.info("Assessed taxes data tabl is present, Pass");
-			webDriver.findElement(By.xpath(".//*[@id='answers_60_details_table_wrapper']/div/a[1]/span")).click();
-			// Locate the whom payable search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_whom_payable']")).sendKeys("Max Mill");
-			// Locate the amount search box and enter a valid amount.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_amount']")).sendKeys("23000");
-			// Locate the when due search box, clear existing data and enter a
-			// valid date.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_when_due']")).clear();
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_when_due']")).sendKeys("03/04/2017");
-			// Locate the property search box and enter the type of property the
-			// tax lien attaches to.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_property_tax_lien']")).sendKeys("House");
-			// locate the create button and click on it.
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-		} catch (Error e) {
-			logger.info(
-					"Assessed Taxes question; 'Do you have any Assessed Taxes that were unpaid?' NOT Present, Failed");
-		}
+
+		assertTrue(webDriver.getPageSource().contains("Include only assessed taxes that are unpaid"));
+		logger.info("Assessed taxes data tabl is present, Pass");
+		webDriver.findElement(By.cssSelector("span")).click();
+		// Locate the whom payable search box and enter a valid data.
+		webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Max Mill");
+		// Locate the amount search box and enter a valid amount.
+		webDriver.findElement(By.id("DTE_Field_amount")).sendKeys("23000");
+		// Locate the when due search box, clear existing data and enter a
+		// valid date.
+		webDriver.findElement(By.id("DTE_Field_when_due")).clear();
+		webDriver.findElement(By.id("DTE_Field_when_due")).sendKeys("03/04/2017");
+		// Locate the property search box and enter the type of property the
+		// tax lien attaches to.
+		webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("House");
+		// locate the create button and click on it.
+		webDriver.findElement(By.cssSelector("button.btn")).click();
 		Thread.sleep(3000);
 		// Verify and select YES for the next assessed taxes section question;
 		// 'Do you have any other liabilities?'.
 		webDriver.findElement(By.xpath(".//*[@id='answers[61][value]']/label[1]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers[61][value]']/label[1]")).click();
-		try {
-			assertTrue(webDriver.getPageSource()
-					.contains("Complete this section only if liabilities were not listed elsewhere"));
-			logger.info("Assessed taxes data tabl is present for question 'Do you have any other liabilities?', Pass");
-			webDriver.findElement(By.xpath(".//*[@id='answers_61_details_table_wrapper']/div/a[1]/span")).click();
-			// Locate the Liability search box and enter a valid data.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_liability']")).sendKeys("40000");
-			// Locate the Amount Owned search box and enter a valid amount.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_amount_owed']")).sendKeys("30000");
-			// Locate the Description search box and enter a valid date.
-			webDriver.findElement(By.xpath(".//*[@id='DTE_Field_description']")).sendKeys("House");
-			// locate the create button and click on it.
-			webDriver.findElement(By.cssSelector("button.btn")).click();
-		} catch (Error e) {
-			logger.info("Assessed Taxes question; 'Do you have any other liabilities?' NOT Present, Failed");
-		}
+		assertTrue(webDriver.getPageSource()
+				.contains("Complete this section only if liabilities were not listed elsewhere"));
+		logger.info("Assessed taxes data tabl is present for question 'Do you have any other liabilities?', Pass");
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[3]/div/a/span")).click();
+		// Locate the Liability search box and enter a valid data.
+		webDriver.findElement(By.cssSelector("#DTE_Field_liability")).sendKeys("40000");
+		// Locate the Amount Owned search box and enter a valid amount.
+		webDriver.findElement(By.cssSelector("#DTE_Field_amount_owed")).sendKeys("30000");
+		// Locate the Description search box and enter a valid date.
+		webDriver.findElement(By.cssSelector("#DTE_Field_description")).sendKeys("House");
+		// locate the create button and click on it.
+		webDriver.findElement(By.cssSelector("button.btn")).click();
 		Thread.sleep(3000);
 		// Locate and click on the continue button.
 		webDriver.findElement(By.name("commit")).click();
 		Thread.sleep(4000);
 		// Locate the next 3 search boxes for Adjusted Gross Income and enter
 		// valid data.
-		webDriver.findElement(By.xpath(".//*[@id='answers_62_value']")).sendKeys("30000");
-		webDriver.findElement(By.xpath(".//*[@id='answers_63_value']")).sendKeys("10000");
-		webDriver.findElement(By.xpath(".//*[@id='answers_64_value']")).sendKeys("20000");
+		webDriver.findElement(By.id("answers_62_value")).sendKeys("30000");
+		webDriver.findElement(By.id("answers_63_value")).sendKeys("10000");
+		webDriver.findElement(By.id("answers_64_value")).sendKeys("20000");
 		// Locate and click on the continue button.
 		webDriver.findElement(By.name("commit")).click();
 		Thread.sleep(4000);
