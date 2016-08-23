@@ -1,3 +1,4 @@
+email,password,duns_number,tax_identifier,misc_info,businessType
 analyst1@mailinator.com,password,135453634,123456789,A12345678,llc
 akanamontana@gmail.com,password,275276652,123456789,A12345678,s-corp
 zobayear_partnership@mailinator.com,password,179791829,123456789,A12345678,partnership
@@ -8,7 +9,7 @@ deric.corporation@mailinator.com,The Quick Brown Fox,144291293,123456789,A123456
 deric.soleproprietor@mailinator.com,The Quick Brown Fox,123456789,123456789,A12345678,sole_prop
 deepa.Scorp@mailinator.com,password,148832876,A12345678,A12345678,sole_prop
 deepa.llc@mailinator.com,password,159165917,A12345678,A12345678,sole_prop
-\analyst1@mailinator.com,password,135453634,123456789,A12345678,llc
+analyst1@mailinator.com,password,135453634,123456789,A12345678,llc
 akanamontana@gmail.com,password,275276652,123456789,A12345678,s-corp
 zobayear_partnership@mailinator.com,password,179791829,123456789,A12345678,partnership
 zobayear_llc@mailinator.com,password,153566257,123456789,A12345678,llc
@@ -17,4 +18,3 @@ CO3@mailinator.com,password,245652494,123456789,A12345678,CO
 deric.corporation@mailinator.com,The Quick Brown Fox,144291293,123456789,A12345678,corp
 deric.soleproprietor@mailinator.com,The Quick Brown Fox,123456789,123456789,A12345678,sole_prop
 ricky@mailinator.com,password,111419538,123456789,A12345678,corp
->>>>>>> branch 'develop' of https://github.com/SBA-ONE/sba-automation.git
