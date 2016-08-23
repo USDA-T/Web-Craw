@@ -42,7 +42,8 @@ public class UswdsEdwosbPartnership {
 			logger.info(
 					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
 		}
-		// Verify for active and Draft certification on the dashboard, if draft delete and start a new one.
+		// Verify for active and Draft certification on the dashboard, if draft
+		// delete and start a new one.
 		AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
 		addOrStartCertification.AddOrStartCertification();
 		Thread.sleep(2000);
