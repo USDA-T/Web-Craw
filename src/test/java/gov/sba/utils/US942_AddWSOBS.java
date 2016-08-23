@@ -5,7 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import gov.sba.utils.helpers.SBAGlobal;
 import gov.sba.utils.VerifyEDWOSBFlow;
 
 //_ Project Helpers
@@ -17,7 +16,6 @@ public class US942_AddWSOBS {
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
-		SBAGlobal.set_Driver(webDriver);
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 		get_The_Row_From_Login_Data = 8;
