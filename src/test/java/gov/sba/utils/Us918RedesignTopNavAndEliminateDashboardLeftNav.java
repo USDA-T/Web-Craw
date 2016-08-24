@@ -22,7 +22,7 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
-
+	
 	@Test
 	public void mainTest() throws Exception {
 		String actual_Text = null;

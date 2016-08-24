@@ -18,7 +18,7 @@ public class LoginHelpers {
 
 	public static LoginData getLoginData() throws Exception {
 		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
-		return loginFixtures.get(2);
+		return loginFixtures.get(3);
 	}
 	public static LoginData getLoginDataWithIndex(int passed_Index_Number) throws Exception {
 		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
