@@ -18,7 +18,7 @@ public class US942_AddWosb {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 8;
+		get_The_Row_From_Login_Data = 9;
 	}
 	@Test
 	public void mainTest() throws Exception {

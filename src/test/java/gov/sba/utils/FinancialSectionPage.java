@@ -48,8 +48,8 @@ public class FinancialSectionPage {
 		webDriver.findElement(By.name("commit")).click();
 		// Locate and YES for question 'Do you have any notes receivable from
 		// others?'.
-		webDriver.findElement(By.xpath(".//*[@id='answers[40][value]']/label[1]")).click();
-		webDriver.findElement(By.cssSelector("span")).click();
+		webDriver.findElement(By.cssSelector("label.yes")).click();
+		webDriver.findElement(By.xpath("//span")).click();
 		logger.info(
 				"User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
 		Thread.sleep(3000);
