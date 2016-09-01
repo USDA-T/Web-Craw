@@ -12,12 +12,16 @@ import org.openqa.selenium.WebDriver;
 public class UswdsEdwosbUswdsCorporation {
 	private static final Logger logger = LogManager.getLogger(UswdsEdwosbUswdsCorporation.class.getName());
 	private static WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
+
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 20;
+
 	}
 
 	@Test

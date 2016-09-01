@@ -147,7 +147,6 @@ public class FinancialSectionPage {
 		webDriver.findElement(By.name("commit")).click();
 		Thread.sleep(3000);
 		// Beginning Test For Personal Property.
-
 		assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
 		logger.info("User is being navigated to the Personal Property section, PASS");
 		webDriver.findElement(By.xpath(".//*[@id='answers[51][value]']/label[1]")).click();

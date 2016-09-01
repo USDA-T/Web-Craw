@@ -12,12 +12,16 @@ import org.openqa.selenium.WebDriver;
 public class UswdsEdwosbPartnership {
 	private static final Logger logger = LogManager.getLogger(UswdsEdwosbPartnership.class.getName());
 	private static WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
+
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 3;
+
 	}
 
 	@Test
@@ -54,7 +58,6 @@ public class UswdsEdwosbPartnership {
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();
 	}
-
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();
