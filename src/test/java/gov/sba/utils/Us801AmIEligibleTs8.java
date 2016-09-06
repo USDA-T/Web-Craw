@@ -18,7 +18,7 @@ public class Us801AmIEligibleTs8 {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		naics = "335932";
+		naics = "315220";
 	}
 	@Test
 	public void mainTest() throws Exception {
@@ -32,7 +32,7 @@ public class Us801AmIEligibleTs8 {
 		Thread.sleep(4000);
 		// Verify that user is navigated to the right page.
 		String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
-		String expected_error6 = "Is there an SBA Small Business Program for me?";
+		String expected_error6 = "Is there an SBA Contracting Program for me?";
 		assertEquals(actual_error6, expected_error6);
 		// Locate the first question and select Yes and verify the More Detail
 		// meaning of the question.
@@ -41,7 +41,7 @@ public class Us801AmIEligibleTs8 {
 		assertEquals(actual_Text2, expected_Text2);
 		// Validate the meaning for question one.
 		String actual_Text3 = webDriver.findElement(By.cssSelector("div.details.usa-width-one-half > p")).getText();
-		String expected_Text3 = "A Citizen means a person born or naturalized in the United States. Resident ailens and holders of permanent visas are not considered to be citizens. 13 C.F.R. 127.102";
+		String expected_Text3 = "A U.S.citizenmeans a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.cssSelector("button.yes_button")).click();
@@ -83,7 +83,7 @@ public class Us801AmIEligibleTs8 {
 		String expected_Text8 = "The firm may be in the legal form of an individual proprietorship, partnership, limited liability company, S Corporation, or C Corporation.";
 		assertEquals(actual_Text8, expected_Text8);
 		String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
-		String expected_Text9 = "Exceptions: This rule does not necessarily apply to a Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor ProtÈgÈ programs.";
+		String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Prot√©g√© programs.";
 		assertEquals(actual_Text9, expected_Text9);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("yes_button_for_profit")).click();
@@ -119,7 +119,7 @@ public class Us801AmIEligibleTs8 {
 		assertEquals(actual_Text14, expected_Text14);
 		logger.info("6th question was validated");
 		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li")).getText();
-		String expected_Text15 = "SBAís size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for ìsmall businessî concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR ß 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firmís size can be found in the Code of Federal Regulations (CFR) at13 CFR ß 121.104and13 CFR ß 121.106.";
+		String expected_Text15 = "SBA‚Äôs size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for ‚Äúsmall business‚Äù concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR ¬ß 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm‚Äôs size can be found in the Code of Federal Regulations (CFR) at13 CFR ¬ß 121.104and13 CFR ¬ß 121.106.";
 		assertEquals(actual_Text15, expected_Text15);
 		String actual_Text16 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li[2]"))
 				.getText();
@@ -137,7 +137,7 @@ public class Us801AmIEligibleTs8 {
 		logger.info("7th question was validated");
 		String actual_Text18 = webDriver.findElement(By.xpath("//div[@id='women_owning_business']/div/div[2]/p"))
 				.getText();
-		String expected_Text18 = "To qualify for the WOSB Program, one or more women mustunconditionally and directly own and controlat least 51 percent of the business and be U.S. citizen(s).\n\nIn general, the 51 percentownershipmay not be through another business entity or trusts (including stock ownership plan), executory agreements, or other arrangements that cause or potentially cause ownership benefits to go to another. See 13 C.F.R. 127.201 for additional information.\n\nControlby one or more women means that both the long-term decision making and the day-to-day management and administration of the business operations are controlled by women. See 13 C.F.R. 127.202 for additional information.";
+		String expected_Text18 = "None";
 		assertEquals(actual_Text18, expected_Text18);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("no_button_women_owning_business")).click();
@@ -149,9 +149,9 @@ public class Us801AmIEligibleTs8 {
 		assertEquals(actual_Text19, expected_Text19);
 		logger.info("===Question 8 was not skipped after answering NO for question 7");
 		// Validate the detail meaning for Q7
-		String actual_Text20 = webDriver.findElement(By.xpath("//div[@id='naics_fed_set_asides']/div/div[2]"))
+		String actual_Text20 = webDriver.findElement(By.xpath("//div[@id='naics_fed_set_asides']/div/div[2]/p[2]"))
 				.getText();
-		String expected_Text20 = "More Details:\nThe federal government may restrict competition under the WOSB Program only in certain industries.13 C.F.R. 127.500. SBA has designated those industries applicable to the WOSB Program by North American Industry Classification System (NAICS) code. If a contract is not assigned one of those designated NAICS codes, the contract cannot be set-aside under the WOSB Program.\nThe most recent list of NAICS codes applicable to the WOSB Program can be found at SBAís website atSBA.gov/WOSB.";
+		String expected_Text20 = "The federal government may restrict competition under the WOSB Program only in certain industries.13 C.F.R. 127.500. SBA has designated those industries applicable to the WOSB Program by North American Industry Classification System (NAICS) code. There are two types of set-asides under the WOSB Program: set asides for Woman Owned Small Businesses and set asides for Economically Disadvantaged Woman Owned Small Businesses. The type of set-aside allowed under the WOSB Program is dictated by the applicable NAICS code of the solicitation. To learn more about the types of set-asides and the designations available via this program, please visitSBA.gov/WOSB.";
 		assertEquals(actual_Text20, expected_Text20);
 		String actual_Text21 = webDriver.findElement(By.cssSelector("label")).getText();
 		String expected_Text21 = "Enter the NAICS code in which your business operates:";
@@ -172,11 +172,11 @@ public class Us801AmIEligibleTs8 {
 		assertEquals(actual_Text23, expected_Text23);
 		String actual_Text24 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_wosb']/div/div[2]/ul/li")).getText();
-		String expected_Text24 = "The womanís total assets must be valued at $6 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account that are unavailable until retirement age without a significant penalty.";
+		String expected_Text24 = "The woman‚Äôs total assets must be valued at $6 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account that are unavailable until retirement age without a significant penalty.";
 		assertEquals(actual_Text24, expected_Text24);
 		String actual_Text25 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_wosb']/div/div[2]/ul/li[2]")).getText();
-		String expected_Text25 = "The womanís net worth must be less than $750,000. This calculation excludes the womanís ownership interest in the applicant concern, her equity interest in her primary personal residence, funds invested in a qualified IRA account or other official retirement account, and income received from an S Corp, LLC or partnership that was reinvested in the business or used for paying taxes arising in the normal course of operations of the business.";
+		String expected_Text25 = "The woman‚Äôs net worth must be less than $750,000. This calculation excludes the woman‚Äôs ownership interest in the applicant concern, her equity interest in her primary personal residence, funds invested in a qualified IRA account or other official retirement account, and income received from an S Corp, LLC or partnership that was reinvested in the business or used for paying taxes arising in the normal course of operations of the business.";
 		assertEquals(actual_Text25, expected_Text25);
 		logger.info("===Question 9 was not skipped after answering NO for question 7");
 		// Select NO for question 9.
@@ -192,19 +192,19 @@ public class Us801AmIEligibleTs8 {
 		// Validate the detail meaning.
 		String actual_Text27 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div[2]/p[2]")).getText();
-		String expected_Text27 = "Firms owned by economically disadvantaged individuals may qualify for the 8(a) BD Program. Under the 8(a) BD Program, the determination of whether an individual is economically disadvantaged requires an evaluation of the individualís total assets, net worth, and personal income for the past three years. To be considered an economically disadvantaged individual for the 8(a) BD Program, the individual must meet the thresholds described below:";
+		String expected_Text27 = "Firms owned by economically disadvantaged individuals may qualify for the 8(a) BD Program. Under the 8(a) BD Program, the determination of whether an individual is economically disadvantaged requires an evaluation of the individual‚Äôs total assets, net worth, and personal income for the past three years. To be considered an economically disadvantaged individual for the 8(a) BD Program, the individual must meet the thresholds described below:";
 		assertEquals(actual_Text27, expected_Text27);
 		String actual_Text28 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div[2]/ul/li")).getText();
-		String expected_Text28 = "The individualís total assets must be valued at $4 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account.";
+		String expected_Text28 = "The individual‚Äôs total assets must be valued at $4 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account.";
 		assertEquals(actual_Text28, expected_Text28);
 		String actual_Text29 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div[2]/ul/li[2]")).getText();
-		String expected_Text29 = "The individualís net worth must be less than $250,000. This calculation excludes the individualís ownership interest in the applicant concern, the individualís equity interest in his or her primary residence, funds invested in a qualified Individual Retirement Accounts (IRA) or other official retirement account that is unavailable until retirement age without a significant penalty, and income received from an S Corp, LLC or partnership that was reinvested in the business or used for paying taxes arising in the normal course of operations of the business.";
+		String expected_Text29 = "The individual‚Äôs net worth must be less than $250,000. This calculation excludes the individual‚Äôs ownership interest in the applicant concern, the individual‚Äôs equity interest in his or her primary residence, funds invested in a qualified Individual Retirement Accounts (IRA) or other official retirement account that is unavailable until retirement age without a significant penalty, and income received from an S Corp, LLC or partnership that was reinvested in the business or used for paying taxes arising in the normal course of operations of the business.";
 		assertEquals(actual_Text29, expected_Text29);
 		String actual_Text30 = webDriver
 				.findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div[2]/ul/li[3]")).getText();
-		String expected_Text30 = "The individualís personal income must be $250,000 or less. This calculation is based on the individualís adjusted gross income averaged over the last three years.";
+		String expected_Text30 = "The individual‚Äôs personal income must be $250,000 or less. This calculation is based on the individual‚Äôs adjusted gross income averaged over the last three years.";
 		assertEquals(actual_Text30, expected_Text30);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("no_button_economically_disadvantaged_8a")).click();
@@ -218,7 +218,7 @@ public class Us801AmIEligibleTs8 {
 		// Verify the detail meaning.
 		String actual_Text32 = webDriver
 				.findElement(By.xpath("//div[@id='socially_disadvantaged']/div/div[2]/ul/li[2]")).getText();
-		String expected_Text32 = "This applies to any business that previously participated in the 8(a) BD Program, even if ownership and control of the firm has completely changed.";
+		String expected_Text32 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
 		assertEquals(actual_Text32, expected_Text32);
 		logger.info("User Successfully navigated to the 13th question ':Do you identify as one of the following?'");
 		Thread.sleep(4000);
@@ -234,7 +234,7 @@ public class Us801AmIEligibleTs8 {
 		// Validate the detail meaning.
 		String actual_Text34 = webDriver
 				.findElement(By.xpath("//div[@id='socially_disadvantaged_chronic']/div/div[2]/p[2]")).getText();
-		String expected_Text34 = "An individual or firm that previously participated in the 8(a) BD Program may still be eligible for other SBA small business programs.";
+		String expected_Text34 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
 		assertEquals(actual_Text34, expected_Text34);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("no_button_socially_disadvantaged_chronic")).click();
@@ -256,13 +256,13 @@ public class Us801AmIEligibleTs8 {
 		// Locate the next question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text37 = webDriver.findElement(By.xpath("//div[@id='eighta_one_time_used']/div/div/p")).getText();
-		String expected_Text37 = "Have any individual(s) claiming social and economic disadvantage, previously used their one time 8(a) eligibility to qualify a business for the 8(a) BD Program?";
+		String expected_Text37 = "Have any individual(s) claiming social and economic disadvantage previously used their one time 8(a) eligibility to qualify a business for the 8(a) BD Program?";
 		assertEquals(actual_Text37, expected_Text37);
 		logger.info("Claiming EDWOSB question was validated");
 		// Validate the detail meaning.
 		String actual_Text38 = webDriver.findElement(By.xpath("//div[@id='eighta_one_time_used']/div/div[2]/ul/li"))
 				.getText();
-		String expected_Text38 = "An individual or firm that previously participated in the 8(a) BD Program may still be eligible for other SBA small business programs.";
+		String expected_Text38 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
 		assertEquals(actual_Text38, expected_Text38);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("no_button_eighta_one_time_used")).click();
@@ -270,7 +270,7 @@ public class Us801AmIEligibleTs8 {
 		// Locate the next question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text39 = webDriver.findElement(By.xpath("//div[@id='address_in_hubzone']/div/div/p")).getText();
-		String expected_Text39 = "Is the firmís business address located in a HUBZone?";
+		String expected_Text39 = "Is the address of the location where the majority of the firm‚Äôs employees work located in a HUBZone?";
 		assertEquals(actual_Text39, expected_Text39);
 		logger.info(" question was validated");
 		// Verify the detail meaning.

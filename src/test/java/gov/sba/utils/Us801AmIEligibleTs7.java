@@ -32,23 +32,23 @@ public class Us801AmIEligibleTs7 {
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
 		Thread.sleep(4000);
-		// Verify that user is navigated to the right page.
-		String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
-		String expected_error6 = "Is there an SBA Small Business Program for me?";
-		assertEquals(actual_error6, expected_error6);
-		// Locate the first question and select Yes and verify the More Detail
+		// Verify that user navigates to the am i eligible page.
+		String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
+		String expected_Text = "Is there an SBA Contracting Program for me?";
+		assertEquals(expected_Text, actual_Text);
+		// Locate the first question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text2 = webDriver.findElement(By.cssSelector("div.usa-width-one-half > p.lead-para")).getText();
 		String expected_Text2 = "Are the qualifying individual(s) of the firm who are applying for SBA small business programs U.S. citizens?";
 		assertEquals(actual_Text2, expected_Text2);
 		// Validate the meaning for question one.
 		String actual_Text3 = webDriver.findElement(By.cssSelector("div.details.usa-width-one-half > p")).getText();
-		String expected_Text3 = "A Citizen means a person born or naturalized in the United States. Resident ailens and holders of permanent visas are not considered to be citizens. 13 C.F.R. 127.102";
+		String expected_Text3 = "A U.S.citizenmeans a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.cssSelector("button.yes_button")).click();
 		Thread.sleep(5000);
-		// Locate the 2nd question and select No and verify the More Detail
+		// Locate the 2nd question and select yes and verify the More Detail
 		// meaning of the question.
 		String actual_error3 = webDriver
 				.findElement(By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p")).getText();
@@ -85,12 +85,12 @@ public class Us801AmIEligibleTs7 {
 		String expected_Text8 = "The firm may be in the legal form of an individual proprietorship, partnership, limited liability company, S Corporation, or C Corporation.";
 		assertEquals(actual_Text8, expected_Text8);
 		String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
-		String expected_Text9 = "Exceptions: This rule does not necessarily apply to a Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
+		String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor ProtÃ©gÃ© programs.";
 		assertEquals(actual_Text9, expected_Text9);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("yes_button_for_profit")).click();
 		Thread.sleep(4000);
-		// Locate the 4th question and select NO and verify the More Detail
+		// Locate the 4th question and select yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
 		String expected_Text10 = "Do you affirm that neither this firm, nor any of its owners, have ever been debarred or suspended by any federal entity?";
@@ -102,32 +102,17 @@ public class Us801AmIEligibleTs7 {
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("yes_button_non_suspended")).click();
 		Thread.sleep(4000);
-		// Locate the 5th question and select NO and verify the More Detail
-		// meaning of the question.
-		String actual_Text12 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();
-		String expected_Text12 = "Does the firm have a place of business in the U.S. and operate primarily within the United States, or makes a significant contribution to the U.S. economy through payment of taxes or use of American products, materials or labors?";
-		assertEquals(actual_Text12, expected_Text12);
-		logger.info("5th question was validated");
-		String actual_Text13 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
-		String expected_Text13 = "None";
-		assertEquals(actual_Text13, expected_Text13);
-		Thread.sleep(4000);
-		webDriver.findElement(By.id("yes_button_us_business")).click();
-		Thread.sleep(4000);
 		// Locate the 6th question and select Yes and verify the More Detail
 		// meaning of the question.
-		String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div/p")).getText();
-		String expected_Text14 = "Is the firm considered small in accordance with its primary North American Industry Classification System (NAICS) code?";
+		String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();
+		String expected_Text14 = "Does the firm have a place of business in the U.S. and operate primarily within the United States, or makes a significant contribution to the U.S. economy through payment of taxes or use of American products, materials or labors?";
 		assertEquals(actual_Text14, expected_Text14);
 		logger.info("6th question was validated");
-		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li")).getText();
-		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at13 CFR § 121.104and13 CFR § 121.106.";
+		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
+		String expected_Text15 = "None";
 		assertEquals(actual_Text15, expected_Text15);
-		String actual_Text16 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li[2]"))
-				.getText();
-		String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available athttp://www.census.gov/eos/www/naics/";
-		assertEquals(actual_Text16, expected_Text16);
-		Thread.sleep(4000);
+		webDriver.findElement(By.id("yes_button_us_business")).click();
+		Thread.sleep(3000);
 		webDriver.findElement(By.id("no_button_small_naics")).click();
 		// Verify searched results.
 		String actual_Text17 = webDriver.findElement(By.cssSelector("span.message")).getText();

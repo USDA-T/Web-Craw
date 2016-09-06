@@ -28,8 +28,8 @@ public class US801AmIEligibleTs2 {
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
 		// Verify that user navigates to the am i eligible page.
-		String expected_Text = "Is there an SBA Small Business Program for me?";
 		String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
+		String expected_Text = "Is there an SBA Contracting Program for me?";
 		assertEquals(expected_Text, actual_Text);
 		// Locate the first question and select NO and verify the More Detail
 		// meaning of the question.
@@ -38,7 +38,7 @@ public class US801AmIEligibleTs2 {
 		assertEquals(actual_Text2, expected_Text2);
 		// Validate the meaning for question one.
 		String actual_Text3 = webDriver.findElement(By.cssSelector("div.details.usa-width-one-half > p")).getText();
-		String expected_Text3 = "A Citizen means a person born or naturalized in the United States. Resident ailens and holders of permanent visas are not considered to be citizens. 13 C.F.R. 127.102";
+		String expected_Text3 = "A U.S.citizenmeans a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the No button.
 		webDriver.findElement(By.id("no_button_us_citizen")).click();
