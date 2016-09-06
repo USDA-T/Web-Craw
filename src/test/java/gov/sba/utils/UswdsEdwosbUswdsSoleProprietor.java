@@ -26,8 +26,8 @@ public class UswdsEdwosbUswdsSoleProprietor {
 	@Test
 	public void mainTest() throws Exception {
 		// Login to dashboard.
-		LoginPage login = new LoginPage(webDriver);
-		login.Login();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
