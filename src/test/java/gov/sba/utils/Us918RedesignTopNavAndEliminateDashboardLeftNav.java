@@ -52,7 +52,7 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 		webDriver.findElement(By.linkText("Documents")).click();
 		// Verify the navigated page.
 		actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-		expected_Text = "My documents";
+		expected_Text = "My document library";
 		assertEquals(actual_Text, expected_Text);
 		// Verify the document table.
 		actual_Text = webDriver.findElement(By.cssSelector("th.sorting_asc")).getText();
@@ -100,13 +100,17 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 		assertEquals(actual_Text, expected_Text);
 		java.util.Set<String> S1 = webDriver.getWindowHandles();
 		Iterator<String> i1 = S1.iterator();
+		webDriver.findElement(By.linkText("Login")).click();
+		actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
+		expected_Text = "You are already signed in.";
+		assertEquals(actual_Text, expected_Text);
 		while (i1.hasNext()) {
 			String Second_window = i1.next();
 			if (!main_window.equalsIgnoreCase(Second_window)) {
 				webDriver.switchTo().window(Second_window);
 				Thread.sleep(1000);
 				logger.info("After switching title is =" + webDriver.getTitle());
-				webDriver.close();
+				//webDriver.close();
 			}
 		}
 		webDriver.switchTo().window(main_window);
