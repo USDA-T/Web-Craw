@@ -49,7 +49,7 @@ public class FinancialSectionPage {
 		// Locate and YES for question 'Do you have any notes receivable from
 		// others?'.
 		webDriver.findElement(By.cssSelector("label.yes")).click();
-		webDriver.findElement(By.xpath("//span")).click();
+		webDriver.findElement(By.cssSelector("span")).click();
 		logger.info(
 				"User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
 		Thread.sleep(3000);

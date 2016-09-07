@@ -20,7 +20,7 @@ public class UswdsEdwosbUswdsCorporation {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 20;
+		get_The_Row_From_Login_Data = 19;
 
 	}
 
