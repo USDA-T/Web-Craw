@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import gov.sba.utils.VerifyEdwosbFlow;
 import gov.sba.utils.helpers.LoginHelpers;
 public class VerifyWosbFlow {
 	private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
@@ -19,9 +18,6 @@ public class VerifyWosbFlow {
 	}
 
 	public void VerifyWOSBFlowLogic() throws Exception {
-		String Actual_Text = null;
-		String Expected_Text = null;
-		
 		// logger.info(current_Row.GetParent());
 		Boolean FlagForAddEDWOSBNotPresent = false;
 		try {
@@ -38,6 +34,7 @@ public class VerifyWosbFlow {
 		// LinkForDelete.click();		
 		
 		try {
+			@SuppressWarnings("unused")
 			WebElement current_Row_Active = webDriver.findElement(By.xpath("//article[@id='main-content']//td[contains(text(),'Active')]"));						
 			webDriver.findElement(By.xpath("//a[@href='/users/sign_out']")).click();
 			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 10);

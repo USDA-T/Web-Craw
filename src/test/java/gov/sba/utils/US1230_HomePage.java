@@ -3,7 +3,6 @@ package gov.sba.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import java.util.List;
 import org.junit.*;
 import org.openqa.selenium.By;
@@ -15,9 +14,7 @@ public class US1230_HomePage {
 		// Set The variables/Define
 		private static WebDriver webDriver;
 		private static final Logger logger = LogManager.getLogger(US1230_HomePage.class.getName());
-
-		int get_The_Row_From_Login_Data;
-
+		
 		@Before
 		public void setUp() throws Exception {
 			webDriver = TestHelpers.getDefaultWebDriver();

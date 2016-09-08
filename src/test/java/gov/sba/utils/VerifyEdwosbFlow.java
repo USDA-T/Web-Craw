@@ -20,8 +20,6 @@ public class VerifyEdwosbFlow {
 	}
 
 	public void VerifyEDWOSBFlowLogic() throws Exception {
-		String Actual_Text = null;
-		String Expected_Text = null;
 		
 		// logger.info(current_Row.GetParent());
 		Boolean FlagForAddEDWOSBNotPresent = false;
@@ -39,6 +37,7 @@ public class VerifyEdwosbFlow {
 		// LinkForDelete.click();		
 		
 		try {
+			@SuppressWarnings("unused")
 			WebElement current_Row_Active = webDriver.findElement(By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Active']"));						
 			webDriver.findElement(By.xpath("//a[@href='/users/sign_out']")).click();
 			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 20);
