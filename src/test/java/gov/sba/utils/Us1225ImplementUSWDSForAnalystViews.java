@@ -15,6 +15,7 @@ public class Us1225ImplementUSWDSForAnalystViews {
 	private static WebDriver webDriver;
 	String DUNS;
 	String Invalid_DUNS;
+	int get_The_Row_From_Login_Data;
 	private StringBuffer verificationErrors = new StringBuffer();
 	@Before
 	public void setUp() {
@@ -24,14 +25,15 @@ public class Us1225ImplementUSWDSForAnalystViews {
 		webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		DUNS = "275276652";
 		Invalid_DUNS = "123456789";
+		get_The_Row_From_Login_Data = 0;
 	}
 	@Test
 	public void mainTest() throws Exception {
 		// Step 1 - Open QA site
 		Thread.sleep(3000);
 		// Step 2 - Log in as an Analyst
-		AnalystloginPage analystlogin = new AnalystloginPage(webDriver);
-		analystlogin.Analystlogin();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		// Step 3 - Verify that the certify.SBA.gov Logo is displayed
 		// Check the title of the page
 		logger.info("Page title is: " + webDriver.getTitle());
