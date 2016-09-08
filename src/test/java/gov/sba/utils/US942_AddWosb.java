@@ -26,9 +26,12 @@ public class US942_AddWosb {
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
-		VerifyEdwosbFlow VerifyEDWOSBFlow = new VerifyEdwosbFlow();
-		VerifyEDWOSBFlow.VerifyEDWOSBFlowSetDriver(webDriver);
-		VerifyEDWOSBFlow.VerifyEDWOSBFlowLogic();
+		//VerifyEdwosbFlow VerifyEDWOSBFlow = new VerifyEdwosbFlow();
+		//VerifyEDWOSBFlow.VerifyEDWOSBFlowSetDriver(webDriver);
+		//VerifyEDWOSBFlow.VerifyEDWOSBFlowLogic();
+		VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();
+		VerifyWOSBFlow.VerifyWOSBFlowSetDriver(webDriver);
+		VerifyWOSBFlow.VerifyWOSBFlowLogic();
 	}
 	@After
 	public void tearDown() throws Exception {
