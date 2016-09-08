@@ -15,12 +15,16 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 	private static final Logger logger = LogManager
 			.getLogger(Us918RedesignTopNavAndEliminateDashboardLeftNav.class.getName());
 	public WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
+
 
 	@Before
 	public void setup() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 3;
+
 	}
 	
 	@Test
@@ -29,8 +33,8 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 		String expected_Text = null;
 		logger.info("Eliminating left navigation on internal/private pages for vendor test");
 		// Login to dashboard.
-		LoginPage login = new LoginPage(webDriver);
-		login.Login();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		Thread.sleep(4000);
 		// Locate and verify the My Certification link.
 		actual_Text = webDriver.findElement(By.cssSelector("li.nav-link.current-top-nav > a")).getText();
