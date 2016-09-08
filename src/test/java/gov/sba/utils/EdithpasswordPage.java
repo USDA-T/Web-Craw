@@ -13,16 +13,16 @@ public class EdithpasswordPage {
 
 	public void Edithpassword() throws Exception {
 
-		driver.findElement(By.cssSelector("button.usa-button.hp-login-btn")).click();
+		driver.findElement(By.cssSelector("button.button-full")).click();
 		Thread.sleep(4000);
-		String actual_Text4 = driver.findElement(By.cssSelector("span.blue-bar-text")).getText();
+		String actual_Text4 = driver.findElement(By.cssSelector("h2")).getText();
 		String expected_Text4 = "Sign in to certify.SBA.gov";
 		assertEquals(actual_Text4, expected_Text4);
-		driver.findElement(By.xpath(".//*[@id='user_email']")).sendKeys("staging3@mailinator.com");
+		driver.findElement(By.id("user_email")).sendKeys("staging3@mailinator.com");
 		// Step 2. Locate the password search box and enter a valid password.
-		driver.findElement(By.xpath(".//*[@id='user_password']")).sendKeys("password");
+		driver.findElement(By.id("user_password")).sendKeys("password");
 		// Step 3. Locate the Sign-in button and click on it to login.
-		driver.findElement(By.xpath(".//*[@id='business_signin']")).click();
+		driver.findElement(By.id("business_signin")).click();
 
 	}
 
