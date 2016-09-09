@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 //_ Project Helpers
-public class US942_AddWosb {
+public class US942_AddEdwosb {
 	// Set The variables/Define
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
@@ -17,7 +17,7 @@ public class US942_AddWosb {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 10;
+		get_The_Row_From_Login_Data = 9;
 	}
 	@Test
 	public void mainTest() throws Exception {
@@ -25,9 +25,10 @@ public class US942_AddWosb {
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
-		VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();
-		VerifyWOSBFlow.VerifyWOSBFlowSetDriver(webDriver);
-		VerifyWOSBFlow.VerifyWOSBFlowLogic();
+		  VerifyEdwosbFlow VerifyEDWOSBFlow = new VerifyEdwosbFlow();
+		  VerifyEDWOSBFlow.VerifyEDWOSBFlowSetDriver(webDriver);
+		  VerifyEDWOSBFlow.VerifyEDWOSBFlowLogic();
+
 	}
 	@After
 	public void tearDown() throws Exception {

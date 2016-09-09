@@ -37,7 +37,7 @@ public class VerifyWosbFlow {
 			@SuppressWarnings("unused")
 			WebElement current_Row_Active = webDriver.findElement(By.xpath("//article[@id='main-content']//td[contains(text(),'Active')]"));						
 			webDriver.findElement(By.xpath("//a[@href='/users/sign_out']")).click();
-			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 10);
+			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 22);
 			login_Data.Login_With_Reference();
 			webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(LoginHelpers.getLoginDataWithIndex(10).getDunsNumber());
 			webDriver.findElement(By.className("usa-search-submit-text")).click();
@@ -51,7 +51,6 @@ public class VerifyWosbFlow {
 			logger.info(webDriver.switchTo().alert().getText());
 			webDriver.switchTo().alert().accept();
 			webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
-
 			login_Data = new LoginPageWithReference(webDriver, 10);
 			login_Data.Login_With_Reference();
 
@@ -63,27 +62,18 @@ public class VerifyWosbFlow {
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 
 		try {
-			WebElement ElementEDWOSBRadio = webDriver.findElement(By.linkText("Delete"));
-			ElementEDWOSBRadio.click();
+			WebElement ElementWOSBRadio = webDriver.findElement(By.linkText("Delete"));
+			ElementWOSBRadio.click();
 		} catch (Exception e) {
 			logger.info(
 					"There are(is) no certification in-progress on the dashboard, a new certification is being created");
 		}
-
-		
 		//        First Flow - Check For Drafts coming up correctly
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
     	logger.info("Certifications Deleted To start again");
 
 		String myCertText = webDriver.findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'My certifications')]")).getText();
 		assertEquals(myCertText, "My certifications");
-		
-	   //condition to check no certificate in my certification table
-		//Expected_Text = "There are currently no certifications";
-		//Actual_Text   = webDriver.findElement(By.xpath("//article[@id='main-content']//span[contains(text(),'There are currently no certifications')]")).getText();
-		//assertEquals(Actual_Text, Expected_Text);
-		//Start New certification-Verify before selecting any certification the Add New certification button disabled
-
 		WebElement radio_Element = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']"));
 		WebElement add_button = webDriver.findElement(By.id("add_certification"));
 		logger.info(add_button.getAttribute("disabled"));
@@ -91,17 +81,14 @@ public class VerifyWosbFlow {
 		radio_Element.click();
 		try {webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click(); 
 		webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click();} catch (Exception e){};
-		
 		assertTrue(Boolean.toString(add_button.isEnabled()), true);
 		Thread.sleep(2000);
 		webDriver.findElement(By.id("add_certification")).click();
 		try {webDriver.findElement(By.id("add_certification")).click();
 		webDriver.findElement(By.id("add_certification")).click();
-		} catch (Exception e){}
-		
+		} catch (Exception e){}		
 		Thread.sleep(5000);
 		webDriver.findElement(By.className("accept_button")).click();
-		
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 		WebElement current_Row_Draft = webDriver.findElement(By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Draft']"));
 		assertEquals(current_Row_Draft.getText(), "Draft");
@@ -116,7 +103,6 @@ public class VerifyWosbFlow {
 		all_Cells.get(3).findElement(By.xpath("//a[@class='delete-cert'][@data-method='delete'][text()='Delete']")).click();
 		Thread.sleep(3000);
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-		
 		//        First Flow - Check For Active 		
 		webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click();
 		webDriver.findElement(By.id("add_certification")).click();
@@ -128,8 +114,6 @@ public class VerifyWosbFlow {
 		//webDriver.findElement(By.className("accept_button")).click();
 		//try{webDriver.findElement(By.className("accept_button")).click();
 		//webDriver.findElement(By.className("accept_button")).click();}catch (Exception e){}
-		
-
 		// Corp test for 1st person.
 		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
 		scorpQuestions.ScorpQuestions();
@@ -151,7 +135,6 @@ public class VerifyWosbFlow {
 		assertEquals(all_Cells.get(2).getText(), "Active");
 		assertEquals(all_Cells.get(3).getText(), "");
 		all_Cells.get(0).findElement(By.xpath("//a")).click();
-
 		assertTrue(webDriver.getPageSource().contains("Women-Owned Small Business Program Self-Certification Summary"));
 		assertTrue(webDriver.getPageSource().contains("   By submitting this certification I, QA User, am an officer or owner of Entity 454 Legal Business Name authorized to represent it and electronically sign this certification on its behalf."));
 
