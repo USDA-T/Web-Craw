@@ -29,7 +29,7 @@ public class Us801AmIEligibleTs9 {
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		// Verify that user is navigated to the right page.
 		String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
 		String expected_error6 = "Is there an SBA Contracting Program for me?";
@@ -45,7 +45,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text3, expected_Text3);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.cssSelector("button.yes_button")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 2nd question and select No and verify the More Detail
 		// meaning of the question.
 		String actual_error3 = webDriver
@@ -65,10 +65,10 @@ public class Us801AmIEligibleTs9 {
 				.findElement(By.xpath("//div[@id='unconditional_direct_51_percent']/div/div[2]/ul/li[3]")).getText();
 		String expected_error5 = "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
 		assertEquals(actual_error5, expected_error5);
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		// verify and click on the yes button.
 		webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		// Locate the Third question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text6 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div/p")).getText();
@@ -85,9 +85,9 @@ public class Us801AmIEligibleTs9 {
 		String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
 		String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
 		assertEquals(actual_Text9, expected_Text9);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		webDriver.findElement(By.id("yes_button_for_profit")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		// Locate the 4th question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
@@ -97,9 +97,9 @@ public class Us801AmIEligibleTs9 {
 		String actual_Text11 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div[2]/p")).getText();
 		String expected_Text11 = "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
 		assertEquals(actual_Text11, expected_Text11);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		webDriver.findElement(By.id("yes_button_non_suspended")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		// Locate the 5th question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text12 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();
@@ -109,9 +109,9 @@ public class Us801AmIEligibleTs9 {
 		String actual_Text13 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
 		String expected_Text13 = "None";
 		assertEquals(actual_Text13, expected_Text13);
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		webDriver.findElement(By.id("yes_button_us_business")).click();
-		Thread.sleep(4000);
+		Thread.sleep(2000);
 		// Locate the 6th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div/p")).getText();
@@ -119,7 +119,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text14, expected_Text14);
 		logger.info("6th question was validated");
 		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li")).getText();
-		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at13 CFR § 121.104and13 CFR § 121.106.";
+		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at13 CFR § 121.104 and13 CFR § 121.106.";
 		assertEquals(actual_Text15, expected_Text15);
 		String actual_Text16 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li[2]"))
 				.getText();
@@ -127,7 +127,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text16, expected_Text16);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("yes_button_small_naics")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 7th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text17 = webDriver
@@ -157,7 +157,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text20, expected_Text20);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_women_owning_business")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 8th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text21 = webDriver
@@ -179,12 +179,12 @@ public class Us801AmIEligibleTs9 {
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("naics_button")).click();
 		// Verify that the entered NAICS Code for WOSB set-asides.
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		String actual_Text0 = webDriver.findElement(By.xpath("//div[@id='naics_fed_set_asides']/div[2]/div/div/div"))
 				.getText();
 		String expected_Text0 = "Yes, WOSB Federal Contract Program set-asides are available in your primary NAICS code.";
 		assertEquals(actual_Text0, expected_Text0);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 9th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text24 = webDriver
@@ -214,7 +214,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text28, expected_Text28);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_economically_disadvantaged_wosb")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 10th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text29 = webDriver
@@ -244,7 +244,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text33, expected_Text33);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_economically_disadvantaged_8a")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 11th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text34 = webDriver
@@ -283,7 +283,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text41, expected_Text41);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_socially_disadvantaged")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 12th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text42 = webDriver
@@ -299,7 +299,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text43, expected_Text43);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_socially_disadvantaged_chronic")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 13th question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text44 = webDriver
@@ -321,7 +321,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text46, expected_Text46);
 		// verify and click on the NO button.
 		webDriver.findElement(By.id("no_button_eighta_certified")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 14th question and select NO and verify the More Detail
 		// meaning of the question.
 		String actual_Text47 = webDriver
@@ -339,7 +339,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text48, expected_Text48);
 		// verify and click on the NO button.
 		webDriver.findElement(By.id("no_button_eighta_one_time_used")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 15th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text49 = webDriver
@@ -361,7 +361,7 @@ public class Us801AmIEligibleTs9 {
 		assertEquals(actual_Text51, expected_Text51);
 		// verify and click on the Yes button.
 		webDriver.findElement(By.id("yes_button_address_in_hubzone")).click();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		// Locate the 16th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text52 = webDriver
@@ -395,12 +395,12 @@ public class Us801AmIEligibleTs9 {
 		String expected_Text5 = "Based on the information you provided, you may be eligible for the EDWOSB program.";
 		assertEquals(actual_Text5, expected_Text5);
 		// 8(a).
-		String actual_Text02 = webDriver.findElement(By.cssSelector("#eighta > div.eligible")).getText();
-		String expected_Text02 = "Based on the information you provided, you may be eligible for the 8(a) BD Program.\nGet started on the certification process now\nLearn more about the documentation you will need and how to prepare to apply\nLearn more about the 8(a) BD Program";
+		String actual_Text02 = webDriver.findElement(By.cssSelector("#eighta > div.eligible > p > b")).getText();
+		String expected_Text02 = "Based on the information you provided, you may be eligible for the 8(a) BD Program.";
 		assertEquals(actual_Text02, expected_Text02);
 		// Historically Underutilized Business Zone (HUBZone) Program.
-		String actual_Text03 = webDriver.findElement(By.cssSelector("#hubzone > div.eligible")).getText();
-		String expected_Text03 = "Based on the information you provided, you may be eligible for the HUBZone Program.\nLearn more about the HUBZone Program\nLearn more about the documentation you will need and how to prepare to apply";
+		String actual_Text03 = webDriver.findElement(By.cssSelector("#hubzone > div.eligible > p > b")).getText();
+		String expected_Text03 = "Based on the information you provided, you may be eligible for the HUBZone Program.";
 		assertEquals(actual_Text03, expected_Text03);
 	}
 
