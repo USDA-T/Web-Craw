@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class FinancialSectionPage {
 	private static final Logger logger = LogManager.getLogger(FinancialSectionPage.class.getName());
-	private static WebDriver webDriver;
+	private WebDriver webDriver;
 
 	public FinancialSectionPage(WebDriver mydriver) {
 		this.webDriver = mydriver;
