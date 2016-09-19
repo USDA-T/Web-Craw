@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -9,23 +8,25 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class US801AmIEligibleTs4 {
-	private static final Logger logger = LogManager.getLogger(US801AmIEligibleTs4.class.getName());
-	public WebDriver webDriver;
+import junit.framework.TestCase;
+
+public class TestUS801AmIEligibleTs3 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUS801AmIEligibleTs3.class.getName());
+	private static WebDriver webDriver;
 
 	@Before
-	public void setup() throws Exception {
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainLogic() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info(
-				"User is NOT eligible for Any of the programs because user answer NO for Qs3: 8(a), WOSB, EDWOSB & Hob-zone");
+				"User is NOT eligible for Any of the programs because user answer NO for Qs2: 8(a), WOSB, EDWOSB & Hob-zone");
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
@@ -66,36 +67,18 @@ public class US801AmIEligibleTs4 {
 		String expected_error5 = "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
 		assertEquals(actual_error5, expected_error5);
 		Thread.sleep(3000);
-		// verify and click on the yes button.
-		webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-		Thread.sleep(4000);
-		// Locate the Third question and select NO and verify the More Detail
-		// meaning of the question.
-		String actual_Text6 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div/p")).getText();
-		String expected_Text6 = "Is the firm organized for profit?";
-		assertEquals(actual_Text6, expected_Text6);
-		logger.info("Third question was validated");
-		// Validate the More details text.
-		String actual_Text7 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li")).getText();
-		String expected_Text7 = "Non-profit entities are ineligible to participate in most SBA small business programs.";
-		assertEquals(actual_Text7, expected_Text7);
-		String actual_Text8 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[2]")).getText();
-		String expected_Text8 = "The firm may be in the legal form of an individual proprietorship, partnership, limited liability company, S Corporation, or C Corporation.";
-		assertEquals(actual_Text8, expected_Text8);
-		String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
-		String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
-		assertEquals(actual_Text9, expected_Text9);
-		Thread.sleep(4000);
-		webDriver.findElement(By.id("no_button_for_profit")).click();
+		// verify and click on the No button.
+		webDriver.findElement(By.id("no_button_unconditional_direct_51_percent")).click();
 		// Verify searched results.
-		String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
-		String expected_Text1 = "In order to participate in SBA small business programs, firms must be for profit.";
-		assertEquals(actual_Text1, expected_Text1);
+		String actual_error7 = webDriver.findElement(By.cssSelector("span.message")).getText();
+		String expected_error7 = "In order to participate in SBA small business programs, the owner or owners of the firm must be unconditional and direct.";
+		assertEquals(actual_error7, expected_error7);
+		// Click on the Exit button.
 		webDriver.findElement(By.linkText("Exit")).click();
 	}
 
 	@After
-	public void teardown() throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 }
