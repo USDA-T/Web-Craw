@@ -2,17 +2,18 @@ package gov.sba.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import static org.junit.Assert.assertEquals;
 import java.util.List;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Us1187_MPP_PrepareLink {
+import junit.framework.TestCase;
+
+public class TestUs1187MppPrepareLink extends TestCase {
 	// Set The variables/Define
 	private static WebDriver webDriver;
-	private static final Logger logger = LogManager.getLogger(Us1187_MPP_PrepareLink.class.getName());
+	private static final Logger logger = LogManager.getLogger(TestUs1187MppPrepareLink.class.getName());
 
 	@Before
 	public void setUp() throws Exception {
@@ -22,7 +23,7 @@ public class Us1187_MPP_PrepareLink {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		String Actual_Text = null;
 		String Expected_Text = null;
 		try {

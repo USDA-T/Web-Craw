@@ -1,7 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,9 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class Us265IAMProfileInfo {
-	private static final Logger logger = LogManager.getLogger(Us265IAMProfileInfo.class.getName());
+import junit.framework.TestCase;
+public class TestUs265IAMProfileInfo extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs265IAMProfileInfo.class.getName());
 	private static WebDriver webDriver;
 	String Username;
 	String Password;
@@ -27,7 +25,7 @@ public class Us265IAMProfileInfo {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Navigate the MAX.gov landing page.
 		Thread.sleep(5000);
 		logger.info("US265 test.max.gov");

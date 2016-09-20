@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class UswdsEdwosbUswdsSoleProprietor {
-	private static final Logger logger = LogManager.getLogger(UswdsEdwosbUswdsSoleProprietor.class.getName());
+import junit.framework.TestCase;
+public class TestUswdsEdwosbScorpTest extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbScorpTest.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -20,11 +19,12 @@ public class UswdsEdwosbUswdsSoleProprietor {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 8;
+		get_The_Row_From_Login_Data = 1;
+
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
@@ -51,9 +51,9 @@ public class UswdsEdwosbUswdsSoleProprietor {
 		AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
 		addOrStartCertification.AddOrStartCertification();
 		Thread.sleep(2000);
-		// partnership test for 1st person.
-		SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
-		soleProprietorQuestions.SoleProprietorQuestions();
+		// Corp test for 1st person.
+		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
+		scorpQuestions.ScorpQuestions();
 		// Financial section.
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();

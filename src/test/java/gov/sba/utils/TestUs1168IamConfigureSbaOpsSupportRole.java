@@ -1,15 +1,13 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class Us1168IamConfigureSbaOpsSupportRole {
+import junit.framework.TestCase;
+public class TestUs1168IamConfigureSbaOpsSupportRole extends TestCase {
 	private static WebDriver webDriver;
 	String Email;
 	String Passphrase;
@@ -24,7 +22,7 @@ public class Us1168IamConfigureSbaOpsSupportRole {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
 		// Login to SBA Ops support dashboard.
 		Thread.sleep(5000);

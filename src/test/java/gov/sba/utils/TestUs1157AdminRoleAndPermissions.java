@@ -1,8 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,9 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class Us1157AdminRoleAndPermissions {
-	private static final Logger logger = LogManager.getLogger(Us1157AdminRoleAndPermissions.class.getName());
+import junit.framework.TestCase;
+public class TestUs1157AdminRoleAndPermissions extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs1157AdminRoleAndPermissions.class.getName());
 	private static WebDriver webDriver;
 
 	@Before
@@ -24,7 +21,7 @@ public class Us1157AdminRoleAndPermissions {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
 		// Login to Vendor Admin Dashboard.
 		Thread.sleep(4000);

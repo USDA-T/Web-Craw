@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class UswdsEdwosbScorpTest {
-	private static final Logger logger = LogManager.getLogger(UswdsEdwosbScorpTest.class.getName());
+import junit.framework.TestCase;
+public class TestUswdsEdwosbPartnership extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbPartnership.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -20,12 +19,12 @@ public class UswdsEdwosbScorpTest {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 1;
+		get_The_Row_From_Login_Data = 3;
 
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
@@ -33,7 +32,7 @@ public class UswdsEdwosbScorpTest {
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
 		try {
-			assertTrue(webDriver.getPageSource().contains("Draft"));
+			assertTrue(webDriver.getPageSource().contains("Delete"));
 			webDriver.findElement(By.linkText("Delete")).click();
 			//webDriver.switchTo().alert().accept();
 			try {
@@ -48,18 +47,16 @@ public class UswdsEdwosbScorpTest {
 		}
 		// Verify for active and Draft certification on the dashboard, if draft
 		// delete and start a new one.
-		Thread.sleep(4000);
 		AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
 		addOrStartCertification.AddOrStartCertification();
 		Thread.sleep(2000);
-		// Corp test for 1st person.
-		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
-		scorpQuestions.ScorpQuestions();
+		// partnership test for 1st person.
+		PartnershipQuestionsPage partnershipquestions = new PartnershipQuestionsPage(webDriver);
+		partnershipquestions.Partnershipquestions();
 		// Financial section.
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();
 	}
-
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();

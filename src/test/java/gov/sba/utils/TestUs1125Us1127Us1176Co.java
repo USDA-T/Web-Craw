@@ -1,9 +1,6 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,9 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class Us1125Us1127Us1176Co {
-	private static final Logger logger = LogManager.getLogger(Us1125Us1127Us1176Co.class.getName());
+import junit.framework.TestCase;
+public class TestUs1125Us1127Us1176Co extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs1125Us1127Us1176Co.class.getName());
 	public WebDriver webDriver;
 
 	@Before
@@ -24,7 +21,7 @@ public class Us1125Us1127Us1176Co {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		String actual_Text = null;
 		String expected_Text = null;
 		logger.info("CO request access and view vendor's record");

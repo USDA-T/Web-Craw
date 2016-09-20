@@ -37,15 +37,15 @@ public class AddOrStartCertificationPage {
 			Expected_Text = "All small businesses that are interested in submitting an offer on a solicitation that has been set aside for Women-Owned Small Businesses (WOSB) and Economically Disadvantaged Women-Owned Small Businesses (EDWOSB) under the WOSB Program must complete this certification prior to submitting the offer. This includes checking all boxes presented and having an authorized officer of the woman-owned small business or economically disadvantaged woman-owned small business electronically sign and date the certification. You must upload all other required documents as indicated here-in to the WOSB Program Repository. For questions, please e-mail wosb@sba.gov.\nPlease read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible for a contract authorized under the WOSB Program. The definitions for the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 C.F.R. Part 127), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government's right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
 			assertEquals(Actual_Text, Expected_Text);
 		} else {
-			Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-one-whole > span")).getText();
-			Expected_Text = "There are currently no certifications";
+			Actual_Text = webDriver.findElement(By.cssSelector("div.usa-font-lead")).getText();
+			Expected_Text = "To get started on an application, select which program you'd like to join below. You may only upload documents to certify.SBA.gov during the application process. While completing the online questionnaire, you will be instructed to upload documents to support your answers. These online applications replace any forms released by SBA for these contracting programs in the past.";
 			assertEquals(Actual_Text, Expected_Text);
-			Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-one-whole > p")).getText();
-			Expected_Text = "Start a new Women-Owned Small Business (WOSB) or Economically Disadvantaged Women-Owned Small Business (EDWOSB) certification or update your current certification in our new system. If you have a current WOSB or EDWOSB certification, your company is required to add new documentation in our current system. If you have any questions, please email certify@sba.gov for more information.";
+			Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/section/article/div/div[2]")).getText();
+			Expected_Text = "Get started now on your WOSB self-certification, EDWOSB self-certification, or All Small Business Mentor-Protégé agreement.";
 			assertEquals(Actual_Text, Expected_Text);
 			Thread.sleep(3000);
 			// Click on the EDWOSB link.
-			webDriver.findElement(By.linkText("EDWOSB Self Certification")).click();
+			webDriver.findElement(By.linkText("EDWOSB self-certification")).click();
 			// Verify and validate the terms for the certification.
 			Thread.sleep(4000);
 			Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div[2]")).getText();

@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class UswdsLLcRegressionTest {
-	private static final Logger logger = LogManager.getLogger(UswdsLLcRegressionTest.class.getName());
+import junit.framework.TestCase;
+public class TestUswdsLLcRegressionTest extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUswdsLLcRegressionTest.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -20,11 +19,11 @@ public class UswdsLLcRegressionTest {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 4;
+		get_The_Row_From_Login_Data = 10;
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
@@ -32,7 +31,7 @@ public class UswdsLLcRegressionTest {
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
 		try {
-			assertTrue(webDriver.getPageSource().contains("Draft"));
+			assertTrue(webDriver.getPageSource().contains("Delete"));
 			webDriver.findElement(By.linkText("Delete")).click();
 			//webDriver.switchTo().alert().accept();
 			try {

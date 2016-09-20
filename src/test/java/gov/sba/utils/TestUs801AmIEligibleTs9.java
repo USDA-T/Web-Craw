@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class Us801AmIEligibleTs9 {
-	private static final Logger logger = LogManager.getLogger(Us801AmIEligibleTs9.class.getName());
+import junit.framework.TestCase;
+public class TestUs801AmIEligibleTs9 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs801AmIEligibleTs9.class.getName());
 	public WebDriver webDriver;
 
 	@Before
@@ -21,7 +20,7 @@ public class Us801AmIEligibleTs9 {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info(

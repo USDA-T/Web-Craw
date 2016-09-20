@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -8,12 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class UswdsEdwosbUswdsCorporation {
-	private static final Logger logger = LogManager.getLogger(UswdsEdwosbUswdsCorporation.class.getName());
+import junit.framework.TestCase;
+public class TestUswdsEdwosbUswdsCorporation extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbUswdsCorporation.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
-
 
 	@Before
 	public void setUp() throws Exception {
@@ -25,7 +23,7 @@ public class UswdsEdwosbUswdsCorporation {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();

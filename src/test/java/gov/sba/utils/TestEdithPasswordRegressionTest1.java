@@ -1,7 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,9 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-public class EdithPasswordRegressionTest1 {
-	private static final Logger logger = LogManager.getLogger(EdithPasswordRegressionTest1.class.getName());
+import junit.framework.TestCase;
+public class TestEdithPasswordRegressionTest1 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestEdithPasswordRegressionTest1.class.getName());
 	private static WebDriver webDriver;
 	String myurl;
 	String Email;
@@ -38,7 +36,7 @@ public class EdithPasswordRegressionTest1 {
 	}
 
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Open Firefox,Chrome,and IE and navigate to the valid url.
 		EdithpasswordPage edithpassword = new EdithpasswordPage(webDriver);
 		edithpassword.Edithpassword();

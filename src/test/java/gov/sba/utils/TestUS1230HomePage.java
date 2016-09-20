@@ -2,18 +2,16 @@ package gov.sba.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import static org.junit.Assert.assertEquals;
 import java.util.List;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-
-public class US1230_HomePage {
+import junit.framework.TestCase;
+public class TestUS1230HomePage extends TestCase {
 		// Set The variables/Define
 		private static WebDriver webDriver;
-		private static final Logger logger = LogManager.getLogger(US1230_HomePage.class.getName());
+		private static final Logger logger = LogManager.getLogger(TestUS1230HomePage.class.getName());
 		
 		@Before
 		public void setUp() throws Exception {
@@ -22,7 +20,7 @@ public class US1230_HomePage {
 			webDriver.manage().window().maximize();
 		}
 		@Test
-		public void mainTest() throws Exception {
+		public void tsetMainTest() throws Exception {
 			String Actual_Text = null;
 			String Expected_Text = null;
 			try {

@@ -1,6 +1,4 @@
 package gov.sba.utils;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-public class Us1225ImplementUSWDSForAnalystViews {
-	private static final Logger logger = LogManager.getLogger(Us1225ImplementUSWDSForAnalystViews.class.getName());
+import junit.framework.TestCase;
+public class TestUs1225ImplementUSWDSForAnalystViews extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs1225ImplementUSWDSForAnalystViews.class.getName());
 	private static WebDriver webDriver;
 	String DUNS;
 	String Invalid_DUNS;
@@ -28,7 +27,7 @@ public class Us1225ImplementUSWDSForAnalystViews {
 		get_The_Row_From_Login_Data = 0;
 	}
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Step 1 - Open QA site
 		Thread.sleep(3000);
 		// Step 2 - Log in as an Analyst

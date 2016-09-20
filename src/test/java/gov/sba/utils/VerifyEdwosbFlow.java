@@ -1,7 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import gov.sba.utils.VerifyEdwosbFlow;
 import gov.sba.utils.helpers.LoginHelpers;
+import junit.framework.TestCase;
 
-public class VerifyEdwosbFlow {
+public class VerifyEdwosbFlow extends TestCase {
 	private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
 	WebDriver webDriver;
 

@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.assertEquals;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
@@ -10,10 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
+import junit.framework.TestCase;
+public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCase {
 	private static final Logger logger = LogManager
-			.getLogger(Us918RedesignTopNavAndEliminateDashboardLeftNav.class.getName());
+			.getLogger(TestUs918RedesignTopNavAndEliminateDashboardLeftNav.class.getName());
 	public WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -28,7 +27,7 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 	}
 	
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		String actual_Text = null;
 		String expected_Text = null;
 		logger.info("Eliminating left navigation on internal/private pages for vendor test");
@@ -129,7 +128,7 @@ public class Us918RedesignTopNavAndEliminateDashboardLeftNav {
 	}
 
 	@After
-	public void teardown() throws Exception {
+	public void tearDown() throws Exception {
 		webDriver.quit();
 	}
 }

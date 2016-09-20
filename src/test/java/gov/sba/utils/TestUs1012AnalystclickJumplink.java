@@ -1,6 +1,4 @@
 package gov.sba.utils;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,8 +8,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
-public class Us1012AnalystclickJumplink {
-	private static final Logger logger = LogManager.getLogger(Us1012AnalystclickJumplink.class.getName());
+
+import junit.framework.TestCase;
+public class TestUs1012AnalystclickJumplink extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestUs1012AnalystclickJumplink.class.getName());
 	private static WebDriver webDriver;
 	String dunsNumber;
 	String invalidDUNS;
@@ -29,7 +29,7 @@ public class Us1012AnalystclickJumplink {
 		addNote = "public static final String max_comment The U.S. Small Business Administration (SBA) has modernized the Women-Owned Small Business (WOSB) Program certification process. Get started online today and manage your eligibility documentation or upload Third-Party Certifications directly from our easy to use dashboard. Get started today! The U.S. Small Business Administration (SBA) has modernized the Women-Owned Small Business (WOSB) Program certification process.  Get started online today and       5001";
 	}
 	@Test
-	public void mainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Step 1 - Open QA site
 		Thread.sleep(3000);
 		// Step 2 - Log in as an Analyst
