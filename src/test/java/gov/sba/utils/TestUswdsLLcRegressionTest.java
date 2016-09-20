@@ -19,7 +19,7 @@ public class TestUswdsLLcRegressionTest extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 10;
+		get_The_Row_From_Login_Data = 5;
 	}
 
 	@Test

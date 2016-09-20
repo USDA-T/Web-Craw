@@ -13,14 +13,16 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
 	public WebDriver webDriver;
 
 	@Before
-	public void setup() throws Exception {
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
+
 	}
 
 	@Test
-	public void tsetMaintest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info(

@@ -24,7 +24,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 		Email = "staging@mailinator.com";
-		Old_PassW = "The Quick Brown Fox";
+		Old_PassW = "password";
 		New_PassW = "The Quick Brown Fox Jumps Over The Lazy";
 		New_PassW2 = "The Quick Brown Fox Jumps Over The Lazy";
 	}

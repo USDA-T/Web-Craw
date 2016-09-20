@@ -118,11 +118,11 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
 		assertEquals(actual_Text14, expected_Text14);
 		logger.info("6th question was validated");
 		String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li")).getText();
-		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in theSmall Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at13 CFR § 121.104 and13 CFR § 121.106.";
+		String expected_Text15 = "SBA’s size standards define whether a business entity is small and, thus, eligible for Government programs and preferences reserved for “small business” concerns. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations, 13 CFR § 121.201. Size standards are expressed in annual receipts for services NAICS codes and in number of employees for manufacturing NAICS codes. Information about how SBA calculates a firm’s size can be found in the Code of Federal Regulations (CFR) at 13 CFR § 121.104 and 13 CFR § 121.106.";
 		assertEquals(actual_Text15, expected_Text15);
 		String actual_Text16 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div[2]/ul/li[2]"))
 				.getText();
-		String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available athttp://www.census.gov/eos/www/naics/";
+		String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available at http://www.census.gov/eos/www/naics/.";
 		assertEquals(actual_Text16, expected_Text16);
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("yes_button_small_naics")).click();
@@ -153,7 +153,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
 		String expected_Text20 = "The federal government may restrict competition under the WOSB Program only in certain industries.13 C.F.R. 127.500. SBA has designated those industries applicable to the WOSB Program by North American Industry Classification System (NAICS) code. There are two types of set-asides under the WOSB Program: set asides for Woman Owned Small Businesses and set asides for Economically Disadvantaged Woman Owned Small Businesses. The type of set-aside allowed under the WOSB Program is dictated by the applicable NAICS code of the solicitation. To learn more about the types of set-asides and the designations available via this program, please visitSBA.gov/WOSB.";
 		assertEquals(actual_Text20, expected_Text20);
 		String actual_Text21 = webDriver.findElement(By.cssSelector("label")).getText();
-		String expected_Text21 = "Enter the NAICS code in which your business operates:";
+		String expected_Text21 = "naics_fed_set_asides";
 		assertEquals(actual_Text21, expected_Text21);
 		// Enter a valid NAICS Code.
 		webDriver.findElement(By.id("naics_code")).sendKeys(naics);
