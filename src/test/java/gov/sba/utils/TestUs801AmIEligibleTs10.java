@@ -187,8 +187,8 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
 				.getText();
 		String expected_Text22 = "The federal government may restrict competition under the WOSB Program only in certain industries.13 C.F.R. 127.500. SBA has designated those industries applicable to the WOSB Program by North American Industry Classification System (NAICS) code. There are two types of set-asides under the WOSB Program: set asides for Woman Owned Small Businesses and set asides for Economically Disadvantaged Woman Owned Small Businesses. The type of set-aside allowed under the WOSB Program is dictated by the applicable NAICS code of the solicitation. To learn more about the types of set-asides and the designations available via this program, please visitSBA.gov/WOSB.";
 		assertEquals(actual_Text22, expected_Text22);
-		String actual_Text23 = webDriver.findElement(By.cssSelector("label")).getText();
-		String expected_Text23 = "naics_fed_set_asides";
+		String actual_Text23 = webDriver.findElement(By.cssSelector("div.answer > label")).getText();
+		String expected_Text23 = "Enter the NAICS code in which your business operates:";
 		assertEquals(actual_Text23, expected_Text23);
 		// Enter valid EDWOSB NAICS Code.
 		webDriver.findElement(By.id("naics_code")).sendKeys("315280");
