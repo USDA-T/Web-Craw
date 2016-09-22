@@ -42,7 +42,7 @@ public class TestUswdsEdwosbUswdsCorporation extends TestCase {
 			webDriver.navigate().refresh();
 		} catch (Error e) {
 			logger.info(
-					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
+					"There are(is) no program in-progress on the dashboard, a new program is beinng created");
 		}
 		// Verify for active and Draft certification on the dashboard, if draft
 		// delete and start a new one.

@@ -12,12 +12,16 @@ import junit.framework.TestCase;
 public class TestUs1157AdminRoleAndPermissions extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestUs1157AdminRoleAndPermissions.class.getName());
 	private static WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
+
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 1;
+
 	}
 
 	@Test
@@ -25,8 +29,8 @@ public class TestUs1157AdminRoleAndPermissions extends TestCase {
 		// open firefox, chrome or IE and navigate to certify.sba login page.
 		// Login to Vendor Admin Dashboard.
 		Thread.sleep(4000);
-		LoginPage login = new LoginPage(webDriver);
-		login.Login();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		try {
 			assertTrue(webDriver.getPageSource().contains("Draft"));
 			webDriver.findElement(By.linkText("Delete")).click();
@@ -45,8 +49,8 @@ public class TestUs1157AdminRoleAndPermissions extends TestCase {
 
 		// Locate the Certifications on the dashboard, click on it and select
 		// EDWOSB to continue.
-		assertElementpresent(webDriver.findElement(By.linkText("Certifications")));
-		webDriver.findElement(By.linkText("Certifications")).click();
+		assertElementpresent(webDriver.findElement(By.linkText("Programs")));
+		webDriver.findElement(By.linkText("Programs")).click();
 		webDriver.findElement(By.linkText("EDWOSB")).click();
 		// Verify that vendor admin start a certification.
 		String actual_Text0 = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div[3]")).getText();

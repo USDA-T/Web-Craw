@@ -13,6 +13,7 @@ import junit.framework.TestCase;
 public class TestUs1012AnalystclickJumplink extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestUs1012AnalystclickJumplink.class.getName());
 	private static WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
 	String dunsNumber;
 	String invalidDUNS;
 	String addNote;
@@ -23,6 +24,7 @@ public class TestUs1012AnalystclickJumplink extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 0;
 		webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		dunsNumber = "135453634";
 		invalidDUNS = "12344556";
@@ -33,8 +35,8 @@ public class TestUs1012AnalystclickJumplink extends TestCase {
 		// Step 1 - Open QA site
 		Thread.sleep(3000);
 		// Step 2 - Log in as an Analyst
-		LoginPage login = new LoginPage(webDriver);
-		login.Login();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		webDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		// Step 3 - Verify that the certify.SBA.gov Logo is displayed Check the
 		// title of the page

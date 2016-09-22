@@ -13,12 +13,16 @@ import junit.framework.TestCase;
 public class TestUs438EightARegression1 extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestUs438EightARegression1.class.getName());
 	public WebDriver webDriver;
+	int get_The_Row_From_Login_Data;
+
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
+		get_The_Row_From_Login_Data = 1;
+
 	}
 
 	@Test
@@ -26,8 +30,8 @@ public class TestUs438EightARegression1 extends TestCase {
 	public void testMainTest() throws Exception {
 		// Step 1. Open Firefox browser and navigate to url.
 		Thread.sleep(2000);
-		LoginPage login = new LoginPage(webDriver);
-		login.Login();
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
 		assertFalse(webDriver.getPageSource().contains("Signed in successfully"));
 		Thread.sleep(3000);
@@ -45,14 +49,15 @@ public class TestUs438EightARegression1 extends TestCase {
 			webDriver.navigate().refresh();
 		} catch (Error e) {
 			logger.info(
-					"There are(is) no certification in-progress on the dashboard, a new certification is beinng created");
+					"There are(is) no Program in-progress on the dashboard, a new program is beinng created");
 		}
 		webDriver.navigate().refresh();
 		Thread.sleep(7000);
 		// Step 5. Locate and click the Certifications button, from the
 		// drop-down, select EDWOSB.
-		webDriver.findElement(By.linkText("Certifications")).click();
-		webDriver.findElement(By.linkText("EDWOSB")).click();
+		webDriver.findElement(By.linkText("Programs")).click();
+		webDriver.findElement(By.id("certificate_type_wosb")).click();
+		webDriver.findElement(By.id("add_certification")).click();
 		Thread.sleep(3000);
 		// Step 6. Locate the accept button for the terms of certification and
 		// click on it.
