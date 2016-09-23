@@ -121,7 +121,7 @@ public class TestMppNonApplicationVendorUserExperience extends TestCase {
 		webDriver.findElement(By.linkText("Business")).click();
 		webDriver.findElement(By.linkText("Manage employee access")).click();
 		Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
-		Expected_Text = "You may accept, reject, or revoke employee access to your business's certifications in certify.SBA.gov here. Employees will have access to all documents and certifications associated with this DUNS number.";
+		Expected_Text = "You may accept, reject, or revoke employee access to your business's programs in certify.SBA.gov here. Employees will have access to all documents and programs associated with this DUNS number.";
 		assertEquals(Actual_Text, Expected_Text);
 		//Logout.
 		webDriver.findElement(By.linkText("Logout")).click();
@@ -219,7 +219,7 @@ public class TestMppNonApplicationVendorUserExperience extends TestCase {
 			//Click on the My Request Link.
 			webDriver.findElement(By.linkText("My requests")).click();
 			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-			Expected_Text = "Review vendor certifications";
+			Expected_Text = "Review vendor programs";
 			assertEquals(Actual_Text, Expected_Text);
 			//click on the logout button.
 			webDriver.findElement(By.linkText("Logout")).click();
@@ -227,7 +227,7 @@ public class TestMppNonApplicationVendorUserExperience extends TestCase {
 			//Click on the My Request Link.
 			webDriver.findElement(By.linkText("My requests")).click();
 			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-			Expected_Text = "Review vendor certifications";
+			Expected_Text = "Review vendor programs";
 			assertEquals(Actual_Text, Expected_Text);
 			//click on the logout button.
 			webDriver.findElement(By.linkText("Logout")).click();

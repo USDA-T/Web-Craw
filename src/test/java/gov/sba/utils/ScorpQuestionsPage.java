@@ -48,8 +48,6 @@ public class ScorpQuestionsPage {
 		webDriver.findElement(By.id("answers_68_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
 		logger.info("  Third Party questions have been answered");
-		
-		
 		// Locate the Three Business Corporation and S-Corp(Stocks) question
 		// 1,2and2, Verify select N/A and continue.
 		String actual_Text6 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -59,9 +57,9 @@ public class ScorpQuestionsPage {
 		String actual_Text7 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text7 = "Do not consider unexercised stock options that are held by women. If you can answer yes” to this question, please return to question 1 and 2 and recalculate your answers.";
 		assertEquals(actual_Text7, expected_Text7);
-		webDriver.findElement(By.xpath(".//*[@id='answers[69][value]']/label[2]")).click();
-		webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("Testing");
-		webDriver.findElement(By.id("answers_70_value_no")).click();
+		webDriver.findElement(By.cssSelector("#answers_69_value_no")).click();
+		webDriver.findElement(By.cssSelector("#answers_69_comment")).sendKeys("Testing");
+		webDriver.findElement(By.cssSelector("#answers_70_value_no")).click();
 		Thread.sleep(2000);
 		webDriver.findElement(By.id("answers_71_value_no")).click();
 		webDriver.findElement(By.id("answers_71_value_no")).click();
