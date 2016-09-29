@@ -26,7 +26,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
 		// page.
 		logger.info(
-				"User is NOT eligible for Any of the programs because user answer NO for Qs7 and the rest of the questions that apply: 8(a), WOSB, EDWOSB & Hob-zone");
+	 			"User is NOT eligible for Any of the programs because user answer NO for Qs7 and the rest of the questions that apply: 8(a), WOSB, EDWOSB & Hob-zone");
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
