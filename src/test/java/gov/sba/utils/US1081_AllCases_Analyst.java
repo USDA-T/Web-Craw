@@ -26,7 +26,7 @@ public class US1081_AllCases_Analyst {
 				webDriver = TestHelpers.getDefaultWebDriver();
 				webDriver.get(TestHelpers.getBaseUrl());
 				webDriver.manage().window().maximize();
-				get_The_Row_From_Login_Data = 21;
+				get_The_Row_From_Login_Data = 22;
 				
 			}
 			@Test

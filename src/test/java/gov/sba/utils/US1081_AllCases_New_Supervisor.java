@@ -52,11 +52,8 @@ public class US1081_AllCases_New_Supervisor {
 					"Owner", "Current reviewer", "Status" };
 
 			List<WebElement> rows_Header = webDriver
-					.findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th")); // Get
-																							// the
-																							// Table
-																							// Header
-																							// Cells
+					.findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
+			// Get Table Header  Cells
 			String[] header_Names_Array_Validate = new String[8];
 			java.util.Iterator<WebElement> list_elements = rows_Header.iterator();
 			int i = 0;
@@ -90,10 +87,7 @@ public class US1081_AllCases_New_Supervisor {
 			List<ArrayList<String>> db_rows_array = new ArrayList<>();
 			while (result_Set.next()) {
 				ArrayList<String> db_rows_Cell = new ArrayList<>(); // Add
-																	// inside a
-																	// second
-																	// Dimension
-																	// Array
+				// inside a second Dimension Array
 				db_rows_Cell.add(result_Set.getString("legal_Name").toUpperCase());
 				db_rows_Cell.add(result_Set.getString("duns_No"));
 				db_rows_Cell.add(result_Set.getString("cert_Name").toUpperCase());
@@ -108,10 +102,7 @@ public class US1081_AllCases_New_Supervisor {
 			// Entire Table Verification for next Sprint
 			List<ArrayList<String>> ui_rows_array = new ArrayList<>();
 			List<WebElement> rows_Body = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr")); // Get
-																														// the
-																														// Table
-																														// rows
-																														// //logger.info(rows_Body.size());
+			// the Table rows /logger.info(rows_Body.size());
 			for (int j = 0; j < rows_Body.size(); j++) {
 				ArrayList<String> ui_rows_Cell = new ArrayList<>();
 				logger_US1081.info(rows_Body.get(j).getAttribute("innerHTML"));
