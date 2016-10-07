@@ -47,8 +47,11 @@ public class TestUS1230HomePage extends TestCase {
 			assertEquals(Expected_Text,Actual_Text);
 			
 			try {
-				Actual_Text = webDriver.findElement(By.xpath("//div[contains(@class,'currently-grey-box') and contains(@class,'usa-width-one-whole')]")).getText();
-				logger.info("Grey Box text is present");	
+			Actual_Text = webDriver
+					.findElement(By
+							.xpath("//div[contains(@class,'currently-grey-box') and contains(@class,'usa-width-one-whole')]"))
+					.getText();
+			logger.info("Grey Box text is present");	
 
 			} catch (Exception e) {
 				logger.info("Grey Box text is not present" + e.toString());	

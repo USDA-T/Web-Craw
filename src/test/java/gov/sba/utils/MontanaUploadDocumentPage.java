@@ -21,8 +21,7 @@ public class MontanaUploadDocumentPage {
 		logger.debug("Uploading a new document");
 		webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
 		webDriver.findElement(By.id("doc-upload-button")).click();
-		webDriver.findElement(By.id("dz-select-tpc1_q1")).click();
-		// Thread.sleep(5000);
+		webDriver.findElement(By.linkText("Choose a .pdf file")).click();
 		StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 		Robot robot = new Robot();
@@ -34,7 +33,9 @@ public class MontanaUploadDocumentPage {
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		Thread.sleep(4000);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(6000);
 		webDriver.findElement(By.cssSelector("#attach")).click();
 	}
 

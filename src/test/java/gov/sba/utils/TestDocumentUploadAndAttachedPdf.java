@@ -20,9 +20,7 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
 		get_The_Row_From_Login_Data = 26;
-
 	}
-
 	@Test
 	public void testMainTest() throws Exception {
 		// Login to dashboard.

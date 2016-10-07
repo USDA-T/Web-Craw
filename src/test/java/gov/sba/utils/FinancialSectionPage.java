@@ -20,7 +20,7 @@ public class FinancialSectionPage {
 		// Locate section for 'Cash on Hand' enter all valid data as required.
 		// Locate the As of Date: Search box for user and enter the information
 		// as required.
-		webDriver.findElement(By.xpath(".//*[@id='answers_32_value']")).sendKeys("04/23/2016");
+		webDriver.findElement(By.id("date-32")).sendKeys("04/23/2016");
 		// Locate the Cash on Hand Search box for Pual Washington and enter the
 		// information as required.
 		webDriver.findElement(By.xpath(".//*[@id='answers_33_value']")).sendKeys("4000");

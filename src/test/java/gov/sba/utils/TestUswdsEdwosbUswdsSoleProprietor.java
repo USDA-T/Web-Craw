@@ -5,9 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import junit.framework.TestCase;
+
 public class TestUswdsEdwosbUswdsSoleProprietor extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbUswdsSoleProprietor.class.getName());
 	private static WebDriver webDriver;
@@ -23,26 +23,15 @@ public class TestUswdsEdwosbUswdsSoleProprietor extends TestCase {
 
 	@Test
 	public void testMainTest() throws Exception {
+		logger.info("Test EDWOSB Sole-Proprietorship Flow");
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
-		try {
-			assertTrue(webDriver.getPageSource().contains("Draft"));
-			webDriver.findElement(By.linkText("Delete")).click();
-			//webDriver.switchTo().alert().accept();
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			webDriver.navigate().refresh();
-		} catch (Error e) {
-			logger.info(
-					"There are(is) no program in-progress on the dashboard, a new program is beinng created");
-		}
+		DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+		deleteDraftCert.DeleteDraftCert();
 		// Verify for active and Draft certification on the dashboard, if draft
 		// delete and start a new one.
 		Thread.sleep(4000);

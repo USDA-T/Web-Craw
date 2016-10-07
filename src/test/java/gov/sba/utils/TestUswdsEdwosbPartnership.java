@@ -5,14 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import junit.framework.TestCase;
+
 public class TestUswdsEdwosbPartnership extends TestCase {
 	private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbPartnership.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
-
 
 	@Before
 	public void setUp() throws Exception {
@@ -25,26 +24,15 @@ public class TestUswdsEdwosbPartnership extends TestCase {
 
 	@Test
 	public void testMainTest() throws Exception {
+		logger.info("Test EDWOSB Partnership Flow");
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
 		// Verify if there is an existing certification on the dashboard and
 		// delete to start a new certification.
-		try {
-			assertTrue(webDriver.getPageSource().contains("Delete"));
-			webDriver.findElement(By.linkText("Delete")).click();
-			//webDriver.switchTo().alert().accept();
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			webDriver.navigate().refresh();
-		} catch (Error e) {
-			logger.info(
-					"There are(is) no program in-progress on the dashboard, a new program is beinng created");
-		}
+		DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+		deleteDraftCert.DeleteDraftCert();
 		// Verify for active and Draft certification on the dashboard, if draft
 		// delete and start a new one.
 		AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
@@ -57,6 +45,7 @@ public class TestUswdsEdwosbPartnership extends TestCase {
 		FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
 		financialsection.Financialsection();
 	}
+
 	@After
 	public void tearDown() throws Exception {
 		webDriver.quit();
