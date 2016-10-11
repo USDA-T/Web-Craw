@@ -168,7 +168,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.id("answers_122_value")).click();
-		webDriver.findElement(By.xpath("//option[3]")).click();
+		webDriver.findElement(By.xpath("//option[0]")).click();
 
 		Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
 		Expected_Text = "Please answer this question";
@@ -180,6 +180,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_123_value_yes")).click();
 		webDriver.findElement(By.id("answers_124_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
+		
 		// Size Determination Section(Sub-Subsection 1.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
 		Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -194,10 +195,10 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_125_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
 		// Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4"))
-				.getText();
+		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4")).getText();
 		Expected_Text = "Have you received a size redetermination letter from the SBA that subsequently found you to be small in that NAICS code?";
 		assertEquals(Actual_Text, Expected_Text);
+		
 		// Click on the continue button without answering the question and
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();

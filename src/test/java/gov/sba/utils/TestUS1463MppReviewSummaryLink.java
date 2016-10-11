@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,9 +18,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
+import junit.framework.TestCase;
 //_ Project Helpers
-public class TestUS1463MppReviewSummaryLink {
+public class TestUS1463MppReviewSummaryLink extends TestCase {
 	// Set The variabl.es/Define
 	private static WebDriver webDriver;
 	private static final Logger logger_US1463 = LogManager.getLogger(TestUS1463MppReviewSummaryLink.class.getName());
@@ -34,14 +33,16 @@ public class TestUS1463MppReviewSummaryLink {
 		get_The_Row_From_Login_Data = 9;
 	}
 	@Test
-	public void mainTest() throws Exception {
+	public void  testMainTest() throws Exception {
 		// Login to dashboard.
 		Boolean pending_Application_Found = false;
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-		login_Data.Login_With_Reference();
+		 login_Data. Login_With_Reference();
 		Thread.sleep(3000);
 		try{
 			// Check Dashboard Pending status
+			WebElement get_Current_Duns_No = webDriver.findElement(By.xpath("//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div/div/p/b[contains(text(),'DUNS')]"));
+			logger_US1463.info(get_Current_Duns_No.findElement(By.xpath("..")));
 			WebElement current_Row_Draft1_A = webDriver.findElement(By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
 			WebElement current_Row1_A = current_Row_Draft1_A.findElement(By.xpath("..")).findElement(By.xpath(".."));
 			logger_US1463 .info(current_Row1_A.getText());
@@ -71,6 +72,7 @@ public class TestUS1463MppReviewSummaryLink {
 					logger_US1463.info(current_Title.getText());
 					WebElement current_Title_Business 	= webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
 					logger_US1463.info(current_Title_Business.getText());
+					
 					//Connect SBAONE QA DB -to get data from DB
 					String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
 					Properties props = new Properties();
@@ -80,13 +82,14 @@ public class TestUS1463MppReviewSummaryLink {
 					logger_US1463.info(connection_SBA_One_Qa);
 
 					Statement statement_SQL = connection_SBA_One_Qa.createStatement();
-					ResultSet result_Set = statement_SQL.executeQuery("select C.duns_number as new_Duns, D.workflow_state as work_state" +
+					ResultSet result_Set = statement_SQL.executeQuery("select  C.duns_number  as new_Duns, D.workflow_state  as work_state" +
 							"		from 	sbaone.sba_applications A,	sbaone.certificates B, " +
 							"				sbaone.organizations C,		sbaone.certificates D " +
 							"		where 	A.organization_id = B.organization_id " +
 							"		and   	B.organization_id = D.organization_id " +
 							"		and   	C.id = B.organization_id " +
-							"		and   	A.workflow_state = 'submitted';");
+                            
+							"		and   	D.workflow_state = 'pending';");
 
 					//Code for US 1457 And US 1491
 					result_Set.next();
@@ -111,6 +114,7 @@ public class TestUS1463MppReviewSummaryLink {
 					logger_US1463.info(login_Data1);
 					webDriver.findElement(By.xpath("//a[@href='/sba_analyst/cases']")).click();
 					WebElement duns_Row_Pending = webDriver.findElement(By.xpath("//*[@id='table-search']/table/tbody/tr/td[text()='" +  new_Duns +"']")).findElement(By.xpath(".."));
+					
 					duns_Row_Pending.findElement(By.xpath("//td/a[contains(@href,'/sba_analyst/dashboard/')]")).click();
 
 					WebElement duns_Row_Pending_Final = webDriver.findElement(By.xpath("//*[@id='business_search']/div[4]/table/tbody/tr/td[contains(text(),'MPP Application')]")).findElement(By.xpath(".."));

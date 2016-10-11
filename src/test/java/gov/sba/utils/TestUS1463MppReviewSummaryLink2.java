@@ -35,14 +35,13 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 	}
 
 	@Test
-	public void TestMainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
 		try {
 			webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-
 			WebElement current_Row_Draft1 = webDriver.findElement(
 					By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
 			WebElement current_Row1 = current_Row_Draft1.findElement(By.xpath("..")).findElement(By.xpath(".."));
@@ -52,33 +51,29 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 			logger_US1463.info('|' + all_Cells1.get(0).getText() + '|');
 			logger_US1463.info('|' + all_Cells1.get(2).getText() + '|');
 			// If Pending - Click and verify the summary page
-			if (all_Cells1.get(2).getText().equals("Pending")
-					&& all_Cells1.get(0).getText().equals("MPP Application")) {
+			if (all_Cells1.get(2).getText().equals("Pending") && all_Cells1.get(0).getText().equals("MPP Application") ){
 				all_Cells1.get(0).findElement(By.xpath("a")).click();
-				WebElement current_Title = webDriver.findElement(By.xpath(
-						"//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
+				WebElement current_Title 			= webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
 				logger_US1463.info(current_Title.getText());
-				WebElement current_Title_Business = webDriver.findElement(By.xpath(
-						"//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
+				WebElement current_Title_Business 	= webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
 				logger_US1463.info(current_Title_Business.getText());
-
+				
+				//Connect SBAONE QA DB -to get data from DB
 				String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
 				Properties props = new Properties();
 				props.setProperty("user", "app_etl");
 				props.setProperty("password", "etlpassworddev");
 				Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
 				logger_US1463.info(connection_SBA_One_Qa);
-
 				Statement statement_SQL = connection_SBA_One_Qa.createStatement();
-				ResultSet result_Set = statement_SQL
-						.executeQuery("select C.duns_number as new_Duns, D.workflow_state as work_state"
-								+ "		from 	sbaone.sba_applications A,	sbaone.certificates B, "
-								+ "				sbaone.organizations C,		sbaone.certificates D "
-								+ "		where 	A.organization_id = B.organization_id "
-								+ "		and   	B.organization_id = D.organization_id "
-								+ "		and   	C.id = B.organization_id "
-								+ "		and   	A.workflow_state = 'submitted';");
+				ResultSet result_Set = statement_SQL.executeQuery("select C.duns_number as new_Duns, D.workflow_state  as work_state" +
+						"		from 	sbaone.sba_applications A,	sbaone.certificates B, " +
+						"				sbaone.organizations C,		sbaone.certificates D " +
+						"		where 	A.organization_id = B.organization_id " +
+						"		and   	B.organization_id = D.organization_id " +
+						"		and   	C.id = B.organization_id " +
 
+						"		and   	D.workflow_state = 'pending';");
 				// Code for US 1457 And US 1491
 				result_Set.next();
 				String new_Duns = result_Set.getString("new_Duns");
