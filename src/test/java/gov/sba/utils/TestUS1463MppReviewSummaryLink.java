@@ -42,6 +42,11 @@ public class TestUS1463MppReviewSummaryLink {
 		Thread.sleep(3000);
 		try{
 			// Check Dashboard Pending status
+			WebElement UI_Duns	= webDriver.findElement(By.xpath("//article[@id='main-content']//article[@class='usa-width-three-fourths']//div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS')]"));
+			logger_US1463.info(UI_Duns.getText());
+			//WebElement xx_Duns_Value =webDriver.findElement(By.xpath("//artirle[@id='main-content']//article[@class='usa-width-three-fourths']//div[@class='usa-width-one-whole']/div/div/p/span[@class='field']"));
+			String UI_Duns_Value =UI_Duns.findElement(By.xpath("..")).getText().split(":")[1];
+			logger_US1463.info(UI_Duns_Value);
 			WebElement current_Row_Draft1_A = webDriver.findElement(By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
 			WebElement current_Row1_A = current_Row_Draft1_A.findElement(By.xpath("..")).findElement(By.xpath(".."));
 			logger_US1463 .info(current_Row1_A.getText());
@@ -86,6 +91,8 @@ public class TestUS1463MppReviewSummaryLink {
 							"		where 	A.organization_id = B.organization_id " +
 							"		and   	B.organization_id = D.organization_id " +
 							"		and   	C.id = B.organization_id " +
+							"		and       D.Workflow_state = 'pending' " +
+							"       and      C.duns_number = '" +UI_Duns_Value +"' " +
 							"		and   	A.workflow_state = 'submitted';");
 
 					//Code for US 1457 And US 1491
@@ -111,10 +118,13 @@ public class TestUS1463MppReviewSummaryLink {
 					logger_US1463.info(login_Data1);
 					webDriver.findElement(By.xpath("//a[@href='/sba_analyst/cases']")).click();
 					WebElement duns_Row_Pending = webDriver.findElement(By.xpath("//*[@id='table-search']/table/tbody/tr/td[text()='" +  new_Duns +"']")).findElement(By.xpath(".."));
-					duns_Row_Pending.findElement(By.xpath("//td/a[contains(@href,'/sba_analyst/dashboard/')]")).click();
-
+					logger_US1463.info(duns_Row_Pending.getText());
+					List<WebElement> get_all_Cells1 =  duns_Row_Pending.findElements(By.xpath("td"));
+					logger_US1463.info(get_all_Cells1.size());
+					get_all_Cells1.get(0).findElement(By.xpath("//a[contains(@href,'/sba_analyst/dashboard/')]")).click();
+					//duns_Row_Pending.findElement(By.xpath("//td/a[contains(@href,'/sba_analyst/dashboard/')]")).click();
 					WebElement duns_Row_Pending_Final = webDriver.findElement(By.xpath("//*[@id='business_search']/div[4]/table/tbody/tr/td[contains(text(),'MPP Application')]")).findElement(By.xpath(".."));
-					WebElement duns_Row_Pending_Check = duns_Row_Pending_Final.findElement(By.xpath("//td[contains(text(),'Pending')]"));
+					WebElement duns_Row_Pending_Check = duns_Row_Pending_Final.findElement(By.xpath("//td[contains(text(),' Pending')]"));
 					Assert.assertEquals(duns_Row_Pending_Check.getText().trim().toLowerCase(), duns_Number_status_To_Verify.toLowerCase());
 
 					pending_Application_Found = true;
