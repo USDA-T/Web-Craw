@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 public class MontanaUploadDocumentPage {
 	private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
 	WebDriver webDriver;
-
 	public MontanaUploadDocumentPage(WebDriver webDriver) {
 		this.webDriver = webDriver;
 	}
@@ -33,8 +32,7 @@ public class MontanaUploadDocumentPage {
 		robot.keyRelease(KeyEvent.VK_CONTROL);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		robot.keyPress(KeyEvent.VK_ENTER);
-		robot.keyRelease(KeyEvent.VK_ENTER);
+		//WebElement.sendKeys(Keys.ENTER);		
 		Thread.sleep(6000);
 		webDriver.findElement(By.cssSelector("#attach")).click();
 	}

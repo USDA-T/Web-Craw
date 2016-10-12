@@ -31,7 +31,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 			Expected_Text = "Join a new program";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify and Click on the EDWOSB Certification to select.
-			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]"))
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[3]"))
 					.getText();
 			Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
 			assertEquals(Actual_Text, Expected_Text);

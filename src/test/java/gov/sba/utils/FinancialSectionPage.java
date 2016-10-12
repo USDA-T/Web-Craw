@@ -322,6 +322,11 @@ public class FinancialSectionPage {
 		String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
 		String expected_Text6 = "Denzel Washington";
 		assertEquals(actual_Text6, expected_Text6);
+		// Verify updated int type.
+		String actual_Text11 = webDriver.findElement(By.xpath("//form[@id='edwosb']/div[2]/div/table/tbody/tr/td[2]"))
+				.getText();
+		String expected_Text11 = "$4,000.00";
+		assertEquals(actual_Text11, expected_Text11);
 		// Locate and click on the continue button.
 		webDriver.findElement(By.name("commit")).click();
 		Thread.sleep(5000);

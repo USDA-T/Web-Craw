@@ -65,11 +65,11 @@ public class PartnershipQuestionsPage {
 		String expected_Text51 = "Upload a copy of the Partnership Agreement and any Amendments, a copy of the Joint Venture (JV) Agreement if applicable, and a copy of The Assumed/Fictitious Name Certificate (Doing Business As (DBA)).";
 		assertEquals(actual_Text51, expected_Text51);
 		webDriver.findElement(By.id("answers_76_value_no")).click();
-		webDriver.findElement(By.id("answers_76_comment")).sendKeys("Testing");
+		webDriver.findElement(By.id("answers_76_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		// Locate the Partnership questions 2 and select No and continue.
 		Thread.sleep(4000);
 		webDriver.findElement(By.id("answers_77_value_no")).click();
-		webDriver.findElement(By.id("answers_77_comment")).sendKeys("Testing");
+		webDriver.findElement(By.id("answers_77_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		webDriver.findElement(By.name("commit")).click();
 		logger.info("The partnership questions have been answered");
 		// Locate the Citizenship & Ownership question 1and2, Verify,select No
@@ -193,7 +193,7 @@ public class PartnershipQuestionsPage {
 		String expected_Text34 = "One or more women or economically disadvantaged women own at least 51% of all voting stock of the concern, are on the Board of Directors and have the percentage of voting stock necessary to overcome any super majority voting requirements; or women or economically disadvantaged women comprise the majority of voting directors through actual numbers or, where permitted by state law, through weighted voting.\n\nNOTE: Men or other entities may be involved in the management of the concern and may be stockholders, partners or limited liability members of the concern. However, no males or other entity may exercise actual control or have the power to control the concern.";
 		assertEquals(actual_Text34, expected_Text34);
 		webDriver.findElement(By.id("answers_91_value_no")).click();
-		webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
+		webDriver.findElement(By.id("answers_91_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		webDriver.findElement(By.name("commit")).click();
 		// Locate the Net Worth questions,Verify, select No for both and
 		// continue.

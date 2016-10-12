@@ -11,9 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import junit.framework.TestCase;
 
-public class TestMppBuildQuestionnaireTs2 extends TestCase {
+public class TestMppBuildQuestionnaireTs12p extends TestCase {
 
-	private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs2.class.getName());
+	private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs12p.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -167,7 +167,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.id("answers_122_value")).click();
-		webDriver.findElement(By.xpath("//option[0]")).click();
+		webDriver.findElement(By.xpath("//option[3]")).click();
 
 		Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
 		Expected_Text = "Please answer this question";
@@ -179,7 +179,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_123_value_yes")).click();
 		webDriver.findElement(By.id("answers_124_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
-		
 		// Size Determination Section(Sub-Subsection 1.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
 		Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -194,10 +193,10 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_125_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
 		// Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4"))
+				.getText();
 		Expected_Text = "Have you received a size redetermination letter from the SBA that subsequently found you to be small in that NAICS code?";
 		assertEquals(Actual_Text, Expected_Text);
-		
 		// Click on the continue button without answering the question and
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
@@ -344,6 +343,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		montanaUploadDocument11.MontanaUploadDocument();
 		// Select yes for the Second questions.
 		webDriver.findElement(By.id("answers_132_value_yes")).click();
+		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
 		// Active Agreements Section, Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
@@ -410,7 +410,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// click on add agreement.
 		webDriver.findElement(By.cssSelector("span.add-color")).click();
-
 		// Remove agreement.
 		webDriver.findElement(By.xpath("(//a[contains(text(),'Remove')])[2]")).click();
 		Actual_Text = webDriver.switchTo().alert().getText();
@@ -419,6 +418,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.switchTo().alert().accept();
 		webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
 		webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
+		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
 		// Active Agreement Documents Section.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_active_agreemets']/fieldset/h4"))
@@ -452,6 +452,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Upload a document.
 		MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
 		montanaUploadDocument1111.MontanaUploadDocument();
+		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.name("commit")).click();
 		// Protégé Needs Section.
@@ -633,11 +634,12 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// **** Select Yes for all question in this section.
 		webDriver.findElement(By.id("answers_136_value_yes")).click();
 		webDriver.findElement(By.id("answers_137_value_yes")).click();
-		webDriver.findElement(By.id("answers_138_value_yes")).click();
-		webDriver.findElement(By.id("answers_139_value_yes")).click();
-		webDriver.findElement(By.id("answers_140_value_yes")).click();
-		webDriver.findElement(By.id("answers_141_value_yes")).click();
-		webDriver.findElement(By.xpath("//div[@id='answers[141][value]']/label")).click();
+		webDriver.findElement(By.id("answers_138_value_no")).click();
+		webDriver.findElement(By.id("answers_139_value_no")).click();
+		webDriver.findElement(By.id("answers_140_value_no")).click();
+		webDriver.findElement(By.id("answers_141_value_no")).click();
+		webDriver.findElement(By.xpath("//input[@id='answers_141_value_no']")).click();
+		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
 		// Management/Technical Needs Section, verifying questions.
 		Thread.sleep(3000);
@@ -708,117 +710,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.name("answers[149][value]")).sendKeys(
 				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		webDriver.findElement(By.name("commit")).click();
-		// Contracting Needs Section.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-		Expected_Text = "Contracting Needs";
-		assertEquals(Actual_Text, Expected_Text);
-		// Attempt to commit and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("input-type-textarea-error")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[2]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[3]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[4]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		// Enter more than 500 words and verify.
-		webDriver.findElement(By.id("input-type-textarea")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[151][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[152][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[153][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("commit")).click();
-		// Trade Education Needs Section.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-		Expected_Text = "Trade Education Needs";
-		assertEquals(Actual_Text, Expected_Text);
-		// Attempt to commit and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("input-type-textarea-error")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[2]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[3]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[4]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		// Enter more than 500 words and verify.
-		webDriver.findElement(By.id("input-type-textarea")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[155][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[156][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[157][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("commit")).click();
-		// Business Development Needs Section.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-		Expected_Text = "Business Development Needs";
-		assertEquals(Actual_Text, Expected_Text);
-		// Attempt to commit and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("input-type-textarea-error")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[2]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[3]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[4]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		// Enter more than 500 words and verify.
-		webDriver.findElement(By.id("input-type-textarea")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[159][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[160][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[161][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("commit")).click();
-		// General/ Administrative Needs Section.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-		Expected_Text = "General/Administrative Needs";
-		assertEquals(Actual_Text, Expected_Text);
-		// Attempt to commit and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("input-type-textarea-error")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[2]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[3]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("(//span[@id='input-type-textarea-error'])[4]")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		// Enter more than 500 words and verify.
-		webDriver.findElement(By.id("input-type-textarea")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[163][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[164][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-		webDriver.findElement(By.name("answers[165][value]")).sendKeys(
-				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		webDriver.findElement(By.name("commit")).click();
 		// Section 3/ Training, Verifying question.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -886,54 +777,12 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
 			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
 			assertEquals(Actual_Text, Expected_Text);
-			// Contracting needs.
-			webDriver.findElement(By.id("contracting")).click();
-			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
-			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
-			assertEquals(Actual_Text, Expected_Text);
-			// Trade Education needs.
-			webDriver.findElement(By.id("trade_education")).click();
-			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
-			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
-			assertEquals(Actual_Text, Expected_Text);
-			// Business Development needs.
-			webDriver.findElement(By.id("business_dev")).click();
-			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
-			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
-			assertEquals(Actual_Text, Expected_Text);
-			// General/Administrative needs.
-			webDriver.findElement(By.id("general_admin")).click();
-			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
-			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
-			assertEquals(Actual_Text, Expected_Text);
+			webDriver.findElement(By.name("commit")).click();
 			// click on training to continue.
-			webDriver.findElement(By.id("mentor_training")).click();
-			webDriver.findElement(By.name("commit")).click();
-			// General/Administrative needs.
-			webDriver.findElement(By.id("general_admin")).click();
-			webDriver.findElement(By.id("input-type-textarea")).clear();
-			webDriver.findElement(By.id("input-type-textarea")).sendKeys(
-					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from all vines in the garden of Eden.");
-			webDriver.findElement(By.name("commit")).click();
-			webDriver.findElement(By.id("general_admin")).click();
-			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
-			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from all vines in the garden of Eden.";
-			assertFalse(Actual_Text, Expected_Text);
-			webDriver.findElement(By.name("commit")).click();
-			// Training.
 			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
 			Expected_Text = "Training";
 			assertEquals(Actual_Text, Expected_Text);
 			webDriver.findElement(By.name("commit")).click();
-			// Enter an invalid DUNS# and verify message.
-			webDriver.findElement(By.id("duns-value-167")).sendKeys("153000244");
-			webDriver.findElement(By.linkText("Confirm DUNS")).click();
-			webDriver.findElement(By.linkText("Confirm DUNS")).click();
-			logger.info(webDriver.switchTo().alert().getText());
-			Actual_Text = webDriver.switchTo().alert().getText();
-			Expected_Text = "Mentor does not have an active registration in SAM.gov. Confirm that you’ve typed the correct DUNS or ask the Mentor to register with SAM.gov in order to proceed.";
-			assertEquals(Actual_Text, Expected_Text);
-			webDriver.switchTo().alert().accept();
 			// Enter a valid DUNS# and verify business.
 			webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
 			webDriver.findElement(By.linkText("Confirm DUNS")).click();
@@ -941,7 +790,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			Expected_Text = "You must confirm the DUNS number";
 			assertEquals(Actual_Text, Expected_Text);
 			Thread.sleep(4000);
-			// webDriver.findElement(By.linkText("Confirm DUNS")).click();
+			webDriver.findElement(By.linkText("Confirm DUNS")).click();
 			logger.info(webDriver.switchTo().alert().getText());
 			Actual_Text = webDriver.switchTo().alert().getText();
 			Expected_Text = "Please confirm that this is the correct business:\nEntity 45 Legal Business Name";
@@ -1036,14 +885,11 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			webDriver.findElement(By.id("legal_4")).click();
 			webDriver.findElement(By.id("legal_5")).click();
 			Thread.sleep(2000);
-			//webDriver.findElement(By.id("accept-button")).click();
+			// webDriver.findElement(By.id("accept-button")).click();
 			webDriver.close();
 			return;
 
-		}}
-	private void assertFalse(String actual_Text, String expected_Text) {
-		// TODO Auto-generated method stub
-
+		}
 	}
 
 	@After

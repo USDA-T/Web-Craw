@@ -9,11 +9,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import junit.framework.TestCase;
 
-public class TestMppBuildQuestionnaireTs2 extends TestCase {
-
-	private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs2.class.getName());
+public class TestMppBuildQuestionnaireTs3 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs3.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -30,7 +32,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		String Actual_Text;
 		String Expected_Text;
 		// Login to dashboard.
-		logger.info("Mpp question test Scenario 2 possitive");
+		logger.info("Mpp question test Scenario 3 possitive + skip Logic");
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
@@ -50,12 +52,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Verifying detail meaning for question.
 		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
 		Expected_Text = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Click on the continue button without answering the question and
-		// verify error message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
-		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select No and commit.
 		webDriver.findElement(By.id("answers_117_value_no")).click();
@@ -83,15 +79,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mentor_for_profit']/fieldset/p[2]")).getText();
 		Expected_Text = "A mentor is defined as “a for-profit business concern of any size.”";
 		assertEquals(Actual_Text, Expected_Text);
-		// Open this command when fix.
-		// Actual_Text = webDriver.findElement(By.xpath("")).getText();
-		// Expected_Text = "Affiliation exists when one business has the power
-		// to control another business. This could occur through ownership,
-		// management, or other relationships or interactions between two
-		// parties. If the SBA has made a determination of affiliation between
-		// you and your mentor, they would have counted your business’s
-		// receipts, employees, or other measures of size.";
-		// assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver
 				.findElement(By.xpath("//div[@id='answers_mentor_over_40_percent_protege']/fieldset/p[2]")).getText();
 		Expected_Text = "To raise capital for the Protégé firm the Mentor may generally own an equity interest of up to 40% in the Protégé firm. Reference: 13 CFR 124.520(d)(2)";
@@ -116,27 +103,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_119_value_yes")).click();
 		webDriver.findElement(By.id("answers_120_value_no")).click();
 		webDriver.findElement(By.id("answers_121_value_no")).click();
-		// Verify the Reference link.
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window1 = webDriver.getWindowHandle();
-		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("13 CFR 124.520(d)(2)")).click();
-		assertEquals(Actual_Text, Expected_Text);
-		java.util.Set<String> S1 = webDriver.getWindowHandles();
-		Iterator<String> i1 = S1.iterator();
-		while (i1.hasNext()) {
-			String Second_window1 = i1.next();
-			if (!main_window1.equalsIgnoreCase(Second_window1)) {
-				webDriver.switchTo().window(Second_window1);
-				logger.info("After switching title is =" + webDriver.getTitle());
-				webDriver.close();
-				webDriver.switchTo().window(main_window1);
-				logger.info("Back to manin_window = certify.sba.gov");
-			} else {
-				logger.info("Second Window is not thesame as first window");
-			}
-			webDriver.findElement(By.name("commit")).click();
-		}
+		webDriver.findElement(By.name("commit")).click();
 		// NAICS Code Section, Verifying Question.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
 		Expected_Text = "Please select the NAICS code for which you are creating a mentor-protégé relationship:";
@@ -166,9 +133,10 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Click on the continue button without answering the question and
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
-		webDriver.findElement(By.id("answers_122_value")).click();
-		webDriver.findElement(By.xpath("//option[0]")).click();
-
+		// Select A NAICS code from t he drop down.
+		WebElement mySelect = webDriver.findElement(By.xpath("//*[@id='answers_122_value']"));
+		Select dropdown = new Select(mySelect);
+		dropdown.selectByIndex(1);
 		Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
 		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
@@ -179,7 +147,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_123_value_yes")).click();
 		webDriver.findElement(By.id("answers_124_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
-		
 		// Size Determination Section(Sub-Subsection 1.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
 		Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -191,83 +158,23 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select yes for the first two questions.
-		webDriver.findElement(By.id("answers_125_value_yes")).click();
+		webDriver.findElement(By.id("answers_125_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
-		// Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4")).getText();
-		Expected_Text = "Have you received a size redetermination letter from the SBA that subsequently found you to be small in that NAICS code?";
-		assertEquals(Actual_Text, Expected_Text);
-		
-		// Click on the continue button without answering the question and
-		// verify error message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("answers[126][value]-error")).getText();
-		Expected_Text = "Please answer this question";
-		assertEquals(Actual_Text, Expected_Text);
-		// Select yes for the first two questions.
-		webDriver.findElement(By.id("answers_126_value_yes")).click();
-		webDriver.findElement(By.name("commit")).click();
-		// Redetermination Info Section(Sub-Subsection 1.3), Verifying Question.
-		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-		Expected_Text = "Please upload the size redetermination letter issued by SBA.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Click on the continue button without answering the question and
-		// verify error message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-		Expected_Text = "Please upload the size redetermination letter issued by SBA.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Enter date started in letter.
-		webDriver.findElement(By.id("date-129")).sendKeys("12/24/2009");
-		// Verify attachment alert.
-		Actual_Text = webDriver.findElement(By.id("answers_127_attachment-error")).getText();
-		Expected_Text = "Attachment is required";
-		assertEquals(Actual_Text, Expected_Text);
-		// Select office.
-		webDriver.findElement(By.id("answers_128_value")).click();
-		webDriver.findElement(By.xpath("//option[@value='SBA Area Office 4']")).click();
-		webDriver.findElement(By.name("commit")).click();
-		// Upload a document.
-		MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-		montanaUploadDocument.MontanaUploadDocument();
-		webDriver.findElement(By.name("commit")).click();
-		webDriver.findElement(By.name("commit")).click();
+		// Verify the Size Redetermination Section(Sub-Subsection 1.2) is
+		// disabled , Verifying Question.
 		// Training Section(Subsection 2.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
 		Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
 		assertEquals(Actual_Text, Expected_Text);
-		// Verify the detail meaning text.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/p[2]"))
-				.getText();
-		Expected_Text = "Both the Protégé and the Mentor must complete the Mentor-Protégé Program training module.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Click on the continue button without answering the question and
-		// verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("answers_130_attachment-error")).getText();
-		Expected_Text = "Attachment is required";
-		assertEquals(Actual_Text, Expected_Text);
 		// Upload a document.
-		MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-		montanaUploadDocument1.MontanaUploadDocument();
-		webDriver.findElement(By.name("commit")).click();
-		webDriver.findElement(By.name("commit")).click();
-
-		// General Section, Verifying Question.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
-		Expected_Text = "Please upload the Protégé’s business plan.";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_other_active_mpp_agreements > fieldset > h4"))
-				.getText();
-		Expected_Text = "Do you have any active Mentor-Protégé Agreements with the SBA or another federal agency, either as a protégé, or as a mentor to another business?";
-		assertEquals(Actual_Text, Expected_Text);
-		// Verify the detail meaning text.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/p[2]")).getText();
-		Expected_Text = "View more information on completing a business plan on SBA’s website or find a local resource partner near you.";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_other_active_mpp_agreements']/fieldset/p[2]"))
-				.getText();
-		Expected_Text = "To participate in the All Small Mentor-Protégé Program, a protégé may have no more than two mentors across SBA’s Mentor-Protégé programs. Mentors may have no more than three protégés. Reference: 13 CFR 124.520";
+		MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+		montanaUploadDocument.MontanaUploadDocument();
+		Actions act1 = new Actions(webDriver);
+		act1.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
+		// Plan and Agreements
+		Thread.sleep(3000);
+		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		Expected_Text = "Plans and Agreements";
 		assertEquals(Actual_Text, Expected_Text);
 		// Click on the continue button without answering the question and
 		// verify alert message.
@@ -278,171 +185,18 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		Actual_Text = webDriver.findElement(By.id("answers[132][value]-error")).getText();
 		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
-		// Verify the Reference link.
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window3 = webDriver.getWindowHandle();
-		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("completing a business plan")).click();
-		assertEquals(Actual_Text, Expected_Text);
-		java.util.Set<String> S3 = webDriver.getWindowHandles();
-		Iterator<String> i3 = S3.iterator();
-		while (i3.hasNext()) {
-			String Second_window1 = i3.next();
-			if (!main_window3.equalsIgnoreCase(Second_window1)) {
-				webDriver.switchTo().window(Second_window1);
-				logger.info("After switching title is =" + webDriver.getTitle());
-				webDriver.close();
-				webDriver.switchTo().window(main_window3);
-				logger.info("Back to manin_window = certify.sba.gov");
-			} else {
-				logger.info("Second Window is not thesame as first window");
-			}
-			webDriver.findElement(By.name("commit")).click();
-		}
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window31 = webDriver.getWindowHandle();
-		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("local resource partner near you.")).click();
-		assertEquals(Actual_Text, Expected_Text);
-		java.util.Set<String> S31 = webDriver.getWindowHandles();
-		Iterator<String> i31 = S31.iterator();
-		while (i31.hasNext()) {
-			String Second_window1 = i31.next();
-			if (!main_window31.equalsIgnoreCase(Second_window1)) {
-				webDriver.switchTo().window(Second_window1);
-				logger.info("After switching title is =" + webDriver.getTitle());
-				webDriver.close();
-				webDriver.switchTo().window(main_window31);
-				logger.info("Back to manin_window = certify.sba.gov");
-			} else {
-				logger.info("Second Window is not thesame as first window");
-			}
-			webDriver.findElement(By.name("commit")).click();
-		}
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window311 = webDriver.getWindowHandle();
-		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("13 CFR 124.520")).click();
-		assertEquals(Actual_Text, Expected_Text);
-		java.util.Set<String> S311 = webDriver.getWindowHandles();
-		Iterator<String> i311 = S311.iterator();
-		while (i311.hasNext()) {
-			String Second_window1 = i311.next();
-			if (!main_window311.equalsIgnoreCase(Second_window1)) {
-				webDriver.switchTo().window(Second_window1);
-				logger.info("After switching title is =" + webDriver.getTitle());
-				webDriver.close();
-				webDriver.switchTo().window(main_window311);
-				logger.info("Back to manin_window = certify.sba.gov");
-			} else {
-				logger.info("Second Window is not thesame as first window");
-			}
-			webDriver.findElement(By.name("commit")).click();
-		}
 		// Upload a document.
-		MontanaUploadDocumentPage montanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
-		montanaUploadDocument11.MontanaUploadDocument();
+		MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
+		montanaUploadDocument0.MontanaUploadDocument();
 		// Select yes for the Second questions.
-		webDriver.findElement(By.id("answers_132_value_yes")).click();
-		webDriver.findElement(By.name("commit")).click();
-		// Active Agreements Section, Verifying Question.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
-				.getText();
-		Expected_Text = "Please describe any active agreements in which you are involved.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Click on the continue button and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		logger.info(webDriver.switchTo().alert().getText());
-		Actual_Text = webDriver.switchTo().alert().getText();
-		Expected_Text = "You must have at least 1 agreements";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.switchTo().alert().accept();
-		// Add Agreement (s).
+		webDriver.findElement(By.id("answers_132_value_no")).click();
 		Thread.sleep(4000);
-		webDriver.findElement(By.cssSelector("span.add-color")).click();
-		Thread.sleep(4000);
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("date-133-error")).getText();
-		Expected_Text = "This field is required.";
-		assertEquals(Actual_Text, Expected_Text);
-		Actual_Text = webDriver.findElement(By.id("input-type-text-error")).getText();
-		Expected_Text = "This field is required.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Select Role.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_role_1 > fieldset > h4")).getText();
-		Expected_Text = "What is your role in the agreement?";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.findElement(By.id("answers_133_1_0_value")).click();
-		webDriver.findElement(By.xpath("//option[@value='Protégé']")).click();
-		// Select agency.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_agency_1 > fieldset > h4"))
-				.getText();
-		Expected_Text = "Through which agency is this agreement established?";
-		assertEquals(Actual_Text, Expected_Text);
-		// Verify list of agencies.
-		logger.info(webDriver.findElement(By.name("answers[133][1][1][value]")).getText());
-		Actual_Text = webDriver.findElement(By.name("answers[133][1][1][value]")).getText();
-		Expected_Text = "Department of Defense\nDepartment of Energy\nDepartment of Homeland Security\nDepartment of Transportation\nDepartment of Treasury\nDepartment of Veterans Affairs\nGeneral Services Administration\nNational Aeronautics and Space Administration\nSmall Business Administration\nU.S. Agency for International Development";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.findElement(By.xpath("//option[@value='National Aeronautics and Space Administration']")).click();
-		// Effective date
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).getText();
-		Expected_Text = "What is the effective date of the agreement?";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).sendKeys("12/23/2008");
-		// Name of other business.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4")).getText();
-		Expected_Text = "What is the name of the other business involved in the agreement?";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4"))
-				.sendKeys("Cyber Tech Solution");
-		// NAICS question validation.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_naics_1 > fieldset > h4")).getText();
-		Expected_Text = "Please select the NAICS code for which the mentor-protégé relationship was established.";
-		assertEquals(Actual_Text, Expected_Text);
-		Thread.sleep(3000);
-		webDriver.findElement(By.id("answers_133_1_4_value")).click();
-		webDriver.findElement(By.xpath("//option[@value='335314']")).click();
-		// Detail Meaning for NAICS.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
-				.getText();
-		Expected_Text = "The NAICS codes listed above are the primary or secondary codes associated with your business in SAM.gov. You may update your SAM.gov profile to include an additional NAICS code if the correct NAICS is not listed. If you add a code to your SAM.gov profile, please wait 24 hours for us to receive the update and then return to continue your application.";
-		assertEquals(Actual_Text, Expected_Text);
-		// click on add agreement.
-		webDriver.findElement(By.cssSelector("span.add-color")).click();
-
-		// Remove agreement.
-		webDriver.findElement(By.xpath("(//a[contains(text(),'Remove')])[2]")).click();
-		Actual_Text = webDriver.switchTo().alert().getText();
-		Expected_Text = "Are you sure?";
-		assertEquals(Actual_Text, Expected_Text);
-		webDriver.switchTo().alert().accept();
-		webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
-		webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
-		webDriver.findElement(By.name("commit")).click();
-		// Active Agreement Documents Section.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_active_agreemets']/fieldset/h4"))
-				.getText();
-		Expected_Text = "Please upload copies of the active agreements in which you are involved and any other applicable documentation.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Attempt to commit and verify alert message.
-		webDriver.findElement(By.name("commit")).click();
-		Actual_Text = webDriver.findElement(By.id("answers_134_attachment-error")).getText();
-		Expected_Text = "Attachment is required";
-		assertEquals(Actual_Text, Expected_Text);
-		// Upload a document.
-		MontanaUploadDocumentPage montanaUploadDocument111 = new MontanaUploadDocumentPage(webDriver);
-		montanaUploadDocument111.MontanaUploadDocument();
-		Thread.sleep(3000);
-		webDriver.findElement(By.name("commit")).click();
-		webDriver.findElement(By.name("commit")).click();
+		Actions act3 = new Actions(webDriver);
+		act3.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
+		// verify Active Agreements Section Disabled.
 		// MPP Agreement Section.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
 		Expected_Text = "Please upload the written Mentor-Protégé Agreement signed and dated by both the Mentor and the Protégé.";
-		assertEquals(Actual_Text, Expected_Text);
-		// Details.
-		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement']/fieldset/p[2]")).getText();
-		Expected_Text = "Download a Word template for a sample Mentor-Protégé Agreement and upload in PDF format.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Attempt to commit and verify alert message.
 		webDriver.findElement(By.name("commit")).click();
@@ -450,10 +204,10 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		Expected_Text = "Attachment is required";
 		assertEquals(Actual_Text, Expected_Text);
 		// Upload a document.
-		MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
-		montanaUploadDocument1111.MontanaUploadDocument();
-		webDriver.findElement(By.name("commit")).click();
-		webDriver.findElement(By.name("commit")).click();
+		MontanaUploadDocumentPage montanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
+		montanaUploadDocument2.MontanaUploadDocument();
+		Actions act31 = new Actions(webDriver);
+		act31.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
 		// Protégé Needs Section.
 		Thread.sleep(3000);
 		Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/p")).getText();
@@ -638,8 +392,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_140_value_yes")).click();
 		webDriver.findElement(By.id("answers_141_value_yes")).click();
 		webDriver.findElement(By.xpath("//div[@id='answers[141][value]']/label")).click();
-		webDriver.findElement(By.name("commit")).click();
-		// Management/Technical Needs Section, verifying questions.
+		Actions act4 = new Actions(webDriver);
+		act4.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();		// Management/Technical Needs Section, verifying questions.
 		Thread.sleep(3000);
 		Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/p")).getText();
 		Expected_Text = "What are your needs within this area, activities the Mentor will do to support those needs, the timeline for meeting those needs, and the way you will measure whether needs are met? Your answers to these questions are the basis for your Mentor-Protégé relationship and should match what you outline in your Mentor-Protégé Agreement.";
@@ -918,7 +672,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			webDriver.findElement(By.id("general_admin")).click();
 			Actual_Text = webDriver.findElement(By.id("input-type-textarea")).getText();
 			Expected_Text = "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from all vines in the garden of Eden.";
-			assertFalse(Actual_Text, Expected_Text);
+			assertNotSame(Actual_Text, Expected_Text);
 			webDriver.findElement(By.name("commit")).click();
 			// Training.
 			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -1037,13 +791,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			webDriver.findElement(By.id("legal_5")).click();
 			Thread.sleep(2000);
 			//webDriver.findElement(By.id("accept-button")).click();
-			webDriver.close();
 			return;
-
-		}}
-	private void assertFalse(String actual_Text, String expected_Text) {
-		// TODO Auto-generated method stub
-
+		}
 	}
 
 	@After

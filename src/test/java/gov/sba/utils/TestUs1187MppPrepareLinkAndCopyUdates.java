@@ -10,10 +10,10 @@ import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
-public class TestUs1187MppPrepareLink extends TestCase {
+public class TestUs1187MppPrepareLinkAndCopyUdates extends TestCase {
 	// Set The variables/Define
 	private static WebDriver webDriver;
-	private static final Logger logger = LogManager.getLogger(TestUs1187MppPrepareLink.class.getName());
+	private static final Logger logger = LogManager.getLogger(TestUs1187MppPrepareLinkAndCopyUdates.class.getName());
 
 	@Before
 	public void setUp() throws Exception {
@@ -56,11 +56,9 @@ public class TestUs1187MppPrepareLink extends TestCase {
 			Actual_Text = copy_Content.getText();
 			logger.info(Actual_Text);
 			// Below to Assert the new Mpp Text added
-			WebElement copy_Content_Parent = copy_Content.findElement(By.xpath("./.."));
-			String total_Text = copy_Content_Parent.getText();
-			logger.info(total_Text);
-			String text_All_MppCopy = "All Small Mentor-Protégé Program Preparation Checklist\nQualifying individual(s) include all businesses that meet the size standard for small in the NAICS code in which they are seeking business development assistance\nActive registration in the System for Award Management for the firm, available at SAM.gov (Note: The firm’s DUNS number and EIN, and MPIN must exactly match SAM registration)\nElectronic versions (in PDF format) of the following documents:\nCertificates of completion for viewing the All Small MPP training module (mandatory viewing for both the Protégé and the Mentor)\nYour completed business plan\nAny active Mentor-Protégé Agreements you have with either the SBA or another federal agency\nAn SBA size redetermination letter if the SBA has ever found you to be “other than small” in the NAICS code in which you’re requesting business development assistance";
-			assertEquals(text_All_MppCopy, total_Text);
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='prep-for-cert']/div[6]/div/div")).getText();
+			Expected_Text = "All Small Mentor-Protégé Program Preparation Checklist\nA Mentor-Protégé relationship should be established before starting the application – this is not a matching program. The Protégé firm must meet the size standard for small in the NAICS code in which they are seeking business development assistance.\nActive registration in the System for Award Management for the firm, available at SAM.gov (Note: The firm’s DUNS number and EIN, and MPIN must exactly match SAM registration)\nElectronic versions (in PDF format) of the following documents:\nCertificates of completion for viewing the All Small MPP training module (mandatory viewing for both the Protégé and the Mentor)\nYour completed business plan\nAny active Mentor-Protégé Agreements you have with either the SBA or another federal agency\nAn SBA size redetermination letter if the SBA has ever found you to be “other than small” in the NAICS code in which you’re requesting business development assistance";
+			assertEquals(Actual_Text, Expected_Text);
 
 		} catch (Exception e) {
 			logger.info("Link is not present" + e.toString());
