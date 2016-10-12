@@ -167,7 +167,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.id("answers_122_value")).click();
-		webDriver.findElement(By.xpath("//option[0]")).click();
+		webDriver.findElement(By.xpath("//option[2]")).click();
 
 		Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
 		Expected_Text = "Please answer this question";
@@ -250,10 +250,10 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Upload a document.
 		MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
 		montanaUploadDocument1.MontanaUploadDocument();
+		Thread.sleep(2000);
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.name("commit")).click();
-
-		// General Section, Verifying Question.
+		// plans and Agreements, Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
 		Expected_Text = "Please upload the Protégé’s business plan.";
 		assertEquals(Actual_Text, Expected_Text);
@@ -344,6 +344,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		montanaUploadDocument11.MontanaUploadDocument();
 		// Select yes for the Second questions.
 		webDriver.findElement(By.id("answers_132_value_yes")).click();
+		Thread.sleep(4000);
 		webDriver.findElement(By.name("commit")).click();
 		// Active Agreements Section, Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
