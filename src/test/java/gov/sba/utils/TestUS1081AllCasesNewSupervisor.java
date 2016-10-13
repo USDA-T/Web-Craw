@@ -27,7 +27,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 	}
 
 	@Test
-	public void TestMainTest() throws Exception {
+	public void testMainTest() throws Exception {
 		// Login to dashboard.
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
@@ -148,7 +148,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
 		catch (Exception e) {
 			logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
-			logger_US1081.info("test failed as return_vendor link dididnot work");
+			//logger_US1081.info("test failed as return_vendor link dididnot work");
 		}
 
 	}
