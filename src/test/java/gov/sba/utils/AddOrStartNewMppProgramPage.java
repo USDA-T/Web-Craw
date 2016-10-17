@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import junit.framework.TestCase;
 
@@ -31,12 +32,13 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 			Expected_Text = "Join a new program";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify and Click on the EDWOSB Certification to select.
-			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[3]"))
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]"))
 					.getText();
 			Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
 			assertEquals(Actual_Text, Expected_Text);
 			// Click on the add new certification button.
-			webDriver.findElement(By.id("certificate_type_mpp")).click();
+			Actions act1 = new Actions(webDriver);
+		    act1.doubleClick(webDriver.findElement(By.id("certificate_type_mpp"))).build().perform();
 			webDriver.findElement(By.id("add_certification")).click();
 			// Verify and validate the terms for the certification.
 			Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();

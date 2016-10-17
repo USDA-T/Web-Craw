@@ -26,7 +26,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 		String Actual_Text;
 		String Expected_Text;
 		// Login to dashboard.
-		logger.info("Mpp question test Scenario 2 possitive");
+		logger.info("Mpp question test Scenario 1 possitive");
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
@@ -160,8 +160,8 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 		webDriver.findElement(By.id("legal_3")).click();
 		webDriver.findElement(By.id("legal_4")).click();
 		webDriver.findElement(By.id("legal_5")).click();
-		Thread.sleep(2000);
-		webDriver.findElement(By.id("accept-button")).click();
+		return;
+		//webDriver.findElement(By.id("accept-button")).click();
 	}
 
 	@After

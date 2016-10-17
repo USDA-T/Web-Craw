@@ -1,7 +1,5 @@
 package gov.sba.utils;
 
-import static org.junit.Assert.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,9 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import junit.framework.TestCase;
 
-public class TestMPPBuild_Questionaries_Scenarios_3 {
-	private static final Logger logger = LogManager.getLogger(TestMPPBuild_Questionaries_Scenarios_3.class.getName());
+public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionariesScenariosS3.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -154,7 +153,6 @@ public class TestMPPBuild_Questionaries_Scenarios_3 {
 		webDriver.findElement(By.id("answers_123_value_yes")).click();
 		webDriver.findElement(By.id("answers_124_value_yes")).click();
 		webDriver.findElement(By.name("commit")).click();
-
 		// Size Determination Section(Sub-Subsection 1.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
 		Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -170,7 +168,6 @@ public class TestMPPBuild_Questionaries_Scenarios_3 {
 		webDriver.findElement(By.name("commit")).click();
 		// Verify the Size Redetermination Section(Sub-Subsection 1.2) is
 		// disabled , Verifying Question.
-
 		// Training Section(Subsection 2.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
 		Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
