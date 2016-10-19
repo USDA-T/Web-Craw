@@ -24,7 +24,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 	int get_The_Row_From_Login_Data;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws Exception {	
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
@@ -54,6 +54,8 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 			logger_US1463.info(all_Cells1_A.size());
 			logger_US1463.info('|' + all_Cells1_A.get(0).getText() + '|');
 			logger_US1463.info('|' + all_Cells1_A.get(2).getText() + '|');
+			//Expire date for pending status application-US1699
+			logger_US1463.info('|' + all_Cells1_A.get(1).getText() + '|');
 			// If Pending - Click and verify the summary page
 			// Thread.sleep(999000);
 			if (all_Cells1_A.get(2).getText().equals("Pending")
@@ -67,6 +69,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 				List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
 				logger_US1463.info(all_Cells1.size());
 				logger_US1463.info('|' + all_Cells1.get(0).getText() + '|');
+				logger_US1463.info('|' + all_Cells1.get(1).getText() + '|');
 				logger_US1463.info('|' + all_Cells1.get(2).getText() + '|');
 				String duns_Number_status_To_Verify = all_Cells1.get(2).getText();
 				// US1463-If Pending - Click and verify the summary page
@@ -89,7 +92,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 					logger_US1463.info(connection_SBA_One_Qa);
 					Statement statement_SQL = connection_SBA_One_Qa.createStatement();
 					ResultSet result_Set = statement_SQL
-							.executeQuery("select  C.duns_number  as new_Duns, D.workflow_state  as work_state"
+							.executeQuery("select  C.duns_number  as new_Duns, D.workflow_state  as work_state,  B.issue_date as issue_date"
 									+ "		from 	sbaone.sba_applications A,	sbaone.certificates B, "
 									+ "				sbaone.organizations C,		sbaone.certificates D "
 									+ "		where 	A.organization_id = B.organization_id "
@@ -101,6 +104,16 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 					// -- Get Data from DB to test Pending status validation on
 					// UI with DB
 					String new_Duns = result_Set.getString("new_Duns");
+					
+					String issue_date = result_Set.getString("issue_date");	
+					if (result_Set.wasNull()){	
+						Assert.assertEquals("Test case Passed on Issue date For US1491","Test case Passed on Issue date For US1491");
+					}
+					else{
+						logger_US1463.info(issue_date);
+						Assert.assertEquals("Test case Failed For issue date value:",issue_date);
+					}
+					
 					Assert.assertEquals(result_Set.getString("work_state").toLowerCase(),
 							duns_Number_status_To_Verify.toLowerCase());
 					logger_US1463.info(new_Duns); // Thread.sleep(50000);

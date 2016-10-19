@@ -72,23 +72,25 @@ public class VerifyWosbFlow {
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
     	logger.info("Certifications Deleted To start again");
 
-		String myCertText = webDriver.findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'My certifications')]")).getText();
-		assertEquals(myCertText, "My certifications");
-		WebElement radio_Element = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']"));
+		String myCertText = webDriver.findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'My SBA Contracting Programs')]")).getText();
+		assertEquals(myCertText, "My SBA Contracting Programs");
+		WebElement radio_Element = webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_wosb']"));
 		WebElement add_button = webDriver.findElement(By.id("add_certification"));
 		logger.info(add_button.getAttribute("disabled"));
 		assertEquals(add_button.getAttribute("disabled"), "true");
 		radio_Element.click();
-		try {webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click(); 
-		webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click();} catch (Exception e){};
+		try {
+			webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_wosb']")).click(); 
+		} 	catch (Exception e){};
 		assertTrue(Boolean.toString(add_button.isEnabled()), true);
 		Thread.sleep(2000);
-		webDriver.findElement(By.id("add_certification")).click();
 		try {webDriver.findElement(By.id("add_certification")).click();
 		webDriver.findElement(By.id("add_certification")).click();
-		} catch (Exception e){}		
+		} catch (Exception e){}
+		
 		Thread.sleep(5000);
 		webDriver.findElement(By.className("accept_button")).click();
+		
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 		WebElement current_Row_Draft = webDriver.findElement(By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Draft']"));
 		assertEquals(current_Row_Draft.getText(), "Draft");
@@ -97,23 +99,20 @@ public class VerifyWosbFlow {
 		logger.info(current_Row.getText());
 		List<WebElement> all_Cells = current_Row.findElements(By.xpath("td"));
 		assertEquals(all_Cells.get(0).getText(), "WOSB Self-Certification");
-		assertEquals(all_Cells.get(1).getText(), "");
+		//assertEquals(all_Cells.get(1).getText(), "");
 		assertEquals(all_Cells.get(2).getText(), "Draft");
-		assertEquals(all_Cells.get(3).getText(), "Delete");
-		all_Cells.get(3).findElement(By.xpath("//a[@class='delete-cert'][@data-method='delete'][text()='Delete']")).click();
+		assertEquals(all_Cells.get(4).getText(), "Delete");
+		all_Cells.get(4).findElement(By.xpath("//a[@class='delete-cert'][@data-method='delete'][text()='Delete']")).click();
 		Thread.sleep(3000);
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 		//        First Flow - Check For Active 		
-		webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_wosb']")).click();
-		webDriver.findElement(By.id("add_certification")).click();
-		try {webDriver.findElement(By.id("add_certification")).click();
-		webDriver.findElement(By.id("add_certification")).click();
+		webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_wosb']")).click();
+		try {
+			webDriver.findElement(By.id("add_certification")).click();
 		} catch (Exception e){}
 		
 		logger.info("Going into Partnerships page");
-		//webDriver.findElement(By.className("accept_button")).click();
-		//try{webDriver.findElement(By.className("accept_button")).click();
-		//webDriver.findElement(By.className("accept_button")).click();}catch (Exception e){}
+
 		// Corp test for 1st person.
 		ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
 		scorpQuestions.ScorpQuestions();

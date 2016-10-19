@@ -112,11 +112,13 @@ public class VerifyEdwosbFlow extends TestCase {
 		webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 		
 		//        First Flow - Check For Active 		
-		webDriver.findElement(By.xpath("//div[@id='certificate_choice']/input[@id='certificate_type_edwosb']")).click();
+		webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']")).click();
 		webDriver.findElement(By.id("add_certification")).click();
 		try {webDriver.findElement(By.id("add_certification")).click();
 		webDriver.findElement(By.id("add_certification")).click();
-		} catch (Exception e){}
+		} catch (Exception e){
+			
+		}
 		
 		logger.info("Going into Partnerships page");
 		//webDriver.findElement(By.className("accept_button")).click();
