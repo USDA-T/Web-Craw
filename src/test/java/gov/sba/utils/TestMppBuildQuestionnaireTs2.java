@@ -22,9 +22,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 26;
+		get_The_Row_From_Login_Data = 3;
 	}
-
 	@Test
 	public void testMainTest() throws Exception {
 		String Actual_Text;
@@ -118,7 +117,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.id("answers_121_value_no")).click();
 		// Verify the Reference link.
 		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window1 = webDriver.getWindowHandle();
+		String main_window = webDriver.getWindowHandle();
 		logger.info("Before switching, title is = certify.sba.gov");
 		webDriver.findElement(By.linkText("13 CFR 124.520(d)(2)")).click();
 		assertEquals(Actual_Text, Expected_Text);
@@ -126,17 +125,19 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		Iterator<String> i1 = S1.iterator();
 		while (i1.hasNext()) {
 			String Second_window1 = i1.next();
-			if (!main_window1.equalsIgnoreCase(Second_window1)) {
+			if (!main_window.equalsIgnoreCase(Second_window1)) {
 				webDriver.switchTo().window(Second_window1);
 				logger.info("After switching title is =" + webDriver.getTitle());
 				webDriver.close();
-				webDriver.switchTo().window(main_window1);
+				webDriver.switchTo().window(main_window);
 				logger.info("Back to manin_window = certify.sba.gov");
 			} else {
 				logger.info("Second Window is not thesame as first window");
 			}
 			webDriver.findElement(By.name("commit")).click();
 		}
+		webDriver.switchTo().window(main_window);
+		logger.info("Back to manin_window "+webDriver.getTitle());
 		// NAICS Code Section, Verifying Question.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
 		Expected_Text = "Please select the NAICS code for which you are creating a mentor-protégé relationship:";
@@ -168,7 +169,6 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.findElement(By.id("answers_122_value")).click();
 		webDriver.findElement(By.xpath("//option[2]")).click();
-
 		Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
 		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
@@ -178,8 +178,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Select yes for the first two questions.
 		webDriver.findElement(By.id("answers_123_value_yes")).click();
 		webDriver.findElement(By.id("answers_124_value_yes")).click();
-		webDriver.findElement(By.name("commit")).click();
-		
+		webDriver.findElement(By.name("commit")).click();		
 		// Size Determination Section(Sub-Subsection 1.1), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
 		Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -196,8 +195,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		// Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4")).getText();
 		Expected_Text = "Have you received a size redetermination letter from the SBA that subsequently found you to be small in that NAICS code?";
-		assertEquals(Actual_Text, Expected_Text);
-		
+		assertEquals(Actual_Text, Expected_Text);	
 		// Click on the continue button without answering the question and
 		// verify error message.
 		webDriver.findElement(By.name("commit")).click();
@@ -403,7 +401,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		Thread.sleep(3000);
 		webDriver.findElement(By.id("answers_133_1_4_value")).click();
-		webDriver.findElement(By.xpath("//option[@value='335314']")).click();
+		webDriver.findElement(By.xpath("//option[@value='311611']")).click();
 		// Detail Meaning for NAICS.
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
 				.getText();
@@ -979,7 +977,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			// Verify Business name
 			logger.info("  Verify Business name");
 			Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-			Expected_Text = "Entity 399 Legal Business Name";
+			Expected_Text = "Entity 81 Legal Business Name";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify DUNS label
 			logger.info("  Verify DUNS label");
@@ -989,7 +987,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			// Verify DUNS number
 			logger.info("  Verify DUNS number");
 			Actual_Text = webDriver.findElement(By.cssSelector("span")).getText();
-			Expected_Text = "137151292";
+			Expected_Text = "172115728";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify first paragraph
 			logger.info("  Verify first paragraph");
@@ -1014,7 +1012,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			// Verify fifth paragraph
 			logger.info("  Verify fifth paragraph");
 			Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-			Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+			Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 81 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify sixth paragraph
 			logger.info("  Verify sixth paragraph");
@@ -1037,7 +1035,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
 			webDriver.findElement(By.id("legal_4")).click();
 			webDriver.findElement(By.id("legal_5")).click();
 			Thread.sleep(2000);
-			//webDriver.findElement(By.id("accept-button")).click();
+			webDriver.findElement(By.id("accept-button")).click();
 			webDriver.close();
 			return;
 

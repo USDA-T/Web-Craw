@@ -22,7 +22,7 @@ public class DeleteDraftCertPage extends TestCase {
 		try {
 			assertTrue(webDriver.getPageSource().contains("Draft"));
 			webDriver.findElement(By.linkText("Delete")).click();
-			// webDriver.switchTo().alert().accept();
+			 webDriver.switchTo().alert().accept();
 			try {
 				Thread.sleep(5000);
 			} catch (InterruptedException e) {

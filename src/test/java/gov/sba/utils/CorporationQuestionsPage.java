@@ -12,51 +12,56 @@ public class CorporationQuestionsPage {
 		this.webDriver = mydriver;
 	}
 	public void CorporationQuestions() throws Exception {
+		String Actual_Text=null;
+		String Expected_Text=null;
 		// Locate the accept button at the bottom of the EDWOSB agreement and
 		// click on it to continue.
 		webDriver.findElement(By.xpath(".//*[@id='new_sba_application']/input[3]")).click();
 		// Locate the 8(a) question and select No and continue.
-		String actual_Text1 = webDriver.findElement(By.cssSelector("h4")).getText();
-		String expected_Text1 = "The concern is currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and the 51% owner is a woman or women, or an economically disadvantaged woman or women.";
-		assertEquals(actual_Text1, expected_Text1);
+		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+		Expected_Text = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
+		assertEquals(Actual_Text, Expected_Text);
 		// Verify the More detail meaning for the 8(A) question.
 		String actual_Text2 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
 		String expected_Text2 = "If your company has already been approved by the 8(a) Program and confirmed 51% ownership is a woman or an economically disadvantaged woman, you already qualify for the WOSB Program. Please upload or attach your original 8(a) Acceptance Letter and a copy of your most recent updated Annual 8(a) Letter, and click the “Save and Continue” button to complete the WOSB or EDWOSB self-certification process.";
 		assertEquals(actual_Text2, expected_Text2);
+	    Actual_Text = webDriver.findElement(By.cssSelector("")).getText();
+		Expected_Text = "";
+		assertEquals(Actual_Text, Expected_Text);
 		webDriver.findElement(By.id("answers_65_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
 		logger.info("  8(a) question has been answered");
 		// Locate the Third Party Certification, question1 and select No and
 		// continue.
-		String actual_Text3 = webDriver.findElement(By.cssSelector("h4")).getText();
-		String expected_Text3 = "The concern is certified as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act, by an SBA-approved third-party certifier.";
-		assertEquals(actual_Text3, expected_Text3);
+		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+		Expected_Text = "The concern is certified as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act, by an SBA-approved third-party certifier.";
+		assertEquals(Actual_Text, Expected_Text);
 		// Verify the detail meaning for the third party question.
-		String actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text = "A Women-owned small business and economically disadvantaged women-owned small business may self-certify for the WOSB Program through this website or they may elect to use the services of a Third Party Certifier (TPC) to demonstrate eligibility. There is no requirement to use a TPC. However, if you have engaged a SBA-approved TPC to review your company information, you need to provide a copy of the most recent Third Party Certificate provided by the TPC and the Annual TCP Certificate if applicable.\n\nA concern that seeks EDWOSB or WOSB Certification from an SBA-approved certifier must submit its application directly to the approved certifier in accordance with the specific application procedures of the particular certifier. Any interested party may obtain such certification information and application by contacting the approved certifier at the address provided on SBA’s list of approved certifiers.\n\nThe only SBA Approved Third Party Certifiers are:";
-		assertEquals(actual_Text, expected_Text);
+		Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+		Expected_Text = "A Women-owned small business and economically disadvantaged women-owned small business may self-certify for the WOSB Program through this website or they may elect to use the services of a Third Party Certifier (TPC) to demonstrate eligibility. There is no requirement to use a TPC. However, if you have engaged a SBA-approved TPC to review your company information, you need to provide a copy of the most recent Third Party Certificate provided by the TPC and the Annual TCP Certificate if applicable.\n\nA concern that seeks EDWOSB or WOSB Certification from an SBA-approved certifier must submit its application directly to the approved certifier in accordance with the specific application procedures of the particular certifier. Any interested party may obtain such certification information and application by contacting the approved certifier at the address provided on SBA’s list of approved certifiers.\n\nThe only SBA Approved Third Party Certifiers are:";
+		assertEquals(Actual_Text, Expected_Text);
 		webDriver.findElement(By.id("answers_66_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
 		// Locate the Non-qualification question,Verify,select No and continue.
-		String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
-		String expected_Text4 = "The concern is in receipt of a decision by an SBA-approved third-party certifier that the concern does not qualify as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act.";
-		assertEquals(actual_Text4, expected_Text4);
+		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+		Expected_Text = "The concern is in receipt of a decision by an SBA-approved third-party certifier that the concern does not qualify as a WOSB or EDWOSB in accordance with Section 8(m) of the Small Business Act.";
+		assertEquals(Actual_Text, Expected_Text);
 		// Verify the more detail for the Non-qualification question.
-		String actual_Text5 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text5 = "Being denied eligibility by one of the SBA approved TPCs does not necessarily prevent you from qualifying for a self-certification if the circumstances of denial have changed. Any concern determined not to be a qualified WOSB or EDWOSB may request that SBA conduct an examination to determine its WOSB or EDWOSB eligibility at any time once it believes in good faith that it satisfies all of the eligibility requirements to qualify as an WOSB or EDWOSB.";
-		assertEquals(actual_Text5, expected_Text5);
+		Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+		Expected_Text = "Being denied eligibility by one of the SBA approved TPCs does not necessarily prevent you from qualifying for a self-certification if the circumstances of denial have changed. Any concern determined not to be a qualified WOSB or EDWOSB may request that SBA conduct an examination to determine its WOSB or EDWOSB eligibility at any time once it believes in good faith that it satisfies all of the eligibility requirements to qualify as an WOSB or EDWOSB.";
+		assertEquals(Actual_Text, Expected_Text);
 		webDriver.findElement(By.id("answers_68_value_no")).click();
 		webDriver.findElement(By.name("commit")).click();
 		logger.info("  Third Party questions have been answered");
 		// Locate the Three Business Corporation(Stocks) question
 		// 1,2and2, Verify select N/A and continue.
-		String actual_Text6 = webDriver.findElement(By.cssSelector("h4")).getText();
-		String expected_Text6 = "Does the corporation's stock ledger and stock certificates evidence that women own at least 51% of all outstanding stock?";
-		assertEquals(actual_Text6, expected_Text6);
+		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+		Expected_Text = "Does the corporation's stock ledger and stock certificates evidence that women own at least 51% of all outstanding stock?";
+		assertEquals(Actual_Text, Expected_Text);
 		// Verify the more detail meaning for the Corporation questions.
-		String actual_Text7 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		String expected_Text7 = "Do not consider unexercised stock options that are held by women. If you can answer yes” to this question, please return to question 1 and 2 and recalculate your answers.";
-		assertEquals(actual_Text7, expected_Text7);
+		Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+		Expected_Text = "Do not consider unexercised stock options that are held by women. If you can answer yes” to this question, please return to question 1 and 2 and recalculate your answers.";
+		assertEquals(Actual_Text, Expected_Text);
 		webDriver.findElement(By.xpath(".//*[@id='answers[69][value]']/label[2]")).click();
 		webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("Testing");
 		webDriver.findElement(By.id("answers_70_value_no")).click();
@@ -67,9 +72,9 @@ public class CorporationQuestionsPage {
 		logger.info("  Business questions have been answered");
 		// Locate the Corporation Ownership question 1,Verify, select No and
 		// continue.
-		String actual_Text8 = webDriver.findElement(By.cssSelector("h4")).getText();
-		String expected_Text8 = "Does the corporation have any unexercised stock options or similar agreements?";
-		assertEquals(actual_Text8, expected_Text8);
+		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+		Expected_Text = "Does the corporation have any unexercised stock options or similar agreements?";
+		assertEquals(Actual_Text, Expected_Text);
 		// Verify the detail meaning for the Corporation Ownership question.
 		String actual_Text9 = webDriver.findElement(By.cssSelector("p")).getText();
 		String expected_Text9 = "In determining unconditional ownership of the concern, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. 13 CFR 127.201(f).";

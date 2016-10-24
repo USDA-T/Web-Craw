@@ -83,8 +83,7 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
 	    webDriver.findElement(By.cssSelector("#document_library_associate")).click();
 	    webDriver.findElement(By.id("answers_70_value_yes")).click();
 	    webDriver.findElement(By.id("answers_71_value_yes")).click();
-	    webDriver.findElement(By.name("commit")).click();
-	    
+	    webDriver.findElement(By.name("commit")).click();	    
 	    // ERROR: Caught exception [ERROR: Unsupported command [getTable | css=table.display-table.1.0 | ]]
 	    webDriver.findElement(By.id("answers_72_value_yes")).click();
 	    webDriver.findElement(By.name("commit")).click();
@@ -92,7 +91,6 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
 	    webDriver.findElement(By.name("commit")).click();
 	    Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
 		Expected_Text = "Documents previously added";
-		
 	}
 
 	@After

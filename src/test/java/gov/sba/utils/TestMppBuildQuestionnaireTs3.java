@@ -24,7 +24,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 26;
+		get_The_Row_From_Login_Data = 3;
 	}
 
 	@Test
@@ -732,7 +732,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			// Verify Business name
 			logger.info("  Verify Business name");
 			Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-			Expected_Text = "Entity 399 Legal Business Name";
+			Expected_Text = "Entity 81 Legal Business Name";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify DUNS label
 			logger.info("  Verify DUNS label");
@@ -742,7 +742,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			// Verify DUNS number
 			logger.info("  Verify DUNS number");
 			Actual_Text = webDriver.findElement(By.cssSelector("span")).getText();
-			Expected_Text = "137151292";
+			Expected_Text = "172115728";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify first paragraph
 			logger.info("  Verify first paragraph");
@@ -767,7 +767,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			// Verify fifth paragraph
 			logger.info("  Verify fifth paragraph");
 			Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-			Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+			Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 81 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
 			assertEquals(Actual_Text, Expected_Text);
 			// Verify sixth paragraph
 			logger.info("  Verify sixth paragraph");
