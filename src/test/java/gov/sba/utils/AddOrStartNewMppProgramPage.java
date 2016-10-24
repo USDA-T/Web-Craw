@@ -31,6 +31,10 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 			Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
 			Expected_Text = "Join a new program";
 			assertEquals(Actual_Text, Expected_Text);
+			//Verify updates for max application for each program.
+			Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
+			Expected_Text = "You may only have one active WOSB application and one active EDWOSB application. You may have up to two active All Small MPP applications. If you need to make edits or changes to a submitted application, please contact the respective program office to release your application back to you: wosb@sba.gov, AllSmallMpp@sba.gov";
+			assertEquals(Actual_Text, Expected_Text);
 			// Verify and Click on the EDWOSB Certification to select.
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[3]"))
 					.getText();
