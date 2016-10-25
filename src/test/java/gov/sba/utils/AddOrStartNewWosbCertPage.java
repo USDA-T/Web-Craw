@@ -21,7 +21,7 @@ public class AddOrStartNewWosbCertPage {
 			if (webDriver.getPageSource().contains("Active")) {
 				logger.info("There is (are) an active certification on the dashboard");
 				// Click on the certification link.
-				webDriver.findElement(By.linkText("Certifications")).click();
+				webDriver.findElement(By.linkText("Programs")).click();
 				Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
 				Expected_Text = "Start a new certification";
 				assertEquals(Actual_Text, Expected_Text);

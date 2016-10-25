@@ -210,7 +210,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 			logger.info("Back to manin_window "+webDriver.getTitle());
 				// Click on the Accept button.
 				webDriver.findElement(By.name("commit")).click();
-
+				
 			}
 		}
 	}

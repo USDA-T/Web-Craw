@@ -207,6 +207,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 
 	@After
 	public void tearDown() throws Exception {
-		// webDriver.quit();
+		webDriver.quit();
 	}
 }
