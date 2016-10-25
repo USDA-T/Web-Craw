@@ -24,7 +24,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 	int get_The_Row_From_Login_Data;
 
 	@Before
-	public void setUp() throws Exception {	
+	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
@@ -34,6 +34,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 	@Test
 	public void testMainTest() throws Exception {
 		// Login to dashboard.
+		@SuppressWarnings("unused")
 		Boolean pending_Application_Found = false;
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
@@ -46,7 +47,8 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 					.findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
 			// logger_US1463.info(get_Current_Duns_No.findElement(By.xpath("..")).getAttribute("innerHTML"));
 			logger_US1699.info(get_Current_Duns_No);
-			WebElement current_Row_Draft1_A = webDriver.findElement(By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
+			WebElement current_Row_Draft1_A = webDriver.findElement(
+					By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
 			WebElement current_Row1_A = current_Row_Draft1_A.findElement(By.xpath("..")).findElement(By.xpath(".."));
 			logger_US1699.info(current_Row1_A.getText());
 			List<WebElement> all_Cells1_A = current_Row1_A.findElements(By.xpath("td"));
@@ -58,7 +60,8 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 					&& all_Cells1_A.get(0).getText().equals("MPP Application")) {
 				// Check Programs Pending status
 				webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-				WebElement current_Row_Draft1 = webDriver.findElement(By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));		
+				WebElement current_Row_Draft1 = webDriver.findElement(By.xpath(
+						"//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP Application')]"));
 				WebElement current_Row1 = current_Row_Draft1.findElement(By.xpath("..")).findElement(By.xpath(".."));
 				logger_US1699.info(current_Row1.getText());
 				List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
@@ -70,11 +73,13 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 				if (all_Cells1.get(3).getText().equals("Pending")
 						&& all_Cells1.get(0).getText().equals("MPP Application")) {
 					all_Cells1.get(0).findElement(By.xpath("a")).click();
-					WebElement current_Title = webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));		
+					WebElement current_Title = webDriver.findElement(By.xpath(
+							"//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
 					logger_US1699.info(current_Title.getText());
-					WebElement current_Title_Business = webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
+					WebElement current_Title_Business = webDriver.findElement(By.xpath(
+							"//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
 					logger_US1699.info(current_Title_Business.getText());
-			      	// Connect SBAONE QA DB -to get data from DB
+					// Connect SBAONE QA DB -to get data from DB
 					String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
 					Properties props = new Properties();
 					props.setProperty("user", "app_etl");
@@ -96,29 +101,29 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 					// -- Get Data from DB to test Pending status validation on
 					// UI with DB
 					String new_Duns = result_Set.getString("new_Duns");
-					String issue_date = result_Set.getString("issue_date");	
+					String issue_date = result_Set.getString("issue_date");
 					String expiry_date = result_Set.getString("expiry_date");
-					if (result_Set.wasNull()){	
-						  Assert.assertEquals("Test case Passed on Issue date For US1491","Test case Passed on Issue date For US1491");
-					}
-					else{
+					if (result_Set.wasNull()) {
+						Assert.assertEquals("Test case Passed on Issue date For US1491",
+								"Test case Passed on Issue date For US1491");
+					} else {
 						logger_US1699.info(issue_date);
-						Assert.assertEquals("Test case Failed For issue date value:",issue_date);
-					  }					
-					//Expiry date Null for Mpp application
-					if (result_Set.wasNull()){	
-					   Assert.assertEquals("Test case Passed on Expiry date For US1699","Test case Passed on Expiry date For US1699");
-					 }
-					else{
+						Assert.assertEquals("Test case Failed For issue date value:", issue_date);
+					}
+					// Expiry date Null for Mpp application
+					if (result_Set.wasNull()) {
+						Assert.assertEquals("Test case Passed on Expiry date For US1699",
+								"Test case Passed on Expiry date For US1699");
+					} else {
 						logger_US1699.info(expiry_date);
-						Assert.assertEquals("Test case Failed For issue date value:",expiry_date);
-					  }
-					
+						Assert.assertEquals("Test case Failed For issue date value:", expiry_date);
+					}
+
 					Assert.assertEquals(result_Set.getString("work_state").toLowerCase(),
 							duns_Number_status_To_Verify.toLowerCase());
 					logger_US1699.info(new_Duns); // Thread.sleep(50000);
 					result_Set.close();
-			   }
+				}
 			}
 			// else Delete it if in Draft all of the Draft applications
 			Boolean isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
@@ -129,7 +134,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 				isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
 				logger_US1699.info(isPresent);
 			}
-		//Assert.assertEquals(pending_Application_Found, true);
+			// Assert.assertEquals(pending_Application_Found, true);
 		} catch (Exception e) {
 			logger_US1699.info(e.toString());
 			throw new Exception("Error: ", e);
@@ -141,4 +146,3 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 		webDriver.quit();
 	}
 }
-
