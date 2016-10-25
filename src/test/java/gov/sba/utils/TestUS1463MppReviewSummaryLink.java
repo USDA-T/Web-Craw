@@ -28,7 +28,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 9;
+		get_The_Row_From_Login_Data = 10;
 	}
 
 	@Test
@@ -54,11 +54,10 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 			logger_US1463.info(all_Cells1_A.size());
 			logger_US1463.info('|' + all_Cells1_A.get(0).getText() + '|');
 			logger_US1463.info('|' + all_Cells1_A.get(2).getText() + '|');
-			//Expire date for pending status application-US1699
-			logger_US1463.info('|' + all_Cells1_A.get(1).getText() + '|');
+			logger_US1463.info('|' + all_Cells1_A.get(3).getText() + '|');
 			// If Pending - Click and verify the summary page
 			// Thread.sleep(999000);
-			if (all_Cells1_A.get(2).getText().equals("Pending")
+			if (all_Cells1_A.get(3).getText().equals("Pending")
 					&& all_Cells1_A.get(0).getText().equals("MPP Application")) {
 				// Check Programs Pending status
 				webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
@@ -69,11 +68,11 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 				List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
 				logger_US1463.info(all_Cells1.size());
 				logger_US1463.info('|' + all_Cells1.get(0).getText() + '|');
-				logger_US1463.info('|' + all_Cells1.get(1).getText() + '|');
 				logger_US1463.info('|' + all_Cells1.get(2).getText() + '|');
-				String duns_Number_status_To_Verify = all_Cells1.get(2).getText();
+				logger_US1463.info('|' + all_Cells1.get(3).getText() + '|');
+				String duns_Number_status_To_Verify = all_Cells1.get(3).getText();
 				// US1463-If Pending - Click and verify the summary page
-				if (all_Cells1.get(2).getText().equals("Pending")
+				if (all_Cells1.get(3).getText().equals("Pending")
 						&& all_Cells1.get(0).getText().equals("MPP Application")) {
 					all_Cells1.get(0).findElement(By.xpath("a")).click();
 					WebElement current_Title = webDriver.findElement(By.xpath(
@@ -104,7 +103,6 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 					// -- Get Data from DB to test Pending status validation on
 					// UI with DB
 					String new_Duns = result_Set.getString("new_Duns");
-					
 					String issue_date = result_Set.getString("issue_date");	
 					if (result_Set.wasNull()){	
 						Assert.assertEquals("Test case Passed on Issue date For US1491","Test case Passed on Issue date For US1491");
@@ -113,9 +111,8 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 						logger_US1463.info(issue_date);
 						Assert.assertEquals("Test case Failed For issue date value:",issue_date);
 					}
-					
 					Assert.assertEquals(result_Set.getString("work_state").toLowerCase(),
-							duns_Number_status_To_Verify.toLowerCase());
+					duns_Number_status_To_Verify.toLowerCase());
 					logger_US1463.info(new_Duns); // Thread.sleep(50000);
 					result_Set.close();
 					// Code for US 1457 And US 1491-- Pending status validation
@@ -134,7 +131,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 					logger_US1463.info(current_Title_Txt.getText());
 					webDriver.findElement(By.xpath("//a[@data-method='delete']")).click();
 					Thread.sleep(3000);
-					LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 22);
+					LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 30);
 					logger_US1463.info(login_Data1);
 					login_Data1.Login_With_Reference();
 					logger_US1463.info(login_Data1);
