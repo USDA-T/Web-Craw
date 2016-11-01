@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
@@ -64,6 +65,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 		get_The_Row_From_Login_Data = 16;
 		LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data1.Login_With_Reference();
+		webDriver.manage().window().maximize();
 		// Verify if the CO account has a role, if not request a co role for the
 		// account.
 		if (webDriver.getPageSource().contains("Welcome to certify.SBA.gov!")) {
@@ -80,6 +82,13 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 			Actual_Text = webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
 			Expected_Text = "The vendor has not completed self-certification in certify.SBA.gov. Please contact the vendor to direct them to complete self-certification.";
 			assertEquals(Actual_Text, Expected_Text);
+			WebElement NewText = webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3"));
+			HighLight.highLightElement(webDriver, NewText);
+			Thread.sleep(6000);
+			// Take screenshot and store as a file format
+			ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+			screenShot.ScreenShot();
+			Thread.sleep(3000);
 		 //Search Invalid DUNs verify message.
 			webDriver.findElement(By.id("duns_number")).clear();
 			webDriver.findElement(By.id("duns_number")).sendKeys("135000634");
@@ -88,6 +97,13 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 			Actual_Text = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3")).getText();
 			Expected_Text = "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
 			assertEquals(Actual_Text, Expected_Text);
+			WebElement NewText1 = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3"));
+			HighLight.highLightElement(webDriver, NewText1);
+			Thread.sleep(6000);
+			// Take screenshot and store as a file format
+			ScreenShotPage screenShot1 = new ScreenShotPage(webDriver);
+			screenShot1.ScreenShot();
+			Thread.sleep(3000);
 	     //Search valid DUNs With active MPP and WOSB verify..
 			webDriver.findElement(By.id("duns_number")).clear();
 			webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
@@ -139,13 +155,20 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 			Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
 			Expected_Text = "Request access to view records";
 			assertEquals(Actual_Text, Expected_Text);
-			//Search valid DUNs with no Active certification and verify message.
+		//Search valid DUNs with no Active certification and verify message.
 			webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
 			webDriver.findElement(By.id("find_business")).click();
 			Thread.sleep(3000);
 			Actual_Text = webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
 			Expected_Text = "The vendor has not completed self-certification in certify.SBA.gov. Please contact the vendor to direct them to complete self-certification.";
 			assertEquals(Actual_Text, Expected_Text);
+			WebElement NewText = webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3"));
+			HighLight.highLightElement(webDriver, NewText);
+			Thread.sleep(6000);
+			// Take screenshot and store as a file format
+			ScreenShotPage screenShot2 = new ScreenShotPage(webDriver);
+			screenShot2.ScreenShot();
+			Thread.sleep(3000);
 		 //Search Invalid DUNs verify message.
 			webDriver.findElement(By.id("duns_number")).clear();
 			webDriver.findElement(By.id("duns_number")).sendKeys("135000634");
@@ -154,6 +177,13 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 			Actual_Text = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3")).getText();
 			Expected_Text = "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
 			assertEquals(Actual_Text, Expected_Text);
+			WebElement NewText1 = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3"));
+			HighLight.highLightElement(webDriver, NewText1);
+			Thread.sleep(6000);
+			// Take screenshot and store as a file format
+			ScreenShotPage screenShot3 = new ScreenShotPage(webDriver);
+			screenShot3.ScreenShot();
+			Thread.sleep(3000);
 	     //Search valid DUNs With active MPP and WOSB verify..
 			webDriver.findElement(By.id("duns_number")).clear();
 			webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
@@ -199,6 +229,10 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[7]")).getText();
 			Expected_Text = "EDWOSB";
 			assertEquals(Actual_Text, Expected_Text);
+			// Take screenshot and store as a file format
+			ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
+			screenShot11.ScreenShot();
+			Thread.sleep(3000);
 			webDriver.findElement(By.linkText("Logout")).click();		
 			
 		}
