@@ -19,16 +19,12 @@ package gov.sba.utils;
 				String Expected_Text = null;
 				// Locate the accept button at the bottom of the EDWOSB agreement and
 				// click on it to continue.
-				//webDriver.findElement(By.xpath(".//*[@id='new_sba_application']/input[3]")).click();
+				webDriver.findElement(By.xpath(".//*[@id='new_sba_application']/input[3]")).click();
 				// Locate the 8(a) question and select No and continue.
 				String actual_Text1 = webDriver.findElement(By.cssSelector("h4")).getText();
-				String expected_Text1 = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Protégé relationship to the All Small Mentor-Protégé Program?";
+				String expected_Text1 = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
 				assertEquals(actual_Text1, expected_Text1);
-				// Verify the More detail meaning for the 8(A) question.
-				String actual_Text2 = webDriver.findElement(By.xpath("//div[@id='answers_8a_certified']/fieldset/p[2]")).getText();
-				String expected_Text2 = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
-				assertEquals(actual_Text2, expected_Text2);
-				webDriver.findElement(By.id("answers_117_value_yes")).click();
+				webDriver.findElement(By.id("answers_65_value_yes")).click();
 				// Upload a document.
 				MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
 				montanaUploadDocument0.MontanaUploadDocument();
