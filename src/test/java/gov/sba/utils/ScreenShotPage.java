@@ -22,7 +22,7 @@ public class ScreenShotPage {
 		File src = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		try {
 			// now copy the screenshot to the screenshot folder.
-			FileUtils.copyFile(src, new File("./Screenshots/ReadOnlyCert.png"));
+			FileUtils.copyFile(src, new File("./Screenshots/TestScreenshots.png"));
 		} catch (IOException e) {
 			logger.info(e.getMessage());
 

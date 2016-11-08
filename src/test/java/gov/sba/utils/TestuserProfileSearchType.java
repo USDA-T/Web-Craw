@@ -9,7 +9,7 @@ public class TestuserProfileSearchType extends TestCase {
 	public void TestuserProfileSetDriver(WebDriver mydriver) {
 		this.webDriver = mydriver;
 	}
-	public TestuserProfileSearchType(String last_name,String Radio_xpath,String Expected_Result) throws Exception {
+	public void TestuserProfileSearchType(String last_name,String Radio_xpath,String Expected_Result) throws Exception {
       
 	//Select Government User Radio button
 		webDriver.findElement(By.xpath(Radio_xpath)).click();
