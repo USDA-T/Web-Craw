@@ -61,9 +61,14 @@ import junit.framework.TestCase;
 			//Verify the fist version alert.
 			webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
 			Thread.sleep(3000);
+			webDriver.findElement(By.linkText("Revision history")).click();
 			Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
-			Expected_Text = "New version (v1) created 11/02/2016";
-			assertEquals(Actual_Text, Expected_Text);
+			Expected_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/div[2]/div[2]/table/tbody/tr/td[4]")).getText();
+			String[] Actual_Text1 = Actual_Text.split(" ");
+			String part1 = Actual_Text1[4]; // Submitted Date
+			assertEquals(part1, Expected_Text);
+			logger.info(part1);
+			webDriver.findElement(By.linkText("Case overview")).click();
 			WebElement V1 = webDriver.findElement(By.cssSelector("h3.usa-alert-heading"));
 			HighLight.highLightElement(webDriver, V1);
 			Thread.sleep(5000);
@@ -87,6 +92,12 @@ import junit.framework.TestCase;
 			LoginPageWithReference login_Data11 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data11.Login_With_Reference();
 			Thread.sleep(3000);
+			//Vendor dashboard.
+			Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+			Expected_Text = "Draft";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement Draft1 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+			HighLight.highLightElement(webDriver, Draft1);
 			webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
 			Thread.sleep(2000);
 			webDriver.findElement(By.name("commit")).click();
@@ -123,9 +134,14 @@ import junit.framework.TestCase;
 			//Verify the fist version alert.
 			webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
 			Thread.sleep(3000);
+			webDriver.findElement(By.linkText("Revision history")).click();
 			Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
-			Expected_Text = "New version (v2) created 11/02/2016";
-			assertEquals(Actual_Text, Expected_Text);
+			Expected_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/div[2]/div[2]/table/tbody/tr/td[4]")).getText();
+			String[] Actual_Text0 = Actual_Text.split(" ");
+			String part0 = Actual_Text0[4]; // Submitted Date
+			assertEquals(part0, Expected_Text);
+			logger.info(part0);
+			webDriver.findElement(By.linkText("Case overview")).click();
 			Actual_Text = webDriver.findElement(By.linkText("View previous version")).getText();
 			Expected_Text = "View previous version";
 			assertEquals(Actual_Text, Expected_Text);
@@ -153,7 +169,7 @@ import junit.framework.TestCase;
 					webDriver.switchTo().window(Second_window);
 					webDriver.manage().window().maximize();
 					Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
-					Expected_Text = "You are in view-only mode";
+					Expected_Text = "You are in view-only mode (Version #1)";
 					assertEquals(Actual_Text, Expected_Text);
 					Thread.sleep(5000);
 					WebElement NewText = webDriver.findElement(By.cssSelector("h3.usa-alert-heading"));

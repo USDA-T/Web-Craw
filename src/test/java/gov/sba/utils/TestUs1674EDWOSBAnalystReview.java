@@ -64,10 +64,12 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 Select dropdown1 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
                 dropdown1.selectByVisibleText("Analyst2 X");
 
-                Select dropdown2 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                @SuppressWarnings("unused")
+				Select dropdown2 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
                 dropdown1.selectByVisibleText("Analyst3 X");
 
-                Select dropdown3 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                @SuppressWarnings("unused")
+				Select dropdown3 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
                 dropdown1.selectByVisibleText("Analyst4 X");
                 webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
                 webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
@@ -139,7 +141,8 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 logger_US1674_EDWOSB.info(ret_Account_Title.getText());
                 WebElement ret_Account_Attach_Link = ret_Account_Title.findElement(By.xpath("..")).findElement(By.xpath("table/tbody/tr/td/a[contains(text(),'.pdf')]"));
                 logger_US1674_EDWOSB.info(ret_Account_Attach_Link.getText());
-                WebElement ret_Account_Attach_Text = ret_Account_Title.findElement(By.xpath("..")).findElement(By.xpath("table/tbody/tr/td[contains(text(),'Retirement Account Terms and Conditions')]"));
+                @SuppressWarnings("unused")
+				WebElement ret_Account_Attach_Text = ret_Account_Title.findElement(By.xpath("..")).findElement(By.xpath("table/tbody/tr/td[contains(text(),'Retirement Account Terms and Conditions')]"));
                 logger_US1674_EDWOSB.info(ret_Account_Attach_Link.getText());
                 
                 

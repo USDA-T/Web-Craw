@@ -21,7 +21,7 @@ public class TestUS1652US1716 extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 25;
+		get_The_Row_From_Login_Data = 24;
 		webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 	}
@@ -85,10 +85,16 @@ public class TestUS1652US1716 extends TestCase {
 		// re-submit.
 		webDriver.findElement(By.linkText("Logout")).click();
 		// login as the vendor.
-		get_The_Row_From_Login_Data = 25;
+		get_The_Row_From_Login_Data = 24;
 		LoginPageWithReference login_Data11 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data11.Login_With_Reference();
 		Thread.sleep(3000);
+		//Vendor dashboard.
+		Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+		Expected_Text = "Draft";
+		assertEquals(Actual_Text, Expected_Text);
+		WebElement Draft1 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+		HighLight.highLightElement(webDriver, Draft1);
 		webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
 		Thread.sleep(2000);
 		webDriver.findElement(By.name("commit")).click();
@@ -133,8 +139,7 @@ public class TestUS1652US1716 extends TestCase {
 		Thread.sleep(3000);
 		webDriver.findElement(By.linkText("Revision history")).click();
 		Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
-		Expected_Text = webDriver
-				.findElement(By.xpath("//article[@id='main-content']/div[2]/div[2]/table/tbody/tr/td[4]")).getText();
+		Expected_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/div[2]/div[2]/table/tbody/tr/td[4]")).getText();
 		String[] Actual_Text1 = Actual_Text.split(" ");
 		String part1 = Actual_Text1[4]; // Submitted Date
 		assertEquals(part1, Expected_Text);
@@ -202,9 +207,6 @@ public class TestUS1652US1716 extends TestCase {
 				logger.info("Second Window is thesame as first window");
 
 			}
-
-			// All good;
-
 			// Start a review. Click on the start a review button to begin
 			// second scenario with review.
 			webDriver.findElement(By.linkText("Case overview")).click();

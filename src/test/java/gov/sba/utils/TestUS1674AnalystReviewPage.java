@@ -14,10 +14,10 @@ import org.openqa.selenium.support.ui.Select;
 import junit.framework.TestCase;
 
 
-public class TestUS1674_AnalystReviewPage extends TestCase {
+public class TestUS1674AnalystReviewPage extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
-    private static final Logger logger_US1674 = LogManager.getLogger(TestUS1674_AnalystReviewPage.class.getName());
+    private static final Logger logger_US1674 = LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
     int get_The_Row_From_Login_Data;
 
     @
@@ -74,10 +74,12 @@ public class TestUS1674_AnalystReviewPage extends TestCase {
                 Select dropdown1 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
                 dropdown1.selectByVisibleText("Analyst2 X");
 
-                Select dropdown2 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                @SuppressWarnings("unused")
+				Select dropdown2 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
                 dropdown1.selectByVisibleText("Analyst3 X");
 
-                Select dropdown3 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                @SuppressWarnings("unused")
+				Select dropdown3 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
                 dropdown1.selectByVisibleText("Analyst4 X");
                 //webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
 

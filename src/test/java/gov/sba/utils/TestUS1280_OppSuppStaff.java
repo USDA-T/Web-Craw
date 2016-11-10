@@ -3,16 +3,12 @@ package gov.sba.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.*;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import junit.framework.TestCase;
-import java.util.*;
-import java.sql.*;
 import gov.sba.utils.TestuserProfileSearchType;
 import gov.sba.utils.helpers.DatabaseQuery;
 
-public class TestUS1280_OppSuppStaff {
+public class TestUS1280_OppSuppStaff extends TestCase {
 	// Set The variabl.es/Define
 	private static WebDriver webDriver;
 	private static final Logger logger_US1280 = LogManager.getLogger(TestUS1280_OppSuppStaff.class.getName());
