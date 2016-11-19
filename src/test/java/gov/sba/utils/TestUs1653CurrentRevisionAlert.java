@@ -160,7 +160,6 @@ import junit.framework.TestCase;
 			logger.info("Before switching, title is = certify.sba.gov");
 			webDriver.findElement(By.linkText("View previous version")).click();
 			Thread.sleep(5000);
-			assertEquals(Actual_Text, Expected_Text);
 			java.util.Set<String> S1 = webDriver.getWindowHandles();
 			Iterator<String> i1 = S1.iterator();
 			while (i1.hasNext()) {
@@ -185,7 +184,8 @@ import junit.framework.TestCase;
 					logger.info("Second Window is thesame as first window");
 
 				}
-			
+				
+				
 			}}
 
 	@After

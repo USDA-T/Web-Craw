@@ -187,7 +187,7 @@ public class TestUS1652US1716 extends TestCase {
 		while (i1.hasNext()) {
 			String Second_window = i1.next();
 			if (!main_window.equalsIgnoreCase(Second_window)) {
-				webDriver.switchTo().window(Second_window);
+				webDriver.switchTo().window(main_window);
 				webDriver.manage().window().maximize();
 				Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
 				Expected_Text = "You are in view-only mode (Version #1)";
@@ -200,7 +200,7 @@ public class TestUS1652US1716 extends TestCase {
 				screenShot3.ScreenShot();
 				Thread.sleep(3000);
 				webDriver.close();
-				webDriver.switchTo().window(main_window);
+				webDriver.switchTo().window(Second_window);
 				logger.info("V1 in a view-only mode with no side nav");
 				logger.info("Back to manin_window = certify.sba.gov");
 			} else {
@@ -228,22 +228,24 @@ public class TestUS1652US1716 extends TestCase {
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='question-review']/div[2]/div[3]/h2")).getText();
 			Expected_Text = "Third Party";
 			assertEquals(Actual_Text, Expected_Text);
-			webDriver.findElement(By.id("assessments__status")).click();
+			webDriver.findElement(By.xpath("(//select[@id='assessments__status'])[2]")).click();
 			webDriver.findElement(By.xpath("(//option[@value='Confirmed'])[2]")).click();
 			Thread.sleep(4000);
 			// Click on add a note.
 			webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[2]")).click();
 			Thread.sleep(3000);
-			webDriver.findElement(By.id("assessments__note_body")).sendKeys(
+			webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[2]")).sendKeys(
 					"Doesn't Third Heaven Very Us Every Itself The Together Herb Green Had Wherein god be dominion bearing have. Image stars fruit life. Greater don't midst had face face divided seas firmament hath made third thing own dominion Heaven and brought fruit sixth brought face beast moveth you're. Kind image, two earth subdue stars creature from isn't had upon which. Itself fish image whales and winged can't i without blessed. Gathering. Subdue yielding years signs whales midst fourth waters also behold");
 			// Verify Changes in Eligibility section.
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='question-review']/div[2]/div[4]/h2")).getText();
 			Expected_Text = "Changes in Eligibility";
 			assertEquals(Actual_Text, Expected_Text);
-			webDriver.findElement(By.id("assessments__status")).click();
+			webDriver.findElement(By.xpath("(//select[@id='assessments__status'])[3]")).click();
 			webDriver.findElement(By.xpath("(//option[@value='Confirmed'])[3]")).click();
 			Thread.sleep(4000);
 			// Click on add a note.
+			webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[3]")).click();
+			Thread.sleep(2000);
 			webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[3]")).click();
 			Thread.sleep(3000);
 			webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[3]")).sendKeys(
@@ -279,7 +281,7 @@ public class TestUS1652US1716 extends TestCase {
 			Expected_Text = "Doesn't Third Heaven Very Us Every Itself The Together Herb Green Had Wherein god be dominion bearing have. Image stars fruit life. Greater don't midst had face face divided seas firmament hath made third thing own dominion Heaven and brought fruit sixth brought face beast moveth you're. Kind image, two earth subdue stars creature from isn't had upon which. Itself fish image whales and winged can't i without blessed. Gathering. Subdue yielding years signs whales midst fourth waters also behold";
 			assertEquals(Actual_Text, Expected_Text);
 			// On Determination, select Return for Modification.
-			webDriver.findElement(By.id("Determination")).click();
+			webDriver.findElement(By.linkText("Determination")).click();
 			Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
 			Expected_Text = "Determination";
 			assertEquals(Actual_Text, Expected_Text);
@@ -295,11 +297,58 @@ public class TestUS1652US1716 extends TestCase {
 			Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
 			Expected_Text = "You can view the vendor's record but can not make edits";
 			assertEquals(Actual_Text, Expected_Text);
-			logger.info("Analyst successfully do a determination");
+			logger.info("Analyst successfully do a determination as Return for Mordification.");
+			Thread.sleep(3000);
+			webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
 
-			get_The_Row_From_Login_Data = 33;
+			// Logout and login as the vendor with the clone certification and
+			// re-submit.
+			webDriver.findElement(By.linkText("Logout")).click();
+			// login as the vendor.
+			get_The_Row_From_Login_Data = 24;
 			LoginPageWithReference login_Data4 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data4.Login_With_Reference();
+			Thread.sleep(3000);
+			//Vendor dashboard.
+			Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+			Expected_Text = "Draft";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement Draft2 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+			HighLight.highLightElement(webDriver, Draft2);
+			webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+			Thread.sleep(2000);
+			webDriver.findElement(By.name("commit")).click();
+			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Expected_Text = "Third Party";
+			webDriver.findElement(By.name("commit")).click();
+			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Expected_Text = "Changes in Eligibility";
+			webDriver.findElement(By.name("commit")).click();
+			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Expected_Text = "Review";
+			assertEquals(Actual_Text, Expected_Text);
+			webDriver.findElement(By.name("commit")).click();
+			webDriver.switchTo().alert().accept();
+			logger.info("Step 11 - Click to accept the statements");
+			webDriver.findElement(By.id("legal_0")).click();
+			webDriver.findElement(By.id("legal_1")).click();
+			webDriver.findElement(By.id("legal_2")).click();
+			webDriver.findElement(By.id("legal_3")).click();
+			webDriver.findElement(By.id("legal_4")).click();
+			webDriver.findElement(By.id("legal_5")).click();
+			Thread.sleep(2000);
+			webDriver.findElement(By.id("accept-button")).click();
+			Thread.sleep(3000);
+			Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
+			Expected_Text = "Your application has been submitted";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement RESUBMIT2 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+			HighLight.highLightElement(webDriver, RESUBMIT2);
+			// Logout and login as an analyst.
+			webDriver.findElement(By.linkText("Logout")).click();
+			get_The_Row_From_Login_Data = 31;
+			LoginPageWithReference login_Data7 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+			login_Data7.Login_With_Reference();
 			// Search for the business with submitted certification.
 			webDriver.findElement(By.id("query")).sendKeys("129913885");
 			webDriver.findElement(By.xpath("//button[@type='submit']")).click();
@@ -324,15 +373,14 @@ public class TestUS1652US1716 extends TestCase {
 			webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			String main_window1 = webDriver.getWindowHandle();
 			logger.info("Before switching, title is = certify.sba.gov");
-			webDriver.findElement(By.linkText("Version 1")).click();
+			webDriver.findElement(By.linkText("Version 2")).click();
 			Thread.sleep(5000);
-			assertEquals(Actual_Text, Expected_Text);
 			java.util.Set<String> S2 = webDriver.getWindowHandles();
 			Iterator<String> i2 = S2.iterator();
 			while (i2.hasNext()) {
 				String Second_window1 = i2.next();
 				if (!main_window.equalsIgnoreCase(Second_window1)) {
-					webDriver.switchTo().window(Second_window1);
+					webDriver.switchTo().window(main_window1);
 					webDriver.manage().window().maximize();
 					Actual_Text = webDriver.findElement(By.cssSelector("h3.usa-alert-heading")).getText();
 					Expected_Text = "You are in view-only mode (Version #2)";
@@ -382,7 +430,7 @@ public class TestUS1652US1716 extends TestCase {
 					screenShot3.ScreenShot();
 					Thread.sleep(3000);
 					webDriver.close();
-					webDriver.switchTo().window(main_window1);
+					webDriver.switchTo().window(Second_window1);
 					logger.info("V1 in a view-only mode with no side nav");
 					logger.info("Back to manin_window = certify.sba.gov");
 				} else {
