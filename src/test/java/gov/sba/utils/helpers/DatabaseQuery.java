@@ -6,10 +6,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class DatabaseQuery {
 	
 	public String[][] getDBData(String sql_query, int rows_Needed, int cols_Needed) throws Exception {
 		// Connect SBAONE QA DB -to get data from DB
+		final Logger logger = LogManager.getLogger(DatabaseQuery.class.getName());
+
 		String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
 		Properties props = new Properties();
 		props.setProperty("user", "app_etl");
@@ -22,7 +27,7 @@ public class DatabaseQuery {
 				.executeQuery(sql_query);
 		
 		if (!result_Set.first()) {    
-		    System.out.println("No data");
+		    logger.info("No data");
 		    return null;
 		} 
 		
