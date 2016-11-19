@@ -40,9 +40,9 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
             List < WebElement > current_Row_EDWOSB = webDriver.findElements(
                 By.xpath("//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'EDWOSB')]  and td[8][contains(text(),'Submitted')]   ]"));
 
-            if (current_Row_EDWOSB.size() > 0) {
+            if (current_Row_EDWOSB.size() > 1) {
                 logger_US1674_EDWOSB.info(current_Row_EDWOSB.get(0).getAttribute("innerHTML"));
-                WebElement a1 = current_Row_EDWOSB.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+                WebElement a1 = current_Row_EDWOSB.get(1).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
                 logger_US1674_EDWOSB.info(a1.getText());
                 a1.click();
 
@@ -62,7 +62,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
                 Select dropdown1 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
-                dropdown1.selectByVisibleText("Analyst2 X");
+                dropdown1.selectByIndex(0);
 
                 @SuppressWarnings("unused")
 				Select dropdown2 = new Select(webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
@@ -79,9 +79,8 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
             }
 
-
               current_Row_EDWOSB = webDriver.findElements(
-                By.xpath("//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'EDWOSB')]  and td[8][contains(text(),'Under Review')]   ]"));
+                By.xpath("//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'EDWOSB')]  and td[8][contains(text(),'Under Review')]  ]"));
 
             if (current_Row_EDWOSB.size() > 0) {
             	logger_US1674_EDWOSB.info(current_Row_EDWOSB.get(0).getAttribute("innerHTML"));
@@ -90,7 +89,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
   				assertTrue(current_Row_EDWOSB.get(0).findElement(By.xpath("td[6]")).getText().length() > 0);
                 assertTrue(current_Row_EDWOSB.get(0).findElement(By.xpath("td[7]")).getText().length() > 0);
 */
-                WebElement a1 = current_Row_EDWOSB.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+                WebElement a1 = current_Row_EDWOSB.get(1).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
                 logger_US1674_EDWOSB.info(a1.getText());
                 a1.click();
                 logger_US1674_EDWOSB.info("alkanaaaaaa");
@@ -118,8 +117,8 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 List<WebElement> table_Left_Rows= webDriver.findElements(By.xpath("//article[@id='main-content']/form/div[contains(@class,'review_outer')]/div[contains(@class,'review_main')]/div/div[contains(@class,'tab-content')]/div/div[not(contains(@id,'table1-pad'))]/table/tbody/tr"));
                 List<WebElement> table_Right_Rows= webDriver.findElements(By.xpath("//article[@id='main-content']/form/div[contains(@class,'review_outer')]/div[contains(@class,'review_main')]/div/div[contains(@class,'tab-content')]/div/div[contains(@id,'table1-pad')]/table/tbody/tr"));
                 
-                String[] table1_Data = {"Cash on Hand $100.00" ,"Savings Account(s) Balances $100.00" ,"Checking Account(s) Balances $100.00" ,"Accounts & Notes Receivable $100.00" ,"IRA, 401K or Other Retirement Account $100.00" ,"Roth IRA $100.00" ,"Cash Surrender Value of Whole Life Insurance $100.00" ,"Stocks and Bonds or Mutual Funds? $100.00" ,"Real Estate (Primary Residence) $100.00" ,"Other Real Estate $100.00" ,"Automobiles $100.00" ,"Other Personal Property/Assets $100.00" ,"Applicant's Business Equity $100.00" ,"Applicant's Equity in Other Firms $100.00" ,"Total Assets $1,400.00" ,"Salary $100.00" ,"Investment Income $10.00" ,"Real Estate Income $1,100.00" ,"Other Income $100.00" ,"Most Recent Tax Year $100.00" ,"Year 2 $100.00" ,"Year 3 $100.00" ,"Total (Avg) $100.00"};
-                String[] table2_Data = 		{"Accounts Payable $100.00" ,"Notes Payable to Banks & Others $100.00" ,"Installment Account (Auto) $100.00" ,"Installment Account (Other) $100.00" ,"Loan(s) Against Life Insurance $100.00" ,"Mortgage (Primary Residence)* $1,100.00" ,"Mortgages on other Real Estate $200.00" ,"Unpaid Taxes $0.00" ,"Other Liabilities $0.00" ,"Total Liabilities $1,800.00" ,"Net Worth\nTotal Assets - Total Liabilities -$400.00"};
+                String[] table1_Data = {"Cash on Hand $100.00" ,"Savings Account(s) Balances $100.00" ,"Checking Account(s) Balances $100.00" ,"Accounts & Notes Receivable $100.00" ,"IRA, 401K or Other Retirement Account $100.00" ,"Roth IRA $100.00" ,"Cash Surrender Value of Whole Life Insurance $100.00" ,"Stocks and Bonds or Mutual Funds? $100.00" ,"Real Estate (Primary Residence) $100.00" ,"Other Real Estate $0.00" ,"Automobiles $100.00" ,"Other Personal Property/Assets $100.00" ,"Applicant's Business Equity $100.00" ,"Applicant's Equity in Other Firms $100.00" ,"Total Assets $1,300.00" ,"Salary $100.00" ,"Investment Income $100.00" ,"Real Estate Income $100.00" ,"Other Income $100.00" ,"Most Recent Tax Year $100.00" ,"Year 2 $100.00" ,"Year 3 $100.00" ,"Total (Avg) $100.00"};
+                String[] table2_Data = 		{"Accounts Payable $100.00" ,"Notes Payable to Banks & Others $100.00" ,"Installment Account (Auto) $100.00" ,"Installment Account (Other) $100.00" ,"Loan(s) Against Life Insurance $100.00" ,"Mortgage (Primary Residence)* $200.00" ,"Mortgages on other Real Estate $0.00" ,"Unpaid Taxes $100.00" ,"Other Liabilities $100.00" ,"Total Liabilities $900.00" ,"Net Worth\nTotal Assets - Total Liabilities $400.00"};
                 for (int i = 0; i < table_Left_Rows.size(); i++) {
                 	logger_US1674_EDWOSB.info(table_Left_Rows.get(i).getText());
                 	assertEquals(table_Left_Rows.get(i).getText(), table1_Data[i]);
@@ -147,7 +146,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 
                 
                 Thread.sleep(20000);
-                webDriver.findElement(By.xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]")).click();
+               // webDriver.findElement(By.xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]")).click();
                 webDriver.navigate().back();
                 
 //Signature Review Page
@@ -166,10 +165,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
                 
             }
              webDriver.findElement(By.xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Case overview')]")).click();
-         
-		                
-            
-            
+
         } catch (Exception e) {
             logger_US1674_EDWOSB.info(e.toString());
         }
