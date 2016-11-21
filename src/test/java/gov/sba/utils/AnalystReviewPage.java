@@ -2,6 +2,7 @@ package gov.sba.utils;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,19 +12,28 @@ import junit.framework.TestCase;
 
 public class AnalystReviewPage extends TestCase {
 	WebDriver webDriver;
- 	public void TestReviewDriver(WebDriver mydriver) {
+	String duns_Number;
+
+ 	public void TestReviewDriver(WebDriver mydriver, String duns_Numb) {
 		this.webDriver = mydriver;
+		this.duns_Number = duns_Numb;
 	}
  	private static final Logger AnalystReviewPage = LogManager.getLogger(AnalystReviewPage.class.getName());
+
     public void testMainTest() throws Exception {
 		try { 	
 		   List < WebElement > current_Row = webDriver.findElements(
-		           By.xpath("//div[@id='table-search']/table/tbody/tr[ td[8][contains(text(),'Submitted')]   ]"));
+		           By.xpath("//div[@id='table-search']/table/tbody/tr[ " +
+						   "td[position()=8 and contains(text(),'Submitted')]   and " +
+						   "td[position()=2 and contains(text(),'" + duns_Number + "')]	and " +
+						   "td[position()=3 and contains(text(),'EDWOSB')]	" +
+						   "]"));
 		
-		   if (current_Row.size() > 1) {
+		   	AnalystReviewPage.info(current_Row.size() + ": Is the total Submitted Elements");
+			if (current_Row.size() > 0) {
 			   AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
-			   WebElement a1 = current_Row.get(1).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-			   AnalystReviewPage.info(a1.getText());
+			   WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+			   AnalystReviewPage.info(a1.getText() + "__1");
 			   a1.click();
 			   // webDriver.findElement(By.xpath("//div[@id='table-search']/table[contains(@class,'usa-table')]/tbody/tr/td[text()='WOSB']"));
 			   WebElement current_Page_Title = webDriver.findElement(By.xpath("//article[@id='main-content']/div[2]/div[2]/h1"));
@@ -53,10 +63,18 @@ public class AnalystReviewPage extends TestCase {
 			       webDriver.navigate().back();
 			       webDriver.navigate().back();
 			  }
-			   current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ td[8][contains(text(),'Under Review')]  ]"));
+
+			current_Row = webDriver.findElements(
+					By.xpath("//div[@id='table-search']/table/tbody/tr[ " +
+							"td[position()=8 and contains(text(),'Under Review')]   and " +
+							"td[position()=2 and contains(text(),'" + duns_Number + "')]	and " +
+							"td[position()=3 and contains(text(),'EDWOSB')]	" +
+							"]"));
+			AnalystReviewPage.info(current_Row.size() + ": Is the total Under Review Elements");
+
 			if (current_Row.size() > 0) {
 			   AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
-			   WebElement a1 = current_Row.get(1).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+			   WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
 			   AnalystReviewPage.info(a1.getText());
 			   a1.click();
 			   AnalystReviewPage.info("alkanaaaaaa");
@@ -75,6 +93,7 @@ public class AnalystReviewPage extends TestCase {
 			   webDriver.findElement(By.id("note_link")).click();
 			   webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']")).sendKeys("Adding notes QA");
 			   webDriver.findElement(By.id("save_notes")).click();
+
 			   //Signature Review Page
                webDriver.findElement(By.xpath("//div[@id='question-review']/div/div/aside/ul[@class='usa-sidenav-list']/li/a[contains(text(),'Signature review')]")).click();
                dropdown = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']"))).getOptions();
@@ -85,13 +104,37 @@ public class AnalystReviewPage extends TestCase {
                assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
                assertEquals("Needs further review", dropdown.get(4).getText());
                webDriver.findElement(By.id("note_link")).click();
-               webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']")).sendKeys("Adding notes QA Signature Page");
-               webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[@value='Save and commit']")).click();          
-               
+			   webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']")).sendKeys("Adding notes QA Signature Page");
+
+               webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[contains(@value,'Save and commit')]")).click();
+				//*[@id="main-content"]/div[2]/div[1]/div/aside/ul/li[5]/a
+
+
+				webDriver.findElement(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Determination')]")).click();
+
+				String text_CheckBox_Labels = webDriver.findElement(By.xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]")).getText();
+				Assert.assertEquals(text_CheckBox_Labels, "Review Started");
+
+				text_CheckBox_Labels = webDriver.findElement(By.xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]")).getText();
+				Assert.assertEquals(text_CheckBox_Labels, "Return for Modification");
+
+				text_CheckBox_Labels = webDriver.findElement(By.xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Eligible')]")).getText();
+				Assert.assertEquals(text_CheckBox_Labels, "Recommend Eligible");
+
+				text_CheckBox_Labels = webDriver.findElement(By.xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]")).getText();
+				Assert.assertEquals(text_CheckBox_Labels, "Recommend Ineligible");
+				webDriver.findElement(By.id("assessment_note_body")).sendKeys("QA Test");
+				webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+
+
+
 			}
-		}catch (Exception e) {
+
+		}
+		catch (Exception e)
+		{
 			AnalystReviewPage.info(e.toString());
-	        }	
+	    }
 			   
    }
 	

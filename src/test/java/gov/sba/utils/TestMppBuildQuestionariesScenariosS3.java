@@ -174,7 +174,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// Upload a document.
 		DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
-		deepaUploadMppDocument.deepaUploadMppDocument();
+		deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\Deepa3\\Documents\\UI_For_MPP.pdf");
 		webDriver.findElement(By.name("commit")).click();
 
 	}

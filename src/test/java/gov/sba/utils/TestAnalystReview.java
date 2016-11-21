@@ -34,7 +34,8 @@ public class TestAnalystReview {
         Cases_Link.click();
 	     //Pass the user search radio button,the serach term to the userprofile search function
 		AnalystReviewPage TestReviewProcess = new AnalystReviewPage( );
-		TestReviewProcess.TestReviewDriver(webDriver);
+		// Give Duns Number
+		TestReviewProcess.TestReviewDriver(webDriver, "178961981");
 		//pass Government/vendor profile criteria
 		TestReviewProcess.testMainTest();
 		 //webDriver.navigate().back();
