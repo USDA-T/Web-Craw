@@ -39,13 +39,10 @@ public class TestUS1280_OppSuppStaff extends TestCase {
 		String[][] returned_GovProfile_Rows = dbcall.getDBData(sql_query, 2,3);
 		logger_US1280.info(returned_GovProfile_Rows[1][1]);
 
-        //Pass the user search radio button,the serach term to the userprofile search function
-		TestuserProfileSearchType TestuserProfileSearch = new TestuserProfileSearchType( );
-		TestuserProfileSearch.TestuserProfileSetDriver(webDriver);
 		//pass Government/vendor profile criteria
-		 String Gov_Radio_xpath = "//input[@id='user_type_gov_user']" ;
-		 String Expected_Result = "Government user profile";
-		TestuserProfileSearch.TestuserProfileSearchType(returned_GovProfile_Rows[1][1],Gov_Radio_xpath,Expected_Result);
+		String Gov_Radio_xpath = "//input[@id='user_type_gov_user']" ;
+		String Expected_Result = "Government user profile";
+		TestuserProfileSearchType.TestuserProfileSearch(webDriver, returned_GovProfile_Rows[1][1],Gov_Radio_xpath,Expected_Result);
 		 webDriver.navigate().back();
 	    //US1280- Search Vendor ;
 		//Get Email,First,Name,Last from the Db to use as serach term in UI
@@ -55,13 +52,11 @@ public class TestUS1280_OppSuppStaff extends TestCase {
 		String[][] areturned_Rows = dbcall.getDBData(sql_query, 2,3);
 		logger_US1280.info(areturned_Rows[1][1]);
         //Pass the user search radio button,the serach term to the userprofile search function
-		TestuserProfileSearchType TestuserProfileSearch1 = new TestuserProfileSearchType();
-		TestuserProfileSearch1.TestuserProfileSetDriver(webDriver);
 		//pass Government/vendor profile criteria
-		 String Ven_Radio_xpath = "//input[@id='user_type_vendor_user']" ;
-		 String Expected_Result1 = "Vendor user profile";
-		TestuserProfileSearch.TestuserProfileSearchType(areturned_Rows[1][1],Ven_Radio_xpath,Expected_Result1);
-	}	
+			String Ven_Radio_xpath = "//input[@id='user_type_vendor_user']" ;
+			String Expected_Result1 = "Vendor user profile";
+			TestuserProfileSearchType.TestuserProfileSearch(webDriver, areturned_Rows[1][1],Ven_Radio_xpath,Expected_Result1);
+		}
 		catch (Exception e) {
 			logger_US1280.info(e.toString());
 			//logger_US1081.info("test failed as return_vendor link dididnot work");

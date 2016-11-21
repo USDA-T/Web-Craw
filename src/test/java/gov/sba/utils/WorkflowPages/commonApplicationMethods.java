@@ -15,10 +15,12 @@ public class commonApplicationMethods {
 		switch(	type_Of_App.toLowerCase() + status_Of_App.toLowerCase()	) {
 	        case "edwosbactive":		    		
 	    			List<WebElement> listOfActiveEDWOSB = webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'EDWOSB')]) ]"));
-	    			if (listOfActiveEDWOSB.size()	> 0){
+	    			if (listOfActiveEDWOSB.size() > 0){
 	    				return true;	
 	    			}
-	    			return false;
+	    			else{
+						return false;
+					}
 	        case "wosbactive":		    		
 	    			List<WebElement> listOfActiveWOSB = webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'WOSB')]) ]"));
 	    			if (listOfActiveWOSB.size()	> 0){
@@ -57,15 +59,11 @@ public class commonApplicationMethods {
 				}
 				break;
 		}
-		
-
-				
 	}
 
 	public static void returnApplicationToVendorMethd( WebDriver webDriver, int which_Loginto_ReturnApp , String duns_Number, String type_Of_App, String status_Of_App, int which_Log_BackAgain )  throws Exception {
 			// Login provided should be Analyst
 			commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-
 			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, which_Loginto_ReturnApp);
 			login_Data.Login_With_Reference();		
 			webDriver.findElement(By.id("query")).sendKeys(duns_Number);
@@ -85,7 +83,6 @@ public class commonApplicationMethods {
 					webDriver.switchTo().alert().accept();
 					break;
 			}
-
 			commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 			login_Data = new LoginPageWithReference(webDriver, which_Log_BackAgain);
     		login_Data.Login_With_Reference();
@@ -114,7 +111,6 @@ public class commonApplicationMethods {
 	public static void navigationMenuClick( WebDriver webDriver, String which_Button ) throws Exception {
 		String part_01 = "//nav[@role='navigation']/ul[@id='js-navigation-menu']/li/a[contains(text(),'";
 		String part_03 = "')]";
-
 		switch (which_Button.toUpperCase()) {
 			case "LOGOUT":
 				webDriver.findElement(By.xpath(part_01 + "Logout" + part_03)).click();
@@ -141,49 +137,4 @@ public class commonApplicationMethods {
 				Assert.assertEquals("Navigation Menu Not correct", "among present Options");
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

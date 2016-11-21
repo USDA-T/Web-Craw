@@ -12,7 +12,6 @@ public class fillApplCreatePages {
 	private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
 	
 	public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws Exception {
-
 		if (answer01.toUpperCase().contains("YES")){
 			// Use webDriver.findElement(By.id("answers_65_value_no")).click(); for no
 			webDriver.findElement(By.id("answers_65_value_yes")).click();
