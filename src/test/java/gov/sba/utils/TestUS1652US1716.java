@@ -437,7 +437,7 @@ public class TestUS1652US1716 extends TestCase {
 					ScreenShotPage1 screenShot3 = new ScreenShotPage1(webDriver);
 					screenShot3.ScreenShot();
 					logger.info("Second Window is thesame as first window");
-
+;
 				}
 				webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
 				webDriver.findElement(By.linkText("Return to Vendor")).click();
