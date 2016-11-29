@@ -24,9 +24,9 @@ import org.openqa.selenium.WebElement;
 				Expected_Text = "8(a) Document Upload";
 				assertEquals(Actual_Text, Expected_Text);
 				// Locate the 8(a) question and upload a document and continue.
-				String actual_Text1 = webDriver.findElement(By.cssSelector("h4")).getText();
-				String expected_Text1 = "Please upload the completed, signed forms you downloaded from BDMIS as well as the supporting documents as described in the application checklist.";
-				assertEquals(actual_Text1, expected_Text1);
+				Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+				Expected_Text = "Please upload the completed, signed forms you downloaded from BDMIS as well as the supporting documents as described in the application checklist.";
+				assertEquals(Actual_Text, Expected_Text);
 				//Detail Section.
 				Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_eight_a_documents']/fieldset/p[2]")).getText();
 				Expected_Text = "It may take a few moments for your document to appear, the system performs virus scans on all documents. If you accidentally uploaded an incorrect document, select the Remove action link in the Edit column.";

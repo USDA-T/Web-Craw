@@ -40,14 +40,6 @@ public class TestUs1789Create8aInterimQuestionnaire extends TestCase {
 		eightATest.EightATest();
 		
 
-	
-
-	
-	
-	
-	
-	
-	
 }
 
 @After
