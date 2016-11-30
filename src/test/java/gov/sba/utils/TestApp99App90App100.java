@@ -43,6 +43,7 @@ public class TestApp99App90App100 extends TestCase {
 		EightAtest1Page eightAtest1 = new EightAtest1Page(webDriver);
 		eightAtest1.EightAtest1();
 		//Login as an 8(a) analyst and verify responsibilities.
+		webDriver.findElement(By.linkText("Logout")).click();
 		get_The_Row_From_Login_Data = 34;
 		LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data1.Login_With_Reference();
@@ -103,6 +104,7 @@ public class TestApp99App90App100 extends TestCase {
 			logger.info("8(a) analyst could not see or access application from 8(a) Document Upload vendor applicants, Responsibility Failed");	
 		}
 		//Login as an 8(a) supervisor and verify responsibilities.
+		webDriver.findElement(By.linkText("Logout")).click();
 		get_The_Row_From_Login_Data = 35;
 		LoginPageWithReference login_Data2 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data2.Login_With_Reference();
@@ -197,15 +199,16 @@ public class TestApp99App90App100 extends TestCase {
 		HighLight.highLightElement(webDriver, EightADraft);
 		//Make changes and Resubmit
 		webDriver.findElement(By.linkText("8(a) Document Upload")).click();
+		webDriver.findElement(By.id("eight_a_documents")).click();
 		// Upload a document.
 		MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
 		montanaUploadDocument0.MontanaUploadDocument();
 		webDriver.findElement(By.name("commit")).click();
 		//Verify the second attachment.
-		Actual_Text = webDriver.findElement(By.xpath("//tr[2]/td")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td")).getText();
 		Expected_Text = "MainTestUploadDoc.pdf";
 		assertEquals(Actual_Text, Expected_Text);
-		WebElement EightADoc2 = webDriver.findElement(By.xpath("//tr[2]/td"));
+		WebElement EightADoc2 = webDriver.findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td"));
 		HighLight.highLightElement(webDriver, EightADoc2);
 		webDriver.findElement(By.name("commit")).click();
 		webDriver.switchTo().alert().accept();
@@ -240,6 +243,7 @@ public class TestApp99App90App100 extends TestCase {
 		HighLight.highLightElement(webDriver, EightAPending2);
 		Thread.sleep(3000);
 		webDriver.findElement(By.linkText("Return to Vendor")).click();
+		webDriver.switchTo().alert().accept();
 		//Verify that application was return.
 		Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
 		Expected_Text = "A new application has been reopenned for the vendor";
