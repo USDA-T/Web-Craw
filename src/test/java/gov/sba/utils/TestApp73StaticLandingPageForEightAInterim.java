@@ -42,7 +42,7 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
 		Expected_Text = "Welcome to certify.SBA.gov!";
 		assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
-		Expected_Text = "You have been directed to Certify.SBA.gov from BDMIS in order to submit the supporting documentation required for your 8(a) application submission. Please review the instructions below in full before establishing your Certify account and attempting to submit your PDF documents. Please feel free to submit any questions you may have to 8aquestions@sba.gov.";
+		Expected_Text = "You have been directed to certify.SBA.gov from BDMIS in order to submit the supporting documentation required for your 8(a) application submission. Please review the instructions below in full before establishing your account and attempting to submit your PDF documents. Please feel free to submit any questions you may have to 8aquestions@sba.gov.";
 		assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
 		Expected_Text = "Purpose:";
@@ -60,7 +60,7 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
 		Expected_Text = "For your convenience, we have attached the document below for you to download.\nGuidance to Submitting an 8(a) Application";
 		assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/div/section/article/ol/li[2]")).getText();
-		Expected_Text = "This guide provides instructions on how to establish an account for Certify.sba.gov as well as other important information.\nUser Guide for Certify.sba.gov.";
+		Expected_Text = "User Guide for certify.SBA.gov. This guide provides instructions on how to establish an account for certify.SBA.gov as well as other important information.";
 		assertEquals(Actual_Text, Expected_Text);
 		//Verify that the Create an Account button navigates to the registration page.
 		webDriver.findElement(By.cssSelector("button.button-full")).click();
@@ -74,36 +74,11 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
 		Expected_Text = "Sign in to certify.SBA.gov";
 		assertEquals(Actual_Text, Expected_Text);
 		webDriver.navigate().back();
-		//Verify the 1st download links.
-		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String main_window = webDriver.getWindowHandle();
-		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("Guidance to Submitting an 8(a) Application")).click();
-		Thread.sleep(4000);
-		java.util.Set<String> S = webDriver.getWindowHandles();
-		Iterator<String> i = S.iterator();
-		while (i.hasNext()) {
-		  String Second_window = i.next();
-		if (!main_window.equalsIgnoreCase(Second_window)) {
-		  webDriver.switchTo().window(Second_window);
-		  logger.info("After switching title is ="+webDriver.getTitle());
-		  Actual_Text = webDriver.findElement(By.cssSelector("div.textLayer > div")).getText();
-		  Expected_Text = "8(a) Business Development Program";
-		  assertEquals(Actual_Text, Expected_Text);
-		  WebElement QuideForSub = webDriver.findElement(By.cssSelector("div.textLayer > div"));
-		  HighLight.highLightElement(webDriver, QuideForSub);
-		  webDriver.close();
-			webDriver.switchTo().window(main_window);
-		logger.info("Back to manin_window = certify.sba.gov");
-		  } else {
-		  logger.info("Second Window is thesame as first window");
-		}
 		//Verify the 2nd download links.
 		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		String main_window1 = webDriver.getWindowHandle();
 		logger.info("Before switching, title is = certify.sba.gov");
-		webDriver.findElement(By.linkText("User Guide for Certify.sba.gov.")).click();
-		Thread.sleep(4000);
+		webDriver.findElement(By.linkText("User Guide for certify.SBA.gov")).click();
 		java.util.Set<String> S1 = webDriver.getWindowHandles();
 		Iterator<String> i1 = S1.iterator();
 		while (i1.hasNext()) {
@@ -122,7 +97,29 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
 		} else {
 		logger.info("Second Window is thesame as first window");
 		}
-		
+		//Verify the 1st download links.
+		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		String main_window = webDriver.getWindowHandle();
+		logger.info("Before switching, title is = certify.sba.gov");
+		webDriver.findElement(By.linkText("Guidance to Submitting an 8(a) Application")).click();
+		java.util.Set<String> S = webDriver.getWindowHandles();
+		Iterator<String> i = S.iterator();
+		while (i.hasNext()) {
+		  String Second_window = i.next();
+		if (!main_window.equalsIgnoreCase(Second_window)) {
+		  webDriver.switchTo().window(Second_window);
+		  logger.info("After switching title is ="+webDriver.getTitle());
+		  Actual_Text = webDriver.findElement(By.cssSelector("div.textLayer > div")).getText();
+		  Expected_Text = "8(a) Business Development Program";
+		  assertEquals(Actual_Text, Expected_Text);
+		  WebElement QuideForSub = webDriver.findElement(By.cssSelector("div.textLayer > div"));
+		  HighLight.highLightElement(webDriver, QuideForSub);
+		  webDriver.close();
+			webDriver.switchTo().window(main_window);
+		logger.info("Back to manin_window = certify.sba.gov");
+		  } else {
+		  logger.info("Second Window is thesame as first window");
+		}
 		return;
 }
 		}}

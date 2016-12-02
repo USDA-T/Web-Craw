@@ -334,8 +334,8 @@ public class PartnershipQuestionsPage {
 		webDriver.findElement(By.cssSelector("button.btn")).click();
 		// Select No for question Is anyone listed above divorced? If yes,
 		// please provide separation documents.
-		webDriver.findElement(By.id("answers_100_value_no")).click();
-		webDriver.findElement(By.id("answers_100_value_no")).click();
+		webDriver.findElement(By.cssSelector("label.no.last")).click();
+		webDriver.findElement(By.cssSelector("label.no.last")).click();
 		// Locate the Continue Button and click on it to continue.
 		Thread.sleep(3000);
 		webDriver.findElement(By.name("commit")).click();
