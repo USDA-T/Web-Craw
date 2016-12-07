@@ -27,11 +27,15 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     public void testMainTest() throws Exception {
         try {
     		// Login to dashboard.
+			//C:\Upload\Upload.pdf
+
+
     		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     		login_Data.Login_With_Reference();
     		Thread.sleep(2000);
-    		logger_TestEDWOSBWorkflow.info(webDriver.findElement(By.xpath("//*[@id='main-content']/section/article/div/div/div/p[ (b[contains(text(),'DUNS:')]) ]")).getText().replaceAll("DUNS:", "").trim());
-    		String duns_Number = webDriver.findElement(By.xpath("//*[@id='main-content']/section/article/div/div/div/p[ (b[contains(text(),'DUNS:')]) ]")).getText().replaceAll("DUNS:", "").trim();
+    		logger_TestEDWOSBWorkflow.info(webDriver.findElement(By.xpath("//p[ (b[contains(text(),'DUNS:')]) ]")).getText().replaceAll("DUNS:", "").trim());
+    		String duns_Number = webDriver.findElement(By.xpath("//p[ (b[contains(text(),'DUNS:')]) ]")).getText().replaceAll("DUNS:", "").trim();
+			String typ_App = "EDWOSB";
 			//Clear EDWOSB Application
     		if (commonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active")){
     			commonApplicationMethods.returnApplicationToVendorMethd(webDriver, 11, duns_Number, "EDWOSB", "Active", get_The_Row_From_Login_Data);
@@ -52,8 +56,8 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
 			login_Data.Login_With_Reference();
 			commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 			AnalystReviewPage TestReviewProcess = new AnalystReviewPage( );
-			TestReviewProcess.TestReviewDriver(webDriver, duns_Number);
-			TestReviewProcess.testMainTest();
+			TestReviewProcess.TestReviewDriver(webDriver, duns_Number,typ_App, "Initial Review", "Analyst2 X", "Analyst3 X","Analyst4 X");
+			TestReviewProcess.testUnderReview();
 
 			login_Data = new LoginPageWithReference(webDriver, 31);
 			login_Data.Login_With_Reference();
