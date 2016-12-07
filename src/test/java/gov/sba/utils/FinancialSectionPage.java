@@ -186,7 +186,7 @@ public class FinancialSectionPage {
 		Thread.sleep(3000);
 		// Select yes for question; 'Are any leans delinquent?'.
 		webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
-		//webDriver.findElement(By.id("answers_53_comment")).sendKeys("Testing");
+		webDriver.findElement(By.id("answers_53_comment")).sendKeys("Testing");
 		Thread.sleep(3000);
 		// Select yes for question; 'Do you own any other personal property
 		// or assets?'.
@@ -228,7 +228,7 @@ public class FinancialSectionPage {
 		Thread.sleep(3000);
 		// Select yes for question; 'Are any leans delinquent?'.
 		webDriver.findElement(By.xpath(".//*[@id='answers[56][value]']/label[1]")).click();
-		//webDriver.findElement(By.id("answers_56_comment")).sendKeys("testing");
+		webDriver.findElement(By.id("answers_56_comment")).sendKeys("testing");
 		Thread.sleep(3000);
 		// Locate the continue button and click on it.
 		webDriver.findElement(By.name("commit")).click();

@@ -8,8 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import junit.framework.TestCase;
 
-public class TestAnalystEDWOSBReviewWorkflow {
+public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
 	WebDriver webDriver;
 	private static final Logger logger_TestEDWOSBWorkflow = LogManager.getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
 	int get_The_Row_From_Login_Data;
