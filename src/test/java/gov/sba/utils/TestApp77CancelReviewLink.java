@@ -29,7 +29,6 @@ public class TestApp77CancelReviewLink extends TestCase {
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
-
             //Click on Case Link on main navigator
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             //pass teh dun'sno,type of app
@@ -37,14 +36,11 @@ public class TestApp77CancelReviewLink extends TestCase {
             // Give Duns Number
             TestReviewProcess.TestReviewDriver(webDriver, "159165917", "WOSB", "Initial Review", "Analyst2 X", "Analyst3 X", "Analyst4 X");
             TestReviewProcess.testSubmitted();
-
             fillApplCreatePages.pageQuestionReviewFillup(webDriver);
             fillApplCreatePages.pageSignatureReviewFillup(webDriver);
             webDriver.findElement(By.xpath("//a[contains(text(),'Case overview')]")).click();
-
             List < WebElement > cancelLInk = webDriver.findElements(By.xpath("//a[contains(text(),'Cancel review')]"));
             assertEquals(cancelLInk.size(), 0);
-
             //webDriver.navigate().back();
         }
         catch(Exception e) {

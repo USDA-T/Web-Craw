@@ -32,7 +32,6 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		Thread.sleep(3000);
-
 		// Need to submit the application in EDWosb, Wosb
 		// Log in As Super visor - validate as per the US1081 Acceptance
 		// criteria on Supervisor All cases page
@@ -51,7 +50,6 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 
 			String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Submitted",
 					"Owner", "Current reviewer", "Status" };
-
 			List<WebElement> rows_Header = webDriver
 					.findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th")); // Get
 																							// the

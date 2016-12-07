@@ -14,7 +14,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
     WebDriver webDriver;
     private static final Logger TestApp77CancelReviewLink = LogManager.getLogger(TestApp77CancelReviewLink.class.getName());
     int get_The_Row_From_Login_Data;
-
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
@@ -28,7 +27,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
-
             if (commonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active")) {
                 String duns_Number = webDriver.findElement(By.xpath("//*[@id='main-content']/section/article//p[ (b[contains(text(),'DUNS:')]) ]")).getText().replaceAll("DUNS:", "").trim();
                 commonApplicationMethods.returnAppToVendorMethd(webDriver, 11, duns_Number, "EDWOSB", "Active", get_The_Row_From_Login_Data);
@@ -52,7 +50,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
                 login_Data.Login_With_Reference();
                 Thread.sleep(2000);
             }
-
             commonApplicationMethods.deleteApplication(webDriver, "EDWOSB", "Draft");
             //          commonApplicationMethods.createApplication(webDriver, "EDWOSB");
             webDriver.findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]")).click();

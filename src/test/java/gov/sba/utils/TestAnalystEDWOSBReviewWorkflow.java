@@ -14,7 +14,6 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
 	WebDriver webDriver;
 	private static final Logger logger_TestEDWOSBWorkflow = LogManager.getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
 	int get_The_Row_From_Login_Data;
-	
     @Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
@@ -28,8 +27,6 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
         try {
     		// Login to dashboard.
 			//C:\Upload\Upload.pdf
-
-
     		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     		login_Data.Login_With_Reference();
     		Thread.sleep(2000);
@@ -58,10 +55,8 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
 			AnalystReviewPage TestReviewProcess = new AnalystReviewPage( );
 			TestReviewProcess.TestReviewDriver(webDriver, duns_Number,typ_App, "Initial Review", "Analyst2 X", "Analyst3 X","Analyst4 X");
 			TestReviewProcess.testUnderReview();
-
 			login_Data = new LoginPageWithReference(webDriver, 31);
 			login_Data.Login_With_Reference();
-
 			commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             SuperVisorReviewPage TestReviewProcess1 = new SuperVisorReviewPage( );
 			TestReviewProcess1.TestReviewDriver(webDriver, duns_Number);
