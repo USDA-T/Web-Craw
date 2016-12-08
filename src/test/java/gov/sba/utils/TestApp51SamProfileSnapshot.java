@@ -22,7 +22,7 @@ import junit.framework.TestCase;
 			webDriver = TestHelpers.getDefaultWebDriver();
 			webDriver.get(TestHelpers.getBaseUrl());
 			webDriver.manage().window().maximize();
-			get_The_Row_From_Login_Data = 5;
+			get_The_Row_From_Login_Data = 23;
 
 		}
 
@@ -49,12 +49,12 @@ import junit.framework.TestCase;
 			get_The_Row_From_Login_Data = 11;
 			LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data1.Login_With_Reference();
-			webDriver.findElement(By.id("query")).sendKeys("245652494");
+			webDriver.findElement(By.id("query")).sendKeys("129913885");
 			webDriver.findElement(By.xpath("//button")).click();
-			Actual_Text = webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).getText();
-			Expected_Text = "Entity 70 Legal Business Name";
+			Actual_Text = webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).getText();
+			Expected_Text = "Entity 412 Legal Business Name";
 			assertEquals(Actual_Text, Expected_Text);
-			webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
+			webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
 			//Verify that analyst is navigated to the vendor overview page.
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div/p[4]/span")).getText();
 			Expected_Text = "05RSL";

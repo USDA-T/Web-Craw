@@ -77,7 +77,7 @@ package gov.sba.utils;
 				// Verify sixth paragraph
 				logger.info("  Verify sixth paragraph");
 				Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
-				Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 70 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+				Expected_Text = "By submitting this certification I, Ricky X, am an officer or owner of Entity 10 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
 				assertEquals(Actual_Text, Expected_Text);
 				// Step 9 - Click the Continue button
 				logger.info("Step 9 - Click the Continue button");
