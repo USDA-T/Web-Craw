@@ -21,7 +21,7 @@ public class TestUswdsEdwosbPartnership extends TestCase {
 		get_The_Row_From_Login_Data = 3;
 
 	}
-
+	
 	@Test
 	public void testMainTest() throws Exception {
 		logger.info("Test EDWOSB Partnership Flow");
