@@ -62,6 +62,57 @@ import junit.framework.TestCase;
 			assertEquals(Actual_Text, Expected_Text);
 			WebElement CAGECodesAP = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span"));
 			HighLight.highLightElement(webDriver, CAGECodesAP);
+			//Logout and login as an 8(a)analyst.
+			webDriver.findElement(By.linkText("Logout")).click();
+			get_The_Row_From_Login_Data = 34;
+			LoginPageWithReference login_Data2 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+			login_Data2.Login_With_Reference();
+			//Search the business and verify the CAGE Codes.
+			webDriver.findElement(By.id("query")).sendKeys("137151292");
+			webDriver.findElement(By.xpath("//button")).click();
+			webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+			Actual_Text = webDriver.findElement(By.xpath("//p[4]/b")).getText();
+			Expected_Text = "CAGE:";
+			assertEquals(Actual_Text, Expected_Text);
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span")).getText();
+			Expected_Text = "4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement CAGECodes8aA = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span"));
+			HighLight.highLightElement(webDriver, CAGECodes8aA);
+			//Logout and login as an OPS support.
+			webDriver.findElement(By.linkText("Logout")).click();
+			get_The_Row_From_Login_Data = 28;
+			LoginPageWithReference login_Data3 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+			login_Data3.Login_With_Reference();
+			//Search the business and verify the CAGE Codes.
+			webDriver.findElement(By.id("query")).sendKeys("137151292");
+			webDriver.findElement(By.xpath("//button")).click();
+			webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+			Actual_Text = webDriver.findElement(By.xpath("//p[4]/b")).getText();
+			Expected_Text = "CAGE:";
+			assertEquals(Actual_Text, Expected_Text);
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span")).getText();
+			Expected_Text = "4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement CAGECodesOpsS = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span"));
+			HighLight.highLightElement(webDriver, CAGECodesOpsS);
+			//Logout and login as an MPP Analyst.
+			webDriver.findElement(By.linkText("Logout")).click();
+			get_The_Row_From_Login_Data = 29;
+			LoginPageWithReference login_Data4 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+			login_Data4.Login_With_Reference();
+			//Search the business and verify the CAGE Codes.
+			webDriver.findElement(By.id("query")).sendKeys("137151292");
+			webDriver.findElement(By.xpath("//button")).click();
+			webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+			Actual_Text = webDriver.findElement(By.xpath("//p[4]/b")).getText();
+			Expected_Text = "CAGE:";
+			assertEquals(Actual_Text, Expected_Text);
+			Actual_Text = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span")).getText();
+			Expected_Text = "4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R, 4RU2R";
+			assertEquals(Actual_Text, Expected_Text);
+			WebElement CAGECodesMppA = webDriver.findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span"));
+			HighLight.highLightElement(webDriver, CAGECodesMppA);
 			return;	
 			
 		}
