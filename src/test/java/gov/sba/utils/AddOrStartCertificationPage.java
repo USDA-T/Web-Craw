@@ -29,7 +29,12 @@ public class AddOrStartCertificationPage {
 			Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]")).getText();
 			Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
 			assertEquals(Actual_Text, Expected_Text);
-			webDriver.findElement(By.id("certificate_type_edwosb")).click();
+			if (webDriver.getPageSource().contains("Economically Disadvantaged Woman Owned Small Business")) {
+				webDriver.findElement(By.id("certificate_type_edwosb")).click();
+			} else {
+				logger.info("There is no more EDWOSB program, User Already have an Active EDWOSB Certification.");
+                webDriver.close();
+            }
 			// Click on the add new certification button.
 			webDriver.findElement(By.id("add_certification")).click();
 			// Verify and validate the terms for the certification.
