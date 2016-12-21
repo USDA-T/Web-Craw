@@ -1,14 +1,10 @@
 package gov.sba.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 import org.junit. * ;
-import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import java.util.List;
 import junit.framework.TestCase;
 import org.openqa.selenium.Cookie;
 
@@ -93,8 +89,6 @@ public class TestApp188SessionExpire extends TestCase {
 
             commonApplicationMethods.navigationMenuClick(webDriver, "Dashboard");
             assertEquals(webDriver.findElement(By.xpath("//form[contains(@action,'sign_in')]/div/button[@type='submit']")).getText().trim(), "Login");
-
-
         }
         catch(Exception e) {
             TestApp188SessionExpire.info(e.toString());

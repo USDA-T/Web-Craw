@@ -2,7 +2,6 @@ package gov.sba.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit. * ;
-import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
