@@ -33,7 +33,7 @@ public class TestApp170LinkDunsNo extends TestCase {
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
-            //Click on Case Link on main navigator
+            //Click on Case Link on main navigator-- SBA Analyst
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             String duns_Number = "159165917";
             String typ_App_Passed = "WOSB";
@@ -43,11 +43,42 @@ public class TestApp170LinkDunsNo extends TestCase {
             TestApp170LinkDunsNo.info(xpath_Value);
             List<WebElement> current_Row = webDriver.findElements(By.xpath(xpath_Value));
             TestApp170LinkDunsNo.info(current_Row.size());
-              current_Row.get(0).findElement(By.xpath("//"
-              		+ "td[2]/a")).click();
+              current_Row.get(0).findElement(By.xpath("//"+ "td[2]/a")).click();		
               WebElement aset_Exist = webDriver.findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
-              //Vendor Overview page 
-              assertEquals(aset_Exist.getText(), "DUNS:" + duns_Number);           
+              //Vendor Overview page should display clicking on Duns Number Link 
+              assertEquals(aset_Exist.getText(), "DUNS:" + duns_Number); 
+             commonApplicationMethods.navigationMenuClick(webDriver, "Logout"); 
+             
+            //Click on Case Link on main navigator-- Mpp Analyst 
+              login_Data = new LoginPageWithReference(webDriver, 29);
+              login_Data.Login_With_Reference();
+              Thread.sleep(2000);
+              typ_App_Passed = "MPP";
+              commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            //All cases page for Mpp Analyst
+              xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + 
+          		        	duns_Number + "')]	and " + "td[position()=3 and contains(text(), '" + typ_App_Passed + "')]" + "]"; 
+               current_Row = webDriver.findElements(By.xpath(xpath_Value));
+               current_Row.get(0).findElement(By.xpath("//"+ "td[2]/a")).click();	
+            // Vendor Overview page should display clicking on Duns Number Link    
+              aset_Exist = webDriver.findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]")); 
+              assertEquals(aset_Exist.getText(), "DUNS:" + duns_Number);              
+               commonApplicationMethods.navigationMenuClick(webDriver, "Logout"); 
+               
+               //Click on Case Link on main navigator-- 8(a) Analyst 
+                 login_Data = new LoginPageWithReference(webDriver, 35);
+                 login_Data.Login_With_Reference();
+                 Thread.sleep(2000);
+                 typ_App_Passed = "8(a) Document Upload";
+                 commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+               //All cases page  8(a) Analyst 
+                 xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + 
+             		           	duns_Number + "')]	and " + "td[position()=3 and contains(text(), '" + typ_App_Passed + "')]" + "]";            
+                 current_Row = webDriver.findElements(By.xpath(xpath_Value));
+                 current_Row.get(0).findElement(By.xpath("//"+ "td[2]/a")).click();
+              // Vendor Overview page should display clicking on Duns Number Link 
+                 aset_Exist = webDriver.findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]")); 
+                 assertEquals(aset_Exist.getText(), "DUNS:" + duns_Number);              
         }
         catch(Exception e) {
         	TestApp170LinkDunsNo.info(e.toString());
