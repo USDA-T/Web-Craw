@@ -36,10 +36,10 @@ public class DatabaseQuery {
 		{			
 			for (int j = 1; j<cols_Needed+1; j++)
 			{
-//					String max_first_name = result_Set.getString(column_Names[0]);	
-//				    String max_last_name = result_Set.getString(column_Names[1]);	
+				//String max_first_name = result_Set.getString(column_Names[0]);	
+			    //String max_last_name = result_Set.getString(column_Names[1]);	
 				sql_Data[i][j -1] = result_Set.getString(j);
-				//System.out.println(sql_Data[i][j-1].toString());
+				System.out.println(sql_Data[i][j-1].toString());
 			}
 
 		};
