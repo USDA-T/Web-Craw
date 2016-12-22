@@ -28,3 +28,6 @@ bin
 # IDEs files
 .idea/
 .settings/
+*.iml
+*.ipr
+*.iws
