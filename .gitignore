@@ -25,3 +25,6 @@ src/main/resources/default.properties
 .metadata
 .recommenders/
 bin
+# IDEs files
+.idea/
+.settings/

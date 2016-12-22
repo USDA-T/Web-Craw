@@ -14,59 +14,61 @@ import gov.sba.utils.Constants;
 import gov.sba.utils.TestHelpers;
 
 public class LoginHelpers {
-	private static final Logger logger = LogManager.getLogger(LoginHelpers.class.getName());
+    private static final Logger logger = LogManager.getLogger(LoginHelpers.class.getName());
 
-	public static LoginData getLoginData() throws Exception {
-		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
-		return loginFixtures.get(3);
-	}
-	public static LoginData getLoginDataWithIndex(int passed_Index_Number) throws Exception {
-		List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
-		return loginFixtures.get(passed_Index_Number);
-		}
-	public static List<LoginData> loadFixtures() throws Exception {
-		// Make sure that we have the TEST_ENV set
-		TestHelpers.loadDefaultProperties();
-		String fixturesFile = "fixtures_" + System.getProperty(Constants.TEST_ENV) + ".csv";
+    public static LoginData getLoginData() throws Exception {
+        List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
+        return loginFixtures.get(3);
+    }
 
-		// TODO: may be load this through the getResourceAsStream() e.g.
-		// classPath instead?
-		Reader in = new FileReader("src/main/resources/" + fixturesFile);
+    public static LoginData getLoginDataWithIndex(int passed_Index_Number) throws Exception {
+        List<LoginData> loginFixtures = LoginHelpers.loadFixtures();
+        return loginFixtures.get(passed_Index_Number);
+    }
 
-		Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
+    public static List<LoginData> loadFixtures() throws Exception {
+        // Make sure that we have the TEST_ENV set
+        TestHelpers.loadDefaultProperties();
+        String fixturesFile = "fixtures_" + System.getProperty(Constants.TEST_ENV) + ".csv";
 
-		List<LoginData> logins = new ArrayList<LoginData>();
+        // TODO: may be load this through the getResourceAsStream() e.g.
+        // classPath instead?
+        Reader in = new FileReader("src/main/resources/" + fixturesFile);
 
-		for (CSVRecord record : records) {
+        Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 
-			String email = record.get(0);
-			String password = record.get(1);
-			String dunsNumber = record.get(2);
-			String taxIdentifier = record.get(3);
-			String miscInfo = record.get(4);
-			String businessType = record.get(5);
+        List<LoginData> logins = new ArrayList<LoginData>();
 
-			LoginData current = new LoginData();
+        for (CSVRecord record : records) {
 
-			logger.debug("email          :" + email);
-			logger.debug("password       :" + password);
-			logger.debug("duns_number    :" + dunsNumber);
-			logger.debug("tax_identifier :" + taxIdentifier);
-			logger.debug("misc_info      :" + miscInfo);
-			logger.debug("business_type   :" + businessType);
+            String email = record.get(0);
+            String password = record.get(1);
+            String dunsNumber = record.get(2);
+            String taxIdentifier = record.get(3);
+            String miscInfo = record.get(4);
+            String businessType = record.get(5);
 
-			current.setEmail(email);
-			current.setPassword(password);
-			current.setDunsNumber(dunsNumber);
-			current.setTaxIdentifier(taxIdentifier);
-			current.setMiscInfo(miscInfo);
-			current.setBusinessType(businessType);
+            LoginData current = new LoginData();
 
-			logins.add(current);
-		}
+            logger.debug("email          :" + email);
+            logger.debug("password       :" + password);
+            logger.debug("duns_number    :" + dunsNumber);
+            logger.debug("tax_identifier :" + taxIdentifier);
+            logger.debug("misc_info      :" + miscInfo);
+            logger.debug("business_type   :" + businessType);
 
-		return logins;
+            current.setEmail(email);
+            current.setPassword(password);
+            current.setDunsNumber(dunsNumber);
+            current.setTaxIdentifier(taxIdentifier);
+            current.setMiscInfo(miscInfo);
+            current.setBusinessType(businessType);
 
-	}
+            logins.add(current);
+        }
+
+        return logins;
+
+    }
 
 }
