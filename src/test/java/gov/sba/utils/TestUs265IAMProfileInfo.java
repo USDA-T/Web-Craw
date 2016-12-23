@@ -18,7 +18,7 @@ public class TestUs265IAMProfileInfo extends TestCase {
     String Password;
 
     @Before
-    public void seUup() throws Exception {
+    public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();

@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.utils.helpers.FixtureUtils;
+
 public class EightAdocumentUploadPage {
     private static final Logger logger = LogManager.getLogger(EightAdocumentUploadPage.class.getName());
     WebDriver webDriver;
@@ -21,8 +23,15 @@ public class EightAdocumentUploadPage {
     public void EightAdocumentUpload() throws Exception {
         logger.debug("Uploading a new document");
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
-        StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
+
+        // Note: might need to be adjust to MainTestUploadDoc.pdf?
+        String pdfFixture = FixtureUtils.fixturesDir() + "Upload.pdf";
+        // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
+
+        StringSelection ss = new StringSelection(pdfFixture);
+
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -30,7 +39,9 @@ public class EightAdocumentUploadPage {
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+
         Thread.sleep(6000);
+
         webDriver.findElement(By.id("comment")).sendKeys("Testing Documents");
         webDriver.findElement(By.cssSelector("#attach")).click();
     }

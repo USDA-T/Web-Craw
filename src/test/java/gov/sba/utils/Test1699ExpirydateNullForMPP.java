@@ -1,6 +1,5 @@
 package gov.sba.utils;
 
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,9 +16,11 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import junit.framework.TestCase;
+
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.helpers.FixtureUtils;
+import junit.framework.TestCase;
 
 public class Test1699ExpirydateNullForMPP extends TestCase {
     // Set The variabl.es/Define
@@ -53,11 +54,13 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
             logger_US1699.info(get_Current_Duns_No);
 
             commonApplicationMethods.deleteApplication(webDriver, "MPP", "Draft");
-            if (    !commonApplicationMethods.checkApplicationExists(webDriver, "MPP","Pending")){
+            if (!commonApplicationMethods.checkApplicationExists(webDriver, "MPP", "Pending")) {
                 commonApplicationMethods.createApplication(webDriver, "Mpp");
-                String file_path_abs = System.getProperty("user.dir") + File.separator + "src"  + File.separator + "main" + File.separator + "DataFiles"  + File.separator + "Upload.pdf";
+
+                String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+
                 logger_US1699.info(file_path_abs);
-                fillApplCreatePages.page8aFillUp(webDriver, "Yes",  file_path_abs);
+                fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
                 fillApplCreatePages.finalSignatureSubmit(webDriver);
             }
 

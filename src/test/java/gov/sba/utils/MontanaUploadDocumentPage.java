@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.utils.helpers.FixtureUtils;
+
 public class MontanaUploadDocumentPage {
     private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
     WebDriver webDriver;
@@ -23,7 +25,13 @@ public class MontanaUploadDocumentPage {
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
         webDriver.findElement(By.id("doc-upload-button")).click();
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
-        StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
+        
+        // Note: might need to be adjust to MainTestUploadDoc.pdf?
+        String pdfFixture = FixtureUtils.fixturesDir() + "Upload.pdf";    
+        
+        // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
+        StringSelection ss = new StringSelection(pdfFixture);
+        
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
