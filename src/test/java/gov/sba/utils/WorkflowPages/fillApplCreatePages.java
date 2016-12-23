@@ -86,7 +86,7 @@ public class fillApplCreatePages {
                 // Use
                 // webDriver.findElement(By.id("answers_65_value_no")).click();
                 // for no
-                webDriver.findElement(By.id("answers_65_value_yes")).click();
+                webDriver.findElement(By.id("answers_117_value_yes")).click();
                 DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
                 deepaUploadMppDocument.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");

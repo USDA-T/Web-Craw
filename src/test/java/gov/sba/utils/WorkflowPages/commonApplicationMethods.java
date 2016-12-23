@@ -32,6 +32,14 @@ public class commonApplicationMethods {
             }
             return false;
 
+        case "mpppending":
+            List<WebElement> listOfActiveMpp = webDriver.findElements(By.xpath(
+                    "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ending')]) and (td/a[position()=1 and contains(text(),'MPP')]) ]"));
+            if (listOfActiveMpp.size() > 0) {
+                return true;
+            }
+            return false;
+
         default:
             return false;
         }
