@@ -1,12 +1,12 @@
 package gov.sba.utils;
 
 //__ Logger
+
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-
-import junit.framework.TestCase;
 
 //_ Project Helpers
 public class TestUS942AddWosb extends TestCase {
@@ -35,7 +35,7 @@ public class TestUS942AddWosb extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+        webDriver.quit();
     }
 
 }
