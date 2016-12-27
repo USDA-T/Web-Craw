@@ -106,8 +106,6 @@ public class VerifyWosbFlow {
                     List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
                     logger.info(all_Cells1.size());
 
-                    //all_Cells1.get(5).findElement(By.xpath("a[contains(text(),'Return to Vendor')]")).click();
-
                 }
             }
 
