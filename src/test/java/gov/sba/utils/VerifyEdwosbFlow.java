@@ -2,6 +2,8 @@ package gov.sba.utils;
 
 import java.util.List;
 
+import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.helpers.FixtureUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -26,9 +28,9 @@ public class VerifyEdwosbFlow extends TestCase {
         try {
             WebElement radio_Element = webDriver.findElement(By.linkText("Delete"));
             radio_Element.click();
+            Thread.sleep(4000);
+            webDriver.switchTo().alert().accept();
             FlagForAddEDWOSBNotPresent = true;
-            // webDriver.findElement(By.xpath("//a[@class='delete-cert'
-            // ][@data-method='delete'][text()='Delete']")).click();
         } catch (Exception e) {
             logger.info("There are(is) no Radio button for EDWOSB");
             FlagForAddEDWOSBNotPresent = true;
@@ -37,14 +39,19 @@ public class VerifyEdwosbFlow extends TestCase {
         // LinkForDelete.click();
 
         try {
-            @SuppressWarnings("unused")
-            WebElement current_Row_Active = webDriver.findElement(
-                    By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Active']"));
+            WebElement current_Row_Active = webDriver.findElement(By.xpath(
+                        "//table[@id='certifications']/tbody/tr[ " +
+                                    "(td[position()=4 and contains(text(),'ctive')]) " +
+                                            " and " +
+                                    "(td[position()=1]/a[contains(text(),'EDWOSB') and contains(text(),'elf') and contains(text(),'ertification')])" +
+                                "]"
+            ));
+            logger.info("aaaaCame in");
             webDriver.findElement(By.xpath("//a[@href='/users/sign_out']")).click();
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 21);
             login_Data.Login_With_Reference();
             webDriver.findElement(By.xpath("//*[@id='query']"))
-                    .sendKeys(LoginHelpers.getLoginDataWithIndex(20).getDunsNumber());
+                    .sendKeys(LoginHelpers.getLoginDataWithIndex(9).getDunsNumber());
             webDriver.findElement(By.className("usa-search-submit-text")).click();
             webDriver.findElement(By.xpath("//a[contains(text(),'Legal Business Name')]")).click();
             WebElement current_Row_Draft1 = webDriver.findElement(By.xpath(
@@ -54,7 +61,7 @@ public class VerifyEdwosbFlow extends TestCase {
             List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
             logger.info(all_Cells1.size());
             all_Cells1.get(3).findElement(By.xpath("//a[contains(text(),'Return to Vendor')]")).click();
-            logger.info(webDriver.switchTo().alert().getText());
+            Thread.sleep(4000);
             webDriver.switchTo().alert().accept();
             webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 
@@ -63,6 +70,7 @@ public class VerifyEdwosbFlow extends TestCase {
 
         } catch (Exception e) {
             logger.info("There are(is) no certification Active on the dashboard, a new certification is being created");
+            logger.info(e);
         }
 
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
@@ -85,31 +93,29 @@ public class VerifyEdwosbFlow extends TestCase {
                 .getText();
         assertEquals(myCertText, "My SBA Contracting Programs");
 
-        // WebElement radio_Element =
-        // webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']"));
         WebElement add_button = webDriver.findElement(By.id("add_certification"));
         logger.info(add_button.getAttribute("disabled"));
         assertEquals(add_button.getAttribute("disabled"), "true");
         try {
             webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']"))
                     .click();
-        } catch (Exception e) {
         }
-        ;
+        catch (Exception e) {logger.info("Nothing here");}
+
         assertTrue(Boolean.toString(add_button.isEnabled()), true);
         Thread.sleep(2000);
         try {
             webDriver.findElement(By.id("add_certification")).click();
             webDriver.findElement(By.id("add_certification")).click();
-        } catch (Exception e) {
         }
+        catch (Exception e) {logger.info("Nothing here");}
 
         Thread.sleep(5000);
         webDriver.findElement(By.className("accept_button")).click();
 
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         WebElement current_Row_Draft = webDriver.findElement(
-                By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Draft']"));
+                By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[contains(text(), 'Draft')]"));
         assertEquals(current_Row_Draft.getText(), "Draft");
         logger.info(current_Row_Draft.getText());
         WebElement current_Row = current_Row_Draft.findElement(By.xpath(".."));
@@ -117,11 +123,11 @@ public class VerifyEdwosbFlow extends TestCase {
         List<WebElement> all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "EDWOSB Self-Certification");
         // assertEquals(all_Cells.get(1).getText(), "");
-        assertEquals(all_Cells.get(2).getText(), "Draft");
-        assertEquals(all_Cells.get(4).getText(), "Delete");
-        all_Cells.get(4).findElement(By.xpath("//a[@class='delete-cert'][@data-method='delete'][text()='Delete']"))
-                .click();
-        Thread.sleep(3000);
+        assertEquals(all_Cells.get(3).getText(), "Draft");
+        assertEquals(all_Cells.get(5).getText(), "Delete");
+        all_Cells.get(4).findElement(By.xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]")).click();
+        Thread.sleep(4000);
+        webDriver.switchTo().alert().accept();
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 
         // First Flow - Check For Active
@@ -132,26 +138,18 @@ public class VerifyEdwosbFlow extends TestCase {
             webDriver.findElement(By.id("add_certification")).click();
             webDriver.findElement(By.id("add_certification")).click();
         } catch (Exception e) {
-
+            logger.info("Nothing here");
         }
+        webDriver.findElement(By.className("accept_button")).click();
+        String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
-        logger.info("Going into Partnerships page");
-        // webDriver.findElement(By.className("accept_button")).click();
-        // try{webDriver.findElement(By.className("accept_button")).click();
-        // webDriver.findElement(By.className("accept_button")).click();}catch
-        // (Exception e){}
-
-        // Corp test for 1st person.
-        ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
-        scorpQuestions.ScorpQuestions();
-        // Financial section.
-        FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
-        financialsection.Financialsection();
+        logger.info(file_path_abs);
+        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+        fillApplCreatePages.finalSignatureSubmit(webDriver);
 
         // Check the section that its active and no delete in action is there
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-        current_Row_Draft = webDriver.findElement(
-                By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[text()='Active']"));
+        current_Row_Draft = webDriver.findElement(By.xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[contains(text(),'Active')]"));
         assertEquals(current_Row_Draft.getText(), "Active");
         logger.info(current_Row_Draft.getText());
         current_Row = current_Row_Draft.findElement(By.xpath(".."));
@@ -159,15 +157,14 @@ public class VerifyEdwosbFlow extends TestCase {
 
         all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "EDWOSB Self-Certification");
-        // assertEquals(all_Cells.get(1).getText(), "");
-        assertEquals(all_Cells.get(2).getText(), "Active");
-        assertEquals(all_Cells.get(3).getText(), "");
-        all_Cells.get(0).findElement(By.xpath("//a")).click();
+        assertEquals(all_Cells.get(3).getText(), "Active");
+        assertEquals(all_Cells.get(5).getText(), "");
+        all_Cells.get(0).findElement(By.xpath("a")).click();
 
         assertTrue(webDriver.getPageSource()
                 .contains("Economically Disadvantaged Women-Owned Small Business Program Self-Certification Summary"));
         assertTrue(webDriver.getPageSource().contains(
-                "   By submitting this certification I, QA User, am an officer or owner of Entity 454 Legal Business Name authorized to represent it and electronically sign this certification on its behalf."));
+                "By submitting this certification I, QA User, am an officer or owner of Entity 454 Legal Business Name authorized to represent it and electronically sign this certification on its behalf."));
 
     }
 }

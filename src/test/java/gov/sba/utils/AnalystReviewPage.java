@@ -44,7 +44,7 @@ public class AnalystReviewPage extends TestCase {
             // state");
             List<WebElement> current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
                     + "td[position()=8 and contains(text(),'Under Review')]   and "
-                    + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
+                    + "td[position()=2 and /a[contains(text(),'" + duns_Number + "')]]	and "
                     + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
             AnalystReviewPage.info(current_Row.size() + ": Is the total Under Review Elements");
             if (current_Row.size() > 0) {
@@ -66,20 +66,23 @@ public class AnalystReviewPage extends TestCase {
 
                 commonApplicationMethods.deleteApplication(webDriver, "WOSB", "Draft");
 
-                commonApplicationMethods.createApplication(webDriver, "WOSB");
+                if( !commonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active")){
+                    commonApplicationMethods.createApplication(webDriver, "WOSB");
 
-                webDriver.findElement(By.id("answers_5_value_yes")).click();
-                DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
-                deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\IEUser\\Documents\\UI_For_MPP.pdf");
-                AnalystReviewPage.info("Doc has been uploaded.");
-                Thread.sleep(1000);
-                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                Thread.sleep(1000);
-                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                Thread.sleep(1000);
-                webDriver.switchTo().alert().accept();
-                AnalystReviewPage.info("Doc has been uploaded and accepted");
-                fillApplCreatePages.finalSignatureSubmit(webDriver);
+                    webDriver.findElement(By.id("answers_5_value_yes")).click();
+                    DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
+                    deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\IEUser\\Documents\\UI_For_MPP.pdf");
+                    AnalystReviewPage.info("Doc has been uploaded.");
+                    Thread.sleep(1000);
+                    webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                    Thread.sleep(1000);
+                    webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                    Thread.sleep(1000);
+                    webDriver.switchTo().alert().accept();
+                    AnalystReviewPage.info("Doc has been uploaded and accepted");
+                    fillApplCreatePages.finalSignatureSubmit(webDriver);
+
+                }
 
                 commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
                 login_Data = new LoginPageWithReference(webDriver, 11);
@@ -93,79 +96,84 @@ public class AnalystReviewPage extends TestCase {
                     + "td[position()=8 and contains(text(),'Submitted')]   and "
                     + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
                     + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
+            if (current_Row.size() > 0) {
+                AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
+                WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+                AnalystReviewPage.info(a1.getText() + "__1");
+                a1.click();
+                // webDriver.findElement(By.xpath("//div[@id='table-search']/table[contains(@class,'usa-table')]/tbody/tr/td[text()='WOSB']"));
+                WebElement current_Page_Title = webDriver
+                        .findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
+                AnalystReviewPage.info(current_Page_Title.getText());
 
-            AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
-            WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-            AnalystReviewPage.info(a1.getText() + "__1");
-            a1.click();
-            // webDriver.findElement(By.xpath("//div[@id='table-search']/table[contains(@class,'usa-table')]/tbody/tr/td[text()='WOSB']"));
-            WebElement current_Page_Title = webDriver
-                    .findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
-            AnalystReviewPage.info(current_Page_Title.getText());
+                String Expected_Text = "Case Overview";
+                assertEquals(Expected_Text, current_Page_Title.getText());
 
-            String Expected_Text = "Case Overview";
-            assertEquals(Expected_Text, current_Page_Title.getText());
+                WebElement current_Review_Text = webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
+                assertEquals("Start a review", current_Review_Text.getText());
 
-            WebElement current_Review_Text = webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
-            assertEquals("Start a review", current_Review_Text.getText());
+                Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
+                assertEquals(1, dropdown.getOptions().size());
+                assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
-            Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
-            assertEquals(1, dropdown.getOptions().size());
-            assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
+                Select dropdown1 = new Select(webDriver
+                        .findElement(By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
+                dropdown1.selectByIndex(0);
 
-            Select dropdown1 = new Select(webDriver
-                    .findElement(By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
-            dropdown1.selectByIndex(0);
+                Select dropdown2 = new Select(
+                        webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                dropdown2.selectByIndex(1);
 
-            Select dropdown2 = new Select(
-                    webDriver.findElement(By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
-            dropdown2.selectByIndex(1);
+                Select dropdown3 = new Select(webDriver
+                        .findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                dropdown3.selectByIndex(1);
 
-            Select dropdown3 = new Select(webDriver
-                    .findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
-            dropdown3.selectByIndex(1);
+                webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+                webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+                // End Common Function
 
-            webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-            webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-            // End Common Function
+                // Verify Cancel Review link -APP 77 Acceptance Criteria
+                webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
+                Thread.sleep(1000);
+                webDriver.switchTo().alert().accept();
+                // To call DB-- pass Sql query, no of rows,no of cols to db function
+                String sql_query = " select D.workflow_state as review_status,D.sba_application_id as app_id , D.updated_at as updated_at"
+                        + "   from sbaone.organizations A, sbaone.certificates B, sbaone.sba_applications C, sbaone.reviews D "
+                        + "    where A.id = B.organization_id  " + "    and B.sba_application_id = C.id "
+                        + "    and c.id = D.sba_application_id " + "    and b.id = D.certificate_id     "
+                        + "    and  A.duns_number='159165917' " + "    order by D.updated_at desc ";
 
-            // Verify Cancel Review link -APP 77 Acceptance Criteria
-            webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
-            Thread.sleep(1000);
-            webDriver.switchTo().alert().accept();
-            // To call DB-- pass Sql query, no of rows,no of cols to db function
-            String sql_query = " select D.workflow_state as review_status,D.sba_application_id as app_id , D.updated_at as updated_at"
-                    + "   from sbaone.organizations A, sbaone.certificates B, sbaone.sba_applications C, sbaone.reviews D "
-                    + "    where A.id = B.organization_id  " + "    and B.sba_application_id = C.id "
-                    + "    and c.id = D.sba_application_id " + "    and b.id = D.certificate_id     "
-                    + "    and  A.duns_number='159165917' " + "    order by D.updated_at desc ";
+                DatabaseQuery dbcall = new DatabaseQuery();
+                String[][] returned_workflow_review_status = dbcall.getDBData(sql_query, 2, 3);
+                AnalystReviewPage.info("aaaaa+" + returned_workflow_review_status[1][0].toString()
+                        + returned_workflow_review_status[1][1].toString()
+                        + returned_workflow_review_status[1][2].toString());
+                Thread.sleep(1000);
+                assertEquals(returned_workflow_review_status[1][0].toString().toLowerCase(), "cancelled");
 
-            DatabaseQuery dbcall = new DatabaseQuery();
-            String[][] returned_workflow_review_status = dbcall.getDBData(sql_query, 2, 3);
-            AnalystReviewPage.info("aaaaa+" + returned_workflow_review_status[1][0].toString()
-                    + returned_workflow_review_status[1][1].toString()
-                    + returned_workflow_review_status[1][2].toString());
-            Thread.sleep(1000);
-            assertEquals(returned_workflow_review_status[1][0].toString().toLowerCase(), "cancelled");
+                // verify the review status as cancelled- start again review
+                // assignment
+                // webDriver.navigate().back();
+                // webDriver.navigate().back();
+                commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 
-            // verify the review status as cancelled- start again review
-            // assignment
-            // webDriver.navigate().back();
-            // webDriver.navigate().back();
-            commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+                current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
+                        + "td[position()=8 and contains(text(),'Submitted')]   and "
+                        + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
+                        + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
 
-            current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                    + "td[position()=8 and contains(text(),'Submitted')]   and "
-                    + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
-                    + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
+                Assert.assertTrue(current_Row.size() > 0);
+                AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
+                current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+                fillApplCreatePages.pageCaseOverviewFillup(webDriver, rev_Type, curr_Review, owner, supervisor);
+                webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+                webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+            }
+            else
+            {
+                testUnderReview();
+            }
 
-            Assert.assertTrue(current_Row.size() > 0);
-            AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
-            current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
-            fillApplCreatePages.pageCaseOverviewFillup(webDriver, rev_Type, curr_Review, owner, supervisor);
-            webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-            webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-            // }
 
         } catch (Exception e) {
             AnalystReviewPage.info(e.toString());
@@ -183,90 +191,94 @@ public class AnalystReviewPage extends TestCase {
 
             AnalystReviewPage.info(current_Row.size() + ": Is the total Under Review Elements");
 
-            AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
-            WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-            AnalystReviewPage.info(a1.getText());
-            a1.click();
-            AnalystReviewPage.info("alkanaaaaaa");
-            webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-            AnalystReviewPage.info("aaaalkj");
+            if (current_Row.size() > 0) {
 
-            // Question Review Page
-            webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-                    .click();
-            List<WebElement> dropdown = new Select(
-                    webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
-            AnalystReviewPage.info(dropdown.get(0).getText());
-            assertEquals("Confirmed", dropdown.get(0).getText());
-            assertEquals("Not reviewed", dropdown.get(1).getText());
-            assertEquals("Information missing", dropdown.get(2).getText());
-            assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-            assertEquals("Needs further review", dropdown.get(4).getText());
-            webDriver.findElement(By.id("note_link")).click();
-            webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']")).sendKeys("Adding notes QA");
-            webDriver.findElement(By.id("save_notes")).click();
-            Thread.sleep(2000);
-            // Signature Review Page
-            webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(@href,'signature_review')]"))
-                    .click();
-            dropdown = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']"))).getOptions();
-            AnalystReviewPage.info(dropdown.get(0).getText());
-            assertEquals("Confirmed", dropdown.get(0).getText());
-            assertEquals("Not reviewed", dropdown.get(1).getText());
-            assertEquals("Information missing", dropdown.get(2).getText());
-            assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-            assertEquals("Needs further review", dropdown.get(4).getText());
-            webDriver.findElement(By.id("note_link")).click();
-            webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
-                    .sendKeys("Adding notes QA Signature Page");
 
-            webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[contains(@value,'Save and commit')]"))
-                    .click();
-            // *[@id="main-content"]/div[2]/div[1]/div/aside/ul/li[5]/a
+                AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
+                WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+                AnalystReviewPage.info(a1.getText());
+                a1.click();
+                AnalystReviewPage.info("alkanaaaaaa");
+                webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+                AnalystReviewPage.info("aaaalkj");
 
-            webDriver
-                    .findElement(By
-                            .xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Determination')]"))
-                    .click();
+                // Question Review Page
+                webDriver
+                        .findElement(By
+                                .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
+                        .click();
+                List<WebElement> dropdown = new Select(
+                        webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
+                AnalystReviewPage.info(dropdown.get(0).getText());
+                assertEquals("Confirmed", dropdown.get(0).getText());
+                assertEquals("Not reviewed", dropdown.get(1).getText());
+                assertEquals("Information missing", dropdown.get(2).getText());
+                assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+                assertEquals("Needs further review", dropdown.get(4).getText());
+                webDriver.findElement(By.id("note_link")).click();
+                webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']")).sendKeys("Adding notes QA");
+                webDriver.findElement(By.id("save_notes")).click();
+                Thread.sleep(2000);
+                // Signature Review Page
+                webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(@href,'signature_review')]"))
+                        .click();
+                dropdown = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']"))).getOptions();
+                AnalystReviewPage.info(dropdown.get(0).getText());
+                assertEquals("Confirmed", dropdown.get(0).getText());
+                assertEquals("Not reviewed", dropdown.get(1).getText());
+                assertEquals("Information missing", dropdown.get(2).getText());
+                assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+                assertEquals("Needs further review", dropdown.get(4).getText());
+                webDriver.findElement(By.id("note_link")).click();
+                webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
+                        .sendKeys("Adding notes QA Signature Page");
 
-            String text_CheckBox_Labels = webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]"))
-                    .getText();
-            Assert.assertEquals(text_CheckBox_Labels, "Review Started");
+                webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[contains(@value,'Save and commit')]"))
+                        .click();
+                // *[@id="main-content"]/div[2]/div[1]/div/aside/ul/li[5]/a
 
-            text_CheckBox_Labels = webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]"))
-                    .getText();
-            Assert.assertEquals(text_CheckBox_Labels, "Return for Modification");
+                webDriver
+                        .findElement(By
+                                .xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Determination')]"))
+                        .click();
 
-            text_CheckBox_Labels = webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Eligible')]"))
-                    .getText();
-            Assert.assertEquals(text_CheckBox_Labels, "Recommend Eligible");
+                String text_CheckBox_Labels = webDriver
+                        .findElement(By
+                                .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]"))
+                        .getText();
+                Assert.assertEquals(text_CheckBox_Labels, "Review Started");
 
-            text_CheckBox_Labels = webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]"))
-                    .getText();
-            Assert.assertEquals(text_CheckBox_Labels, "Recommend Ineligible");
-            webDriver.findElement(By.id("assessment_note_body")).sendKeys("QA Test");
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                text_CheckBox_Labels = webDriver
+                        .findElement(By
+                                .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]"))
+                        .getText();
+                Assert.assertEquals(text_CheckBox_Labels, "Return for Modification");
 
-            webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(@href,'determinations')]"))
-                    .click();
-            webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-            webDriver.findElement(By.xpath("//input[contains(@value,'Save and commit')]")).click();
-            webDriver.navigate().back();
-            commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-            LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
-            login_Data.Login_With_Reference();
-            Thread.sleep(2000);
+                text_CheckBox_Labels = webDriver
+                        .findElement(By
+                                .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Eligible')]"))
+                        .getText();
+                Assert.assertEquals(text_CheckBox_Labels, "Recommend Eligible");
 
+                text_CheckBox_Labels = webDriver
+                        .findElement(By
+                                .xpath("//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]"))
+                        .getText();
+                Assert.assertEquals(text_CheckBox_Labels, "Recommend Ineligible");
+                webDriver.findElement(By.id("assessment_note_body")).sendKeys("QA Test");
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+
+                webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(@href,'determinations')]"))
+                        .click();
+                webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                webDriver.findElement(By.xpath("//input[contains(@value,'Save and commit')]")).click();
+                webDriver.navigate().back();
+                commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+                LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
+                login_Data.Login_With_Reference();
+                Thread.sleep(2000);
+
+            }
         } catch (Exception e) {
             AnalystReviewPage.info(e.toString());
             throw e;

@@ -42,8 +42,7 @@ public class TestApp77CancelReviewLink extends TestCase {
             // pass teh dun'sno,type of app
             AnalystReviewPage TestReviewProcess = new AnalystReviewPage();
             // Give Duns Number
-            TestReviewProcess.TestReviewDriver(webDriver, "159165917", "WOSB", "Initial Review", "Analyst2 X",
-                    "Analyst3 X", "Analyst4 X");
+            TestReviewProcess.TestReviewDriver(webDriver, "159165917", "WOSB", "Initial Review", "Analyst1 X", "Analyst1 X", "Analyst1 X");
             TestReviewProcess.testSubmitted();
             fillApplCreatePages.pageQuestionReviewFillup(webDriver);
             fillApplCreatePages.pageSignatureReviewFillup(webDriver);

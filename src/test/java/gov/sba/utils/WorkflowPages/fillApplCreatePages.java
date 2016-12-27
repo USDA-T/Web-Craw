@@ -2,6 +2,7 @@ package gov.sba.utils.WorkflowPages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.bouncycastle.eac.EACException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -86,7 +87,12 @@ public class fillApplCreatePages {
                 // Use
                 // webDriver.findElement(By.id("answers_65_value_no")).click();
                 // for no
-                webDriver.findElement(By.id("answers_117_value_yes")).click();
+                try{
+                    webDriver.findElement(By.id("answers_117_value_yes")).click();
+                }catch (Exception e1){
+                    webDriver.findElement(By.id("answers_65_value_yes")).click();
+                }
+
                 DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
                 deepaUploadMppDocument.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");
@@ -98,7 +104,11 @@ public class fillApplCreatePages {
                 webDriver.switchTo().alert().accept();
                 logger.info("Doc has been uploaded and accepted");
             } else {
-                webDriver.findElement(By.id("answers_65_value_no")).click();
+                try{
+                    webDriver.findElement(By.id("answers_117_value_no")).click();
+                }catch (Exception e1){
+                    webDriver.findElement(By.id("answers_65_value_no")).click();
+                }
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
             }
         } catch (Exception e) {
