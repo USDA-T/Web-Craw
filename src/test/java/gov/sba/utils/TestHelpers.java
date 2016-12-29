@@ -66,7 +66,7 @@ public class TestHelpers {
             break;
         case Constants.BROWSER_PHANTOMJS:
             configKeys = new String[] {
-                    // Note: add PhantomJS specific setting if any
+                    "handlesAlerts"
             };
             setSystemProperties(configKeys, props);
             driver = new PhantomJSDriver();

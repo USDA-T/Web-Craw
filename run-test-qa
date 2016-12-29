@@ -1,3 +1,4 @@
 #!/bin/bash
 mvn clean
-TEST_ENV=qa mvn test
+\cp src/main/resources/default-qa.properties src/main/resources/default.properties
+export TEST_ENV=development && mvn test
