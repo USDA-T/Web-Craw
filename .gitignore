@@ -25,9 +25,13 @@ src/main/resources/default.properties
 .metadata
 .recommenders/
 bin
+
 # IDEs files
 .idea/
 .settings/
 *.iml
 *.ipr
 *.iws
+
+# Misc files
+debug.log
