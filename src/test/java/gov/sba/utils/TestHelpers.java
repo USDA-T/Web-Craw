@@ -30,9 +30,9 @@ public class TestHelpers {
             envUnderTest = "development";
         }
 
-        logger.info("Your system under test :" + envUnderTest);
+        logger.debug("Your system under test :" + envUnderTest);
         System.setProperty(Constants.TEST_ENV, envUnderTest);
-        logger.info("Setting environment:" + Constants.TEST_ENV + " to " + envUnderTest);
+        logger.debug("Setting environment:" + Constants.TEST_ENV + " to " + envUnderTest);
 
         String testUrl = props.getProperty(BASE_URL + envUnderTest);
 
@@ -41,8 +41,8 @@ public class TestHelpers {
                     "You need to setup the '" + BASE_URL + envUnderTest + "' in your default.properties file");
         }
 
-        logger.info("FYI: your test URL:" + testUrl);
-        logger.info("FYI: you are using the browser: " + browser);
+        logger.debug("FYI: your test URL:" + testUrl);
+        logger.debug("FYI: you are using the browser: " + browser);
 
         // Set it so that we can use it later
         System.setProperty(BASE_URL + envUnderTest, testUrl);
@@ -96,7 +96,7 @@ public class TestHelpers {
 
     private static void setSystemProperties(String[] configKeys, Properties props) {
         for (String confKey : configKeys) {
-            logger.info("Update system property :" + confKey + "=" + props.getProperty(confKey));
+            logger.debug("Update system property :" + confKey + "=" + props.getProperty(confKey));
             System.setProperty(confKey, props.getProperty(confKey));
         }
     }
