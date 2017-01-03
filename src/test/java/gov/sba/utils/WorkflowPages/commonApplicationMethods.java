@@ -1,14 +1,13 @@
 package gov.sba.utils.WorkflowPages;
 
-import java.util.List;
-
+import gov.sba.utils.LoginPageWithReference;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.utils.LoginPageWithReference;
+import java.util.List;
 
 public class commonApplicationMethods {
 
@@ -19,28 +18,18 @@ public class commonApplicationMethods {
         case "edwosbactive":
             List<WebElement> listOfActiveEDWOSB = webDriver.findElements(By.xpath(
                     "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'EDWOSB')]) ]"));
-            if (listOfActiveEDWOSB.size() > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return listOfActiveEDWOSB.size() > 0;
         case "wosbactive":
             List<WebElement> listOfActiveWOSB = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'WOSB')]) ]"));
-            if (listOfActiveWOSB.size() > 0) {
-                return true;
-            }
-            return false;
+                    "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) ]"));
+            return listOfActiveWOSB.size() > 0;
 
-        case "mpppending":
+            case "mpppending":
             List<WebElement> listOfActiveMpp = webDriver.findElements(By.xpath(
                     "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ending')]) and (td/a[position()=1 and contains(text(),'MPP')]) ]"));
-            if (listOfActiveMpp.size() > 0) {
-                return true;
-            }
-            return false;
+                return listOfActiveMpp.size() > 0;
 
-        default:
+            default:
             return false;
         }
     }
@@ -60,7 +49,7 @@ public class commonApplicationMethods {
             break;
         case "wosbdraft":
             List<WebElement> deleteElem_01 = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB')]) and ( td[ position()=4 and contains(text(),'Draft') ] )  ]/td[ position()=6 ]/a[ contains(text(),'Delete') ]  "));
+                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) and ( td[ position()=4 and contains(text(),'Draft') ] )  ]/td[ position()=6 ]/a[ contains(text(),'Delete') ]  "));
             if (deleteElem_01.size() > 0) {
                 deleteElem_01.get(0).click();
                 webDriver.switchTo().alert().accept();
@@ -101,7 +90,7 @@ public class commonApplicationMethods {
         case "wosbactive":
             webDriver
                     .findElement(By
-                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') ]) and ( td[ position()=4 and contains(text(),'Active') ] ) ]/td[position()=6]/a[contains(text(),'Return to Vendor')]"))
+                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=4 and contains(text(),'Active') ] ) ]/td[position()=6]/a[contains(text(),'Return to Vendor')]"))
                     .click();
             webDriver.switchTo().alert().accept();
             break;
