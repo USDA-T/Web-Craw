@@ -60,9 +60,9 @@ public class LlcquestionsPage {
         // Locate the LLC two question and select NO, Write comment and
         // continue.
         webDriver.findElement(By.id("answers_78_value_no")).click();
-        webDriver.findElement(By.id("answers_78_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_78_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
         webDriver.findElement(By.id("answers_79_value_no")).click();
-        webDriver.findElement(By.id("answers_79_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_79_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
         webDriver.findElement(By.name("commit")).click();
         logger.info("The LLC questions have been answered");
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
@@ -193,7 +193,7 @@ public class LlcquestionsPage {
         String expected_Text34 = "Reference: 13 C.F.R. 127.202(a)";
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
-        webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_91_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
         webDriver.findElement(By.name("commit")).click();
         // Locate the Net Worth questions,Verify, select No for both and
         // continue.
