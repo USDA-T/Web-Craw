@@ -50,7 +50,7 @@ public class AddOrStartCertificationPage {
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/section/article/div/div[2]"))
                     .getText();
-            Expected_Text = "Get started now on your WOSB self-certification, EDWOSB self-certification, All Small Business Mentor-ProtÃ©gÃ© agreement, or 8(a) Document Upload.";
+            Expected_Text = "Get started now on your WOSB self-certification, EDWOSB self-certification, All Small Business Mentor-Protégé agreement, or 8(a) Document Upload.";
             assertEquals(Actual_Text, Expected_Text);
             Thread.sleep(3000);
             // Click on the EDWOSB link.

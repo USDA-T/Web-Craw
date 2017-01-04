@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.Iterator;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class fillApplCreatePages {
     private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
 

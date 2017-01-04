@@ -39,7 +39,8 @@ public class VerifyEdwosbFlow extends TestCase {
         // LinkForDelete.click();
 
         try {
-            WebElement current_Row_Active = webDriver.findElement(By.xpath(
+            @SuppressWarnings("unused")
+			WebElement current_Row_Active = webDriver.findElement(By.xpath(
                         "//table[@id='certifications']/tbody/tr[ " +
                                     "(td[position()=4 and contains(text(),'ctive')]) " +
                                             " and " +

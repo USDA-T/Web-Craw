@@ -128,7 +128,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
         } else {
             Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/section/article/div/div[2]"))
                     .getText();
-            Expected_Text = "Get started now on your WOSB self-certification, EDWOSB self-certification, All Small Business Mentor-ProtÃ©gÃ© agreement, or 8(a) Document Upload.";
+            Expected_Text = "Get started now on your WOSB self-certification, EDWOSB self-certification, All Small Business Mentor-Protégé agreement, or 8(a) Document Upload.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.cssSelector("div.usa-font-lead")).getText();
             Expected_Text = "To get started on an application, select which program you'd like to join below. You may only upload documents to certify.SBA.gov during the application process. While completing the online questionnaire, you will be instructed to upload documents to support your answers. These online applications replace any forms released by SBA for these contracting programs in the past.";
