@@ -27,7 +27,7 @@ public class MontanaUploadDocumentPage {
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
         
         // Note: might need to be adjust to MainTestUploadDoc.pdf?
-        String pdfFixture = FixtureUtils.fixturesDir() + "Upload.pdf";    
+        String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";    
         
         // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
         StringSelection ss = new StringSelection(pdfFixture);

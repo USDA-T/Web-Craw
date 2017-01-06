@@ -1,8 +1,6 @@
 package gov.sba.utils;
-
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -405,7 +403,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(3000);
         webDriver.findElement(By.id("answers_133_1_4_value")).click();
-        webDriver.findElement(By.xpath("//option[@value='334413']")).click();
+        webDriver.findElement(By.xpath("//option[@value='237110']")).click();
         // Detail Meaning for NAICS.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
                 .getText();
@@ -959,7 +957,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Review";
             assertEquals(Actual_Text, Expected_Text);
-            Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
+            Actual_Text = webDriver.findElement(By.cssSelector("#main-content > p")).getText();
             Expected_Text = "Please review below answers and Submit.";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.name("commit")).click();
@@ -981,7 +979,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             // Verify Business name
             logger.info("  Verify Business name");
             Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-            Expected_Text = "Entity 399 Legal Business Name";
+            Expected_Text = "Entity 402 Legal Business Name";
             assertEquals(Actual_Text, Expected_Text);
             // Verify DUNS label
             logger.info("  Verify DUNS label");
@@ -990,12 +988,12 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             // assertEquals(actual_error9, expected_error9);
             // Verify DUNS number
             logger.info("  Verify DUNS number");
-            Actual_Text = webDriver.findElement(By.cssSelector("span")).getText();
-            Expected_Text = "137151292";
+            Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
+            Expected_Text = "146482889";
             assertEquals(Actual_Text, Expected_Text);
             // Verify first paragraph
             logger.info("  Verify first paragraph");
-            Actual_Text = webDriver.findElement(By.cssSelector("label")).getText();
+            Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
             Expected_Text = "All required documents verifying eligibility for the All Small Mentor-Protégé Program (All Small MPP) have been uploaded to certify.SBA.gov. I understand if any changes are made after I submit this application, I must notify the All Small Mentor-Protégé Program Office and submit additional documentation if needed.";
             assertEquals(Actual_Text, Expected_Text);
             // Verify Second paragraph
@@ -1016,7 +1014,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             // Verify fifth paragraph
             logger.info("  Verify fifth paragraph");
             Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 402 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
             assertEquals(Actual_Text, Expected_Text);
             // Verify sixth paragraph
             logger.info("  Verify sixth paragraph");
@@ -1039,7 +1037,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             webDriver.findElement(By.id("legal_4")).click();
             webDriver.findElement(By.id("legal_5")).click();
             Thread.sleep(2000);
-            webDriver.findElement(By.id("accept-button")).click();
+           // webDriver.findElement(By.id("accept-button")).click();
             webDriver.close();
             return;
 

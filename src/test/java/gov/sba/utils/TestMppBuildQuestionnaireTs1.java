@@ -70,7 +70,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
         // 8(a) question.
-        Actual_Text = webDriver.findElement(By.xpath("//form[@id='mpp']/ul/li/div/div/div/div/h4")).getText();
+        Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > p")).getText();
         Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Protégé relationship to the All Small Mentor-Protégé Program?";
         assertEquals(Actual_Text, Expected_Text);
         // Verify doc uploaded.
@@ -78,7 +78,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Expected_Text = "MainTestUploadDoc.pdf";
         assertEquals(Actual_Text, Expected_Text);
         // Click on change your answer and verify.
-        webDriver.findElement(By.linkText("change your answer")).click();
+        webDriver.findElement(By.linkText("Change answer")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
         assertEquals(Actual_Text, Expected_Text);
@@ -105,7 +105,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Verify Business name
         logger.info("  Verify Business name");
         Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-        Expected_Text = "Entity 412 Legal Business Name";
+        Expected_Text = "Entity 399 Legal Business Name";
         assertEquals(Actual_Text, Expected_Text);
         // Verify DUNS label
         logger.info("  Verify DUNS label");
@@ -115,7 +115,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Verify DUNS number
         logger.info("  Verify DUNS number");
         Actual_Text = webDriver.findElement(By.xpath("//span")).getText();
-        Expected_Text = "129913885";
+        Expected_Text = "137151292";
         assertEquals(Actual_Text, Expected_Text);
         // Verify first paragraph
         logger.info("  Verify first paragraph");
@@ -140,7 +140,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Verify fifth paragraph
         logger.info("  Verify fifth paragraph");
         Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-        Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 412 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+        Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
         assertEquals(Actual_Text, Expected_Text);
         // Verify sixth paragraph
         logger.info("  Verify sixth paragraph");

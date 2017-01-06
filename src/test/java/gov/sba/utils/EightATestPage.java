@@ -42,7 +42,7 @@ public class EightATestPage {
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(4000);
-
+        
         EightAdocumentUploadPage eightAdocumentUpload = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload.EightAdocumentUpload();
 

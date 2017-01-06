@@ -28,7 +28,7 @@ public class LoginPageWithReference {
         webDriver.findElement(By.name("user[password]"))
                 .sendKeys(LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
         webDriver.findElement(By.id("business_signin")).click();
-        String url = webDriver.getCurrentUrl();
+        //String url = webDriver.getCurrentUrl();
         //org.junit.Assert.assertTrue(url.contains("certify"));
     }
 }

@@ -22,7 +22,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 27;
+        get_The_Row_From_Login_Data = 40;
     }
 
     @Test
@@ -45,11 +45,11 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // MPP Questions Section, 8(a) Participants. Answer=NO.
         // Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-        Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Prot√©g√© relationship to the All Small Mentor-Prot√©g√© Program?";
+        Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-ProtÈgÈ relationship to the All Small Mentor-ProtÈgÈ Program?";
         assertEquals(Actual_Text, Expected_Text);
         // Verifying detail meaning for question.
         Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
-        Expected_Text = "If yes, please upload your dated 8(a) Mentor-Prot√©g√© Approval Letter and your current 8(a) Mentor-Prot√©g√© Agreement. You are eligible for the All Small Mentor-Prot√©g√© Program and you will skip forward to the ‚ÄúReview‚Äù section of this application.";
+        Expected_Text = "If yes, please upload your dated 8(a) Mentor-ProtÈgÈ Approval Letter and your current 8(a) Mentor-ProtÈgÈ Agreement. You are eligible for the All Small Mentor-ProtÈgÈ Program and you will skip forward to the ìReviewî section of this application.";
         assertEquals(Actual_Text, Expected_Text);
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_no")).click();
@@ -75,7 +75,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         Expected_Text = "Except for small agricultural cooperatives, only business entities organized for-profit are eligible for small business assistance from the SBA.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mentor_for_profit']/fieldset/p[2]")).getText();
-        Expected_Text = "A mentor is defined as ‚Äúa for-profit business concern of any size.‚Äù";
+        Expected_Text = "A mentor is defined as ìa for-profit business concern of any size.î";
         assertEquals(Actual_Text, Expected_Text);
         // Open this command when fix.
         // Actual_Text = webDriver.findElement(By.xpath("")).getText();
@@ -83,12 +83,12 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // to control another business. This could occur through ownership,
         // management, or other relationships or interactions between two
         // parties. If the SBA has made a determination of affiliation between
-        // you and your mentor, they would have counted your business‚Äôs
+        // you and your mentor, they would have counted your businessís
         // receipts, employees, or other measures of size.";
         // assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver
                 .findElement(By.xpath("//div[@id='answers_mentor_over_40_percent_protege']/fieldset/p[2]")).getText();
-        Expected_Text = "To raise capital for the Prot√©g√© firm the Mentor may generally own an equity interest of up to 40% in the Prot√©g√© firm. Reference: 13 CFR 124.520(d)(2)";
+        Expected_Text = "To raise capital for the ProtÈgÈ firm the Mentor may generally own an equity interest of up to 40% in the ProtÈgÈ firm. Reference: 13 CFR 124.520(d)(2)";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
@@ -113,29 +113,29 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver.findElement(By.name("commit")).click();
         // NAICS Code Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-        Expected_Text = "Please select the NAICS code for which you are creating a mentor-prot√©g√© relationship:";
+        Expected_Text = "Please select the NAICS code for which you are creating a mentor-protÈgÈ relationship:";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_prior_naics_code_work > fieldset > h4")).getText();
-        Expected_Text = "Have you performed work in the NAICS code in which you‚Äôre requesting business development assistance?";
+        Expected_Text = "Have you performed work in the NAICS code in which youíre requesting business development assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_small_for_mpp_naics_code > fieldset > h4"))
                 .getText();
-        Expected_Text = "Are you considered small for the NAICS code in which you‚Äôre requesting business development assistance?";
+        Expected_Text = "Are you considered small for the NAICS code in which youíre requesting business development assistance?";
         assertEquals(Actual_Text, Expected_Text);
         // Verifying detail meaning for questions.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_naics_code']/fieldset/p[2]")).getText();
-        Expected_Text = "A Mentor-Prot√©g√© Agreement must be in a NAICS code that is identified in SAM.gov as a prot√©g√©‚Äôs primary or secondary code.";
+        Expected_Text = "A Mentor-ProtÈgÈ Agreement must be in a NAICS code that is identified in SAM.gov as a protÈgÈís primary or secondary code.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_naics_code']/fieldset/p[3]")).getText();
         Expected_Text = "The NAICS codes listed above are the primary or secondary codes associated with your business in SAM.gov. You may update your SAM.gov profile to include an additional NAICS code if the correct NAICS is not listed. If you add a code to your SAM.gov profile, please wait 24 hours for us to receive the update and then return to continue your application.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_prior_naics_code_work']/fieldset/p[2]"))
                 .getText();
-        Expected_Text = "You must have prior experience in the NAICS code in the NAICS code in which you‚Äôre seeking assistance.";
+        Expected_Text = "You must have prior experience in the NAICS code in the NAICS code in which youíre seeking assistance.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_small_for_mpp_naics_code']/fieldset/p[2]"))
                 .getText();
-        Expected_Text = "To qualify as a prot√©g√© firm, your business must qualify as small for the NAICS code for which it is seeking business development assistance. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations. Reference: 13 CFR 121.201";
+        Expected_Text = "To qualify as a protÈgÈ firm, your business must qualify as small for the NAICS code for which it is seeking business development assistance. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations. Reference: 13 CFR 121.201";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
@@ -156,7 +156,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver.findElement(By.name("commit")).click();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
-        Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be ‚Äúother than small‚Äù in the NAICS code in which you‚Äôre requesting business development assistance?";
+        Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be ìother than smallî in the NAICS code in which youíre requesting business development assistance?";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
@@ -171,11 +171,11 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // disabled , Verifying Question.
         // Training Section(Subsection 2.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
-        Expected_Text = "Please view the Mentor-Prot√©g√© Program training module and upload the certificate of completion.";
+        Expected_Text = "Please view the Mentor-ProtÈgÈ Program training module and upload the certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\Deepa3\\Documents\\UI_For_MPP.pdf");
+        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument.MontanaUploadDocument();
         webDriver.findElement(By.name("commit")).click();
 
     }
