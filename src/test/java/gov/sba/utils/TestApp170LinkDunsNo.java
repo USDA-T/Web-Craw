@@ -47,19 +47,19 @@ public class TestApp170LinkDunsNo extends TestCase {
                 duns_Number = "159165917";
 
                 xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-//                    + "')]	and " + "td[position()=3 and contains(text(), '" + typ_App_Passed + "')]" + "]";
                         + "')]	and " + "td[position()=3 and (text()= '" + typ_App_Passed + "')]" + "]";
                 // All cases page
                 TestApp170LinkDunsNo.info(xpath_Value);
                  current_Row = webDriver.findElements(By.xpath(xpath_Value));
                 TestApp170LinkDunsNo.info(current_Row.size());
-                TestApp170LinkDunsNo.info(current_Row.get(0).getText());
-                current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
-//            current_Row.get(0).findElement(By.xpath("//" + "td[2]/a")).click();
-                asset_Exists = webDriver.findElement(
-                        By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
-                // Vendor Overview page should display clicking on Duns Number Link
-                assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+                if (current_Row.size() > 0) {
+                    TestApp170LinkDunsNo.info(current_Row.get(0).getText());
+                    current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
+                    asset_Exists = webDriver.findElement(
+                            By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
+                    // Vendor Overview page should display clicking on Duns Number Link
+                    assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+                }
 
             }
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
@@ -73,15 +73,16 @@ public class TestApp170LinkDunsNo extends TestCase {
             if (! webDriver.getPageSource().contains("No results found")) {
                 // All cases page for Mpp Analyst
                 xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-//                    + "')]	and " + "td[position()=3 and contains(text(), '" + typ_App_Passed + "')]" + "]";
                         + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
                 current_Row = webDriver.findElements(By.xpath(xpath_Value));
-                current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
-//            current_Row.get(0).findElement(By.xpath("//" + "td[2]/a")).click();
                 // Vendor Overview page should display clicking on Duns Number Link
-                asset_Exists = webDriver.findElement(
-                        By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
-                assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+                if (current_Row.size() > 0) {
+                    current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
+                    asset_Exists = webDriver.findElement(
+                            By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
+                    assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+
+                }
                 commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
             }
 
@@ -95,15 +96,16 @@ public class TestApp170LinkDunsNo extends TestCase {
             if (! webDriver.getPageSource().contains("No results found")) {
                 // All cases page 8(a) Analyst
                 xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-    //                    + "')]	and " + "td[position()=3 and contains(text(), '" + typ_App_Passed + "')]" + "]";
                         + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
                 current_Row = webDriver.findElements(By.xpath(xpath_Value));
-    //            current_Row.get(0).findElement(By.xpath("//" + "td[2]/a")).click();
-                current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
                 // Vendor Overview page should display clicking on Duns Number Link
-                asset_Exists = webDriver.findElement(
-                        By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
-                assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+                if (current_Row.size() > 0) {
+                    current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
+
+                    asset_Exists = webDriver.findElement(
+                            By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]"));
+                    assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
+                }
             }
 
         } catch (Exception e) {
@@ -114,6 +116,6 @@ public class TestApp170LinkDunsNo extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+        webDriver.quit();
     }
 }

@@ -1,7 +1,10 @@
 package gov.sba.utils;
 
-import java.util.List;
-
+import gov.sba.utils.WorkflowPages.commonApplicationMethods;
+import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.helpers.DatabaseQuery;
+import gov.sba.utils.helpers.FixtureUtils;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -10,12 +13,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.utils.WorkflowPages.commonApplicationMethods;
-import gov.sba.utils.WorkflowPages.fillApplCreatePages;
-import gov.sba.utils.helpers.DatabaseQuery;
-import junit.framework.TestCase;
+import java.util.List;
 
 public class AnalystReviewPage extends TestCase {
+    private static final Logger AnalystReviewPage = LogManager.getLogger(AnalystReviewPage.class.getName());
     WebDriver webDriver;
     String duns_Number;
     String typ_App_Passed;
@@ -34,8 +35,6 @@ public class AnalystReviewPage extends TestCase {
         this.owner = owner_p;
         this.supervisor = supervisor_p;
     }
-
-    private static final Logger AnalystReviewPage = LogManager.getLogger(AnalystReviewPage.class.getName());
 
     public void testSubmitted() throws Exception {
         try {
@@ -70,17 +69,22 @@ public class AnalystReviewPage extends TestCase {
                     commonApplicationMethods.createApplication(webDriver, "WOSB");
 
                     webDriver.findElement(By.id("answers_5_value_yes")).click();
-                    DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
-                    deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\IEUser\\Documents\\UI_For_MPP.pdf");
-                    AnalystReviewPage.info("Doc has been uploaded.");
-                    Thread.sleep(1000);
-                    webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                    Thread.sleep(1000);
-                    webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                    Thread.sleep(1000);
-                    webDriver.switchTo().alert().accept();
-                    AnalystReviewPage.info("Doc has been uploaded and accepted");
+                    // newMppUploadDocumentPage deepaUploadMppDocument = new newMppUploadDocumentPage(webDriver);
+                    // deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\IEUser\\Documents\\UI_For_MPP.pdf");
+                    String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+
+                    AnalystReviewPage.info(file_path_abs);
+                    fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
                     fillApplCreatePages.finalSignatureSubmit(webDriver);
+                    AnalystReviewPage.info("Doc has been uploaded.");
+                    // Thread.sleep(1000);
+                    // webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                    // Thread.sleep(1000);
+                    // webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                    // Thread.sleep(1000);
+                    // webDriver.switchTo().alert().accept();
+                    // AnalystReviewPage.info("Doc has been uploaded and accepted");
+                    // fillApplCreatePages.finalSignatureSubmit(webDriver);
 
                 }
 

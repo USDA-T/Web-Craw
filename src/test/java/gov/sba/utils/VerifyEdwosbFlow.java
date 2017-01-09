@@ -61,9 +61,10 @@ public class VerifyEdwosbFlow extends TestCase {
             logger.info(current_Row1.getText());
             List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
             logger.info(all_Cells1.size());
-            all_Cells1.get(3).findElement(By.xpath("//a[contains(text(),'Return to Vendor')]")).click();
-            Thread.sleep(4000);
-            webDriver.switchTo().alert().accept();
+//          all_Cells1.get(3).findElement(By.xpath("//a[contains(text(),'Return to Vendor')]")).click();
+//          Thread.sleep(4000);
+//          webDriver.switchTo().alert().accept();
+
             webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
 
             login_Data = new LoginPageWithReference(webDriver, 9);

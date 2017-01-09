@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.Iterator;
 import java.util.List;
+import gov.sba.utils.newMppUploadDocumentPage;
 
 public class fillApplCreatePages {
     private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
@@ -83,6 +84,7 @@ public class fillApplCreatePages {
         }
     }
 
+
     public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws Exception {
         try {
             if (answer01.toUpperCase().contains("YES")) {
@@ -90,15 +92,15 @@ public class fillApplCreatePages {
                 // webDriver.findElement(By.id("answers_65_value_no")).click();
                 // for no
 
+
                 List<WebElement> current_Row = webDriver.findElements(By.xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes')]"));
                 Iterator<WebElement> all_Rows = current_Row.iterator();
                 while (all_Rows.hasNext()) {
                     all_Rows.next().click();
                 }
-
-
-                DeepaMppUploadDocumentPage deepaUploadMppDocument = new DeepaMppUploadDocumentPage(webDriver);
-                deepaUploadMppDocument.deepaUploadMppDocument(path);
+                
+                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                deepaUploadMppDocument1.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");
                 Thread.sleep(2000);
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();

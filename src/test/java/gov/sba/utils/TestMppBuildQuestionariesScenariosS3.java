@@ -1,5 +1,6 @@
 package gov.sba.utils;
 
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -9,8 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import junit.framework.TestCase;
 
 public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionariesScenariosS3.class.getName());

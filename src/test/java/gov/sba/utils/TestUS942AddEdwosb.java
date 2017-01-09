@@ -36,7 +36,7 @@ public class TestUS942AddEdwosb extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+        webDriver.quit();
     }
 
 }
