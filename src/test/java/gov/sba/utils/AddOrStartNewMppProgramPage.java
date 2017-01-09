@@ -39,7 +39,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             // Verify and Click on the EDWOSB Certification to select.
             Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[3]"))
                     .getText();
-            Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
+            Expected_Text = "All Small Mentor-ProtÃ©gÃ© Program (Review requirements)";
             assertEquals(Actual_Text, Expected_Text);
             // Click on the add new certification button.
             Actions act1 = new Actions(webDriver);
@@ -50,7 +50,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             Expected_Text = "Purpose:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > p")).getText();
-            Expected_Text = "The All Small Business Mentor-Protégé Program (MPP) is designed to enhance the capabilities of protégé firms by requiring approved mentors to provide business development assistance to protégé firms and to improve protégé firms’ ability to successfully compete for federal contracts. This assistance may include:";
+            Expected_Text = "The All Small Business Mentor-ProtÃ©gÃ© Program (MPP) is designed to enhance the capabilities of protÃ©gÃ© firms by requiring approved mentors to provide business development assistance to protÃ©gÃ© firms and to improve protÃ©gÃ© firmsâ€™ ability to successfully compete for federal contracts. This assistance may include:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > ul > li")).getText();
             Expected_Text = "technical and/or management assistance";
@@ -61,32 +61,32 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/ul/li[3]"))
                     .getText();
-            Expected_Text = "subcontracts (either from the Mentor to the Protégé or from the Protégé to the Mentor)";
+            Expected_Text = "subcontracts (either from the Mentor to the ProtÃ©gÃ© or from the ProtÃ©gÃ© to the Mentor)";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/ul/li[4]"))
                     .getText();
             Expected_Text = "and/or assistance in performing prime contracts with the Government through joint venture arrangements.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[2]")).getText();
-            Expected_Text = "Mentors are encouraged to provide assistance relating to the performance of contracts set aside or reserved for small business so that protégé firms may more fully develop their capabilities.";
+            Expected_Text = "Mentors are encouraged to provide assistance relating to the performance of contracts set aside or reserved for small business so that protÃ©gÃ© firms may more fully develop their capabilities.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/h4[2]")).getText();
             Expected_Text = "Instructions:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[3]")).getText();
-            Expected_Text = "A Mentor-Protégé relationship should be established before starting this application – this is not a matching program. The Protégé firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
+            Expected_Text = "A Mentor-ProtÃ©gÃ© relationship should be established before starting this application â€™ this is not a matching program. The ProtÃ©gÃ© firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/h4[3]")).getText();
             Expected_Text = "Disclaimer:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[4]")).getText();
-            Expected_Text = "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-Protégé Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government’s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+            Expected_Text = "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-ProtÃ©gÃ© Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Governmentâ€™s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
             assertEquals(Actual_Text, Expected_Text);
             // Verify links on the table.
             webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             String main_window = webDriver.getWindowHandle();
             logger.info("Before switching, title is = certify.sba.gov");
-            webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
+            webDriver.findElement(By.linkText("Mentor-ProtÃ©gÃ© Program training module")).click();
             assertEquals(Actual_Text, Expected_Text);
             java.util.Set<String> S1 = webDriver.getWindowHandles();
             Iterator<String> i1 = S1.iterator();
@@ -134,13 +134,13 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             Expected_Text = "To get started on an application, select which program you'd like to join below. You may only upload documents to certify.SBA.gov during the application process. While completing the online questionnaire, you will be instructed to upload documents to support your answers. These online applications replace any forms released by SBA for these contracting programs in the past.";
             assertEquals(Actual_Text, Expected_Text);
             // Click on the WOSB link.
-            webDriver.findElement(By.linkText("All Small Business Mentor-Protégé agreement")).click();
+            webDriver.findElement(By.linkText("All Small Business Mentor-ProtÃ©gÃ© agreement")).click();
             // Verify and validate the terms for the certification.
             Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
             Expected_Text = "Purpose:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > p")).getText();
-            Expected_Text = "The All Small Business Mentor-Protégé Program (MPP) is designed to enhance the capabilities of protégé firms by requiring approved mentors to provide business development assistance to protégé firms and to improve protégé firms’ ability to successfully compete for federal contracts. This assistance may include:";
+            Expected_Text = "The All Small Business Mentor-ProtÃ©gÃ© Program (MPP) is designed to enhance the capabilities of protÃ©gÃ© firms by requiring approved mentors to provide business development assistance to protÃ©gÃ© firms and to improve protÃ©gÃ© firmsâ€™ ability to successfully compete for federal contracts. This assistance may include:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > ul > li")).getText();
             Expected_Text = "technical and/or management assistance";
@@ -151,33 +151,33 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/ul/li[3]"))
                     .getText();
-            Expected_Text = "subcontracts (either from the Mentor to the Protégé or from the Protégé to the Mentor)";
+            Expected_Text = "subcontracts (either from the Mentor to the ProtÃ©gÃ© or from the ProtÃ©gÃ© to the Mentor)";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/ul/li[4]"))
                     .getText();
             Expected_Text = "and/or assistance in performing prime contracts with the Government through joint venture arrangements.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[2]")).getText();
-            Expected_Text = "Mentors are encouraged to provide assistance relating to the performance of contracts set aside or reserved for small business so that protégé firms may more fully develop their capabilities.";
+            Expected_Text = "Mentors are encouraged to provide assistance relating to the performance of contracts set aside or reserved for small business so that protÃ©gÃ© firms may more fully develop their capabilities.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/h4[2]")).getText();
             Expected_Text = "Instructions:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[3]")).getText();
-            Expected_Text = "A Mentor-Protégé relationship should be established before starting this application – this is not a matching program. The Protégé firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
+            Expected_Text = "A Mentor-ProtÃ©gÃ© relationship should be established before starting this application â€“ this is not a matching program. The ProtÃ©gÃ© firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/h4[3]")).getText();
             Expected_Text = "Disclaimer:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[4]")).getText();
-            Expected_Text = "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-Protégé Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government’s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+            Expected_Text = "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-ProtÃ©gÃ© Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Governmentâ€™s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
             assertEquals(Actual_Text, Expected_Text);
             // Verify links on the table.
             logger.info("Before switching, title is = certify.sba.gov");
             webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             String main_window = webDriver.getWindowHandle();
             logger.info("Before switching, title is =" + webDriver.getTitle());
-            webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
+            webDriver.findElement(By.linkText("Mentor-ProtÃ©gÃ© Program training module")).click();
             java.util.Set<String> S1 = webDriver.getWindowHandles();
             Iterator<String> i1 = S1.iterator();
             while (i1.hasNext()) {

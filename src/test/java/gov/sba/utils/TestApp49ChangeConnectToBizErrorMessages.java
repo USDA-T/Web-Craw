@@ -58,7 +58,7 @@ public class TestApp49ChangeConnectToBizErrorMessages extends TestCase {
         WebElement WarningErrorMessage = webDriver.findElement(By.xpath("//form[@id='find_business']/div[4]/p[4]"));
         HighLight.highLightElement(webDriver, WarningErrorMessage);
         Actual_Text = webDriver.findElement(By.cssSelector("h5")).getText();
-        Expected_Text = "Your records in SAM.gov must be in the “Active” status to be able to access your records in certify.SBA.gov. Please check your DUNS, TIN/EIN and MPIN to make sure they match exactly as they are displayed in SAM.gov. The DUNS and EIN should be numbers only (no spaces or dashes) and your MPIN is case sensitive.";
+        Expected_Text = "Your records in SAM.gov must be in the \"Active\" status to be able to access your records in certify.SBA.gov. Please check your DUNS, TIN/EIN and MPIN to make sure they match exactly as they are displayed in SAM.gov. The DUNS and EIN should be numbers only (no spaces or dashes) and your MPIN is case sensitive.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//h5[2]")).getText();
         Expected_Text = "NOTE: Any changes to SAM.gov can take up to 72 hours to display in certify.SBA.gov.";

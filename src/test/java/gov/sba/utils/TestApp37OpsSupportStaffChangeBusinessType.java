@@ -114,8 +114,8 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
             }
 
 
-            gov.sba.utils.newMppUploadDocumentPage deepaUploadMppDocument = new gov.sba.utils.newMppUploadDocumentPage(webDriver);
-            deepaUploadMppDocument.deepaUploadMppDocument(file_path_abs);
+            MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+            montanaUploadDocument.MontanaUploadDocument();
             TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded.");
             Thread.sleep(2000);
             webDriver.findElement(By.xpath("//input[@type='submit']")).click();
