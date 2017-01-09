@@ -52,7 +52,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Verifying detail meaning for question.
         Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
-        Expected_Text = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the ’Review’ section of this application.";
+        Expected_Text = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
         assertEquals(Actual_Text, Expected_Text);
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_no")).click();
