@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs1 extends TestCase {
@@ -66,7 +65,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
+        Actual_Text = webDriver.findElement(By.cssSelector("#main-content > p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
         // 8(a) question.
@@ -114,12 +113,12 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // assertEquals(actual_error9, expected_error9);
         // Verify DUNS number
         logger.info("  Verify DUNS number");
-        Actual_Text = webDriver.findElement(By.xpath("//span")).getText();
+        Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
         Expected_Text = "137151292";
         assertEquals(Actual_Text, Expected_Text);
         // Verify first paragraph
         logger.info("  Verify first paragraph");
-        Actual_Text = webDriver.findElement(By.cssSelector("label")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
         Expected_Text = "All required documents verifying eligibility for the All Small Mentor-Protégé Program (All Small MPP) have been uploaded to certify.SBA.gov. I understand if any changes are made after I submit this application, I must notify the All Small Mentor-Protégé Program Office and submit additional documentation if needed.";
         assertEquals(Actual_Text, Expected_Text);
         // Verify Second paragraph

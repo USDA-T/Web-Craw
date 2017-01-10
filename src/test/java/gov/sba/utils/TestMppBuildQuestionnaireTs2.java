@@ -1,4 +1,5 @@
 package gov.sba.utils;
+
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
@@ -8,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs2 extends TestCase {

@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs3 extends TestCase {
@@ -78,7 +77,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         Expected_Text = "Except for small agricultural cooperatives, only business entities organized for-profit are eligible for small business assistance from the SBA.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mentor_for_profit']/fieldset/p[2]")).getText();
-        Expected_Text = "A mentor is defined as ’a for-profit business concern of any size.’";
+        Expected_Text = "A mentor is defined as “a for-profit business concern of any size.”";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver
                 .findElement(By.xpath("//div[@id='answers_mentor_over_40_percent_protege']/fieldset/p[2]")).getText();
@@ -118,7 +117,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Verifying detail meaning for questions.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_naics_code']/fieldset/p[2]")).getText();
-        Expected_Text = "A Mentor-Protégé Agreement must be in a NAICS code that is identified in SAM.gov as a protégés primary or secondary code.";
+        Expected_Text = "A Mentor-Protégé Agreement must be in a NAICS code that is identified in SAM.gov as a protégé’s primary or secondary code.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_naics_code']/fieldset/p[3]")).getText();
         Expected_Text = "The NAICS codes listed above are the primary or secondary codes associated with your business in SAM.gov. You may update your SAM.gov profile to include an additional NAICS code if the correct NAICS is not listed. If you add a code to your SAM.gov profile, please wait 24 hours for us to receive the update and then return to continue your application.";
@@ -150,7 +149,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         webDriver.findElement(By.name("commit")).click();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
-        Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be ’other than small’ in the NAICS code in which you’re requesting business development assistance?";
+        Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
@@ -218,26 +217,26 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         Expected_Text = "Based on your selection(s), you will then be asked to specify: 1) what are your needs within the selected area; 2) what activities the Mentor is going to do to support each of your needs; 3) the timeline for meeting each of your needs; and 4) how you will measure whether each of your needs have been successfully met.";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’Management and Technical’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “Management and Technical” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_financial > fieldset > h4"))
                 .getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’Financial’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “Financial” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_contracting > fieldset > h4"))
                 .getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’Contracting’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “Contracting” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_trade_ed > fieldset > h4"))
                 .getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’Trade Education’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “Trade Education” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_biz_dev > fieldset > h4")).getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’Business Development’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “Business Development” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_gen_admin > fieldset > h4"))
                 .getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with ’General and/or Administrative’ assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “General and/or Administrative” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         // Details.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_providing_mgmt_and_tech']/fieldset/p[2]"))
@@ -777,7 +776,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             // Verify sixth paragraph
             logger.info("  Verify sixth paragraph");
             Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
-            Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. ’ 645 and 18 U.S.C. ’ 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
+            Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
             assertEquals(Actual_Text, Expected_Text);
             // Step 9 - Click the Continue button
             logger.info("Step 9 - Click the Continue button");
