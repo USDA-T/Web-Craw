@@ -37,10 +37,6 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             Expected_Text = "You may only have one active WOSB application and one active EDWOSB application. You may have up to two active All Small MPP applications. If you need to make edits or changes to a submitted application, please contact the respective program office to release your application back to you: wosb@sba.gov, AllSmallMpp@sba.gov";
             assertEquals(Actual_Text, Expected_Text);
             // Verify and Click on the EDWOSB Certification to select.
-            Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[3]"))
-                    .getText();
-            Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
-            assertEquals(Actual_Text, Expected_Text);
             // Click on the add new certification button.
             Actions act1 = new Actions(webDriver);
             act1.doubleClick(webDriver.findElement(By.id("certificate_type_mpp"))).build().perform();
@@ -74,7 +70,7 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             Expected_Text = "Instructions:";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/p[3]")).getText();
-            Expected_Text = "A Mentor-Protégé relationship should be established before starting this application ’ this is not a matching program. The Protégé firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
+            Expected_Text = "A Mentor-Protégé relationship should be established before starting this application – this is not a matching program. The Protégé firm must provide the following information and any supporting documentation in PDF format in order to complete the MPP application process.";
             assertEquals(Actual_Text, Expected_Text);
             Actual_Text = webDriver.findElement(By.xpath("//form[@id='new_sba_application']/div/div/h4[3]")).getText();
             Expected_Text = "Disclaimer:";

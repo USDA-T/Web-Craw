@@ -49,7 +49,7 @@ public class FinancialSectionPage {
         // Locate and YES for question 'Do you have any notes receivable from
         // others?'.
         webDriver.findElement(By.cssSelector("label.yes")).click();
-        webDriver.findElement(By.cssSelector("span")).click();
+        webDriver.findElement(By.xpath("//div[@id='answers_40_details_table_wrapper']/div/a/span")).click();
         logger.info(
                 "User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
         Thread.sleep(3000);
@@ -86,7 +86,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.name("commit")).click();
 
         webDriver.findElement(By.id("answers_43_value_yes")).click();
-        webDriver.findElement(By.cssSelector("span")).click();
+        webDriver.findElement(By.xpath("//div[@id='answers_43_details_table_wrapper']/div/a/span")).click();
         webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
         webDriver.findElement(By.id("DTE_Field_cash_surrender_value")).sendKeys("40000");
         webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("5000");
@@ -101,7 +101,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.name("commit")).click();
         // Select Yes for the Stock and Bonds Section.
         webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
-        webDriver.findElement(By.cssSelector("span")).click();
+        webDriver.findElement(By.xpath("//div[@id='answers_46_details_table_wrapper']/div/a/span")).click();
         webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test Testing");
         webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("50000");
         webDriver.findElement(By.id("DTE_Field_num_of_shares")).sendKeys("60");
@@ -152,7 +152,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers[51][value]']/label[1]")).click();
         // Locate the New button on the data table and click on it to add
         // information.
-        webDriver.findElement(By.xpath("//span")).click();
+        webDriver.findElement(By.xpath("//div[@id='answers_51_details_table_wrapper']/div/a/span")).click();
         // Locate current value search box and enter a valid value for you
         // automobile.
         webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000");
@@ -275,7 +275,7 @@ public class FinancialSectionPage {
 
         assertTrue(webDriver.getPageSource().contains("Include only assessed taxes that are unpaid"));
         logger.info("Assessed taxes data tabl is present, Pass");
-        webDriver.findElement(By.cssSelector("span")).click();
+        webDriver.findElement(By.xpath("//div[@id='answers_60_details_table_wrapper']/div/a/span")).click();
         // Locate the whom payable search box and enter a valid data.
         webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Max Mill");
         // Locate the amount search box and enter a valid amount.

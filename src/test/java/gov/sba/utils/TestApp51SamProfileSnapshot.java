@@ -47,18 +47,19 @@ public class TestApp51SamProfileSnapshot extends TestCase {
         simpleEDWOSBEightATest.SimpleEDWOSBEightATest();
         // Login as a WOSB analyst and verify responsibilities.
         webDriver.findElement(By.linkText("Logout")).click();
-        get_The_Row_From_Login_Data = 11;
+        get_The_Row_From_Login_Data = 0;
         LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data1.Login_With_Reference();
-        webDriver.findElement(By.id("query")).sendKeys("129913885");
+        webDriver.findElement(By.id("query")).sendKeys("111419538");
         webDriver.findElement(By.xpath("//button")).click();
-        Actual_Text = webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).getText();
-        Expected_Text = "Entity 412 Legal Business Name";
+        Actual_Text = webDriver.findElement(By.linkText("Entity 10 Legal Business Name")).getText();
+        Expected_Text = "Entity 10 Legal Business Name";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
+        webDriver.findElement(By.linkText("Entity 10 Legal Business Name")).click();
+        Thread.sleep(4000);
         // Verify that analyst is navigated to the vendor overview page.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div/p[4]/span")).getText();
-        Expected_Text = "05RSL";
+        Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+        Expected_Text = "Entity 10 Legal Business Name";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("td")).getText();
         Expected_Text = "EDWOSB Self-Certification";
@@ -72,7 +73,7 @@ public class TestApp51SamProfileSnapshot extends TestCase {
         String Expected_Text1;
         Expected_Text1 = webDriver.findElement(By.xpath("//div[2]/div[3]/p")).getText();
         String[] Actual_Text2 = Expected_Text1.split(" ");
-        String part2 = Actual_Text2[6]; // Submitted Date
+        String part2 = Actual_Text2[5]; // Submitted Date
         assertEquals(part2, Actual_Text1);
         logger.info(part2);
         // Verify the SAM snapshot.

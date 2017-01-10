@@ -73,12 +73,12 @@ public class PartnershipQuestionsPage {
         assertEquals(actual_Text51, expected_Text51);
         webDriver.findElement(By.id("answers_76_value_no")).click();
         webDriver.findElement(By.id("answers_76_comment")).sendKeys(
-                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         // Locate the Partnership questions 2 and select No and continue.
         Thread.sleep(4000);
         webDriver.findElement(By.id("answers_77_value_no")).click();
         webDriver.findElement(By.id("answers_77_comment")).sendKeys(
-                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         webDriver.findElement(By.name("commit")).click();
         logger.info("The partnership questions have been answered");
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
@@ -111,7 +111,7 @@ public class PartnershipQuestionsPage {
         String expected_Text14 = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
         assertEquals(actual_Text14, expected_Text14);
         // Verify the more detail meaning for the Businesses & Trusts questions
-        String actual_Text15 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text15 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text15 = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b).";
         assertEquals(actual_Text15, expected_Text15);
         // 2nd question
@@ -284,7 +284,7 @@ public class PartnershipQuestionsPage {
         String expected_Text45 = "Can the qualifying individual(s) confirm that no assets were transferred within two years of the date of EDWOSB certification?";
         assertEquals(actual_Text45, expected_Text45);
         // 1st question meaning.
-        String actual_Text46 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text46 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text46 = "Assets that a woman claiming economic disadvantage transferred within two years of the date of the concern's certification will be attributed to the woman claiming economic disadvantage if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
         assertEquals(actual_Text46, expected_Text46);
         webDriver.findElement(By.id("answers_97_value_no")).click();
@@ -306,7 +306,7 @@ public class PartnershipQuestionsPage {
         String actual_Text491 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text491 = "Financial Data";
         assertEquals(actual_Text491, expected_Text491);
-        String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
         assertEquals(actual_Text52, expected_Text52);
         // Validate the Personal Information.
