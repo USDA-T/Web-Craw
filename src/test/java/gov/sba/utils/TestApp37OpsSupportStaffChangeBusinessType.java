@@ -113,7 +113,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
                 all_Rows1.next().click();
             }
 
-
             MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
             montanaUploadDocument.MontanaUploadDocument();
             TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded.");

@@ -144,16 +144,16 @@ import junit.framework.TestCase;
 		    get_The_Row_From_Login_Data = 38;
 		    LoginPageWithReference login_Data5 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		    login_Data5.Login_With_Reference();
-		    Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-	        Expected_Text = "Please select at least one business to associate to your application.";
+		    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+	        Expected_Text = "Request access";
 	        assertEquals(Actual_Text, Expected_Text);
 	        //Verify that the other vendor admin is successfully disassociated from the business.
 	        webDriver.findElement(By.linkText("Logout")).click();
 	        get_The_Row_From_Login_Data = 37;
 	        LoginPageWithReference login_Data6 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 	        login_Data6.Login_With_Reference();
-	        Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-	        Expected_Text = "Please select at least one business to associate to your application.";
+	        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+	        Expected_Text = "Request access";
 	        assertEquals(Actual_Text, Expected_Text);
 	        webDriver.findElement(By.linkText("Logout")).click();
 	        } else {
@@ -308,16 +308,16 @@ import junit.framework.TestCase;
 				    get_The_Row_From_Login_Data = 38;
 				    LoginPageWithReference login_Data5 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 				    login_Data5.Login_With_Reference();
-				    Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-			        Expected_Text = "Please select at least one business to associate to your application.";
+				    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			        Expected_Text = "Request access";
 			        assertEquals(Actual_Text, Expected_Text);
 			        //Verify that the other vendor admin is successfully disassociated from the business.
 			        webDriver.findElement(By.linkText("Logout")).click();
 			        get_The_Row_From_Login_Data = 37;
 			        LoginPageWithReference login_Data6 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			        login_Data6.Login_With_Reference();
-			        Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-			        Expected_Text = "Please select at least one business to associate to your application.";
+			        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			        Expected_Text = "Request access";
 			        assertEquals(Actual_Text, Expected_Text);
 			        webDriver.findElement(By.linkText("Logout")).click();
 		        	
@@ -326,9 +326,11 @@ import junit.framework.TestCase;
 	        
 	        logger.info("The disassociated business is about to be reclaimed.");
 	        //Verify admin profile.
-	        Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-		    Expected_Text = "Please select at least one business to associate to your application.";
-		    assertEquals(Actual_Text, Expected_Text);
+	        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+	        Expected_Text = "Request access";
+	        assertEquals(Actual_Text, Expected_Text);
+	        webDriver.findElement(By.id("request_new_application")).click();
+	        webDriver.findElement(By.name("commit")).click();
 		    //Enter a valid DUN#, TIN# and MPIN# and connect to business.
 		    webDriver.findElement(By.id("search_duns_number")).sendKeys("142762936");
 		    webDriver.findElement(By.id("search_ssn_ein")).sendKeys("123456789");
