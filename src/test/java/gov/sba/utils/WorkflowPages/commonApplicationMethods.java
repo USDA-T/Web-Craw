@@ -6,11 +6,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
+import gov.sba.utils.helpers.DatabaseQuery;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class commonApplicationMethods {
-
+    private static final Logger commonApplicationMethodsLogs = LogManager
+            .getLogger(gov.sba.utils.WorkflowPages.commonApplicationMethods.class.getName());
+    
     public static Boolean checkApplicationExists(WebDriver webDriver, String type_Of_App, String status_Of_App)
             throws Exception {
         // It should be in Vendor Dashboard
@@ -72,7 +76,76 @@ public class commonApplicationMethods {
                 break;
         }
     }
+    
+    public static void clickOnApplicationAllCasesPage(WebDriver webDriver, String type_Of_App)
+            throws Exception {
+        // It should be in Vendor Dashboard
+        switch (type_Of_App.toLowerCase()) {
+            case "wosb":
+                webDriver.findElement(By.xpath(
+                        "//*[@id='certifications']/tbody/tr" +
+                                "[" +
+                                    "td[position()=1]/a[contains(text(),'WOSB')]" +
+                                "]" +
+                                "/td[position()=1]/a")).click();
+            case "edwosb":
+                webDriver.findElement(By.xpath(
+                        "//*[@id='certifications']/tbody/tr" +
+                                "[" +
+                                "td[position()=1]/a[contains(text(),'EDWOSB')]" +
+                                "]" +
+                                "/td[position()=1]/a")).click();
+            case "mpp":
+                webDriver.findElement(By.xpath(
+                        "//*[@id='certifications']/tbody/tr" +
+                                "[" +
+                                "td[position()=1]/a[contains(text(),'MPP')]" +
+                                "]" +
+                                "/td[position()=1]/a")).click();
+        }
+    }
+    
+    public static String returnOrganization_Id(String duns_Number)
+            throws Exception {
+        String organization_Id;
+        try{
+            organization_Id =  DatabaseQuery.getDBData( "select id from sbaone.organizations where duns_number = '" + duns_Number + "'", 1, 1 )[0][0];
+        }
+        catch(Exception e) {
+            commonApplicationMethodsLogs.info(e.toString() + ": The Duns number retreival has failed");
+            throw e;
+        }
+        return organization_Id;
+    };
 
+    public static void deleteApplication_SetCert_Set_App_Tables(WebDriver webDriver, Integer certificate_ID, String duns_Number)
+            throws Exception {
+                String organization_Id =  returnOrganization_Id(duns_Number);
+
+                DatabaseQuery.
+                  executeSQLScript(
+                    "update sbaone.certificates " +
+                        "   set deleted_at = CURRENT_TIMESTAMP " +
+                        "   where organization_id = " + organization_Id.toString()
+                  );
+                DatabaseQuery.
+                  executeSQLScript(
+                    "update sbaone.sba_applications " +
+                    "       set deleted_at = CURRENT_TIMESTAMP " +
+                            "   where organization_id = " + organization_Id.toString()
+                  );
+    };
+
+    public static void deleteAllApplicationTypes(WebDriver webDriver, String duns_Number)
+            throws Exception {
+        // It should be in Vendor Dashboard
+        deleteApplication_SetCert_Set_App_Tables(webDriver,1 , duns_Number);
+        deleteApplication_SetCert_Set_App_Tables(webDriver,2 , duns_Number);
+        deleteApplication_SetCert_Set_App_Tables(webDriver,3 , duns_Number);
+        deleteApplication_SetCert_Set_App_Tables(webDriver,4 , duns_Number);
+
+    };
+    
     public static void returnApplicationToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number, String type_Of_App, String status_Of_App, int which_Log_BackAgain) throws Exception {
 
         // Login provided should be Analyst

@@ -57,9 +57,12 @@ public class fillApplCreatePages {
 
         try {
             webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-                    .click();
+            .findElement(By
+                    .xpath("//div[contains(@class,'review_outer')]" +
+                            "/div[contains(@class,'review_nav')]" +
+                            "/div/aside" +
+                            "/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
+            .click();
 
             webDriver.findElement(By.xpath("//input[@value='Save and continue']")).click();
         } catch (Exception e) {
@@ -91,7 +94,9 @@ public class fillApplCreatePages {
                 // for no
 
 
-                List<WebElement> current_Row = webDriver.findElements(By.xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes')]"));
+            	List<WebElement> current_Row = webDriver.
+                        findElements(By.xpath
+                                ("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
                 Iterator<WebElement> all_Rows = current_Row.iterator();
                 while (all_Rows.hasNext()) {
                     all_Rows.next().click();

@@ -43,7 +43,7 @@ public class AnalystReviewPage extends TestCase {
             // state");
             List<WebElement> current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
                     + "td[position()=8 and contains(text(),'Under Review')]   and "
-                    + "td[position()=2 and /a[contains(text(),'" + duns_Number + "')]]	and "
+                    + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
                     + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
             AnalystReviewPage.info(current_Row.size() + ": Is the total Under Review Elements");
             if (current_Row.size() > 0) {
@@ -52,7 +52,7 @@ public class AnalystReviewPage extends TestCase {
             // else{
             current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
                     + "td[position()=8 and contains(text(),'Submitted')]   and "
-                    + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
+                    + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
                     + "td[position()=3 and contains(text()," + typ_App_Passed + ")]	" + "]"));
 
             AnalystReviewPage.info(current_Row.size() + ": Is the total Submitted Elements");
@@ -69,22 +69,13 @@ public class AnalystReviewPage extends TestCase {
                     commonApplicationMethods.createApplication(webDriver, "WOSB");
 
                     webDriver.findElement(By.id("answers_5_value_yes")).click();
-                    // newMppUploadDocumentPage deepaUploadMppDocument = new newMppUploadDocumentPage(webDriver);
-                    // deepaUploadMppDocument.deepaUploadMppDocument("C:\\Users\\IEUser\\Documents\\UI_For_MPP.pdf");
+
                     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
                     AnalystReviewPage.info(file_path_abs);
                     fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
                     fillApplCreatePages.finalSignatureSubmit(webDriver);
                     AnalystReviewPage.info("Doc has been uploaded.");
-                    // Thread.sleep(1000);
-                    // webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                    // Thread.sleep(1000);
-                    // webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                    // Thread.sleep(1000);
-                    // webDriver.switchTo().alert().accept();
-                    // AnalystReviewPage.info("Doc has been uploaded and accepted");
-                    // fillApplCreatePages.finalSignatureSubmit(webDriver);
 
                 }
 
@@ -208,9 +199,11 @@ public class AnalystReviewPage extends TestCase {
 
                 // Question Review Page
                 webDriver
-                        .findElement(By
-                                .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-                        .click();
+                .findElement(By
+                        .xpath( "//ul[ contains(@class,'usa-sidenav-list') ]" +
+                                "/li/a[ contains(text(),'uestion')  and contains(text(),'review')  ]"))
+                .click();
+                
                 List<WebElement> dropdown = new Select(
                         webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
                 AnalystReviewPage.info(dropdown.get(0).getText());
@@ -237,8 +230,7 @@ public class AnalystReviewPage extends TestCase {
                 webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
                         .sendKeys("Adding notes QA Signature Page");
 
-                webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[contains(@value,'Save and commit')]"))
-                        .click();
+                webDriver.findElement(By.xpath("//input[contains(@value,'Save') and contains(@value,'and') and contains(@value,'commit')]")).click();
                 // *[@id="main-content"]/div[2]/div[1]/div/aside/ul/li[5]/a
 
                 webDriver
@@ -276,7 +268,11 @@ public class AnalystReviewPage extends TestCase {
                         .click();
                 webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
                 webDriver.findElement(By.xpath("//input[contains(@value,'Save and commit')]")).click();
+                
                 webDriver.navigate().back();
+                webDriver.navigate().back();
+                webDriver.navigate().back();
+                
                 commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
                 LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
                 login_Data.Login_With_Reference();
