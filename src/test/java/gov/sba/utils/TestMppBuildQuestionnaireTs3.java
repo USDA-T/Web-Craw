@@ -169,6 +169,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
+        Thread.sleep(3000);
         Actions act1 = new Actions(webDriver);
         act1.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // Plan and Agreements
@@ -206,6 +207,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument2.MontanaUploadDocument();
+        Thread.sleep(3000);
         Actions act31 = new Actions(webDriver);
         act31.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // Protégé Needs Section.
@@ -392,6 +394,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         webDriver.findElement(By.id("answers_140_value_yes")).click();
         webDriver.findElement(By.id("answers_141_value_yes")).click();
         webDriver.findElement(By.xpath("//div[@id='answers[141][value]']/label")).click();
+        Thread.sleep(3000);
         Actions act4 = new Actions(webDriver);
         act4.doubleClick(webDriver.findElement(By.name("commit"))).build().perform(); // Management/Technical
                                                                                       // Needs
