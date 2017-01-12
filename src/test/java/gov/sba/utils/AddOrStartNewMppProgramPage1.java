@@ -25,10 +25,10 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
         String Expected_Text = null;
         // Verify for active certification on the dashboard.
         Thread.sleep(3000);
-        if (webDriver.getPageSource().contains("Active")) {
+        if (webDriver.getPageSource().contains("Pending")) {
             logger.info("There is (are) an active certification on the dashboard");
             // Click on the certification link.
-            webDriver.findElement(By.linkText("Programs")).click();
+            webDriver.findElement(By.xpath("//a[contains(text(),'Programs')]")).click();
             Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
             Expected_Text = "Join a new program";
             assertEquals(Actual_Text, Expected_Text);

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class PartnershipQuestionsPage {
     private static final Logger logger = LogManager.getLogger(PartnershipQuestionsPage.class.getName());
@@ -334,8 +335,8 @@ public class PartnershipQuestionsPage {
         webDriver.findElement(By.cssSelector("button.btn")).click();
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
-        webDriver.findElement(By.cssSelector("label.no.last")).click();
-        webDriver.findElement(By.cssSelector("label.no.last")).click();
+        Actions act4 = new Actions(webDriver);
+        act4.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
         webDriver.findElement(By.name("commit")).click();

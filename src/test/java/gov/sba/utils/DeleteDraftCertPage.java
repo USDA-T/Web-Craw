@@ -31,7 +31,6 @@ public class DeleteDraftCertPage extends TestCase {
             }
             webDriver.navigate().refresh();
         } catch (Error e) {
-            logger.info("There are(is) no program in-progress on the dashboard, a newprogram is beinng created");
         }
     }
 
