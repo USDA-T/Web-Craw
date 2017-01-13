@@ -21,11 +21,17 @@ public class commonApplicationMethods {
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
             case "edwosbactive":
                 List<WebElement> listOfActiveEDWOSB = webDriver.findElements(By.xpath(
-                        "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'EDWOSB')]) ]"));
+                        "//*[@id='certifications']/tbody/"
+                        + "tr[  "
+                        + "		(td[position()=4 and contains(text(),'ctive')]) "
+                        + "and  (td[position()=1]/a[contains(text(),'EDWOSB')]) "
+                        + "	]"));
                 return listOfActiveEDWOSB.size() > 0;
             case "wosbactive":
                 List<WebElement> listOfActiveWOSB = webDriver.findElements(By.xpath(
-                        "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ctive')]) and (td/a[position()=1 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) ]"));
+                        "//*[@id='certifications']/tbody/tr[  "
+                        + "(td[position()=4 and contains(text(),'ctive')]) and "
+                        + "(td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) ]"));
                 return listOfActiveWOSB.size() > 0;
 
             case "mpppending":
@@ -194,14 +200,14 @@ public class commonApplicationMethods {
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, which_Loginto_ReturnApp);
         login_Data.Login_With_Reference();
 
-        switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
-            case "edwosbactive":
+
+ 
                 commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
                 WebElement current_Row_e = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody"));
 
                 List<WebElement> current_Row = current_Row_e.findElements(By.xpath("tr[ "
                         + "td[position()=8 and contains(text(),'Under Review')]   and "
-                        + "td[position()=2 and contains(text(),'" + duns_Number + "')]	and "
+                        + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
                         + "td[position()=3 and contains(text(),'" + type_Of_App + "')]	" + "]"));
 
                 if (current_Row.size() > 0) {
@@ -221,21 +227,14 @@ public class commonApplicationMethods {
                             + "td[position()=3 and contains(text()," + type_Of_App + ")]	" + "]"));
                     if (current_Row.size() > 0) {
                         current_Row.get(0).findElement(By.xpath("a[position()=2]")).click();
-                        current_Row = webDriver.findElements(By.xpath("//div[@id='certifications']/table/tbody/tr[ "
-                                + "td[position()=8 and contains(text(),'Submitted')]   and "
-                                + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-                                + "td[position()=3 and contains(text()," + type_Of_App + ")] "
-                                + "]"));
+                        current_Row = webDriver.findElements(By.xpath(
+                        		 "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'tive')]) "
+                        		 + "and (td/a[position()=1 and contains(text(),'"+ type_Of_App +"')]) ]"));    
                         current_Row.get(0).click();
                     }
                 }
 
-                break;
-            case "wosbactive":
-                break;
-            case "mppactive":
-                break;
-        }
+        
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         login_Data = new LoginPageWithReference(webDriver, which_Log_BackAgain);
         login_Data.Login_With_Reference();

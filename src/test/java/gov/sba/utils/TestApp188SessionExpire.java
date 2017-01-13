@@ -111,6 +111,6 @@ public class TestApp188SessionExpire extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 }

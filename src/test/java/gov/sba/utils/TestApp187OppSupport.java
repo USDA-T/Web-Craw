@@ -71,7 +71,7 @@ public class TestApp187OppSupport extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 
 }

@@ -2,10 +2,12 @@ package gov.sba.utils;
 
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.WorkflowPages.newMppUploadDocumentPage;
 import gov.sba.utils.helpers.FixtureUtils;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.apache.logging.log4j.Logger;
@@ -45,6 +47,7 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
             commonApplicationMethods.deleteApplication(webDriver, "EDWOSB", "Draft");
             commonApplicationMethods.deleteApplication(webDriver, "MPP", "Draft");
             commonApplicationMethods.deleteApplication(webDriver, "WOSB", "Draft");
+            
             String duns_Number = webDriver
                     .findElement(
                             By.xpath("//*[@id='main-content']/section/article//p[ (b[contains(text(),'DUNS:')]) ]"))
@@ -94,37 +97,46 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
 
-
+            //Verify the Business type is changes to Scorp[from LLC]
+            webDriver.findElement(By.xpath("//button[@aria-controls='more-details']")).click();
+            String business_Type= webDriver.findElement(By.id("more-details")).getText();
+//            asse
+            assertTrue(business_Type.contains("C-Corporation"));            		
+            assertTrue(business_Type.contains("C-Corporation"));            		
+            
             // commonApplicationMethods.createApplication(webDriver, "EDWOSB");
-            webDriver.findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]")).click();
+            commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             webDriver.findElement(By.id("certificate_type_edwosb")).click();
             webDriver.findElement(By.id("add_certification")).click();
 
             commonApplicationMethods.createApplication(webDriver, "EDWOSB");
+            
+            ScorpQuestionsPage scorpQuestionsPage = new ScorpQuestionsPage(webDriver);
+            scorpQuestionsPage.ScorpQuestions();
 
-            String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+            //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
-            TestApp37OpsSupportStaffChangeBusinessType.info(file_path_abs);
+            //TestApp37OpsSupportStaffChangeBusinessType.info(file_path_abs);
 
 
-            List<WebElement> current_Row1 = webDriver.findElements(By.xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes')]"));
-            Iterator<WebElement> all_Rows1 = current_Row1.iterator();
-            while (all_Rows1.hasNext()) {
-                all_Rows1.next().click();
-            }
+            //List<WebElement> current_Row1 = webDriver.findElements(By.xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes')]"));
+            //Iterator<WebElement> all_Rows1 = current_Row1.iterator();
+            //while (all_Rows1.hasNext()) {
+            //    all_Rows1.next().click();
+           /// }
 
-            MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-            montanaUploadDocument.MontanaUploadDocument();
-            TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded.");
-            Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            Thread.sleep(1000);
-            webDriver.switchTo().alert().accept();
-            TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded and accepted");
+            //newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+            //deepaUploadMppDocument1.deepaUploadMppDocument(file_path_abs);            
+            //TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded.");
+            //Thread.sleep(2000);
+            //webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+            //Thread.sleep(2000);
+            //webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+            //Thread.sleep(1000);
+            //webDriver.switchTo().alert().accept();
+            //TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded and accepted");
 
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+           // fillApplCreatePages.finalSignatureSubmit(webDriver);
 
 
         } catch (Exception e) {

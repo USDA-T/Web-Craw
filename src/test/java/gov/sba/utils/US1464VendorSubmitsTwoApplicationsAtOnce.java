@@ -73,6 +73,6 @@ public class US1464VendorSubmitsTwoApplicationsAtOnce extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 }
