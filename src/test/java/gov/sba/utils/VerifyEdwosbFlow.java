@@ -2,6 +2,7 @@ package gov.sba.utils;
 
 import java.util.List;
 
+import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
 import org.apache.logging.log4j.LogManager;
@@ -23,70 +24,10 @@ public class VerifyEdwosbFlow extends TestCase {
 
     public void VerifyEDWOSBFlowLogic() throws Exception {
 
-        // logger.info(current_Row.GetParent());
-        Boolean FlagForAddEDWOSBNotPresent = false;
-        try {
-            WebElement radio_Element = webDriver.findElement(By.linkText("Delete"));
-            radio_Element.click();
-            Thread.sleep(4000);
-            webDriver.switchTo().alert().accept();
-            FlagForAddEDWOSBNotPresent = true;
-        } catch (Exception e) {
-            logger.info("There are(is) no Radio button for EDWOSB");
-            FlagForAddEDWOSBNotPresent = true;
-        }
-        assertTrue(FlagForAddEDWOSBNotPresent);
-        // LinkForDelete.click();
-
-        try {
-            @SuppressWarnings("unused")
-			WebElement current_Row_Active = webDriver.findElement(By.xpath(
-                        "//table[@id='certifications']/tbody/tr[ " +
-                                    "(td[position()=4 and contains(text(),'ctive')]) " +
-                                            " and " +
-                                    "(td[position()=1]/a[contains(text(),'EDWOSB') and contains(text(),'elf') and contains(text(),'ertification')])" +
-                                "]"
-            ));
-            logger.info("aaaaCame in");
-            webDriver.findElement(By.xpath("//a[@href='/users/sign_out']")).click();
-            LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 21);
-            login_Data.Login_With_Reference();
-            webDriver.findElement(By.xpath("//*[@id='query']"))
-                    .sendKeys(LoginHelpers.getLoginDataWithIndex(9).getDunsNumber());
-            webDriver.findElement(By.className("usa-search-submit-text")).click();
-            webDriver.findElement(By.xpath("//a[contains(text(),'Legal Business Name')]")).click();
-            WebElement current_Row_Draft1 = webDriver.findElement(By.xpath(
-                    "//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'EDWOSB Self-Certification')]"));
-            WebElement current_Row1 = current_Row_Draft1.findElement(By.xpath("..")).findElement(By.xpath(".."));
-            logger.info(current_Row1.getText());
-            List<WebElement> all_Cells1 = current_Row1.findElements(By.xpath("td"));
-            logger.info(all_Cells1.size());
-//          all_Cells1.get(3).findElement(By.xpath("//a[contains(text(),'Return to Vendor')]")).click();
-//          Thread.sleep(4000);
-//          webDriver.switchTo().alert().accept();
-
-            webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
-
-            login_Data = new LoginPageWithReference(webDriver, 9);
-            login_Data.Login_With_Reference();
-
-        } catch (Exception e) {
-            logger.info("There are(is) no certification Active on the dashboard, a new certification is being created");
-            logger.info(e);
-        }
-
-        webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-
-        try {
-            WebElement ElementEDWOSBRadio = webDriver.findElement(By.linkText("Delete"));
-            ElementEDWOSBRadio.click();
-        } catch (Exception e) {
-            logger.info(
-                    "There are(is) no certification in-progress on the dashboard, a new certification is being created");
-        }
+        commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
 
         // First Flow - Check For Drafts coming up correctly
-        webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
+        commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         logger.info("Certifications Deleted To start again");
 
         String myCertText = webDriver

@@ -46,6 +46,76 @@ public class commonApplicationMethods {
         }
     }
 
+
+
+    public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
+        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, login_Id);
+        login_Data.Login_With_Reference();
+        Thread.sleep(3000);
+
+        webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(duns_Number);
+        webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
+        webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
+        List<WebElement> current_Row_Check = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr/td/a[contains(text(),'Return to Vendor')]"));
+        if (current_Row_Check.size() >0 ) {
+            for(int i=0;i<current_Row_Check.size();i++){
+                current_Row_Check.get(0).click();
+                Thread.sleep(3000);
+                webDriver.switchTo().alert().accept();
+            }
+        }else{
+            List<WebElement> current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
+                    "td[position()=1]/a[contains(text(),'WOSB')] and " +
+                    "td[(position()=4) and (contains(text(),'ctive'))]" +
+                    "]/td[position()=1]/a"));
+            if (current_Row_Check_02.size() >0 ) {
+                for(int i=0;i<current_Row_Check_02.size();i++){
+                    current_Row_Check_02.get(0).click();
+                    Thread.sleep(3000);
+                    webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
+                    webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                    webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
+                    webDriver.navigate().back();
+                    webDriver.navigate().back();
+                    webDriver.navigate().back();
+                    webDriver.navigate().refresh();
+                    current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
+                            "td[position()=1]/a[contains(text(),'WOSB')] and " +
+                            "td[(position()=4) and (contains(text(),'ctive'))]" +
+                            "]/td[position()=1]/a"));
+
+                    i = 0;
+                }
+            }
+        }
+
+        commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+    }
+
+    public static void delete_all_Drafts(WebDriver webDriver) throws Exception {
+
+        Boolean FlagForAddEDWOSBNotPresent = true;
+        navigationMenuClick(webDriver, "DashBoard");
+        List<WebElement> current_Row_Check_02 = webDriver.findElements(
+                                                By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+        if (current_Row_Check_02.size() >0 ) {
+
+            for(int i=0;i<current_Row_Check_02.size();i++){
+                FlagForAddEDWOSBNotPresent = false;
+                current_Row_Check_02.get(0).click();
+                Thread.sleep(2000);
+                webDriver.switchTo().alert().accept();
+                webDriver.navigate().refresh();
+                current_Row_Check_02 = webDriver.findElements(
+                                       By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+                i = 0;
+                FlagForAddEDWOSBNotPresent = true;
+            }
+        }
+        Assert.assertTrue(FlagForAddEDWOSBNotPresent);
+
+    }
+  
     public static void clear_Env_Chrome(){
         File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
         if (file_01.exists()) {
@@ -56,8 +126,8 @@ public class commonApplicationMethods {
             }
             catch (Exception ex) { }
         }
-    }
 
+  
     public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App)
             throws Exception {
 
