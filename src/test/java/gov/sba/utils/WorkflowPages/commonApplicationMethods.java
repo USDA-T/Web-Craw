@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
 import java.util.List;
 import gov.sba.utils.helpers.DatabaseQuery;
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +43,18 @@ public class commonApplicationMethods {
 
             default:
                 return false;
+        }
+    }
+
+    public static void clear_Env_Chrome(){
+        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
+        if (file_01.exists()) {
+            try {
+                String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
+                Process p = Runtime.getRuntime().exec(command);
+                p.wait(); p.destroy();
+            }
+            catch (Exception ex) { }
         }
     }
 

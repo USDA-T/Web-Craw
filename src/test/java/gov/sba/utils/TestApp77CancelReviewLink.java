@@ -22,7 +22,7 @@ public class TestApp77CancelReviewLink extends TestCase {
     private static final Logger TestApp77CancelReviewLink = LogManager
             .getLogger(TestApp77CancelReviewLink.class.getName());
     int get_The_Row_From_Login_Data;
-    String duns_Number = "159165917";
+    String duns_Number = "196374813";
     
     @Before
     public void setUp() throws Exception {
@@ -30,7 +30,7 @@ public class TestApp77CancelReviewLink extends TestCase {
     	webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
+        get_The_Row_From_Login_Data = 41;
     }
 
     @Test

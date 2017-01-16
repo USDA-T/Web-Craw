@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 
 //_ Project Helpers
 public class TestUS942AddWosb extends TestCase {
@@ -18,17 +19,8 @@ public class TestUS942AddWosb extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
-        if (file_01.exists()) {
-            try {
-                String[] command = {"cmd.exe", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
-                Process p = Runtime.getRuntime().exec(command);
-                p.wait();
-                p.destroy();
 
-            } catch (Exception ex) {
-            }
-        }
+        commonApplicationMethods.clear_Env_Chrome();
 
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
