@@ -60,8 +60,8 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
                 String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
                 logger_US1699.info(file_path_abs);
-                fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-                fillApplCreatePages.finalSignatureSubmit(webDriver);
+                fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, get_Current_Duns_No) ;
+                fillApplCreatePages.finalSignatureSubmit(webDriver) ;
             }
 
             WebElement current_Row_Draft1_A = webDriver.findElement(

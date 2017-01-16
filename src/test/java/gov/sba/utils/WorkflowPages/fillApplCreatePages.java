@@ -85,7 +85,6 @@ public class fillApplCreatePages {
         }
     }
 
-
     public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws Exception {
         try {
             if (answer01.toUpperCase().contains("YES")) {
@@ -112,6 +111,60 @@ public class fillApplCreatePages {
                 Thread.sleep(1000);
                 webDriver.switchTo().alert().accept();
                 logger.info("Doc has been uploaded and accepted");
+            } else {
+                try{
+                    webDriver.findElement(By.id("answers_117_value_no")).click();
+                }catch (Exception e1){
+                    webDriver.findElement(By.id("answers_65_value_no")).click();
+                }
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+            }
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String path, String duns_No_Given) throws Exception {
+        try {
+            if (answer01.toUpperCase().contains("YES")) {
+                // Use
+                // webDriver.findElement(By.id("answers_65_value_no")).click();
+                // for no
+
+
+                List<WebElement> current_Row = webDriver.
+                        findElements(By.xpath
+                                ("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
+                Iterator<WebElement> all_Rows = current_Row.iterator();
+                while (all_Rows.hasNext()) {
+                    all_Rows.next().click();
+                }
+
+                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                deepaUploadMppDocument1.deepaUploadMppDocument(path);
+                logger.info("Doc has been uploaded.");
+                Thread.sleep(2000);
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                List<WebElement> duns_No =   webDriver.findElements(By.xpath("//input[@type='number' and contains(@id,'duns-value')]"));
+                if (duns_No.size()>0){
+                    duns_No.get(0).sendKeys(duns_No_Given);
+                    webDriver.findElement(By.xpath("//a[contains(@id,'search-duns')]")).click();
+                    duns_No =   webDriver.findElements(By.xpath("//a[contains(@id,'search-duns')]"));
+                    if (duns_No.size()>0){
+                        logger.info("ClickedJIIId.");
+                        duns_No.get(0).click();
+                    }
+                    Thread.sleep(2000);
+                    webDriver.switchTo().alert().accept();
+                }
+
+                Thread.sleep(2000);
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                Thread.sleep(1000);
+                webDriver.findElement(By.className("review")).click();
+                logger.info("Doc has been uploaded and accepted");
+                webDriver.switchTo().alert().accept();
             } else {
                 try{
                     webDriver.findElement(By.id("answers_117_value_no")).click();

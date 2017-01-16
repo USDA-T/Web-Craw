@@ -108,35 +108,12 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
             commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             webDriver.findElement(By.id("certificate_type_edwosb")).click();
             webDriver.findElement(By.id("add_certification")).click();
+            webDriver.findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]")).click();
+            webDriver.findElement(By.id("certificate_type_edwosb")).click();
+            webDriver.findElement(By.id("add_certification")).click();
 
-            commonApplicationMethods.createApplication(webDriver, "EDWOSB");
-            
             ScorpQuestionsPage scorpQuestionsPage = new ScorpQuestionsPage(webDriver);
             scorpQuestionsPage.ScorpQuestions();
-
-            //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
-            //TestApp37OpsSupportStaffChangeBusinessType.info(file_path_abs);
-
-
-            //List<WebElement> current_Row1 = webDriver.findElements(By.xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes')]"));
-            //Iterator<WebElement> all_Rows1 = current_Row1.iterator();
-            //while (all_Rows1.hasNext()) {
-            //    all_Rows1.next().click();
-           /// }
-
-            //newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
-            //deepaUploadMppDocument1.deepaUploadMppDocument(file_path_abs);            
-            //TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded.");
-            //Thread.sleep(2000);
-            //webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            //Thread.sleep(2000);
-            //webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            //Thread.sleep(1000);
-            //webDriver.switchTo().alert().accept();
-            //TestApp37OpsSupportStaffChangeBusinessType.info("Doc has been uploaded and accepted");
-
-           // fillApplCreatePages.finalSignatureSubmit(webDriver);
 
 
         } catch (Exception e) {
@@ -147,6 +124,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+//        webDriver.quit();
     }
 }

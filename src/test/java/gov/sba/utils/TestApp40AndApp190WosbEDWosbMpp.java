@@ -41,10 +41,10 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
                 TestApp40AndApp190.info(file_path_abs);
                 fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
                 fillApplCreatePages.finalSignatureSubmit(webDriver);
-                webDriver.findElement(By.xpath("//input[contains(@id,'duns-value')]")).sendKeys("148832876");
-                webDriver.findElement(By.xpath("//a[contains(text(), 'Confirm DUNS')]")).click();
-//                webDriver.findElement(By.xpath("//inut[@id='duns-value-167']")).sendKeys("148832876");
-                
+                fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, "148832876") ;
+                fillApplCreatePages.finalSignatureSubmit(webDriver) ;
+
+
             }
 
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");

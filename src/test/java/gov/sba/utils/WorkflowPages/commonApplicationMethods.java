@@ -234,7 +234,8 @@ public class commonApplicationMethods {
                     }
                 }
 
-        
+        webDriver.navigate().back();
+        webDriver.navigate().back();
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         login_Data = new LoginPageWithReference(webDriver, which_Log_BackAgain);
         login_Data.Login_With_Reference();
