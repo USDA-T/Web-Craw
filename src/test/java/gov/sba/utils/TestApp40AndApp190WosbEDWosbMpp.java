@@ -39,8 +39,6 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
                 String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
                 TestApp40AndApp190.info(file_path_abs);
-                fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-                fillApplCreatePages.finalSignatureSubmit(webDriver);
                 fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, "148832876") ;
                 fillApplCreatePages.finalSignatureSubmit(webDriver) ;
 
