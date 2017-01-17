@@ -26,7 +26,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
     private static WebDriver webDriver;
     private static final Logger logger_US1463 = LogManager.getLogger(TestUS1463MppReviewSummaryLink.class.getName());
     int get_The_Row_From_Login_Data;
-    String duns_Number = "159165917";
+    String duns_Number = "215435315";
     
     @Before
     public void setUp() throws Exception {
@@ -34,7 +34,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
+        get_The_Row_From_Login_Data = 44;
     }
 
     @Test
@@ -50,7 +50,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             logger_US1463.info(file_path_abs);
-            fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, "215435315");
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             logger_US1463.info("Doc has been uploaded.");
 

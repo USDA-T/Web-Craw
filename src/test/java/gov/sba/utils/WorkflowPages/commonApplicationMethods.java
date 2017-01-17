@@ -116,16 +116,18 @@ public class commonApplicationMethods {
 
     }
   
-    public static void clear_Env_Chrome(){
+    public static void clear_Env_Chrome() {
         File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
         if (file_01.exists()) {
             try {
                 String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
                 Process p = Runtime.getRuntime().exec(command);
-                p.wait(); p.destroy();
+                p.wait();
+                p.destroy();
+            } catch (Exception ex) {
             }
-            catch (Exception ex) { }
         }
+    }
 
   
     public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App)
