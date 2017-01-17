@@ -9,6 +9,7 @@ import java.util.Properties;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -35,6 +36,9 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 44;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        logger_US1463.info(duns_Number);
+        commonApplicationMethods.clear_Env_Chrome();
     }
 
     @Test
