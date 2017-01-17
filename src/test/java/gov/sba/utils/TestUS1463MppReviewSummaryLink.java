@@ -132,7 +132,8 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'"+duns_Number+"')]")).click();
 
-            WebElement duns_Row_Pending_Check = webDriver
+            @SuppressWarnings("unused")
+			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 
             pending_Application_Found = true;

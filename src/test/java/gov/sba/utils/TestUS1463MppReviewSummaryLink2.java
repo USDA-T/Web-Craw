@@ -44,7 +44,8 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Boolean pending_Application_Found = false;
+        @SuppressWarnings("unused")
+		Boolean pending_Application_Found = false;
         Thread.sleep(1000);
         try {
             commonApplicationMethods.createApplication(webDriver, "MPP");
@@ -134,7 +135,8 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'"+duns_Number+"')]")).click();
 
-            WebElement duns_Row_Pending_Check = webDriver
+            @SuppressWarnings("unused")
+			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 
             pending_Application_Found = true;
