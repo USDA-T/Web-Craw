@@ -65,7 +65,7 @@ public class commonApplicationMethods {
             }
         }else{
             List<WebElement> current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
-                    "td[position()=1]/a[contains(text(),'WOSB')] and " +
+                    "td[position()=1]/a[contains(text(),'WOSB') or (contains(text(),'MPP'))] and " +
                     "td[(position()=4) and (contains(text(),'ctive'))]" +
                     "]/td[position()=1]/a"));
             if (current_Row_Check_02.size() >0 ) {
@@ -80,7 +80,7 @@ public class commonApplicationMethods {
                     webDriver.navigate().back();
                     webDriver.navigate().refresh();
                     current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
-                            "td[position()=1]/a[contains(text(),'WOSB')] and " +
+                            "td[position()=1]/a[contains(text(),'WOSB')  or (contains(text(),'MPP'))] and " +
                             "td[(position()=4) and (contains(text(),'ctive'))]" +
                             "]/td[position()=1]/a"));
 

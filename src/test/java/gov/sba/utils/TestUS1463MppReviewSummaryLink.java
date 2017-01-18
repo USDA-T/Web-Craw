@@ -16,6 +16,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CORBA.COMM_FAILURE;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,6 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
     
     @Before
     public void setUp() throws Exception {
-    	commonApplicationMethods.deleteAllApplicationTypes(webDriver, duns_Number);
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
@@ -39,15 +39,22 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
         logger_US1463.info(duns_Number);
         commonApplicationMethods.clear_Env_Chrome();
+        Thread.sleep(3000);
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
         Boolean pending_Application_Found = false;
+
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+
+        commonApplicationMethods.delete_all_Drafts(webDriver);
+
         try {
         	commonApplicationMethods.createApplication(webDriver, "MPP");
             webDriver.findElement(By.id("answers_117_value_yes")).click();

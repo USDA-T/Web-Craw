@@ -9,6 +9,7 @@ import java.util.Properties;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -24,36 +25,40 @@ import junit.framework.TestCase;
 
 //_ Project Helpers
 public class TestUS1463MppReviewSummaryLink2 extends TestCase {
-    // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1463 = LogManager.getLogger(TestUS1463MppReviewSummaryLink2.class.getName());
     int get_The_Row_From_Login_Data;
-    String duns_Number = "159165917";
-    
+    String duns_Number;
+
     @Before
     public void setUp() throws Exception {
-    	commonApplicationMethods.deleteAllApplicationTypes(webDriver, duns_Number);
+        get_The_Row_From_Login_Data = 43;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        logger_US1463.info(duns_Number);
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        @SuppressWarnings("unused")
-		Boolean pending_Application_Found = false;
+        Thread.sleep(3000);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
         Thread.sleep(1000);
+
         try {
             commonApplicationMethods.createApplication(webDriver, "MPP");
             webDriver.findElement(By.id("answers_117_value_yes")).click();
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             logger_US1463.info(file_path_abs);
-            fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs,duns_Number );
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             logger_US1463.info("Doc has been uploaded.");
 
@@ -67,8 +72,6 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             assertTrue(count_Pending.size() >= 1);
 
             commonApplicationMethods.clickOnApplicationAllCasesPage(webDriver, "MPP");
-
-
             WebElement current_Title = webDriver.findElement(By.xpath(
                     "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
 
@@ -160,7 +163,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+//        webDriver.quit();
     }
 
 }
