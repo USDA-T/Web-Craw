@@ -29,40 +29,54 @@ public class newMppUploadDocumentPage {
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
         StringSelection ss = new StringSelection(upload_Path);
         Thread.sleep(3000);
+
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         Robot robot = new Robot();
-
+        logger.info("Uploading a new document - Clicked on Upload");
         robot.keyPress(KeyEvent.VK_F4);
+        Thread.sleep(2000);
+
         robot.keyPress(KeyEvent.VK_ESCAPE);
+        Thread.sleep(1000);
+        logger.info("Uploading a new document - Clicked on F4");
 
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-
-
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
+        logger.info("Uploading a new document - Clicked on Tab");
 
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
 
+        logger.info("Uploading a new document - Clicked on Tab2");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        
-        
+        Thread.sleep(2000);
+
+        logger.info("Uploading a new document - Clicked on Tab3");
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
+
+        logger.info("Uploading a new document - Clicked on Tab4");
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-
         Thread.sleep(2000);
+
+        logger.info("Uploading a new document - Clicked on Paste");
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        logger.info("Uploading a new document - Clicked on All Enters");
+        Thread.sleep(2000);
+
         webDriver.findElement(By.cssSelector("#attach")).click();
     }
 
