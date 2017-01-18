@@ -388,6 +388,7 @@ import junit.framework.TestCase;
 		    Expected_Text = "Please select at least one business to associate to your application.";
 		    assertEquals(Actual_Text, Expected_Text);
 		    webDriver.findElement(By.linkText("Logout")).click();	
+		    logger.info("Success");
 	        }
 	    }
 	    }

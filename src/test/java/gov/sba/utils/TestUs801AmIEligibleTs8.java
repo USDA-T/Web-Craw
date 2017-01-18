@@ -305,6 +305,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String actual_Text43 = webDriver.findElement(By.cssSelector("#hubzone > div.not_eligible > b")).getText();
         String expected_Text43 = "Based on the information you provided, you may not be eligible for the HUBZone Program:";
         assertEquals(actual_Text43, expected_Text43);
+        logger.info("Success");
     }
 
     @After

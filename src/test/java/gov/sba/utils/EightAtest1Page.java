@@ -62,6 +62,7 @@ public class EightAtest1Page {
         WebElement EightADocComment = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td[3]"));
         HighLight.highLightElement(webDriver, EightADocComment);
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

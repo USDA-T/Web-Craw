@@ -89,6 +89,7 @@ public class TestUs265IAMProfileInfo extends TestCase {
         assertEquals(actual_Text10, expected_Text10);
         // Logout.
         webDriver.findElement(By.id("nav-header-signout")).click();
+        logger.info("Success");
     }
 
     private void assertElementPresent(WebElement findElement) {

@@ -39,6 +39,7 @@ public class SimpleEDWOSBEightATestPage {
         Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

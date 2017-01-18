@@ -107,6 +107,7 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
         String expected_Text1 = "In order to participate in SBA small business programs, the owner(s) of the firm must not have been debarred or suspended by a federal entity.";
         assertEquals(actual_Text1, expected_Text1);
         webDriver.findElement(By.linkText("Exit")).click();
+        logger.info("Success");
     }
 
     @After

@@ -142,9 +142,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 
-            pending_Application_Found = true;
-            
-                // else Delete it if in Draft all of the Draft applications
+            // else Delete it if in Draft all of the Draft applications
                 Boolean isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
                 logger_US1463.info(isPresent);
                 while (isPresent) {

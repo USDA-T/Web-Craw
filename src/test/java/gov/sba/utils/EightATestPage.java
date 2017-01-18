@@ -23,68 +23,51 @@ public class EightATestPage {
 
         // Locate the accept button at the bottom of the 8(a) agreement and
         // click on it to continue.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "8(a) Document Upload";
         assertEquals(Actual_Text, Expected_Text);
-
         // Locate the 8(a) question and upload a document and continue.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the completed, signed forms you downloaded from BDMIS as well as the supporting documents as described in the application checklist.";
         assertEquals(Actual_Text, Expected_Text);
-
         // Detail Section.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_eight_a_documents']/fieldset/p[2]")).getText();
         Expected_Text = "It may take a few moments for your document to appear, the system performs virus scans on all documents. If you accidentally uploaded an incorrect document, select the Remove action link in the Edit column.";
         assertEquals(Actual_Text, Expected_Text);
-
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(4000);
-        
         EightAdocumentUploadPage eightAdocumentUpload = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload.EightAdocumentUpload();
-
         Thread.sleep(4000);
-
         EightAdocumentUploadPage eightAdocumentUpload0 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload0.EightAdocumentUpload();
-
         Thread.sleep(4000);
-
         EightAdocumentUploadPage eightAdocumentUpload1 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload1.EightAdocumentUpload();
-
         Thread.sleep(4000);
-
         EightAdocumentUploadPage eightAdocumentUpload2 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload2.EightAdocumentUpload();
-
         Thread.sleep(4000);
-
         webDriver.findElement(By.name("commit")).click();
-
         logger.info("  8(a) question has been answered");
-
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-
         Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
-
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the completed, signed forms you downloaded from BDMIS as well as the supporting documents as described in the application checklist.";
         assertEquals(Actual_Text, Expected_Text);
-
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td"))
                 .getText();
         Expected_Text = "MainTestUploadDoc.pdf";
         assertEquals(Actual_Text, Expected_Text);
-
         WebElement EightADoc = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td"));
         HighLight.highLightElement(webDriver, EightADoc);
@@ -94,12 +77,12 @@ public class EightATestPage {
         WebElement EightADocComment = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr[2]/td[3]"));
         HighLight.highLightElement(webDriver, EightADocComment);
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP
         logger.info("Step  - Verify the Signature page for MPP");
-
         // Verify you are on the Signature page
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Signature";
@@ -111,7 +94,6 @@ public class EightATestPage {
         Expected_Text = "PLEASE NOTE: According to the Paperwork Reduction Act, you are not required to respond to this information collection unless it displays a valid OMB approval number. The estimated burden for completing this form, including reading the instructions and compiling the information, is 2 hours. If you have questions or comments concerning this estimate or other aspects of this information collection, please contact the US Small Business Administration, Chief, Administrative Information Branch, Washington, D.C. 20416 and/or SBA Desk Officer, Office of Management and Budget, New Executive Office Building, Room 10202, Washington, D.C. 20503.";
         assertEquals(Actual_Text, Expected_Text);
         logger.info("Step 11 - Click to accept the statements");
-
         // Click on the dashboard link
         webDriver.findElement(By.linkText("Dashboard")).click();
         Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();

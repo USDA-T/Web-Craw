@@ -226,7 +226,7 @@ public class TestApp179IncludesAllCageCodesOnVendorProfile extends TestCase {
             WebElement CAGECodesMppA = webDriver
                     .findElement(By.xpath("//div[@id='business_search']/div/div/div/div/p[4]/span"));
             HighLight.highLightElement(webDriver, CAGECodesMppA);
-            return;
+            logger.info("Success");
         }
     }
 

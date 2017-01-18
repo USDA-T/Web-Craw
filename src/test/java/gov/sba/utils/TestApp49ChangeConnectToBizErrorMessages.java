@@ -68,6 +68,7 @@ public class TestApp49ChangeConnectToBizErrorMessages extends TestCase {
         WebElement BizErrorMsg = webDriver.findElement(By.xpath("//h5[2]"));
         HighLight.highLightElement(webDriver, BizErrorMsg);
         webDriver.findElement(By.cssSelector("div.usa-width-one-whole > #find_business")).click();
+        logger.info("Success");
 
     }
 

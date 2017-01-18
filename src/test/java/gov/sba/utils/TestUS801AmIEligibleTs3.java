@@ -75,6 +75,7 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
         assertEquals(actual_error7, expected_error7);
         // Click on the Exit button.
         webDriver.findElement(By.linkText("Exit")).click();
+        logger.info("Success");
     }
 
     @After

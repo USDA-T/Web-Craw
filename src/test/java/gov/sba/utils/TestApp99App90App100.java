@@ -273,8 +273,8 @@ public class TestApp99App90App100 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.linkText("Logout")).click();
 
-        return;
-    }
+        logger.info("Success");
+        }
 
     @After
     public void tearDown() throws Exception {

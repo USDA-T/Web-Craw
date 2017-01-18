@@ -48,6 +48,7 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
         String expected_Text1 = "In order to participate in SBA small business programs, the qualifying individual(s) of the firm must be U.S. citizens.";
         assertEquals(actual_Text1, expected_Text1);
         webDriver.findElement(By.linkText("Exit")).click();
+        logger.info("Success");
     }
 
     @After

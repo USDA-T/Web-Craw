@@ -31,6 +31,7 @@ public class FinancialSectionPage {
         // and enter the information as required.
         webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000");
         // Locate the Continue button and click on it to continue.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Locate section for Other Source of Income enter all valid data as
         // required.
@@ -45,6 +46,7 @@ public class FinancialSectionPage {
         // business equity.
         webDriver.findElement(By.xpath(".//*[@id='answers_39_value']")).sendKeys("50000");
         // Locate the continue button and click on it to continue.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Locate and YES for question 'Do you have any notes receivable from
         // others?'.
@@ -76,15 +78,10 @@ public class FinancialSectionPage {
         webDriver.findElement(By.name("commit")).click();
         // Select NO for the two question on Retirement Accounts.
         webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
-
         Thread.sleep(4000);
-
         webDriver.findElement(By.xpath(".//*[@id='answers[42][value]']/label[2]")).click();
-
         Thread.sleep(4000);
-
         webDriver.findElement(By.name("commit")).click();
-
         webDriver.findElement(By.id("answers_43_value_yes")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_43_details_table_wrapper']/div/a/span")).click();
         webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
@@ -98,6 +95,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
         webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
         webDriver.findElement(By.xpath(".//*[@id='answers_45_value']")).sendKeys("50000");
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Select Yes for the Stock and Bonds Section.
         webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
@@ -109,7 +107,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("DTE_Field_market_value")).sendKeys("98000");
         webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000");
         webDriver.findElement(By.cssSelector("button.btn")).click();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Select Yes for Real Estate - Primary Residence Section questions.
         webDriver.findElement(By.xpath(".//*[@id='answers[47][value]']/label[1]")).click();
@@ -126,6 +124,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("answers_48_1_9_value")).sendKeys("50");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][10][value]']/label")).click();
         webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("50");
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Select Yes for Real Estate - Other section.
         webDriver.findElement(By.xpath(".//*[@id='answers[49][value]']/label[1]")).click();
@@ -244,6 +243,7 @@ public class FinancialSectionPage {
             webDriver.findElement(By.xpath(".//*[@id='answers[57][value]']/label[2]")).click();
             webDriver.findElement(By.xpath(".//*[@id='answers[58][value]']/label[1]")).click();
             webDriver.findElement(By.xpath(".//*[@id='answers_59_value']")).sendKeys("45");
+            Thread.sleep(2000);
             webDriver.findElement(By.name("commit")).click();
         } catch (Error e) {
             logger.info("User is NOT being navigated to the 'Notes Payable' section on the form 413, Pass");
@@ -288,6 +288,7 @@ public class FinancialSectionPage {
         // tax lien attaches to.
         webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("House");
         // locate the create button and click on it.
+        Thread.sleep(4000);
         webDriver.findElement(By.cssSelector("button.btn")).click();
         Thread.sleep(3000);
         // Verify and select YES for the next assessed taxes section question;
@@ -305,19 +306,21 @@ public class FinancialSectionPage {
         // Locate the Description search box and enter a valid date.
         webDriver.findElement(By.cssSelector("#DTE_Field_description")).sendKeys("House");
         // locate the create button and click on it.
+        Thread.sleep(4000);
         webDriver.findElement(By.cssSelector("button.btn")).click();
         Thread.sleep(3000);
         // Locate and click on the continue button.
         webDriver.findElement(By.name("commit")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the next 3 search boxes for Adjusted Gross Income and enter
         // valid data.
         webDriver.findElement(By.id("answers_62_value")).sendKeys("30000");
         webDriver.findElement(By.id("answers_63_value")).sendKeys("10000");
         webDriver.findElement(By.id("answers_64_value")).sendKeys("20000");
         // Locate and click on the continue button.
-        webDriver.findElement(By.name("commit")).click();
         Thread.sleep(4000);
+        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
         // Verify that user is being navigated to the Summary Page.
         String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text6 = "Denzel Washington";
@@ -328,8 +331,9 @@ public class FinancialSectionPage {
         String expected_Text11 = "$4,000.00";
         assertEquals(actual_Text11, expected_Text11);
         // Locate and click on the continue button.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         logger.info("Detail test for the Privacy Statements section for Paul Washington on form413 begins here");
         Thread.sleep(4000);
         // Verify that user is being navigated to the Privacy Statements Page.
@@ -337,14 +341,16 @@ public class FinancialSectionPage {
         String expected_Text1 = "Privacy Statements";
         assertEquals(actual_Text1, expected_Text1);
         // Click on the save and continue button.
-        webDriver.findElement(By.name("commit")).click();
         Thread.sleep(4000);
+        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
         // Verify that user is being navigated to the Review Page.
         String actual_Text2 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text2 = "Review";
         assertEquals(actual_Text2, expected_Text2);
-        webDriver.findElement(By.name("commit")).click();
         Thread.sleep(4000);
+        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Verify that user is being navigated to the Signature Page.
@@ -356,7 +362,6 @@ public class FinancialSectionPage {
         String expected_Text5 = "Accept";
         assertEquals(actual_Text5, expected_Text5);
     }
-
     private void assertEquals(String actual_Text1, String expected_Text1) {
         // TODO Auto-generated method stub
     }

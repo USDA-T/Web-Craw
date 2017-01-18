@@ -1,6 +1,6 @@
 package gov.sba.utils;
 
- 
+
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
@@ -964,11 +964,9 @@ import junit.framework.TestCase;
 	            Thread.sleep(2000);
 	            //webDriver.findElement(By.id("accept-button")).click();
 	            webDriver.close();
-	            return;
-
+	            logger.info("Success");
 	        }
 	    }
-
 	    @After
 	    public void tearDown() throws Exception {
 	        webDriver.quit();

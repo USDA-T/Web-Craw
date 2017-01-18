@@ -119,6 +119,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         String actual_Text3 = webDriver.findElement(By.id("password_strength")).getText();
         String expected_Text3 = "Better";
         assertEquals(actual_Text3, expected_Text3);
+        logger.info("Success");
     }
 
     @After

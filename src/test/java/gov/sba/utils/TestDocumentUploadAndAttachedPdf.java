@@ -95,6 +95,7 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
+        logger.info("Success");
     }
 
     @After

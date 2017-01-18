@@ -418,6 +418,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
         String actual_Text07 = webDriver.findElement(By.cssSelector("h1")).getText();
         String expected_Text07 = "Is there an SBA Contracting Program for me?";
         assertEquals(actual_Text07, expected_Text07);
+        logger.info("Success");
     }
 
     @After

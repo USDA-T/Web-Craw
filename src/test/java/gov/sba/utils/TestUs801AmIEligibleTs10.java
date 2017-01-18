@@ -422,6 +422,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
         String actual_Text03 = webDriver.findElement(By.cssSelector("#hubzone > div.eligible > p > b")).getText();
         String expected_Text03 = "Based on the information you provided, you may be eligible for the HUBZone Program.";
         assertEquals(actual_Text03, expected_Text03);
+        logger.info("Success");
     }
 
     @After

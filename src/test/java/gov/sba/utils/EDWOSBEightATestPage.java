@@ -39,10 +39,10 @@ public class EDWOSBEightATestPage {
         Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
+        Thread.sleep(3000);
         webDriver.findElement(By.name("commit")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
-
         // Step - Verify the Signature page for MPP
         logger.info("Step  - Verify the Signature page for MPP");
         // Verify you are on the Signature page

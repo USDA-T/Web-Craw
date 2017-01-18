@@ -120,6 +120,7 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
         String expected_Text17 = "In order to participate in SBA small business programs, the firm must be designated as small in accordance with its primary NAICS code.";
         assertEquals(actual_Text17, expected_Text17);
         webDriver.findElement(By.linkText("Exit")).click();
+        logger.info("Success");
 
     }
 

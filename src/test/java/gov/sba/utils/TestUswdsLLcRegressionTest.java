@@ -45,6 +45,7 @@ public class TestUswdsLLcRegressionTest extends TestCase {
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
+        logger.info("Success");
     }
 
     @After

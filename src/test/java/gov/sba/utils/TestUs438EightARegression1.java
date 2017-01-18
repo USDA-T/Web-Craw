@@ -84,8 +84,8 @@ public class TestUs438EightARegression1 extends TestCase {
         logger.info("Document successfully uploaded, Pass");
         // Step 16. Locate the sign-out button and click on it.
         webDriver.findElement(By.linkText("Logout")).click();
-        Thread.sleep(3000);
-    }
+        logger.info("Success");   
+        }
 
     @After
     public void tearDown() throws Exception {

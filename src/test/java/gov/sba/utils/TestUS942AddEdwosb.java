@@ -37,7 +37,6 @@ public class TestUS942AddEdwosb extends TestCase {
         VerifyEdwosbFlow VerifyEDWOSBFlow = new VerifyEdwosbFlow();
         VerifyEDWOSBFlow.VerifyEDWOSBFlowSetDriver(webDriver);
         VerifyEDWOSBFlow.VerifyEDWOSBFlowLogic();
-
     }
 
     @After

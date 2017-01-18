@@ -90,6 +90,7 @@ public class TestApp51SamProfileSnapshot extends TestCase {
         webDriver.findElement(By.linkText("Vendor Overview")).click();
         // Logout.
         webDriver.findElement(By.linkText("Logout")).click();
+        logger.info("Success");
 
     }
 

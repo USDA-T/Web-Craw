@@ -125,8 +125,7 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
                 } else {
                     logger.info("Second Window is thesame as first window");
                 }
-                return;
-            }
+                logger.info("Success");            }
         }
     }
 

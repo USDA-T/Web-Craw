@@ -23,25 +23,21 @@ public class EightAdocumentUploadPage {
     public void EightAdocumentUpload() throws Exception {
         logger.debug("Uploading a new document");
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
-
         // Note: might need to be adjust to MainTestUploadDoc.pdf?
-        String pdfFixture = FixtureUtils.fixturesDir() + "Upload.pdf";
+        String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
-
         StringSelection ss = new StringSelection(pdfFixture);
-
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
+        Thread.sleep(4000);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
+        Thread.sleep(4000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-
-        Thread.sleep(6000);
-
+        Thread.sleep(4000);
         webDriver.findElement(By.id("comment")).sendKeys("Testing Documents");
         webDriver.findElement(By.cssSelector("#attach")).click();
     }

@@ -861,7 +861,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
             Thread.sleep(2000);
             // webDriver.findElement(By.id("accept-button")).click();
             webDriver.close();
-            return;
+            logger.info("Success");
         }
     }
 

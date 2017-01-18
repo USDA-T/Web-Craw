@@ -176,6 +176,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
         webDriver.findElement(By.name("commit")).click();
+        logger.info("Success");
 
     }
 
