@@ -1040,6 +1040,7 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
            // webDriver.findElement(By.id("accept-button")).click();
             webDriver.close();
             logger.info("Success");
+            return;
 
         }
     }

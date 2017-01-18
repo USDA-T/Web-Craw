@@ -184,6 +184,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         logger.info("Success");
+        return;
 
     }
 

@@ -343,7 +343,7 @@ public class PartnershipQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
-        webDriver.findElement(By.cssSelector("button.btn")).click();
+        webDriver.findElement(By.xpath("//div[3]/button")).click();
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
         Actions act4 = new Actions(webDriver);

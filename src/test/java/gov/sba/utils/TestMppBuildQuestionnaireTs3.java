@@ -799,6 +799,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             Thread.sleep(2000);
             // webDriver.findElement(By.id("accept-button")).click();
             logger.info("Success");
+            return;
         }
     }
 
