@@ -40,7 +40,7 @@ public class TestApp49ChangeConnectToBizErrorMessages extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Select Vendor Admin for a business that is new to certify.SBA.gov.
         webDriver.findElement(By.id("request_new_application")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("div.usa-grid-full > p")).getText();
         Expected_Text = "You can connect with a business by using the following information to attach your profile to a business profile.";
         assertEquals(Actual_Text, Expected_Text);

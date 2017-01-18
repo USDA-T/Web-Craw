@@ -35,7 +35,7 @@ public class EdwobEightAMppTestPage {
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -45,7 +45,7 @@ public class EdwobEightAMppTestPage {
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
 

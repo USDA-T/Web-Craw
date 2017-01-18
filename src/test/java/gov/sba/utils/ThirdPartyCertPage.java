@@ -26,19 +26,19 @@ public class ThirdPartyCertPage {
         String expected_Text1 = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
         assertEquals(actual_Text1, expected_Text1);
         webDriver.findElement(By.id("answers_65_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.id("answers_66_value_yes")).click();
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Change Eligibility.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Changes in Eligibility";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.id("answers_67_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  ThirdParty question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -47,7 +47,7 @@ public class ThirdPartyCertPage {
         Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP

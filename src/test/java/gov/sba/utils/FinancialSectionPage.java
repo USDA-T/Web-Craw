@@ -32,7 +32,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000");
         // Locate the Continue button and click on it to continue.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate section for Other Source of Income enter all valid data as
         // required.
         // Locate the Salary search box and enter salary.
@@ -47,7 +47,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers_39_value']")).sendKeys("50000");
         // Locate the continue button and click on it to continue.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate and YES for question 'Do you have any notes receivable from
         // others?'.
         webDriver.findElement(By.cssSelector("label.yes")).click();
@@ -75,13 +75,13 @@ public class FinancialSectionPage {
         // locate the 'CONTINUE' button at the right bottom of the page and
         // click on it to save
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Select NO for the two question on Retirement Accounts.
         webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
         Thread.sleep(4000);
         webDriver.findElement(By.xpath(".//*[@id='answers[42][value]']/label[2]")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.id("answers_43_value_yes")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_43_details_table_wrapper']/div/a/span")).click();
         webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
@@ -96,7 +96,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
         webDriver.findElement(By.xpath(".//*[@id='answers_45_value']")).sendKeys("50000");
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Select Yes for the Stock and Bonds Section.
         webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_46_details_table_wrapper']/div/a/span")).click();
@@ -108,7 +108,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000");
         webDriver.findElement(By.cssSelector("button.btn")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Select Yes for Real Estate - Primary Residence Section questions.
         webDriver.findElement(By.xpath(".//*[@id='answers[47][value]']/label[1]")).click();
         Thread.sleep(4000);
@@ -125,7 +125,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][10][value]']/label")).click();
         webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("50");
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Select Yes for Real Estate - Other section.
         webDriver.findElement(By.xpath(".//*[@id='answers[49][value]']/label[1]")).click();
         webDriver.findElement(By.id("add_real_estate")).click();
@@ -143,7 +143,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath("//div[@id='answers[50][1][10][value]']/label")).click();
         webDriver.findElement(By.id("answers_50_1_11_value")).sendKeys("56");
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(3000);
         // Beginning Test For Personal Property.
         assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
@@ -230,7 +230,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("answers_56_comment")).sendKeys("testing");
         Thread.sleep(3000);
         // Locate the continue button and click on it.
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(3000);
         // Locate the continue button and click on it.
         webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
@@ -244,7 +244,7 @@ public class FinancialSectionPage {
             webDriver.findElement(By.xpath(".//*[@id='answers[58][value]']/label[1]")).click();
             webDriver.findElement(By.xpath(".//*[@id='answers_59_value']")).sendKeys("45");
             Thread.sleep(2000);
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         } catch (Error e) {
             logger.info("User is NOT being navigated to the 'Notes Payable' section on the form 413, Pass");
         }
@@ -310,7 +310,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.cssSelector("button.btn")).click();
         Thread.sleep(3000);
         // Locate and click on the continue button.
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
         // Locate the next 3 search boxes for Adjusted Gross Income and enter
         // valid data.
@@ -319,7 +319,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("answers_64_value")).sendKeys("20000");
         // Locate and click on the continue button.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
         // Verify that user is being navigated to the Summary Page.
         String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -332,7 +332,7 @@ public class FinancialSectionPage {
         assertEquals(actual_Text11, expected_Text11);
         // Locate and click on the continue button.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(3000);
         logger.info("Detail test for the Privacy Statements section for Paul Washington on form413 begins here");
         Thread.sleep(4000);
@@ -342,14 +342,14 @@ public class FinancialSectionPage {
         assertEquals(actual_Text1, expected_Text1);
         // Click on the save and continue button.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
         // Verify that user is being navigated to the Review Page.
         String actual_Text2 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text2 = "Review";
         assertEquals(actual_Text2, expected_Text2);
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

@@ -35,7 +35,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text21, expected_Text21);
         webDriver.findElement(By.id("answers_65_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Locate the Third Party Certification, question1 and select No and
         // continue.
@@ -48,7 +48,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text, expected_Text);
         webDriver.findElement(By.id("answers_66_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Non-qualification question,Verify,select No and continue.
         String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text4 = "Has an SBA-approved Third-Party Certifier declined WOSB or EDWOSB certification for the qualifying individual(s)?";
@@ -59,7 +59,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text5, expected_Text5);
         webDriver.findElement(By.id("answers_68_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Third Party questions have been answered");
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
         // and continue.
@@ -85,7 +85,7 @@ public class SoleProprietorQuestionsPage {
         webDriver.findElement(By.id("answers_80_value_no")).click();
         webDriver.findElement(By.id("answers_81_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Businesses & Trusts questions,Verify, select No for both
         // and continue.
         String actual_Text14 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -106,7 +106,7 @@ public class SoleProprietorQuestionsPage {
         webDriver.findElement(By.id("answers_82_value_no")).click();
         webDriver.findElement(By.id("answers_83_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Operations & Management questions, Verify, select No for
         // both and continue.
         // 1st question
@@ -128,7 +128,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text22, expected_Text22);
         webDriver.findElement(By.id("answers_85_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Expertise & Employment questions, Verify, select No for
         // both and continue.
         // 1st question.
@@ -150,7 +150,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text26, expected_Text26);
         webDriver.findElement(By.id("answers_87_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Operations questions have been answered");
         // Locate the Highest Officer & Control questions,Verify, select No for
         // both and continue.
@@ -173,7 +173,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text30, expected_Text30);
         webDriver.findElement(By.id("answers_89_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the SBA Exam & Daily Operations questions,Verify, select No
         // for both and continue.
         // 1st question.
@@ -196,7 +196,7 @@ public class SoleProprietorQuestionsPage {
         webDriver.findElement(By.id("answers_91_value_no")).click();
         webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Net Worth questions,Verify, select No for both and
         // continue.
         // 1st question.
@@ -229,7 +229,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text381, expected_Text381);
         webDriver.findElement(By.id("answers_93_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Loccontinue.
         // 1st question.
         String actual_Text39 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -252,7 +252,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text42, expected_Text42);
         webDriver.findElement(By.id("answers_95_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Fair Market Value questions,verify select No and continue.
         String actual_Text43 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text43 = "Is the fair market value of all the assets of the qualifying individual(s) at or less than $6 million?";
@@ -264,7 +264,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text44, expected_Text44);
         webDriver.findElement(By.id("answers_96_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Assets questions,verify, select and No for both and
         // continue.
         // 1st question.
@@ -288,7 +288,7 @@ public class SoleProprietorQuestionsPage {
         assertEquals(actual_Text48, expected_Text48);
         webDriver.findElement(By.id("answers_98_value_no")).click();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("EDWOSB application questions have been answered");
         // Validate that user successfully navigated to the Financial Data
         // section.
@@ -327,6 +327,6 @@ public class SoleProprietorQuestionsPage {
         act1.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
 }

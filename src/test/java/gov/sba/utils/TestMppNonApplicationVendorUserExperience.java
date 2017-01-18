@@ -227,7 +227,7 @@ public class TestMppNonApplicationVendorUserExperience extends TestCase {
             Expected_Text = "If you are a federal contracting officer or contracting specialist please request access to the system by selecting the role below.";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("role_name_contracting_officer")).click();
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Click on the My Request Link.
             webDriver.findElement(By.linkText("My requests")).click();
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();

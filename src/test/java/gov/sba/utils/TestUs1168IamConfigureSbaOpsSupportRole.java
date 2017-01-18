@@ -39,7 +39,7 @@ public class TestUs1168IamConfigureSbaOpsSupportRole extends TestCase {
         // Step 3. Locate the Sign-in button and click on it to login.
         webDriver.findElement(By.xpath(".//*[@id='business_signin']")).click();
         Thread.sleep(5000);
-        verifyTrue("Save my work", webDriver.findElement(By.name("commit")));
+        verifyTrue("Save my work", webDriver.findElement(By.xpath("//input[@name='commit']")));
         // Logout.
         webDriver.findElement(By.linkText("Logout")).click();
     }

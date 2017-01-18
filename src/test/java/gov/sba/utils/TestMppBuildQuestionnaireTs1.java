@@ -51,7 +51,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
@@ -61,7 +61,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
@@ -82,12 +82,12 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(4000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
 

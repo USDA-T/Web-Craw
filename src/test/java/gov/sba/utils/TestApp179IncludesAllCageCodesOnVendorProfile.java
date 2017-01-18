@@ -41,7 +41,7 @@ public class TestApp179IncludesAllCageCodesOnVendorProfile extends TestCase {
             Expected_Text = "Request access";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("request_new_application")).click();
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             webDriver.findElement(By.id("search_duns_number")).sendKeys("791985859");
             webDriver.findElement(By.id("search_ssn_ein")).sendKeys("123456789");
             webDriver.findElement(By.id("search_mpin")).sendKeys("A12345678");

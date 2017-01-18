@@ -224,7 +224,7 @@ public class TestApp99App90App100 extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Verify the second attachment.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td"))
                 .getText();
@@ -233,7 +233,7 @@ public class TestApp99App90App100 extends TestCase {
         WebElement EightADoc2 = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td"));
         HighLight.highLightElement(webDriver, EightADoc2);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
         Thread.sleep(3000);
         webDriver.findElement(By.id("legal_0")).click();

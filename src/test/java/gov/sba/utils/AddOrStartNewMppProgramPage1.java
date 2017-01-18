@@ -119,7 +119,7 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
                     logger.info("Second Window is not thesame as first window");
                 }
                 Thread.sleep(4000);
-                webDriver.findElement(By.name("commit")).click();
+                webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             }
 
         } else {
@@ -209,7 +209,7 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
             logger.info("Back to manin_window " + webDriver.getTitle());
             // Click on the Accept button.
             Thread.sleep(4000);
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 
         }
     }

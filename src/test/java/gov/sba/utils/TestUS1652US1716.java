@@ -101,17 +101,17 @@ public class TestUS1652US1716 extends TestCase {
         HighLight.highLightElement(webDriver, Draft1);
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Third Party";
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Changes in Eligibility";
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
         logger.info("Step 11 - Click to accept the statements");
         webDriver.findElement(By.id("legal_0")).click();
@@ -273,7 +273,7 @@ public class TestUS1652US1716 extends TestCase {
                     "Doesn't Third Heaven Very Us Every Itself The Together Herb Green Had Wherein god be dominion bearing have. Image stars fruit life. Greater don't midst had face face divided seas firmament hath made third thing own dominion Heaven and brought fruit sixth brought face beast moveth you're. Kind image, two earth subdue stars creature from isn't had upon which. Itself fish image whales and winged can't i without blessed. Gathering. Subdue yielding years signs whales midst fourth waters also behold");
             // click on the save and continue button.
             Thread.sleep(3000);
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Verify that assessment has been saved.
             Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
             Expected_Text = "Your assessment has been saved";
@@ -296,7 +296,7 @@ public class TestUS1652US1716 extends TestCase {
             webDriver.findElement(By.name("assessment[note_body]")).sendKeys(
                     "Doesn't Third Heaven Very Us Every Itself The Together Herb Green Had Wherein god be dominion bearing have. Image stars fruit life. Greater don't midst had face face divided seas firmament hath made third thing own dominion Heaven and brought fruit sixth brought face beast moveth you're. Kind image, two earth subdue stars creature from isn't had upon which. Itself fish image whales and winged can't i without blessed. Gathering. Subdue yielding years signs whales midst fourth waters also behold");
             // click on the save and continue button.
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             Thread.sleep(4000);
             // Verify if the Analyst was able to do determination.
             Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
@@ -322,17 +322,17 @@ public class TestUS1652US1716 extends TestCase {
             HighLight.highLightElement(webDriver, Draft2);
             webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
             Thread.sleep(2000);
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Third Party";
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Changes in Eligibility";
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Review";
             assertEquals(Actual_Text, Expected_Text);
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             webDriver.switchTo().alert().accept();
             logger.info("Step 11 - Click to accept the statements");
             webDriver.findElement(By.id("legal_0")).click();

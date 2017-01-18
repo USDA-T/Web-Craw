@@ -104,11 +104,11 @@ public class TestUs1653CurrentRevisionAlert extends TestCase {
         HighLight.highLightElement(webDriver, Draft1);
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
         logger.info("Step 11 - Click to accept the statements");
         webDriver.findElement(By.id("legal_0")).click();

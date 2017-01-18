@@ -40,13 +40,13 @@ public class TestUs1780SupervisorsShouldSeeRolesReguested extends TestCase {
             Expected_Text = "If you are a federal contracting officer or contracting specialist please request access to the system by selecting the role below.";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("role_name_sba_supervisor")).click();
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Agree to the requesting access terms.
             Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
             Expected_Text = "Request access";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("request")).click();
-            webDriver.findElement(By.name("commit")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Verify that request was successful.
             Thread.sleep(3000);
             Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
