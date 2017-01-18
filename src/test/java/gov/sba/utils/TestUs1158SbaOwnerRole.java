@@ -42,24 +42,24 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         Thread.sleep(3000);
         // Locate the search for vendor search box and enter a valid Duns
         // number.
-        webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).sendKeys(Duns);
+        webDriver.findElement(By.id("query")).sendKeys(Duns);
         // Locate the search button and click it.
         webDriver.findElement(By.cssSelector("button.search-styli-desktop")).click();
         // Clear the search duns number in the search box and very that that the
         // duns number is thesame on the search result.
-        webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).clear();
+        webDriver.findElement(By.id("query")).clear();
         Thread.sleep(4000);
         assertTrue(webDriver.getPageSource().contains("275276652"));
         logger.info("The saerch results maches the business for the searched Duns number, Pass.");
         Thread.sleep(4000);
         // Locate the search for vendor search box and enter a valid business
         // name.
-        webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).sendKeys(B_N);
+        webDriver.findElement(By.id("query")).sendKeys(B_N);
         // Click on the search button.
         webDriver.findElement(By.cssSelector("button.search-styli-desktop")).click();
         // Clear the search duns number in the search box and very that that the
         // duns number is thesame on the search result.
-        webDriver.findElement(By.cssSelector("div.desk-div-text > #vsearch > #query")).clear();
+        webDriver.findElement(By.id("query")).clear();
         Thread.sleep(4000);
         String actual_Text = webDriver.findElement(By.id("view_business_profile")).getText();
         String expected_Text = "Entity 37 Legal Business Name";

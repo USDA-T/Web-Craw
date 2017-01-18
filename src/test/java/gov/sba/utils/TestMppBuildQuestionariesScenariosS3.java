@@ -52,6 +52,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_no")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Eligibility Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -109,6 +110,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver.findElement(By.id("answers_119_value_yes")).click();
         webDriver.findElement(By.id("answers_120_value_no")).click();
         webDriver.findElement(By.id("answers_121_value_no")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // NAICS Code Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -138,6 +140,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Select A NAICS code from t he drop down.
         WebElement mySelect = webDriver.findElement(By.xpath("//*[@id='answers_122_value']"));
@@ -152,6 +155,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_123_value_yes")).click();
         webDriver.findElement(By.id("answers_124_value_yes")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
@@ -159,12 +163,14 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers[125][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_125_value_no")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Verify the Size Redetermination Section(Sub-Subsection 1.2) is
         // disabled , Verifying Question.
@@ -175,6 +181,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         logger.info("Success");
 

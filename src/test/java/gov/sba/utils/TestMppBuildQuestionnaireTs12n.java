@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs12n extends TestCase {
@@ -53,12 +55,14 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(2000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_no")).click();
+        Thread.sleep(2000);
         webDriver.findElement(By.name("commit")).click();
         // Eligibility Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -89,6 +93,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers[118][value]-error")).getText();
         Expected_Text = "Please answer this question";
@@ -156,6 +161,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         webDriver.findElement(By.id("answers_122_value")).click();
         webDriver.findElement(By.xpath("//option[3]")).click();
@@ -169,6 +175,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_123_value_yes")).click();
         webDriver.findElement(By.id("answers_124_value_yes")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
@@ -182,6 +189,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_125_value_yes")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4"))
@@ -190,12 +198,14 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers[126][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_126_value_yes")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Redetermination Info Section(Sub-Subsection 1.3), Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -203,6 +213,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the size redetermination letter issued by SBA.";
@@ -216,12 +227,14 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         // Select office.
         webDriver.findElement(By.id("answers_128_value")).click();
         webDriver.findElement(By.xpath("//option[@value='SBA Area Office 4']")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
-        webDriver.findElement(By.name("commit")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(4000);
+        Actions act15 = new Actions(webDriver);
+        act15.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // Training Section(Subsection 2.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
         Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
@@ -233,6 +246,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify alert message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers_130_attachment-error")).getText();
         Expected_Text = "Attachment is required";
@@ -240,8 +254,9 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument1.MontanaUploadDocument();
-        webDriver.findElement(By.name("commit")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(4000);
+        Actions act13 = new Actions(webDriver);
+        act13.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // General Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
         Expected_Text = "Please upload the Protégé’s business plan.";
@@ -333,6 +348,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         montanaUploadDocument11.MontanaUploadDocument();
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_yes")).click();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Active Agreements Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
@@ -399,7 +415,6 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // click on add agreement.
         webDriver.findElement(By.cssSelector("span.add-color")).click();
-
         // Remove agreement.
         webDriver.findElement(By.xpath("(//a[contains(text(),'Remove')])[2]")).click();
         Actual_Text = webDriver.switchTo().alert().getText();
@@ -408,6 +423,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         webDriver.switchTo().alert().accept();
         webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
         webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Active Agreement Documents Section.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_active_agreemets']/fieldset/h4"))
@@ -415,6 +431,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         Expected_Text = "Please upload copies of the active agreements in which you are involved and any other applicable documentation.";
         assertEquals(Actual_Text, Expected_Text);
         // Attempt to commit and verify alert message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers_134_attachment-error")).getText();
         Expected_Text = "Attachment is required";
@@ -423,8 +440,8 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         MontanaUploadDocumentPage montanaUploadDocument111 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument111.MontanaUploadDocument();
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Actions act14 = new Actions(webDriver);
+        act14.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // MPP Agreement Section.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the written Mentor-Protégé Agreement signed and dated by both the Mentor and the Protégé.";
@@ -434,6 +451,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         Expected_Text = "Download a Word template for a sample Mentor-Protégé Agreement and upload in PDF format.";
         assertEquals(Actual_Text, Expected_Text);
         // Attempt to commit and verify alert message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("answers_135_attachment-error")).getText();
         Expected_Text = "Attachment is required";
@@ -441,8 +459,9 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument1111.MontanaUploadDocument();
-        webDriver.findElement(By.name("commit")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(4000);
+        Actions act16 = new Actions(webDriver);
+        act16.doubleClick(webDriver.findElement(By.name("commit"))).build().perform();
         // Protégé Needs Section.
         Thread.sleep(3000);
         Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/p")).getText();
@@ -625,14 +644,16 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
         webDriver.findElement(By.id("answers_138_value_yes")).click();
         webDriver.findElement(By.id("answers_139_value_yes")).click();
         webDriver.findElement(By.id("answers_140_value_no")).click();
-        webDriver.findElement(By.id("answers_141_value_no")).click();
-        webDriver.findElement(By.xpath("//input[@id='answers_141_value_no']")).click();
+        Actions act1 = new Actions(webDriver);
+        act1.doubleClick(webDriver.findElement(By.id("answers_141_value_no"))).build().perform();
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Contracting Needs Section.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Contracting Needs";
         assertEquals(Actual_Text, Expected_Text);
         // Attempt to commit and verify alert message.
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         Actual_Text = webDriver.findElement(By.id("input-type-textarea-error")).getText();
         Expected_Text = "Please answer this question";
@@ -655,6 +676,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         webDriver.findElement(By.name("answers[153][value]")).sendKeys(
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Trade Education Needs Section.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -683,6 +705,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         webDriver.findElement(By.name("answers[157][value]")).sendKeys(
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        Thread.sleep(4000);
         webDriver.findElement(By.name("commit")).click();
         // Section 3/ Training, Verifying question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -713,6 +736,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
             // Attempt to commit and verify alert message.
+            Thread.sleep(4000);
             webDriver.findElement(By.name("commit")).click();
             Actual_Text = webDriver.findElement(By.id("answers_166_attachment-error")).getText();
             Expected_Text = "Attachment is required";
@@ -734,6 +758,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
             Expected_Text = "If the Mentor firm has updated SAM.gov within the last 24 hours, you need to wait 24 hours before the update is reflected here, at which time you may return to the application and proceed.";
             assertEquals(Actual_Text, Expected_Text);
             // Attempt to commit and verify alert message.
+            Thread.sleep(4000);
             webDriver.findElement(By.name("commit")).click();
             Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
             Expected_Text = "Please answer this question";
@@ -755,6 +780,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Training";
             assertEquals(Actual_Text, Expected_Text);
+            Thread.sleep(4000);
             webDriver.findElement(By.name("commit")).click();
             // Enter a valid DUNS# and verify business.
             webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
@@ -774,6 +800,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
             Actual_Text = webDriver.findElement(By.id("duns-biz-name-167")).getText();
             Expected_Text = "The selected business is: Entity 45 Legal Business Name";
             assertEquals(Actual_Text, Expected_Text);
+            Thread.sleep(4000);
             webDriver.findElement(By.name("commit")).click();
             // Review page.
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -782,6 +809,7 @@ public class TestMppBuildQuestionnaireTs12n extends TestCase {
             Actual_Text = webDriver.findElement(By.cssSelector("#main-content > p")).getText();
             Expected_Text = "Please review below answers and Submit.";
             assertEquals(Actual_Text, Expected_Text);
+            Thread.sleep(4000);
             webDriver.findElement(By.name("commit")).click();
             logger.info(webDriver.switchTo().alert().getText());
             webDriver.switchTo().alert().accept();
