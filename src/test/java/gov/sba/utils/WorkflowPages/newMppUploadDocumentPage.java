@@ -22,7 +22,7 @@ public class newMppUploadDocumentPage {
     public void deepaUploadMppDocument(String upload_Path) throws Exception {
         logger.debug("Uploading a new document");
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         webDriver.findElement(By.id("doc-upload-button")).click();
         Thread.sleep(3000);
@@ -33,35 +33,40 @@ public class newMppUploadDocumentPage {
         Robot robot = new Robot();
 
         robot.keyPress(KeyEvent.VK_F4);
+        Thread.sleep(2000);
         robot.keyPress(KeyEvent.VK_ESCAPE);
-
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-
-
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(1000);
         
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
+
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
+        
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);
+        
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(2000);        
         
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-
+        Thread.sleep(2000);
+        
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-
+        
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("#attach")).click();
     }
