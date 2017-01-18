@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class FinancialSectionPage {
     private static final Logger logger = LogManager.getLogger(FinancialSectionPage.class.getName());
@@ -332,7 +333,8 @@ public class FinancialSectionPage {
         assertEquals(actual_Text11, expected_Text11);
         // Locate and click on the continue button.
         Thread.sleep(4000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Actions act13 = new Actions(webDriver);
+        act13.doubleClick(webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]"))).build().perform();
         Thread.sleep(3000);
         logger.info("Detail test for the Privacy Statements section for Paul Washington on form413 begins here");
         Thread.sleep(4000);
