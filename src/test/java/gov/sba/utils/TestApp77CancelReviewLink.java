@@ -1,6 +1,8 @@
 package gov.sba.utils;
 
 import java.util.List;
+
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -22,24 +24,33 @@ public class TestApp77CancelReviewLink extends TestCase {
     private static final Logger TestApp77CancelReviewLink = LogManager
             .getLogger(TestApp77CancelReviewLink.class.getName());
     int get_The_Row_From_Login_Data;
-    String duns_Number = "196374813";
-    
+    //String duns_Number = "196374813";
+    String duns_Number = "";
+
     @Before
     public void setUp() throws Exception {
-    	commonApplicationMethods.deleteAllApplicationTypes(webDriver, duns_Number);
-    	webDriver = TestHelpers.getDefaultWebDriver();
+
+        commonApplicationMethods.clear_Env_Chrome();
+        Thread.sleep(3000);
+        webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 41;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        TestApp77CancelReviewLink.info(duns_Number);
+
     }
 
     @Test
     public void testMainTest() throws Exception {
         try {
+
+            commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
             // Login to dashboard.
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
+            commonApplicationMethods.delete_all_Drafts(webDriver);
 
             commonApplicationMethods.createApplication(webDriver, "WOSB");
             webDriver.findElement(By.id("answers_5_value_yes")).click();

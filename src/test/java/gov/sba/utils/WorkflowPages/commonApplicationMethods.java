@@ -46,7 +46,18 @@ public class commonApplicationMethods {
         }
     }
 
-
+    public static void clear_Env_Chrome() {
+        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
+        if (file_01.exists()) {
+            try {
+                String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
+                Process p = Runtime.getRuntime().exec(command);
+                p.wait();
+                p.destroy();
+            } catch (Exception ex) {
+            }
+        }
+    }
 
     public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, login_Id);
@@ -71,10 +82,13 @@ public class commonApplicationMethods {
             if (current_Row_Check_02.size() >0 ) {
                 for(int i=0;i<current_Row_Check_02.size();i++){
                     current_Row_Check_02.get(0).click();
-                    Thread.sleep(3000);
+                    Thread.sleep(3000);Thread.sleep(3000);
                     webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
+                    Thread.sleep(1500);
                     webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                    Thread.sleep(1500);
                     webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
+                    Thread.sleep(1500);
                     webDriver.navigate().back();
                     webDriver.navigate().back();
                     webDriver.navigate().back();
@@ -97,7 +111,7 @@ public class commonApplicationMethods {
         Boolean FlagForAddEDWOSBNotPresent = true;
         navigationMenuClick(webDriver, "DashBoard");
         List<WebElement> current_Row_Check_02 = webDriver.findElements(
-                                                By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+                By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
         if (current_Row_Check_02.size() >0 ) {
 
             for(int i=0;i<current_Row_Check_02.size();i++){
@@ -105,28 +119,16 @@ public class commonApplicationMethods {
                 current_Row_Check_02.get(0).click();
                 Thread.sleep(2000);
                 webDriver.switchTo().alert().accept();
+                Thread.sleep(1500);
                 webDriver.navigate().refresh();
                 current_Row_Check_02 = webDriver.findElements(
-                                       By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+                        By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
                 i = 0;
                 FlagForAddEDWOSBNotPresent = true;
             }
         }
         Assert.assertTrue(FlagForAddEDWOSBNotPresent);
 
-    }
-  
-    public static void clear_Env_Chrome() {
-        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
-        if (file_01.exists()) {
-            try {
-                String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
-                Process p = Runtime.getRuntime().exec(command);
-                p.wait();
-                p.destroy();
-            } catch (Exception ex) {
-            }
-        }
     }
 
   
