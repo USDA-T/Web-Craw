@@ -71,10 +71,13 @@ public class commonApplicationMethods {
             if (current_Row_Check_02.size() >0 ) {
                 for(int i=0;i<current_Row_Check_02.size();i++){
                     current_Row_Check_02.get(0).click();
-                    Thread.sleep(3000);
+                    Thread.sleep(3000);Thread.sleep(3000);
                     webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
+                    Thread.sleep(1500);
                     webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                    Thread.sleep(1500);
                     webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
+                    Thread.sleep(1500);
                     webDriver.navigate().back();
                     webDriver.navigate().back();
                     webDriver.navigate().back();
@@ -105,6 +108,7 @@ public class commonApplicationMethods {
                 current_Row_Check_02.get(0).click();
                 Thread.sleep(2000);
                 webDriver.switchTo().alert().accept();
+                Thread.sleep(1500);
                 webDriver.navigate().refresh();
                 current_Row_Check_02 = webDriver.findElements(
                                        By.xpath( "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
