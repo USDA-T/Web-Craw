@@ -67,7 +67,7 @@ public class newMppUploadDocumentPage {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         logger.info("Uploading a new document - Clicked on All Enters");                
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         webDriver.findElement(By.cssSelector("#attach")).click();
     }
 
