@@ -127,7 +127,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
                         formatter = new SimpleDateFormat("yyyy-mm-dd");
                         // you can change format of date
                         Date date = formatter.parse(time_Stamp);
-                        java.sql.Timestamp timeStampDate = new Timestamp(date.getTime());
+                        Timestamp timeStampDate = new Timestamp(date.getTime());
                         logger_US1699.info(timeStampDate);
                     }
 
