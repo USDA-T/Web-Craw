@@ -108,7 +108,8 @@ public class fillApplCreatePages {
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
                 Thread.sleep(2000);
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                Thread.sleep(1000);
+                Thread.sleep(3000);
+                webDriver.switchTo().alert().accept();
                 logger.info("Doc has been uploaded and accepted");
             } else {
                 try{
