@@ -155,8 +155,13 @@ public class fillApplCreatePages {
                         logger.info("ClickedJIIId.");
                         duns_No.get(0).click();
                     }
-                    Thread.sleep(2000);
-                    webDriver.switchTo().alert().accept();
+                    Thread.sleep(4000);
+                    try{
+                        webDriver.switchTo().alert().accept();
+                    }
+                    catch (Exception e) {
+                        logger.info(e.toString());
+                    }
                 }
 
                 Thread.sleep(2000);
