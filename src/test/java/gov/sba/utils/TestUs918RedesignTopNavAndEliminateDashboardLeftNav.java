@@ -33,8 +33,8 @@ public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCas
         login_Data.Login_With_Reference();
         Thread.sleep(2000);
         // Locate and verify the My Certification link.
-        actual_Text = webDriver.findElement(By.cssSelector("li.nav-link.current-top-nav > a")).getText();
-        expected_Text = "Certifications";
+        actual_Text = webDriver.findElement(By.linkText("Programs")).getText();
+        expected_Text = "Programs";
         assertEquals(expected_Text, expected_Text);
         webDriver.findElement(By.linkText("Programs")).click();
         // Validate the navigated page.
