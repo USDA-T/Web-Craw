@@ -32,7 +32,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
         webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that user is navigated to the right page.
         String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
         String expected_error6 = "Is there an SBA Contracting Program for me?";
@@ -48,7 +48,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         assertEquals(actual_Text3, expected_Text3);
         // verify and click on the Yes button.
         webDriver.findElement(By.cssSelector("button.yes_button")).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         // Locate the 2nd question and select No and verify the More Detail
         // meaning of the question.
         String actual_error3 = webDriver
@@ -71,7 +71,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         Thread.sleep(3000);
         // verify and click on the yes button.
         webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the Third question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text6 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div/p")).getText();
@@ -88,9 +88,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
         String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
         assertEquals(actual_Text9, expected_Text9);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_for_profit")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 4th question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
@@ -100,9 +100,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String actual_Text11 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div[2]/p")).getText();
         String expected_Text11 = "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
         assertEquals(actual_Text11, expected_Text11);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_non_suspended")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 5th question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text12 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();
@@ -112,9 +112,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String actual_Text13 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
         String expected_Text13 = "None";
         assertEquals(actual_Text13, expected_Text13);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_us_business")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 6th question and select Yes and verify the More Detail
         // meaning of the question.
         String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='small_naics']/div/div/p")).getText();
@@ -128,9 +128,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .getText();
         String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available at http://www.census.gov/eos/www/naics/.";
         assertEquals(actual_Text16, expected_Text16);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_small_naics")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 7th question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text17 = webDriver.findElement(By.xpath("//div[@id='women_owning_business']/div/div/p"))
@@ -142,7 +142,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .getText();
         String expected_Text18 = "None";
         assertEquals(actual_Text18, expected_Text18);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_women_owning_business")).click();
         Thread.sleep(3000);
         // Verify that user is being navigated to the 10th question because
@@ -157,12 +157,12 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String expected_Text20 = "The federal government may restrict competition under the WOSB Program only in certain industries.13 C.F.R. 127.500. SBA has designated those industries applicable to the WOSB Program by North American Industry Classification System (NAICS) code. There are two types of set-asides under the WOSB Program: set asides for Woman Owned Small Businesses and set asides for Economically Disadvantaged Woman Owned Small Businesses. The type of set-aside allowed under the WOSB Program is dictated by the applicable NAICS code of the solicitation. To learn more about the types of set-asides and the designations available via this program, please visitSBA.gov/WOSB.";
         assertEquals(actual_Text20, expected_Text20);
         String actual_Text21 = webDriver.findElement(By.cssSelector("label")).getText();
-        String expected_Text21 = "naics_fed_set_asides";
+        String expected_Text21 = "Enter the NAICS code in which your business operates:";
         assertEquals(actual_Text21, expected_Text21);
         // Enter a valid NAICS Code.
         webDriver.findElement(By.id("naics_code")).sendKeys(naics);
         webDriver.findElement(By.id("naics_button")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Validate the detail meaning for Q8
         String actual_Text22 = webDriver.findElement(By.xpath("//div[@id='economically_disadvantaged_wosb']/div/div/p"))
                 .getText();
@@ -184,7 +184,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         logger.info("===Question 9 was not skipped after answering NO for question 7");
         // Select NO for question 9.
         webDriver.findElement(By.id("no_button_economically_disadvantaged_wosb")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 10th question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text26 = webDriver.findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div/p"))
@@ -209,9 +209,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .findElement(By.xpath("//div[@id='economically_disadvantaged_8a']/div/div[2]/ul/li[3]")).getText();
         String expected_Text30 = "The individual’s personal income must be $250,000 or less. This calculation is based on the individual’s adjusted gross income averaged over the last three years.";
         assertEquals(actual_Text30, expected_Text30);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_economically_disadvantaged_8a")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         // Verify that user is being navigated to the 13th question because
         // user select NO for the 10th question.
         String actual_Text31 = webDriver.findElement(By.xpath("//div[@id='socially_disadvantaged']/div/div/p"))
@@ -224,9 +224,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String expected_Text32 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
         assertEquals(actual_Text32, expected_Text32);
         logger.info("User Successfully navigated to the 13th question ':Do you identify as one of the following?'");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_socially_disadvantaged")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 14th question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text33 = webDriver.findElement(By.xpath("//div[@id='socially_disadvantaged_chronic']/div/div/p"))
@@ -239,9 +239,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .findElement(By.xpath("//div[@id='socially_disadvantaged_chronic']/div/div[2]/p[2]")).getText();
         String expected_Text34 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
         assertEquals(actual_Text34, expected_Text34);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_socially_disadvantaged_chronic")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the next question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text35 = webDriver.findElement(By.xpath("//div[@id='eighta_certified']/div/div/p")).getText();
@@ -253,9 +253,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .getText();
         String expected_Text36 = "This applies to any business that previously participated in the 8(a) BD Program, even if ownership and control of the firm has completely changed.";
         assertEquals(actual_Text36, expected_Text36);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_eighta_certified")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the next question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text37 = webDriver.findElement(By.xpath("//div[@id='eighta_one_time_used']/div/div/p")).getText();
@@ -267,9 +267,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .getText();
         String expected_Text38 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
         assertEquals(actual_Text38, expected_Text38);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("no_button_eighta_one_time_used")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the next question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text39 = webDriver.findElement(By.xpath("//div[@id='address_in_hubzone']/div/div/p")).getText();
@@ -286,9 +286,9 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String expected_Text41 = "Use the HUBZone Maps to find out if your principal office is located in a HUBZone.";
         assertEquals(actual_Text41, expected_Text41);
         webDriver.findElement(By.id("no_button_address_in_hubzone")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify searched results.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // 8(a)
         String actual_Text4 = webDriver.findElement(By.cssSelector("div.not_eligible")).getText();
         String expected_Text4 = "Based on the information you provided, you may not be eligible for the 8(a) BD Program:\nQualifying individuals must meet the economically disadvantaged financial criteria to participate in the program. However, many factors are taken into consideration during application review and it is possible that you may still qualify to participate. Contact your local SBA 8(a) Business Office for more information.\nQualifying individuals must meet socially disadvantaged criteria in order to participate in the program.";
