@@ -349,11 +349,15 @@ public class ScorpQuestionsPage {
         // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//div[3]/div/div/div/div[2]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("answers_99_value_new_button")).click();
+        Thread.sleep(2000);
         // Verify that the section to Create new record is been seen by user and
         // enter record2.
-        String actual_Text51 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-        String expected_Text51 = "Create new record";
-        assertEquals(actual_Text51, expected_Text51);
+        String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
+        String expected_Text511 = "Create new record";
+        assertEquals(actual_Text511, expected_Text511);
         logger.info("the page to Create and Add new Record is Present, PASS");
         webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Denzel");
         webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Washington");
@@ -370,10 +374,11 @@ public class ScorpQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//div[3]/button")).click();
+        Thread.sleep(3000);
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
-        Actions act1 = new Actions(webDriver);
-        act1.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
+        Actions act4 = new Actions(webDriver);
+        act4.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();

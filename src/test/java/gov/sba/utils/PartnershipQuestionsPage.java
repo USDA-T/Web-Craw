@@ -1,6 +1,7 @@
 package gov.sba.utils;
 
 import static org.junit.Assert.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -324,6 +325,10 @@ public class PartnershipQuestionsPage {
         // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//div[3]/div/div/div/div[2]")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("answers_99_value_new_button")).click();
+        Thread.sleep(2000);
         // Verify that the section to Create new record is been seen by user and
         // enter record2.
         String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
@@ -343,7 +348,9 @@ public class PartnershipQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//div[3]/button")).click();
+        Thread.sleep(3000);
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
         Actions act4 = new Actions(webDriver);

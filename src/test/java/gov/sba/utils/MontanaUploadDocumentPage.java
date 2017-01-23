@@ -9,7 +9,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import gov.sba.utils.helpers.FixtureUtils;
 
 public class MontanaUploadDocumentPage {
@@ -23,7 +22,8 @@ public class MontanaUploadDocumentPage {
     public void MontanaUploadDocument() throws Exception {
         logger.info("Uploading a new document");
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-        webDriver.findElement(By.id("doc-upload-button")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//button[@id='doc-upload-button']")).click();
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();
         
         // Note: might need to be adjust to MainTestUploadDoc.pdf?

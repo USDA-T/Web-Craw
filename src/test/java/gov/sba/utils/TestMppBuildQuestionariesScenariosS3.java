@@ -78,14 +78,6 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         Expected_Text = "A mentor is defined as “a for-profit business concern of any size.”";
         assertEquals(Actual_Text, Expected_Text);
         // Open this command when fix.
-        // Actual_Text = webDriver.findElement(By.xpath("")).getText();
-        // Expected_Text = "Affiliation exists when one business has the power
-        // to control another business. This could occur through ownership,
-        // management, or other relationships or interactions between two
-        // parties. If the SBA has made a determination of affiliation between
-        // you and your mentor, they would have counted your business’s
-        // receipts, employees, or other measures of size.";
-        // assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver
                 .findElement(By.xpath("//div[@id='answers_mentor_over_40_percent_protege']/fieldset/p[2]")).getText();
         Expected_Text = "To raise capital for the Protégé firm the Mentor may generally own an equity interest of up to 40% in the Protégé firm. Reference: 13 CFR 124.520(d)(2)";
