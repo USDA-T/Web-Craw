@@ -36,13 +36,13 @@ public class MontanaUploadDocumentPage {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("comment")).sendKeys("Testing Documents");
         webDriver.findElement(By.cssSelector("#attach")).click();
     }

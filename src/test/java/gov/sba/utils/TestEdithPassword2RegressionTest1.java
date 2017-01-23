@@ -49,7 +49,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
             webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
             // Locate the user Sign-in button and click on it.
             webDriver.findElement(By.id("business_signin")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Locate the My Profile button on the left navigation and click on
             // it.
             String actual_Text = webDriver.findElement(By.linkText("Profile")).getText();
@@ -113,9 +113,9 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         } else {
             logger.info("First attempt to log-in with current password was successful, PASS");
         }
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // mydriver.close();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the My Profile button on the left navigation and click on it.
         webDriver.findElement(By.linkText("Profile")).click();
         Thread.sleep(5000);
@@ -137,7 +137,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         // locate that new password search box and enter the new password you
         // wish to update to.
         webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify the strength of the new password and accept only better or
         // strong password.
         String actual_Text6 = webDriver.findElement(By.id("text_strength")).getText();
@@ -146,10 +146,10 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         // Locate the confirm new password search box and re-enter the new
         // password.
         webDriver.findElement(By.id("user_password_confirmation")).sendKeys(New_PassW2);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the Update button and click on it.
         webDriver.findElement(By.id("submit")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that User sees alert message 'Your account has been updated
         // successfully'.
         assertTrue(webDriver.getPageSource().contains("Your account has been updated successfully."));

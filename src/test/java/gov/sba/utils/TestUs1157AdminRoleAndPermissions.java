@@ -29,7 +29,7 @@ public class TestUs1157AdminRoleAndPermissions extends TestCase {
     public void testMainTest() throws Exception {
         // open firefox, chrome or IE and navigate to certify.sba login page.
         // Login to Vendor Admin Dashboard.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         try {
@@ -62,7 +62,7 @@ public class TestUs1157AdminRoleAndPermissions extends TestCase {
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // click the dashboard link.
         webDriver.findElement(By.linkText("Dashboard")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // verify that the Business Profile,Document Library and Certifications
         // tables are present.
         // Business Profile.

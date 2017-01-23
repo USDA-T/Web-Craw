@@ -23,7 +23,7 @@ public class EightATestPage {
 
         // Locate the accept button at the bottom of the 8(a) agreement and
         // click on it to continue.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "8(a) Document Upload";
@@ -39,19 +39,19 @@ public class EightATestPage {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         EightAdocumentUploadPage eightAdocumentUpload = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload.EightAdocumentUpload();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         EightAdocumentUploadPage eightAdocumentUpload0 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload0.EightAdocumentUpload();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         EightAdocumentUploadPage eightAdocumentUpload1 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload1.EightAdocumentUpload();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         EightAdocumentUploadPage eightAdocumentUpload2 = new EightAdocumentUploadPage(webDriver);
         eightAdocumentUpload2.EightAdocumentUpload();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
@@ -77,7 +77,7 @@ public class EightATestPage {
         WebElement EightADocComment = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr[2]/td[3]"));
         HighLight.highLightElement(webDriver, EightADocComment);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

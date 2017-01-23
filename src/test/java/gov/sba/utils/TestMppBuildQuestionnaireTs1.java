@@ -50,7 +50,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
         Expected_Text = "Please answer this question";
@@ -60,7 +60,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -86,7 +86,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

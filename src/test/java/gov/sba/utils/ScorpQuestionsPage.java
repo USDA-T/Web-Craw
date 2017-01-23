@@ -34,7 +34,7 @@ public class ScorpQuestionsPage {
         String expected_Text21 = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
         assertEquals(actual_Text21, expected_Text21);
         webDriver.findElement(By.id("answers_65_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Locate the Third Party Certification, question1 and select No and
@@ -47,7 +47,7 @@ public class ScorpQuestionsPage {
         String expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
         assertEquals(actual_Text, expected_Text);
         webDriver.findElement(By.id("answers_66_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Non-qualification question,Verify,select No and continue.
         String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -58,7 +58,7 @@ public class ScorpQuestionsPage {
         String expected_Text5 = "If yes, please upload the denial letter. Being denied eligibility by one of the SBA-approved certifiers does not necessarily prevent you from qualifying for a self-certification if circumstances have changed. Any business determined not to be qualified may request that SBA review its eligibility once it believes in good faith that it satisfies all of the requirements. Reference: 13 C.F.R. 127.305.";
         assertEquals(actual_Text5, expected_Text5);
         webDriver.findElement(By.id("answers_68_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Third Party questions have been answered");
         // Locate the Three Business Corporation and S-Corp(Stocks) question
@@ -79,7 +79,7 @@ public class ScorpQuestionsPage {
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_71_value_no")).click();
         webDriver.findElement(By.id("answers_71_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Business questions have been answered");
         // Locate the Corporation Ownership question 1,Verify, select No and
@@ -92,7 +92,7 @@ public class ScorpQuestionsPage {
         String expected_Text9 = "In determining unconditional ownership of the concern, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. 13 CFR 127.201(f).";
         assertEquals(actual_Text9, expected_Text9);
         webDriver.findElement(By.id("answers_73_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Ownership & Control question, Verify, select No and
         // continue.
@@ -107,7 +107,7 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text111, expected_Text111);
         webDriver.findElement(By.id("answers_75_value_no")).click();
         webDriver.findElement(By.xpath(".//*[@id='answers_75_comment']")).sendKeys("Testing");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
         // and continue.
@@ -132,7 +132,7 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text1311, expected_Text1311);
         webDriver.findElement(By.id("answers_80_value_no")).click();
         webDriver.findElement(By.id("answers_81_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Businesses & Trusts questions,Verify, select No for both
         // and continue.
@@ -153,7 +153,7 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text17, expected_Text17);
         webDriver.findElement(By.id("answers_82_value_no")).click();
         webDriver.findElement(By.id("answers_83_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Operations & Management questions, Verify, select No for
         // both and continue.
@@ -175,7 +175,7 @@ public class ScorpQuestionsPage {
         String expected_Text22 = "The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b).";
         assertEquals(actual_Text22, expected_Text22);
         webDriver.findElement(By.id("answers_85_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locte the Expertise & Employment questions, Verify, select No for
         // both and continue.
@@ -197,7 +197,7 @@ public class ScorpQuestionsPage {
         String expected_Text26 = "The woman or economically disadvantaged woman who holds the highest officer position of the concern must manage it on a fulltime basis and devote full-time to the business concern during the normal working hours of business concerns in the same or similar line of business.";
         assertEquals(actual_Text26, expected_Text26);
         webDriver.findElement(By.id("answers_87_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Operations questions have been answered");
         // Locate the Highest Officer & Control questions,Verify, select No for
@@ -220,7 +220,7 @@ public class ScorpQuestionsPage {
         String expected_Text30 = "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
         assertEquals(actual_Text30, expected_Text30);
         webDriver.findElement(By.id("answers_89_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the SBA Exam & Daily Operations questions,Verify, select No
         // for both and continue.
@@ -243,7 +243,7 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
         webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Net Worth questions,Verify, select No for both and
         // continue.
@@ -299,7 +299,7 @@ public class ScorpQuestionsPage {
         String expected_Text42 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text42, expected_Text42);
         webDriver.findElement(By.id("answers_95_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Fair Market Value questions,verify select No and continue.
         String actual_Text43 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -311,7 +311,7 @@ public class ScorpQuestionsPage {
         String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4).";
         assertEquals(actual_Text44, expected_Text44);
         webDriver.findElement(By.id("answers_96_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Assets questions,verify, select and No for both and
         // continue.
@@ -335,7 +335,7 @@ public class ScorpQuestionsPage {
         String expected_Text48 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text48, expected_Text48);
         webDriver.findElement(By.id("answers_98_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("EDWOSB application questions have been answered");
         // Validate that user successfully navigated to the Financial Data
@@ -368,7 +368,7 @@ public class ScorpQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//div[3]/button")).click();
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.

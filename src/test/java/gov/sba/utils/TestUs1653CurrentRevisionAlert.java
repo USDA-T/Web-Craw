@@ -44,7 +44,7 @@ public class TestUs1653CurrentRevisionAlert extends TestCase {
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new EDWOSB certification.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new 8(a) application.
@@ -80,7 +80,7 @@ public class TestUs1653CurrentRevisionAlert extends TestCase {
         // Take screenshot and store as a file format
         ScreenShotPage screenShot = new ScreenShotPage(webDriver);
         screenShot.ScreenShot();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
         // Locate and click on the return to vendor link.
         webDriver.findElement(By.linkText("Return to Vendor")).click();

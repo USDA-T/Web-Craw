@@ -56,7 +56,7 @@ public class TestApp51SamProfileSnapshot extends TestCase {
         Expected_Text = "Entity 10 Legal Business Name";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.linkText("Entity 10 Legal Business Name")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that analyst is navigated to the vendor overview page.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Entity 10 Legal Business Name";

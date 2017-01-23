@@ -32,7 +32,7 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
         webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that user navigates to the am i eligible page.
         String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
         String expected_Text = "Is there an SBA Contracting Program for me?";
@@ -71,7 +71,7 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
         Thread.sleep(3000);
         // verify and click on the yes button.
         webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the Third question and select NO and verify the More Detail
         // meaning of the question.
         String actual_Text6 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div/p")).getText();
@@ -88,9 +88,9 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
         String actual_Text9 = webDriver.findElement(By.xpath("//div[@id='for_profit']/div/div[2]/ul/li[3]")).getText();
         String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
         assertEquals(actual_Text9, expected_Text9);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_for_profit")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 4th question and select yes and verify the More Detail
         // meaning of the question.
         String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
@@ -100,9 +100,9 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
         String actual_Text11 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div[2]/p")).getText();
         String expected_Text11 = "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
         assertEquals(actual_Text11, expected_Text11);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_non_suspended")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the 6th question and select Yes and verify the More Detail
         // meaning of the question.
         String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();

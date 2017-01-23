@@ -62,7 +62,7 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
         // Upload a pdf.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // webDriver.findElement(By.cssSelector("#attach")).click();
         Thread.sleep(6000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();

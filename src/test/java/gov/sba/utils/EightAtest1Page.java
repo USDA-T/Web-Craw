@@ -36,7 +36,7 @@ public class EightAtest1Page {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
@@ -62,7 +62,7 @@ public class EightAtest1Page {
         WebElement EightADocComment = webDriver
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr/td[3]"));
         HighLight.highLightElement(webDriver, EightADocComment);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();

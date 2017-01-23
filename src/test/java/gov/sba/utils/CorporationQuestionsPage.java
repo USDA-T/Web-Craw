@@ -337,7 +337,7 @@ public class CorporationQuestionsPage {
         String expected_Text48 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text48, expected_Text48);
         webDriver.findElement(By.id("answers_98_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("EDWOSB application questions have been answered");
@@ -371,14 +371,14 @@ public class CorporationQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("button.btn")).click();
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
         Actions act1 = new Actions(webDriver);
         act1.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
 }

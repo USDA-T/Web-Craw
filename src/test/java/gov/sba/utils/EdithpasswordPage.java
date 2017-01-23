@@ -14,7 +14,7 @@ public class EdithpasswordPage {
     public void Edithpassword() throws Exception {
 
         driver.findElement(By.cssSelector("button.button-full")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         String actual_Text4 = driver.findElement(By.cssSelector("h2")).getText();
         String expected_Text4 = "Sign in to certify.SBA.gov";
         assertEquals(actual_Text4, expected_Text4);

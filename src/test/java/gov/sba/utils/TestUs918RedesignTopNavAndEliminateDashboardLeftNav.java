@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import junit.framework.TestCase;
 
 public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCase {
@@ -18,7 +17,7 @@ public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCas
     int get_The_Row_From_Login_Data;
 
     @Before
-    public void setup()throws Exception {
+    public void setUp()throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
@@ -32,19 +31,15 @@ public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCas
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate and verify the My Certification link.
         actual_Text = webDriver.findElement(By.cssSelector("li.nav-link.current-top-nav > a")).getText();
         expected_Text = "Certifications";
         assertEquals(expected_Text, expected_Text);
-        webDriver.findElement(By.linkText("Certifications")).click();
+        webDriver.findElement(By.linkText("Programs")).click();
         // Validate the navigated page.
         actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        expected_Text = "My certifications";
-        assertEquals(actual_Text, expected_Text);
-        // Verify the table.
-        actual_Text = webDriver.findElement(By.cssSelector("th")).getText();
-        expected_Text = "Certification";
+        expected_Text = "My SBA Contracting Programs";
         assertEquals(actual_Text, expected_Text);
         // Locate and verify the My Document link.
         actual_Text = webDriver.findElement(By.linkText("Documents")).getText();

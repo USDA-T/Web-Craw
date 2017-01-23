@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import junit.framework.TestCase;
 
 public class TestUs801AmIEligibleTs8 extends TestCase {

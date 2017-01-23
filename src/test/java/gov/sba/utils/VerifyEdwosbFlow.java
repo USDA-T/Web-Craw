@@ -67,7 +67,7 @@ public class VerifyEdwosbFlow extends TestCase {
         assertEquals(all_Cells.get(3).getText(), "Draft");
         assertEquals(all_Cells.get(5).getText(), "Delete");
         all_Cells.get(4).findElement(By.xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.switchTo().alert().accept();
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 

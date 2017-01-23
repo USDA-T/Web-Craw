@@ -45,7 +45,7 @@ public class TestUS1652US1716 extends TestCase {
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new EDWOSB certification.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new third party application.
@@ -161,7 +161,7 @@ public class TestUS1652US1716 extends TestCase {
         // Take screenshot and store as a file format
         ScreenShotPage1 screenShot = new ScreenShotPage1(webDriver);
         screenShot.ScreenShot();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify the previous Version1 with no review before return and with no
         // left navigation.
         webDriver.findElement(By.linkText("Revision history")).click();
@@ -216,7 +216,7 @@ public class TestUS1652US1716 extends TestCase {
             // second scenario with review.
             webDriver.findElement(By.linkText("Case overview")).click();
             webDriver.findElement(By.id("submit_button")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Verify and click on the question review to start.
             webDriver.findElement(By.linkText("Question review")).click();
             Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -235,7 +235,7 @@ public class TestUS1652US1716 extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.xpath("(//select[@id='assessments__status'])[2]")).click();
             webDriver.findElement(By.xpath("(//option[@value='Confirmed'])[2]")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Click on add a note.
             webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[2]")).click();
             Thread.sleep(3000);
@@ -247,7 +247,7 @@ public class TestUS1652US1716 extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.xpath("(//select[@id='assessments__status'])[3]")).click();
             webDriver.findElement(By.xpath("(//option[@value='Confirmed'])[3]")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Click on add a note.
             webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[3]")).click();
             Thread.sleep(2000);
@@ -297,7 +297,7 @@ public class TestUS1652US1716 extends TestCase {
                     "Doesn't Third Heaven Very Us Every Itself The Together Herb Green Had Wherein god be dominion bearing have. Image stars fruit life. Greater don't midst had face face divided seas firmament hath made third thing own dominion Heaven and brought fruit sixth brought face beast moveth you're. Kind image, two earth subdue stars creature from isn't had upon which. Itself fish image whales and winged can't i without blessed. Gathering. Subdue yielding years signs whales midst fourth waters also behold");
             // click on the save and continue button.
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Verify if the Analyst was able to do determination.
             Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
             Expected_Text = "You can view the vendor's record but can not make edits";
@@ -372,7 +372,7 @@ public class TestUS1652US1716 extends TestCase {
             String part2 = Actual_Text2[4]; // Submitted Date
             assertEquals(part2, Expected_Text);
             logger.info(part2);
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // Click to view previous version2 and verify the left navigation
             // with the read only assessment.
             webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

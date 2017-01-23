@@ -42,7 +42,7 @@ public class TestUs265IAMProfileInfo extends TestCase {
         String expected_Text = "Login With User ID";
         assertEquals(actual_Text, expected_Text);
         webDriver.findElement(By.id("button-userID")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate and verify the Welcome link on the top right corner of the
         // page and select my profile.
         String actual_Text1 = webDriver.findElement(By.linkText("Welcome Montana")).getText();

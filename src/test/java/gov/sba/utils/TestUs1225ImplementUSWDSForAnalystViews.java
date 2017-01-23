@@ -89,7 +89,7 @@ public class TestUs1225ImplementUSWDSForAnalystViews extends TestCase {
         // Step 11 - Verify that the Economically Disadvantaged Women-Owned
         // Small Business Program Certification is displayed
         logger.info("\nStep 11 - Verify that the Women-Owned Small Business Program Certification is displayed");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.getPageSource().contains("Women-Owned Small Business Program Certification");
         logger.info(webDriver.findElement(By.cssSelector("h3")).getText());
         // Step 12 - Enter the Valid DUNS number to search on
@@ -210,7 +210,7 @@ public class TestUs1225ImplementUSWDSForAnalystViews extends TestCase {
         // Click the Navigation menu button for width
         logger.info("Click the Navigation menu button for width ");
         webDriver.findElement(By.linkText("MENU")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Step 35 - Click the 'Dashboard' Navigation link
         logger.info("\nStep 35 - Click the 'Dashboard' Navigation link");
         webDriver.findElement(By.linkText("Dashboard")).click();

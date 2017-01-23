@@ -32,7 +32,7 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         // front end.
         // Open Firefox,Chrome or IE and navigate the certify.SBA.gov login
         // page.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the email search box and enter a valid email for the User who
         // have been assign the analyst role.
         AnalystloginPage analystlogin = new AnalystloginPage(webDriver);
@@ -48,10 +48,10 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         // Clear the search duns number in the search box and very that that the
         // duns number is thesame on the search result.
         webDriver.findElement(By.id("query")).clear();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         assertTrue(webDriver.getPageSource().contains("275276652"));
         logger.info("The saerch results maches the business for the searched Duns number, Pass.");
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Locate the search for vendor search box and enter a valid business
         // name.
         webDriver.findElement(By.id("query")).sendKeys(B_N);
@@ -60,7 +60,7 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         // Clear the search duns number in the search box and very that that the
         // duns number is thesame on the search result.
         webDriver.findElement(By.id("query")).clear();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         String actual_Text = webDriver.findElement(By.id("view_business_profile")).getText();
         String expected_Text = "Entity 37 Legal Business Name";
         assertValueEquals(actual_Text, expected_Text);
@@ -88,7 +88,7 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         String expected_Text7 = "QA User";
         assertEquals(actual_Text7, expected_Text7);
         webDriver.findElement(By.id("ava-pop")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         String actual_Text8 = webDriver.findElement(By.id("msg_container")).getText();
         String expected_Text8 = "Last Name: User\nFirst Name: QA\nEmail: akanamontana@gmail.com\nRole: Vendor Administrator\nPhone No:";
         assertEquals(actual_Text8, expected_Text8);
@@ -111,7 +111,7 @@ public class TestUs1158SbaOwnerRole extends TestCase {
         String expected_Text5 = "Case review";
         assertEquals(actual_Text5, expected_Text5);
         webDriver.findElement(By.linkText("Case review")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that the case review link is active.
         String actual_Text6 = webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1")).getText();
         String expected_Text6 = "Case Overview";

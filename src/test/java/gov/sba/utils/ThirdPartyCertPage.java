@@ -31,7 +31,7 @@ public class ThirdPartyCertPage {
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Change Eligibility.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();

@@ -191,7 +191,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         montanaUploadDocument0.MontanaUploadDocument();
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_no")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         Actions act3 = new Actions(webDriver);
         act3.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
         // verify Active Agreements Section Disabled.
@@ -701,7 +701,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
             Expected_Text = "You must confirm the DUNS number";
             assertEquals(Actual_Text, Expected_Text);
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             // webDriver.findElement(By.linkText("Confirm DUNS")).click();
             logger.info(webDriver.switchTo().alert().getText());
             Actual_Text = webDriver.switchTo().alert().getText();

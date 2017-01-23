@@ -29,10 +29,10 @@ public class TestUs1125Us1127Us1176Co extends TestCase {
         String expected_Text = null;
         logger.info("CO request access and view vendor's record");
         // Login to Vendor CO Dashboard.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         CologinPage cologin = new CologinPage(webDriver);
         cologin.Cologin();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify and click on the Request access link.
         actual_Text = webDriver.findElement(By.linkText("Request access")).getText();
         expected_Text = "Request access";
@@ -60,7 +60,7 @@ public class TestUs1125Us1127Us1176Co extends TestCase {
         webDriver.findElement(By.id("duns_number")).sendKeys("137151292");
         webDriver.findElement(By.id("find_business")).click();
         // Verify the search results.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         actual_Text = webDriver.findElement(By.cssSelector("#vendor_duns_number")).getText();
         expected_Text = "137151292";
         assertEquals(actual_Text, expected_Text);

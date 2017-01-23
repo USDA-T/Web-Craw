@@ -29,7 +29,7 @@ public class TestUs1168IamConfigureSbaOpsSupportRole extends TestCase {
         // Login to SBA Ops support dashboard.
         Thread.sleep(5000);
         webDriver.findElement(By.cssSelector("button.usa-button.hp-login-btn")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         String actual_Text4 = webDriver.findElement(By.cssSelector("span.blue-bar-text")).getText();
         String expected_Text4 = "Sign in to certify.SBA.gov";
         assertEquals(actual_Text4, expected_Text4);

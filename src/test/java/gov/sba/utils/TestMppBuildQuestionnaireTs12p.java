@@ -357,9 +357,9 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         webDriver.switchTo().alert().accept();
         // Add Agreement (s).
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("span.add-color")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.id("date-133-error")).getText();
         Expected_Text = "This field is required.";
@@ -788,7 +788,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
             Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
             Expected_Text = "You must confirm the DUNS number";
             assertEquals(Actual_Text, Expected_Text);
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             webDriver.findElement(By.linkText("Confirm DUNS")).click();
             logger.info(webDriver.switchTo().alert().getText());
             Actual_Text = webDriver.switchTo().alert().getText();

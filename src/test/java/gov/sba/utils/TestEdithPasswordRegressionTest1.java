@@ -52,7 +52,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         } else {
             logger.info("First attempt to log-in with current password was successful, PASS");
         }
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         try {
             assertTrue(webDriver.getPageSource().contains("Signed in successfully"));
             // webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
@@ -83,7 +83,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         webDriver.findElement(By.id("user_current_password")).sendKeys(Current_PassW);
         Thread.sleep(3000);
         webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         logger.info(webDriver.findElement(By.id("text_strength")).getText());
         webDriver.findElement(By.id("submit")).click();
         Thread.sleep(3000);
@@ -102,7 +102,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         Thread.sleep(3000);
         webDriver.findElement(By.id("user_password")).clear();
         webDriver.findElement(By.id("user_password")).sendKeys(Weak_PassW);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         logger.info(webDriver.findElement(By.id("text_strength")).getText());
         Thread.sleep(3000);
         // Verify that the weak password alert is activated when user enter a
@@ -113,7 +113,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         Thread.sleep(3000);
         webDriver.findElement(By.id("user_password")).clear();
         webDriver.findElement(By.id("user_password")).sendKeys(Better_PW);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that the Better password alert is activated when user enter a
         // weak password.
         String actual_Text3 = webDriver.findElement(By.id("password_strength")).getText();

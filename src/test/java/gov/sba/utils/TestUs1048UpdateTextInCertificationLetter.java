@@ -46,7 +46,7 @@ public class TestUs1048UpdateTextInCertificationLetter extends TestCase {
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new EDWOSB certification.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new 8(a) application.
@@ -54,7 +54,7 @@ public class TestUs1048UpdateTextInCertificationLetter extends TestCase {
         eDWOSBEightATest1.EDWOSBEightATest1();
         // Verify active certification and click on it.
         webDriver.navigate().refresh();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         Actual_Text = webDriver.findElement(By.linkText("EDWOSB Self-Certification")).getText();
         Expected_Text = "EDWOSB Self-Certification";
         assertEquals(Actual_Text, Expected_Text);

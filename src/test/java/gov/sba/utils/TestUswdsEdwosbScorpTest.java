@@ -36,7 +36,7 @@ public class TestUswdsEdwosbScorpTest extends TestCase {
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new one.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);

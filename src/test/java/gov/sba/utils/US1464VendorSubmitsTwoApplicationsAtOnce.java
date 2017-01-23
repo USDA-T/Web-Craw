@@ -42,7 +42,7 @@ public class US1464VendorSubmitsTwoApplicationsAtOnce extends TestCase {
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new EDWOSB certification.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new 8(a) application.
@@ -55,7 +55,7 @@ public class US1464VendorSubmitsTwoApplicationsAtOnce extends TestCase {
         // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartNewMppProgramPage1 addOrStartNewMppProgram = new AddOrStartNewMppProgramPage1(webDriver);
         addOrStartNewMppProgram.AddOrStartNewMppProgram();
         // Start new 8(a) application.
@@ -65,7 +65,7 @@ public class US1464VendorSubmitsTwoApplicationsAtOnce extends TestCase {
         webDriver.findElement(By.linkText("Dashboard")).click();
         AddOrStartNewWosbCertPage addOrStartNewWosbbCert = new AddOrStartNewWosbCertPage(webDriver);
         addOrStartNewWosbbCert.AddOrStartNewWosbbCert();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         WOSBEightATestPage wOSBEightATest = new WOSBEightATestPage(webDriver);
         wOSBEightATest.WOSBEightATest();
 

@@ -338,7 +338,7 @@ import junit.framework.TestCase;
 	        montanaUploadDocument11.MontanaUploadDocument();
 	        // Select yes for the Second questions.
 	        webDriver.findElement(By.id("answers_132_value_yes")).click();
-	        Thread.sleep(4000);
+	        Thread.sleep(2000);
 	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	        // Active Agreements Section, Verifying Question.
 	        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
@@ -353,9 +353,9 @@ import junit.framework.TestCase;
 	        assertEquals(Actual_Text, Expected_Text);
 	        webDriver.switchTo().alert().accept();
 	        // Add Agreement (s).
-	        Thread.sleep(4000);
+	        Thread.sleep(2000);
 	        webDriver.findElement(By.cssSelector("span.add-color")).click();
-	        Thread.sleep(4000);
+	        Thread.sleep(2000);
 	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	        Actual_Text = webDriver.findElement(By.id("date-133-error")).getText();
 	        Expected_Text = "This field is required.";

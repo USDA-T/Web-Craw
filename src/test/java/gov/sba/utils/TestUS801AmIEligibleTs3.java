@@ -30,7 +30,7 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
         webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Verify that user navigates to the am i eligible page.
         String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
         String expected_Text = "Is there an SBA Contracting Program for me?";

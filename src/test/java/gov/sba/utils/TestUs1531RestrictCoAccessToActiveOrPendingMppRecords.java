@@ -43,7 +43,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         deleteDraftCert.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
         // delete and start a new EDWOSB certification.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new 8(a) application.
@@ -56,7 +56,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         AddOrStartNewMppProgramPage1 addOrStartNewMppProgram = new AddOrStartNewMppProgramPage1(webDriver);
         addOrStartNewMppProgram.AddOrStartNewMppProgram();
         // Start new 8(a) application.
@@ -124,7 +124,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             webDriver.findElement(By.id("contracting_officer_certification")).click();
             Thread.sleep(3000);
             webDriver.findElement(By.id("submit_request_access")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Review vendor certifications";
             assertEquals(Actual_Text, Expected_Text);
@@ -208,7 +208,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             webDriver.findElement(By.id("contracting_officer_certification")).click();
             Thread.sleep(3000);
             webDriver.findElement(By.id("submit_request_access")).click();
-            Thread.sleep(4000);
+            Thread.sleep(2000);
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Review vendor certifications";
             assertEquals(Actual_Text, Expected_Text);

@@ -127,7 +127,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
                 .getText();
         String expected_Text16 = "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available at http://www.census.gov/eos/www/naics/.";
         assertEquals(actual_Text16, expected_Text16);
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         webDriver.findElement(By.id("yes_button_small_naics")).click();
         Thread.sleep(2000);
         // Locate the 7th question and select Yes and verify the More Detail
@@ -387,7 +387,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
         webDriver.findElement(By.id("yes_button_employees_in_hubzone")).click();
         Thread.sleep(3000);
         // Verify searched results.
-        Thread.sleep(4000);
+        Thread.sleep(2000);
         // Women-Owned Small Business (WOSB).
         String actual_Text01 = webDriver.findElement(By.cssSelector("#edwosb > div.eligible > p > b")).getText();
         String expected_Text01 = "Based on the information you provided, you may be eligible for the EDWOSB program.";
