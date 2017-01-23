@@ -97,7 +97,8 @@ public class TestUs918RedesignTopNavAndEliminateDashboardLeftNav extends TestCas
         java.util.Set<String> S1 = webDriver.getWindowHandles();
         Iterator<String> i1 = S1.iterator();
         webDriver.findElement(By.linkText("Login")).click();
-        actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
+        Thread.sleep(1000);
+        actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/div/div/div/div/p")).getText();
         expected_Text = "You are already signed in.";
         assertEquals(actual_Text, expected_Text);
         while (i1.hasNext()) {
