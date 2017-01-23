@@ -106,6 +106,8 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("DTE_Field_num_of_shares")).sendKeys("60");
         webDriver.findElement(By.id("DTE_Field_cost")).sendKeys("59000");
         webDriver.findElement(By.id("DTE_Field_market_value")).sendKeys("98000");
+        webDriver.findElement(By.id("DTE_Field_date")).clear();
+        webDriver.findElement(By.id("DTE_Field_date")).sendKeys("04/12/2016");
         webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000");
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("button.btn")).click();
