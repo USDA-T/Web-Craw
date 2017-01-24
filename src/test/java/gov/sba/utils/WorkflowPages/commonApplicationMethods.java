@@ -56,55 +56,60 @@ public class commonApplicationMethods {
         webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(duns_Number);
         webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
         webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
-        WebElement current_Row_Check_01;
-        try{
-            current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
-        }catch (Exception ex) {
-                return;
-        }
-
-
-        List<WebElement> current_Row_Check = current_Row_Check_01.findElements(By.xpath( "tr/td/a[contains(text(),'Return to Vendor')]"));
-        if (current_Row_Check.size() >0 ) {
-            for(int i=0;i<current_Row_Check.size();i++){
-                current_Row_Check.get(0).click();
-                Thread.sleep(3000);
-                webDriver.switchTo().alert().accept();
-            }
-        }else{
-            List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
-                    "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
-                    "td[(position()=4) and (contains(text(),'ctive'))]" +
-                    "]/td[position()=1]/a"));
-            if (current_Row_Check_02.size() >0 ) {
-                for(int i=0;i<current_Row_Check_02.size();i++){
-                    current_Row_Check_02.get(0).click();
-                    Thread.sleep(3000);Thread.sleep(3000);
-                    webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
-                    Thread.sleep(1500);
-                    webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-                    Thread.sleep(1500);
-                    webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
-                    Thread.sleep(1500);
-                    webDriver.navigate().back();
-                    webDriver.navigate().back();
-                    webDriver.navigate().back();
-                    webDriver.navigate().refresh();
-                    try{
-                        current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
-                    }catch (Exception ex) {
-                        return;
+        String paS = webDriver.getPageSource().toLowerCase();
+        if (paS.contains("return to vendor") || paS.contains("active")){
+            WebElement current_Row_Check_01;
+            try{
+                current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
+                List<WebElement> current_Row_Check = current_Row_Check_01.findElements(By.xpath( "tr/td/a[contains(text(),'Return to Vendor')]"));
+                if (current_Row_Check.size() >0 ) {
+                    for(int i=0;i<current_Row_Check.size();i++){
+                        current_Row_Check.get(0).click();
+                        Thread.sleep(3000);
+                        webDriver.switchTo().alert().accept();
                     }
-
-                    current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
+                }else{
+                    List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
                             "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
                             "td[(position()=4) and (contains(text(),'ctive'))]" +
                             "]/td[position()=1]/a"));
+                    if (current_Row_Check_02.size() >0 ) {
+                        for(int i=0;i<current_Row_Check_02.size();i++){
+                            current_Row_Check_02.get(0).click();
+                            Thread.sleep(3000);Thread.sleep(3000);
+                            webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
+                            Thread.sleep(1500);
+                            webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                            Thread.sleep(1500);
+                            webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
+                            Thread.sleep(1500);
+                            webDriver.navigate().back();
+                            webDriver.navigate().back();
+                            webDriver.navigate().back();
+                            webDriver.navigate().refresh();
+                            try{
+                                current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
+                            }catch (Exception ex) {
+                                return;
+                            }
 
-                    i = 0;
+                            current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
+                                    "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
+                                    "td[(position()=4) and (contains(text(),'ctive'))]" +
+                                    "]/td[position()=1]/a"));
+
+                            i = 0;
+                        }
+                    }
                 }
+
+            }catch (Exception ex) {
+                return;
             }
+
         }
+
+
 
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
     }
