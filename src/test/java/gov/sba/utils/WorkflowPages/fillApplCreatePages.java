@@ -152,7 +152,7 @@ public class fillApplCreatePages {
                     webDriver.findElement(By.xpath("//a[contains(@id,'search-duns')]")).click();
                     duns_No =   webDriver.findElements(By.xpath("//a[contains(@id,'search-duns')]"));
                     if (duns_No.size()>0){
-                        logger.info("ClickedJIIId.");
+                        logger.info("Clicked now.");
                         duns_No.get(0).click();
                     }
                     Thread.sleep(2000);
