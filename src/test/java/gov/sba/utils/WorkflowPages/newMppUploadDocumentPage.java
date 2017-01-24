@@ -34,7 +34,8 @@ public class newMppUploadDocumentPage {
         Robot robot = new Robot();
         logger.info("Uploading a new document - Clicked on Upload");
         robot.keyPress(KeyEvent.VK_F4);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+
         robot.keyPress(KeyEvent.VK_ESCAPE);
         Thread.sleep(1000);
         logger.info("Uploading a new document - Clicked on F4");
@@ -54,19 +55,20 @@ public class newMppUploadDocumentPage {
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(1000);
+
+        Thread.sleep(2000);
  
         logger.info("Uploading a new document - Clicked on Tab3");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
  
        logger.info("Uploading a new document - Clicked on Tab4");
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
  
        logger.info("Uploading a new document - Clicked on Paste");
         robot.keyPress(KeyEvent.VK_ENTER);
