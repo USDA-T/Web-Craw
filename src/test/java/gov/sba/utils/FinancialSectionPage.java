@@ -1,13 +1,10 @@
 package gov.sba.utils;
 
 import static org.junit.Assert.assertTrue;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class FinancialSectionPage {
@@ -114,21 +111,8 @@ public class FinancialSectionPage {
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("button.btn")).click();
         Thread.sleep(2000);
-        //WebElement element = webDriver.findElement(By.className("usa-button"));
-        WebElement element = webDriver.findElement(By.xpath("//form/input[4]"));
-        boolean clicked = false;
-        do{
-            try {
-                element.click();
-            } catch (WebDriverException e) {
-                continue;
-            } finally {
-                clicked = true;
-            }
-        } while (!clicked);
-       // webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
+        webDriver.findElement(By.cssSelector("input[name='commit']")).click();
         // Select Yes for Real Estate - Primary Residence Section questions.
-        logger.info("Heyyyy! Stocks and Bones section answered.");
         webDriver.findElement(By.xpath(".//*[@id='answers[47][value]']/label[1]")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_48_1_1_value")).sendKeys("8597 weems rd testing ln manassas va 30998");
@@ -145,6 +129,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("50");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
+        logger.info("Heyyyy! Stocks and Bones section answered.");
         // Select Yes for Real Estate - Other section.
         webDriver.findElement(By.xpath(".//*[@id='answers[49][value]']/label[1]")).click();
         webDriver.findElement(By.id("add_real_estate")).click();
