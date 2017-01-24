@@ -7,6 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import gov.sba.utils.WorkflowPages.commonApplicationMethods;
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -24,32 +27,34 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
     private static WebDriver webDriver;
     private static final Logger logger_US1081 = LogManager.getLogger(TestUS1081AllCasesNewSupervisor.class.getName());
     int get_The_Row_From_Login_Data;
+    String duns_Number;
 
     @Before
     public void setUp() throws Exception {
-
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 21;
-
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
     }
 
     @Test
     public void testMainTest() throws Exception {
+
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
+        commonApplicationMethods.delete_all_Drafts(webDriver);
         Thread.sleep(3000);
 
-        // Need to submit the application in EDWosb, Wosb
-        // Log in As Supervisor - validate as per the US1081 Acceptance criteria
-        // on Supervisor All cases page
         try {
 
-            WebElement Cases_Link = webDriver.findElement(By.cssSelector("a[href*='/sba_analyst/cases']"));
-            Cases_Link.click();
-            Thread.sleep(3000);
+            commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            Thread.sleep(1000);
             logger_US1081.info("Cases link is on Main Navigator is Clicked");
 
             String Allcases_PageTitle = webDriver

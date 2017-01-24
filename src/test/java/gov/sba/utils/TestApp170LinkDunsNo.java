@@ -2,6 +2,7 @@ package gov.sba.utils;
 
 import java.util.List;
 
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -19,23 +20,32 @@ public class TestApp170LinkDunsNo extends TestCase {
     WebDriver webDriver;
     private static final Logger TestApp170LinkDunsNo = LogManager.getLogger(TestApp170LinkDunsNo.class.getName());
     int get_The_Row_From_Login_Data;
+    String duns_Number;
 
     @Before
     public void setUp() throws Exception {
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 11;
-
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
     }
 
     @Test
     public void testMainTest() throws Exception {
         try {
+
+            // Login to dashboard- Check teh EDWOSB application in Active status
+            commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+            commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
             // Login to dashboard.
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
+            commonApplicationMethods.delete_all_Drafts(webDriver);
             Thread.sleep(2000);
+
             // Click on Case Link on main navigator-- SBA Analyst
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             String xpath_Value;

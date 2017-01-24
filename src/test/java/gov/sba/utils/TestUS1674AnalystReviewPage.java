@@ -2,6 +2,8 @@ package gov.sba.utils;
 
 import java.util.List;
 
+import gov.sba.utils.WorkflowPages.commonApplicationMethods;
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -17,22 +19,30 @@ public class TestUS1674AnalystReviewPage extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1674 = LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
-    int get_The_Row_From_Login_Data;
+    int get_The_Row_From_Login_Data; String duns_Number;
 
     @Before
     public void setUp() throws Exception {
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 22;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
+
+        // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        // Thread.sleep(3000);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
+        Thread.sleep(3000);
         try {
 
 
@@ -147,32 +157,33 @@ public class TestUS1674AnalystReviewPage extends TestCase {
                     .click();
             // String aa =
             // webDriver.findElement(By.xpath("divdiv[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/br[containd(text(),'Owner:')]")).getText();
-            webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
-            login_Data = new LoginPageWithReference(webDriver, 31);
-
-            login_Data.Login_With_Reference();
-            webDriver.findElement(By.cssSelector("a[href*='/sba_analyst/cases']")).click();
-            current_Row_WOSB = webDriver.findElements(By.xpath(
-                    "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Under Review')]   ]"));
-            current_Row_WOSB.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
-            webDriver
-                    .findElement(By
-                            .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-                    .click();
-            List<WebElement> dropdown = new Select(
-                    webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
-            logger_US1674.info(dropdown.get(0).getText());
-            dropdown.get(1).click();
-
-            String actual_text = webDriver.findElement(By.id("assessments_brief_5")).getText();
-            logger_US1674.info(actual_text);
-
-            webDriver.findElement(By.id("note_link")).click();
-            webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']"))
-                    .sendKeys("Adding notes QA by another Analyst");
-            webDriver.findElement(By.id("save_notes")).click();
-
-            webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
+//            webDriver.findElement(By.xpath("//a[contains(text(),'Logout')]")).click();
+//
+//            login_Data = new LoginPageWithReference(webDriver, 31);
+//
+//            login_Data.Login_With_Reference();
+//            webDriver.findElement(By.cssSelector("a[href*='/sba_analyst/cases']")).click();
+//            current_Row_WOSB = webDriver.findElements(By.xpath(
+//                    "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Under Review')]   ]"));
+//            current_Row_WOSB.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+//            webDriver
+//                    .findElement(By
+//                            .xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
+//                    .click();
+//            List<WebElement> dropdown = new Select(
+//                    webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
+//            logger_US1674.info(dropdown.get(0).getText());
+//            dropdown.get(1).click();
+//
+//            String actual_text = webDriver.findElement(By.id("assessments_brief_5")).getText();
+//            logger_US1674.info(actual_text);
+//
+//            webDriver.findElement(By.id("note_link")).click();
+//            webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']"))
+//                    .sendKeys("Adding notes QA by another Analyst");
+//            webDriver.findElement(By.id("save_notes")).click();
+//
+//            webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
 
         } catch (Exception e) {
             logger_US1674.info(e.toString());

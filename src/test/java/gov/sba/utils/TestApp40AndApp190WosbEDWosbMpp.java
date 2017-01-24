@@ -3,6 +3,7 @@ package gov.sba.utils;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
+import gov.sba.utils.helpers.LoginHelpers;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +22,7 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
+    String duns_Number;
 
     public void run_This_app(String app_Type_Passed, String duns_No_Passed) throws Exception {
 
@@ -144,43 +146,40 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
 
     @Before
     public void setUp() throws Exception {
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 10;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+
     }
 
     @Test
     public void testMainTest() throws Exception {
 
         // Login to dashboard- Check teh EDWOSB application in Active status
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
-        String get_Current_Duns_No = webDriver
-                .findElement(By
-                        .xpath("//article[@id='main-content']/section[@class='usa-width-one-whole']/" +
-                                "article[@class='usa-width-three-fourths']/" +
-                                "div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
-                .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
-        TestApp40AndApp190.info(get_Current_Duns_No);
+        TestApp40AndApp190.info(duns_Number);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
 
-        run_This_app("WOSB", get_Current_Duns_No);
+        run_This_app("WOSB", duns_Number);
 
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         login_Data = new LoginPageWithReference(webDriver, 10);
         login_Data.Login_With_Reference();
 
-        // Currently defective - need to Update code once QA is deployed.
-        //run_This_app("EDWOSB", get_Current_Duns_No);
-
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         login_Data = new LoginPageWithReference(webDriver, 10);
         login_Data.Login_With_Reference();
 
-        run_This_app("MPP", get_Current_Duns_No);
-        //commonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active");
-        //commonApplicationMethods.returnAppToVendorMethd(webDriver, 11,"159165917","WOSB", "Active",10);
+        run_This_app("MPP", duns_Number);
+
     }
 
 }

@@ -128,8 +128,10 @@ public class commonApplicationMethods {
                 Process p = Runtime.getRuntime().exec(command);
                 p.wait();
                 p.destroy();
+                Thread.sleep(2000);
             } catch (Exception ex) {
             }
+
         }
     }
 
@@ -401,7 +403,7 @@ public class commonApplicationMethods {
     }
 
     public static void createApplication(WebDriver webDriver, String type_Of_App) throws Exception {
-        webDriver.findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]")).click();
+        navigationMenuClick(webDriver, "rograms");
         switch (type_Of_App.toUpperCase()) {
             case "EDWOSB":
                 webDriver.findElement(By.id("certificate_type_edwosb")).click();

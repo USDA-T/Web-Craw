@@ -29,7 +29,6 @@ public class TestApp77CancelReviewLink extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-
         commonApplicationMethods.clear_Env_Chrome();
         Thread.sleep(3000);
         webDriver = TestHelpers.getDefaultWebDriver();
@@ -46,7 +45,7 @@ public class TestApp77CancelReviewLink extends TestCase {
         try {
 
             commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
-            // Login to dashboard.
+            commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             Thread.sleep(2000);

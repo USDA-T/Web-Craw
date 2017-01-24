@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -27,42 +28,44 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
     private static WebDriver webDriver;
     private static final Logger logger_US1699 = LogManager.getLogger(Test1699ExpirydateNullForMPP.class.getName());
     int get_The_Row_From_Login_Data;
+    String duns_Number;
 
     @Before
     public void setUp() throws Exception {
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 10;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
     }
 
     @Test
     public void testMainTest() throws Exception {
-        // Login to dashboard.
-        @SuppressWarnings("unused")
         Boolean pending_Application_Found = false;
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
+        Thread.sleep(2000);
+
         try {
             // Check Dashboard Pending status
             String get_Current_Duns_No = webDriver
                     .findElement(By
                             .xpath("//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
                     .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
-            // logger_US1463.info(get_Current_Duns_No.findElement(By.xpath("..")).getAttribute("innerHTML"));
             logger_US1699.info(get_Current_Duns_No);
 
-            commonApplicationMethods.deleteApplication(webDriver, "MPP", "Draft");
-            if (!commonApplicationMethods.checkApplicationExists(webDriver, "MPP", "Pending")) {
-                commonApplicationMethods.createApplication(webDriver, "Mpp");
+            commonApplicationMethods.createApplication(webDriver, "Mpp");
+            String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+            logger_US1699.info(file_path_abs);
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, get_Current_Duns_No) ;
+            fillApplCreatePages.finalSignatureSubmit(webDriver);
 
-                String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
-                logger_US1699.info(file_path_abs);
-                fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, get_Current_Duns_No) ;
-                fillApplCreatePages.finalSignatureSubmit(webDriver) ;
-            }
 
             WebElement current_Row_Draft1_A = webDriver.findElement(
                     By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP')]"));

@@ -9,6 +9,7 @@ import java.util.Properties;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
+import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -32,21 +33,29 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
     
     @Before
     public void setUp() throws Exception {
-    	commonApplicationMethods.deleteAllApplicationTypes(webDriver, duns_Number);
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 10;
+        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
+
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+        boolean pending_Application_Found = false;
+        // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        @SuppressWarnings("unused")
-		Boolean pending_Application_Found = false;
-        Thread.sleep(1000);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
+        Thread.sleep(3000);
+
+
         try {
             commonApplicationMethods.createApplication(webDriver, "MPP");
             webDriver.findElement(By.id("answers_117_value_yes")).click();
@@ -135,7 +144,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'"+duns_Number+"')]")).click();
 
-            @SuppressWarnings("unused")
+
 			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 

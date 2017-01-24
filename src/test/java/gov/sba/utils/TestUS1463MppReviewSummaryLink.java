@@ -31,23 +31,28 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
     
     @Before
     public void setUp() throws Exception {
-    	commonApplicationMethods.deleteAllApplicationTypes(webDriver, duns_Number);
+        commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 44;
         duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
         logger_US1463.info(duns_Number);
-        commonApplicationMethods.clear_Env_Chrome();
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
-        Boolean pending_Application_Found = false;
+        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
+        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+
+        boolean pending_Application_Found = false;
+        // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Thread.sleep(1000);
+        commonApplicationMethods.delete_all_Drafts(webDriver);
+        Thread.sleep(3000);
+
         try {
         	commonApplicationMethods.createApplication(webDriver, "MPP");
             webDriver.findElement(By.id("answers_117_value_yes")).click();
