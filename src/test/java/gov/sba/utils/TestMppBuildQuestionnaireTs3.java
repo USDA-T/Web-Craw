@@ -167,8 +167,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument1 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument1.MontanaUploadDocument1();
         Thread.sleep(3000);
         Actions act1 = new Actions(webDriver);
         act1.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -205,8 +205,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument2.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument2 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument2.MontanaUploadDocument1();
         Thread.sleep(3000);
         Actions act31 = new Actions(webDriver);
         act31.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -615,8 +615,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             Expected_Text = "Attachment is required";
             assertEquals(Actual_Text, Expected_Text);
             // Upload a document.
-            MontanaUploadDocumentPage montanaUploadDocument11111 = new MontanaUploadDocumentPage(webDriver);
-            montanaUploadDocument11111.MontanaUploadDocument();
+            MontanaUploadDocument1Page montanaUploadDocument11111 = new MontanaUploadDocument1Page(webDriver);
+            montanaUploadDocument11111.MontanaUploadDocument1();
             Thread.sleep(5000);
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Subsection 3.2: Business info, Verifying question.

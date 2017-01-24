@@ -171,8 +171,8 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument.MontanaUploadDocument1();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("Success");

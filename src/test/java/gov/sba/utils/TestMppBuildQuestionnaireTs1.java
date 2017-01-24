@@ -58,8 +58,17 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_yes")).click();
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument.MontanaUploadDocument1();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+       //Enter a valid DUNS# and verify business.
+        webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
+        webDriver.findElement(By.id("search-duns-167")).click();
+        webDriver.findElement(By.id("search-duns-167")).click();
+        Thread.sleep(2000);
+        logger.info(webDriver.switchTo().alert().getText());
+        webDriver.switchTo().alert().accept();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Review page.
@@ -69,14 +78,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("#main-content > p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
-        // 8(a) question.
-        Actual_Text = webDriver.findElement(By.cssSelector("div.usa-width-three-fourths > p")).getText();
-        Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Protégé relationship to the All Small Mentor-Protégé Program?";
-        assertEquals(Actual_Text, Expected_Text);
-        // Verify doc uploaded.
-        Actual_Text = webDriver.findElement(By.cssSelector("td")).getText();
-        Expected_Text = "MainTestUploadDoc.pdf";
-        assertEquals(Actual_Text, Expected_Text);
+        // 8(a) question verify.
         // Click on change your answer and verify.
         webDriver.findElement(By.linkText("Change answer")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
@@ -84,28 +86,16 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+        Expected_Text = "Business Info";
+        assertEquals(Actual_Text, Expected_Text);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        logger.info(webDriver.switchTo().alert().getText());
-        webDriver.switchTo().alert().accept();
-
-        // Step - Verify the Signature page for MPP
-        logger.info("Step  - Verify the Signature page for MPP");
-        // Verify you are on the Signature page
-        logger.info("  Verify you are on the Signature page");
-        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-        Expected_Text = "Signature";
-        assertEquals(Actual_Text, Expected_Text);
-        // Verify title
-        logger.info("  Verify title");
-        Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
-        assertEquals(Actual_Text, Expected_Text);
         // Verify Business name
         logger.info("  Verify Business name");
-        Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//h3")).getText();
         Expected_Text = "Entity 399 Legal Business Name";
         assertEquals(Actual_Text, Expected_Text);
         // Verify DUNS label
@@ -118,11 +108,11 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
         Expected_Text = "137151292";
         assertEquals(Actual_Text, Expected_Text);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        logger.info(webDriver.switchTo().alert().getText());
+        webDriver.switchTo().alert().accept();
         // Verify first paragraph
         logger.info("  Verify first paragraph");
-        Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
-        Expected_Text = "All required documents verifying eligibility for the All Small Mentor-Protégé Program (All Small MPP) have been uploaded to certify.SBA.gov. I understand if any changes are made after I submit this application, I must notify the All Small Mentor-Protégé Program Office and submit additional documentation if needed.";
-        assertEquals(Actual_Text, Expected_Text);
         // Verify Second paragraph
         logger.info("  Verify second paragraph");
         Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
@@ -151,9 +141,11 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Step 9 - Click the Continue button
         logger.info("Step 9 - Click the Continue button");
         webDriver.findElement(By.id("accept-button")).click();
-        Thread.sleep(3000);
         // Step 10 - Accept the error message
-        logger.info("Step 10 - Accept the error message");
+        logger.info(webDriver.switchTo().alert().getText());
+        Actual_Text = webDriver.switchTo().alert().getText();
+        Expected_Text = "In order to submit your application, you must accept all of the conditions of authorization.";
+        assertEquals(Actual_Text, Expected_Text);
         webDriver.switchTo().alert().accept();
         // Step 11 - Accept the statements and click Continue
         logger.info("Step 11 - Click to accept the statements");
@@ -162,9 +154,10 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.id("legal_2")).click();
         webDriver.findElement(By.id("legal_3")).click();
         webDriver.findElement(By.id("legal_4")).click();
-        webDriver.findElement(By.id("legal_5")).click();
+       // webDriver.findElement(By.id("legal_5")).click();
         logger.info("Success");
-        return;
+        
+        //return;
         // webDriver.findElement(By.id("accept-button")).click();
     }
 

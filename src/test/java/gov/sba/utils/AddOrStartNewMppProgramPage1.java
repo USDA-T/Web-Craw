@@ -99,6 +99,7 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
 
                 }
             }
+            Thread.sleep(2000);
             // Verify the SAM.gov link.
             webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             String main_window2 = webDriver.getWindowHandle();
@@ -186,6 +187,7 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
                     webDriver.close();
                 }
             }
+            Thread.sleep(2000);
             webDriver.switchTo().window(main_window);
             logger.info("Back to manin_window " + webDriver.getTitle());
             // Verify the SAM.gov link.

@@ -23,7 +23,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 26;
+        get_The_Row_From_Login_Data = 40;
     }
 
     @Test
@@ -45,7 +45,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         addOrStartNewMppProgram.AddOrStartNewMppProgram();
         // MPP Questions Section, 8(a) Participants. Answer=NO.
         // Verifying Question.
-        Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_8a_certified']/fieldset/h4")).getText();
         Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Protégé relationship to the All Small Mentor-Protégé Program?";
         assertEquals(Actual_Text, Expected_Text);
         // Verifying detail meaning for question.
@@ -243,8 +243,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument.MontanaUploadDocument1();
         Thread.sleep(2000);
         Actions act13 = new Actions(webDriver);
         act13.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -265,8 +265,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument1.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument1 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument1.MontanaUploadDocument1();
         Thread.sleep(2000);
         Actions act12 = new Actions(webDriver);
         act12.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -361,8 +361,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         }
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument11.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument11 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument11.MontanaUploadDocument1();
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_yes")).click();
         Thread.sleep(2000);
@@ -413,20 +413,19 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).getText();
         Expected_Text = "What is the effective date of the agreement?";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).sendKeys("12/23/2008");
+        webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
         // Name of other business.
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4")).getText();
         Expected_Text = "What is the name of the other business involved in the agreement?";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4"))
-                .sendKeys("Cyber Tech Solution");
+        webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
         // NAICS question validation.
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_naics_1 > fieldset > h4")).getText();
         Expected_Text = "Please select the NAICS code for which the mentor-protégé relationship was established.";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(3000);
         webDriver.findElement(By.id("answers_133_1_4_value")).click();
-        webDriver.findElement(By.xpath("//option[@value='237110']")).click();
+        webDriver.findElement(By.xpath("//option[@value='541611']")).click();
         // Detail Meaning for NAICS.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
                 .getText();
@@ -456,8 +455,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument111 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument111.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument111 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument111.MontanaUploadDocument1();
         Thread.sleep(3000);
         Actions act8 = new Actions(webDriver);
         act8.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -477,8 +476,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument1111.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument1111 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument1111.MontanaUploadDocument1();
         Thread.sleep(3000);
         Actions act6 = new Actions(webDriver);
         act6.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -557,7 +556,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
-
+      Thread.sleep(3000);
         // Link 2.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window31111 = webDriver.getWindowHandle();
@@ -578,6 +577,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(3000);
         // Link 3.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window4 = webDriver.getWindowHandle();
@@ -598,6 +598,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(3000);
         // link 4.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window41 = webDriver.getWindowHandle();
@@ -618,6 +619,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(3000);
         // Link 5.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window5 = webDriver.getWindowHandle();
@@ -638,6 +640,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(3000);
         // Link 6.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window51 = webDriver.getWindowHandle();
@@ -658,6 +661,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(3000);
         // **** Select Yes for all question in this section.
         webDriver.findElement(By.id("answers_136_value_no")).click();
         webDriver.findElement(By.id("answers_137_value_no")).click();
@@ -670,7 +674,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Actions act11 = new Actions(webDriver);
         act11.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
         // Section 3/ Training, Verifying question.
-        Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mentor_mpp_training_cert']/fieldset/h4")).getText();
         Expected_Text = "Please upload the Mentor’s certificate of completion for the Mentor-Protégé Program training module.";
         assertEquals(Actual_Text, Expected_Text);
         // Details.
@@ -678,25 +682,6 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 .getText();
         Expected_Text = "Both the Protégé and the Mentor must complete the Mentor-Protégé Program training module. The Protégé must upload the Mentor’s certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
-        // Link.
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window61 = webDriver.getWindowHandle();
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
-        assertEquals(Actual_Text, Expected_Text);
-        java.util.Set<String> S61 = webDriver.getWindowHandles();
-        Iterator<String> i61 = S61.iterator();
-        while (i61.hasNext()) {
-            String Second_window11 = i61.next();
-            if (!main_window61.equalsIgnoreCase(Second_window11)) {
-                webDriver.switchTo().window(Second_window11);
-                logger.info("After switching title is =" + webDriver.getTitle());
-                webDriver.close();
-                webDriver.switchTo().window(main_window61);
-                logger.info("Back to manin_window = certify.sba.gov");
-            } else {
-                logger.info("Second Window is not thesame as first window");
-            }
             // Attempt to commit and verify alert message.
             Thread.sleep(2000);
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -704,8 +689,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             Expected_Text = "Attachment is required";
             assertEquals(Actual_Text, Expected_Text);
             // Upload a document.
-            MontanaUploadDocumentPage montanaUploadDocument11111 = new MontanaUploadDocumentPage(webDriver);
-            montanaUploadDocument11111.MontanaUploadDocument();
+            MontanaUploadDocument1Page montanaUploadDocument11111 = new MontanaUploadDocument1Page(webDriver);
+            montanaUploadDocument11111.MontanaUploadDocument1();
             Thread.sleep(5000);
             Actions act2 = new Actions(webDriver);
             act2.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -778,7 +763,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             // Verify Business name
             logger.info("  Verify Business name");
             Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-            Expected_Text = "Entity 402 Legal Business Name";
+            Expected_Text = "Entity 434 Legal Business Name";
             assertEquals(Actual_Text, Expected_Text);
             // Verify DUNS label
             logger.info("  Verify DUNS label");
@@ -788,7 +773,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             // Verify DUNS number
             logger.info("  Verify DUNS number");
             Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
-            Expected_Text = "146482889";
+            Expected_Text = "112286644";
             assertEquals(Actual_Text, Expected_Text);
             // Verify first paragraph
             logger.info("  Verify first paragraph");
@@ -813,7 +798,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             // Verify fifth paragraph
             logger.info("  Verify fifth paragraph");
             Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 402 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 434 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
             assertEquals(Actual_Text, Expected_Text);
             // Verify sixth paragraph
             logger.info("  Verify sixth paragraph");
@@ -842,8 +827,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             return;
 
         }
-    }
-
+    
     @After
     public void tearDown() throws Exception {
         webDriver.quit();

@@ -34,8 +34,8 @@ public class EightAtest1Page {
         Expected_Text = "It may take a few moments for your document to appear, the system performs virus scans on all documents. If you accidentally uploaded an incorrect document, select the Remove action link in the Edit column.";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
-        montanaUploadDocument0.MontanaUploadDocument();
+        MontanaUploadDocument1Page montanaUploadDocument0 = new MontanaUploadDocument1Page(webDriver);
+        montanaUploadDocument0.MontanaUploadDocument1();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
