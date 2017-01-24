@@ -56,7 +56,15 @@ public class commonApplicationMethods {
         webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(duns_Number);
         webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
         webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
-        List<WebElement> current_Row_Check = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr/td/a[contains(text(),'Return to Vendor')]"));
+        WebElement current_Row_Check_01;
+        try{
+            current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
+        }catch (Exception ex) {
+                return;
+        }
+
+
+        List<WebElement> current_Row_Check = current_Row_Check_01.findElements(By.xpath( "tr/td/a[contains(text(),'Return to Vendor')]"));
         if (current_Row_Check.size() >0 ) {
             for(int i=0;i<current_Row_Check.size();i++){
                 current_Row_Check.get(0).click();
@@ -64,8 +72,8 @@ public class commonApplicationMethods {
                 webDriver.switchTo().alert().accept();
             }
         }else{
-            List<WebElement> current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
-                    "td[position()=1]/a[contains(text(),'WOSB')] and " +
+            List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
+                    "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
                     "td[(position()=4) and (contains(text(),'ctive'))]" +
                     "]/td[position()=1]/a"));
             if (current_Row_Check_02.size() >0 ) {
@@ -82,8 +90,14 @@ public class commonApplicationMethods {
                     webDriver.navigate().back();
                     webDriver.navigate().back();
                     webDriver.navigate().refresh();
-                    current_Row_Check_02 = webDriver.findElements(By.xpath( "//table[@id='certifications']/tbody/tr[" +
-                            "td[position()=1]/a[contains(text(),'WOSB')] and " +
+                    try{
+                        current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
+                    }catch (Exception ex) {
+                        return;
+                    }
+
+                    current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
+                            "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
                             "td[(position()=4) and (contains(text(),'ctive'))]" +
                             "]/td[position()=1]/a"));
 
@@ -120,7 +134,7 @@ public class commonApplicationMethods {
 
     }
   
-    public static void clear_Env_Chrome() {
+    public static void clear_Env_Chrome() throws InterruptedException {
         File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
         if (file_01.exists()) {
             try {
@@ -130,6 +144,7 @@ public class commonApplicationMethods {
                 p.destroy();
                 Thread.sleep(2000);
             } catch (Exception ex) {
+                Thread.sleep(2000);
             }
 
         }
