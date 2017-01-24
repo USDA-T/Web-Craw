@@ -23,14 +23,11 @@ public class MontanaUploadDocumentPage {
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//button[@id='doc-upload-button']")).click();
-        webDriver.findElement(By.linkText("Choose a .pdf file")).click();
-        
+        webDriver.findElement(By.linkText("Choose a .pdf file")).click();       
         // Note: might need to be adjust to MainTestUploadDoc.pdf?
         String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";    
-        
         // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
-        StringSelection ss = new StringSelection(pdfFixture);
-        
+        StringSelection ss = new StringSelection(pdfFixture);       
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
