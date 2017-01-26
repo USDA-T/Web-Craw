@@ -107,7 +107,11 @@ public class VerifyEdwosbFlow extends TestCase {
         assertTrue(webDriver.getPageSource()
                 .contains("Economically Disadvantaged Women-Owned Small Business Program Self-Certification Summary"));
         assertTrue(webDriver.getPageSource().contains(
-                "By submitting this certification I, QA User, am an officer or owner of Entity 454 Legal Business Name authorized to represent it and electronically sign this certification on its behalf."));
+                "By submitting this certification I"));
+        assertTrue(webDriver.getPageSource().contains(
+                "QA User"));
+        assertTrue(webDriver.getPageSource().contains(
+                "am an officer or owner of Entity 454 Legal Business Name authorized to represent it and electronically sign this certification on its behalf."));
 
     }
 }

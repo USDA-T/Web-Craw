@@ -9,7 +9,6 @@ import java.util.Properties;
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 import gov.sba.utils.WorkflowPages.fillApplCreatePages;
 import gov.sba.utils.helpers.FixtureUtils;
-import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,7 +16,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-//	import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -28,33 +26,26 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1463 = LogManager.getLogger(TestUS1463MppReviewSummaryLink2.class.getName());
-    int get_The_Row_From_Login_Data;
-    String duns_Number = "159165917";
-    
+    String duns_Number, email, password;
+
     @Before
     public void setUp() throws Exception {
         commonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
-
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
-
-        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
-        boolean pending_Application_Found = false;
-        // Login to dashboard.
-        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-        login_Data.Login_With_Reference();
-        commonApplicationMethods.delete_all_Drafts(webDriver);
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
         Thread.sleep(3000);
-
 
         try {
             commonApplicationMethods.createApplication(webDriver, "MPP");
@@ -62,7 +53,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             logger_US1463.info(file_path_abs);
-            fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             logger_US1463.info("Doc has been uploaded.");
 
@@ -136,10 +127,9 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             Thread.sleep(3000);
 
             LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 29);
-
-            logger_US1463.info(login_Data1);
             login_Data1.Login_With_Reference();
-            logger_US1463.info(login_Data1);
+            Thread.sleep(3000);
+
             webDriver.findElement(By.xpath("//a[@href='/sba_analyst/cases']")).click();
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'"+duns_Number+"')]")).click();
@@ -148,7 +138,6 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 
-            pending_Application_Found = true;
             
                 // else Delete it if in Draft all of the Draft applications
                 Boolean isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);

@@ -17,6 +17,13 @@ public class FixtureUtils {
                 + "DataFiles"  + File.separator;
     }
 
+    public static String fixturesDir_Duns() {
+        return System.getProperty("user.dir") + File.separator
+                + "src"  + File.separator
+                + "main" + File.separator
+                + "resources"  + File.separator;
+    }
+
     public static void main(String[] args) {
         System.out.println("fixturesDir" + FixtureUtils.fixturesDir());
     }

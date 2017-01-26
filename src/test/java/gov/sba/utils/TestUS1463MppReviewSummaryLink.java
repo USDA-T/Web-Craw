@@ -26,8 +26,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1463 = LogManager.getLogger(TestUS1463MppReviewSummaryLink.class.getName());
-    int get_The_Row_From_Login_Data;
-    String duns_Number = "215435315";
+    String duns_Number, email, password;
     
     @Before
     public void setUp() throws Exception {
@@ -35,31 +34,25 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 44;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
-        logger_US1463.info(duns_Number);
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
         // Login to dashboard.
-        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
-
-        boolean pending_Application_Found = false;
-        // Login to dashboard.
-        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-        login_Data.Login_With_Reference();
-        commonApplicationMethods.delete_all_Drafts(webDriver);
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
         Thread.sleep(3000);
 
         try {
+
         	commonApplicationMethods.createApplication(webDriver, "MPP");
             webDriver.findElement(By.id("answers_117_value_yes")).click();
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
-            logger_US1463.info(file_path_abs);
-            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, "215435315");
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             logger_US1463.info("Doc has been uploaded.");
 
@@ -141,11 +134,11 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'"+duns_Number+"')]")).click();
 
-            @SuppressWarnings("unused")
+
 			WebElement duns_Row_Pending_Check = webDriver
                     .findElement(By.xpath("//td[contains(text(),'ending')]"));
 
-            pending_Application_Found = true;
+
             // else Delete it if in Draft all of the Draft applications
             Boolean isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
             logger_US1463.info(isPresent);
@@ -155,7 +148,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
                 isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
                 logger_US1463.info(isPresent);
             }
-            Assert.assertEquals(pending_Application_Found, true);
+
         } catch (Exception e) {
             logger_US1463.info(e.toString());
             throw new Exception("Error: ", e);

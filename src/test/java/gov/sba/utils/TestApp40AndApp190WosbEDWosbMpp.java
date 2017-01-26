@@ -7,6 +7,7 @@ import gov.sba.utils.helpers.LoginHelpers;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,39 +22,29 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
     private static final Logger TestApp40AndApp190 = LogManager.getLogger(TestApp40AndApp190WosbEDWosbMpp.class.getName());
     // Set The variables/Define
     private static WebDriver webDriver;
-    int get_The_Row_From_Login_Data;
-    String duns_Number;
+    String duns_Number, email, password;
 
     public void run_This_app(String app_Type_Passed, String duns_No_Passed) throws Exception {
 
         //Delete if Draft
         TestApp40AndApp190.info(app_Type_Passed);
-        commonApplicationMethods.deleteApplication(webDriver, app_Type_Passed, "Draft");
 
         //Check Pending for MPP
         if (app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-
-            if (!commonApplicationMethods.checkApplicationExists(webDriver, app_Type_Passed, "Pending")) {
-
                 commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
                 commonApplicationMethods.createApplication(webDriver, app_Type_Passed);
-
                 String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
                 TestApp40AndApp190.info(file_path_abs);
                 fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, "148832876") ;
                 fillApplCreatePages.finalSignatureSubmit(webDriver) ;
 
 
-            }
-
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 29);
             login_Data.Login_With_Reference();
-        } else {
+        }
+        else {
             // For WOSB and EDWOSB Active status - Create new app if not existing
-            if (!commonApplicationMethods.checkApplicationExists(webDriver, app_Type_Passed, "Active")) {
-
                 commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
                 commonApplicationMethods.createApplication(webDriver, app_Type_Passed);
 
@@ -62,8 +53,6 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
                 TestApp40AndApp190.info(file_path_abs);
                 fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
                 fillApplCreatePages.finalSignatureSubmit(webDriver);
-
-            }
 
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
@@ -150,36 +139,73 @@ public class TestApp40AndApp190WosbEDWosbMpp extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
 
     }
 
     @Test
     public void testMainTest() throws Exception {
 
-        // Login to dashboard- Check teh EDWOSB application in Active status
-        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
 
-        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-        login_Data.Login_With_Reference();
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
         Thread.sleep(3000);
         TestApp40AndApp190.info(duns_Number);
-        commonApplicationMethods.delete_all_Drafts(webDriver);
-
         run_This_app("WOSB", duns_Number);
 
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-        login_Data = new LoginPageWithReference(webDriver, 10);
-        login_Data.Login_With_Reference();
+
+        login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
+        Thread.sleep(3000);
+        TestApp40AndApp190.info(duns_Number);
+        run_This_app("EDWOSB", duns_Number);
 
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-        login_Data = new LoginPageWithReference(webDriver, 10);
-        login_Data.Login_With_Reference();
 
+        login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
+        Thread.sleep(3000);
+        TestApp40AndApp190.info(duns_Number);
         run_This_app("MPP", duns_Number);
 
     }
 
+    @After
+    public void tearDown() throws Exception {
+        webDriver.quit();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,24 +1,26 @@
 package gov.sba.utils.WorkflowPages;
 
 import gov.sba.utils.LoginPageWithReference;
+import gov.sba.utils.helpers.FixtureUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import gov.sba.utils.helpers.DatabaseQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class commonApplicationMethods {
-    private static final Logger commonApplicationMethodsLogs = LogManager
-            .getLogger(gov.sba.utils.WorkflowPages.commonApplicationMethods.class.getName());
+    private static final Logger commonApplicationMethodsLogs = LogManager.getLogger(gov.sba.utils.WorkflowPages.commonApplicationMethods.class.getName());
     
-    public static Boolean checkApplicationExists(WebDriver webDriver, String type_Of_App, String status_Of_App)
-            throws Exception {
+    public static Boolean checkApplicationExists(WebDriver webDriver, String type_Of_App, String status_Of_App) throws Exception {
         // It should be in Vendor Dashboard
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
             case "edwosbactive":
@@ -35,7 +37,6 @@ public class commonApplicationMethods {
                         + "(td[position()=4 and contains(text(),'ctive')]) and "
                         + "(td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) ]"));
                 return listOfActiveWOSB.size() > 0;
-
             case "mpppending":
                 List<WebElement> listOfActiveMpp = webDriver.findElements(By.xpath(
                         "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ending')]) and (td/a[position()=1 and contains(text(),'MPP')]) ]"));
@@ -46,9 +47,10 @@ public class commonApplicationMethods {
         }
     }
 
-
-
     public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
+        Logger commonApplicationMethodsLogs = LogManager
+                .getLogger(gov.sba.utils.WorkflowPages.commonApplicationMethods.class.getName());
+
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, login_Id);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
@@ -57,61 +59,68 @@ public class commonApplicationMethods {
         webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
         webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
         String paS = webDriver.getPageSource().toLowerCase();
-        if (paS.contains("return to vendor") || paS.contains("active")){
-            WebElement current_Row_Check_01;
-            try{
-                current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
-                List<WebElement> current_Row_Check = current_Row_Check_01.findElements(By.xpath( "tr/td/a[contains(text(),'Return to Vendor')]"));
-                if (current_Row_Check.size() >0 ) {
-                    for(int i=0;i<current_Row_Check.size();i++){
-                        current_Row_Check.get(0).click();
-                        Thread.sleep(3000);
-                        webDriver.switchTo().alert().accept();
-                    }
-                }else{
-                    List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
-                            "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
-                            "td[(position()=4) and (contains(text(),'ctive'))]" +
-                            "]/td[position()=1]/a"));
-                    if (current_Row_Check_02.size() >0 ) {
-                        for(int i=0;i<current_Row_Check_02.size();i++){
-                            current_Row_Check_02.get(0).click();
-                            Thread.sleep(3000);Thread.sleep(3000);
-                            webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
-                            Thread.sleep(1500);
-                            webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-                            Thread.sleep(1500);
-                            webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
-                            Thread.sleep(1500);
-                            webDriver.navigate().back();
-                            webDriver.navigate().back();
-                            webDriver.navigate().back();
-                            webDriver.navigate().refresh();
-                            try{
-                                current_Row_Check_01 = webDriver.findElement(By.xpath( "//table[@id='certifications']/tbody"));
-                            }catch (Exception ex) {
-                                return;
-                            }
+        WebElement current_Row_Check_01;
 
-                            current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath( "tr[" +
-                                    "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
-                                    "td[(position()=4) and (contains(text(),'ctive'))]" +
-                                    "]/td[position()=1]/a"));
-
-                            i = 0;
-                        }
-                    }
+        try {
+            current_Row_Check_01 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody"));
+            List<WebElement> current_Row_Check = current_Row_Check_01.findElements(By.xpath("tr/td/a[contains(text(),'Return to Vendor')]"));
+            if (current_Row_Check.size() > 0) {
+                for (int i = 0; i < current_Row_Check.size(); i++) {
+                    current_Row_Check.get(0).click();
+                    Thread.sleep(3000);
+                    webDriver.switchTo().alert().accept();
                 }
-
-            }catch (Exception ex) {
-                return;
             }
 
+        } catch (Exception ex) {
+            commonApplicationMethodsLogs.info(ex);
         }
 
+        try {
+            if ((paS.contains("return to vendor") || paS.contains("active")) && (paS.contains("wosb") || paS.contains("mpp"))) {
+                current_Row_Check_01 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody"));
+                List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath("tr[" +
+                        "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
+                        "td[(position()=4) and" +
+                        "               ( " +
+                        "                   (contains(text(),'ctive')) or " +
+                        "                   (contains(text(),'ending')) " +
+                        "               )" +
+                        "   ]" +
+                        "]/td[position()=1]/a"));
+                if (current_Row_Check_02.size() > 0) {
+                    for (int i = 0; i < current_Row_Check_02.size(); i++) {
+                        current_Row_Check_02.get(0).click();
+                        Thread.sleep(3000);
+                        Thread.sleep(3000);
+                        webDriver.findElement(By.xpath("//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]")).click();
+                        Thread.sleep(1500);
+                        webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                        Thread.sleep(1500);
+                        webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
+                        Thread.sleep(1500);
+                        webDriver.navigate().back();
+                        webDriver.navigate().back();
+                        webDriver.navigate().back();
+                        webDriver.navigate().refresh();
+                        try {
+                            current_Row_Check_01 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody"));
+                        } catch (Exception ex) {
+                            return;
+                        }
 
+                        current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath("tr[" +
+                                "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and " +
+                                "td[(position()=4) and (contains(text(),'ctive'))]" +
+                                "]/td[position()=1]/a"));
 
-        commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+                        i = 0;
+                    }
+                }
+                }
+            } catch(Exception ex1){ commonApplicationMethodsLogs.info(ex1); }
+
+            commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
     }
 
     public static void delete_all_Drafts(WebDriver webDriver) throws Exception {
@@ -156,8 +165,7 @@ public class commonApplicationMethods {
     }
 
   
-    public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App)
-            throws Exception {
+    public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App) throws Exception {
 
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
             case "edwosbdraft":
@@ -195,8 +203,7 @@ public class commonApplicationMethods {
         }
     }
     
-    public static void clickOnApplicationAllCasesPage(WebDriver webDriver, String type_Of_App)
-            throws Exception {
+    public static void clickOnApplicationAllCasesPage(WebDriver webDriver, String type_Of_App) throws Exception {
         // It should be in Vendor Dashboard
         switch (type_Of_App.toLowerCase()) {
             case "wosb":
@@ -223,8 +230,7 @@ public class commonApplicationMethods {
         }
     }
     
-    public static String returnOrganization_Id(String duns_Number)
-            throws Exception {
+    public static String returnOrganization_Id(String duns_Number) throws Exception {
         String organization_Id;
         try{
             organization_Id =  DatabaseQuery.getDBData( "select id from sbaone.organizations where duns_number = '" + duns_Number + "'", 1, 1 )[0][0];
@@ -236,8 +242,45 @@ public class commonApplicationMethods {
         return organization_Id;
     };
 
-    public static void deleteApplication_SetCert_Set_App_Tables(WebDriver webDriver, Integer certificate_ID, String duns_Number)
-            throws Exception {
+    public static String[] return_Good_Duns_no() throws Exception {
+        String[] duns_Number = new String[] {""};
+        try{
+
+            String file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List.csv";
+            FileInputStream fstream = new FileInputStream(file_path_abs);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String strLine;
+
+            while ((strLine = br.readLine()) != null)   {
+                if (! strLine.contains("Email,password,duns_number")){
+                    String[] details = strLine.split(",");
+                    String sql_Q_01 = "select count(*) from sbaone.certificates where organization_id in (select id from sbaone.organizations where duns_number = '" + details[2] + "')";
+                    DatabaseQuery dbcall = new DatabaseQuery();
+                    String[][] returned_Count_01 = dbcall.getDBData(sql_Q_01, 1, 1);
+
+                    String sql_Q_02 = "select count(*) from sbaone.sba_applications where organization_id in (select id from sbaone.organizations where duns_number = '" + details[2] + "')";
+                    DatabaseQuery dbcall_02 = new DatabaseQuery();
+                    String[][] returned_Count_02 = dbcall_02.getDBData(sql_Q_02, 1, 1);
+//                    commonApplicationMethodsLogs.info(returned_Count[0][0].toString()); commonApplicationMethodsLogs.info(details[0]); commonApplicationMethodsLogs.info(details[1]); commonApplicationMethodsLogs.info(details[2]);
+
+
+                    int counter = Integer.parseInt(returned_Count_01[0][0].toString()) + Integer.parseInt(returned_Count_02[0][0].toString());
+                    if (counter <= 0){
+                        return details;
+                    }
+                }
+            }
+            br.close();
+
+        }
+        catch(Exception e) {
+            commonApplicationMethodsLogs.info(e.toString() + ": The Duns number retreival has failed");
+            throw e;
+        }
+        return duns_Number;
+    };
+
+    public static void deleteApplication_SetCert_Set_App_Tables(WebDriver webDriver, Integer certificate_ID, String duns_Number) throws Exception {
                 String organization_Id =  returnOrganization_Id(duns_Number);
 
                 DatabaseQuery.
@@ -254,8 +297,7 @@ public class commonApplicationMethods {
                   );
     };
 
-    public static void deleteAllApplicationTypes(WebDriver webDriver, String duns_Number)
-            throws Exception {
+    public static void deleteAllApplicationTypes(WebDriver webDriver, String duns_Number) throws Exception {
         // It should be in Vendor Dashboard
         deleteApplication_SetCert_Set_App_Tables(webDriver,1 , duns_Number);
         deleteApplication_SetCert_Set_App_Tables(webDriver,2 , duns_Number);
@@ -354,8 +396,7 @@ public class commonApplicationMethods {
 
     }
 
-    public static void returnAppToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number,
-                                              String type_Of_App, String status_Of_App, int which_Log_BackAgain) throws Exception {
+    public static void returnAppToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number, String type_Of_App, String status_Of_App, int which_Log_BackAgain) throws Exception {
         // Login provided should be Analyst
         commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, which_Loginto_ReturnApp);
@@ -423,7 +464,7 @@ public class commonApplicationMethods {
     }
 
     public static void createApplication(WebDriver webDriver, String type_Of_App) throws Exception {
-        navigationMenuClick(webDriver, "rograms");
+        navigationMenuClick(webDriver, "Programs");
         switch (type_Of_App.toUpperCase()) {
             case "EDWOSB":
                 webDriver.findElement(By.id("certificate_type_edwosb")).click();

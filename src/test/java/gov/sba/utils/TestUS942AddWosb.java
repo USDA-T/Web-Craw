@@ -16,8 +16,7 @@ import gov.sba.utils.WorkflowPages.commonApplicationMethods;
 public class TestUS942AddWosb extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;
-    int get_The_Row_From_Login_Data;
-    String duns_Number;
+    String duns_Number, email, password;
 
     @Before
     public void setUp() throws Exception {
@@ -25,21 +24,17 @@ public class TestUS942AddWosb extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 10;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
-        // Login to dashboard- Check teh EDWOSB application in Active status
-        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
 
-
-        // Login to dashboard.
-        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-        login_Data.Login_With_Reference();
-        commonApplicationMethods.delete_all_Drafts(webDriver);
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
         Thread.sleep(3000);
 
         VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();

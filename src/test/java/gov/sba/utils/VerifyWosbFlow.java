@@ -25,102 +25,6 @@ public class VerifyWosbFlow {
 
     public void VerifyWOSBFlowLogic() throws Exception {
         // logger.info(current_Row.GetParent());
-        Boolean FlagForAddEDWOSBNotPresent = false;
-
-        try {
-            List<WebElement> current_Row_Draft = webDriver.findElements(By.xpath(
-                    "//table[@id='certifications']/tbody/tr[ " +
-                            "(td[position()=4 and contains(text(),'raft')]) " +
-                            " and " +
-                            "(td[position()=1]/a[contains(text(),'WOSB') and contains(text(),'elf') and contains(text(),'ertification')])" +
-                            "]"
-            ));
-            if (current_Row_Draft.size() > 0) {
-                current_Row_Draft.get(0).findElement(By.linkText("Delete")).click();
-                FlagForAddEDWOSBNotPresent = true;
-                webDriver.switchTo().alert().accept();
-            }
-            FlagForAddEDWOSBNotPresent = true;
-        } catch (Exception e) {
-            logger.info("There are(is) no Radio button for WOSB");
-            FlagForAddEDWOSBNotPresent = true;
-        }
-        assertTrue(FlagForAddEDWOSBNotPresent);
-
-        try {
-            List<WebElement> current_Row_Active = webDriver.findElements(By.xpath(
-                    "//table[@id='certifications']/tbody/tr[ " +
-                            "(td[position()=4 and contains(text(),'ctive')]) " +
-                            " and " +
-                            "(td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDW'))])" +
-                            "]"
-            ));
-
-            if (current_Row_Active.size() > 0){
-                logger.info(current_Row_Active.get(0).getText());
-                commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-                LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 21);
-                login_Data.Login_With_Reference();
-
-                String Duns_Number = LoginHelpers.getLoginDataWithIndex(10).getDunsNumber();
-                webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(Duns_Number);
-                webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
-
-                webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
-                List<WebElement> current_Row_Check = webDriver.findElements(By.xpath(
-                        "//table[@id='certifications']/tbody/tr/td/a[contains(text(),'Return to Vendor')]"
-                ));
-
-                if (current_Row_Check.size() >0 ) {
-                    //  webDriver.findElement(By.className("usa-search-submit-text")).click();
-                    current_Row_Check.get(0).click();
-                    Thread.sleep(3000);
-                    webDriver.switchTo().alert().accept();
-                    commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-                    login_Data = new LoginPageWithReference(webDriver, 10);
-                    login_Data.Login_With_Reference();
-                } else {
-                    webDriver.findElement(By.xpath(
-                            "//table[@id='certifications']/tbody/tr/td[position()=1]/a" +
-                                    "[" +
-                                    "contains(text(),'WOSB') and" +
-                                    "not(contains(text(),'EDWOSB'))" +
-                                    "]"
-                    )).click();
-                    webDriver.findElement(By.xpath(
-                            "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"
-                    )).click();
-                    webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-                    webDriver.findElement(By.xpath("//input[@type='submit' and contains(@value,'commit')]")).click();
-
-                    commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-                    login_Data = new LoginPageWithReference(webDriver, 10);
-                    login_Data.Login_With_Reference();
-                }
-            }
-
-
-
-
-        } catch (Exception e) {
-            logger.info(e.toString());
-            logger.info("There are(is) no certification Active on the dashboard, a new certification is being created");
-            logger.info(e);
-        }
-
-
-
-        commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-        try {
-            WebElement ElementWOSBRadio = webDriver.findElement(By.linkText("Delete"));
-            ElementWOSBRadio.click();
-            webDriver.switchTo().alert().accept();
-        } catch (Exception e) {
-            logger.info(
-                    "There are(is) no certification in-progress on the dashboard, a new certification is being created");
-        }
-
-        // First Flow - Check For Drafts coming up correctly
         commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         logger.info("Certifications Deleted To start again");
 
@@ -140,6 +44,7 @@ public class VerifyWosbFlow {
             webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_wosb']"))
                     .click();
         } catch (Exception e) {
+            logger.info("No Buttons available");
         }
         assertTrue(Boolean.toString(add_button.isEnabled()), true);
         Thread.sleep(2000);
@@ -147,6 +52,7 @@ public class VerifyWosbFlow {
             webDriver.findElement(By.id("add_certification")).click();
             webDriver.findElement(By.id("add_certification")).click();
         } catch (Exception e) {
+            logger.info("No Buttons available");
         }
 
         Thread.sleep(5000);

@@ -25,31 +25,26 @@ public class TestApp77CancelReviewLink extends TestCase {
             .getLogger(TestApp77CancelReviewLink.class.getName());
     int get_The_Row_From_Login_Data;
     //String duns_Number = "196374813";
-    String duns_Number = "";
+    String duns_Number, email, password;
 
     @Before
     public void setUp() throws Exception {
         commonApplicationMethods.clear_Env_Chrome();
-        Thread.sleep(3000);
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 41;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
-        TestApp77CancelReviewLink.info(duns_Number);
-
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
         try {
 
-            commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
-            commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-            LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-            login_Data.Login_With_Reference();
-            Thread.sleep(2000);
-            commonApplicationMethods.delete_all_Drafts(webDriver);
+            LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+            login_Data.Login_With_Details();
 
             commonApplicationMethods.createApplication(webDriver, "WOSB");
             webDriver.findElement(By.id("answers_5_value_yes")).click();
@@ -61,8 +56,8 @@ public class TestApp77CancelReviewLink extends TestCase {
             TestApp77CancelReviewLink.info("Doc has been uploaded.");
 
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-            login_Data = new LoginPageWithReference(webDriver, 11);
-            login_Data.Login_With_Reference();
+            LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
+            login_Data_01.Login_With_Reference();
 
             // Start Common Function
 
@@ -71,9 +66,8 @@ public class TestApp77CancelReviewLink extends TestCase {
 
             List<WebElement> current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr"
                     + "[ "
-                    + "td[position()=8 and contains(text(),'Submitted')]   and "
                     + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-                    + "td[position()=3 and contains(text(),'WOSB')]	"
+                    + "td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]	"
                     + "]"));
 
             if (current_Row.size() > 0) {
@@ -118,15 +112,16 @@ public class TestApp77CancelReviewLink extends TestCase {
                 webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
                 Thread.sleep(1000);
                 webDriver.switchTo().alert().accept();
+                Thread.sleep(3000);
                 String organization_Id = commonApplicationMethods.returnOrganization_Id(duns_Number);
-                String count_Case = DatabaseQuery.getDBData(
-                        "select count(case_number) from sbaone.reviews "
-                                + 	"		where workflow_state = 'cancelled' "
-                                + 	"	and sba_application_id 	 = "
-                                + 	"								(select max(id) from sbaone.sba_applications where organization_id = " + organization_Id.toString() + " and deleted_at is null )",
-                        1, 1 // Row 1 Column 1 from query
-                )[0][0];
-                assertEquals(count_Case, "1");
+                String sql_Q = "select count(case_number) from sbaone.reviews "
+                        + 	"		where workflow_state = 'cancelled' "
+                        + 	"	and sba_application_id 	 = "
+                        + 	"								(select max(id) from sbaone.sba_applications where organization_id = " + organization_Id.toString() + " and deleted_at is null )";
+                TestApp77CancelReviewLink.info(sql_Q);
+                String[][] count_Case = DatabaseQuery.getDBData( sql_Q , 1, 1);
+                String count_Case_Count = count_Case[0][0];
+                assertEquals(count_Case_Count, "1");
 
                 commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 

@@ -2,6 +2,8 @@ package gov.sba.utils;
 
 import java.util.List;
 
+import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.helpers.FixtureUtils;
 import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,8 +21,7 @@ public class TestApp170LinkDunsNo extends TestCase {
     // Set The variabl.es/Define
     WebDriver webDriver;
     private static final Logger TestApp170LinkDunsNo = LogManager.getLogger(TestApp170LinkDunsNo.class.getName());
-    int get_The_Row_From_Login_Data;
-    String duns_Number;
+    String duns_Number, email, password;
 
     @Before
     public void setUp() throws Exception {
@@ -28,34 +29,40 @@ public class TestApp170LinkDunsNo extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 11;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
         try {
 
-            // Login to dashboard- Check teh EDWOSB application in Active status
-            commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-            commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+            LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+            login_Data.Login_With_Details();
+            Thread.sleep(3000);
 
-            // Login to dashboard.
-            LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-            login_Data.Login_With_Reference();
-            commonApplicationMethods.delete_all_Drafts(webDriver);
-            Thread.sleep(2000);
+            commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+            commonApplicationMethods.createApplication(webDriver, "WOSB");
+            String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+            TestApp170LinkDunsNo.info(file_path_abs);
+            fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+            fillApplCreatePages.finalSignatureSubmit(webDriver) ;
+            commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+
+
+            LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
+            login_Data_01.Login_With_Reference();
 
             // Click on Case Link on main navigator-- SBA Analyst
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             String xpath_Value;
             List<WebElement> current_Row;
-            String duns_Number = "";
             WebElement asset_Exists;
             String typ_App_Passed = "WOSB";
-            if (! webDriver.getPageSource().contains("No results found")){
-                duns_Number = "159165917";
 
+            if (! webDriver.getPageSource().contains("No results found")){
                 xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
                         + "')]	and " + "td[position()=3 and (text()= '" + typ_App_Passed + "')]" + "]";
                 // All cases page
@@ -74,9 +81,22 @@ public class TestApp170LinkDunsNo extends TestCase {
             }
             commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
+            login_Data = new LoginPageWithDetails(webDriver, email, password);
+            login_Data.Login_With_Details();
+            Thread.sleep(3000);
+
+            commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+            commonApplicationMethods.createApplication(webDriver, "MPP");
+            file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+            TestApp170LinkDunsNo.info(file_path_abs);
+            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number) ;
+            fillApplCreatePages.finalSignatureSubmit(webDriver) ;
+            commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+
+
             // Click on Case Link on main navigator-- Mpp Analyst
-            login_Data = new LoginPageWithReference(webDriver, 29);
-            login_Data.Login_With_Reference();
+             login_Data_01 = new LoginPageWithReference(webDriver, 29);
+            login_Data_01.Login_With_Reference();
             Thread.sleep(2000);
             typ_App_Passed = "MPP";
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
@@ -96,10 +116,12 @@ public class TestApp170LinkDunsNo extends TestCase {
                 commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
             }
 
+
             // Click on Case Link on main navigator-- 8(a) Analyst
-            login_Data = new LoginPageWithReference(webDriver, 35);
-            login_Data.Login_With_Reference();
+            login_Data_01 = new LoginPageWithReference(webDriver, 35);
+            login_Data_01.Login_With_Reference();
             Thread.sleep(2000);
+
             typ_App_Passed = "8(a) Document Upload";
             commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             TestApp170LinkDunsNo.info(webDriver.getPageSource());

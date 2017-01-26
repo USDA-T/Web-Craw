@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Properties;
 
 import gov.sba.utils.WorkflowPages.commonApplicationMethods;
+import gov.sba.utils.WorkflowPages.fillApplCreatePages;
+import gov.sba.utils.helpers.FixtureUtils;
 import gov.sba.utils.helpers.LoginHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,8 +28,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1081 = LogManager.getLogger(TestUS1081AllCasesNewSupervisor.class.getName());
-    int get_The_Row_From_Login_Data;
-    String duns_Number;
+    String duns_Number, email, password;
 
     @Before
     public void setUp() throws Exception {
@@ -35,20 +36,30 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 21;
-        duns_Number = LoginHelpers.getLoginDataWithIndex(get_The_Row_From_Login_Data).getDunsNumber();
+        String[] details = commonApplicationMethods.return_Good_Duns_no();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
     }
 
     @Test
     public void testMainTest() throws Exception {
+        //Create a application to check
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
+        Thread.sleep(3000);
 
-        commonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        commonApplicationMethods.return_all_Applications(webDriver, 29, duns_Number);
+        commonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+        commonApplicationMethods.createApplication(webDriver, "WOSB");
+        String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+        logger_US1081.info(file_path_abs);
+        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs); ;
+        fillApplCreatePages.finalSignatureSubmit(webDriver) ;
+        commonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
-        // Login to dashboard.
-        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-        login_Data.Login_With_Reference();
-        commonApplicationMethods.delete_all_Drafts(webDriver);
+        // Login to verify analyst Dashboard
+        LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 21);
+        login_Data_01.Login_With_Reference();
         Thread.sleep(3000);
 
         try {
@@ -61,7 +72,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
                     .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'All cases')]")).getText();
             assertEquals(Allcases_PageTitle, "All cases");
 
-            String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Active",
+            String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Submitted",
                     "Owner", "Current reviewer", "Status" };
 
             List<WebElement> rows_Header = webDriver
@@ -119,10 +130,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
             for (int j = 0; j < rows_Body.size(); j++) {
                 ArrayList<String> ui_rows_Cell = new ArrayList<>();
                 logger_US1081.info(rows_Body.get(j).getAttribute("innerHTML"));
-                List<WebElement> rows_Body_Cells = rows_Body.get(j).findElements(By.xpath("td")); // Get
-                                                                                                  // the
-                                                                                                  // Table
-                                                                                                  // Cells
+                List<WebElement> rows_Body_Cells = rows_Body.get(j).findElements(By.xpath("td")); // Get the Table Cells
                 ui_rows_Cell.add(rows_Body_Cells.get(0).getText().toUpperCase());
                 ui_rows_Cell.add(rows_Body_Cells.get(1).getText());
                 ui_rows_Cell.add(rows_Body_Cells.get(2).getText().toUpperCase());
@@ -162,8 +170,6 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
         catch (Exception e) {
             logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
-            // logger_US1081.info("test failed as return_vendor link dididnot
-            // work");
         }
 
     }

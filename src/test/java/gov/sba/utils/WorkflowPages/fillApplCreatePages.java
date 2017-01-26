@@ -109,7 +109,12 @@ public class fillApplCreatePages {
                 Thread.sleep(2000);
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
                 Thread.sleep(3000);
-                webDriver.switchTo().alert().accept();
+                try{
+                    logger.info("Check Alert");
+                    webDriver.switchTo().alert().accept();
+                }catch(Exception excp){
+                    logger.info("No Alert");
+                }
                 logger.info("Doc has been uploaded and accepted");
             } else {
                 try{
@@ -164,7 +169,9 @@ public class fillApplCreatePages {
                 Thread.sleep(1000);
                 webDriver.findElement(By.className("review")).click();
                 logger.info("Doc has been uploaded and accepted");
-                webDriver.switchTo().alert().accept();
+
+                try{ webDriver.switchTo().alert().accept(); } catch (Exception ex){logger.info("No alerts available");}
+
             } else {
                 try{
                     webDriver.findElement(By.id("answers_117_value_no")).click();
