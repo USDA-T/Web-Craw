@@ -75,7 +75,7 @@ public class CorporationQuestionsPage {
         Expected_Text = "Do not consider unexercised stock options that are held by the qualifying individual(s). If you answered “yes” to this question, please return to the questions above and revise your answers.";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.xpath(".//*[@id='answers[69][value]']/label[2]")).click();
-        webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("Testing");
+        webDriver.findElement(By.xpath(".//*[@id='answers_69_comment']")).sendKeys("2000");
         webDriver.findElement(By.id("answers_70_value_no")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_71_value_no")).click();
@@ -107,7 +107,7 @@ public class CorporationQuestionsPage {
         String expected_Text11 = "If yes, please upload Articles of Incorporation and any amendments; By-laws and any amendments; all stock certificates issued, including the front and back copies signed in accordance with the By-laws (this also applies to all cancelled stock certificates); and the Joint Venture Agreement, if applicable. Women are considered to control the Board of Directors when either: (1) one or more women own at least 51% of all voting stock of the business, are on the Board of Directors and have the percentage of voting stock necessary to overcome any super majority voting requirements; or (2) women comprise the majority of voting directors through actual numbers or, where permitted by state law, through weighted voting. Reference: 13 C.F.R. 127.202(f)";
         assertEquals(actual_Text11, expected_Text11);
         webDriver.findElement(By.id("answers_75_value_no")).click();
-        webDriver.findElement(By.xpath(".//*[@id='answers_75_comment']")).sendKeys("Testing");
+        webDriver.findElement(By.xpath(".//*[@id='answers_75_comment']")).sendKeys("2000");
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
@@ -243,7 +243,7 @@ public class CorporationQuestionsPage {
         String expected_Text34 = "Reference: 13 C.F.R. 127.202(a)";
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
-        webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_91_comment")).sendKeys("2000");
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Net Worth questions,Verify, select No for both and

@@ -176,7 +176,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.id("answers_122_value")).click();
-        webDriver.findElement(By.xpath("//option[3]")).click();
+        webDriver.findElement(By.xpath("//option[2]")).click();
 
         Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
         Expected_Text = "Please answer this question";

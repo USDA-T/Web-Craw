@@ -963,8 +963,9 @@ import junit.framework.TestCase;
 	            webDriver.findElement(By.id("legal_5")).click();
 	            Thread.sleep(2000);
 	            //webDriver.findElement(By.id("accept-button")).click();
-	            webDriver.close();
+	            //webDriver.close();
 	            logger.info("Success");
+	            return;
 	        }
 	    }
 	    @After

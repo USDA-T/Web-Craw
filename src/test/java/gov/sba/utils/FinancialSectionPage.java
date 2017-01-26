@@ -20,7 +20,7 @@ public class FinancialSectionPage {
         // Locate section for 'Cash on Hand' enter all valid data as required.
         // Locate the As of Date: Search box for user and enter the information
         // as required.
-        webDriver.findElement(By.id("date-32")).sendKeys("04/23/2016");
+        webDriver.findElement(By.id("date-32")).sendKeys("01/26/2017");
         // Locate the Cash on Hand Search box for Pual Washington and enter the
         // information as required.
         webDriver.findElement(By.xpath(".//*[@id='answers_33_value']")).sendKeys("2000");
@@ -100,7 +100,7 @@ public class FinancialSectionPage {
         // Select Yes for the Stock and Bonds Section.
         webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_46_details_table_wrapper']/div/a/span")).click();
-        webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test Testing");
+        webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test 2000");
         webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("50000");
         webDriver.findElement(By.id("DTE_Field_num_of_shares")).sendKeys("60");
         webDriver.findElement(By.id("DTE_Field_cost")).sendKeys("59000");
@@ -115,7 +115,7 @@ public class FinancialSectionPage {
         // Select Yes for Real Estate - Primary Residence Section questions.
         webDriver.findElement(By.xpath(".//*[@id='answers[47][value]']/label[1]")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.id("answers_48_1_1_value")).sendKeys("8597 weems rd testing ln manassas va 30998");
+        webDriver.findElement(By.id("answers_48_1_1_value")).sendKeys("8597 weems rd 2000 ln manassas va 30998");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][2][value]']/label")).click();
         webDriver.findElement(By.id("answers_48_1_3_value")).sendKeys("50");
         webDriver.findElement(By.id("answers_48_1_4_value")).sendKeys("98");
@@ -189,7 +189,7 @@ public class FinancialSectionPage {
         Thread.sleep(3000);
         // Select yes for question; 'Are any leans delinquent?'.
         webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
-        webDriver.findElement(By.id("answers_53_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_53_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(3000);
         // Select yes for question; 'Do you own any other personal property
         // or assets?'.
@@ -231,7 +231,7 @@ public class FinancialSectionPage {
         Thread.sleep(3000);
         // Select yes for question; 'Are any leans delinquent?'.
         webDriver.findElement(By.xpath(".//*[@id='answers[56][value]']/label[1]")).click();
-        webDriver.findElement(By.id("answers_56_comment")).sendKeys("testing");
+        webDriver.findElement(By.id("answers_56_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(3000);
         // Locate the continue button and click on it.
         webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();

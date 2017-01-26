@@ -228,8 +228,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
         webDriver.findElement(By.xpath("//option[@value='SBA Area Office 4']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Upload a document.
-        MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
-        montanaUploadDocument.MontanaUploadDocument1();
+        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument.MontanaUploadDocument();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Training Section(Subsection 2.1), Verifying Question.
@@ -248,8 +248,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocument1Page montanaUploadDocument1 = new MontanaUploadDocument1Page(webDriver);
-        montanaUploadDocument1.MontanaUploadDocument1();
+        MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument1.MontanaUploadDocument();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -340,8 +340,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         }
         // Upload a document.
-        MontanaUploadDocument1Page montanaUploadDocument11 = new MontanaUploadDocument1Page(webDriver);
-        montanaUploadDocument11.MontanaUploadDocument1();
+        MontanaUploadDocumentPage montanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument11.MontanaUploadDocument();
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_yes")).click();
         Thread.sleep(2000);
@@ -432,8 +432,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocument1Page montanaUploadDocument111 = new MontanaUploadDocument1Page(webDriver);
-        montanaUploadDocument111.MontanaUploadDocument1();
+        MontanaUploadDocumentPage montanaUploadDocument111 = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument111.MontanaUploadDocument();
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -451,8 +451,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
-        MontanaUploadDocument1Page montanaUploadDocument1111 = new MontanaUploadDocument1Page(webDriver);
-        montanaUploadDocument1111.MontanaUploadDocument1();
+        MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
+        montanaUploadDocument1111.MontanaUploadDocument();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Protégé Needs Section.
@@ -855,8 +855,8 @@ public class TestMppBuildQuestionnaireTs2 extends TestCase {
             Expected_Text = "Attachment is required";
             assertEquals(Actual_Text, Expected_Text);
             // Upload a document.
-            MontanaUploadDocument1Page montanaUploadDocument11111 = new MontanaUploadDocument1Page(webDriver);
-            montanaUploadDocument11111.MontanaUploadDocument1();
+            MontanaUploadDocumentPage montanaUploadDocument11111 = new MontanaUploadDocumentPage(webDriver);
+            montanaUploadDocument11111.MontanaUploadDocument();
             Thread.sleep(5000);
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Subsection 3.2: Business info, Verifying question.

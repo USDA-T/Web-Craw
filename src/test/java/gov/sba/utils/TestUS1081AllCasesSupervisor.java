@@ -90,7 +90,7 @@ public class TestUS1081AllCasesSupervisor extends TestCase {
             logger.info(todays_Date);
 
             todays_Date = "09/25/2016"; // Comment this during actual Run as
-                                        // this is for testing
+                                        // this is for 2000
 
             // Get the row for EDWOSB //String xpath_String_ForEdwosb =
             // "//div[@id='table-search']/table/tbody/tr[contains(text(),'" +

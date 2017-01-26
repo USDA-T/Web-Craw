@@ -217,7 +217,7 @@ public class PartnershipQuestionsPage {
         String expected_Text34 = "Reference: 13 C.F.R. 127.202(a)";
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
-        webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
+        webDriver.findElement(By.id("answers_91_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Net Worth questions,Verify, select No for both and
@@ -324,8 +324,8 @@ public class PartnershipQuestionsPage {
         assertEquals(actual_Text52, expected_Text52);
         // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//div[3]/div/div/div/div[2]")).click();
+        Thread.sleep(1000);
+        webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);

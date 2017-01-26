@@ -154,7 +154,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.id("legal_2")).click();
         webDriver.findElement(By.id("legal_3")).click();
         webDriver.findElement(By.id("legal_4")).click();
-       // webDriver.findElement(By.id("legal_5")).click();
+        webDriver.findElement(By.id("legal_5")).click();
         logger.info("Success");
         
         //return;

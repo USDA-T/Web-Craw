@@ -43,7 +43,7 @@ package gov.sba.utils;
 	        robot.keyPress(KeyEvent.VK_ENTER);
 	        robot.keyRelease(KeyEvent.VK_ENTER);
 	        Thread.sleep(1000);
-	        webDriver.findElement(By.id("comment")).sendKeys("Testing Documents");
+	        webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
 	        webDriver.findElement(By.cssSelector("#attach")).click();
 
 	    }
