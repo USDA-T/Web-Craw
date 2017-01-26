@@ -161,7 +161,7 @@ public class fillApplCreatePages {
                         duns_No.get(0).click();
                     }
                     Thread.sleep(2000);
-                    webDriver.switchTo().alert().accept();
+                    try{ webDriver.switchTo().alert().accept(); } catch (Exception ex){logger.info("No alerts available");}
                 }
 
                 Thread.sleep(2000);
@@ -194,6 +194,16 @@ public class fillApplCreatePages {
             webDriver.findElement(By.xpath("//*[@id='legal_3']")).click();
             webDriver.findElement(By.xpath("//*[@id='legal_4']")).click();
             webDriver.findElement(By.xpath("//*[@id='legal_5']")).click();
+            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void finalSignatureSubmit8A(WebDriver webDriver) throws Exception {
+        try {
+            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
             webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());

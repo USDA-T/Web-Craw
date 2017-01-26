@@ -1,6 +1,9 @@
 package gov.sba.utils.WorkflowPages;
 
-import gov.sba.utils.LoginPageWithReference;
+import com.sun.jna.Native;
+import com.sun.jna.platform.win32.WinDef;
+import com.sun.jna.win32.W32APIOptions;
+import gov.sba.utils.CommonFunctions.LoginPageWithReference;
 import gov.sba.utils.helpers.FixtureUtils;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -8,10 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import gov.sba.utils.helpers.DatabaseQuery;
 import org.apache.logging.log4j.LogManager;
@@ -46,6 +50,23 @@ public class commonApplicationMethods {
                 return false;
         }
     }
+
+
+    public static void focus_window() throws AWTException, InterruptedException {
+        final Robot robot = new Robot();
+        robot.mouseMove(300, 300);
+        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(700);
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(700);
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
+        Thread.sleep(700);
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
+        Thread.sleep(700);
+    }
+
 
     public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
         Logger commonApplicationMethodsLogs = LogManager
@@ -148,20 +169,23 @@ public class commonApplicationMethods {
 
     }
   
-    public static void clear_Env_Chrome() throws InterruptedException {
-        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
-        if (file_01.exists()) {
-            try {
-                String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
-                Process p = Runtime.getRuntime().exec(command);
-                p.wait();
-                p.destroy();
-                Thread.sleep(2000);
-            } catch (Exception ex) {
-                Thread.sleep(2000);
-            }
-
-        }
+    public static void clear_Env_Chrome() throws InterruptedException, IOException {
+        Runtime rt = Runtime.getRuntime();
+        Process pr = rt.exec("Taskkill /IM chrome.exe /F");
+        Thread.sleep(2000);
+//        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
+//        if (file_01.exists()) {
+//            try {
+//                String[] command = {"cmd", "/C", "Start", "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
+//                Process p = Runtime.getRuntime().exec(command);
+//                p.wait();
+//                p.destroy();
+//                Thread.sleep(2000);
+//            } catch (Exception ex) {
+//                Thread.sleep(2000);
+//            }
+//
+//        }
     }
 
   
@@ -265,7 +289,8 @@ public class commonApplicationMethods {
 
 
                     int counter = Integer.parseInt(returned_Count_01[0][0].toString()) + Integer.parseInt(returned_Count_02[0][0].toString());
-                    if (counter <= 0){
+                    if (counter <= 0){ //commonApplicationMethodsLogs.info(sql_Q_01); //commonApplicationMethodsLogs.info(sql_Q_02);
+                        commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details));
                         return details;
                     }
                 }
@@ -475,8 +500,11 @@ public class commonApplicationMethods {
             case "MPP":
                 webDriver.findElement(By.id("certificate_type_mpp")).click();
                 break;
+            case "8A":
+                webDriver.findElement(By.id("certificate_type_eight_a")).click();
+                break;
             default:
-                Assert.assertEquals("Edwosb or WOSB or MPP", "Not Found");
+                Assert.assertEquals("Edwosb or WOSB or MPP or 8a", "Not Found");
         }
         webDriver.findElement(By.id("add_certification")).click();
         webDriver.findElement(By.className("accept_button")).click();
@@ -506,6 +534,9 @@ public class commonApplicationMethods {
                 break;
             case "DOCUMENTS":
                 webDriver.findElement(By.xpath(part_01 + "Documents" + part_03)).click();
+                break;
+            case "HOME":
+                webDriver.findElement(By.xpath(part_01 + "Home" + part_03)).click();
                 break;
             default:
                 Assert.assertEquals("Navigation Menu Not correct", "among present Options");
