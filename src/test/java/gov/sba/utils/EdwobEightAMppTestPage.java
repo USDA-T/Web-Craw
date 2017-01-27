@@ -36,6 +36,17 @@ public class EdwobEightAMppTestPage {
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("duns-value-167")).sendKeys("172115728");
+        webDriver.findElement(By.linkText("Confirm DUNS")).click();
+        webDriver.findElement(By.linkText("Confirm DUNS")).click();
+        logger.info(webDriver.switchTo().alert().getText());
+        Actual_Text = webDriver.switchTo().alert().getText();
+        Expected_Text = "Please confirm that this is the correct business:\nEntity 81 Legal Business Name";
+        assertEquals(Actual_Text, Expected_Text);
+        webDriver.switchTo().alert().accept();
+        Thread.sleep(3000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -48,7 +59,6 @@ public class EdwobEightAMppTestPage {
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
-
         // Step - Verify the Signature page for MPP
         logger.info("Step  - Verify the Signature page for MPP");
         // Verify you are on the Signature page

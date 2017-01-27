@@ -73,7 +73,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         if (webDriver.getPageSource().contains("Welcome to certify.SBA.gov!")) {
             logger.info("The CO Account has no role, new CO role is requested.");
             Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
-            Expected_Text = "If you are a federal contracting officer or contracting specialist please request access to the system by selecting the role below.";
+            Expected_Text = "If you are a federal contracting officer, contracting specialist, or authorized SBA personnel, please request access to the system by selecting the role below.";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("role_name_contracting_officer")).click();
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -177,13 +177,13 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Thread.sleep(3000);
             // Search Invalid DUNs verify message.
             webDriver.findElement(By.id("duns_number")).clear();
-            webDriver.findElement(By.id("duns_number")).sendKeys("135000634");
+            webDriver.findElement(By.id("duns_number")).sendKeys("1721157");
             webDriver.findElement(By.id("find_business")).click();
             Thread.sleep(3000);
-            Actual_Text = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3")).getText();
+            Actual_Text = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3")).getText();
             Expected_Text = "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
             assertEquals(Actual_Text, Expected_Text);
-            WebElement NewText1 = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3"));
+            WebElement NewText1 = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3"));
             HighLight.highLightElement(webDriver, NewText1);
             Thread.sleep(6000);
             // Take screenshot and store as a file format
@@ -241,6 +241,37 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
             screenShot11.ScreenShot();
             Thread.sleep(3000);
+            webDriver.findElement(By.linkText("Logout")).click();
+            //Login as MPP-analyst and return MPP back to vendor.
+            get_The_Row_From_Login_Data = 29;
+            LoginPageWithReference login_Data6 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            login_Data6.Login_With_Reference();
+            webDriver.findElement(By.id("query")).sendKeys("172115728");
+            webDriver.findElement(By.xpath("//button")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Return to Vendor")).click();
+            webDriver.switchTo().alert().accept();
+            webDriver.findElement(By.linkText("Logout")).click();
+           //Login as WOSB-analyst and return WOSB program back to vendor.
+            get_The_Row_From_Login_Data = 0;
+            LoginPageWithReference login_Data7 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            login_Data7.Login_With_Reference();
+            webDriver.findElement(By.id("query")).sendKeys("172115728");
+            webDriver.findElement(By.xpath("//button")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Return to Vendor")).click();
+            webDriver.switchTo().alert().accept();
+            webDriver.findElement(By.linkText("Logout")).click();
+            get_The_Row_From_Login_Data = 3;
+            LoginPageWithReference login_Data8 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            login_Data8.Login_With_Reference();
+            //delete one start application.
+            DeleteDraftCertPage deleteDraftCert3 = new DeleteDraftCertPage(webDriver);
+            deleteDraftCert3.DeleteDraftCert();
             webDriver.findElement(By.linkText("Logout")).click();
 
         }
