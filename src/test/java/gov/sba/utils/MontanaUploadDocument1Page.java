@@ -9,7 +9,9 @@ package gov.sba.utils;
 	import org.apache.logging.log4j.Logger;
 	import org.openqa.selenium.By;
 	import org.openqa.selenium.WebDriver;
-	import gov.sba.utils.helpers.FixtureUtils;
+import org.openqa.selenium.interactions.Actions;
+
+import gov.sba.utils.helpers.FixtureUtils;
 
 	public class MontanaUploadDocument1Page {
 	    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
@@ -43,10 +45,10 @@ package gov.sba.utils;
 	        Thread.sleep(2000);
 	        robot.keyPress(KeyEvent.VK_ENTER);
 	        robot.keyRelease(KeyEvent.VK_ENTER);
-	        Thread.sleep(1000);
+	        Thread.sleep(2000);
 	       // webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
-	        webDriver.findElement(By.xpath("//button[@id='attach']")).click();
-
+	        Actions act4 = new Actions(webDriver);
+	        act4.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build().perform();
 	    }
 
 	}

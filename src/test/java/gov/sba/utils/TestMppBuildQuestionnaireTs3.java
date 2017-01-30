@@ -375,8 +375,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         webDriver.findElement(By.id("answers_138_value_yes")).click();
         webDriver.findElement(By.id("answers_139_value_yes")).click();
         webDriver.findElement(By.id("answers_140_value_yes")).click();
-        webDriver.findElement(By.id("answers_141_value_yes")).click();
-        webDriver.findElement(By.xpath("//div[@id='answers[141][value]']/label")).click();
+        Actions act6 = new Actions(webDriver);
+        act6.doubleClick(webDriver.findElement(By.id("answers_141_value_yes"))).build().perform();
         Thread.sleep(3000);
         Actions act4 = new Actions(webDriver);
         act4.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform(); // Management/Technical
@@ -573,25 +573,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
                 .getText();
         Expected_Text = "Both the Protégé and the Mentor must complete the Mentor-Protégé Program training module. The Protégé must upload the Mentor’s certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
-        // Link.
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window61 = webDriver.getWindowHandle();
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
-        assertEquals(Actual_Text, Expected_Text);
-        java.util.Set<String> S61 = webDriver.getWindowHandles();
-        Iterator<String> i61 = S61.iterator();
-        while (i61.hasNext()) {
-            String Second_window11 = i61.next();
-            if (!main_window61.equalsIgnoreCase(Second_window11)) {
-                webDriver.switchTo().window(Second_window11);
-                logger.info("After switching title is =" + webDriver.getTitle());
-                webDriver.close();
-                webDriver.switchTo().window(main_window61);
-                logger.info("Back to manin_window = certify.sba.gov");
-            } else {
-                logger.info("Second Window is not thesame as first window");
-            }
             // Attempt to commit and verify alert message.
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             Actual_Text = webDriver.findElement(By.id("answers_166_attachment-error")).getText();
@@ -670,31 +651,18 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Enter an invalid DUNS# and verify message.
-            webDriver.findElement(By.id("duns-value-167")).sendKeys("153000244");
-            webDriver.findElement(By.linkText("Confirm DUNS")).click();
-            webDriver.findElement(By.linkText("Confirm DUNS")).click();
-            logger.info(webDriver.switchTo().alert().getText());
-            Actual_Text = webDriver.switchTo().alert().getText();
-            Expected_Text = "Mentor does not have an active registration in SAM.gov. Confirm that you’ve typed the correct DUNS or ask the Mentor to register with SAM.gov in order to proceed.";
-            assertEquals(Actual_Text, Expected_Text);
-            webDriver.switchTo().alert().accept();
-            // Enter a valid DUNS# and verify business.
             webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
-            webDriver.findElement(By.linkText("Confirm DUNS")).click();
+            webDriver.findElement(By.id("search-duns-167")).click();
             Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
             Expected_Text = "You must confirm the DUNS number";
             assertEquals(Actual_Text, Expected_Text);
+            webDriver.findElement(By.id("search-duns-167")).click();
             Thread.sleep(2000);
-            // webDriver.findElement(By.linkText("Confirm DUNS")).click();
             logger.info(webDriver.switchTo().alert().getText());
             Actual_Text = webDriver.switchTo().alert().getText();
             Expected_Text = "Please confirm that this is the correct business:\nEntity 45 Legal Business Name";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.switchTo().alert().accept();
-            // Verify business.
-            Actual_Text = webDriver.findElement(By.id("duns-biz-name-167")).getText();
-            Expected_Text = "The selected business is: Entity 45 Legal Business Name";
-            assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Review page.
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -784,8 +752,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
             logger.info("Success");
             return;
         }
-    }
-
+    
     @After
     public void tearDown() throws Exception {
         webDriver.quit();

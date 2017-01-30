@@ -8,6 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
 import gov.sba.utils.helpers.FixtureUtils;
 
 public class MontanaUploadDocumentPage {
@@ -43,8 +45,9 @@ public class MontanaUploadDocumentPage {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(2000);
-        //webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
-        webDriver.findElement(By.xpath("//button[@id='attach']")).click();
+        Actions act4 = new Actions(webDriver);
+        act4.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build().perform();
+       // webDriver.findElement(By.xpath("//button[@id='attach']")).click();
     }
 
 }
