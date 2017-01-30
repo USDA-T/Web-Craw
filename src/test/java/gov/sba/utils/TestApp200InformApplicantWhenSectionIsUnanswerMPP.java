@@ -24,7 +24,7 @@ import junit.framework.TestCase;
 	        webDriver = TestHelpers.getDefaultWebDriver();
 	        webDriver.get(TestHelpers.getBaseUrl());
 	        webDriver.manage().window().maximize();
-	        get_The_Row_From_Login_Data = 26;
+	        get_The_Row_From_Login_Data = 25;
 	    }
 	    @Test
 	    public void testMainTest() throws Exception {
@@ -224,8 +224,10 @@ import junit.framework.TestCase;
 	        // Upload a document.
 	        MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
 	        montanaUploadDocument.MontanaUploadDocument();
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+	        Thread.sleep(2000);
+	        Actions act4 = new Actions(webDriver);
+	        act4.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+	        Thread.sleep(2000);
 	        // Training Section(Subsection 2.1), Verifying Question.
 	        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
 	        Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
@@ -245,8 +247,8 @@ import junit.framework.TestCase;
 	        MontanaUploadDocumentPage montanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
 	        montanaUploadDocument1.MontanaUploadDocument();
 	        Thread.sleep(2000);
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+	        Actions act2 = new Actions(webDriver);
+	        act2.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
 	        // plans and Agreements, Verifying Question.
 	        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
 	        Expected_Text = "Please upload the Protégé’s business plan.";
@@ -293,6 +295,7 @@ import junit.framework.TestCase;
 	            }
 	            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	        }
+	        Thread.sleep(2000);
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window31 = webDriver.getWindowHandle();
 	        logger.info("Before switching, title is = certify.sba.gov");
@@ -313,6 +316,7 @@ import junit.framework.TestCase;
 	            }
 	            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	        }
+	        Thread.sleep(2000);
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window311 = webDriver.getWindowHandle();
 	        logger.info("Before switching, title is = certify.sba.gov");
@@ -333,6 +337,7 @@ import junit.framework.TestCase;
 	            }
 	            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	        }
+	        Thread.sleep(2000);
 	        // Upload a document.
 	        MontanaUploadDocumentPage montanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
 	        montanaUploadDocument11.MontanaUploadDocument();
@@ -384,20 +389,19 @@ import junit.framework.TestCase;
 	        Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).getText();
 	        Expected_Text = "What is the effective date of the agreement?";
 	        assertEquals(Actual_Text, Expected_Text);
-	        webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).sendKeys("12/23/2008");
+	        webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
 	        // Name of other business.
 	        Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4")).getText();
 	        Expected_Text = "What is the name of the other business involved in the agreement?";
 	        assertEquals(Actual_Text, Expected_Text);
-	        webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4"))
-	                .sendKeys("Cyber Tech Solution");
+	        webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
 	        // NAICS question validation.
 	        Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_agreement_naics_1 > fieldset > h4")).getText();
 	        Expected_Text = "Please select the NAICS code for which the mentor-protégé relationship was established.";
 	        assertEquals(Actual_Text, Expected_Text);
 	        Thread.sleep(3000);
 	        webDriver.findElement(By.id("answers_133_1_4_value")).click();
-	        webDriver.findElement(By.xpath("//option[@value='237110']")).click();
+	        webDriver.findElement(By.xpath("//option[@value='334413']")).click();
 	        // Detail Meaning for NAICS.
 	        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
 	                .getText();
@@ -428,8 +432,8 @@ import junit.framework.TestCase;
 	        MontanaUploadDocumentPage montanaUploadDocument111 = new MontanaUploadDocumentPage(webDriver);
 	        montanaUploadDocument111.MontanaUploadDocument();
 	        Thread.sleep(3000);
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-	        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+	        Actions act8 = new Actions(webDriver);
+	        act8.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
 	        // MPP Agreement Section.
 	        Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
 	        Expected_Text = "Please upload the written Mentor-Protégé Agreement signed and dated by both the Mentor and the Protégé.";
@@ -447,8 +451,8 @@ import junit.framework.TestCase;
 	        MontanaUploadDocumentPage montanaUploadDocument1111 = new MontanaUploadDocumentPage(webDriver);
 	        montanaUploadDocument1111.MontanaUploadDocument();
 	        Thread.sleep(3000);
-	        Actions act2 = new Actions(webDriver);
-            act2.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+	        Actions act6 = new Actions(webDriver);
+            act6.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
 	        // Protégé Needs Section.
 	        Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/p")).getText();
 	        Expected_Text = "In this subsection you’ll be asked to identify the type(s) of assistance you’re seeking from your Mentor. There are six categories to choose from, and you may select any or all that apply to your situation.";
@@ -523,6 +527,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // Link 2.
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window31111 = webDriver.getWindowHandle();
@@ -543,6 +548,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // Link 3.
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window4 = webDriver.getWindowHandle();
@@ -563,6 +569,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // link 4.
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window41 = webDriver.getWindowHandle();
@@ -583,6 +590,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // Link 5.
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window5 = webDriver.getWindowHandle();
@@ -603,6 +611,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // Link 6.
 	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	        String main_window51 = webDriver.getWindowHandle();
@@ -623,6 +632,7 @@ import junit.framework.TestCase;
 	                logger.info("Second Window is not thesame as first window");
 	            }
 	        }
+	        Thread.sleep(2000);
 	        // **** Select Yes for all question in this section.
 	        webDriver.findElement(By.id("answers_136_value_yes")).click();
 	        webDriver.findElement(By.id("answers_137_value_yes")).click();
@@ -749,24 +759,6 @@ import junit.framework.TestCase;
 	        Expected_Text = "Both the Protégé and the Mentor must complete the Mentor-Protégé Program training module. The Protégé must upload the Mentor’s certificate of completion.";
 	        assertEquals(Actual_Text, Expected_Text);
 	        // Link.
-	        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	        String main_window61 = webDriver.getWindowHandle();
-	        logger.info("Before switching, title is = certify.sba.gov");
-	        webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
-	        assertEquals(Actual_Text, Expected_Text);
-	        java.util.Set<String> S61 = webDriver.getWindowHandles();
-	        Iterator<String> i61 = S61.iterator();
-	        while (i61.hasNext()) {
-	            String Second_window11 = i61.next();
-	            if (!main_window61.equalsIgnoreCase(Second_window11)) {
-	                webDriver.switchTo().window(Second_window11);
-	                logger.info("After switching title is =" + webDriver.getTitle());
-	                webDriver.close();
-	                webDriver.switchTo().window(main_window61);
-	                logger.info("Back to manin_window = certify.sba.gov");
-	            } else {
-	                logger.info("Second Window is not thesame as first window");
-	            }
 	            // Attempt to commit and verify alert message.
 	            Thread.sleep(3000);
 	            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -833,8 +825,9 @@ import junit.framework.TestCase;
 		        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 	            // Enter an invalid DUNS# and verify message.
 	            webDriver.findElement(By.id("duns-value-167")).sendKeys("146482889");
-	            webDriver.findElement(By.linkText("Confirm DUNS")).click();
-	            webDriver.findElement(By.linkText("Confirm DUNS")).click();
+	            webDriver.findElement(By.id("search-duns-167")).click();
+	            webDriver.findElement(By.id("search-duns-167")).click();
+	            Thread.sleep(4000);
 	            logger.info(webDriver.switchTo().alert().getText());
 	            Actual_Text = webDriver.switchTo().alert().getText();
 	            Expected_Text = "Please confirm that this is the correct business:\nEntity 402 Legal Business Name";
@@ -904,7 +897,7 @@ import junit.framework.TestCase;
 	            // Verify Business name
 	            logger.info("  Verify Business name");
 	            Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-	            Expected_Text = "Entity 402 Legal Business Name";
+	            Expected_Text = "Entity 399 Legal Business Name";
 	            assertEquals(Actual_Text, Expected_Text);
 	            // Verify DUNS label
 	            logger.info("  Verify DUNS label");
@@ -914,7 +907,7 @@ import junit.framework.TestCase;
 	            // Verify DUNS number
 	            logger.info("  Verify DUNS number");
 	            Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
-	            Expected_Text = "146482889";
+	            Expected_Text = "137151292";
 	            assertEquals(Actual_Text, Expected_Text);
 	            // Verify first paragraph
 	            logger.info("  Verify first paragraph");
@@ -939,7 +932,7 @@ import junit.framework.TestCase;
 	            // Verify fifth paragraph
 	            logger.info("  Verify fifth paragraph");
 	            Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-	            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 402 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+	            Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
 	            assertEquals(Actual_Text, Expected_Text);
 	            // Verify sixth paragraph
 	            logger.info("  Verify sixth paragraph");
@@ -967,7 +960,6 @@ import junit.framework.TestCase;
 	            logger.info("Success");
 	            return;
 	        }
-	    }
 	    @After
 	    public void tearDown() throws Exception {
 	        webDriver.quit();
