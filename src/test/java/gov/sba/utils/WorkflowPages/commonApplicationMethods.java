@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 public class commonApplicationMethods {
     private static final Logger commonApplicationMethodsLogs = LogManager.getLogger(gov.sba.utils.WorkflowPages.commonApplicationMethods.class.getName());
-    
+
     public static Boolean checkApplicationExists(WebDriver webDriver, String type_Of_App, String status_Of_App) throws Exception {
         // It should be in Vendor Dashboard
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
@@ -168,11 +168,14 @@ public class commonApplicationMethods {
         Assert.assertTrue(FlagForAddEDWOSBNotPresent);
 
     }
-  
+
     public static void clear_Env_Chrome() throws InterruptedException, IOException {
-        Runtime rt = Runtime.getRuntime();
-        Process pr = rt.exec("Taskkill /IM chrome.exe /F");
-        Thread.sleep(2000);
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("Taskkill /IM chrome.exe /F");
+            Thread.sleep(2000);
+        }
+
 //        File file_01 = new File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
 //        if (file_01.exists()) {
 //            try {
@@ -188,7 +191,7 @@ public class commonApplicationMethods {
 //        }
     }
 
-  
+
     public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App) throws Exception {
 
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
@@ -226,7 +229,7 @@ public class commonApplicationMethods {
                 break;
         }
     }
-    
+
     public static void clickOnApplicationAllCasesPage(WebDriver webDriver, String type_Of_App) throws Exception {
         // It should be in Vendor Dashboard
         switch (type_Of_App.toLowerCase()) {
@@ -253,7 +256,7 @@ public class commonApplicationMethods {
                                 "/td[position()=1]/a")).click();
         }
     }
-    
+
     public static String returnOrganization_Id(String duns_Number) throws Exception {
         String organization_Id;
         try{
@@ -330,7 +333,7 @@ public class commonApplicationMethods {
         deleteApplication_SetCert_Set_App_Tables(webDriver,4 , duns_Number);
 
     };
-    
+
     public static void returnApplicationToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number, String type_Of_App, String status_Of_App, int which_Log_BackAgain) throws Exception {
 
         // Login provided should be Analyst
@@ -380,7 +383,7 @@ public class commonApplicationMethods {
         login_Data.Login_With_Reference();
 
 
- 
+
                 commonApplicationMethods.navigationMenuClick(webDriver, "Cases");
                 WebElement current_Row_e = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody"));
 
@@ -408,7 +411,7 @@ public class commonApplicationMethods {
                         current_Row.get(0).findElement(By.xpath("a[position()=2]")).click();
                         current_Row = webDriver.findElements(By.xpath(
                         		 "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'tive')]) "
-                        		 + "and (td/a[position()=1 and contains(text(),'"+ type_Of_App +"')]) ]"));    
+                        		 + "and (td/a[position()=1 and contains(text(),'"+ type_Of_App +"')]) ]"));
                         current_Row.get(0).click();
                     }
                 }
