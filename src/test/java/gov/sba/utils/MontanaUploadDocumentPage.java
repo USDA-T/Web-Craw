@@ -39,7 +39,7 @@ public class MontanaUploadDocumentPage {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(2000);
-        webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
+        //webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
         webDriver.findElement(By.cssSelector("#attach")).click();
     }
 
