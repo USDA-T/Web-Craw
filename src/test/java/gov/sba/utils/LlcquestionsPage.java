@@ -28,7 +28,7 @@ public class LlcquestionsPage {
         assertEquals(actual_Text1, expected_Text1);
         // Verify the More detail meaning for the 8(A) question.
         String actual_Text2 = webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[2]")).getText();
-        String expected_Text2 = "If the qualifying individual is not currently an 8(a) BD Program Participant, please select \"No\". If the qualifying individual was already approved by the 8(a) BD Program and at least 51% of the business is held by women, you are eligible for the WOSB Program as an EDWOSB and you will skip forward to the \"Review\" section of this application. Please upload your original 8(a) Acceptance Letter and your most recent Annual Review Letter.";
+        String expected_Text2 = "If the qualifying individual is not currently an 8(a) BD Program Participant, please select “No”. If the qualifying individual was already approved by the 8(a) BD Program and at least 51% of the business is held by women, you are eligible for the WOSB Program as an EDWOSB and you will skip forward to the “Review” section of this application. Please upload your original 8(a) Acceptance Letter and your most recent Annual Review Letter.";
         assertEquals(actual_Text2, expected_Text2);
         String actual_Text21 = webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[3]")).getText();
         String expected_Text21 = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
@@ -93,7 +93,7 @@ public class LlcquestionsPage {
         // Locate the Businesses & Trusts questions,Verify, select No for both
         // and continue.
         String actual_Text14 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text14 = "Is the qualifying individual's ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
+        String expected_Text14 = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
         assertEquals(actual_Text14, expected_Text14);
         // Verify the more detail meaning for the Businesses & Trusts questions
         String actual_Text15 = webDriver.findElement(By.cssSelector("p")).getText();
@@ -178,7 +178,7 @@ public class LlcquestionsPage {
         // for both and continue.
         // 1st question.
         String actual_Text31 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text31 = "Is the following statement true? The qualifying individual(s) has not received a decision from the SBA - in connection to an examination or protest - finding that the business does not qualify as a WOSB or an EDWOSB.";
+        String expected_Text31 = "Is the following statement true? The qualifying individual(s) has not received a decision from the SBA – in connection to an examination or protest – finding that the business does not qualify as a WOSB or an EDWOSB.";
         assertEquals(actual_Text31, expected_Text31);
         // 1st question meaning.
         String actual_Text32 = webDriver.findElement(By.xpath("//div[@id='answers_oper6_q1']/fieldset/p[2]")).getText();
@@ -200,7 +200,7 @@ public class LlcquestionsPage {
         // continue.
         // 1st question.
         String actual_Text35 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text35 = "Can the qualifying individual(s) show that her personal net worth (assets - liabilities) is less than $750,000, excluding her ownership interest in the business and her equity interest in her primary personal residence?";
+        String expected_Text35 = "Can the qualifying individual(s) show that her personal net worth (assets – liabilities) is less than $750,000, excluding her ownership interest in the business and her equity interest in her primary personal residence?";
         assertEquals(actual_Text35, expected_Text35);
         // 1st question meaning.
         String actual_Text36 = webDriver
@@ -232,7 +232,7 @@ public class LlcquestionsPage {
         // and continue.
         // 1st question.
         String actual_Text39 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text39 = "Is the qualifying individual's adjusted gross income averaged over the previous three years at or less than $350,000?";
+        String expected_Text39 = "Is the qualifying individual’s adjusted gross income averaged over the previous three years at or less than $350,000?";
         assertEquals(actual_Text39, expected_Text39);
         // 1st question meaning.
         String actual_Text40 = webDriver
@@ -258,7 +258,7 @@ public class LlcquestionsPage {
         // Verify meaning for the Fair Market Value questions.
         String actual_Text44 = webDriver
                 .findElement(By.xpath("//div[@id='answers_woman_assets_less_than_6m']/fieldset/p[2]")).getText();
-        String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual's assets. Reference: 13 C.F.R. 127.203(c)(4).";
+        String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4).";
         assertEquals(actual_Text44, expected_Text44);
         webDriver.findElement(By.id("answers_96_value_no")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -276,7 +276,7 @@ public class LlcquestionsPage {
         // 2nd question.
         String actual_Text47 = webDriver
                 .findElement(By.cssSelector("#answers_woman_asset_transfer_excusable > fieldset > h4")).getText();
-        String expected_Text47 = "If the qualifying individual(s) transferred assets within two years of the date of the certification, can she confirm that the assets were transferred: (1) to or on behalf of an immediate family member for that individual's education, medical expenses, or some other form of essential support; or (2) to an immediate family member in recognition of a special occasion, such as a birthday, graduation, anniversary, or retirement?";
+        String expected_Text47 = "If the qualifying individual(s) transferred assets within two years of the date of the certification, can she confirm that the assets were transferred: (1) to or on behalf of an immediate family member for that individual’s education, medical expenses, or some other form of essential support; or (2) to an immediate family member in recognition of a special occasion, such as a birthday, graduation, anniversary, or retirement?";
         assertEquals(actual_Text47, expected_Text47);
         // 2nd question meaning.
         String actual_Text48 = webDriver
