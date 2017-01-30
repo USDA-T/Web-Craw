@@ -24,6 +24,7 @@ package gov.sba.utils;
 	        webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
 	        Thread.sleep(2000);
 	        webDriver.findElement(By.xpath("//button[@id='doc-upload-button']")).click();
+	        Thread.sleep(1000);
 	        webDriver.findElement(By.linkText("Choose a .pdf file")).click();	        
 	        // Note: might need to be adjust to MainTestUploadDoc.pdf?
 	        String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";            
@@ -43,8 +44,8 @@ package gov.sba.utils;
 	        robot.keyPress(KeyEvent.VK_ENTER);
 	        robot.keyRelease(KeyEvent.VK_ENTER);
 	        Thread.sleep(1000);
-	        webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
-	        webDriver.findElement(By.cssSelector("#attach")).click();
+	       // webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
+	        webDriver.findElement(By.xpath("//button[@id='attach']")).click();
 
 	    }
 

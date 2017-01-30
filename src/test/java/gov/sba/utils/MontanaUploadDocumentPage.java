@@ -23,6 +23,7 @@ public class MontanaUploadDocumentPage {
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//button[@id='doc-upload-button']")).click();
+        Thread.sleep(2000);
         webDriver.findElement(By.linkText("Choose a .pdf file")).click();       
         // Note: might need to be adjust to MainTestUploadDoc.pdf?
         String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";    
@@ -43,7 +44,7 @@ public class MontanaUploadDocumentPage {
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(2000);
         //webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
-        webDriver.findElement(By.cssSelector("#attach")).click();
+        webDriver.findElement(By.xpath("//button[@id='attach']")).click();
     }
 
 }

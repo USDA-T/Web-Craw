@@ -297,6 +297,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
             }
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         }
+        Thread.sleep(2000);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window31 = webDriver.getWindowHandle();
         logger.info("Before switching, title is = certify.sba.gov");
@@ -317,6 +318,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
             }
             webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         }
+        Thread.sleep(2000);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window311 = webDriver.getWindowHandle();
         logger.info("Before switching, title is = certify.sba.gov");
@@ -529,7 +531,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
-
+        Thread.sleep(2000);
         // Link 2.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window31111 = webDriver.getWindowHandle();
@@ -550,6 +552,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(2000);
         // Link 3.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window4 = webDriver.getWindowHandle();
@@ -570,6 +573,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(2000);
         // link 4.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window41 = webDriver.getWindowHandle();
@@ -590,6 +594,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
         }
+        Thread.sleep(2000);
         // Link 5.
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window5 = webDriver.getWindowHandle();
@@ -605,26 +610,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
                 logger.info("After switching title is =" + webDriver.getTitle());
                 webDriver.close();
                 webDriver.switchTo().window(main_window5);
-                logger.info("Back to manin_window = certify.sba.gov");
-            } else {
-                logger.info("Second Window is not thesame as first window");
-            }
-        }
-        // Link 6.
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window51 = webDriver.getWindowHandle();
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.findElement(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[6]")).click();
-        assertEquals(Actual_Text, Expected_Text);
-        java.util.Set<String> S51 = webDriver.getWindowHandles();
-        Iterator<String> i51 = S51.iterator();
-        while (i51.hasNext()) {
-            String Second_window1 = i51.next();
-            if (!main_window51.equalsIgnoreCase(Second_window1)) {
-                webDriver.switchTo().window(Second_window1);
-                logger.info("After switching title is =" + webDriver.getTitle());
-                webDriver.close();
-                webDriver.switchTo().window(main_window51);
                 logger.info("Back to manin_window = certify.sba.gov");
             } else {
                 logger.info("Second Window is not thesame as first window");
