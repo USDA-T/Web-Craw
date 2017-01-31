@@ -59,6 +59,7 @@ public class DatabaseQuery {
                 }
             }
             result_Set.close();
+            connection_SBA_One_Qa.close();
             return sql_Data;
         } catch (Exception e) {
             logger.info(e.toString() + ":- The Cursor retrieval has failed");
