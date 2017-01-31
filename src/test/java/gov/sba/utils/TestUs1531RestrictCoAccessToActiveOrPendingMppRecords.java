@@ -76,7 +76,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Expected_Text = "If you are a federal contracting officer, contracting specialist, or authorized SBA personnel, please request access to the system by selecting the role below.";
             assertEquals(Actual_Text, Expected_Text);
             webDriver.findElement(By.id("role_name_contracting_officer")).click();
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
             // Search valid DUNs with no Active certification and verify
             // message.
             webDriver.findElement(By.id("duns_number")).sendKeys("135453634");

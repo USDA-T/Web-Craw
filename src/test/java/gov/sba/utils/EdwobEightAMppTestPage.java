@@ -35,7 +35,7 @@ public class EdwobEightAMppTestPage {
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("duns-value-167")).sendKeys("172115728");
         webDriver.findElement(By.linkText("Confirm DUNS")).click();
@@ -46,7 +46,7 @@ public class EdwobEightAMppTestPage {
         assertEquals(Actual_Text, Expected_Text);
         webDriver.switchTo().alert().accept();
         Thread.sleep(3000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -56,7 +56,7 @@ public class EdwobEightAMppTestPage {
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(3000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP

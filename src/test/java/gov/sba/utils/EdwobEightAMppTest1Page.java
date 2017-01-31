@@ -30,7 +30,7 @@ public class EdwobEightAMppTest1Page {
         MontanaUploadDocumentPage montanaUploadDocument0 = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument0.MontanaUploadDocument();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -39,7 +39,7 @@ public class EdwobEightAMppTest1Page {
         Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP

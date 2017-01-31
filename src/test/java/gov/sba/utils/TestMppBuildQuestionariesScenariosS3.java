@@ -53,7 +53,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_no")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Eligibility Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Are you either a for-profit business or an agricultural cooperative?";
@@ -84,7 +84,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[118][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
@@ -103,7 +103,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver.findElement(By.id("answers_120_value_no")).click();
         webDriver.findElement(By.id("answers_121_value_no")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // NAICS Code Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please select the NAICS code for which you are creating a mentor-protégé relationship:";
@@ -133,7 +133,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Select A NAICS code from t he drop down.
         WebElement mySelect = webDriver.findElement(By.xpath("//*[@id='answers_122_value']"));
         Select dropdown = new Select(mySelect);
@@ -148,7 +148,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         webDriver.findElement(By.id("answers_123_value_yes")).click();
         webDriver.findElement(By.id("answers_124_value_yes")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
         Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -156,14 +156,14 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[125][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_125_value_no")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Verify the Size Redetermination Section(Sub-Subsection 1.2) is
         // disabled , Verifying Question.
         // Training Section(Subsection 2.1), Verifying Question.
@@ -174,7 +174,7 @@ public class TestMppBuildQuestionariesScenariosS3 extends TestCase {
         MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
         montanaUploadDocument.MontanaUploadDocument1();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("Success");
         return;
 

@@ -83,7 +83,7 @@ public class TestApp51SamProfileSnapshot extends TestCase {
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("div.usa-alert-warning.usa-alert")).getText();
         Expected_Text = "You are in view-only mode (Version #1)You can view the vendor's record but can not make edits";
         assertEquals(Actual_Text, Expected_Text);

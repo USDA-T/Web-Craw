@@ -51,7 +51,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
@@ -61,7 +61,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         MontanaUploadDocument1Page montanaUploadDocument = new MontanaUploadDocument1Page(webDriver);
         montanaUploadDocument.MontanaUploadDocument1();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
        //Enter a valid DUNS# and verify business.
         webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
         webDriver.findElement(By.id("search-duns-167")).click();
@@ -70,7 +70,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
@@ -84,11 +84,11 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Business Info";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
@@ -108,7 +108,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
         Expected_Text = "137151292";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Verify first paragraph

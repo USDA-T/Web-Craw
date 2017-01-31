@@ -13,7 +13,7 @@ public class TestuserProfileSearchType {
         // Select Government User Radio button
         webDriver.findElement(By.xpath(Radio_xpath)).click();
         webDriver.findElement(By.xpath("//input[@id='ops_query']")).sendKeys(last_name);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // User Search results
         @SuppressWarnings("unused")
         WebElement table = webDriver.findElement(By.xpath("//table[@class='searchable']"));

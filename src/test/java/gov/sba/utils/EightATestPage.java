@@ -24,7 +24,7 @@ public class EightATestPage {
         // Locate the accept button at the bottom of the 8(a) agreement and
         // click on it to continue.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "8(a) Document Upload";
         assertEquals(Actual_Text, Expected_Text);
@@ -52,7 +52,7 @@ public class EightATestPage {
         MontanaUploadDocument1Page montanaUploadDocument4 = new MontanaUploadDocument1Page(webDriver);
         montanaUploadDocument4.MontanaUploadDocument1();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -78,7 +78,7 @@ public class EightATestPage {
                 .findElement(By.xpath("//div[@id='eight_a_documents']/div/div/div/table/tbody/tr[2]/td[3]"));
         HighLight.highLightElement(webDriver, EightADocComment);
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP

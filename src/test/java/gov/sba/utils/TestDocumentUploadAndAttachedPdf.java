@@ -53,9 +53,9 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Locate and accept the terms for certification.
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("answers_65_value_no")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("answers_66_value_yes")).click();
         // Third Party Upload.
         webDriver.findElement(By.cssSelector("label.yes")).click();
@@ -65,18 +65,18 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
         Thread.sleep(2000);
         // webDriver.findElement(By.cssSelector("#attach")).click();
         Thread.sleep(6000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Changes in Eligibility
         webDriver.findElement(By.id("answers_67_value_no")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("third_party_cert_part_1")).click();
         // String Doc Name;
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("answers_67_value_yes")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Stocks
         webDriver.findElement(By.id("answers_69_value_yes")).click();
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
@@ -86,13 +86,13 @@ public class TestDocumentUploadAndAttachedPdf extends TestCase {
         webDriver.findElement(By.cssSelector("#document_library_associate")).click();
         webDriver.findElement(By.id("answers_70_value_yes")).click();
         webDriver.findElement(By.id("answers_71_value_yes")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // ERROR: Caught exception [ERROR: Unsupported command [getTable |
         // css=table.display-table.1.0 | ]]
         webDriver.findElement(By.id("answers_72_value_yes")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("third_party_cert_part_2")).click();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
         Expected_Text = "Documents previously added";
         logger.info("Success");

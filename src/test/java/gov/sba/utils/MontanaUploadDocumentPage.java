@@ -25,29 +25,29 @@ public class MontanaUploadDocumentPage {
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//button[@id='doc-upload-button']")).click();
-        Thread.sleep(2000);
-        webDriver.findElement(By.linkText("Choose a .pdf file")).click();       
+        Thread.sleep(1000);
+        webDriver.findElement(By.linkText("Choose a .pdf file")).click();	        
         // Note: might need to be adjust to MainTestUploadDoc.pdf?
-        String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";    
+        String pdfFixture = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";            
         // StringSelection ss = new StringSelection("C:\\Users\\Derec Nguni\\Documents\\MainTestUploadDoc.pdf");
-        StringSelection ss = new StringSelection(pdfFixture);       
+        StringSelection ss = new StringSelection(pdfFixture);    
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-        Robot robot = new Robot();
+        Robot robot = new Robot();		
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(1000);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         robot.keyRelease(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         Thread.sleep(2000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
         Thread.sleep(2000);
+       // webDriver.findElement(By.id("comment")).sendKeys("2000 Documents");
         Actions act4 = new Actions(webDriver);
-        act4.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build().perform();
-       // webDriver.findElement(By.xpath("//button[@id='attach']")).click();
+        act4.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
     }
 
 }

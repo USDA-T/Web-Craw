@@ -32,7 +32,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000");
         // Locate the Continue button and click on it to continue.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate section for Other Source of Income enter all valid data as
         // required.
         // Locate the Salary search box and enter salary.
@@ -47,7 +47,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers_39_value']")).sendKeys("50000");
         // Locate the continue button and click on it to continue.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate and YES for question 'Do you have any notes receivable from
         // others?'.
         webDriver.findElement(By.cssSelector("label.yes")).click();
@@ -75,13 +75,13 @@ public class FinancialSectionPage {
         // locate the 'CONTINUE' button at the right bottom of the page and
         // click on it to save
         Thread.sleep(3000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Select NO for the two question on Retirement Accounts.
         webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath(".//*[@id='answers[42][value]']/label[2]")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("answers_43_value_yes")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_43_details_table_wrapper']/div/a/span")).click();
         webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
@@ -96,7 +96,7 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
         webDriver.findElement(By.xpath(".//*[@id='answers_45_value']")).sendKeys("50000");
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Select Yes for the Stock and Bonds Section.
         webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
         webDriver.findElement(By.xpath("//div[@id='answers_46_details_table_wrapper']/div/a/span")).click();

@@ -76,7 +76,7 @@ public class TestUs438EightARegression1 extends TestCase {
         System.out.println(webDriver.findElement(By.xpath(".//*[@id='tentatively_attached']/tbody/tr/td")).getText());
         Thread.sleep(5000);
         // Step 11. Locate the save and continue button and click on it.
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Thread.sleep(2000);
         // Verify that user navigated to the review page upon successful
         // document upload.

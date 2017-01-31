@@ -55,7 +55,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
@@ -63,7 +63,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         webDriver.findElement(By.id("answers_117_value_no")).click();
         Thread.sleep(2000);
         Actions act = new Actions(webDriver);
-        act.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform(); // Eligibility
+        act.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform(); // Eligibility
                                                                                      // Section,
                                                                                      // Verifying
                                                                                      // Question.
@@ -105,7 +105,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[118][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
@@ -143,7 +143,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
             Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
         }
         // NAICS Code Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -174,7 +174,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         webDriver.findElement(By.id("answers_122_value")).click();
         webDriver.findElement(By.xpath("//option[2]")).click();
 
@@ -188,7 +188,8 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         webDriver.findElement(By.id("answers_123_value_yes")).click();
         webDriver.findElement(By.id("answers_124_value_yes")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Actions act13 = new Actions(webDriver);
+        act13.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // Size Determination Section(Sub-Subsection 1.1), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_size_determination']/fieldset/h4")).getText();
         Expected_Text = "Have you ever received a size determination letter from the SBA that found you to be “other than small” in the NAICS code in which you’re requesting business development assistance?";
@@ -196,14 +197,14 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[125][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_125_value_yes")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Size Redetermination Section(Sub-Subsection 1.2), Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_have_redetermination_letter']/fieldset/h4"))
                 .getText();
@@ -212,14 +213,14 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers[126][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_126_value_yes")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Redetermination Info Section(Sub-Subsection 1.3), Verifying Question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the size redetermination letter issued by SBA.";
@@ -227,7 +228,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify error message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the size redetermination letter issued by SBA.";
         assertEquals(Actual_Text, Expected_Text);
@@ -241,15 +242,15 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         webDriver.findElement(By.id("answers_128_value")).click();
         webDriver.findElement(By.xpath("//option[@value='SBA Area Office 4']")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         montanaUploadDocument.MontanaUploadDocument();
-        Thread.sleep(2000);
-        Actions act13 = new Actions(webDriver);
-        act13.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        Thread.sleep(3000);
+        Actions act1 = new Actions(webDriver);
+        act1.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // Training Section(Subsection 2.1), Verifying Question.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
+        Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
         assertEquals(Actual_Text, Expected_Text);
         // Verify the detail meaning text.
@@ -260,7 +261,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify alert message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers_130_attachment-error")).getText();
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
@@ -269,7 +270,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         montanaUploadDocument1.MontanaUploadDocument();
         Thread.sleep(2000);
         Actions act12 = new Actions(webDriver);
-        act12.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act12.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // General Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
         Expected_Text = "Please upload the Protégé’s business plan.";
@@ -289,7 +290,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Click on the continue button without answering the question and
         // verify alert message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers_131_attachment-error")).getText();
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
@@ -316,7 +317,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
             Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
         }
         Thread.sleep(3000);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -338,7 +339,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
             Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
         }
         Thread.sleep(3000);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -360,7 +361,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
                 logger.info("Second Window is not thesame as first window");
             }
             Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
         }
         // Upload a document.
         MontanaUploadDocumentPage montanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
@@ -368,7 +369,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_yes")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Active Agreements Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
                 .getText();
@@ -376,7 +377,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button and verify alert message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info(webDriver.switchTo().alert().getText());
         Actual_Text = webDriver.switchTo().alert().getText();
         Expected_Text = "You must have at least 1 agreements";
@@ -387,7 +388,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         webDriver.findElement(By.cssSelector("span.add-color")).click();
         Thread.sleep(2000);
         Actions act9 = new Actions(webDriver);
-        act9.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act9.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         Actual_Text = webDriver.findElement(By.id("date-133-error")).getText();
         Expected_Text = "This field is required.";
         assertEquals(Actual_Text, Expected_Text);
@@ -432,20 +433,16 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_agreement_naics_1']/fieldset/p[2]"))
                 .getText();
         Expected_Text = "The NAICS codes listed above are the primary or secondary codes associated with your business in SAM.gov. You may update your SAM.gov profile to include an additional NAICS code if the correct NAICS is not listed. If you add a code to your SAM.gov profile, please wait 24 hours for us to receive the update and then return to continue your application.";
-        assertEquals(Actual_Text, Expected_Text);
-        
-        
+        assertEquals(Actual_Text, Expected_Text);       
         // click on add agreement.
         webDriver.findElement(By.cssSelector("span.add-color")).click();
-        
-        
         // Remove agreement.
         webDriver.findElement(By.xpath("(//a[contains(text(),'Remove')])[2]")).click();
         Actual_Text = webDriver.switchTo().alert().getText();
         Expected_Text = "Are you sure?";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.switchTo().alert().accept();
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Active Agreement Documents Section.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mpp_active_agreemets']/fieldset/h4"))
                 .getText();
@@ -453,7 +450,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Attempt to commit and verify alert message.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         Actual_Text = webDriver.findElement(By.id("answers_134_attachment-error")).getText();
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
@@ -462,7 +459,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         montanaUploadDocument111.MontanaUploadDocument();
         Thread.sleep(2000);
         Actions act8 = new Actions(webDriver);
-        act8.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act8.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // MPP Agreement Section.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Please upload the written Mentor-Protégé Agreement signed and dated by both the Mentor and the Protégé.";
@@ -474,7 +471,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         // Attempt to commit and verify alert message.
         Thread.sleep(2000);
         Actions act7 = new Actions(webDriver);
-        act7.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act7.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         Actual_Text = webDriver.findElement(By.id("answers_135_attachment-error")).getText();
         Expected_Text = "Attachment is required";
         assertEquals(Actual_Text, Expected_Text);
@@ -483,7 +480,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         montanaUploadDocument1111.MontanaUploadDocument();
         Thread.sleep(3000);
         Actions act6 = new Actions(webDriver);
-        act6.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act6.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // Protégé Needs Section.
         Thread.sleep(3000);
         Actual_Text = webDriver.findElement(By.xpath("//article[@id='main-content']/p")).getText();
@@ -654,7 +651,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         act10.doubleClick(webDriver.findElement(By.id("answers_141_value_no"))).build().perform();
         Thread.sleep(2000);
         Actions act11 = new Actions(webDriver);
-        act11.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+        act11.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
         // Section 3/ Training, Verifying question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_mentor_mpp_training_cert']/fieldset/h4")).getText();
         Expected_Text = "Please upload the Mentor’s certificate of completion for the Mentor-Protégé Program training module.";
@@ -666,7 +663,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
             // Attempt to commit and verify alert message.
             Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+            webDriver.findElement(By.className("usa-button")).click();
             Actual_Text = webDriver.findElement(By.id("answers_166_attachment-error")).getText();
             Expected_Text = "Attachment is required";
             assertEquals(Actual_Text, Expected_Text);
@@ -675,7 +672,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             montanaUploadDocument11111.MontanaUploadDocument();
             Thread.sleep(5000);
             Actions act2 = new Actions(webDriver);
-            act2.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+            act2.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
             // Subsection 3.2: Business info, Verifying question.
             Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
             Expected_Text = "Please provide the Mentor’s DUNS number:";
@@ -690,13 +687,13 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             // Attempt to commit and verify alert message.
             Thread.sleep(2000);
             Actions act3 = new Actions(webDriver);
-            act3.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+            act3.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
             Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
             Expected_Text = "Please answer this question";
             assertEquals(Actual_Text, Expected_Text);
             Thread.sleep(2000);
-            Actions act1 = new Actions(webDriver);
-            act1.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+            Actions act22 = new Actions(webDriver);
+            act22.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
             // Enter a valid DUNS# and verify business.
             webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
             webDriver.findElement(By.id("search-duns-167")).click();
@@ -716,7 +713,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             Thread.sleep(2000);
             assertEquals(Actual_Text, Expected_Text);
             Actions act4 = new Actions(webDriver);
-            act4.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+            act4.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
             // Review page.
             Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
             Expected_Text = "Review";
@@ -726,7 +723,7 @@ public class TestMppBuildQuestionnaireTs10 extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
             Thread.sleep(2000);
             Actions act5 = new Actions(webDriver);
-            act5.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+            act5.doubleClick(webDriver.findElement(By.className("usa-button"))).build().perform();
             logger.info(webDriver.switchTo().alert().getText());
             webDriver.switchTo().alert().accept();
 
