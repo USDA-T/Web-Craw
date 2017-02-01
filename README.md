@@ -537,3 +537,6 @@ Please don't add extra empty lines to the code, try to keep it clean.
 - Use `logger.debug()` or remove your `logger.info()` when you work out the details of the problem.
 
 #### More Stuffs will goes here
+
+- [JUnit Categories](http://maven.apache.org/surefire/maven-surefire-plugin/examples/inclusion-exclusion.html#)
+
