@@ -21,7 +21,6 @@ public class TestApp188SessionExpire extends TestCase {
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 27;
 
     }

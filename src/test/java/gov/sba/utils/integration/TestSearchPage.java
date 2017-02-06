@@ -29,8 +29,6 @@ public class TestSearchPage extends TestCase {
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
-
         // Get the login based on the environment under test (e.g.
         // 'development', 'qa', 'staging')
         logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));

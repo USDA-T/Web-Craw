@@ -9,7 +9,7 @@ public class TestA {
         System.out.println("hello, a");
     }
     
-    @Category(gov.sba.utils.integration.UnstableTests.class)
+    //@Category(gov.sba.utils.integration.UnstableTests.class)
     @Test
     public void b() {
         // Note: example of tests that is not stable!

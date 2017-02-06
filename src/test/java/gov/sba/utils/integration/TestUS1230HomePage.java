@@ -22,7 +22,6 @@ public class TestUS1230HomePage extends TestCase {
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
         int get_The_Row_From_Login_Data = 22;
     }
 

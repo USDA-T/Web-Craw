@@ -11,7 +11,7 @@ public class TestB {
     }
     
     // Can be flagged with more than one category
-    @Category({gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.UnstableTests.class})
+    // @Category({gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.UnstableTests.class})
     @Test
     public void d() {
         org.junit.Assert.assertEquals("a", "a");

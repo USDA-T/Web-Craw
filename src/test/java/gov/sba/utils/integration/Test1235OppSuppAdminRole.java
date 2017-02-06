@@ -28,7 +28,6 @@ public class Test1235OppSuppAdminRole extends TestCase {
         CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
         CommonApplicationMethods.focus_window();
         get_The_Row_From_Login_Data = 28;
     }

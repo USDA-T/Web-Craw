@@ -3,13 +3,15 @@ package gov.sba.utils.integration;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+
+import static org.openqa.selenium.WebDriver.*;
 
 public class TestHelpers {
     private static final Logger logger = LogManager.getLogger(TestHelpers.class.getName());
@@ -52,7 +54,9 @@ public class TestHelpers {
         case Constants.BROWSER_CHROME:
             configKeys = new String[] { "webdriver.chrome.driver" };
             setSystemProperties(configKeys, props);
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("start-maximized");
+            driver = new ChromeDriver(options);
             break;
         case Constants.BROWSER_FIREFOX:
             if (TestHelpers.isUnix(TestHelpers.systemType())) {
@@ -83,7 +87,7 @@ public class TestHelpers {
 
         // NOTE: additional settings to make the driver more robust
         driver.manage().deleteAllCookies();
-        driver.manage().window().maximize();
+//        driver.manage().window().maximize();
         driver.switchTo().window(currentWindowHandle);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);

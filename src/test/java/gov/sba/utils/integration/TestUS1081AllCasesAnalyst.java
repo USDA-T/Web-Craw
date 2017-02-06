@@ -31,7 +31,6 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
         CommonApplicationMethods.focus_window();
         String[] details = CommonApplicationMethods.return_Good_Duns_no();
         email = details[0];

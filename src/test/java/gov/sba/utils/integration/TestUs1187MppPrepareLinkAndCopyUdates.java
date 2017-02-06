@@ -22,7 +22,6 @@ public class TestUs1187MppPrepareLinkAndCopyUdates extends TestCase {
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
         System.out.println(logger.isInfoEnabled());
         logger.entry();
     }

@@ -352,7 +352,6 @@ e.g. Avoid writing something like
 public void setup() throws Exception {
   // Common code re-use patterns as example
   webDriver = TestHelpers.getDefaultWebDriver();
-  webDriver.manage().window().maximize();
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment
@@ -369,7 +368,6 @@ Instead try to capture the to the shared/reusable class/modules like
 public void setup() throws Exception {
   // Common code re-use patterns as example
   webDriver = TestHelpers.getDefaultWebDriver();
-  webDriver.manage().window().maximize();
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment  e.g. `environment = "DEV" or "QA", "Staging", etc
