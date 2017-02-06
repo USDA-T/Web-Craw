@@ -1,11 +1,11 @@
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class LlcquestionsPage {
     private static final Logger logger = LogManager.getLogger(LlcquestionsPage.class.getName());
@@ -27,13 +27,13 @@ public class LlcquestionsPage {
         assertEquals(actual_Text1, expected_Text1);
         // Verify the More detail meaning for the 8(A) question.
         String actual_Text2 = webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[2]")).getText();
-        String expected_Text2 = "If the qualifying individual is not currently an 8(a) BD Program Participant, please select \"No\". If the qualifying individual was already approved by the 8(a) BD Program and at least 51% of the business is held by women, you are eligible for the WOSB Program as an EDWOSB and you will skip forward to the \"Review\" section of this application. Please upload your original 8(a) Acceptance Letter and your most recent Annual Review Letter.";
+        String expected_Text2 = "If the qualifying individual is not currently an 8(a) BD Program Participant, please select “No”. If the qualifying individual was already approved by the 8(a) BD Program and at least 51% of the business is held by women, you are eligible for the WOSB Program as an EDWOSB and you will skip forward to the “Review” section of this application. Please upload your original 8(a) Acceptance Letter and your most recent Annual Review Letter.";
         assertEquals(actual_Text2, expected_Text2);
         String actual_Text21 = webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[3]")).getText();
         String expected_Text21 = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
         assertEquals(actual_Text21, expected_Text21);
         webDriver.findElement(By.id("answers_65_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  8(a) question has been answered");
         // Locate the Third Party Certification, question1 and select No and
         // continue.
@@ -45,7 +45,7 @@ public class LlcquestionsPage {
         String expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
         assertEquals(actual_Text, expected_Text);
         webDriver.findElement(By.id("answers_66_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Non-qualification question,Verify,select No and continue.
         String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text4 = "Has an SBA-approved Third-Party Certifier declined WOSB or EDWOSB certification for the qualifying individual(s)?";
@@ -55,17 +55,15 @@ public class LlcquestionsPage {
         String expected_Text5 = "If yes, please upload the denial letter. Being denied eligibility by one of the SBA-approved certifiers does not necessarily prevent you from qualifying for a self-certification if circumstances have changed. Any business determined not to be qualified may request that SBA review its eligibility once it believes in good faith that it satisfies all of the requirements. Reference: 13 C.F.R. 127.305.";
         assertEquals(actual_Text5, expected_Text5);
         webDriver.findElement(By.id("answers_68_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  Third Party questions have been answered");
         // Locate the LLC two question and select NO, Write comment and
         // continue.
         webDriver.findElement(By.id("answers_78_value_no")).click();
-        webDriver.findElement(By.id("answers_78_comment")).sendKeys(
-                "This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
+        webDriver.findElement(By.id("answers_78_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
         webDriver.findElement(By.id("answers_79_value_no")).click();
-        webDriver.findElement(By.id("answers_79_comment")).sendKeys(
-                "This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.id("answers_79_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("The LLC questions have been answered");
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
         // and continue.
@@ -90,14 +88,14 @@ public class LlcquestionsPage {
         assertEquals(actual_Text1311, expected_Text1311);
         webDriver.findElement(By.id("answers_80_value_no")).click();
         webDriver.findElement(By.id("answers_81_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Businesses & Trusts questions,Verify, select No for both
         // and continue.
         String actual_Text14 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text14 = "Is the qualifying individual's ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
+        String expected_Text14 = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
         assertEquals(actual_Text14, expected_Text14);
         // Verify the more detail meaning for the Businesses & Trusts questions
-        String actual_Text15 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='answers_oper2_q1']/fieldset/p")).getText();
         String expected_Text15 = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b).";
         assertEquals(actual_Text15, expected_Text15);
         // 2nd question
@@ -110,7 +108,7 @@ public class LlcquestionsPage {
         assertEquals(actual_Text17, expected_Text17);
         webDriver.findElement(By.id("answers_82_value_no")).click();
         webDriver.findElement(By.id("answers_83_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Operations & Management questions, Verify, select No for
         // both and continue.
         // 1st question
@@ -131,7 +129,7 @@ public class LlcquestionsPage {
         String expected_Text22 = "The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b).";
         assertEquals(actual_Text22, expected_Text22);
         webDriver.findElement(By.id("answers_85_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Expertise & Employment questions, Verify, select No for
         // both and continue.
         // 1st question.
@@ -152,7 +150,7 @@ public class LlcquestionsPage {
         String expected_Text26 = "The woman or economically disadvantaged woman who holds the highest officer position of the concern must manage it on a fulltime basis and devote full-time to the business concern during the normal working hours of business concerns in the same or similar line of business.";
         assertEquals(actual_Text26, expected_Text26);
         webDriver.findElement(By.id("answers_87_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("  Operations questions have been answered");
         // Locate the Highest Officer & Control questions,Verify, select No for
         // both and continue.
@@ -174,12 +172,12 @@ public class LlcquestionsPage {
         String expected_Text30 = "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
         assertEquals(actual_Text30, expected_Text30);
         webDriver.findElement(By.id("answers_89_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the SBA Exam & Daily Operations questions,Verify, select No
         // for both and continue.
         // 1st question.
         String actual_Text31 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text31 = "Is the following statement true? The qualifying individual(s) has not received a decision from the SBA - in connection to an examination or protest - finding that the business does not qualify as a WOSB or an EDWOSB.";
+        String expected_Text31 = "Is the following statement true? The qualifying individual(s) has not received a decision from the SBA – in connection to an examination or protest – finding that the business does not qualify as a WOSB or an EDWOSB.";
         assertEquals(actual_Text31, expected_Text31);
         // 1st question meaning.
         String actual_Text32 = webDriver.findElement(By.xpath("//div[@id='answers_oper6_q1']/fieldset/p[2]")).getText();
@@ -195,14 +193,13 @@ public class LlcquestionsPage {
         String expected_Text34 = "Reference: 13 C.F.R. 127.202(a)";
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
-        webDriver.findElement(By.id("answers_91_comment")).sendKeys(
-                "This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.id("answers_91_comment")).sendKeys("This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Net Worth questions,Verify, select No for both and
         // continue.
         // 1st question.
         String actual_Text35 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text35 = "Can the qualifying individual(s) show that her personal net worth (assets - liabilities) is less than $750,000, excluding her ownership interest in the business and her equity interest in her primary personal residence?";
+        String expected_Text35 = "Can the qualifying individual(s) show that her personal net worth (assets – liabilities) is less than $750,000, excluding her ownership interest in the business and her equity interest in her primary personal residence?";
         assertEquals(actual_Text35, expected_Text35);
         // 1st question meaning.
         String actual_Text36 = webDriver
@@ -229,12 +226,12 @@ public class LlcquestionsPage {
         String expected_Text381 = "The personal financial condition of the woman claiming economic disadvantage, including her personal net worth, her adjusted gross income for the past three years (including bonuses, and the value of company stock given in lieu of cash), and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged.";
         assertEquals(actual_Text381, expected_Text381);
         webDriver.findElement(By.id("answers_93_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Adjusted Gross Income questions,verify, select No for both
         // and continue.
         // 1st question.
         String actual_Text39 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text39 = "Is the qualifying individual's adjusted gross income averaged over the previous three years at or less than $350,000?";
+        String expected_Text39 = "Is the qualifying individual’s adjusted gross income averaged over the previous three years at or less than $350,000?";
         assertEquals(actual_Text39, expected_Text39);
         // 1st question meaning.
         String actual_Text40 = webDriver
@@ -252,7 +249,7 @@ public class LlcquestionsPage {
         String expected_Text42 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text42, expected_Text42);
         webDriver.findElement(By.id("answers_95_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Fair Market Value questions,verify select No and continue.
         String actual_Text43 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text43 = "Is the fair market value of all the assets of the qualifying individual(s) at or less than $6 million?";
@@ -260,10 +257,10 @@ public class LlcquestionsPage {
         // Verify meaning for the Fair Market Value questions.
         String actual_Text44 = webDriver
                 .findElement(By.xpath("//div[@id='answers_woman_assets_less_than_6m']/fieldset/p[2]")).getText();
-        String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual's assets. Reference: 13 C.F.R. 127.203(c)(4).";
+        String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4).";
         assertEquals(actual_Text44, expected_Text44);
         webDriver.findElement(By.id("answers_96_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         // Locate the Assets questions,verify, select and No for both and
         // continue.
         // 1st question.
@@ -271,14 +268,14 @@ public class LlcquestionsPage {
         String expected_Text45 = "Can the qualifying individual(s) confirm that no assets were transferred within two years of the date of EDWOSB certification?";
         assertEquals(actual_Text45, expected_Text45);
         // 1st question meaning.
-        String actual_Text46 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text46 = webDriver.findElement(By.xpath("//div[@id='answers_woman_has_not_transferred_assets']/fieldset/p")).getText();
         String expected_Text46 = "Assets that a woman claiming economic disadvantage transferred within two years of the date of the concern's certification will be attributed to the woman claiming economic disadvantage if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
         assertEquals(actual_Text46, expected_Text46);
         webDriver.findElement(By.id("answers_97_value_no")).click();
         // 2nd question.
         String actual_Text47 = webDriver
                 .findElement(By.cssSelector("#answers_woman_asset_transfer_excusable > fieldset > h4")).getText();
-        String expected_Text47 = "If the qualifying individual(s) transferred assets within two years of the date of the certification, can she confirm that the assets were transferred: (1) to or on behalf of an immediate family member for that individual's education, medical expenses, or some other form of essential support; or (2) to an immediate family member in recognition of a special occasion, such as a birthday, graduation, anniversary, or retirement?";
+        String expected_Text47 = "If the qualifying individual(s) transferred assets within two years of the date of the certification, can she confirm that the assets were transferred: (1) to or on behalf of an immediate family member for that individual’s education, medical expenses, or some other form of essential support; or (2) to an immediate family member in recognition of a special occasion, such as a birthday, graduation, anniversary, or retirement?";
         assertEquals(actual_Text47, expected_Text47);
         // 2nd question meaning.
         String actual_Text48 = webDriver
@@ -286,24 +283,28 @@ public class LlcquestionsPage {
         String expected_Text48 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text48, expected_Text48);
         webDriver.findElement(By.id("answers_98_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
         logger.info("EDWOSB application questions have been answered");
         // Validate that user successfully navigated to the Financial Data
         // section.
         String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text49 = "Financial Data";
         assertEquals(actual_Text49, expected_Text49);
-        String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
-        String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
+        String actual_Text52 = webDriver.findElement(By.xpath("//div[@id='answers_owners']/fieldset/p/b")).getText();
+        String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program.";
         assertEquals(actual_Text52, expected_Text52);
         // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
+        webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("answers_99_value_new_button")).click();
+        Thread.sleep(2000);
         // Verify that the section to Create new record is been seen by user and
         // enter record2.
-        String actual_Text51 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-        String expected_Text51 = "Create new record";
-        assertEquals(actual_Text51, expected_Text51);
+        String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
+        String expected_Text511 = "Create new record";
+        assertEquals(actual_Text511, expected_Text511);
         logger.info("the page to Create and Add new Record is Present, PASS");
         webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Denzel");
         webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Washington");
@@ -318,13 +319,15 @@ public class LlcquestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
-        webDriver.findElement(By.cssSelector("button.btn")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//div[3]/button")).click();
+        Thread.sleep(3000);
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
-        webDriver.findElement(By.id("answers_100_value_no")).click();
-        webDriver.findElement(By.id("answers_100_value_no")).click();
+        Actions act4 = new Actions(webDriver);
+        act4.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
     }
 }

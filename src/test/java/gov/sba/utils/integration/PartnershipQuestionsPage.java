@@ -1,21 +1,23 @@
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class ScorpQuestionsPage {
-    private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
+public class PartnershipQuestionsPage {
+    private static final Logger logger = LogManager.getLogger(PartnershipQuestionsPage.class.getName());
     WebDriver webDriver;
 
-    public ScorpQuestionsPage(WebDriver mydriver) {
+    public PartnershipQuestionsPage(WebDriver mydriver) {
         this.webDriver = mydriver;
+
     }
 
-    public void ScorpQuestions() throws Exception {
+    public void Partnershipquestions() throws Exception {
         // String Actual_Text = null;
         // String Expected_Text = null;
         // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -33,7 +35,8 @@ public class ScorpQuestionsPage {
         String expected_Text21 = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
         assertEquals(actual_Text21, expected_Text21);
         webDriver.findElement(By.id("answers_65_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  8(a) question has been answered");
         // Locate the Third Party Certification, question1 and select No and
         // continue.
@@ -45,7 +48,8 @@ public class ScorpQuestionsPage {
         String expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
         assertEquals(actual_Text, expected_Text);
         webDriver.findElement(By.id("answers_66_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Non-qualification question,Verify,select No and continue.
         String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text4 = "Has an SBA-approved Third-Party Certifier declined WOSB or EDWOSB certification for the qualifying individual(s)?";
@@ -55,53 +59,33 @@ public class ScorpQuestionsPage {
         String expected_Text5 = "If yes, please upload the denial letter. Being denied eligibility by one of the SBA-approved certifiers does not necessarily prevent you from qualifying for a self-certification if circumstances have changed. Any business determined not to be qualified may request that SBA review its eligibility once it believes in good faith that it satisfies all of the requirements. Reference: 13 C.F.R. 127.305.";
         assertEquals(actual_Text5, expected_Text5);
         webDriver.findElement(By.id("answers_68_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
-        logger.info("  Third Party questions have been answered");
-        // Locate the Three Business Corporation and S-Corp(Stocks) question
-        // 1,2and2, Verify select N/A and continue.
-        String actual_Text6 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text6 = "Do the corporation’s stock ledger and stock certificates show that the qualifying individual(s) own at least 51% of all outstanding stock?";
-        assertEquals(actual_Text6, expected_Text6);
-        // Verify the more detail meaning for the S-Corp questions.
-        String actual_Text7 = webDriver.findElement(By.xpath("//div[@id='answers_corp1_q1']/fieldset/p[2]")).getText();
-        String expected_Text7 = "If yes, please upload the front and back pages of all stock certificates and ledgers.";
-        assertEquals(actual_Text7, expected_Text7);
-        String actual_Text71 = webDriver.findElement(By.xpath("//div[@id='answers_corp1_q3']/fieldset/p[2]")).getText();
-        String expected_Text71 = "Do not consider unexercised stock options that are held by the qualifying individual(s). If you answered “yes” to this question, please return to the questions above and revise your answers.";
-        assertEquals(actual_Text71, expected_Text71);
-        webDriver.findElement(By.cssSelector("#answers_69_value_no")).click();
-        webDriver.findElement(By.cssSelector("#answers_69_comment")).sendKeys("Testing");
-        webDriver.findElement(By.cssSelector("#answers_70_value_no")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.id("answers_71_value_no")).click();
-        webDriver.findElement(By.id("answers_71_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
-        logger.info("  Business questions have been answered");
-        // Locate the Corporation Ownership question 1,Verify, select No and
-        // continue.
-        String actual_Text8 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text8 = "Does the corporation have any unexercised stock options or similar agreements?";
-        assertEquals(actual_Text8, expected_Text8);
-        // Verify the detail meaning for the Corporation Ownership question.
-        String actual_Text9 = webDriver.findElement(By.cssSelector("p")).getText();
-        String expected_Text9 = "In determining unconditional ownership of the concern, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. 13 CFR 127.201(f).";
-        assertEquals(actual_Text9, expected_Text9);
-        webDriver.findElement(By.id("answers_73_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
-        // Locate the Ownership & Control question, Verify, select No and
-        // continue.
-        Thread.sleep(3000);
-        String actual_Text10 = webDriver.findElement(By.cssSelector("h4")).getText();
-        String expected_Text10 = "Do the Articles of Incorporation and By-laws show that the qualifying individual(s) control the Board of Directors?";
-        assertEquals(actual_Text10, expected_Text10);
-        // Verify the more detail meaning for the Ownership & Control question.
-        String actual_Text111 = webDriver.findElement(By.xpath("//div[@id='answers_corp5_q1']/fieldset/p[2]"))
-                .getText();
-        String expected_Text111 = "If yes, please upload Articles of Incorporation and any amendments; By-laws and any amendments; all stock certificates issued, including the front and back copies signed in accordance with the By-laws (this also applies to all cancelled stock certificates); and the Joint Venture Agreement, if applicable. Women are considered to control the Board of Directors when either: (1) one or more women own at least 51% of all voting stock of the business, are on the Board of Directors and have the percentage of voting stock necessary to overcome any super majority voting requirements; or (2) women comprise the majority of voting directors through actual numbers or, where permitted by state law, through weighted voting. Reference: 13 C.F.R. 127.202(f)";
-        assertEquals(actual_Text111, expected_Text111);
-        webDriver.findElement(By.id("answers_75_value_no")).click();
-        webDriver.findElement(By.xpath(".//*[@id='answers_75_comment']")).sendKeys("Testing");
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        logger.info("  Third Party questions have been answered");
+        Thread.sleep(2000);
+        // validate partnership section.
+        String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
+        String expected_Text49 = "Partnership";
+        assertEquals(actual_Text49, expected_Text49);
+        // Locate the Partnership questions and select No and continue.
+        String actual_Text50 = webDriver.findElement(By.cssSelector("h4")).getText();
+        String expected_Text50 = "Does the partnership agreement show that at least 51% of each class of partnership interest is unconditionally and directly owned by the qualifying individual(s)?";
+        assertEquals(actual_Text50, expected_Text50);
+        // validate detail meaning for the 1st partnership question.
+        String actual_Text51 = webDriver.findElement(By.xpath("//div[@id='answers_partn_q1']/fieldset/p[2]")).getText();
+        String expected_Text51 = "If yes, please upload the Partnership Agreement and any amendments; the Joint Venture Agreement if applicable. Reference: 13 C.F.R. 127.201(d)";
+        assertEquals(actual_Text51, expected_Text51);
+        webDriver.findElement(By.id("answers_76_value_no")).click();
+        webDriver.findElement(By.id("answers_76_comment")).sendKeys(
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        // Locate the Partnership questions 2 and select No and continue.
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("answers_77_value_no")).click();
+        webDriver.findElement(By.id("answers_77_comment")).sendKeys(
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        logger.info("The partnership questions have been answered");
         // Locate the Citizenship & Ownership question 1and2, Verify,select No
         // and continue.
         String actual_Text121 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -125,14 +109,15 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text1311, expected_Text1311);
         webDriver.findElement(By.id("answers_80_value_no")).click();
         webDriver.findElement(By.id("answers_81_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Businesses & Trusts questions,Verify, select No for both
         // and continue.
         String actual_Text14 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text14 = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
         assertEquals(actual_Text14, expected_Text14);
         // Verify the more detail meaning for the Businesses & Trusts questions
-        String actual_Text15 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text15 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text15 = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b).";
         assertEquals(actual_Text15, expected_Text15);
         // 2nd question
@@ -145,7 +130,8 @@ public class ScorpQuestionsPage {
         assertEquals(actual_Text17, expected_Text17);
         webDriver.findElement(By.id("answers_82_value_no")).click();
         webDriver.findElement(By.id("answers_83_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Operations & Management questions, Verify, select No for
         // both and continue.
         // 1st question
@@ -166,7 +152,8 @@ public class ScorpQuestionsPage {
         String expected_Text22 = "The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b).";
         assertEquals(actual_Text22, expected_Text22);
         webDriver.findElement(By.id("answers_85_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Expertise & Employment questions, Verify, select No for
         // both and continue.
         // 1st question.
@@ -187,7 +174,8 @@ public class ScorpQuestionsPage {
         String expected_Text26 = "The woman or economically disadvantaged woman who holds the highest officer position of the concern must manage it on a fulltime basis and devote full-time to the business concern during the normal working hours of business concerns in the same or similar line of business.";
         assertEquals(actual_Text26, expected_Text26);
         webDriver.findElement(By.id("answers_87_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("  Operations questions have been answered");
         // Locate the Highest Officer & Control questions,Verify, select No for
         // both and continue.
@@ -209,7 +197,8 @@ public class ScorpQuestionsPage {
         String expected_Text30 = "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
         assertEquals(actual_Text30, expected_Text30);
         webDriver.findElement(By.id("answers_89_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the SBA Exam & Daily Operations questions,Verify, select No
         // for both and continue.
         // 1st question.
@@ -230,8 +219,10 @@ public class ScorpQuestionsPage {
         String expected_Text34 = "Reference: 13 C.F.R. 127.202(a)";
         assertEquals(actual_Text34, expected_Text34);
         webDriver.findElement(By.id("answers_91_value_no")).click();
-        webDriver.findElement(By.id("answers_91_comment")).sendKeys("Testing");
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.id("answers_91_comment")).sendKeys(
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Net Worth questions,Verify, select No for both and
         // continue.
         // 1st question.
@@ -263,7 +254,8 @@ public class ScorpQuestionsPage {
         String expected_Text381 = "The personal financial condition of the woman claiming economic disadvantage, including her personal net worth, her adjusted gross income for the past three years (including bonuses, and the value of company stock given in lieu of cash), and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged.";
         assertEquals(actual_Text381, expected_Text381);
         webDriver.findElement(By.id("answers_93_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Adjusted Gross Income questions,verify, select No for both
         // and continue.
         // 1st question.
@@ -286,7 +278,8 @@ public class ScorpQuestionsPage {
         String expected_Text42 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text42, expected_Text42);
         webDriver.findElement(By.id("answers_95_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Fair Market Value questions,verify select No and continue.
         String actual_Text43 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text43 = "Is the fair market value of all the assets of the qualifying individual(s) at or less than $6 million?";
@@ -297,7 +290,8 @@ public class ScorpQuestionsPage {
         String expected_Text44 = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4).";
         assertEquals(actual_Text44, expected_Text44);
         webDriver.findElement(By.id("answers_96_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the Assets questions,verify, select and No for both and
         // continue.
         // 1st question.
@@ -305,7 +299,7 @@ public class ScorpQuestionsPage {
         String expected_Text45 = "Can the qualifying individual(s) confirm that no assets were transferred within two years of the date of EDWOSB certification?";
         assertEquals(actual_Text45, expected_Text45);
         // 1st question meaning.
-        String actual_Text46 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text46 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text46 = "Assets that a woman claiming economic disadvantage transferred within two years of the date of the concern's certification will be attributed to the woman claiming economic disadvantage if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
         assertEquals(actual_Text46, expected_Text46);
         webDriver.findElement(By.id("answers_97_value_no")).click();
@@ -320,14 +314,15 @@ public class ScorpQuestionsPage {
         String expected_Text48 = "If this situation does not apply, select N/A.";
         assertEquals(actual_Text48, expected_Text48);
         webDriver.findElement(By.id("answers_98_value_no")).click();
-        webDriver.findElement(By.name("commit")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info("EDWOSB application questions have been answered");
         // Validate that user successfully navigated to the Financial Data
         // section.
-        String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
-        String expected_Text49 = "Financial Data";
-        assertEquals(actual_Text49, expected_Text49);
-        String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text491 = webDriver.findElement(By.cssSelector("h2")).getText();
+        String expected_Text491 = "Financial Data";
+        assertEquals(actual_Text491, expected_Text491);
+        String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
         assertEquals(actual_Text52, expected_Text52);
         // Validate the Personal Information.

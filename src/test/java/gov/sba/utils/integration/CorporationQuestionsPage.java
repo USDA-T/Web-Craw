@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class CorporationQuestionsPage {
     private static final Logger logger = LogManager.getLogger(CorporationQuestionsPage.class.getName());
@@ -332,14 +333,18 @@ public class CorporationQuestionsPage {
         String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
         String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
         assertEquals(actual_Text52, expected_Text52);
-        // Validate the Personal Information.
+     // Validate the Personal Information.
+        webDriver.findElement(By.id("answers_99_value_new_button")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
+        Thread.sleep(2000);
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
         // Verify that the section to Create new record is been seen by user and
         // enter record2.
-        String actual_Text51 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-        String expected_Text51 = "Create new record";
-        assertEquals(actual_Text51, expected_Text51);
+        String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
+        String expected_Text511 = "Create new record";
+        assertEquals(actual_Text511, expected_Text511);
         logger.info("the page to Create and Add new Record is Present, PASS");
         webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Denzel");
         webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Washington");
@@ -354,13 +359,16 @@ public class CorporationQuestionsPage {
         webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
         webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
         webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
-        webDriver.findElement(By.cssSelector("button.btn")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//div[3]/button")).click();
+        Thread.sleep(3000);
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
-        webDriver.findElement(By.id("answers_100_value_no")).click();
-        webDriver.findElement(By.id("answers_100_value_no")).click();
+        Actions act4 = new Actions(webDriver);
+        act4.doubleClick(webDriver.findElement(By.id("answers_100_value_no"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
-        webDriver.findElement(By.name("commit")).click();
+        webDriver.findElement(By.className("usa-button")).click();
     }
 }
+
