@@ -12,12 +12,28 @@ import org.apache.logging.log4j.Logger;
 
 public class DatabaseQuery {
 
+    private static final Logger logger_Dbq = LogManager.getLogger(DatabaseQuery.class.getName());
+
     public static void executeSQLScript(String sql_query) throws Exception {
         // Properties
-        String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+        String url = "";
+        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")){
+            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
+//            logger_Dbq.info("Passed: SbaoneDev");
+        }
+        else{
+            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")){
+                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+//                logger_Dbq.info("Passed: SbaoneQa");
+            }
+            else{
+                throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
+            }
+        }
+
         Properties props = new Properties();
-        props.setProperty("user", "app_etl");
-        props.setProperty("password", "etlpassworddev");
+        props.setProperty("user", "app_ruby");
+        props.setProperty("password", "rubypassword");
         // Connect
         Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
         // query execution
@@ -28,11 +44,26 @@ public class DatabaseQuery {
     }
 
     public static String[][] getDBData(String sql_query, int rows_Needed, int cols_Needed) throws Exception {
+
         // Connect SBAONE QA DB -to get data from DB
+        String url = "";
+        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")) {
+            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
+//            logger_Dbq.info("Passed: SbaoneDev");
+
+        }
+        else{
+            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")) {
+                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+//                logger_Dbq.info("Passed: SbaoneQa");
+            }
+            else {
+                throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
+            }
+        }
+
         final Logger logger = LogManager.getLogger(DatabaseQuery.class.getName());
         try {
-
-            String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
             Properties props = new Properties();
             props.setProperty("user", "app_etl");
             props.setProperty("password", "etlpassworddev");

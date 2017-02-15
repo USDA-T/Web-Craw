@@ -7,13 +7,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestUS1674AnalystReviewPage extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -68,8 +69,8 @@ public class TestUS1674AnalystReviewPage extends TestCase {
                     assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
                 }
 
-                webDriver.findElement(By.id("query")).sendKeys(duns_Number);
-                webDriver.findElement(By.className("usa-search-submit-text")).click();
+                CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
+
                 webDriver.findElement(By.xpath("//a[contains(text(),'Legal Business Name')]")).click();
                 webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"))
                         .click();

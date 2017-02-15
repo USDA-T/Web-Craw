@@ -9,10 +9,11 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp303and304EDWOSB extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;
@@ -42,7 +43,9 @@ public class TestApp303and304EDWOSB extends TestCase {
         login_Data.Login_With_Details();
         Thread.sleep(3000);
 
-        //Create  application Mpp/Edwosb/Wosb/8a
+//Create  application Mpp/EdC:\IdeaProj\SBA_One\src\main\DataFiles\Upload.pdf
+//
+// wosb/Wosb/8a
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";

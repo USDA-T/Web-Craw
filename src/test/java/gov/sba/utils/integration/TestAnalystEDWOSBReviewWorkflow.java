@@ -5,10 +5,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     WebDriver webDriver;
     private static final Logger logger_TestEDWOSBWorkflow = LogManager

@@ -3,9 +3,11 @@ package gov.sba.utils.integration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
+@Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestUS942AddEdwosb extends TestCase {
     // Set The variables/Define

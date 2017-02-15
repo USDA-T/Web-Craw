@@ -13,12 +13,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 //_ Project Helpers
 public class TestUS1463MppReviewSummaryLink2 extends TestCase {
     // Set The variabl.es/Define
@@ -122,7 +123,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             login_Data1.Login_With_Reference();
             Thread.sleep(3000);
 
-            webDriver.findElement(By.xpath("//a[@href='/sba_analyst/cases']")).click();
+            CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'" + duns_Number + "')]")).click();
 

@@ -7,11 +7,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 //@Category(StableTests.class)
 public class TestSearchPage extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());

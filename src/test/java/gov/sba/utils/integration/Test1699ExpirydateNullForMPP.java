@@ -17,12 +17,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class Test1699ExpirydateNullForMPP extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -35,6 +36,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
+
         String[] details = CommonApplicationMethods.return_Good_Duns_no();
         email = details[0];
         password = details[1];
@@ -155,6 +157,6 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+       // webDriver.quit();
     }
 }

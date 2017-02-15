@@ -8,12 +8,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp40AndApp190Wosb extends TestCase {
     private static final Logger TestApp40AndApp190 = LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
     // Set The variables/Define
@@ -84,40 +85,40 @@ public class TestApp40AndApp190Wosb extends TestCase {
             WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
             TestApp40AndApp190.info(a1.getText());
             a1.click();
-        }
 
-        webDriver.findElement(By.xpath("//*[@id='submit_button']")).click();
-        webDriver.findElement(By.xpath("//*[@id='save_notes']")).click();
+            webDriver.findElement(By.xpath("//*[@id='submit_button']")).click();
+            webDriver.findElement(By.xpath("//*[@id='save_notes']")).click();
 
-        if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")
-                || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-            List<WebElement> check_Side_Panels = webDriver
-                    .findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
-                            + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
-            Assert.assertEquals(check_Side_Panels.size(), 0);
+            if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")
+                    || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
+                List<WebElement> check_Side_Panels = webDriver
+                        .findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
+                                + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
+                Assert.assertEquals(check_Side_Panels.size(), 0);
 
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            webDriver.findElement(
-                    By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            webDriver.findElement(
-                    By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                webDriver.findElement(
+                        By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                webDriver.findElement(
+                        By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
-        }
-        if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
-            List<WebElement> check_Side_Panels = webDriver
-                    .findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
-                            + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
+            }
+            if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
+                List<WebElement> check_Side_Panels = webDriver
+                        .findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
+                                + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
 
-            Assert.assertTrue(check_Side_Panels.size() > 0);
+                Assert.assertTrue(check_Side_Panels.size() > 0);
 
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            webDriver.findElement(
-                    By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            webDriver.findElement(
-                    By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                webDriver.findElement(
+                        By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+                webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+                webDriver.findElement(
+                        By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
+            }
         }
 
     }

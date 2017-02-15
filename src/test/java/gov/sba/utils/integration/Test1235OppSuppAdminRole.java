@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
+@Category({gov.sba.utils.integration.StableTests.class})
 public class Test1235OppSuppAdminRole extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -44,9 +46,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
 
         try {
             // Opp Supp Staft search vendor records.
-            WebElement Search_Textbox = webDriver.findElement(By.xpath("//input[@id='query']"));
-            Search_Textbox.sendKeys("159165917");
-            Search_Textbox.sendKeys(Keys.ENTER);
+            CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
             // Click on the Business Name - opp Supp Staft can access
             // Draft,Completed Application
 

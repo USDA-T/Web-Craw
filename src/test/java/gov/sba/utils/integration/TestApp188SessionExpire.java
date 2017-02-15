@@ -5,12 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp188SessionExpire extends TestCase {
     // Set The variabl.es/Define
     WebDriver webDriver;
@@ -41,11 +42,7 @@ public class TestApp188SessionExpire extends TestCase {
                     "Government User");
             assertEquals(webDriver.findElement(By.xpath("//li[input[@id='user_type_vendor_user']]/label")).getText(),
                     "Vendor User");
-            webDriver.findElement(By.xpath("//div[@role='search']/input[@id='query']")).sendKeys("111");
-            webDriver
-                    .findElement(By
-                            .xpath("//*[@id='analyst-search']//button[@type='submit']/span[contains(text(),'Search')]"))
-                    .click();
+            CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
             TestApp188SessionExpire.info(webDriver.manage().getCookies());
             for (Cookie ck : webDriver.manage().getCookies()) {
@@ -65,11 +62,7 @@ public class TestApp188SessionExpire extends TestCase {
             login_Data.Login_With_Reference();
             Thread.sleep(2000);
 
-            webDriver.findElement(By.xpath("//div[@role='search']/input[@id='query']")).sendKeys("111");
-            webDriver
-                    .findElement(By
-                            .xpath("//*[@id='analyst-search']//button[@type='submit']/span[contains(text(),'Search')]"))
-                    .click();
+            CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
             TestApp188SessionExpire.info(webDriver.manage().getCookies());
             for (Cookie ck : webDriver.manage().getCookies()) {

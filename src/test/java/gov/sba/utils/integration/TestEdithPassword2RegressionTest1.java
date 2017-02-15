@@ -5,11 +5,12 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestEdithPassword2RegressionTest1 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestEdithPassword2RegressionTest1.class.getName());
     private static WebDriver webDriver;

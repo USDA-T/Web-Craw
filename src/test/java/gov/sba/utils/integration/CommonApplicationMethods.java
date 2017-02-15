@@ -14,6 +14,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
+import org.junit.experimental.theories.Theories;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -70,8 +71,7 @@ public class CommonApplicationMethods {
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
 
-        webDriver.findElement(By.xpath("//*[@id='query']")).sendKeys(duns_Number);
-        webDriver.findElement(By.xpath("//button[@type='submit']/span[contains(text(),'earch')]")).click();
+        searchDuns_Number(webDriver, duns_Number);
         webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
         String paS = webDriver.getPageSource().toLowerCase();
         WebElement current_Row_Check_01;
@@ -174,22 +174,6 @@ public class CommonApplicationMethods {
             rt.exec("Taskkill /IM chrome.exe /F");
             Thread.sleep(2000);
         }
-
-        // File file_01 = new
-        // File("C:\\KillChromeLocalDesktop\\KillChrome.bat");
-        // if (file_01.exists()) {
-        // try {
-        // String[] command = {"cmd", "/C", "Start",
-        // "C:\\KillChromeLocalDesktop\\KillChrome.bat"};
-        // Process p = Runtime.getRuntime().exec(command);
-        // p.wait();
-        // p.destroy();
-        // Thread.sleep(2000);
-        // } catch (Exception ex) {
-        // Thread.sleep(2000);
-        // }
-        //
-        // }
     }
 
     public static void deleteApplication(WebDriver webDriver, String type_Of_App, String status_Of_App)
@@ -323,9 +307,7 @@ public class CommonApplicationMethods {
         CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, which_Loginto_ReturnApp);
         login_Data.Login_With_Reference();
-        webDriver.findElement(By.id("query")).sendKeys(duns_Number);
-        webDriver.findElement(By.xpath("//*[@id='analyst-search']/div/button[ span[contains(text(),'Search')] ]"))
-                .click();
+        searchDuns_Number(webDriver, duns_Number);
         webDriver
                 .findElement(By
                         .xpath("//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
@@ -496,12 +478,21 @@ public class CommonApplicationMethods {
         webDriver.findElement(By.className("accept_button")).click();
     }
 
+    public static void searchDuns_Number(WebDriver webDriver, String search_Text) throws Exception {
+        webDriver.findElement(By.id("searchtext")).click();
+        Thread.sleep(500);
+        webDriver.findElement(By.id("query")).sendKeys(search_Text);
+        Thread.sleep(500);
+        webDriver.findElement(By.xpath("//div[@role='search']/button[@type='submit']/span")).click();
+        Thread.sleep(500);
+    }
+
     public static void navigationMenuClick(WebDriver webDriver, String which_Button) throws Exception {
-        String part_01 = "//nav[@role='navigation']/ul[@id='js-navigation-menu']/li/a[contains(text(),'";
+        String part_01 = "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'";
         String part_03 = "')]";
         switch (which_Button.toUpperCase()) {
         case "LOGOUT":
-            webDriver.findElement(By.xpath(part_01 + "Logout" + part_03)).click();
+            webDriver.findElement(By.xpath("//a[ contains(@class, 'ogout' ) and contains(text(), 'ogout') ]")).click();
             break;
         case "HELP":
             webDriver.findElement(By.xpath(part_01 + "Help" + part_03)).click();

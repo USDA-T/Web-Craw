@@ -8,12 +8,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp40AndApp190EDWosb extends TestCase {
     private static final Logger TestApp40AndApp190 = LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
     // Set The variables/Define
