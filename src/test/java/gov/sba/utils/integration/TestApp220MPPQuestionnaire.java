@@ -1,6 +1,7 @@
 package gov.sba.utils.integration;
 
-import junit.framework.TestCase;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,8 +11,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import java.util.List;
+
+import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp220MPPQuestionnaire extends TestCase {
