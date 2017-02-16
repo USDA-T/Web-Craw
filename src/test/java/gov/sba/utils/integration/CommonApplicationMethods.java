@@ -251,6 +251,7 @@ public class CommonApplicationMethods {
                     String[] details = strLine.split(",");
                     String sql_Q_01 = "select count(*) from sbaone.certificates where organization_id in (select id from sbaone.organizations where duns_number = '"
                             + details[2] + "')";
+
                     DatabaseQuery dbcall = new DatabaseQuery();
                     String[][] returned_Count_01 = dbcall.getDBData(sql_Q_01, 1, 1);
 
@@ -264,7 +265,7 @@ public class CommonApplicationMethods {
                     // commonApplicationMethodsLogs.info(details[2]);
 
                     int counter = Integer.parseInt(returned_Count_01[0][0].toString())
-                            + Integer.parseInt(returned_Count_02[0][0].toString());
+                           + Integer.parseInt(returned_Count_02[0][0].toString());
                     if (counter <= 0) { // commonApplicationMethodsLogs.info(sql_Q_01);
                                         // //commonApplicationMethodsLogs.info(sql_Q_02);
                         commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details));
@@ -482,8 +483,8 @@ public class CommonApplicationMethods {
         webDriver.findElement(By.id("searchtext")).click();
         Thread.sleep(500);
         webDriver.findElement(By.id("query")).sendKeys(search_Text);
-        Thread.sleep(500);
-        webDriver.findElement(By.xpath("//div[@role='search']/button[@type='submit']/span")).click();
+        Thread.sleep(1000);
+        webDriver.findElement(By.xpath("//div[@role='search']/button[@type='submit']")).click();
         Thread.sleep(500);
     }
 
