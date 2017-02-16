@@ -46,7 +46,7 @@ public class TestUswdsEdwosbScorpTest extends TestCase {
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
-        //Submit and Return the submitted certification back to vendor.
+        // Submit and Return the submitted certification back to vendor.
         ScorpReturnCertPage scorpReturnCert = new ScorpReturnCertPage(webDriver);
         scorpReturnCert.ScorpReturnCert();
         logger.info("Success");

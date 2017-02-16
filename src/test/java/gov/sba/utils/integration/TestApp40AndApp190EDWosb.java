@@ -14,7 +14,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp40AndApp190EDWosb extends TestCase {
     private static final Logger TestApp40AndApp190 = LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
     // Set The variables/Define

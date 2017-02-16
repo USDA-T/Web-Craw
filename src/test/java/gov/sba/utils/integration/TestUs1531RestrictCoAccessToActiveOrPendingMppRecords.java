@@ -11,7 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.UnstableTests.class})
+
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -243,7 +244,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             screenShot11.ScreenShot();
             Thread.sleep(3000);
             webDriver.findElement(By.linkText("Logout")).click();
-            //Login as MPP-analyst and return MPP back to vendor.
+            // Login as MPP-analyst and return MPP back to vendor.
             get_The_Row_From_Login_Data = 29;
             LoginPageWithReference login_Data6 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data6.Login_With_Reference();
@@ -255,7 +256,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             webDriver.findElement(By.linkText("Return to Vendor")).click();
             webDriver.switchTo().alert().accept();
             webDriver.findElement(By.linkText("Logout")).click();
-           //Login as WOSB-analyst and return WOSB program back to vendor.
+            // Login as WOSB-analyst and return WOSB program back to vendor.
             get_The_Row_From_Login_Data = 0;
             LoginPageWithReference login_Data7 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data7.Login_With_Reference();
@@ -270,7 +271,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             get_The_Row_From_Login_Data = 3;
             LoginPageWithReference login_Data8 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data8.Login_With_Reference();
-            //delete one start application.
+            // delete one start application.
             DeleteDraftCertPage deleteDraftCert3 = new DeleteDraftCertPage(webDriver);
             deleteDraftCert3.DeleteDraftCert();
             webDriver.findElement(By.linkText("Logout")).click();

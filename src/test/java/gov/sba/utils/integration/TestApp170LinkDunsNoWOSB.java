@@ -13,7 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp170LinkDunsNoWOSB extends TestCase {
     // Set The variabl.es/Define
     WebDriver webDriver;

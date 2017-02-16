@@ -11,7 +11,8 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp188SessionExpire extends TestCase {
     // Set The variabl.es/Define
     WebDriver webDriver;

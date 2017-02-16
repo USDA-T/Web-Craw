@@ -87,7 +87,7 @@ public class TestHelpers {
 
         // NOTE: additional settings to make the driver more robust
         driver.manage().deleteAllCookies();
-//        driver.manage().window().maximize();
+        // driver.manage().window().maximize();
         driver.switchTo().window(currentWindowHandle);
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(60, TimeUnit.SECONDS);

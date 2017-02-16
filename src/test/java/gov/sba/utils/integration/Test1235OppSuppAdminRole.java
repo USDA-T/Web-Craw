@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class Test1235OppSuppAdminRole extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;

@@ -1,6 +1,5 @@
 package gov.sba.utils.integration;
 
-
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp303and304EDWOSB extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;
@@ -34,7 +34,8 @@ public class TestApp303and304EDWOSB extends TestCase {
 
     @Test
     public void testMainTest() throws Exception {
-        //Before testing - verify the  prepopulate flag - false  -Should not prepoluate the answers
+        // Before testing - verify the prepopulate flag - false -Should not
+        // prepoluate the answers
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
         DatabaseQuery dbcall = new DatabaseQuery();
         dbcall.executeSQLScript(sql_Q_01);
@@ -43,9 +44,10 @@ public class TestApp303and304EDWOSB extends TestCase {
         login_Data.Login_With_Details();
         Thread.sleep(3000);
 
-//Create  application Mpp/EdC:\IdeaProj\SBA_One\src\main\DataFiles\Upload.pdf
-//
-// wosb/Wosb/8a
+        // Create application
+        // Mpp/EdC:\IdeaProj\SBA_One\src\main\DataFiles\Upload.pdf
+        //
+        // wosb/Wosb/8a
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
@@ -53,25 +55,26 @@ public class TestApp303and304EDWOSB extends TestCase {
         fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
         fillApplCreatePages.finalSignatureSubmit(webDriver);
 
-        CommonApplicationMethods.navigationMenuClick(webDriver,"LOGOUT");
+        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
-        CommonApplicationMethods.return_all_Applications(webDriver,11,duns_Number);
+        CommonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
         webDriver.navigate().back();
         webDriver.navigate().back();
         Thread.sleep(1500);
-        CommonApplicationMethods.navigationMenuClick(webDriver,"LOGOUT");
+        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
         CommonApplicationMethods.delete_all_Drafts(webDriver);
 
-        //Verify the Answers are not prefilling from the previous answers when the prepulate falg = 'false';
+        // Verify the Answers are not prefilling from the previous answers when
+        // the prepulate falg = 'false';
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
-        String  checkBoxElement = webDriver.findElement(By.id("answers_65_value_yes")).getAttribute("outerHTML");
+        String checkBoxElement = webDriver.findElement(By.id("answers_65_value_yes")).getAttribute("outerHTML");
         assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
-        //Update the - Prepopulate flag- True ---should Prepopluate the answers
+        // Update the - Prepopulate flag- True ---should Prepopluate the answers
         sql_Q_01 = "update sbaone.questions set  prepopulate = true where name in ('8aq1')";
         dbcall.executeSQLScript(sql_Q_01);
 
@@ -86,14 +89,13 @@ public class TestApp303and304EDWOSB extends TestCase {
         dbcall = new DatabaseQuery();
         dbcall.executeSQLScript(sql_Q_01);
 
-
-
     }
+
     @After
-    public void tearDown () throws Exception {
+    public void tearDown() throws Exception {
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
         DatabaseQuery dbcall = new DatabaseQuery();
         dbcall.executeSQLScript(sql_Q_01);
-            webDriver.quit();
+        webDriver.quit();
     }
 }

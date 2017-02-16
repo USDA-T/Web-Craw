@@ -7,8 +7,9 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
-//_ Project Helpers
+
+@Category({ gov.sba.utils.integration.StableTests.class })
+// _ Project Helpers
 public class TestUS942AddWosb extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;

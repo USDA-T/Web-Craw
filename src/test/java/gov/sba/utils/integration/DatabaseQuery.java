@@ -17,16 +17,14 @@ public class DatabaseQuery {
     public static void executeSQLScript(String sql_query) throws Exception {
         // Properties
         String url = "";
-        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")){
+        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")) {
             url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-//            logger_Dbq.info("Passed: SbaoneDev");
-        }
-        else{
-            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")){
+            // logger_Dbq.info("Passed: SbaoneDev");
+        } else {
+            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")) {
                 url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
-//                logger_Dbq.info("Passed: SbaoneQa");
-            }
-            else{
+                // logger_Dbq.info("Passed: SbaoneQa");
+            } else {
                 throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
             }
         }
@@ -49,15 +47,13 @@ public class DatabaseQuery {
         String url = "";
         if (TestHelpers.getBaseUrl().toString().contains("elb.maint")) {
             url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-//            logger_Dbq.info("Passed: SbaoneDev");
+            // logger_Dbq.info("Passed: SbaoneDev");
 
-        }
-        else{
+        } else {
             if (TestHelpers.getBaseUrl().toString().contains("certify.qa")) {
                 url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
-//                logger_Dbq.info("Passed: SbaoneQa");
-            }
-            else {
+                // logger_Dbq.info("Passed: SbaoneQa");
+            } else {
                 throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
             }
         }

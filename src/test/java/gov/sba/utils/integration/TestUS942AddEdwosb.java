@@ -7,7 +7,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 
 public class TestUS942AddEdwosb extends TestCase {
     // Set The variables/Define

@@ -46,7 +46,7 @@ public class TestUswdsEdwosbUswdsCorporation extends TestCase {
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
-        //Submit and Return the submitted certification back to vendor.
+        // Submit and Return the submitted certification back to vendor.
         CorporationReturnCertPage corporationReturnCert = new CorporationReturnCertPage(webDriver);
         corporationReturnCert.CorporationReturnCert();
         logger.info("Success");

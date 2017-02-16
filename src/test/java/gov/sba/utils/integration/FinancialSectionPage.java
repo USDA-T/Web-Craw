@@ -12,7 +12,6 @@ public class FinancialSectionPage {
     private WebDriver webDriver;
     int get_The_Row_From_Login_Data;
 
-
     public FinancialSectionPage(WebDriver mydriver) {
         this.webDriver = mydriver;
     }
@@ -191,7 +190,8 @@ public class FinancialSectionPage {
         Thread.sleep(3000);
         // Select yes for question; 'Are any leans delinquent?'.
         webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
-        webDriver.findElement(By.id("answers_53_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        webDriver.findElement(By.id("answers_53_comment")).sendKeys(
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(3000);
         // Select yes for question; 'Do you own any other personal property
         // or assets?'.
@@ -233,7 +233,8 @@ public class FinancialSectionPage {
         Thread.sleep(3000);
         // Select yes for question; 'Are any leans delinquent?'.
         webDriver.findElement(By.xpath(".//*[@id='answers[56][value]']/label[1]")).click();
-        webDriver.findElement(By.id("answers_56_comment")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+        webDriver.findElement(By.id("answers_56_comment")).sendKeys(
+                "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(3000);
         // Locate the continue button and click on it.
         webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
@@ -367,8 +368,9 @@ public class FinancialSectionPage {
         // Verify that the accept button is present..
         String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
         String expected_Text5 = "Accept";
-        assertEquals(actual_Text5, expected_Text5);  
+        assertEquals(actual_Text5, expected_Text5);
     }
+
     private void assertEquals(String actual_Text1, String expected_Text1) {
         // TODO Auto-generated method stub
     }

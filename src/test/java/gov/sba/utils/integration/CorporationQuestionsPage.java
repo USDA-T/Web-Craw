@@ -333,7 +333,7 @@ public class CorporationQuestionsPage {
         String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
         String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
         assertEquals(actual_Text52, expected_Text52);
-     // Validate the Personal Information.
+        // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
@@ -371,4 +371,3 @@ public class CorporationQuestionsPage {
         webDriver.findElement(By.className("usa-button")).click();
     }
 }
-

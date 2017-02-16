@@ -45,7 +45,7 @@ public class TestUswdsEdwosbUswdsSoleProprietor extends TestCase {
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
-      //Submit and Return the submitted certification back to vendor.
+        // Submit and Return the submitted certification back to vendor.
         SoleProprietorReturnCertPage soleProprietorReturnCert = new SoleProprietorReturnCertPage(webDriver);
         soleProprietorReturnCert.SoleProprietorReturnCert();
         logger.info("Success");

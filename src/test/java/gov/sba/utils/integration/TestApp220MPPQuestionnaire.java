@@ -1,4 +1,5 @@
 package gov.sba.utils.integration;
+
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp220MPPQuestionnaire extends TestCase {
     // Set The variabl.es/Define
     WebDriver webDriver;
@@ -41,14 +42,18 @@ public class TestApp220MPPQuestionnaire extends TestCase {
             login_Data.Login_With_Details();
 
             CommonApplicationMethods.createApplication(webDriver, "MPP");
-            webDriver.findElement(By.xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]")).click();
+            webDriver
+                    .findElement(By
+                            .xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
+                    .click();
 
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             TestApp220MPPQuestionnaire.info(file_path_abs);
             fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
 
-            WebElement Business_text = webDriver.findElement(By.xpath("//article/h2[contains(text(),'Business Info')]"));
+            WebElement Business_text = webDriver
+                    .findElement(By.xpath("//article/h2[contains(text(),'Business Info')]"));
 
             List<WebElement> duns_No = webDriver
                     .findElements(By.xpath("//input[@type='number' and contains(@id,'duns-value')]"));
@@ -76,6 +81,6 @@ public class TestApp220MPPQuestionnaire extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        //webDriver.quit();
+        // webDriver.quit();
     }
 }

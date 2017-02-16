@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestMppBuildQuestionnaireTs3 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs3.class.getName());
     private static WebDriver webDriver;

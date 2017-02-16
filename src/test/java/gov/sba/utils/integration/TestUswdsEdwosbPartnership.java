@@ -45,7 +45,7 @@ public class TestUswdsEdwosbPartnership extends TestCase {
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
-        //Submit and Return the submitted certification back to vendor.
+        // Submit and Return the submitted certification back to vendor.
         PartnershipReturnCertPage partnershipReturnCert = new PartnershipReturnCertPage(webDriver);
         partnershipReturnCert.PartnershipReturnCert();
         logger.info("Success");

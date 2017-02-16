@@ -11,7 +11,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.UnstableTests.class})
+
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
     private static final Logger logger_37OpsSpStfCh = LogManager
             .getLogger(TestApp37OpsSupportStaffChangeBusinessType.class.getName());

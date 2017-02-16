@@ -23,7 +23,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class Test1699ExpirydateNullForMPP extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -157,6 +158,6 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-       // webDriver.quit();
+        // webDriver.quit();
     }
 }

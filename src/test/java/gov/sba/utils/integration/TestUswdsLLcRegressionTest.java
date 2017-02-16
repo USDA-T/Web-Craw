@@ -14,7 +14,7 @@ public class TestUswdsLLcRegressionTest extends TestCase {
     int get_The_Row_From_Login_Data;
 
     @Before
-    public void setUp()throws Exception {
+    public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
@@ -22,7 +22,7 @@ public class TestUswdsLLcRegressionTest extends TestCase {
     }
 
     @Test
-    public void testMainTest()throws Exception {
+    public void testMainTest() throws Exception {
         logger.info("Test EDWOSB llc Flow");
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
@@ -38,20 +38,20 @@ public class TestUswdsLLcRegressionTest extends TestCase {
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
-        //LLc test questions section.
+        // LLc test questions section.
         LlcquestionsPage llcquestions = new LlcquestionsPage(webDriver);
         llcquestions.Llcquestions();
-        //Financial section.
+        // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
-        //Submit and Return the submitted certification back to vendor.
+        // Submit and Return the submitted certification back to vendor.
         LLcReturnCertPage lLcReturnCert = new LLcReturnCertPage(webDriver);
         lLcReturnCert.LLcReturnCert();
         logger.info("Success");
     }
 
     @After
-    public void tearDown()throws Exception {
+    public void tearDown() throws Exception {
         webDriver.quit();
     }
 }

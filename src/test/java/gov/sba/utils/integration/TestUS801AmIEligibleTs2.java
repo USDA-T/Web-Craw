@@ -10,7 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.UnstableTests.class})
+
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestUS801AmIEligibleTs2 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestUS801AmIEligibleTs2.class.getName());
     private static WebDriver webDriver;

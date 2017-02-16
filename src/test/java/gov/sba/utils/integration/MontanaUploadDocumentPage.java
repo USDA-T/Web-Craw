@@ -18,4 +18,3 @@ public class MontanaUploadDocumentPage {
         fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
     }
 }
-

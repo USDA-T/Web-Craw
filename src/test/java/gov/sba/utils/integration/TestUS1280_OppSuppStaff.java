@@ -9,7 +9,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestUS1280_OppSuppStaff extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;

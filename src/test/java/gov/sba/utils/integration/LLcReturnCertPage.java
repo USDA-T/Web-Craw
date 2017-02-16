@@ -8,26 +8,25 @@ import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
-	public class LLcReturnCertPage extends TestCase {
+public class LLcReturnCertPage extends TestCase {
     private static final Logger logger = LogManager.getLogger(LLcReturnCertPage.class.getName());
     WebDriver webDriver;
     int get_The_Row_From_Login_Data;
-
 
     public LLcReturnCertPage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
-    public void LLcReturnCert()throws Exception {
-    	String Actual_Text;
+    public void LLcReturnCert() throws Exception {
+        String Actual_Text;
         String Expected_Text;
         logger.debug("Returning submited certification back to vendor");
-        //Verify first paragraph
+        // Verify first paragraph
         logger.info("  Verify first paragraph");
         Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
         Expected_Text = "All required documents verifying eligibility for the Woman-Owned Small Business (WOSB) or Economically Disadvantaged Woman-Owned Small Business (EDWOSB) requirements have been submitted to the WOSB Program Repository, including any supplemental documents if there have been changes since the last representation.";
         assertEquals(Actual_Text, Expected_Text);
-        //Verify first paragraph
+        // Verify first paragraph
         logger.info("  Verify first paragraph");
         Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
         Expected_Text = "All required documents verifying eligibility for the Woman-Owned Small Business (WOSB) or Economically Disadvantaged Woman-Owned Small Business (EDWOSB) requirements have been submitted to the WOSB Program Repository, including any supplemental documents if there have been changes since the last representation.";
@@ -78,12 +77,12 @@ import junit.framework.TestCase;
         webDriver.findElement(By.id("legal_5")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("accept-button")).click();
-        //Click on the dashboard button.
+        // Click on the dashboard button.
         Thread.sleep(2000);
         webDriver.findElement(By.linkText("Dashboard")).click();
         WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
         HighLight.highLightElement(webDriver, ActiveCert);
-        //Login as WOSB-analyst and return WOSB program back to vendor.
+        // Login as WOSB-analyst and return WOSB program back to vendor.
         Thread.sleep(2000);
         webDriver.findElement(By.linkText("Logout")).click();
         get_The_Row_From_Login_Data = 0;
@@ -95,19 +94,19 @@ import junit.framework.TestCase;
         webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
         Thread.sleep(2000);
         if (webDriver.getPageSource().contains("Return to Vendor")) {
-    	webDriver.findElement(By.linkText("Return to Vendor")).click();
-        webDriver.switchTo().alert().accept();
-        webDriver.findElement(By.linkText("Logout")).click();
+            webDriver.findElement(By.linkText("Return to Vendor")).click();
+            webDriver.switchTo().alert().accept();
+            webDriver.findElement(By.linkText("Logout")).click();
         } else {
-    	logger.info("Return to Vendor Link is missing please verify why.");
-    	webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
-        webDriver.findElement(By.id("submit_button")).click();
-        webDriver.findElement(By.linkText("Determination")).click();
-        webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-        webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
-        webDriver.findElement(By.linkText("Vendor Overview")).click();
-        webDriver.findElement(By.linkText("Logout")).click();
+            logger.info("Return to Vendor Link is missing please verify why.");
+            webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+            Thread.sleep(3000);
+            webDriver.findElement(By.id("submit_button")).click();
+            webDriver.findElement(By.linkText("Determination")).click();
+            webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+            webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+            webDriver.findElement(By.linkText("Vendor Overview")).click();
+            webDriver.findElement(By.linkText("Logout")).click();
         }
-        }
-		}
+    }
+}

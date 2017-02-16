@@ -265,7 +265,7 @@ public class CommonApplicationMethods {
                     // commonApplicationMethodsLogs.info(details[2]);
 
                     int counter = Integer.parseInt(returned_Count_01[0][0].toString())
-                           + Integer.parseInt(returned_Count_02[0][0].toString());
+                            + Integer.parseInt(returned_Count_02[0][0].toString());
                     if (counter <= 0) { // commonApplicationMethodsLogs.info(sql_Q_01);
                                         // //commonApplicationMethodsLogs.info(sql_Q_02);
                         commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details));

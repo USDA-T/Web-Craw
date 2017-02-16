@@ -14,7 +14,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestUs1674EDWOSBAnalystReview extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;

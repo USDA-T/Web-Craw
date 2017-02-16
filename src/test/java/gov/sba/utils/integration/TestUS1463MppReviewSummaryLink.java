@@ -13,7 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
-@Category({gov.sba.utils.integration.StableTests.class})
+
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestUS1463MppReviewSummaryLink extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
