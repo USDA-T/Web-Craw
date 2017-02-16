@@ -18,7 +18,7 @@ public class newMppUploadDocumentPage {
         this.webDriver = webDriver;
     }
 
-    public void deepaUploadMppDocument(String upload_Path) throws Exception {
+public void deepaUploadMppDocument(String upload_Path) throws Exception {
         logger.info("Uploading a new document");
         for (int i = 0; i < 21; i++) {
 
@@ -64,7 +64,6 @@ public class newMppUploadDocumentPage {
         robot.keyRelease(KeyEvent.VK_ALT);
         robot.keyRelease(KeyEvent.VK_TAB);
         Thread.sleep(700);
-
         robot.keyPress(KeyEvent.VK_ALT);
         robot.keyPress(KeyEvent.VK_TAB);
         Thread.sleep(700);
@@ -86,17 +85,17 @@ public class newMppUploadDocumentPage {
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(700);
+        Thread.sleep(7000);
         logger.info("Uploading a new document - Clicked on Tab2");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(700);
+        Thread.sleep(7000);
         logger.info("Uploading a new document - Clicked on Tab3");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(700);
+        Thread.sleep(7000);
 
         logger.info("Uploading a new document - Clicked on Tab4");
         robot.keyPress(KeyEvent.VK_CONTROL);

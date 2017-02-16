@@ -162,11 +162,11 @@ public class fillApplCreatePages {
                     } catch (Exception ex) {
                         logger.info("No alerts available");
                     }
-                }
+        }
 
                 Thread.sleep(2000);
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 webDriver.findElement(By.className("review")).click();
                 logger.info("Doc has been uploaded and accepted");
 

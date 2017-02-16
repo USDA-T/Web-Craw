@@ -45,7 +45,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
 
         try {
             // Opp Supp Staft search vendor records.
-            CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
+            CommonApplicationMethods.searchDuns_Number(webDriver, "159165917");
             // Click on the Business Name - opp Supp Staft can access
             // Draft,Completed Application
 
