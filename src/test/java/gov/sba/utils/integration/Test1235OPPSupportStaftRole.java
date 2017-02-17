@@ -102,8 +102,7 @@ public class Test1235OPPSupportStaftRole extends TestCase {
             Assert.assertEquals(element_Found, true);
         } catch (Exception e) {
             logger_US1235.info("Search TextBox is on Main Navigator is not present" + e.toString());
-            // logger_US1081.info("test failed as return_vendor link dididnot
-            // work");
+            throw e;
         }
     }
 

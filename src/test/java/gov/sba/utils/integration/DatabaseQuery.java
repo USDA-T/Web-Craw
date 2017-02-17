@@ -1,5 +1,6 @@
 package gov.sba.utils.integration;
 
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 
+import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -45,13 +47,28 @@ public class DatabaseQuery {
 
         // Connect SBAONE QA DB -to get data from DB
         String url = "";
-        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")) {
+        String url_Check ="";
+
+        String file_path_abs = FixtureUtils.fixturesDir_Duns() + "default.properties";
+        Scanner in = new Scanner(new FileReader(file_path_abs));
+        while(in.hasNextLine()){
+            String nline = in.nextLine();
+            if (nline.indexOf("base_url_qa") == 0)
+            {
+                url_Check= nline.split("base_url_qa=")[1].trim();
+                break;
+            }
+        }
+
+        if (url_Check.contains("elb.maint")) {
             url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-            // logger_Dbq.info("Passed: SbaoneDev");
+            logger_Dbq.info(url);
+             //logger_Dbq.info("Passed: SbaoneDev");
 
         } else {
-            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")) {
+            if (url_Check.contains("certify.qa")) {
                 url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+                logger_Dbq.info(url);
                 // logger_Dbq.info("Passed: SbaoneQa");
             } else {
                 throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));

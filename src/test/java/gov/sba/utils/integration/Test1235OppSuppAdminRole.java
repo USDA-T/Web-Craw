@@ -44,6 +44,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
         // criteria on Opp Support Staft/Admin page
 
         try {
+            duns_Number = "159165917";
             // Opp Supp Staft search vendor records.
             CommonApplicationMethods.searchDuns_Number(webDriver, "159165917");
             // Click on the Business Name - opp Supp Staft can access

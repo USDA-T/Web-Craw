@@ -6,11 +6,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
+import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -240,7 +242,31 @@ public class CommonApplicationMethods {
         String[] duns_Number = new String[] { "" };
         try {
 
-            String file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List.csv";
+            String url_Check = "";
+            String url = "";
+            String file_path_abs = "";
+            String file_path = FixtureUtils.fixturesDir_Duns() + "default.properties";
+            Scanner in = new Scanner(new FileReader(file_path));
+            while(in.hasNextLine()){
+                String nline = in.nextLine();
+                if (nline.indexOf("base_url_qa") == 0)
+                {
+                    url_Check= nline.split("base_url_qa=")[1].trim();
+                    break;
+                }
+            }
+            if (url_Check.contains("elb.maint")) {
+                file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List_Elb.csv";
+
+            } else {
+                if (url_Check.contains("certify.qa")) {
+                    file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List_QA.csv";
+                } else {
+                    throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
+                }
+            }
+
+
             FileInputStream fstream = new FileInputStream(file_path_abs);
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
             String strLine;
