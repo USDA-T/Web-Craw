@@ -271,10 +271,22 @@ public class AnalystReviewPage extends TestCase {
                 webDriver.findElement(By.xpath("//input[contains(@value,'Save and commit')]")).click();
 
                 webDriver.navigate().back();
+                Thread.sleep(1000);
                 webDriver.navigate().back();
+                Thread.sleep(1000);
                 webDriver.navigate().back();
+                Thread.sleep(2000);
 
-                CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+                int cntr;
+                for(cntr = 0;cntr<3;cntr++){
+                    try{
+                        CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+                    }catch (Exception e){ // Go back and try to logout so logout button will be active
+                        webDriver.navigate().back();
+                        Thread.sleep(500);
+                    }
+                }
+
                 LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
                 login_Data.Login_With_Reference();
                 Thread.sleep(2000);

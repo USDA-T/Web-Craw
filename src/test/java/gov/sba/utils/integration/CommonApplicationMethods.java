@@ -284,16 +284,11 @@ public class CommonApplicationMethods {
                             + details[2] + "')";
                     DatabaseQuery dbcall_02 = new DatabaseQuery();
                     String[][] returned_Count_02 = dbcall_02.getDBData(sql_Q_02, 1, 1);
-                    // commonApplicationMethodsLogs.info(returned_Count[0][0].toString());
-                    // commonApplicationMethodsLogs.info(details[0]);
-                    // commonApplicationMethodsLogs.info(details[1]);
-                    // commonApplicationMethodsLogs.info(details[2]);
 
                     int counter = Integer.parseInt(returned_Count_01[0][0].toString())
                             + Integer.parseInt(returned_Count_02[0][0].toString());
-                    if (counter <= 0) { // commonApplicationMethodsLogs.info(sql_Q_01);
-                                        // //commonApplicationMethodsLogs.info(sql_Q_02);
-                        commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details));
+                    if (counter <= 0) { 
+                        commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details) + ":Url:- " + url_Check);
                         return details;
                     }
                 }

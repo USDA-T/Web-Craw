@@ -61,15 +61,11 @@ public class DatabaseQuery {
         }
 
         if (url_Check.contains("elb.maint")) {
-            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-            logger_Dbq.info(url);
-             //logger_Dbq.info("Passed: SbaoneDev");
+            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";//logger_Dbq.info(url);
 
         } else {
             if (url_Check.contains("certify.qa")) {
-                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
-                logger_Dbq.info(url);
-                // logger_Dbq.info("Passed: SbaoneQa");
+                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa"; // logger_Dbq.info(url);
             } else {
                 throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
             }
