@@ -352,7 +352,6 @@ e.g. Avoid writing something like
 public void setup() throws Exception {
   // Common code re-use patterns as example
   webDriver = TestHelpers.getDefaultWebDriver();
-  webDriver.manage().window().maximize();
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment
@@ -369,7 +368,6 @@ Instead try to capture the to the shared/reusable class/modules like
 public void setup() throws Exception {
   // Common code re-use patterns as example
   webDriver = TestHelpers.getDefaultWebDriver();
-  webDriver.manage().window().maximize();
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment  e.g. `environment = "DEV" or "QA", "Staging", etc
@@ -537,3 +535,15 @@ Please don't add extra empty lines to the code, try to keep it clean.
 - Use `logger.debug()` or remove your `logger.info()` when you work out the details of the problem.
 
 #### More Stuffs will goes here
+
+- [JUnit Categories](http://maven.apache.org/surefire/maven-surefire-plugin/examples/inclusion-exclusion.html#)
+
+#### Use common style guide
+
+We want to keep the code consistent, thus I like the team to use the same style guides going forward.
+To make this transition easy I found that we can use [Google Style Guide](https://github.com/google/styleguide/blob/gh-pages/README.md) that
+we can use. I have imported the style guide to `misc` directory.
+
+In Eclipse it should be `Windows->Preferences->Code Style->Formatter->Import` then select `misc/eclipse-java-google-style.xml` as the file to use.
+
+For IntelliJ the file to use is `misc/intellij-java-google-style.xml`.
