@@ -29,7 +29,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
         // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
-        webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
+        webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span")).click();
         Thread.sleep(2000);
         // Verify that user is navigated to the right page.
         String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();

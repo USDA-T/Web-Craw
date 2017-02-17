@@ -32,7 +32,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
                 "User is NOT eligible for Any of the programs because user answer NO for Qs7 and the rest of the questions that apply: 8(a), WOSB, EDWOSB & Hob-zone");
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
-        webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
+        webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span")).click();
         Thread.sleep(2000);
         // Verify that user is navigated to the right page.
         String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();

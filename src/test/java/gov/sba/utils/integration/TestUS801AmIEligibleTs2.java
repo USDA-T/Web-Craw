@@ -29,7 +29,7 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
         logger.info("User is NOT eligible(due to NO for Qs1) for Any of the programs 8(a), WOSB, EDWOSB & Hob-zone");
         // Locate the Am I Eligible or the Find Out button on the
         // Certify.SBA.Gov landing page and click on it.
-        webDriver.findElement(By.xpath(".//*[@id='js-navigation-menu']/li[3]/a")).click();
+        webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span")).click();
         // Verify that user navigates to the am i eligible page.
         String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
         String expected_Text = "Is there an SBA Contracting Program for me?";
