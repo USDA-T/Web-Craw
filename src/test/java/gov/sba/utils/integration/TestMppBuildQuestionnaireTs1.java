@@ -62,8 +62,8 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.id("answers_117_value_yes")).click();
         // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument1.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Enter a valid DUNS# and verify business.

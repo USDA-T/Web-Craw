@@ -172,8 +172,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         Thread.sleep(3000);
         Actions act1 = new Actions(webDriver);
         act1.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -193,8 +193,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument1.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
         // Select yes for the Second questions.
         webDriver.findElement(By.id("answers_132_value_no")).click();
         Thread.sleep(2000);
@@ -212,8 +212,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument2 = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument2.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
         Thread.sleep(3000);
         Actions act31 = new Actions(webDriver);
         act31.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
@@ -587,8 +587,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Upload a document.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument3 = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument3.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
         Thread.sleep(5000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Subsection 3.2: Business info, Verifying question.

@@ -129,36 +129,42 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // Select yes to all question.
         // question1, 1.4a
         webDriver.findElement(By.id("answers_169_value_yes")).click();
+        Thread.sleep(2000);
         // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument.MontanaUploadDocument();
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         // question2, 1.4b
         webDriver.findElement(By.id("answers_170_value_yes")).click();
+        Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument1.MontanaUploadDocument();
+        MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
         // question 3, 1.4c
         webDriver.findElement(By.id("answers_171_value_yes")).click();
+        Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument2.MontanaUploadDocument();
+        MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
         // question 4, 1.4d
         webDriver.findElement(By.id("answers_172_value_yes")).click();
+        Thread.sleep(2000);
         // question 5, 1.4e Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument3.MontanaUploadDocument();
+        MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
         // question 6, 1.4f with comment.
         webDriver.findElement(By.id("answers_174_value_yes")).click();
+        Thread.sleep(2000);
         // question 6, Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument4 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument4.MontanaUploadDocument();
+        MontanaUploadDocument4.MontanaUploadDocument(file_path_abs);
         // question 7, 1.4g select with no skip.
         webDriver.findElement(By.id("answers_175_value_yes")).click();
+        Thread.sleep(2000);
         // Click on the save and continue button and verify that user is
         // requested to enter comment.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();

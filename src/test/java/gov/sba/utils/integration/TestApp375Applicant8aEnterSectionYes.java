@@ -67,10 +67,12 @@ public class TestApp375Applicant8aEnterSectionYes extends TestCase {
         "If yes, provide the details regarding the debarment or suspension. Debarred or suspended firms or firms owned by debarred or suspended persons are ineligible for admission to the 8(a) Business Development program. If you have documents showing the debarment has been lifted please upload.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_169_value_yes")).click();
+    Thread.sleep(2000);
     // Upload a document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-    MontanaUploadDocument.MontanaUploadDocument();
+    MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Delinquent Liens Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -95,10 +97,12 @@ public class TestApp375Applicant8aEnterSectionYes extends TestCase {
         "Report any obligations including delinquent tax returns and delinquent SBA loans. If yes, provide any of the following that may apply:";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_170_value_yes")).click();
+    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-    MontanaUploadDocument1.MontanaUploadDocument();
+    MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
+    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Pending Lawsuit section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -122,10 +126,12 @@ public class TestApp375Applicant8aEnterSectionYes extends TestCase {
         "If yes, summarize its interest in the suit, the claims, the current status, and provide a copy of the complaint, answer, and/or counterclaim filed in the suit.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_171_value_yes")).click();
+    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
-    MontanaUploadDocument2.MontanaUploadDocument();
+    MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
+    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Bankruptcy Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -150,10 +156,12 @@ public class TestApp375Applicant8aEnterSectionYes extends TestCase {
         "If yes, provide details and a copy of the bankruptcy court’s final order or discharge.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_171_value_yes")).click();
+    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
-    MontanaUploadDocument3.MontanaUploadDocument();
+    MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
+    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Review Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
