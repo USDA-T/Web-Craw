@@ -92,7 +92,7 @@ public class SoleProprietorQuestionsPage {
         String expected_Text14 = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
         assertEquals(actual_Text14, expected_Text14);
         // Verify the more detail meaning for the Businesses & Trusts questions
-        String actual_Text15 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text15 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text15 = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b).";
         assertEquals(actual_Text15, expected_Text15);
         // 2nd question
@@ -273,7 +273,7 @@ public class SoleProprietorQuestionsPage {
         String expected_Text45 = "Can the qualifying individual(s) confirm that no assets were transferred within two years of the date of EDWOSB certification?";
         assertEquals(actual_Text45, expected_Text45);
         // 1st question meaning.
-        String actual_Text46 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text46 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text46 = "Assets that a woman claiming economic disadvantage transferred within two years of the date of the concern's certification will be attributed to the woman claiming economic disadvantage if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
         assertEquals(actual_Text46, expected_Text46);
         webDriver.findElement(By.id("answers_97_value_no")).click();
@@ -296,7 +296,7 @@ public class SoleProprietorQuestionsPage {
         String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
         String expected_Text49 = "Financial Data";
         assertEquals(actual_Text49, expected_Text49);
-        String actual_Text52 = webDriver.findElement(By.cssSelector("p")).getText();
+        String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
         String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
         assertEquals(actual_Text52, expected_Text52);
         // Validate the Personal Information.
