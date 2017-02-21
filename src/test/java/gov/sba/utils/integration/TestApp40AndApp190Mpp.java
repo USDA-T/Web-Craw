@@ -86,7 +86,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
             WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
             TestApp40AndApp190.info(a1.getText());
             a1.click();
-        }
+        
 
         webDriver.findElement(By.xpath("//*[@id='submit_button']")).click();
         webDriver.findElement(By.xpath("//*[@id='save_notes']")).click();
@@ -119,8 +119,9 @@ public class TestApp40AndApp190Mpp extends TestCase {
             webDriver.findElement(By.xpath("//input[@type='submit']")).click();
             webDriver.findElement(
                     By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-
-        }
+ 
+         }
+        }     
 
     }
 
