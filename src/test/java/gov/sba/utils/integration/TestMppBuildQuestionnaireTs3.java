@@ -201,7 +201,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     Expected_Text =
         "Please view the Mentor-Protégé Program training module and upload the certificate of completion.";
     assertEquals(Actual_Text, Expected_Text);
-    // Upload a document.
+    //Upload a document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
@@ -223,10 +223,12 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
     // Upload a document.
+    Thread.sleep(2000);
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
     // Select yes for the Second questions.
+    Thread.sleep(2000);
     webDriver.findElement(By.id("answers_132_value_no")).click();
     Thread.sleep(2000);
     Actions act3 = new Actions(webDriver);
@@ -243,6 +245,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     Expected_Text = "Attachment is required";
     assertEquals(Actual_Text, Expected_Text);
     // Upload a document.
+    Thread.sleep(2000);
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
@@ -669,10 +672,11 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     Expected_Text = "Attachment is required";
     assertEquals(Actual_Text, Expected_Text);
     // Upload a document.
+    Thread.sleep(2000);
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
-    Thread.sleep(5000);
+    Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Subsection 3.2: Business info, Verifying question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();

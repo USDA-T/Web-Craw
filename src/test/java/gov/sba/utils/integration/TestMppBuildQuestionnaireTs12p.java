@@ -265,8 +265,10 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    Actions act5 = new Actions(webDriver);
+    Thread.sleep(3000);
+    act5.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+    Thread.sleep(3000);
     // Training Section(Subsection 2.1), Verifying Question.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4")).getText();
@@ -292,6 +294,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Thread.sleep(2000);
     Actions act = new Actions(webDriver);
     act.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
+    Thread.sleep(2000);
     // General Section, Verifying Question.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='answers_protege_biz_plan']/fieldset/h4")).getText();
@@ -366,27 +369,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       }
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
-    Thread.sleep(2000);
-    webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    String main_window311 = webDriver.getWindowHandle();
-    logger.info("Before switching, title is = certify.sba.gov");
-    webDriver.findElement(By.linkText("13 CFR 124.520")).click();
-    assertEquals(Actual_Text, Expected_Text);
-    java.util.Set<String> S311 = webDriver.getWindowHandles();
-    Iterator<String> i311 = S311.iterator();
-    while (i311.hasNext()) {
-      String Second_window1 = i311.next();
-      if (!main_window311.equalsIgnoreCase(Second_window1)) {
-        webDriver.switchTo().window(Second_window1);
-        logger.info("After switching title is =" + webDriver.getTitle());
-        webDriver.close();
-        webDriver.switchTo().window(main_window311);
-        logger.info("Back to manin_window = certify.sba.gov");
-      } else {
-        logger.info("Second Window is not thesame as first window");
-      }
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    }
     // Upload a document.
     Thread.sleep(2000);
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
@@ -426,6 +408,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Expected_Text = "What is your role in the agreement?";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_133_1_0_value")).click();
+    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//option[@value='Protégé']")).click();
     // Select agency.
     Actual_Text = webDriver
@@ -446,15 +429,13 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         .findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4")).getText();
     Expected_Text = "What is the effective date of the agreement?";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.cssSelector("#answers_mpp_agreement_date_1 > fieldset > h4"))
-        .sendKeys("12/23/2008");
+    webDriver.findElement(By.id("date-133")).sendKeys("04/23/2016");
     // Name of other business.
     Actual_Text = webDriver
         .findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4")).getText();
     Expected_Text = "What is the name of the other business involved in the agreement?";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.cssSelector("#answers_mpp_aggreement_biz_1 > fieldset > h4"))
-        .sendKeys("Cyber Tech Solution");
+    webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
     // NAICS question validation.
     Actual_Text = webDriver
         .findElement(By.cssSelector("#answers_mpp_agreement_naics_1 > fieldset > h4")).getText();
@@ -479,7 +460,9 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Expected_Text = "Are you sure?";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.switchTo().alert().accept();
+    webDriver.findElement(By.id("date-133")).clear();
     webDriver.findElement(By.id("date-133")).sendKeys("12/23/2008");
+    webDriver.findElement(By.id("input-type-text")).clear();
     webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -871,12 +854,13 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Enter a valid DUNS# and verify business.
     webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
-    webDriver.findElement(By.linkText("Confirm DUNS")).click();
-    Actual_Text = webDriver.findElement(By.id("duns-value-167-error")).getText();
+    webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
+    Thread.sleep(2000);
+    Actual_Text = webDriver.findElement(By.xpath("//span[@id='duns-value-167-error']")).getText();
     Expected_Text = "You must confirm the DUNS number";
     assertEquals(Actual_Text, Expected_Text);
     Thread.sleep(2000);
-    webDriver.findElement(By.linkText("Confirm DUNS")).click();
+    webDriver.findElement(By.id("search-duns-167")).click();
     logger.info(webDriver.switchTo().alert().getText());
     Actual_Text = webDriver.switchTo().alert().getText();
     Expected_Text =

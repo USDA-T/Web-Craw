@@ -68,15 +68,17 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     webDriver.findElement(By.id("answers_117_value_yes")).click();
     // Upload a document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-    MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+    TestMppBuildQuestionnaireTs1.info(file_path_abs);
+    fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+    //fillApplCreatePages.finalSignatureSubmit(webDriver);
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    Thread.sleep(3000);
     // Enter a valid DUNS# and verify business.
-    webDriver.findElement(By.xpath("//input[@id='duns-value-167']")).sendKeys("153915244");
-    webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
+    webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
+    //webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
     Thread.sleep(2000);
     logger.info(webDriver.switchTo().alert().getText());
     webDriver.switchTo().alert().accept();
@@ -206,6 +208,11 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       webDriver.findElement(By.linkText("Logout")).click();
     }
     logger.info("Success");
+  }
+
+  private static void info(String file_path_abs) {
+    // TODO Auto-generated method stub
+    
   }
 
   @After
