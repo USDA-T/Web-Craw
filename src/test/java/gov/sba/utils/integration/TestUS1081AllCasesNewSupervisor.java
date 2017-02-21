@@ -102,7 +102,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
                     + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
                     + "		 I.workflow_state AS sub_Status" + " 	FROM "
                     + "			sbaone.sba_applications A INNER JOIN sbaone.organizations C ON (A.organization_id = C.id), "
-                    + "			sbaone.certificate_types 		G , " + "			reference.sam_organizations 	F,"
+                    + "			sbaone.certificate_types 		G , " + "			reference.mvw_sam_organizations 	F,"
                     + "			sbaone.certificates I"
                     + " 	where(  A.workflow_state 		= 'submitted'				"
                     + "       AND A.progress 				->>'current' = 'signature')	"
