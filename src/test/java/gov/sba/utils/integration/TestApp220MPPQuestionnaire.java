@@ -82,6 +82,6 @@ public class TestApp220MPPQuestionnaire extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 }
