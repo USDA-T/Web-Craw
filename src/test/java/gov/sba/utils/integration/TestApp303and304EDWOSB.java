@@ -54,12 +54,14 @@ public class TestApp303and304EDWOSB extends TestCase {
         fillApplCreatePages.finalSignatureSubmit(webDriver);
 
         CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
+        logger_303.info("First Logout");
 
         CommonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
         webDriver.navigate().back();
         webDriver.navigate().back();
         Thread.sleep(1500);
         CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
+        logger_303.info("Second Logout");
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();

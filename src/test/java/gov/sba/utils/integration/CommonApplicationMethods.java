@@ -173,7 +173,8 @@ public class CommonApplicationMethods {
         if (System.getProperty("os.name").startsWith("Windows")) {
             Runtime rt = Runtime.getRuntime();
             rt.exec("Taskkill /IM chrome.exe /F");
-            Thread.sleep(2000);
+            rt.exec("Taskkill /IM firefox.exe /F");
+            Thread.sleep(1000);
         }
     }
 
@@ -237,6 +238,32 @@ public class CommonApplicationMethods {
         }
         return organization_Id;
     };
+    public static String return_Url_check() throws Exception {
+        String file_path = FixtureUtils.fixturesDir_Duns() + "default.properties";
+        Scanner in = new Scanner(new FileReader(file_path));
+        while(in.hasNextLine()){
+            String nline = in.nextLine();
+            if (nline.indexOf("base_url_development") == 0)
+            {
+                return nline.split("base_url_development=")[1].trim();
+            }
+        }
+        throw new Exception("Not Good Environment");
+    }
+
+    public static String return_Db_URL() throws Exception {
+        String url_Check = return_Url_check();
+        if (url_Check.contains("elb.maint")) {
+                return "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
+        } else {
+            if (url_Check.contains("certify.qa")) {
+                return "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+            }
+            else {
+                    throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
+            }
+        }
+    }
 
     public static String[] return_Good_Duns_no() throws Exception {
         String[] duns_Number = new String[] { "" };
@@ -249,9 +276,9 @@ public class CommonApplicationMethods {
             Scanner in = new Scanner(new FileReader(file_path));
             while(in.hasNextLine()){
                 String nline = in.nextLine();
-                if (nline.indexOf("base_url_qa") == 0)
+                if (nline.indexOf("base_url_development") == 0)
                 {
-                    url_Check= nline.split("base_url_qa=")[1].trim();
+                    url_Check= nline.split("base_url_development=")[1].trim();
                     break;
                 }
             }

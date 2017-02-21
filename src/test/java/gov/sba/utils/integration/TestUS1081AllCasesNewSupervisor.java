@@ -1,5 +1,7 @@
 package gov.sba.utils.integration;
 
+import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -87,10 +89,10 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
             Assert.assertArrayEquals(header_Names_Array, header_Names_Array_Validate);
 
-            String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+            String url = return_Db_URL();
             Properties props = new Properties();
-            props.setProperty("user", "app_etl");
-            props.setProperty("password", "etlpassworddev");
+            props.setProperty("user", "app_ruby");
+            props.setProperty("password", "rubypassword");
             Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
             logger_US1081.info(connection_SBA_One_Qa);
 
@@ -181,7 +183,9 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
     }
 
-    @After
+
+
+  @After
     public void tearDown() throws Exception {
         webDriver.quit();
     }

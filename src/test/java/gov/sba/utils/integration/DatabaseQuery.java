@@ -1,5 +1,7 @@
 package gov.sba.utils.integration;
 
+import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
+
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,18 +20,7 @@ public class DatabaseQuery {
 
     public static void executeSQLScript(String sql_query) throws Exception {
         // Properties
-        String url = "";
-        if (TestHelpers.getBaseUrl().toString().contains("elb.maint")) {
-            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-            // logger_Dbq.info("Passed: SbaoneDev");
-        } else {
-            if (TestHelpers.getBaseUrl().toString().contains("certify.qa")) {
-                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
-                // logger_Dbq.info("Passed: SbaoneQa");
-            } else {
-                throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
-            }
-        }
+        String url = return_Db_URL();
 
         Properties props = new Properties();
         props.setProperty("user", "app_ruby");
@@ -46,36 +37,13 @@ public class DatabaseQuery {
     public static String[][] getDBData(String sql_query, int rows_Needed, int cols_Needed) throws Exception {
 
         // Connect SBAONE QA DB -to get data from DB
-        String url = "";
-        String url_Check ="";
-
-        String file_path_abs = FixtureUtils.fixturesDir_Duns() + "default.properties";
-        Scanner in = new Scanner(new FileReader(file_path_abs));
-        while(in.hasNextLine()){
-            String nline = in.nextLine();
-            if (nline.indexOf("base_url_qa") == 0)
-            {
-                url_Check= nline.split("base_url_qa=")[1].trim();
-                break;
-            }
-        }
-
-        if (url_Check.contains("elb.maint")) {
-            url = "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";//logger_Dbq.info(url);
-
-        } else {
-            if (url_Check.contains("certify.qa")) {
-                url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa"; // logger_Dbq.info(url);
-            } else {
-                throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
-            }
-        }
+        String url = return_Db_URL();
 
         final Logger logger = LogManager.getLogger(DatabaseQuery.class.getName());
         try {
             Properties props = new Properties();
-            props.setProperty("user", "app_etl");
-            props.setProperty("password", "etlpassworddev");
+            props.setProperty("user", "app_ruby");
+            props.setProperty("password", "rubypassword");
             Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
             // query execution
             Statement statement_SQL = connection_SBA_One_Qa.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
@@ -90,12 +58,7 @@ public class DatabaseQuery {
             String[][] sql_Data = new String[rows_Needed][cols_Needed];
             for (int i = 0; i < rows_Needed; i++) {
                 for (int j = 1; j < cols_Needed + 1; j++) {
-                    // String max_first_name =
-                    // result_Set.getString(column_Names[0]);
-                    // String max_last_name =
-                    // result_Set.getString(column_Names[1]);
                     sql_Data[i][j - 1] = result_Set.getString(j);
-                    // System.out.println(sql_Data[i][j - 1].toString());
                 }
             }
             result_Set.close();

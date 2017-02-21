@@ -1,5 +1,7 @@
 package gov.sba.utils.integration;
 
+import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -97,10 +99,10 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
                             "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
                     logger_US1699.info(current_Title_Business.getText());
                     // Connect SBAONE QA DB -to get data from DB
-                    String url = "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
+                    String url = return_Db_URL();
                     Properties props = new Properties();
-                    props.setProperty("user", "app_etl");
-                    props.setProperty("password", "etlpassworddev");
+                    props.setProperty("user", "app_ruby");
+                    props.setProperty("password", "rubypassword");
                     Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
                     logger_US1699.info(connection_SBA_One_Qa);
                     Statement statement_SQL = connection_SBA_One_Qa.createStatement();

@@ -546,4 +546,5 @@ we can use. I have imported the style guide to `misc` directory.
 
 In Eclipse it should be `Windows->Preferences->Code Style->Formatter->Import` then select `misc/eclipse-java-google-style.xml` as the file to use.
 
+
 For IntelliJ the file to use is `misc/intellij-java-google-style.xml`.

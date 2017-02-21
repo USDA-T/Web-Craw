@@ -60,49 +60,49 @@ public void deepaUploadMppDocument(String upload_Path) throws Exception {
 
         robot.keyPress(KeyEvent.VK_ALT);
         robot.keyPress(KeyEvent.VK_TAB);
-        Thread.sleep(700);
+        Thread.sleep(300);
         robot.keyRelease(KeyEvent.VK_ALT);
         robot.keyRelease(KeyEvent.VK_TAB);
-        Thread.sleep(700);
+        Thread.sleep(300);
         robot.keyPress(KeyEvent.VK_ALT);
         robot.keyPress(KeyEvent.VK_TAB);
-        Thread.sleep(700);
+        Thread.sleep(300);
         robot.keyRelease(KeyEvent.VK_ALT);
         robot.keyRelease(KeyEvent.VK_TAB);
-        Thread.sleep(700);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Alt tab done");
 
         robot.keyPress(KeyEvent.VK_F4);
-        Thread.sleep(700);
+        Thread.sleep(300);
         robot.keyPress(KeyEvent.VK_ESCAPE);
-        Thread.sleep(700);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Clicked on F4");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(700);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Clicked on Tab");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(7000);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Clicked on Tab2");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(7000);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Clicked on Tab3");
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_TAB);
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(7000);
+        Thread.sleep(300);
 
         logger.info("Uploading a new document - Clicked on Tab4");
         robot.keyPress(KeyEvent.VK_CONTROL);
 
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        Thread.sleep(700);
+        Thread.sleep(300);
         logger.info("Uploading a new document - Clicked on Paste");
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
@@ -111,7 +111,7 @@ public void deepaUploadMppDocument(String upload_Path) throws Exception {
         logger.info("Uploading a new document - Clicked on All Enters");
 
         for (int i = 0; i < 11; i++) {
-            Thread.sleep(700);
+            Thread.sleep(400);
             try {
                 webDriver.findElement(By.id("attach")).click();
                 i = 100;

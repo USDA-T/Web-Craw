@@ -104,7 +104,7 @@ public class fillApplCreatePages {
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
                 Thread.sleep(2000);
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-                Thread.sleep(3000);
+                Thread.sleep(2000);
                 try {
                     logger.info("Check Alert");
                     webDriver.switchTo().alert().accept();
