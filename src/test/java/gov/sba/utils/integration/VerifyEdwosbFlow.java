@@ -105,6 +105,7 @@ public class VerifyEdwosbFlow extends TestCase {
         assertEquals(all_Cells.get(3).getText(), "Active");
         assertEquals(all_Cells.get(5).getText(), "");
         all_Cells.get(0).findElement(By.xpath("a")).click();
+        Thread.sleep(1000);
 
         assertTrue(webDriver.getPageSource()
                 .contains("Economically Disadvantaged Women-Owned Small Business Program Self-Certification Summary"));

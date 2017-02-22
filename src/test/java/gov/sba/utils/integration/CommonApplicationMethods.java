@@ -10,8 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
-
 import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,6 +47,100 @@ public class CommonApplicationMethods {
         default:
             return false;
         }
+    }
+    public static WebElement find_Element(WebDriver webdriver, String type_Locator, String value_Locator ) throws Exception {
+
+        String flag = "";
+        WebElement element_01 = null;
+        switch (type_Locator.toLowerCase()) {
+            case "xpath":
+                    for (int i=0;i<15;i++){
+                        try{//commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                            element_01=  webdriver.findElement(By.xpath(value_Locator));
+                            flag = "Y";
+                            break;
+                        }catch (Exception e){
+                            commonApplicationMethodsLogs.info("Trying to find xpath:" + value_Locator );
+                            Thread.sleep(300);
+                        }
+                    }
+                    break;
+            case "id":
+                for (int i=0;i<15;i++){
+                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                        element_01=  webdriver.findElement(By.id(value_Locator));
+                        flag = "Y";
+                        break;
+                    }catch (Exception e){
+                        commonApplicationMethodsLogs.info("Trying to find id:" + value_Locator );
+                        Thread.sleep(300);
+                    }
+                }
+                break;
+            case "classname":
+                for (int i=0;i<15;i++){
+                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                      element_01=  webdriver.findElement(By.className(value_Locator));
+                        flag = "Y";
+                        break;
+                    }catch (Exception e){
+                        commonApplicationMethodsLogs.info("Trying to find classname:" + value_Locator );
+                        Thread.sleep(300);
+                    }
+                }
+                break;
+            case "name":
+                for (int i=0;i<15;i++){
+                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                      element_01=  webdriver.findElement(By.name(value_Locator));
+                        flag = "Y";
+                        break;
+                    }catch (Exception e){
+                        commonApplicationMethodsLogs.info("Trying to find name:" + value_Locator );
+                        Thread.sleep(300);
+                    }
+                }
+                break;
+            case "cssselector":
+                for (int i=0;i<15;i++){
+                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                      element_01=  webdriver.findElement(By.cssSelector(value_Locator));
+                        flag = "Y";
+                        break;
+                    }catch (Exception e){
+                        commonApplicationMethodsLogs.info("Trying to find cssSelector:" + value_Locator );
+                        Thread.sleep(300);
+                    }
+                }
+                break;
+            case "linktext":
+                for (int i=0;i<15;i++){
+                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                      element_01=  webdriver.findElement(By.linkText(value_Locator));
+                        flag = "Y";
+                        break;
+                    }catch (Exception e){
+                        commonApplicationMethodsLogs.info("Trying to find linktext:" + value_Locator );
+                        Thread.sleep(300);
+                    }
+                }
+                break;
+        }
+
+        if (flag == "Y"){
+            return element_01;
+        } else{
+            throw new Exception();
+        }
+    }
+    public static void click_Element(WebDriver webdriver, String type_Locator, String value_Locator ) throws Exception {
+        WebElement click_element = find_Element(webdriver, type_Locator, value_Locator);
+        click_element.click();
+    }
+
+    public static void setText_Element(WebDriver webdriver, String type_Locator, String value_Locator, String textVal ) throws Exception {
+        WebElement click_element = find_Element(webdriver, type_Locator, value_Locator);
+        click_element.sendKeys(textVal);
     }
 
     public static void focus_window() throws AWTException, InterruptedException {

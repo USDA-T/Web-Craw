@@ -192,13 +192,20 @@ public class fillApplCreatePages {
 
     public static void finalSignatureSubmit(WebDriver webDriver) throws Exception {
         try {
-            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
-            webDriver.findElement(By.xpath("//*[@id='legal_1']")).click();
-            webDriver.findElement(By.xpath("//*[@id='legal_2']")).click();
-            webDriver.findElement(By.xpath("//*[@id='legal_3']")).click();
-            webDriver.findElement(By.xpath("//*[@id='legal_4']")).click();
-            webDriver.findElement(By.xpath("//*[@id='legal_5']")).click();
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_0']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_1']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_2']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_3']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_4']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_5']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@type='submit']");
+//            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
+//            webDriver.findElement(By.xpath("//*[@id='legal_1']")).click();
+//            webDriver.findElement(By.xpath("//*[@id='legal_2']")).click();
+//            webDriver.findElement(By.xpath("//*[@id='legal_3']")).click();
+//            webDriver.findElement(By.xpath("//*[@id='legal_4']")).click();
+//            webDriver.findElement(By.xpath("//*[@id='legal_5']")).click();
+//            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
             throw e;
@@ -207,8 +214,10 @@ public class fillApplCreatePages {
 
     public static void finalSignatureSubmit8A(WebDriver webDriver) throws Exception {
         try {
-            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@id='legal_0']");
+            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@type='submit']");
+//            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
+//            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
             throw e;
