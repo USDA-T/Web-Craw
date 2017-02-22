@@ -302,7 +302,11 @@ public class SoleProprietorQuestionsPage {
         // Validate the Personal Information.
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//div[3]/div/div/div/div[2]")).click();
+        webDriver.findElement(By.xpath("//div[3]/button")).click();
+        String actual_Text491 = webDriver.findElement(By.cssSelector("div.DTE_Field_Error")).getText();
+        String expected_Text491 = "First Name must be provided";
+        assertEquals(actual_Text491, expected_Text491);
+        webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_99_value_new_button")).click();
         Thread.sleep(2000);
