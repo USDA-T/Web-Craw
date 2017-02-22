@@ -26,10 +26,10 @@ public class EDWOSBEightATestPage {
         String expected_Text1 = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
         assertEquals(actual_Text1, expected_Text1);
         webDriver.findElement(By.id("answers_65_value_yes")).click();
-        // Upload a document.
+        //Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
         logger.info("  8(a) question has been answered");

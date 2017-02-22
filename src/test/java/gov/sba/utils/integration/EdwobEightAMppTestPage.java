@@ -31,10 +31,10 @@ public class EdwobEightAMppTestPage {
         String expected_Text2 = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
         assertEquals(actual_Text2, expected_Text2);
         webDriver.findElement(By.id("answers_117_value_yes")).click();
-        // Upload a document.
+        //Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        newMppUploadDocumentPage deepaUploadMppDocument = new newMppUploadDocumentPage(webDriver);
-        deepaUploadMppDocument.deepaUploadMppDocument(file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         Thread.sleep(2000);
         webDriver.findElement(By.className("usa-button")).click();
         Thread.sleep(2000);

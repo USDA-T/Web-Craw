@@ -44,6 +44,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
+    //Delete second draft if any.
+    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new EDWOSB certification.
     Thread.sleep(2000);
@@ -58,8 +61,8 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     webDriver.findElement(By.linkText("Dashboard")).click();
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
-    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
-    deleteDraftCert1.DeleteDraftCert();
+    DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert2.DeleteDraftCert();
     Thread.sleep(2000);
     AddOrStartNewMppProgramPage1 addOrStartNewMppProgram =
         new AddOrStartNewMppProgramPage1(webDriver);
@@ -290,19 +293,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.linkText("Vendor Overview")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       }
-      webDriver.findElement(By.linkText("Return to Vendor")).click();
-      webDriver.switchTo().alert().accept();
-      webDriver.findElement(By.linkText("Logout")).click();
-      // Login as WOSB-analyst and return WOSB program back to vendor.
-      get_The_Row_From_Login_Data = 0;
-      LoginPageWithReference login_Data7 =
-          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-      login_Data7.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.linkText("Return to Vendor")).click();
-      webDriver.switchTo().alert().accept();
-      webDriver.findElement(By.linkText("Logout")).click();
       // Login as WOSB-analyst and return WOSB program back to vendor.
       get_The_Row_From_Login_Data = 0;
       LoginPageWithReference login_Data71 =
@@ -329,19 +319,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.linkText("Vendor Overview")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       }
-      Thread.sleep(2000);
-      webDriver.findElement(By.linkText("Return to Vendor")).click();
-      webDriver.switchTo().alert().accept();
-      webDriver.findElement(By.linkText("Logout")).click();
-      get_The_Row_From_Login_Data = 3;
-      LoginPageWithReference login_Data8 =
-          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-      login_Data8.Login_With_Reference();
-      // delete one start application.
-      DeleteDraftCertPage deleteDraftCert3 = new DeleteDraftCertPage(webDriver);
-      deleteDraftCert3.DeleteDraftCert();
-      webDriver.findElement(By.linkText("Logout")).click();
-
+      logger.info("Success");
     }
 
   }

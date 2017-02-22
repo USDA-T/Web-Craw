@@ -36,12 +36,22 @@ public class TestApp375Applicant8aEnterSectionNo extends TestCase {
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
     Thread.sleep(3000);
+    //delete to start a new certification.
+    DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert.DeleteDraftCert();
+    //delete to start a new certification.
+    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert1.DeleteDraftCert();
     // Start an application.
     Actual_Text =
-        webDriver.findElement(By.linkText("All Small Business Mentor-Protégé agreement")).getText();
-    Expected_Text = "All Small Business Mentor-Protégé agreement";
+        webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).getText();
+    Expected_Text = "Programs";
+    webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).click();
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.linkText("All Small Business Mentor-Protégé agreement")).click();
+    webDriver.findElement(By.id("certificate_type_character")).click();
+    Thread.sleep(2000);
+    webDriver.findElement(By.id("add_certification")).click();
+    Thread.sleep(2000);
     // click on the accept button.
     // Debarred Section.
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -122,7 +132,8 @@ public class TestApp375Applicant8aEnterSectionNo extends TestCase {
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Actual_Text = webDriver.findElement(By.id("answers[171][value]-error")).getText();
+    Thread.sleep(2000);
+    Actual_Text = webDriver.findElement(By.id("answers[172][value]-error")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
     // Verify question and detail section and Select Yes and upload a
@@ -137,7 +148,7 @@ public class TestApp375Applicant8aEnterSectionNo extends TestCase {
     Expected_Text =
         "If yes, provide details and a copy of the bankruptcy court’s final order or discharge.";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.id("answers_171_value_no")).click();
+    webDriver.findElement(By.id("answers_172_value_no")).click();
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Review Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -160,6 +171,8 @@ public class TestApp375Applicant8aEnterSectionNo extends TestCase {
     Expected_Text = "Bankruptcy";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    webDriver.switchTo().alert().accept();
+    Thread.sleep(2000);
     // Signature Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Signature";

@@ -34,16 +34,18 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
+        //delete to start a new certification.
+        DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+        deleteDraftCert.DeleteDraftCert();
+        //delete second draft if any.
+        DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+        deleteDraftCert1.DeleteDraftCert();
         // Start an application.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span"))
-                .getText();
+        Actual_Text =
+            webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).getText();
         Expected_Text = "Programs";
-        assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.linkText("All Small Business Mentor-Protégé agreement")).click();
-        // click on the accept button.
-        // Debarred Section.
         webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).click();
-        Thread.sleep(2000);
+        assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.id("certificate_type_control")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("add_certification")).click();
@@ -64,11 +66,11 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // document.
         // 1st question. 1.4a
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-        Expected_Text = "Is the following statement true? The qualifying individual(s) is not subject to any conditions, executory agreements, voting trusts, or other arrangements that cause or potentially cause ownership benefits to go to another person.";
+        Expected_Text = "Does the applicant firm have any existing agreements that might impact ownership or control? These may include:\n• joint venture\n• mentor protégé\n• indemnity\n• consulting\n• distributorship\n• licensing\n• teaming\n• trust\n• franchise\n• management";
         assertEquals(Actual_Text, Expected_Text);
         // Detail section.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_character_16a']/fieldset/p[2]")).getText();
-        Expected_Text = "In order for ownership to be unconditional, there cannot be any arrangements that could pass the business to a person or entity not eligible for the WOSB Program. However, stock ownership interest pledged as collateral would be still considered unconditional if the terms follow commercial practices and the owner retains control. Reference: 13 C.F.R. 127.201(b)";
+        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_eight_a_control_existing_agreements']/fieldset/p[2]")).getText();
+        Expected_Text = "If yes, upload the agreements.";
         assertEquals(Actual_Text, Expected_Text);
         // 2nd question. 1.4b
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_eight_a_control_support > fieldset > h4"))
@@ -122,7 +124,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         Expected_Text = "If yes, upload the agreement and terms of the arrangements. Resources may include the following: sharing of telephone or fax numbers, P.O. Box, office space, yard, warehouse, facilities, equipment, or employees.";
         assertEquals(Actual_Text, Expected_Text);
         // 7th question, 1.4g
-        Actual_Text = webDriver.findElement(By.xpath("#answers_eight_a_control_lease > fieldset > h4")).getText();
+        Actual_Text = webDriver.findElement(By.cssSelector("#answers_eight_a_control_lease > fieldset > h4")).getText();
         Expected_Text = "Does the applicant firm lease or use office space or other facilities from any other firm?";
         assertEquals(Actual_Text, Expected_Text);
         // No Detail section.
@@ -130,7 +132,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // question1, 1.4a
         webDriver.findElement(By.id("answers_169_value_yes")).click();
         Thread.sleep(2000);
-        // Upload a document.
+        //Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
