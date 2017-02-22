@@ -5,11 +5,13 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
 
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestApp375Applicant8aEnterSectionYes extends TestCase {
 
   private static final Logger logger =
