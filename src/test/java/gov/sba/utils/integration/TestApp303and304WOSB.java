@@ -53,10 +53,10 @@ public class TestApp303and304WOSB extends TestCase {
         CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
         CommonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-        webDriver.navigate().back();
-        webDriver.navigate().back();
-        Thread.sleep(1500);
-        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
+//        webDriver.navigate().back();
+//        webDriver.navigate().back();
+//        Thread.sleep(1500);
+//        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
