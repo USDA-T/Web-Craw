@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class UploadDocument1Page {
-    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(UploadDocument1Page.class.getName());
     WebDriver webDriver;
 
     public UploadDocument1Page(WebDriver webDriver) {

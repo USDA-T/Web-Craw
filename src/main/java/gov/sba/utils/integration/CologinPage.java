@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CologinPage {
-    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(CologinPage.class.getName());
     WebDriver webDriver;
 
     public CologinPage(WebDriver webDriver) {

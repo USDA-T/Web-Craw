@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class MontanaUploadDocumentPage {
-  private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+  private static final Logger logger = LogManager.getLogger(DeleteDraftCertPage.class.getName());
   WebDriver webDriver;
 
   public MontanaUploadDocumentPage(WebDriver webDriver) {

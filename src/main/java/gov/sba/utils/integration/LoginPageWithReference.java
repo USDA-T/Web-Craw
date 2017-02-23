@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPageWithReference {
-    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(LoginPageWithReference.class.getName());
     WebDriver webDriver;
     int get_Row_From_credentials_Recvd;
 

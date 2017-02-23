@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 public class DeleteDraftCertPage extends TestCase {
 
-    private static final Logger logger = LogManager.getLogger(gov.sba.utils.integration.TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(gov.sba.utils.integration.DeleteDraftCertPage.class.getName());
     WebDriver webDriver;
 
     public DeleteDraftCertPage(WebDriver webDriver) {

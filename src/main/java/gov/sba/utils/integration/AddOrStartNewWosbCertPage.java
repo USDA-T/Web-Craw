@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddOrStartNewWosbCertPage {
-    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(AddOrStartNewWosbCertPage.class.getName());
     WebDriver webDriver;
 
     public AddOrStartNewWosbCertPage(WebDriver webDriver) {

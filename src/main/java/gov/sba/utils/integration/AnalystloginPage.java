@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AnalystloginPage {
-    private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());
+    private static final Logger logger = LogManager.getLogger(AnalystloginPage.class.getName());
     WebDriver webDriver;
 
     public AnalystloginPage(WebDriver webDriver) {
