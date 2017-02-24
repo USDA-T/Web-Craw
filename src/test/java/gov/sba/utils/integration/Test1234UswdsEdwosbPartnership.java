@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
 
-public class TestUswdsEdwosbPartnership extends TestCase {
-    private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbPartnership.class.getName());
+public class Test1234UswdsEdwosbPartnership extends TestCase {
+    private static final Logger logger = LogManager.getLogger(Test1234UswdsEdwosbPartnership.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
 

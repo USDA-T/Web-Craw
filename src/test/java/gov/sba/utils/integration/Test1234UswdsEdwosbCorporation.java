@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
 
-public class TestUswdsEdwosbScorpTest extends TestCase {
-    private static final Logger logger = LogManager.getLogger(TestUswdsEdwosbScorpTest.class.getName());
+public class Test1234UswdsEdwosbCorporation extends TestCase {
+    private static final Logger logger = LogManager.getLogger(Test1234UswdsEdwosbCorporation.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
 
@@ -19,13 +19,13 @@ public class TestUswdsEdwosbScorpTest extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 1;
+        get_The_Row_From_Login_Data = 7;
 
     }
 
     @Test
     public void testMainTest() throws Exception {
-        logger.info("Test EDWOSB Scorp Flow");
+        logger.info("Test EDWOSB Corporation Flow");
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
@@ -43,15 +43,15 @@ public class TestUswdsEdwosbScorpTest extends TestCase {
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
-        // Corp test for 1st person.
-        ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
-        scorpQuestions.ScorpQuestions();
+        // partnership test for 1st person.
+        CorporationQuestionsPage corporationQuestions = new CorporationQuestionsPage(webDriver);
+        corporationQuestions.CorporationQuestions();
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
         // Submit and Return the submitted certification back to vendor.
-        ScorpReturnCertPage scorpReturnCert = new ScorpReturnCertPage(webDriver);
-        scorpReturnCert.ScorpReturnCert();
+        CorporationReturnCertPage corporationReturnCert = new CorporationReturnCertPage(webDriver);
+        corporationReturnCert.CorporationReturnCert();
         logger.info("Success");
     }
 
