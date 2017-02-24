@@ -24,25 +24,25 @@ public class FinancialSectionPage {
         webDriver.findElement(By.id("date-32")).sendKeys("01/26/2017");
         // Locate the Cash on Hand Search box for Pual Washington and enter the
         // information as required.
-        webDriver.findElement(By.xpath(".//*[@id='answers_33_value']")).sendKeys("2000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_33_value']")).sendKeys("200000.98");
         // Locate the Savings Account(s) Balance Search box for Pual Washington
         // and enter the information as required.
-        webDriver.findElement(By.xpath(".//*[@id='answers_34_value']")).sendKeys("5000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_34_value']")).sendKeys("500000.67");
         // Locate the Checking Account(s) Balance Search box for Pual Washington
         // and enter the information as required.
-        webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("4500000.45");
         // Locate the Continue button and click on it to continue.
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate section for Other Source of Income enter all valid data as
         // required.
         // Locate the Salary search box and enter salary.
-        webDriver.findElement(By.xpath(".//*[@id='answers_36_value']")).sendKeys("70000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_36_value']")).sendKeys("7000000.44");
         // Locate the Other Income search box and enter Other Income.
-        webDriver.findElement(By.xpath(".//*[@id='answers_37_value']")).sendKeys("80000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_37_value']")).sendKeys("800000.23");
         // Locate the applicant Business Type and enter amount of applicant
         // equity.
-        webDriver.findElement(By.xpath(".//*[@id='answers_38_value']")).sendKeys("800000");
+        webDriver.findElement(By.xpath(".//*[@id='answers_38_value']")).sendKeys("800000.23");
         // Locate the applicant equity in other firm and enter applicant
         // business equity.
         webDriver.findElement(By.xpath(".//*[@id='answers_39_value']")).sendKeys("50000");
@@ -61,12 +61,12 @@ public class FinancialSectionPage {
         // Locate the 'Address of Debtor' search box and enter a valid address.
         webDriver.findElement(By.id("DTE_Field_debtor_address")).sendKeys("8765 Kings st MD 23445");
         // Locate the 'Original Balance' search box and enter a valid balance.
-        webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("80000");
+        webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("8000000.56");
         // Locate the 'Current Balance' Search box and enter a valid balance.
         webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("20000");
         // Locate the 'Payment Amount(Calculated Annually)' and enter a valid
         // Amount.
-        webDriver.findElement(By.id("DTE_Field_pay_amount")).sendKeys("60000");
+        webDriver.findElement(By.id("DTE_Field_pay_amount")).sendKeys("60000000.34");
         // Locate the 'How Secured or Endorsed / Type of Collateral' search box
         // and enter a valid Collateral type(s).
         webDriver.findElement(By.id("DTE_Field_collateral_type")).sendKeys("secured");
@@ -118,16 +118,16 @@ public class FinancialSectionPage {
         Thread.sleep(2000);
         webDriver.findElement(By.id("answers_48_1_1_value")).sendKeys("8597 weems rd 2000 ln manassas va 30998");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][2][value]']/label")).click();
-        webDriver.findElement(By.id("answers_48_1_3_value")).sendKeys("50");
-        webDriver.findElement(By.id("answers_48_1_4_value")).sendKeys("98");
+        webDriver.findElement(By.id("answers_48_1_3_value")).sendKeys("5000000.45");
+        webDriver.findElement(By.id("answers_48_1_4_value")).sendKeys("9800000.45");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][5][value]']/label")).click();
         // mydriver.findElement(By.xpath(".//*[@id='answers_48_2_5_value']")).sendKeys(Percentage);
-        webDriver.findElement(By.id("answers_48_1_6_value")).sendKeys("78");
-        webDriver.findElement(By.id("answers_48_1_7_value")).sendKeys("76");
+        webDriver.findElement(By.id("answers_48_1_6_value")).sendKeys("78000.65");
+        webDriver.findElement(By.id("answers_48_1_7_value")).sendKeys("760000.77");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][8][value]']/label")).click();
-        webDriver.findElement(By.id("answers_48_1_9_value")).sendKeys("50");
+        webDriver.findElement(By.id("answers_48_1_9_value")).sendKeys("50000.76");
         webDriver.findElement(By.xpath("//div[@id='answers[48][1][10][value]']/label")).click();
-        webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("50");
+        webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("5000000.34");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
         logger.info("Heyyyy! Stocks and Bones section answered.");
@@ -135,16 +135,16 @@ public class FinancialSectionPage {
         webDriver.findElement(By.xpath(".//*[@id='answers[49][value]']/label[1]")).click();
         webDriver.findElement(By.id("add_real_estate")).click();
         Thread.sleep(3000);
-        webDriver.findElement(By.id("answers_50_1_1_value")).sendKeys("1000");
+        webDriver.findElement(By.id("answers_50_1_1_value")).sendKeys("1000000.34");
         webDriver.findElement(By.id("answers_50_1_2_value_no")).click();
         webDriver.findElement(By.xpath("//div[@id='answers[50][1][4][value]']/label[2]")).click();
         // mydriver.findElement(By.xpath(".//*[@id='answers_50_2_5_value']")).sendKeys(Percentage);
-        webDriver.findElement(By.id("answers_50_1_6_value")).sendKeys("76");
-        webDriver.findElement(By.id("answers_50_1_7_value")).sendKeys("87");
+        webDriver.findElement(By.id("answers_50_1_6_value")).sendKeys("760000.45");
+        webDriver.findElement(By.id("answers_50_1_7_value")).sendKeys("870000.87");
         // Select yes for the last two question.
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//div[@id='answers[50][1][8][value]']/label")).click();
-        webDriver.findElement(By.id("answers_50_1_9_value")).sendKeys("65");
+        webDriver.findElement(By.id("answers_50_1_9_value")).sendKeys("650000.87");
         webDriver.findElement(By.xpath("//div[@id='answers[50][1][10][value]']/label")).click();
         webDriver.findElement(By.id("answers_50_1_11_value")).sendKeys("56");
         Thread.sleep(3000);
