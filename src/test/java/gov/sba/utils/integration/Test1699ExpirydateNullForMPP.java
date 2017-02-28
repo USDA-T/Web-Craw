@@ -160,6 +160,6 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+        webDriver.quit();
     }
 }

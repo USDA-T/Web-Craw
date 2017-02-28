@@ -15,7 +15,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     WebDriver webDriver;
     private static final Logger logger_TestEDWOSBWorkflow = LogManager
             .getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
-    String duns_Number, email, password;
+    String duns_Number, email, password,typ_App;
 
     @Before
     public void setUp() throws Exception {
@@ -27,6 +27,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
         email = details[0];
         password = details[1];
         duns_Number = details[2];
+
     }
 
     @Test
@@ -35,8 +36,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
             Thread.sleep(1500);
-
-            String typ_App = "EDWOSB";
+            typ_App = "EDWOSB";
 
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
