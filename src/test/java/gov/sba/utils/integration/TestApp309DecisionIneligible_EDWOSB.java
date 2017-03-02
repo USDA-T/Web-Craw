@@ -80,6 +80,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       webDriver.navigate().back();
       Thread.sleep(2000);
       webDriver.navigate().back();
+      webDriver.navigate().back();
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
       List <WebElement> current_Row1 = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
           + "td[position()=8 and contains(text(),'Ineligible')]   and "
