@@ -30,6 +30,8 @@ public class TestApp303and304EDWOSB extends TestCase {
         duns_Number = details[2];
     }
 
+
+
     @Test
     public void testMainTest() throws Exception {
         // Before testing - verify the prepopulate flag - false -Should not
@@ -71,7 +73,7 @@ public class TestApp303and304EDWOSB extends TestCase {
         // the prepulate falg = 'false';
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
-        String checkBoxElement = webDriver.findElement(By.id("answers_65_value_yes")).getAttribute("outerHTML");
+        String checkBoxElement = webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");
         assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
         // Update the - Prepopulate flag- True ---should Prepopluate the answers
@@ -82,7 +84,7 @@ public class TestApp303and304EDWOSB extends TestCase {
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
         Thread.sleep(1000);
-        checkBoxElement = webDriver.findElement(By.id("answers_65_value_yes")).getAttribute("outerHTML");
+        checkBoxElement = webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");
         assertTrue(checkBoxElement.toLowerCase().contains("checked"));
         // Reset to Default
         sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
@@ -96,6 +98,6 @@ public class TestApp303and304EDWOSB extends TestCase {
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
         DatabaseQuery dbcall = new DatabaseQuery();
         dbcall.executeSQLScript(sql_Q_01);
-        webDriver.quit();
+        //webDriver.quit();
     }
 }

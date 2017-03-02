@@ -53,10 +53,6 @@ public class TestApp303and304WOSB extends TestCase {
         CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
         CommonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-//        webDriver.navigate().back();
-//        webDriver.navigate().back();
-//        Thread.sleep(1500);
-//        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
@@ -66,7 +62,7 @@ public class TestApp303and304WOSB extends TestCase {
         // the prepulate falg = 'false';
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "WOSB");
-        String checkBoxElement = webDriver.findElement(By.id("answers_5_value_yes")).getAttribute("outerHTML");
+        String checkBoxElement = webDriver.findElement(By.id("answers_169_value_yes")).getAttribute("outerHTML");
         assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
         // Update the - Prepopulate flag- True ---should Prepopluate the answers
@@ -77,7 +73,7 @@ public class TestApp303and304WOSB extends TestCase {
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
         Thread.sleep(1000);
-        checkBoxElement = webDriver.findElement(By.id("answers_5_value_yes")).getAttribute("outerHTML");
+        checkBoxElement = webDriver.findElement(By.id("answers_169_value_yes")).getAttribute("outerHTML");
         assertTrue(checkBoxElement.toLowerCase().contains("checked"));
 
         // Reset to Default

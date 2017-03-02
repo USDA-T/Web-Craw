@@ -36,12 +36,6 @@ public class TestApp187OppSupport extends TestCase {
             // US1280- Search Government ;
             // Get Email,First,Name,Last from the Db to use as serach term in UI
             // Connect SBAONE QA DB -to get data from DB
-            // To call DB-- pass Sql query, no of rows,no of cols to db function
-            // String sql_query = "select email,max_first_name,max_last_name
-            // from sbaone.users where max_id is not null";
-            // DatabaseQuery dbcall = new DatabaseQuery();
-            // String[][] returned_GovProfile_Rows = dbcall.getDBData(sql_query,
-            // 2,3);
             // TestApp187OppSupport.info(returned_GovProfile_Rows[1][1]);
             // pass Government/vendor profile criteria
             String Gov_Radio_xpath = "//input[@id='user_type_gov_user']";
@@ -51,14 +45,6 @@ public class TestApp187OppSupport extends TestCase {
             TestuserProfileSearchType.TestuserProfileSearch(webDriver, "Analyst", Gov_Radio_xpath, Expected_Result);
             webDriver.navigate().back();
             // US1280- Search Vendor ;
-            // Get Email,First,Name,Last from the Db to use as serach term in UI
-            // Connect SBAONE QA DB -to get data from DB
-            // To call DB-- pass Sql query, no of rows,no of cols to db function
-            // sql_query = "select email,first_name,last_name from sbaone.users
-            // where max_id is null and email like 'd%'";
-            // String[][] areturned_Rows = dbcall.getDBData(sql_query, 2,3);
-            // TestApp187OppSupport.info(areturned_Rows[1][1]);
-            // Pass the user search radio button,the serach term to the
             // userprofile search function
             // pass Government/vendor profile criteria
             String Ven_Radio_xpath = "//input[@id='user_type_vendor_user']";

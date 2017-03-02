@@ -17,8 +17,6 @@ public class fillApplCreatePages {
             String owner, String supervisor) throws Exception {
 
         try {
-            // webDriver.findElement(By.xpath("//*[@id='question-review']//a[contains(text(),'Case
-            // overview')]")).click();
             webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(text(),'ase overview')]"))
                     .click();
 
@@ -86,10 +84,6 @@ public class fillApplCreatePages {
     public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws Exception {
         try {
             if (answer01.toUpperCase().contains("YES")) {
-                // Use
-                // webDriver.findElement(By.id("answers_65_value_no")).click();
-                // for no
-
                 List<WebElement> current_Row = webDriver.findElements(By
                         .xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
                 Iterator<WebElement> all_Rows = current_Row.iterator();
@@ -114,9 +108,9 @@ public class fillApplCreatePages {
                 logger.info("Doc has been uploaded and accepted");
             } else {
                 try {
-                    webDriver.findElement(By.id("answers_117_value_no")).click();
+                    webDriver.findElement(By.id("answers_169_value_yes")).click();
                 } catch (Exception e1) {
-                    webDriver.findElement(By.id("answers_65_value_no")).click();
+                    webDriver.findElement(By.id("answers_228_value_yes")).click();
                 }
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
             }
@@ -130,10 +124,6 @@ public class fillApplCreatePages {
             throws Exception {
         try {
             if (answer01.toUpperCase().contains("YES")) {
-                // Use
-                // webDriver.findElement(By.id("answers_65_value_no")).click();
-                // for no
-
                 List<WebElement> current_Row = webDriver.findElements(By
                         .xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
                 Iterator<WebElement> all_Rows = current_Row.iterator();
@@ -180,7 +170,7 @@ public class fillApplCreatePages {
                 try {
                     webDriver.findElement(By.id("answers_117_value_no")).click();
                 } catch (Exception e1) {
-                    webDriver.findElement(By.id("answers_65_value_no")).click();
+                    webDriver.findElement(By.id("answers_228_value_yes")).click();
                 }
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
             }
