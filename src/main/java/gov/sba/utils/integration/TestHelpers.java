@@ -60,7 +60,12 @@ public class TestHelpers {
         case Constants.BROWSER_FIREFOX:
             if (TestHelpers.isUnix(TestHelpers.systemType())) {
                 // Need to provide specific type information for Linux
-                configKeys = new String[] { "webdriver.firefox.bin", "webdriver.firefox.port" };
+                configKeys = new String[] { 
+                        //"webdriver.firefox.bin", 
+                        //"webdriver.firefox.port", 
+                        "webdriver.gecko.driver"
+        
+                };
                 setSystemProperties(configKeys, props);
             }
 
