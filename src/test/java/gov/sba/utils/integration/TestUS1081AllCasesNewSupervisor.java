@@ -1,14 +1,10 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +32,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -89,21 +85,17 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
             Assert.assertArrayEquals(header_Names_Array, header_Names_Array_Validate);
 
-            String url = return_Db_URL();
-            Properties props = new Properties();
-            props.setProperty("user", "app_ruby");
-            props.setProperty("password", "rubypassword");
-            Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
-            logger_US1081.info(connection_SBA_One_Qa);
+            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
 
-            Statement statement_SQL = connection_SBA_One_Qa.createStatement();
+            Statement statement_SQL = databaseConnection.createStatement();
+
             ResultSet result_Set = statement_SQL.executeQuery(" SELECT F.legal_business_name AS legal_Name, "
                     + "		 C.duns_number AS duns_No, " + "		 G.name AS cert_Name, "
                     + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
                     + "		 I.workflow_state AS sub_Status" + " 	FROM "
                     + "			sbaone.sba_applications A INNER JOIN sbaone.organizations C ON (A.organization_id = C.id), "
-                    + "			sbaone.certificate_types 		G , " + "			reference.mvw_sam_organizations 	F,"
-                    + "			sbaone.certificates I"
+                    + "			sbaone.certificate_types 		G , "
+                    + "			reference.mvw_sam_organizations 	F," + "			sbaone.certificates I"
                     + " 	where(  A.workflow_state 		= 'submitted'				"
                     + "       AND A.progress 				->>'current' = 'signature')	"
                     + "       AND C.duns_number 			= F.duns" + "       AND C.duns_number 			= '"
@@ -183,9 +175,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
     }
 
-
-
-  @After
+    @After
     public void tearDown() throws Exception {
         webDriver.quit();
     }

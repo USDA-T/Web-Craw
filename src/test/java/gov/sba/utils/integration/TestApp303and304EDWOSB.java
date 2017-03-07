@@ -24,13 +24,11 @@ public class TestApp303and304EDWOSB extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
     }
-
-
 
     @Test
     public void testMainTest() throws Exception {
@@ -59,11 +57,11 @@ public class TestApp303and304EDWOSB extends TestCase {
         logger_303.info("First Logout");
 
         CommonApplicationMethods.return_all_Applications(webDriver, 11, duns_Number);
-//        webDriver.navigate().back();
-//        webDriver.navigate().back();
-//        Thread.sleep(1500);
-//        CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
-//        logger_303.info("Second Logout");
+        // webDriver.navigate().back();
+        // webDriver.navigate().back();
+        // Thread.sleep(1500);
+        // CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
+        // logger_303.info("Second Logout");
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
@@ -98,6 +96,6 @@ public class TestApp303and304EDWOSB extends TestCase {
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
         DatabaseQuery dbcall = new DatabaseQuery();
         dbcall.executeSQLScript(sql_Q_01);
-        //webDriver.quit();
+        // webDriver.quit();
     }
 }

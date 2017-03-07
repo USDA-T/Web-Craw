@@ -1,14 +1,10 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -45,10 +41,7 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
-        // Need to submit the application in EDWosb, Wosb
-        // Log in As Analyst/Supervisor - validate as per the US1503 Acceptance
-        // criteria
-        // on Supervisor All cases page
+
         try {
 
             WebElement Cases_Link = webDriver.findElement(By.cssSelector("a[href*='/sba_analyst/cases']"));
@@ -75,14 +68,10 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
 
             Assert.assertArrayEquals(header_Names_Array, header_Names_Array_Validate);
 
-            String url = return_Db_URL();
-            Properties props = new Properties();
-            props.setProperty("user", "app_ruby");
-            props.setProperty("password", "rubypassword");
-            Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
-            logger_US1503.info(connection_SBA_One_Qa);
+            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
 
-            Statement statement_SQL = connection_SBA_One_Qa.createStatement();
+            Statement statement_SQL = databaseConnection.createStatement();
+
             ResultSet result_Set = statement_SQL.executeQuery(" SELECT F.legal_business_name AS legal_Name, "
                     + "		 C.duns_number AS duns_No, " + "		 G.name AS cert_Name, "
                     + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
@@ -112,12 +101,15 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
                 // Add a Row
                 db_rows_array.add(db_rows_Cell);
             }
-            logger_US1503.info(db_rows_array.toString()); // Thread.sleep(50000);
+
+            logger_US1503.info(db_rows_array.toString());
+
             result_Set.close();
 
             // Entire Table Verification for next Sprint
             List<ArrayList<String>> ui_rows_array = new ArrayList<>();
             List<WebElement> rows_Body = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr"));
+
             // Get the Table rows /logger.info(rows_Body.size());
             for (int j = 0; j < rows_Body.size(); j++) {
                 ArrayList<String> ui_rows_Cell = new ArrayList<>();
@@ -149,8 +141,6 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
         }
 
     }
-
-
 
     @After
     public void tearDown() throws Exception {

@@ -138,7 +138,7 @@ public class AnalystReviewPage extends TestCase {
                         + "    and  A.duns_number='159165917' " + "    order by D.updated_at desc ";
 
                 DatabaseQuery dbcall = new DatabaseQuery();
-                String[][] returned_workflow_review_status = dbcall.getDBData(sql_query, 2, 3);
+                String[][] returned_workflow_review_status = dbcall.queryForData(sql_query, 2, 3);
                 AnalystReviewPage.info("aaaaa+" + returned_workflow_review_status[1][0].toString()
                         + returned_workflow_review_status[1][1].toString()
                         + returned_workflow_review_status[1][2].toString());

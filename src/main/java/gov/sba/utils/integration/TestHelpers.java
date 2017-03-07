@@ -1,6 +1,5 @@
 package gov.sba.utils.integration;
 
-import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -12,12 +11,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
+import gov.sba.automation.utils.ConfigUtils;
+
 public class TestHelpers {
     private static final Logger logger = LogManager.getLogger(TestHelpers.class.getName());
     final public static String BASE_URL = "base_url_";
 
     public static WebDriver getDefaultWebDriver() {
-        Properties props = loadDefaultProperties(); // new Properties();
+        Properties props = ConfigUtils.loadDefaultProperties();
         WebDriver driver = null;
 
         // Setup the configuration based on the browser we are using
@@ -58,13 +59,14 @@ public class TestHelpers {
             driver = new ChromeDriver(options);
             break;
         case Constants.BROWSER_FIREFOX:
-            if (TestHelpers.isUnix(TestHelpers.systemType())) {
+            if (ConfigUtils.isUnix(ConfigUtils.systemType())) {
                 // Need to provide specific type information for Linux
                 configKeys = new String[] { 
-                        //"webdriver.firefox.bin", 
-                        //"webdriver.firefox.port", 
-                        "webdriver.gecko.driver"
-        
+                        // Note: for older version of Firefox
+                        "webdriver.firefox.bin", 
+                        "webdriver.firefox.port"
+                        // For newer version of Firefox
+                        //"webdriver.gecko.driver"
                 };
                 setSystemProperties(configKeys, props);
             }
@@ -110,36 +112,4 @@ public class TestHelpers {
             System.setProperty(confKey, props.getProperty(confKey));
         }
     }
-
-    public static Properties loadDefaultProperties() {
-        Properties props = new Properties();
-        try {
-            props.load(TestHelpers.class.getResourceAsStream("/default.properties"));
-            // Set the default test environment to test if none was set
-            System.setProperty(Constants.TEST_ENV, props.getProperty(Constants.TEST_ENV, Constants.ENV_DEVELOPMENT));
-        } catch (IOException e) {
-            throw new RuntimeException("Error loading the resource file." + e.getMessage());
-        }
-        return props;
-    }
-
-    // For OS detection
-    private static String systemType() {
-        return System.getProperty("os.name").toLowerCase();
-    }
-
-    @SuppressWarnings("unused")
-    private static boolean isWindows(String osName) {
-        return (osName.indexOf("win") >= 0);
-    }
-
-    @SuppressWarnings("unused")
-    private static boolean isMac(String osName) {
-        return (osName.indexOf("mac") >= 0);
-    }
-
-    private static boolean isUnix(String osName) {
-        return (osName.indexOf("nix") >= 0 || osName.indexOf("nux") >= 0 || osName.indexOf("aix") > 0);
-    }
-
 }

@@ -15,7 +15,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     WebDriver webDriver;
     private static final Logger logger_TestEDWOSBWorkflow = LogManager
             .getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
-    String duns_Number, email, password,typ_App;
+    String duns_Number, email, password, typ_App;
 
     @Before
     public void setUp() throws Exception {
@@ -23,7 +23,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];

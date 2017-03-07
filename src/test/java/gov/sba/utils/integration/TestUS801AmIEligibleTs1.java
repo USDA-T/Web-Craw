@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
 
-
 public class TestUS801AmIEligibleTs1 extends TestCase {
 
     private static final Logger logger = LogManager.getLogger(TestUS801AmIEligibleTs1.class.getName());

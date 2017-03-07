@@ -1,14 +1,10 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +32,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -76,11 +72,8 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Submitted",
                     "Owner", "Current reviewer", "Status" };
             List<WebElement> rows_Header = webDriver
-                    .findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th")); // Get
-                                                                                            // the
-                                                                                            // Table
-                                                                                            // Header
-                                                                                            // Cells
+                    .findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
+
             String[] header_Names_Array_Validate = new String[8];
             java.util.Iterator<WebElement> list_elements = rows_Header.iterator();
             int i = 0;
@@ -90,21 +83,19 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             }
 
             Assert.assertArrayEquals(header_Names_Array, header_Names_Array_Validate);
-            String url = return_Db_URL();
-            Properties props = new Properties();
-            props.setProperty("user", "app_ruby");
-            props.setProperty("password", "rubypassword");
-            Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
-            logger_US1081.info(connection_SBA_One_Qa);
 
-            Statement statement_SQL = connection_SBA_One_Qa.createStatement();
+            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
+
+            logger_US1081.info(databaseConnection);
+
+            Statement statement_SQL = databaseConnection.createStatement();
             ResultSet result_Set = statement_SQL.executeQuery(" SELECT F.legal_business_name AS legal_Name, "
                     + "		 C.duns_number AS duns_No, " + "		 G.name AS cert_Name, "
                     + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
                     + "		 I.workflow_state AS sub_Status" + " 	FROM "
                     + "			sbaone.sba_applications A INNER JOIN sbaone.organizations C ON (A.organization_id = C.id), "
-                    + "			sbaone.certificate_types 		G , " + "			reference.mvw_sam_organizations 	F,"
-                    + "			sbaone.certificates I"
+                    + "			sbaone.certificate_types 		G , "
+                    + "			reference.mvw_sam_organizations 	F," + "			sbaone.certificates I"
                     + " 	where(  A.workflow_state 		= 'submitted'				"
                     + "       AND A.progress 				->>'current' = 'signature')	"
                     + "       AND C.duns_number 			= F.duns" + "       AND C.duns_number 			= '"
@@ -114,11 +105,8 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 
             List<ArrayList<String>> db_rows_array = new ArrayList<>();
             while (result_Set.next()) {
-                ArrayList<String> db_rows_Cell = new ArrayList<>(); // Add
-                                                                    // inside a
-                                                                    // second
-                                                                    // Dimension
-                                                                    // Array
+                ArrayList<String> db_rows_Cell = new ArrayList<>();
+
                 db_rows_Cell.add(result_Set.getString("legal_Name").toUpperCase());
                 db_rows_Cell.add(result_Set.getString("duns_No"));
                 db_rows_Cell.add(result_Set.getString("cert_Name").toUpperCase());
@@ -140,10 +128,8 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             for (int j = 0; j < rows_Body.size(); j++) {
                 ArrayList<String> ui_rows_Cell = new ArrayList<>();
                 logger_US1081.info(rows_Body.get(j).getAttribute("innerHTML"));
-                List<WebElement> rows_Body_Cells = rows_Body.get(j).findElements(By.xpath("td")); // Get
-                                                                                                  // the
-                                                                                                  // Table
-                                                                                                  // Cells
+                List<WebElement> rows_Body_Cells = rows_Body.get(j).findElements(By.xpath("td"));
+
                 logger_US1081.info("+++++++" + rows_Body_Cells.size());
                 ui_rows_Cell.add(rows_Body_Cells.get(0).getText().toUpperCase());
                 ui_rows_Cell.add(rows_Body_Cells.get(1).getText());
@@ -156,7 +142,6 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             for (int j = 0; j < ui_rows_array.size(); j++) {
                 for (int k = 0; k < ui_rows_array.get(j).size(); k++) {
                     assertEquals(ui_rows_array.get(j).get(k), db_rows_array.get(j).get(k));
-
                 }
             }
 
@@ -166,7 +151,6 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
             throw e;
         }
-
     }
 
     @After

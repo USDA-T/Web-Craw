@@ -33,7 +33,7 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
         // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
-        //delete second draft if any.
+        // delete second draft if any.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft

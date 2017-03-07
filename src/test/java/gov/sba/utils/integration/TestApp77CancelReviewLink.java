@@ -30,7 +30,7 @@ public class TestApp77CancelReviewLink extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -114,7 +114,7 @@ public class TestApp77CancelReviewLink extends TestCase {
                         + "								(select max(id) from sbaone.sba_applications where organization_id = "
                         + organization_Id.toString() + " and deleted_at is null )";
                 TestApp77CancelReviewLink.info(sql_Q);
-                String[][] count_Case = DatabaseQuery.getDBData(sql_Q, 1, 1);
+                String[][] count_Case = DatabaseQuery.queryForData(sql_Q, 1, 1);
                 String count_Case_Count = count_Case[0][0];
                 assertEquals(count_Case_Count, "1");
 

@@ -36,15 +36,15 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
-        //delete to start a new certification.
+        // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
-        //delete second draft if any.
+        // delete second draft if any.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         // Start an application.
-        Actual_Text =
-            webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span"))
+                .getText();
         Expected_Text = "Programs";
         webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).click();
         assertEquals(Actual_Text, Expected_Text);
@@ -71,7 +71,9 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         Expected_Text = "Does the applicant firm have any existing agreements that might impact ownership or control? These may include:\n• joint venture\n• mentor protégé\n• indemnity\n• consulting\n• distributorship\n• licensing\n• teaming\n• trust\n• franchise\n• management";
         assertEquals(Actual_Text, Expected_Text);
         // Detail section.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_eight_a_control_existing_agreements']/fieldset/p[2]")).getText();
+        Actual_Text = webDriver
+                .findElement(By.xpath("//div[@id='answers_eight_a_control_existing_agreements']/fieldset/p[2]"))
+                .getText();
         Expected_Text = "If yes, upload the agreements.";
         assertEquals(Actual_Text, Expected_Text);
         // 2nd question. 1.4b
@@ -134,7 +136,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // question1, 1.4a
         webDriver.findElement(By.id("answers_169_value_yes")).click();
         Thread.sleep(2000);
-        //Upload a document.
+        // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);

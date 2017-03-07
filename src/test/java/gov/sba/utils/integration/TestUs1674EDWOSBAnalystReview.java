@@ -29,7 +29,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -247,6 +247,6 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-       // webDriver.quit();
+        // webDriver.quit();
     }
 }

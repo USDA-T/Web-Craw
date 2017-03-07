@@ -10,6 +10,8 @@ import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import gov.sba.automation.utils.ConfigUtils;
+
 public class LoginHelpers {
     private static final Logger logger = LogManager.getLogger(LoginHelpers.class.getName());
 
@@ -25,7 +27,7 @@ public class LoginHelpers {
 
     public static List<LoginData> loadFixtures() throws Exception {
         // Make sure that we have the TEST_ENV set
-        TestHelpers.loadDefaultProperties();
+        ConfigUtils.loadDefaultProperties();
         String fixturesFile = "fixtures_" + System.getProperty(Constants.TEST_ENV) + ".csv";
 
         // TODO: may be load this through the getResourceAsStream() e.g.

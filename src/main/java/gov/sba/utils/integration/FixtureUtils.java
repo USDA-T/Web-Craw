@@ -19,8 +19,13 @@ public class FixtureUtils {
         return System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator
                 + "resources" + File.separator;
     }
-
-    public static void main(String[] args) {
-        System.out.println("fixturesDir" + FixtureUtils.fixturesDir());
+    
+    public static String resourcesDir() {
+        return String.join(File.separator, new String[] {
+                System.getProperty("user.dir"),
+                "src",
+                "main",
+                "resources"
+         }) + File.separator;
     }
 }

@@ -4,16 +4,11 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Scanner;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -21,6 +16,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import com.opencsv.CSVParser;
+import com.opencsv.CSVReader;
+
+import gov.sba.automation.utils.ConfigUtils;
 
 public class CommonApplicationMethods {
     private static final Logger commonApplicationMethodsLogs = LogManager
@@ -49,97 +49,101 @@ public class CommonApplicationMethods {
             return false;
         }
     }
-    public static WebElement find_Element(WebDriver webdriver, String type_Locator, String value_Locator ) throws Exception {
+
+    public static WebElement find_Element(WebDriver webdriver, String type_Locator, String value_Locator)
+            throws Exception {
 
         String flag = "";
         WebElement element_01 = null;
         switch (type_Locator.toLowerCase()) {
-            case "xpath":
-                    for (int i=0;i<15;i++){
-                        try{//commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                            element_01=  webdriver.findElement(By.xpath(value_Locator));
-                            flag = "Y";
-                            break;
-                        }catch (Exception e){
-                            commonApplicationMethodsLogs.info("Trying to find xpath:" + value_Locator );
-                            Thread.sleep(300);
-                        }
-                    }
+        case "xpath":
+            for (int i = 0; i < 15; i++) {
+                try {// commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.xpath(value_Locator));
+                    flag = "Y";
                     break;
-            case "id":
-                for (int i=0;i<15;i++){
-                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                        element_01=  webdriver.findElement(By.id(value_Locator));
-                        flag = "Y";
-                        break;
-                    }catch (Exception e){
-                        commonApplicationMethodsLogs.info("Trying to find id:" + value_Locator );
-                        Thread.sleep(300);
-                    }
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find xpath:" + value_Locator);
+                    Thread.sleep(300);
                 }
-                break;
-            case "classname":
-                for (int i=0;i<15;i++){
-                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                      element_01=  webdriver.findElement(By.className(value_Locator));
-                        flag = "Y";
-                        break;
-                    }catch (Exception e){
-                        commonApplicationMethodsLogs.info("Trying to find classname:" + value_Locator );
-                        Thread.sleep(300);
-                    }
+            }
+            break;
+        case "id":
+            for (int i = 0; i < 15; i++) {
+                try { // commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.id(value_Locator));
+                    flag = "Y";
+                    break;
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find id:" + value_Locator);
+                    Thread.sleep(300);
                 }
-                break;
-            case "name":
-                for (int i=0;i<15;i++){
-                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                      element_01=  webdriver.findElement(By.name(value_Locator));
-                        flag = "Y";
-                        break;
-                    }catch (Exception e){
-                        commonApplicationMethodsLogs.info("Trying to find name:" + value_Locator );
-                        Thread.sleep(300);
-                    }
+            }
+            break;
+        case "classname":
+            for (int i = 0; i < 15; i++) {
+                try { // commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.className(value_Locator));
+                    flag = "Y";
+                    break;
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find classname:" + value_Locator);
+                    Thread.sleep(300);
                 }
-                break;
-            case "cssselector":
-                for (int i=0;i<15;i++){
-                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                      element_01=  webdriver.findElement(By.cssSelector(value_Locator));
-                        flag = "Y";
-                        break;
-                    }catch (Exception e){
-                        commonApplicationMethodsLogs.info("Trying to find cssSelector:" + value_Locator );
-                        Thread.sleep(300);
-                    }
+            }
+            break;
+        case "name":
+            for (int i = 0; i < 15; i++) {
+                try { // commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.name(value_Locator));
+                    flag = "Y";
+                    break;
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find name:" + value_Locator);
+                    Thread.sleep(300);
                 }
-                break;
-            case "linktext":
-                for (int i=0;i<15;i++){
-                    try{ //commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
-                      element_01=  webdriver.findElement(By.linkText(value_Locator));
-                        flag = "Y";
-                        break;
-                    }catch (Exception e){
-                        commonApplicationMethodsLogs.info("Trying to find linktext:" + value_Locator );
-                        Thread.sleep(300);
-                    }
+            }
+            break;
+        case "cssselector":
+            for (int i = 0; i < 15; i++) {
+                try { // commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.cssSelector(value_Locator));
+                    flag = "Y";
+                    break;
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find cssSelector:" + value_Locator);
+                    Thread.sleep(300);
                 }
-                break;
+            }
+            break;
+        case "linktext":
+            for (int i = 0; i < 15; i++) {
+                try { // commonApplicationMethodsLogs.info(Calendar.getInstance().get(Calendar.MILLISECOND));
+                    element_01 = webdriver.findElement(By.linkText(value_Locator));
+                    flag = "Y";
+                    break;
+                } catch (Exception e) {
+                    commonApplicationMethodsLogs.info("Trying to find linktext:" + value_Locator);
+                    Thread.sleep(300);
+                }
+            }
+            break;
         }
 
-        if (flag == "Y"){
+        if (flag == "Y") {
             return element_01;
-        } else{
+        } else {
             throw new Exception();
         }
     }
-    public static void click_Element(WebDriver webdriver, String type_Locator, String value_Locator ) throws Exception {
+
+    public static void click_Element(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
         WebElement click_element = find_Element(webdriver, type_Locator, value_Locator);
         click_element.click();
     }
 
-    public static void setText_Element(WebDriver webdriver, String type_Locator, String value_Locator, String textVal ) throws Exception {
+    public static void setText_Element(WebDriver webdriver, String type_Locator, String value_Locator, String textVal)
+            throws Exception {
         WebElement click_element = find_Element(webdriver, type_Locator, value_Locator);
         click_element.sendKeys(textVal);
     }
@@ -325,7 +329,7 @@ public class CommonApplicationMethods {
     public static String returnOrganization_Id(String duns_Number) throws Exception {
         String organization_Id;
         try {
-            organization_Id = DatabaseQuery.getDBData(
+            organization_Id = DatabaseQuery.queryForData(
                     "select id from sbaone.organizations where duns_number = '" + duns_Number + "'", 1, 1)[0][0];
         } catch (Exception e) {
             commonApplicationMethodsLogs.info(e.toString() + ": The Duns number retreival has failed");
@@ -333,96 +337,55 @@ public class CommonApplicationMethods {
         }
         return organization_Id;
     };
-    public static String return_Url_check() throws Exception {
-        String file_path = FixtureUtils.fixturesDir_Duns() + "default.properties";
-        Scanner in = new Scanner(new FileReader(file_path));
-        while(in.hasNextLine()){
-            String nline = in.nextLine();
-            if (nline.indexOf("base_url_development") == 0)
-            {
-                return nline.split("base_url_development=")[1].trim();
+    
+    /**
+     * Simplify implementation of how we should find good row having the available DUNS number to use!
+     * 
+     * @return
+     * @throws Exception
+     */
+    public static String[] findUnusedDunsNumber() throws Exception {
+        String csvFile = FixtureUtils.resourcesDir() + ConfigUtils.loadDefaultProperties().getProperty("fixture_file");
+
+        CSVReader reader = new CSVReader(new FileReader(csvFile), CSVParser.DEFAULT_SEPARATOR,
+                CSVParser.DEFAULT_QUOTE_CHARACTER, 1);
+
+        String[] detailFields;
+
+        while ((detailFields = reader.readNext()) != null) {
+
+            String email = detailFields[0];
+            String password = detailFields[1];
+            String dunsNumber = detailFields[2];
+
+            int rowsNeeded = 1;
+            int colsNeeded = 1;
+
+            String certificateQuery = "select count(*) from sbaone.certificates where organization_id in (select id from sbaone.organizations where duns_number = '"
+                    + dunsNumber + "')";
+
+            String[][] certificateData = DatabaseQuery.queryForData(certificateQuery, rowsNeeded, colsNeeded);
+
+            String applicationQuery = "select count(*) from sbaone.sba_applications where organization_id in (select id from sbaone.organizations where duns_number = '"
+                    + dunsNumber + "')";
+
+            String[][] applicationData = DatabaseQuery.queryForData(applicationQuery, rowsNeeded, colsNeeded);
+
+            // If we can't find any combination then it means it is
+            // available?
+            int counter = Integer.parseInt(certificateData[0][0].toString())
+                    + Integer.parseInt(applicationData[0][0].toString());
+
+            if (counter <= 0) {
+                commonApplicationMethodsLogs
+                        .info(String.format("Found unused rows: %s->%s->%s", email, password, dunsNumber));
+                return detailFields;
             }
         }
-        throw new Exception("Not Good Environment");
+        // If we reach here we can't find any good Duns number, should just
+        // raise exception!
+        throw new Exception("No valid Duns number available. Please check your fixture files");
     }
-
-    public static String return_Db_URL() throws Exception {
-        String url_Check = return_Url_check();
-        if (url_Check.contains("elb.maint")) {
-                return "jdbc:postgresql://db.qa.sba-one.net:5432/sbaone_dev";
-        } else {
-            if (url_Check.contains("certify.qa")) {
-                return "jdbc:postgresql://sbaonedev.cypwvkg7qp3n.us-east-1.rds.amazonaws.com:5432/sbaone_qa";
-            }
-            else {
-                    throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
-            }
-        }
-    }
-
-    public static String[] return_Good_Duns_no() throws Exception {
-        String[] duns_Number = new String[] { "" };
-        try {
-
-            String url_Check = "";
-            String url = "";
-            String file_path_abs = "";
-            String file_path = FixtureUtils.fixturesDir_Duns() + "default.properties";
-            Scanner in = new Scanner(new FileReader(file_path));
-            while(in.hasNextLine()){
-                String nline = in.nextLine();
-                if (nline.indexOf("base_url_development") == 0)
-                {
-                    url_Check= nline.split("base_url_development=")[1].trim();
-                    break;
-                }
-            }
-            if (url_Check.contains("elb.maint")) {
-                file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List_Elb.csv";
-
-            } else {
-                if (url_Check.contains("certify.qa")) {
-                    file_path_abs = FixtureUtils.fixturesDir_Duns() + "fixtures_duns_List_QA.csv";
-                } else {
-                    throw new Exception(new NoSuchFieldException("Connection incorrect - Neither QA/ELB"));
-                }
-            }
-
-
-            FileInputStream fstream = new FileInputStream(file_path_abs);
-            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
-            String strLine;
-
-            while ((strLine = br.readLine()) != null) {
-                if (!strLine.contains("Email,password,duns_number")) {
-                    String[] details = strLine.split(",");
-                    String sql_Q_01 = "select count(*) from sbaone.certificates where organization_id in (select id from sbaone.organizations where duns_number = '"
-                            + details[2] + "')";
-
-                    DatabaseQuery dbcall = new DatabaseQuery();
-                    String[][] returned_Count_01 = dbcall.getDBData(sql_Q_01, 1, 1);
-
-                    String sql_Q_02 = "select count(*) from sbaone.sba_applications where organization_id in (select id from sbaone.organizations where duns_number = '"
-                            + details[2] + "')";
-                    DatabaseQuery dbcall_02 = new DatabaseQuery();
-                    String[][] returned_Count_02 = dbcall_02.getDBData(sql_Q_02, 1, 1);
-
-                    int counter = Integer.parseInt(returned_Count_01[0][0].toString())
-                            + Integer.parseInt(returned_Count_02[0][0].toString());
-                    if (counter <= 0) { 
-                        commonApplicationMethodsLogs.info("Details Passed: " + Arrays.toString(details) + ":Url:- " + url_Check);
-                        return details;
-                    }
-                }
-            }
-            br.close();
-
-        } catch (Exception e) {
-            commonApplicationMethodsLogs.info(e.toString() + ": The Duns number retreival has failed");
-            throw e;
-        }
-        return duns_Number;
-    };
 
     public static void deleteApplication_SetCert_Set_App_Tables(WebDriver webDriver, Integer certificate_ID,
             String duns_Number) throws Exception {

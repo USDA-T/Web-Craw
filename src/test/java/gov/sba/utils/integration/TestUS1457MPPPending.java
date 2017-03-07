@@ -1,13 +1,9 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.utils.integration.CommonApplicationMethods.return_Db_URL;
-
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,7 +20,6 @@ import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestUS1457MPPPending extends TestCase {
-    // Set The variabl.es/Define
     private static WebDriver webDriver;
     private static final Logger logger_US1457 = LogManager.getLogger(TestUS1457MPPPending.class.getName());
     String duns_Number, email, password;
@@ -35,7 +30,7 @@ public class TestUS1457MPPPending extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.return_Good_Duns_no();
+        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -74,14 +69,9 @@ public class TestUS1457MPPPending extends TestCase {
                     "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
             logger_US1457.info(current_Title_Business.getText());
 
-            // Connect SBAONE QA DB -to get data from DB
-            String url = return_Db_URL();
-            Properties props = new Properties();
-            props.setProperty("user", "app_ruby");
-            props.setProperty("password", "rubypassword");
-            Connection connection_SBA_One_Qa = DriverManager.getConnection(url, props);
-            logger_US1457.info(connection_SBA_One_Qa);
-            Statement statement_SQL = connection_SBA_One_Qa.createStatement();
+            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
+
+            Statement statement_SQL = databaseConnection.createStatement();
             ResultSet result_Set = statement_SQL
                     .executeQuery("select  issue_date, expiry_date, workflow_state from sbaone.certificates A,"
                             + "sbaone.organizations where duns_number = '" + duns_Number + "'"
