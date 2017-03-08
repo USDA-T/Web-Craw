@@ -20,6 +20,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -35,7 +37,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
 
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -94,7 +96,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
                             "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
                     logger_US1699.info(current_Title_Business.getText());
 
-                    Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
+                    Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
                     Statement statement_SQL = databaseConnection.createStatement();
 
@@ -105,6 +107,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
                     // Code for US 1457 And US 1491
                     result_Set.next();
+                    
                     // -- Get Data from DB to test Pending status validation on
                     // UI with DB
                     String issue_date = result_Set.getString("issue_date");

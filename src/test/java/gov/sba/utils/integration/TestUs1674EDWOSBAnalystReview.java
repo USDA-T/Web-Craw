@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -29,7 +31,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];

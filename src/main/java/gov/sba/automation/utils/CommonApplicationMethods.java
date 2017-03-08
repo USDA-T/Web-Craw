@@ -1,10 +1,9 @@
-package gov.sba.utils.integration;
+package gov.sba.automation.utils;
 
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -17,14 +16,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVReader;
-
-import gov.sba.automation.utils.ConfigUtils;
+import gov.sba.utils.integration.LoginPageWithReference;
 
 public class CommonApplicationMethods {
     private static final Logger commonApplicationMethodsLogs = LogManager
-            .getLogger(gov.sba.utils.integration.CommonApplicationMethods.class.getName());
+            .getLogger(gov.sba.automation.utils.CommonApplicationMethods.class.getName());
 
     public static Boolean checkApplicationExists(WebDriver webDriver, String type_Of_App, String status_Of_App)
             throws Exception {
@@ -165,7 +161,7 @@ public class CommonApplicationMethods {
 
     public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
         Logger commonApplicationMethodsLogs = LogManager
-                .getLogger(gov.sba.utils.integration.CommonApplicationMethods.class.getName());
+                .getLogger(gov.sba.automation.utils.CommonApplicationMethods.class.getName());
 
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, login_Id);
         login_Data.Login_With_Reference();
@@ -329,81 +325,13 @@ public class CommonApplicationMethods {
     public static String returnOrganization_Id(String duns_Number) throws Exception {
         String organization_Id;
         try {
-            organization_Id = DatabaseQuery.queryForData(
+            organization_Id = DatabaseUtils.queryForData(
                     "select id from sbaone.organizations where duns_number = '" + duns_Number + "'", 1, 1)[0][0];
         } catch (Exception e) {
             commonApplicationMethodsLogs.info(e.toString() + ": The Duns number retreival has failed");
             throw e;
         }
         return organization_Id;
-    };
-    
-    /**
-     * Simplify implementation of how we should find good row having the available DUNS number to use!
-     * 
-     * @return
-     * @throws Exception
-     */
-    public static String[] findUnusedDunsNumber() throws Exception {
-        String csvFile = FixtureUtils.resourcesDir() + ConfigUtils.loadDefaultProperties().getProperty("fixture_file");
-
-        CSVReader reader = new CSVReader(new FileReader(csvFile), CSVParser.DEFAULT_SEPARATOR,
-                CSVParser.DEFAULT_QUOTE_CHARACTER, 1);
-
-        String[] detailFields;
-
-        while ((detailFields = reader.readNext()) != null) {
-
-            String email = detailFields[0];
-            String password = detailFields[1];
-            String dunsNumber = detailFields[2];
-
-            int rowsNeeded = 1;
-            int colsNeeded = 1;
-
-            String certificateQuery = "select count(*) from sbaone.certificates where organization_id in (select id from sbaone.organizations where duns_number = '"
-                    + dunsNumber + "')";
-
-            String[][] certificateData = DatabaseQuery.queryForData(certificateQuery, rowsNeeded, colsNeeded);
-
-            String applicationQuery = "select count(*) from sbaone.sba_applications where organization_id in (select id from sbaone.organizations where duns_number = '"
-                    + dunsNumber + "')";
-
-            String[][] applicationData = DatabaseQuery.queryForData(applicationQuery, rowsNeeded, colsNeeded);
-
-            // If we can't find any combination then it means it is
-            // available?
-            int counter = Integer.parseInt(certificateData[0][0].toString())
-                    + Integer.parseInt(applicationData[0][0].toString());
-
-            if (counter <= 0) {
-                commonApplicationMethodsLogs
-                        .info(String.format("Found unused rows: %s->%s->%s", email, password, dunsNumber));
-                return detailFields;
-            }
-        }
-        // If we reach here we can't find any good Duns number, should just
-        // raise exception!
-        throw new Exception("No valid Duns number available. Please check your fixture files");
-    }
-
-    public static void deleteApplication_SetCert_Set_App_Tables(WebDriver webDriver, Integer certificate_ID,
-            String duns_Number) throws Exception {
-        String organization_Id = returnOrganization_Id(duns_Number);
-
-        DatabaseQuery.executeSQLScript("update sbaone.certificates " + "   set deleted_at = CURRENT_TIMESTAMP "
-                + "   where organization_id = " + organization_Id.toString());
-        DatabaseQuery.executeSQLScript("update sbaone.sba_applications " + "       set deleted_at = CURRENT_TIMESTAMP "
-                + "   where organization_id = " + organization_Id.toString());
-    };
-
-    public static void deleteAllApplicationTypes(WebDriver webDriver, String duns_Number) throws Exception {
-        // It should be in Vendor Dashboard
-        deleteApplication_SetCert_Set_App_Tables(webDriver, 1, duns_Number);
-        deleteApplication_SetCert_Set_App_Tables(webDriver, 2, duns_Number);
-        deleteApplication_SetCert_Set_App_Tables(webDriver, 3, duns_Number);
-        deleteApplication_SetCert_Set_App_Tables(webDriver, 4, duns_Number);
-
     };
 
     public static void returnApplicationToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp,

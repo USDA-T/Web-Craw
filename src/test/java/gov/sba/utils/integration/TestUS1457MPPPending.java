@@ -16,6 +16,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -30,7 +32,7 @@ public class TestUS1457MPPPending extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -69,19 +71,23 @@ public class TestUS1457MPPPending extends TestCase {
                     "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
             logger_US1457.info(current_Title_Business.getText());
 
-            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
+            Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
             Statement statement_SQL = databaseConnection.createStatement();
+            // TODO: search for executeQuery() to see list of query
             ResultSet result_Set = statement_SQL
-                    .executeQuery("select  issue_date, expiry_date, workflow_state from sbaone.certificates A,"
+                    .executeQuery("select issue_date, expiry_date, workflow_state from sbaone.certificates A,"
                             + "sbaone.organizations where duns_number = '" + duns_Number + "'"
                             + "and  certificate_type_id =3" + "and workflow_state = 'pending'" + ";");
+            
             // Code for US 1457 And US 1491
             result_Set.next();
+            
             // -- Get Data from DB to test Pending status validation on
             // UI with DB
 
             String issue_date = result_Set.getString("issue_date");
+            
             if (result_Set.wasNull()) {
                 Assert.assertEquals("Test case Passed on Issue date For US1491",
                         "Test case Passed on Issue date For US1491");
@@ -89,8 +95,11 @@ public class TestUS1457MPPPending extends TestCase {
                 logger_US1457.info(issue_date);
                 Assert.assertEquals("Test case Failed For issue date value:", issue_date);
             }
+            
             Assert.assertEquals(result_Set.getString("workflow_state").toLowerCase(), "pending");
+            
             logger_US1457.info(duns_Number); // Thread.sleep(50000);
+            
             result_Set.close();
 
             // Code for US 1457 And US 1491-- Pending status validation on

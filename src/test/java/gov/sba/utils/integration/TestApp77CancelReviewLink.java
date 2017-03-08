@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -30,7 +32,7 @@ public class TestApp77CancelReviewLink extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -108,14 +110,20 @@ public class TestApp77CancelReviewLink extends TestCase {
                 Thread.sleep(1000);
                 webDriver.switchTo().alert().accept();
                 Thread.sleep(3000);
+                
                 String organization_Id = CommonApplicationMethods.returnOrganization_Id(duns_Number);
+                
                 String sql_Q = "select count(case_number) from sbaone.reviews "
                         + "		where workflow_state = 'cancelled' " + "	and sba_application_id 	 = "
                         + "								(select max(id) from sbaone.sba_applications where organization_id = "
                         + organization_Id.toString() + " and deleted_at is null )";
+                
                 TestApp77CancelReviewLink.info(sql_Q);
-                String[][] count_Case = DatabaseQuery.queryForData(sql_Q, 1, 1);
+                
+                String[][] count_Case = DatabaseUtils.queryForData(sql_Q, 1, 1);
+                
                 String count_Case_Count = count_Case[0][0];
+                
                 assertEquals(count_Case_Count, "1");
 
                 CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");

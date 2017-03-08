@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 public class AnalystReviewPage extends TestCase {
@@ -137,7 +139,7 @@ public class AnalystReviewPage extends TestCase {
                         + "    and c.id = D.sba_application_id " + "    and b.id = D.certificate_id     "
                         + "    and  A.duns_number='159165917' " + "    order by D.updated_at desc ";
 
-                DatabaseQuery dbcall = new DatabaseQuery();
+                DatabaseUtils dbcall = new DatabaseUtils();
                 String[][] returned_workflow_review_status = dbcall.queryForData(sql_query, 2, 3);
                 AnalystReviewPage.info("aaaaa+" + returned_workflow_review_status[1][0].toString()
                         + returned_workflow_review_status[1][1].toString()

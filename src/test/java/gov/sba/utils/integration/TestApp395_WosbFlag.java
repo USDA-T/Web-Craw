@@ -2,12 +2,13 @@ package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.poi.xslf.model.geom.IfElseExpression;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.utils.CommonApplicationMethods;
 import junit.framework.TestCase;
 
 public class TestApp395_WosbFlag extends TestCase {

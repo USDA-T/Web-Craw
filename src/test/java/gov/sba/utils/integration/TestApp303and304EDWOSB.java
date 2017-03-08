@@ -9,6 +9,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -24,7 +26,7 @@ public class TestApp303and304EDWOSB extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -35,7 +37,7 @@ public class TestApp303and304EDWOSB extends TestCase {
         // Before testing - verify the prepopulate flag - false -Should not
         // prepoluate the answers
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-        DatabaseQuery dbcall = new DatabaseQuery();
+        DatabaseUtils dbcall = new DatabaseUtils();
         dbcall.executeSQLScript(sql_Q_01);
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
@@ -86,7 +88,7 @@ public class TestApp303and304EDWOSB extends TestCase {
         assertTrue(checkBoxElement.toLowerCase().contains("checked"));
         // Reset to Default
         sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-        dbcall = new DatabaseQuery();
+        dbcall = new DatabaseUtils();
         dbcall.executeSQLScript(sql_Q_01);
 
     }
@@ -94,7 +96,7 @@ public class TestApp303and304EDWOSB extends TestCase {
     @After
     public void tearDown() throws Exception {
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-        DatabaseQuery dbcall = new DatabaseQuery();
+        DatabaseUtils dbcall = new DatabaseUtils();
         dbcall.executeSQLScript(sql_Q_01);
         // webDriver.quit();
     }

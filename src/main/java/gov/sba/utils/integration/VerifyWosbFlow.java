@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+
 public class VerifyWosbFlow {
     private static final Logger logger = LogManager.getLogger(VerifyWosbFlow.class.getName());
     WebDriver webDriver;

@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -30,7 +31,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
         try {
 
             String sql_query = "select email,max_first_name,max_last_name from sbaone.users where max_id is not null and max_first_name is not null and max_last_name is not null";
-            DatabaseQuery dbcall = new DatabaseQuery();
+            DatabaseUtils dbcall = new DatabaseUtils();
             String[][] returned_GovProfile_Rows = dbcall.queryForData(sql_query, 2, 3);
 
             // Login to dashboard.

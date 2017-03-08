@@ -17,6 +17,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
@@ -32,7 +34,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
-        String[] details = CommonApplicationMethods.findUnusedDunsNumber();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
         duns_Number = details[2];
@@ -85,7 +87,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
             Assert.assertArrayEquals(header_Names_Array, header_Names_Array_Validate);
 
-            Connection databaseConnection = DatabaseQuery.getDatabaseConnection();
+            Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
             Statement statement_SQL = databaseConnection.createStatement();
 

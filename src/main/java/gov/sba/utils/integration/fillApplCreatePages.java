@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
+
 public class fillApplCreatePages {
     private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
 

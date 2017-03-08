@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
