@@ -1,5 +1,8 @@
 package gov.sba.utils.integration;
 
+import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -158,6 +161,25 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[7]")).getText();
             Expected_Text = "EDWOSB";
             assertEquals(Actual_Text, Expected_Text);
+            //Verify the EDWOSB.
+            webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            String main_window = webDriver.getWindowHandle();
+            logger.info("Before switching, title is = certify.sba.gov");
+            webDriver.findElement(By.linkText("EDWOSB")).click();
+            java.util.Set<String> S1 = webDriver.getWindowHandles();
+            Iterator<String> i1 = S1.iterator();
+            while (i1.hasNext()) {
+                String Second_window = i1.next();
+                if (!main_window.equalsIgnoreCase(Second_window)) {
+                    webDriver.switchTo().window(Second_window);
+                    logger.info("After switching title is = certify.sba.gov");
+                    webDriver.close();
+                    webDriver.switchTo().window(main_window);
+                    logger.info("Back to manin_window = certify.sba.gov");
+                } else {
+                    logger.info("Second Window is not thesame as first window");
+                }
+                }
             //Take screenshot and store as a file format
             ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
             screenShot11.ScreenShot();
@@ -212,9 +234,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
                 webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
                 webDriver.findElement(By.linkText("Vendor Overview")).click();
                 webDriver.findElement(By.linkText("Logout")).click();
+                logger.info("Success");
+
             }
-            webDriver.findElement(By.linkText("Logout")).click();
-            logger.info("Success");
         } else {
             // Click on the My Request Link.
             webDriver.findElement(By.linkText("Request access")).click();
@@ -298,6 +320,25 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[7]")).getText();
             Expected_Text = "EDWOSB";
             assertEquals(Actual_Text, Expected_Text);
+            //Verify the EDWOSB.
+            webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            String main_window = webDriver.getWindowHandle();
+            logger.info("Before switching, title is = certify.sba.gov");
+            webDriver.findElement(By.linkText("EDWOSB")).click();
+            java.util.Set<String> S1 = webDriver.getWindowHandles();
+            Iterator<String> i1 = S1.iterator();
+            while (i1.hasNext()) {
+                String Second_window = i1.next();
+                if (!main_window.equalsIgnoreCase(Second_window)) {
+                    webDriver.switchTo().window(Second_window);
+                    logger.info("After switching title is = certify.sba.gov");
+                    webDriver.close();
+                    webDriver.switchTo().window(main_window);
+                    logger.info("Back to manin_window = certify.sba.gov");
+                } else {
+                    logger.info("Second Window is not thesame as first window");
+                }
+                }           
             // Take screenshot and store as a file format
             ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
             screenShot11.ScreenShot();

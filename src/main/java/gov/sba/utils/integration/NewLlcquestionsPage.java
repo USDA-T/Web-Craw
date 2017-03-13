@@ -1,21 +1,21 @@
 package gov.sba.utils.integration;
 
+import static org.junit.Assert.assertEquals;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import junit.framework.TestCase;
 
-  public class TestSolePropPage extends TestCase {
-    private static final Logger logger = LogManager.getLogger(TestSolePropPage.class.getName());
+  public class NewLlcquestionsPage {
+    private static final Logger logger = LogManager.getLogger(NewLlcquestionsPage.class.getName());
     WebDriver webDriver;
 
-    public TestSolePropPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+    public NewLlcquestionsPage(WebDriver mydriver) {
+      this.webDriver = mydriver;
     }
 
-    public void TestSoleProp() throws Exception {
+    public void NewLlcquestions() throws Exception {
       logger.debug(" new sole proprietorship question page");
       String Actual_Text = null;
       String Expected_Text = null;
@@ -59,6 +59,30 @@ import junit.framework.TestCase;
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
       webDriver.findElement(By.id("answers_250_value_no")).click();
+      Thread.sleep(2000);
+      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      //==>LLC program 1st question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do the Articles of Organization, Operating Agreements and any amendments show that at least 51% of each class of member interest is unconditionally and directly owned by the qualifying individual(s)?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_llc_q1']/fieldset/p[2]")).getText();
+      Expected_Text = "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; and Operating Agreement and any amendments; Joint Venture Agreement, if applicable. Reference: 13 C.F.R. 127.201(e)";
+      assertEquals(Actual_Text, Expected_Text);
+      //Select No and continue.
+      webDriver.findElement(By.id("answers_260_value_no")).click();
+      webDriver.findElement(By.id("answers_260_comment")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
+      //2nd question.
+      Actual_Text = webDriver.findElement(By.cssSelector("#answers_llc_q2 > fieldset > h4")).getText();
+      Expected_Text = "Do the Articles of Organization and any amendments or Operating Agreement and any amendments show that the qualifying individual(s) serve as management members, with control over all decisions of the limited liability company?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_llc_q2']/fieldset/p[2]")).getText();
+      Expected_Text = "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; or Operating Agreement and any amendments that show that one or more women serve as management members, with control over all decisions; the Joint Venture Agreement if applicable. Reference: 13 C.F.R. 127.202(e)";
+      assertEquals(Actual_Text, Expected_Text);
+      //Select No and continue.
+      webDriver.findElement(By.id("answers_261_value_no")).click();
+      webDriver.findElement(By.id("answers_261_comment")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Citizenship section.
@@ -255,30 +279,26 @@ import junit.framework.TestCase;
       webDriver.findElement(By.id("answers_279_value_no")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      
-      
-      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-      Expected_Text = "Financial Data";
-      assertEquals(Actual_Text, Expected_Text);
-      Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-      Expected_Text ="This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
-      assertEquals(Actual_Text, Expected_Text);
+      // Validate that user successfully navigated to the Financial Data
+      // section.
+      Thread.sleep(2000);
+      String actual_Text49 = webDriver
+          .findElement(By.xpath("//article[@id='main-content']/section/article/h2")).getText();
+      String expected_Text49 = "Financial Data";
+      assertEquals(actual_Text49, expected_Text49);
+      String actual_Text52 =
+          webDriver.findElement(By.xpath("//div[@id='answers_owners']/fieldset/p/b")).getText();
+      String expected_Text52 =
+          "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program.";
+      assertEquals(actual_Text52, expected_Text52);
       // Validate the Personal Information.
       webDriver.findElement(By.id("answers_280_value_new_button")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//div[3]/button")).click();
-      Actual_Text = webDriver.findElement(By.cssSelector("div.DTE_Field_Error")).getText();
-      Expected_Text = "First Name must be provided";
-      assertEquals(Actual_Text, Expected_Text);
       // Verify that the section to Create new record is been seen by user and
       // enter record2.
-      Actual_Text = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-      Expected_Text = "Create new record";
-      assertEquals(Actual_Text, Expected_Text);
+      String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
+      String expected_Text511 = "Create new record";
+      assertEquals(actual_Text511, expected_Text511);
       logger.info("the page to Create and Add new Record is Present, PASS");
       webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Denzel");
       webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Washington");
@@ -305,4 +325,3 @@ import junit.framework.TestCase;
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
   }
-  

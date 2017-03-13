@@ -42,11 +42,8 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
         // partnership test for 1st person.
-        TestSolePropPage testSolePro = new TestSolePropPage(webDriver);
-        testSolePro.TestSoleProp();
-        
-        //SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
-        //soleProprietorQuestions.SoleProprietorQuestions();
+        NewSoleProprietorQuestionsPage newSoleProprietorQuestions = new NewSoleProprietorQuestionsPage(webDriver);
+        newSoleProprietorQuestions.NewSoleProprietorQuestions();      
         // Financial section for first partner.
         FinancialSectionFirstPartnerPage financialSectionFirstPartner = new FinancialSectionFirstPartnerPage(webDriver);
         financialSectionFirstPartner.FinancialSectionFirstPartner();
@@ -65,7 +62,8 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
         login_Data1.Login_With_Reference();
         WebElement ReturnDraft =
             webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
-        HighLight.highLightElement(webDriver, ReturnDraft);       
+        HighLight.highLightElement(webDriver, ReturnDraft); 
+        webDriver.findElement(By.linkText("Logout")).click();
         logger.info("Success");
     }
 

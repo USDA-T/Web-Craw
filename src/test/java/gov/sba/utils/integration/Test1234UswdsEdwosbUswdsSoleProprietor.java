@@ -5,8 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import junit.framework.TestCase;
 
 public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
@@ -24,6 +25,8 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
 
     @Test
     public void testMainTest() throws Exception {
+      String Actual_Text;
+      String Expected_Text;
         logger.info("Test EDWOSB Sole-Proprietorship Flow");
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
@@ -43,16 +46,25 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
         // partnership test for 1st person.
-        TestSolePropPage testSolePro = new TestSolePropPage(webDriver);
-        testSolePro.TestSoleProp();
-        //SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
-        //soleProprietorQuestions.SoleProprietorQuestions();
+        NewSoleProprietorQuestionsPage newSoleProprietorQuestions = new NewSoleProprietorQuestionsPage(webDriver);
+        newSoleProprietorQuestions.NewSoleProprietorQuestions();
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
         // Submit and Return the submitted certification back to vendor.
         SoleProprietorReturnCertPage soleProprietorReturnCert = new SoleProprietorReturnCertPage(webDriver);
         soleProprietorReturnCert.SoleProprietorReturnCert();
+        //Login to Vendor dashboard dashboard and verify return draft.
+        get_The_Row_From_Login_Data = 8;
+        LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+        login_Data1.Login_With_Reference();
+        Thread.sleep(3000);
+        Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
+        Expected_Text = "Draft";
+        assertEquals(Actual_Text, Expected_Text);
+        WebElement ReturnDraft =webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+        HighLight.highLightElement(webDriver, ReturnDraft);
+        webDriver.findElement(By.linkText("Logout")).click();
         logger.info("Success");
     }
 

@@ -1,10 +1,8 @@
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;

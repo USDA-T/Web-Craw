@@ -209,7 +209,7 @@ package gov.sba.utils.integration;
       Expected_Text ="Draft";
       assertEquals(Actual_Text, Expected_Text);
       WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       webDriver.findElement(By.linkText("Logout")).click();
       }

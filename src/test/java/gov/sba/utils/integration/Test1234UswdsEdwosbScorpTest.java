@@ -5,7 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
@@ -44,14 +46,22 @@ public class Test1234UswdsEdwosbScorpTest extends TestCase {
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
         // Corp test for 1st person.
-        ScorpQuestionsPage scorpQuestions = new ScorpQuestionsPage(webDriver);
-        scorpQuestions.ScorpQuestions();
+        NewScorpQuestionsPage newScorpQuestions = new NewScorpQuestionsPage(webDriver);
+        newScorpQuestions.NewScorpQuestions();
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
         // Submit and Return the submitted certification back to vendor.
         ScorpReturnCertPage scorpReturnCert = new ScorpReturnCertPage(webDriver);
         scorpReturnCert.ScorpReturnCert();
+        //Login with the vendor and verify the return draft.
+        get_The_Row_From_Login_Data = 1;
+        LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+        login_Data1.Login_With_Reference();
+        WebElement ReturnDraft =
+            webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+        HighLight.highLightElement(webDriver, ReturnDraft); 
+        webDriver.findElement(By.linkText("Logout")).click();
         logger.info("Success");
     }
 
