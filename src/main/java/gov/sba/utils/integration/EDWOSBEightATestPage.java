@@ -19,13 +19,13 @@ public class EDWOSBEightATestPage {
         String Actual_Text = null;
         String Expected_Text = null;
         // Locate the accept button at the bottom of the EDWOSB agreement and
-        // click on it to continue.
-        webDriver.findElement(By.xpath(".//*[@id='new_sba_application']/input[3]")).click();
+        // click on it to continue.       
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Locate the 8(a) question and select No and continue.
         String actual_Text1 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text1 = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
         assertEquals(actual_Text1, expected_Text1);
-        webDriver.findElement(By.id("answers_65_value_yes")).click();
+        webDriver.findElement(By.id("answers_247_value_yes")).click();
         //Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);

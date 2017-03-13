@@ -116,7 +116,7 @@ public class SubmitAndReviewPage extends TestCase {
       // Verify the returned draft certification.
       Thread.sleep(2000);
       Actual_Text =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
       WebElement ReturnDraft =
@@ -134,11 +134,11 @@ public class SubmitAndReviewPage extends TestCase {
       String expected_Text2 = "Financial Data";
       assertEquals(actual_Text2, expected_Text2);
       // Validate the Personal Information.
-      webDriver.findElement(By.id("answers_261_value_new_button")).click();
+      webDriver.findElement(By.id("answers_280_value_new_button")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_261_value_new_button")).click();
+      webDriver.findElement(By.id("answers_280_value_new_button")).click();
       Thread.sleep(2000);
       // Verify that the section to Create new record is been seen by user and
       // enter record2.
@@ -165,7 +165,7 @@ public class SubmitAndReviewPage extends TestCase {
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.id("answers_262_value_yes"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.id("answers_281_value_yes"))).build().perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.
@@ -201,11 +201,11 @@ public class SubmitAndReviewPage extends TestCase {
       // Verify the returned draft certification.
       Thread.sleep(2000);
       Actual_Text =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
       WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       // Click on the Draft cert.
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
@@ -219,11 +219,11 @@ public class SubmitAndReviewPage extends TestCase {
       String expected_Text2 = "Financial Data";
       assertEquals(actual_Text2, expected_Text2);
       // Validate the Personal Information.
-      webDriver.findElement(By.id("answers_261_value_new_button")).click();
+      webDriver.findElement(By.id("answers_280_value_new_button")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_261_value_new_button")).click();
+      webDriver.findElement(By.id("answers_280_value_new_button")).click();
       Thread.sleep(2000);
       // Verify that the section to Create new record is been seen by user and
       // enter record2.
@@ -250,7 +250,7 @@ public class SubmitAndReviewPage extends TestCase {
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.id("answers_262_value_yes"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.id("answers_281_value_yes"))).build().perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.

@@ -80,8 +80,8 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Actual_Text = webDriver.findElement(By.xpath("//article/div/div/p")).getText();
             Expected_Text = "If you are a federal contracting officer, contracting specialist, or authorized SBA personnel, please request access to the system by selecting the role below.";
             assertEquals(Actual_Text, Expected_Text);
-            webDriver.findElement(By.id("role_name_contracting_officer")).click();
-            webDriver.findElement(By.xpath("//div[@id='co-request-role']/div/form/div/div/input")).click();
+            webDriver.findElement(By.id("role_name_checkbox_Legacy_CO_CO")).click();
+            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
             // Search valid DUNs with no Active certification and verify
             // message.
             webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
@@ -158,7 +158,63 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[7]")).getText();
             Expected_Text = "EDWOSB";
             assertEquals(Actual_Text, Expected_Text);
+            //Take screenshot and store as a file format
+            ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
+            screenShot11.ScreenShot();
+            Thread.sleep(3000);
             webDriver.findElement(By.linkText("Logout")).click();
+            // Login as MPP-analyst and return MPP back to vendor.
+            get_The_Row_From_Login_Data = 29;
+            LoginPageWithReference login_Data61 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            login_Data61.Login_With_Reference();
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys("172115728");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            Thread.sleep(2000);
+            if (webDriver.getPageSource().contains("Return to Vendor")) {
+                webDriver.findElement(By.linkText("Return to Vendor")).click();
+                webDriver.switchTo().alert().accept();
+                webDriver.findElement(By.linkText("Logout")).click();
+            } else {
+                logger.info("Return to Vendor Link is missing please verify why.");
+                webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+                Thread.sleep(3000);
+                webDriver.findElement(By.id("submit_button")).click();
+                webDriver.findElement(By.linkText("Determination")).click();
+                webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+                webDriver.findElement(By.linkText("Vendor Overview")).click();
+                webDriver.findElement(By.linkText("Logout")).click();
+            }
+            // Login as WOSB-analyst and return WOSB program back to vendor.
+            get_The_Row_From_Login_Data = 0;
+            LoginPageWithReference login_Data71 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            login_Data71.Login_With_Reference();
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys("172115728");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            Thread.sleep(2000);
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            Thread.sleep(2000);
+            if (webDriver.getPageSource().contains("Return to Vendor")) {
+                webDriver.findElement(By.linkText("Return to Vendor")).click();
+                webDriver.switchTo().alert().accept();
+                webDriver.findElement(By.linkText("Logout")).click();
+            } else {
+                logger.info("Return to Vendor Link is missing please verify why.");
+                webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+                Thread.sleep(3000);
+                webDriver.findElement(By.id("submit_button")).click();
+                webDriver.findElement(By.linkText("Determination")).click();
+                webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+                webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+                webDriver.findElement(By.linkText("Vendor Overview")).click();
+                webDriver.findElement(By.linkText("Logout")).click();
+            }
+            webDriver.findElement(By.linkText("Logout")).click();
+            logger.info("Success");
         } else {
             // Click on the My Request Link.
             webDriver.findElement(By.linkText("Request access")).click();

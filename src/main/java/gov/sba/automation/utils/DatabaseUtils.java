@@ -116,6 +116,7 @@ public class DatabaseUtils {
 
             String email = detailFields[0];
             String password = detailFields[1];
+       
             String dunsNumber = detailFields[2];
 
             int rowsNeeded = 1;

@@ -89,7 +89,7 @@ package gov.sba.utils.integration;
       // Click on the dashboard button.
       webDriver.findElement(By.linkText("Dashboard")).click();
       WebElement ActiveCert =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ActiveCert);
       // Login as WOSB-analyst and return WOSB program back to vendor.
       Thread.sleep(2000);
@@ -131,7 +131,7 @@ package gov.sba.utils.integration;
       assertEquals(Actual_Text, Expected_Text);
       //Verify Denzel's net worth.
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-      Expected_Text ="$2,571,832.73";
+      Expected_Text ="$2,571,880.73";
       assertEquals(Actual_Text, Expected_Text);
       //Add review for Denzel.
       webDriver.findElement(By.id("note_link")).click();
@@ -149,7 +149,7 @@ package gov.sba.utils.integration;
       assertEquals(Actual_Text, Expected_Text);
       //Verify Will's net worth.
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-      Expected_Text ="$2,571,832.73";
+      Expected_Text ="$2,571,880.73";
       assertEquals(Actual_Text, Expected_Text);
       //Add review for Will Smith.
       webDriver.findElement(By.id("note_link")).click();
@@ -205,7 +205,7 @@ package gov.sba.utils.integration;
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
       //Verify that the return certification is now on draft.
-      Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
       Expected_Text ="Draft";
       assertEquals(Actual_Text, Expected_Text);
       WebElement ReturnDraft =

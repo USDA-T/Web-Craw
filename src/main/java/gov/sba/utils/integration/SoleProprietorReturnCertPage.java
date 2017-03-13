@@ -89,7 +89,7 @@ public class SoleProprietorReturnCertPage extends TestCase {
     // Click on the dashboard button.
     webDriver.findElement(By.linkText("Dashboard")).click();
     WebElement ActiveCert =
-        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     // Login as WOSB-analyst and return WOSB program back to vendor.
     Thread.sleep(2000);

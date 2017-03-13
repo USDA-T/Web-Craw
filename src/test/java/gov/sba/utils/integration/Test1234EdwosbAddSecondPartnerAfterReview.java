@@ -5,7 +5,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
@@ -41,8 +43,10 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
         // partnership test for 1st person.
-        SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
-        soleProprietorQuestions.SoleProprietorQuestions();
+        TestSolePropPage testSolePro = new TestSolePropPage(webDriver);
+        testSolePro.TestSoleProp();
+        //SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
+        //soleProprietorQuestions.SoleProprietorQuestions();
         // Financial section for first partner.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
@@ -58,6 +62,13 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
                 webDriver);
         soleProprietorReturnCertFirstAndSecondPartnerAfterReview
                 .SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1();
+        //Login with the vendor and verify the return draft.
+        get_The_Row_From_Login_Data = 8;
+        LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+        login_Data1.Login_With_Reference();
+        WebElement ReturnDraft =
+            webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+        HighLight.highLightElement(webDriver, ReturnDraft);     
         logger.info("Success");
     }
 

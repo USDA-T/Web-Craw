@@ -72,7 +72,7 @@ public class EdwobEightAMppTestPage {
         // Verify title
         logger.info("  Verify title");
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
+        Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
         assertEquals(Actual_Text, Expected_Text);
         // Verify Business name
         logger.info("  Verify Business name");

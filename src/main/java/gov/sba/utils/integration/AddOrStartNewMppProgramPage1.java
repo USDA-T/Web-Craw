@@ -28,14 +28,9 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
         if (webDriver.getPageSource().contains("Pending")) {
             logger.info("There is (are) an active certification on the dashboard");
             // Click on the certification link.
-            webDriver.findElement(By.xpath("//a[contains(text(),'Programs')]")).click();
+            webDriver.findElement(By.xpath("//li[2]/a/span")).click();
             Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
             Expected_Text = "Join a new program";
-            assertEquals(Actual_Text, Expected_Text);
-            // Verify and Click on the EDWOSB Certification to select.
-            Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]"))
-                    .getText();
-            Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
             assertEquals(Actual_Text, Expected_Text);
             // Click on the add new certification button.
             Actions act1 = new Actions(webDriver);
@@ -127,14 +122,9 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
             if (webDriver.getPageSource().contains("Active")) {
                 logger.info("There is (are) an active certification on the dashboard");
                 // Click on the certification link.
-                webDriver.findElement(By.xpath("//a[contains(text(),'Programs')]")).click();
+                webDriver.findElement(By.xpath("//li[2]/a/span")).click();
                 Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
                 Expected_Text = "Join a new program";
-                assertEquals(Actual_Text, Expected_Text);
-                // Verify and Click on the EDWOSB Certification to select.
-                Actual_Text = webDriver.findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]"))
-                        .getText();
-                Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
                 assertEquals(Actual_Text, Expected_Text);
                 // Click on the add new certification button.
                 Actions act1 = new Actions(webDriver);

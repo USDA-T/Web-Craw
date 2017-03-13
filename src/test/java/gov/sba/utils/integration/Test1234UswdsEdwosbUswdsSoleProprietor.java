@@ -43,8 +43,10 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
         addOrStartCertification.AddOrStartCertification();
         Thread.sleep(2000);
         // partnership test for 1st person.
-        SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
-        soleProprietorQuestions.SoleProprietorQuestions();
+        TestSolePropPage testSolePro = new TestSolePropPage(webDriver);
+        testSolePro.TestSoleProp();
+        //SoleProprietorQuestionsPage soleProprietorQuestions = new SoleProprietorQuestionsPage(webDriver);
+        //soleProprietorQuestions.SoleProprietorQuestions();
         // Financial section.
         FinancialSectionPage financialsection = new FinancialSectionPage(webDriver);
         financialsection.Financialsection();
