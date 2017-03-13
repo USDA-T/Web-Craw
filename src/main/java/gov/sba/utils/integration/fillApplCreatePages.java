@@ -110,9 +110,9 @@ public class fillApplCreatePages {
                 logger.info("Doc has been uploaded and accepted");
             } else {
                 try {
-                    webDriver.findElement(By.id("answers_169_value_yes")).click();
+                    webDriver.findElement(By.id("answers_188_value_yes")).click();
                 } catch (Exception e1) {
-                    webDriver.findElement(By.id("answers_228_value_yes")).click();
+                    webDriver.findElement(By.id("answers_247_value_yes")).click();
                 }
                 webDriver.findElement(By.xpath("//input[@type='submit']")).click();
             }
@@ -121,6 +121,35 @@ public class fillApplCreatePages {
             throw e;
         }
     }
+    public static void genericUploadDoc(WebDriver webDriver, String answer01, String path) throws Exception {
+        try {
+            if (answer01.toUpperCase().contains("YES")) {
+                List<WebElement> current_Row = webDriver.findElements(By
+                    .xpath("//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
+                Iterator<WebElement> all_Rows = current_Row.iterator();
+                while (all_Rows.hasNext()) {
+                    all_Rows.next().click();
+                }
+
+                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                deepaUploadMppDocument1.deepaUploadMppDocument(path);
+                logger.info("Doc has been uploaded.");
+                Thread.sleep(2000);
+                try {
+                    logger.info("Check Alert");
+                    webDriver.switchTo().alert().accept();
+                } catch (Exception excp) {
+                    logger.info("No Alert");
+                }
+                logger.info("Doc has been uploaded and accepted");
+
+            }
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
 
     public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String path, String duns_No_Given)
             throws Exception {

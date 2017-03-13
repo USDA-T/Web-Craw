@@ -33,7 +33,7 @@ public class NewScorpQuestionPage {
     String actual_Text21 = webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[3]")).getText();
     String expected_Text21 = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
     assertEquals(actual_Text21, expected_Text21);
-    webDriver.findElement(By.id("answers_228_value_no")).click();
+    webDriver.findElement(By.id("answers_247_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
     logger.info("  8(a) question has been answered");
     // Locate the Third Party Certification, question1 and select No and
@@ -45,78 +45,74 @@ public class NewScorpQuestionPage {
     String actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_tpc1_q1']/fieldset/p[2]")).getText();
     String expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
     assertEquals(actual_Text, expected_Text);
-    webDriver.findElement(By.id("answers_229_value_no")).click();
+    webDriver.findElement(By.id("answers_248_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
     // Locate the Non-qualification question,Verify,select No and continue.
     String actual_Text4 = webDriver.findElement(By.cssSelector("h4")).getText();
     String expected_Text4 = "Has an SBA-approved Third-Party Certifier declined WOSB or EDWOSB certification for the qualifying individual(s)?";
     assertEquals(actual_Text4, expected_Text4);
     // Verify the more detail for the Non-qualification question.
-    webDriver.findElement(By.id("answers_231_value_no")).click();
+    webDriver.findElement(By.id("answers_250_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
     logger.info("  Third Party questions have been answered");
     // Locate the Three Business Corporation and S-Corp(Stocks) question
-    webDriver.findElement(By.id("answers_232_value_yes")).click();
+    webDriver.findElement(By.id("answers_251_value_yes")).click();
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-    //webDriver.findElement(By.id("answers_232_comment")).sendKeys(" QA Testing");
-    webDriver.findElement(By.id("answers_233_value_no")).click();
+    //webDriver.findElement(By.id("answers_251_comment")).sendKeys(" QA Testing");
+    webDriver.findElement(By.id("answers_252_value_no")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_234_value_no")).click();
-    webDriver.findElement(By.id("answers_235_value_no")).click();
+    webDriver.findElement(By.id("answers_253_value_no")).click();
+    webDriver.findElement(By.id("answers_254_value_no")).click();
 
-    webDriver.findElement(By.id("answers_236_value_no")).click();
+    webDriver.findElement(By.id("answers_255_value_no")).click();
 
-    webDriver.findElement(By.id("answers_237_value_no")).click();
-     webDriver.findElement(By.id("answers_238_value_no")).click();
-    webDriver.findElement(By.id("answers_238_comment")).sendKeys(" QA Testing");
+    webDriver.findElement(By.id("answers_256_value_no")).click();
+     webDriver.findElement(By.id("answers_257_value_no")).click();
+    webDriver.findElement(By.id("answers_257_comment")).sendKeys(" QA Testing");
     webDriver.findElement(By.name("commit")).click();
     // Locate the Citizenship & Ownership question 1and2, Verify,select No
     // and continue.
     // Verify the more detail meaning for the Citizenship & Ownership
 
-    webDriver.findElement(By.id("answers_243_value_no")).click();
+    webDriver.findElement(By.id("answers_262_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
 
-    webDriver.findElement(By.id("answers_244_value_no")).click();
-
-    webDriver.findElement(By.id("answers_245_value_no")).click();
-
-    webDriver.findElement(By.id("answers_245_value_no")).click();
-
-    webDriver.findElement(By.id("answers_246_value_no")).click();
-    webDriver.findElement(By.id("answers_246_comment")).sendKeys(" QA Testing");
+    webDriver.findElement(By.id("answers_263_value_no")).click();
+    webDriver.findElement(By.id("answers_264_value_no")).click();
+    webDriver.findElement(By.id("answers_265_value_no")).click();
+    webDriver.findElement(By.id("answers_265_comment")).sendKeys(" QA Testing");
     webDriver.findElement(By.name("commit")).click();
 
-    webDriver.findElement(By.id("answers_247_value_no")).click();
+    webDriver.findElement(By.id("answers_266_value_no")).click();
 
-    webDriver.findElement(By.id("answers_248_value_no")).click();
-    webDriver.findElement(By.id("answers_249_value_no")).click();
-    webDriver.findElement(By.id("answers_250_value_no")).click();
-    webDriver.findElement(By.id("answers_251_value_no")).click();
-    webDriver.findElement(By.id("answers_252_value_no")).click();
-    webDriver.findElement(By.id("answers_252_comment")).sendKeys("Qa Testing");
+    webDriver.findElement(By.id("answers_267_value_no")).click();
+    webDriver.findElement(By.id("answers_268_value_no")).click();
+    webDriver.findElement(By.id("answers_269_value_no")).click();
+    webDriver.findElement(By.id("answers_270_value_no")).click();
+    webDriver.findElement(By.id("answers_271_value_no")).click();
+    webDriver.findElement(By.id("answers_271_comment")).sendKeys("Qa Testing");
     webDriver.findElement(By.name("commit")).click();
 
     // Locate the SBA Exam & Daily Operations questions,Verify, select No
     // for both and continue.
     // 1st question.
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_253_value_no")).click();
+    webDriver.findElement(By.id("answers_272_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
-    webDriver.findElement(By.id("answers_254_value_no")).click();
+    webDriver.findElement(By.id("answers_273_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
-    webDriver.findElement(By.id("answers_255_value_no")).click();
+    webDriver.findElement(By.id("answers_274_value_no")).click();
 
-    webDriver.findElement(By.id("answers_256_value_no")).click();
+    webDriver.findElement(By.id("answers_275_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
 
-    webDriver.findElement(By.id("answers_257_value_no")).click();
-    webDriver.findElement(By.id("answers_258_value_no")).click();
-    webDriver.findElement(By.id("answers_259_value_no")).click();
+    webDriver.findElement(By.id("answers_276_value_no")).click();
+    webDriver.findElement(By.id("answers_277_value_no")).click();
+    webDriver.findElement(By.id("answers_278_value_no")).click();
     webDriver.findElement(By.name("commit")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_260_value_no")).click();
+    webDriver.findElement(By.id("answers_279_value_no")).click();
 
     webDriver.findElement(By.name("commit")).click();
     logger.info("EDWOSB application questions have been answered");
@@ -129,11 +125,11 @@ public class NewScorpQuestionPage {
     String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
     assertEquals(actual_Text52, expected_Text52);
     // Validate the Personal Information.
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
+    webDriver.findElement(By.id("answers_280_value_new_button")).click();
     Thread.sleep(1000);
     webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
+    webDriver.findElement(By.id("answers_280_value_new_button")).click();
     Thread.sleep(2000);
     // Verify that the section to Create new record is been seen by user and
     // enter record2.

@@ -52,7 +52,7 @@ public class TestApp170LinkDunsNo8a extends TestCase {
             CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
             // Click on Case Link on main navigator-- 8(a) Analyst
-            LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 35);
+            LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 57);
             login_Data_01.Login_With_Reference();
             Thread.sleep(2000);
 

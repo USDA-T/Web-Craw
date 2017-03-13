@@ -57,7 +57,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
         // Login to verify analyst Dashboard
-        LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 31);
+        LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 55);
         login_Data_01.Login_With_Reference();
         Thread.sleep(3000);
 

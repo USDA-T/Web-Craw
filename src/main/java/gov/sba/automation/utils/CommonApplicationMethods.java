@@ -28,17 +28,17 @@ public class CommonApplicationMethods {
         switch (type_Of_App.toLowerCase((Locale.ENGLISH)) + status_Of_App.toLowerCase((Locale.ENGLISH))) {
         case "edwosbactive":
             List<WebElement> listOfActiveEDWOSB = webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/"
-                    + "tr[  " + "		(td[position()=4 and contains(text(),'ctive')]) "
+                    + "tr[  " + "		(td[position()=5 and contains(text(),'ctive')]) "
                     + "and  (td[position()=1]/a[contains(text(),'EDWOSB')]) " + "	]"));
             return listOfActiveEDWOSB.size() > 0;
         case "wosbactive":
             List<WebElement> listOfActiveWOSB = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[  " + "(td[position()=4 and contains(text(),'ctive')]) and "
+                    "//*[@id='certifications']/tbody/tr[  " + "(td[position()=5 and contains(text(),'ctive')]) and "
                             + "(td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) ]"));
             return listOfActiveWOSB.size() > 0;
         case "mpppending":
             List<WebElement> listOfActiveMpp = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[  (td[position()=4 and contains(text(),'ending')]) and (td/a[position()=1 and contains(text(),'MPP')]) ]"));
+                    "//*[@id='certifications']/tbody/tr[  (td[position()=5 and contains(text(),'ending')]) and (td/a[position()=1 and contains(text(),'MPP')]) ]"));
             return listOfActiveMpp.size() > 0;
 
         default:
@@ -279,7 +279,7 @@ public class CommonApplicationMethods {
         switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
         case "edwosbdraft":
             List<WebElement> deleteElem = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB')]) and ( td[ position()=4 and contains(text(),'Draft') ] )  ]/td[ position()=6 ]/a[ contains(text(),'Delete') ]  "));
+                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB')]) and ( td[ position()=5 and contains(text(),'Draft') ] )  ]/td[ position()=7 ]/a[ contains(text(),'Delete') ]  "));
             if (deleteElem.size() > 0) {
                 deleteElem.get(0).click();
                 Thread.sleep(1000);
@@ -288,7 +288,7 @@ public class CommonApplicationMethods {
             break;
         case "wosbdraft":
             List<WebElement> deleteElem_01 = webDriver.findElements(By.xpath(
-                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) and ( td[ position()=4 and contains(text(),'Draft') ] )  ]/td[ position()=6 ]/a[ contains(text(),'Delete') ]  "));
+                    "//*[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]) and ( td[ position()=5 and contains(text(),'Draft') ] )  ]/td[ position()=7 ]/a[ contains(text(),'Delete') ]  "));
             if (deleteElem_01.size() > 0) {
                 deleteElem_01.get(0).click();
                 webDriver.switchTo().alert().accept();
@@ -297,16 +297,16 @@ public class CommonApplicationMethods {
         case "mppdraft":
             List<WebElement> deleteElem_02 = webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr"
                     + "[  " + " ( td[position()=1]/a[contains(text(),'MPP')]       )  and"
-                    + " ( td[ position()=4 and contains(text(),'Draft')  ] )  and "
-                    + " ( td[ position()=6 ]/a[ contains(text(),'Delete') ] )  " + "]" + "/td[position()=6]/a"));
+                    + " ( td[ position()=5 and contains(text(),'Draft')  ] )  and "
+                    + " ( td[ position()=7 ]/a[ contains(text(),'Delete') ] )  " + "]" + "/td[position()=7]/a"));
             if (deleteElem_02.size() > 0) {
                 deleteElem_02.get(0).click();
                 webDriver.switchTo().alert().accept();
             }
             break;
         }
-    }
 
+    }
     public static void clickOnApplicationAllCasesPage(WebDriver webDriver, String type_Of_App) throws Exception {
         // It should be in Vendor Dashboard
         switch (type_Of_App.toLowerCase()) {
@@ -350,21 +350,21 @@ public class CommonApplicationMethods {
         case "edwosbactive":
             webDriver
                     .findElement(By
-                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB') ]) and ( td[ position()=4 and contains(text(),'Active') ] ) ]/td[position()=6]/a[contains(text(),'Return to Vendor')]"))
+                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
                     .click();
             webDriver.switchTo().alert().accept();
             break;
         case "wosbactive":
             webDriver
                     .findElement(By
-                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=4 and contains(text(),'Active') ] ) ]/td[position()=6]/a[contains(text(),'Return to Vendor')]"))
+                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
                     .click();
             webDriver.switchTo().alert().accept();
             break;
         case "mppactive":
             webDriver
                     .findElement(By
-                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'MPP') ]) and ( td[ position()=4 and contains(text(),'Active') ] ) ]/td[position()=6]/a[contains(text(),'Return to Vendor')]"))
+                            .xpath("//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'MPP') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
                     .click();
             webDriver.switchTo().alert().accept();
             break;
@@ -532,7 +532,7 @@ public class CommonApplicationMethods {
             webDriver.findElement(By.xpath(part_01 + "Help" + part_03)).click();
             break;
         case "CASES":
-            webDriver.findElement(By.xpath(part_01 + "ases" + part_03)).click();
+            webDriver.findElement(By.xpath(part_01 + "Cases" + part_03)).click();
             break;
         case "PROGRAMS":
             webDriver.findElement(By.xpath(part_01 + "rograms" + part_03)).click();
