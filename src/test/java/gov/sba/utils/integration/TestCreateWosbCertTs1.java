@@ -2,15 +2,11 @@ package gov.sba.utils.integration;
 
 import junit.framework.TestCase;
 import org.openqa.selenium.By;
-
-import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class TestCreateWosbCertTs1 extends TestCase {
   //Get the questions names for which Prepopulate flag set to true
@@ -52,7 +48,7 @@ public class TestCreateWosbCertTs1 extends TestCase {
       webDriver.findElement(By.id("add_certification")).click();
       webDriver.findElement(By.className("accept_button")).click();
       NewLLCQuestionaire NewLLCQuestionaire = new NewLLCQuestionaire(webDriver);
-      NewLLCQuestionaire.NewLLCQuestionaire();
+      NewLLCQuestionaire.NewLlcquestions();
       fillApplCreatePages.finalSignatureSubmit(webDriver);
 
 
