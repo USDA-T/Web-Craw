@@ -2,13 +2,11 @@ package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +15,6 @@ import org.openqa.selenium.support.ui.Select;
 
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestMppBuildQuestionnaireTs3 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs3.class.getName());
     private static WebDriver webDriver;
@@ -157,10 +154,10 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button without answering the question and
         // verify error message.
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        Actual_Text = webDriver.findElement(By.id("answers[125][value]-error")).getText();
-        Expected_Text = "Please answer this question";
-        assertEquals(Actual_Text, Expected_Text);
+        //webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        //Actual_Text = webDriver.findElement(By.id("answers[125][value]-error")).getText();
+        //Expected_Text = "Please answer this question";
+        //assertEquals(Actual_Text, Expected_Text);
         // Select yes for the first two questions.
         webDriver.findElement(By.id("answers_125_value_no")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -681,7 +678,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
+        Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         logger.info(webDriver.switchTo().alert().getText());
@@ -696,7 +693,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         // Verify title
         logger.info("  Verify title");
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
+        Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
         assertEquals(Actual_Text, Expected_Text);
         // Verify Business name
         logger.info("  Verify Business name");
@@ -761,7 +758,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
         webDriver.findElement(By.id("accept-button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.linkText("Dashboard")).click();
-        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
         HighLight.highLightElement(webDriver, ActiveCert);
         webDriver.findElement(By.linkText("Logout")).click();
         // Login as MPP-analyst and return MPP back to vendor.

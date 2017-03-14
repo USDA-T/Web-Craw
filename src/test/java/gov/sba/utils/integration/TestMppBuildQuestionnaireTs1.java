@@ -5,14 +5,12 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestMppBuildQuestionnaireTs1 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs1.class.getName());
     private static WebDriver webDriver;
@@ -61,10 +59,10 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Select No and commit.
         webDriver.findElement(By.id("answers_117_value_yes")).click();
-        // Upload a document.
+        //Upload document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        TestMppBuildQuestionnaireTs1.info(file_path_abs);
-        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+        MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+        MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         // fillApplCreatePages.finalSignatureSubmit(webDriver);
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -73,7 +71,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
-        // webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
+        webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
         Thread.sleep(2000);
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
@@ -84,7 +82,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
+        Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
         assertEquals(Actual_Text, Expected_Text);
         // 8(a) question verify.
         // Click on change your answer and verify.
@@ -166,7 +164,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.id("accept-button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.linkText("Dashboard")).click();
-        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
         HighLight.highLightElement(webDriver, ActiveCert);
         webDriver.findElement(By.linkText("Logout")).click();
         // Login as MPP-analyst and return MPP back to vendor.
@@ -195,11 +193,6 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
             webDriver.findElement(By.linkText("Logout")).click();
         }
         logger.info("Success");
-    }
-
-    private static void info(String file_path_abs) {
-        // TODO Auto-generated method stub
-
     }
 
     @After

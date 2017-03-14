@@ -230,7 +230,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         webDriver.findElement(By.id("answers_128_value")).click();
         webDriver.findElement(By.xpath("//option[@value='SBA Area Office 4']")).click();
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        // Upload a document.
+        //Upload document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
@@ -326,7 +326,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
             } else {
                 logger.info("Second Window is not thesame as first window");
             }
-            webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         }
         // Upload a document.
         Thread.sleep(2000);
@@ -344,11 +343,16 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         // Click on the continue button and verify alert message.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        logger.info(webDriver.switchTo().alert().getText());
-        Actual_Text = webDriver.switchTo().alert().getText();
-        Expected_Text = "You must have at least 1 agreements";
+        Thread.sleep(2000);
+        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+        Expected_Text = "Active Agreements";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        //Verify that user is prompted to answer this section b4 navigating to the next section
+        Actual_Text = webDriver.findElement(By.id("answers_134_agreement-error")).getText();
+        Expected_Text = "Please add an agreement";
+        assertEquals(Actual_Text, Expected_Text);
+        //webDriver.switchTo().alert().accept();
         // Add Agreement (s).
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("span.add-color")).click();
@@ -787,7 +791,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         // Verify title
         logger.info("  Verify title");
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All Small Mentor Protégé Program Application Summary";
+        Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
         assertEquals(Actual_Text, Expected_Text);
         // Verify Business name
         logger.info("Verifying Business name");
@@ -847,7 +851,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         webDriver.findElement(By.id("accept-button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.linkText("Dashboard")).click();
-        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+        WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
         HighLight.highLightElement(webDriver, ActiveCert);
         webDriver.findElement(By.linkText("Logout")).click();
         // Login as MPP-analyst and return MPP back to vendor.
