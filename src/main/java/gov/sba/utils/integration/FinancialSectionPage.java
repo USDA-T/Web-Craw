@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class FinancialSectionPage {
@@ -17,10 +18,27 @@ public class FinancialSectionPage {
   }
 
   public void Financialsection() throws Exception {
+    String Actual_Text = null;
+    String Expected_Text = null;
     Thread.sleep(3000);
     // Locate section for 'Cash on Hand' enter all valid data as required.
     // Locate the As of Date: Search box for user and enter the information
     // as required.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+    Expected_Text = "Cash On Hand";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_edwosb_cash_as_of_date']/fieldset/p")).getText();
+    Expected_Text = "Use the date of the information provided (i.e. the last date of the previous month). The information must be no older than 30 days old.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement CashOnHand  = webDriver.findElement(By.xpath("//div[@id='answers_edwosb_cash_as_of_date']/fieldset/p"));
+    HighLight.highLightElement(webDriver, CashOnHand);
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_edwosb_checking_balance > fieldset > p")).getText();
+    Expected_Text = "Include funds held domestically and in foreign financial institutions. Include funds held in certificates of deposit and money market accounts.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement AccountB  = webDriver.findElement(By.cssSelector("#answers_edwosb_checking_balance > fieldset > p"));
+    HighLight.highLightElement(webDriver, AccountB);
     webDriver.findElement(By.id("date-214")).sendKeys("01/26/2017");
     // Locate the Cash on Hand Search box for Pual Washington and enter the
     // information as required.
@@ -37,6 +55,22 @@ public class FinancialSectionPage {
     // Locate section for Other Source of Income enter all valid data as
     // required.
     // Locate the Salary search box and enter salary.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+    Expected_Text = "Other Sources Of Income";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_edwosb_salary']/fieldset/p")).getText();
+    Expected_Text = "Include salary from applicant firm and all other sources.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement OtherSource  = webDriver.findElement(By.xpath("//div[@id='answers_edwosb_salary']/fieldset/p"));
+    HighLight.highLightElement(webDriver, OtherSource);
+    WebElement OtherIncome  = webDriver.findElement(By.cssSelector("#answers_edwosb_other_income > fieldset > p"));
+    HighLight.highLightElement(webDriver, OtherIncome);
+    WebElement AppBuzEquity  = webDriver.findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p"));
+    HighLight.highLightElement(webDriver, AppBuzEquity);
+    WebElement AppEquityOtherFirm  = webDriver.findElement(By.cssSelector("#answers_edwosb_equity_in_other_firms > fieldset > p"));
+    HighLight.highLightElement(webDriver, AppEquityOtherFirm);   
     webDriver.findElement(By.xpath(".//*[@id='answers_218_value']")).sendKeys("70000");
     // Locate the Other Income search box and enter Other Income.
     webDriver.findElement(By.xpath(".//*[@id='answers_219_value']")).sendKeys("80000");
@@ -50,6 +84,16 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Locate and YES for question 'Do you have any notes receivable from
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you have any notes receivable from others?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_notes_receivable']/fieldset/p")).getText();
+    Expected_Text = "Include shareholder/officer/member/partner loans from individual to applicant firm, as well as any loans given to other individuals or companies.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement NotesDetail  = webDriver.findElement(By.xpath("//div[@id='answers_notes_receivable']/fieldset/p"));
+    HighLight.highLightElement(webDriver, NotesDetail);
     // others?'.
     webDriver.findElement(By.cssSelector("label.yes")).click();
     webDriver.findElement(By.xpath("//div/a/span"))
@@ -79,6 +123,16 @@ public class FinancialSectionPage {
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select Yes for the two question on Retirement Accounts.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you have a Roth IRA?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+    Expected_Text = "Upload terms and conditions of all retirement accounts. SBA will deduct these values of applicable from net worth upon verification during the eligibility review.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement RothDetail  = webDriver.findElement(By.cssSelector("fieldset > p"));
+    HighLight.highLightElement(webDriver, RothDetail);
     webDriver.findElement(By.id("answers_223_value_yes")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("980000.56");
@@ -111,6 +165,16 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Life Insurance section.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you have a life insurance policy that has a Cash Surrender Value?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_life_insurance_cash_surrender']/fieldset/p")).getText();
+    Expected_Text = "The Cash Surrender Value is the total received if a life insurance policy is cancelled. This does not apply to term life insurance policies.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement LifeInsuranceDetail  = webDriver.findElement(By.xpath("//div[@id='answers_life_insurance_cash_surrender']/fieldset/p"));
+    HighLight.highLightElement(webDriver, LifeInsuranceDetail);    
     webDriver.findElement(By.id("answers_225_value_yes")).click();
     webDriver.findElement(By.xpath("//div/a/span"))
         .click();
@@ -127,6 +191,16 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select Yes for the Stock and Bonds Section.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you have any stocks, bonds or Mutual Funds?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_stocks_bonds']/fieldset/p")).getText();
+    Expected_Text = "Total Value = Market Value Quotation × the Number of Shares.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement StocksBonds  = webDriver.findElement(By.xpath("//div[@id='answers_stocks_bonds']/fieldset/p"));
+    HighLight.highLightElement(webDriver, StocksBonds);    
     webDriver.findElement(By.xpath(".//*[@id='answers[228][value]']/label[1]")).click();
     webDriver.findElement(By.xpath("//div/a/span"))
         .click();
@@ -143,6 +217,10 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select Yes for Real Estate - Primary Residence Section questions.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you own your primary residence?";
+    assertEquals(Actual_Text, Expected_Text);  
     Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("label.yes")).click();
     webDriver.findElement(By.id("answers_230_1_1_value"))
@@ -183,6 +261,25 @@ public class FinancialSectionPage {
     // Beginning Test For Personal Property.
     assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
     logger.info("User is being navigated to the Personal Property section, PASS");
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Do you own any automobiles?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_automobiles']/fieldset/p")).getText();
+    Expected_Text = "If the vehicle is jointly owned or the loan on the vehicle is a joint debt, include only the individual’s share of the vehicle value and loan balance.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement PersonalProperty  = webDriver.findElement(By.xpath("//div[@id='answers_automobiles']/fieldset/p"));
+    HighLight.highLightElement(webDriver, PersonalProperty);
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4")).getText();
+    Expected_Text = "Do you own any other personal property or assets?";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_other_personal_property > fieldset > p")).getText();
+    Expected_Text = "Include all household goods, jewelry, art, boats, antiques, etc. If the property is jointly owned, include only the individual’s share of the property.";
+    assertEquals(Actual_Text, Expected_Text); 
+    WebElement OtherPersonalProperty  = webDriver.findElement(By.cssSelector("#answers_other_personal_property > fieldset > p"));
+    HighLight.highLightElement(webDriver, OtherPersonalProperty);
     webDriver.findElement(By.xpath(".//*[@id='answers[233][value]']/label[1]")).click();
     // Locate the New button on the data table and click on it to add
     // information.
@@ -275,6 +372,25 @@ public class FinancialSectionPage {
     try {
       assertTrue(webDriver.getPageSource().contains("Notes Payable"));
       logger.info("User is being navigated to the 'Notes Payable' section on the form 413, Pass");
+      //Verify the question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do you have any notes payable?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail Section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p")).getText();
+      Expected_Text = "List any notes payable including credit cards and personal lines of credit. Include loans owed to the applicant firm, other companies, and individuals. Exclude mortgage, auto loans, etc. if listed above in the Property section.";
+      assertEquals(Actual_Text, Expected_Text); 
+      WebElement NotesPayable  = webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
+      HighLight.highLightElement(webDriver, NotesPayable);
+      Actual_Text = webDriver.findElement(By.cssSelector("#answers_recurring_accounts_payable > fieldset > h4")).getText();
+      Expected_Text = "Do you have any other Accounts Payable for products and services purchased on credit or on a regular payment basis?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail Section.
+      Actual_Text = webDriver.findElement(By.cssSelector("#answers_recurring_accounts_payable > fieldset > p")).getText();
+      Expected_Text = "Include only personal accounts payable not listed in other sections. Exclude business accounts payable.";
+      assertEquals(Actual_Text, Expected_Text); 
+      WebElement otherAccountsPayable  = webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
+      HighLight.highLightElement(webDriver, otherAccountsPayable);     
       webDriver.findElement(By.xpath(".//*[@id='answers[239][value]']/label[2]")).click();
       webDriver.findElement(By.xpath(".//*[@id='answers[240][value]']/label[1]")).click();
       webDriver.findElement(By.xpath(".//*[@id='answers_241_value']")).sendKeys("45");
@@ -292,6 +408,25 @@ public class FinancialSectionPage {
     try {
       assertTrue(webDriver.getPageSource().contains("Assessed Taxes"));
       logger.info("User successfully navigated to the section 'Assessed Taxes' on Form 413, Pass");
+      //Verify the question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do you have any Assessed Taxes that were unpaid?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail Section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p")).getText();
+      Expected_Text = "Include only assessed taxes that are unpaid. This includes past due personal Federal, state, county, and city taxes. Do not include estimated taxes or business taxes. If this is a joint debt, include only the individual’s share of the debt.";
+      assertEquals(Actual_Text, Expected_Text); 
+      WebElement AssessedTaxes  = webDriver.findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p"));
+      HighLight.highLightElement(webDriver, AssessedTaxes);
+      Actual_Text = webDriver.findElement(By.cssSelector("#answers_other_liabilities > fieldset > h4")).getText();
+      Expected_Text = "Do you have any other liabilities?";
+      assertEquals(Actual_Text, Expected_Text);
+      //Detail Section.
+      Actual_Text = webDriver.findElement(By.cssSelector("#answers_other_liabilities > fieldset > p")).getText();
+      Expected_Text = "Complete this section only if liabilities were not listed elsewhere. Do not include contingent liabilities.";
+      assertEquals(Actual_Text, Expected_Text); 
+      WebElement otherAccountsPayable  = webDriver.findElement(By.cssSelector("#answers_other_liabilities > fieldset > p"));
+      HighLight.highLightElement(webDriver, otherAccountsPayable);      
       // Verify and answer YES to question 'Do you have any Assessed Taxes
       // that were unpaid?'.
       try {
@@ -352,6 +487,21 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     // Locate the next 3 search boxes for Adjusted Gross Income and enter
     // valid data.
+    //Verify the question.
+    Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+    Expected_Text = "Adjusted Gross Income (As shown on tax returns for Most Recent tax year)";
+    assertEquals(Actual_Text, Expected_Text);
+    //Detail Section.
+    Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+    Expected_Text = "In answering this question, you may consider the adjusted gross income (AGI) on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on Form 040EZ; or Line 21 on Form 1040(A). Please note that this is rough guidance and should not be construed as the official SBA’s position on calculating the AGI. You will be asked to provide information on your AGI in the Financial Data section.";
+    assertEquals(Actual_Text, Expected_Text); 
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_agi_year_3']/fieldset/p[2]")).getText();
+    Expected_Text = "Income received by an EDWOSB that is an S corporation, LLC, or partnership will be excluded from an individual's income where the EDWOSB provides documentary evidence demonstrating that the income was reinvested in the EDWOSB or the distribution was solely for the purposes of paying taxes arising in the normal course of operations of the business concern. Losses from the S corporation, LLC or partnership, however, are losses to the EDWOSB only, not losses to the individual, and cannot be used to reduce a woman's personal income. Reference 13 C.F.R. 127.203(c)(3)";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement AdjustedGrossIncome  = webDriver.findElement(By.cssSelector("fieldset > p"));
+    HighLight.highLightElement(webDriver, AdjustedGrossIncome);
+    WebElement AdjustedGrossIncome1  = webDriver.findElement(By.xpath("//div[@id='answers_agi_year_3']/fieldset/p[2]"));
+    HighLight.highLightElement(webDriver, AdjustedGrossIncome1); 
     webDriver.findElement(By.id("answers_244_value")).sendKeys("30000"); 
     webDriver.findElement(By.id("answers_245_value")).sendKeys("10000");
     webDriver.findElement(By.id("answers_246_value")).sendKeys("20000");
