@@ -17,7 +17,7 @@ public class WaitUtils {
     /**
      * Poll for element until the element is presented or timeout
      */
-    public WebElement waitForElement(WebDriver driver, By locator) {
+    public static WebElement waitForElement(WebDriver driver, By locator) {
         FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver);
         wait.pollingEvery(250, TimeUnit.MILLISECONDS);
         wait.withTimeout(10, TimeUnit.SECONDS);
