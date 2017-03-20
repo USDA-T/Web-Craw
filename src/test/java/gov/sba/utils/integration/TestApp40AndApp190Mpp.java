@@ -43,7 +43,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
             login_Data.Login_With_Reference();
         } else {
             // For WOSB and EDWOSB Active status - Create new app if not
-            // existing
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             CommonApplicationMethods.createApplication(webDriver, app_Type_Passed);
 
@@ -136,7 +135,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
         email = details[0];
         password = details[1];
         duns_Number = details[2];
-
     }
 
     @Test
@@ -149,7 +147,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
         run_This_app("MPP", duns_Number);
 
     }
-
     @After
     public void tearDown() throws Exception {
         webDriver.quit();

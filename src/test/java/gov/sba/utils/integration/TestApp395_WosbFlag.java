@@ -37,7 +37,7 @@ private static final Logger logger_TestApp395 = LogManager.getLogger(TestApp395_
     try {
       // Check Dashboard Pending status
     LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-    login_Data.Login_With_Reference();
+      login_Data.Login_With_Reference();
       Thread.sleep(2000);
       //Return the Applicatiom;
       if (CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active"))
@@ -171,6 +171,6 @@ private static final Logger logger_TestApp395 = LogManager.getLogger(TestApp395_
 
   @After
   public void tearDown() throws Exception {
-     //webDriver.quit();
+     webDriver.quit();
   }
 }

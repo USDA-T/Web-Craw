@@ -21,38 +21,38 @@ public class NewFinancialSectionQuestion {
     // Locate section for 'Cash on Hand' enter all valid data as required.
     // Locate the As of Date: Search box for user and enter the information
     // as required.
-          webDriver.findElement(By.name("answers[214][value]")).sendKeys("01/05/2017");
+        webDriver.findElement(By.name("answers[224][value]")).sendKeys("01/05/2017");
     // Locate the Cash on Hand Search box for Pual Washington and enter the
     // information as required.
-    webDriver.findElement(By.xpath(".//*[@id='answers_215_value']")).sendKeys("2000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_225_value']")).sendKeys("2000");
     // Locate the Savings Account(s) Balance Search box for Pual Washington
     // and enter the information as required.
-    webDriver.findElement(By.xpath(".//*[@id='answers_216_value']")).sendKeys("5000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_226_value']")).sendKeys("5000");
     // Locate the Checking Account(s) Balance Search box for Pual Washington
     // and enter the information as required.
-    webDriver.findElement(By.xpath(".//*[@id='answers_217_value']")).sendKeys("45000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_227_value']")).sendKeys("45000");
     // Locate the Continue button and click on it to continue.
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Locate section for Other Source of Income enter all valid data as
     // required.
     // Locate the Salary search box and enter salary.
-    webDriver.findElement(By.xpath(".//*[@id='answers_218_value']")).sendKeys("70000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_228_value']")).sendKeys("70000");
     // Locate the Other Income search box and enter Other Income.
-    webDriver.findElement(By.xpath(".//*[@id='answers_219_value']")).sendKeys("80000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_229_value']")).sendKeys("80000");
     // Locate the applicant Business Type and enter amount of applicant
     // equity.
-    webDriver.findElement(By.xpath(".//*[@id='answers_220_value']")).sendKeys("800000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_230_value']")).sendKeys("800000");
     // Locate the applicant equity in other firm and enter applicant
     // business equity.
-    webDriver.findElement(By.xpath(".//*[@id='answers_221_value']")).sendKeys("50000");
+    webDriver.findElement(By.xpath(".//*[@id='answers_231_value']")).sendKeys("50000");
     // Locate the continue button and click on it to continue.
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Locate and YES for question 'Do you have any notes receivable from
     // others?'.
     webDriver.findElement(By.cssSelector("label.yes")).click();
-    webDriver.findElement(By.xpath("//div[@id='answers_222_details_table_wrapper']/div/a/span")).click();
+    webDriver.findElement(By.xpath("//div[@id='answers_232_details_table_wrapper']/div/a/span")).click();
     logger.info(
         "User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
     Thread.sleep(3000);
@@ -78,41 +78,41 @@ public class NewFinancialSectionQuestion {
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select NO for the two question on Retirement Accounts.
-    webDriver.findElement(By.id("answers_223_value_no")).click();
+    webDriver.findElement(By.id("answers_233_value_no")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_224_value_no")).click();
+    webDriver.findElement(By.id("answers_234_value_no")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Locate and select yes for question, Do you have loan against a life
     // insurance.
-    webDriver.findElement(By.xpath("//*[@id='answers_225_value_no']")).click();
-    webDriver.findElement(By.xpath("//*[@id='answers_226_value_no']")).click();
+    webDriver.findElement(By.xpath("//*[@id='answers_235_value_no']")).click();
+    webDriver.findElement(By.xpath("//*[@id='answers_236_value_no']")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select Yes for the Stock and Bonds Section.
-    webDriver.findElement(By.xpath("//*[@id='answers_228_value_no']")).click();
+    webDriver.findElement(By.xpath("//*[@id='answers_238_value_no']")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("input[name='commit']")).click();
     // Select Yes for Real Estate - Primary Residence Section questions.
-    webDriver.findElement(By.id("answers_229_value_no")).click();
+    webDriver.findElement(By.id("answers_239_value_no")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("input[name='commit']")).click();
     Thread.sleep(3000);
-    webDriver.findElement(By.id("answers_231_value_no")).click();
+    webDriver.findElement(By.id("answers_241_value_no")).click();
     webDriver.findElement(By.cssSelector("input[name='commit']")).click();
     // Beginning Test For Personal Property.
     assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
     logger.info("User is being navigated to the Personal Property section, PASS");
-    webDriver.findElement(By.id("answers_233_value_no")).click();
+    webDriver.findElement(By.id("answers_243_value_no")).click();
     // Locate the New button on the data table and click on it to add
     // information.
-    webDriver.findElement(By.id("answers_234_value_no")).click();
+    webDriver.findElement(By.id("answers_244_value_no")).click();
     // Locate current value search box and enter a valid value for you
     // automobile.
-    webDriver.findElement(By.id("answers_235_value_no")).click();
-    webDriver.findElement(By.id("answers_236_value_no")).click();
-    webDriver.findElement(By.id("answers_237_value_no")).click();
-    webDriver.findElement(By.id("answers_238_value_no")).click();
+    webDriver.findElement(By.id("answers_245_value_no")).click();
+    webDriver.findElement(By.id("answers_246_value_no")).click();
+    webDriver.findElement(By.id("answers_247_value_no")).click();
+    webDriver.findElement(By.id("answers_248_value_no")).click();
     webDriver.findElement(By.cssSelector("input[name='commit']")).click();
 
 
@@ -121,8 +121,8 @@ public class NewFinancialSectionQuestion {
     try {
       assertTrue(webDriver.getPageSource().contains("Notes Payable"));
       logger.info("User is being navigated to the 'Notes Payable' section on the form 413, Pass");
-      webDriver.findElement(By.id("answers_239_value_no")).click();
-      webDriver.findElement(By.id("answers_240_value_no")).click();
+      webDriver.findElement(By.id("answers_249_value_no")).click();
+      webDriver.findElement(By.id("answers_250_value_no")).click();
 
       Thread.sleep(2000);
       webDriver.findElement(By.cssSelector("input[name='commit']")).click();
@@ -143,9 +143,9 @@ public class NewFinancialSectionQuestion {
         assertTrue(webDriver.getPageSource().contains("Do you have any Assessed Taxes that were unpaid"));
         logger.info(
             "Assessed Taxes question; 'Do you have any Assessed Taxes that were unpaid?' is present, Pass");
-        webDriver.findElement(By.id("answers_242_value_no")).click();
+        webDriver.findElement(By.id("answers_252_value_no")).click();
         Thread.sleep(1500);
-        webDriver.findElement(By.id("answers_243_value_no")).click();
+        webDriver.findElement(By.id("answers_253_value_no")).click();
       } catch (Error e) {
         logger.info(
             "Assessed Taxes question; 'Do you have any Assessed Taxes that were unpaid?' NOT Present, Failed");
@@ -162,9 +162,9 @@ public class NewFinancialSectionQuestion {
     // Locate the next 3 search boxes for Adjusted Gross Income and enter
     // valid data.
 
-    webDriver.findElement(By.id("answers_244_value")).sendKeys("30000");
-    webDriver.findElement(By.id("answers_245_value")).sendKeys("10000");
-    webDriver.findElement(By.id("answers_246_value")).sendKeys("20000");
+    webDriver.findElement(By.id("answers_254_value")).sendKeys("30000");
+    webDriver.findElement(By.id("answers_255_value")).sendKeys("10000");
+    webDriver.findElement(By.id("answers_256_value")).sendKeys("20000");
     // Locate and click on the continue button.
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@type='submit']")).click();
