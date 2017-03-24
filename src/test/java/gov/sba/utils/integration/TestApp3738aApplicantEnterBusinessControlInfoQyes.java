@@ -5,17 +5,16 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.UnstableTests.class })
-public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
+public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase {
 
     private static final Logger logger = LogManager
-            .getLogger(TestApp3738aApplicantEnterBusinessControlInfo.class.getName());
+            .getLogger(TestApp3738aApplicantEnterBusinessControlInfoQyes.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
 
@@ -39,29 +38,34 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
-        // delete second draft if any.
+        // delete to start a new certification.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
-        // Start an application.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span"))
-                .getText();
-        Expected_Text = "Programs";
-        webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[2]/a/span")).click();
-        assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.id("certificate_type_control")).click();
         Thread.sleep(2000);
-        webDriver.findElement(By.id("add_certification")).click();
-        Thread.sleep(2000);
+        webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        Thread.sleep(2000);
-        // 8(a) Control Questions Section, 1.4a.
-        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-        Expected_Text = "8(a) Control Questions";
+        //Verify the Basic Eligibility link.
+        Actual_Text = webDriver.findElement(By.linkText("Control")).getText();
+        Expected_Text = "Control";
         assertEquals(Actual_Text, Expected_Text);
+        //Verify Status.
+        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Expected_Text = "NOT STARTED";
+        assertEquals(Actual_Text, Expected_Text);
+        //Click on the link to start eligibility check.
+        webDriver.findElement(By.linkText("Control")).click();
+        //Click on the accept button.
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Thread.sleep(2000);  
+        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+        Expected_Text = "Firm Control";
+        assertEquals(Actual_Text, Expected_Text);
+        Thread.sleep(2000);
         // Click on the on the Save and continue button and verify that user is
         // prompted to answer the question.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        Actual_Text = webDriver.findElement(By.id("answers[169][value]-error")).getText();
+        Thread.sleep(2000);
+        Actual_Text = webDriver.findElement(By.xpath("//div[3]/fieldset/div/span")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Verify question and detail section and Select Yes and upload a
@@ -134,63 +138,63 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // No Detail section.
         // Select yes to all question.
         // question1, 1.4a
-        webDriver.findElement(By.id("answers_169_value_yes")).click();
+        webDriver.findElement(By.id("answers_173_value_yes")).click();
         Thread.sleep(2000);
         // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         // question2, 1.4b
-        webDriver.findElement(By.id("answers_170_value_yes")).click();
+        webDriver.findElement(By.id("answers_174_value_yes")).click();
         Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
+        Upload2pdfOnSamePage MontanaUploadDocument1 = new Upload2pdfOnSamePage(webDriver);
+        MontanaUploadDocument1.Upload2pdfOnSame(file_path_abs);
         // question 3, 1.4c
-        webDriver.findElement(By.id("answers_171_value_yes")).click();
+        webDriver.findElement(By.id("answers_175_value_yes")).click();
         Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
+        Upload3pdfOnSamePage MontanaUploadDocument2 = new Upload3pdfOnSamePage(webDriver);
+        MontanaUploadDocument2.Upload3pdfOnSame(file_path_abs);
         // question 4, 1.4d
-        webDriver.findElement(By.id("answers_172_value_yes")).click();
+        webDriver.findElement(By.id("answers_176_value_yes")).click();
         Thread.sleep(2000);
         // question 5, 1.4e Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
+        Upload4pdfOnSamePage MontanaUploadDocument3 = new Upload4pdfOnSamePage(webDriver);
+        MontanaUploadDocument3.Upload4pdfOnSame(file_path_abs);
         // question 6, 1.4f with comment.
-        webDriver.findElement(By.id("answers_174_value_yes")).click();
+        webDriver.findElement(By.id("answers_178_value_yes")).click();
         Thread.sleep(2000);
         // question 6, Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-        MontanaUploadDocumentPage MontanaUploadDocument4 = new MontanaUploadDocumentPage(webDriver);
-        MontanaUploadDocument4.MontanaUploadDocument(file_path_abs);
+        Upload5pdfOnSamePage MontanaUploadDocument4 = new Upload5pdfOnSamePage(webDriver);
+        MontanaUploadDocument4.Upload5pdfOnSame(file_path_abs);
         // question 7, 1.4g select with no skip.
-        webDriver.findElement(By.id("answers_175_value_yes")).click();
+        webDriver.findElement(By.id("answers_179_value_yes")).click();
         Thread.sleep(2000);
         // Click on the save and continue button and verify that user is
         // requested to enter comment.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.cssSelector("answers_170_comment-error")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[4]/span")).getText();
         Expected_Text = "Comment is required";
         assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.cssSelector("answers_171_comment-error")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[3]/fieldset/div[4]/span")).getText();
         Expected_Text = "Comment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Enter comment.
-        webDriver.findElement(By.id("answers_170_comment")).sendKeys(
+        webDriver.findElement(By.id("answers_174_comment")).sendKeys(
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         // Enter comment.
-        webDriver.findElement(By.id("answers_171_comment")).sendKeys(
+        webDriver.findElement(By.id("answers_175_comment")).sendKeys(
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // Leased facility Section 1.4.1a
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-        Expected_Text = "Leased facility";
+        Expected_Text = "Leased Facility";
         assertEquals(Actual_Text, Expected_Text);
         // 1st question on section 1.4.1a
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -205,20 +209,20 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         // Click on the save and continue button to verify that user has to
         // answer question.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        Actual_Text = webDriver.findElement(By.id("answers[176][value]-error")).getText();
+        Actual_Text = webDriver.findElement(By.id("answers[180][value]-error")).getText();
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes.
-        webDriver.findElement(By.id("answers_176_value_yes")).click();
+        webDriver.findElement(By.id("answers_180_value_yes")).click();
         // Click on the save and continue button and verify that user is
         // requested to enter comment.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.cssSelector("answers_176_comment-error")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
         Expected_Text = "Comment is required";
         assertEquals(Actual_Text, Expected_Text);
         // Enter comment.
-        webDriver.findElement(By.id("answers_176_comment")).sendKeys(
+        webDriver.findElement(By.id("answers_180_comment")).sendKeys(
                 "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -227,26 +231,39 @@ public class TestApp3738aApplicantEnterBusinessControlInfo extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
         Expected_Text = "Review";
         assertEquals(Actual_Text, Expected_Text);
-        // Section.
         Actual_Text = webDriver.findElement(By.cssSelector("div.review_questions.question-separator > h3")).getText();
-        Expected_Text = "8(a) Control Questions";
+        Expected_Text = "Firm Control";
         assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.xpath("//form[@id='eight_a_control']/ul/li/div/div[2]/h3")).getText();
-        Expected_Text = "Leased facility";
+        Actual_Text = webDriver.findElement(By.xpath("//div[2]/div/div/p")).getText();
+        Expected_Text = "Do any other firms or individuals provide financial support or bonding support to the applicant firm?";
+        //Navigate back and verify in-progress status for the draft.
+        webDriver.findElement(By.xpath("//a/span")).click();
+        //click on the draft 8(a) Initial Program.
+        webDriver.findElement(By.linkText("8(a) Initial Program")).click();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Expected_Text = "IN PROGRESS";
         assertEquals(Actual_Text, Expected_Text);
+        WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+        HighLight.highLightElement(webDriver, CharacterInProgressStatus);
+        webDriver.findElement(By.linkText("Control")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("eight_a_control_leased_facility")).click();
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("//input[@name='commit']")).click();    
+        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+        Expected_Text = "Review";
+        assertEquals(Actual_Text, Expected_Text);
+        //Click on the Submit button.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
-        // Signature page.
-        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-        Expected_Text = "Signature";
+        //Verify status.
+        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Expected_Text = "COMPLETE";
         assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.id("legal_0")).click();
-        webDriver.findElement(By.id("legal_1")).click();
-        webDriver.findElement(By.id("legal_2")).click();
-        webDriver.findElement(By.id("legal_3")).click();
-        webDriver.findElement(By.id("legal_4")).click();
-        webDriver.findElement(By.id("legal_5")).click();
-        webDriver.findElement(By.id("accept-button")).click();
+        WebElement ControlComplteStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+        HighLight.highLightElement(webDriver, ControlComplteStatus);
+        webDriver.findElement(By.linkText("Logout")).click();
+
     }
 
     @After
