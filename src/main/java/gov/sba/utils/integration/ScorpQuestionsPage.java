@@ -85,22 +85,21 @@ public class ScorpQuestionsPage {
     String expected_Text7 =
         "If yes, please upload the front and back pages of all stock certificates and ledgers.";
     assertEquals(actual_Text7, expected_Text7);
-    webDriver.findElement(By.cssSelector("#answers_232_value_no")).click();
-    webDriver.findElement(By.cssSelector("#answers_232_comment")).sendKeys(
-        "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
+    webDriver.findElement(By.xpath("//label[2]")).click();
+    webDriver.findElement(By.id("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
     // 2nd question.
     String actual_Text71 =
         webDriver.findElement(By.cssSelector("#answers_corp1_q2 > fieldset > h4")).getText();
     String expected_Text71 = "Does the corporation have more than one class of voting stock?";
     assertEquals(actual_Text71, expected_Text71);
-    webDriver.findElement(By.cssSelector("#answers_233_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     String actual_Text61 =
         webDriver.findElement(By.cssSelector("#answers_corp2_q1 > fieldset > h4")).getText();
     String expected_Text61 =
         "Do the corporation’s stock ledger and stock certificates show that at least 51% of each class of voting stock is owned by the qualifying individual(s)?";
     assertEquals(actual_Text61, expected_Text61);
-    webDriver.findElement(By.cssSelector("#answers_234_value_no")).click();
+    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // 4th question
     String actual_Text610 =
         webDriver.findElement(By.cssSelector("#answers_corp1_q3 > fieldset > h4")).getText();
@@ -113,7 +112,7 @@ public class ScorpQuestionsPage {
     String expected_Text62 =
         "Do not consider unexercised stock options that are held by the qualifying individual(s). If you answered “yes” to this question, please return to the questions above and revise your answers.";
     assertEquals(actual_Text62, expected_Text62);
-    webDriver.findElement(By.cssSelector("#answers_235_value_no")).click();
+    webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // 5th question.
     String actual_Text63 =
         webDriver.findElement(By.cssSelector("#answers_corp3_q1 > fieldset > h4")).getText();
@@ -126,14 +125,14 @@ public class ScorpQuestionsPage {
     String expected_Text64 =
         "In determining unconditional ownership of the business, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. Reference: 13 C.F.R. 127.201(f)";
     assertEquals(actual_Text64, expected_Text64);
-    webDriver.findElement(By.cssSelector("#answers_236_value_no")).click();
+    webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
     // 6th question.
     String actual_Text641 =
         webDriver.findElement(By.cssSelector("#answers_corp4_q1 > fieldset > h4")).getText();
     String expected_Text641 =
         "Are any unexercised stock options or similar agreements held by the qualifying individual(s)?";
     assertEquals(actual_Text641, expected_Text641);
-    webDriver.findElement(By.cssSelector("#answers_237_value_no")).click();
+    webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
     // 7th question.
     String actual_Text635 =
         webDriver.findElement(By.cssSelector("#answers_corp5_q1 > fieldset > h4")).getText();
@@ -146,7 +145,7 @@ public class ScorpQuestionsPage {
     String expected_Text643 =
         "If yes, please upload Articles of Incorporation and any amendments; By-laws and any amendments; all stock certificates issued, including the front and back copies signed in accordance with the By-laws (this also applies to all cancelled stock certificates); and the Joint Venture Agreement, if applicable. Women are considered to control the Board of Directors when either: (1) one or more women own at least 51% of all voting stock of the business, are on the Board of Directors and have the percentage of voting stock necessary to overcome any super majority voting requirements; or (2) women comprise the majority of voting directors through actual numbers or, where permitted by state law, through weighted voting. Reference: 13 C.F.R. 127.202(f)";
     assertEquals(actual_Text643, expected_Text643);
-    webDriver.findElement(By.cssSelector("#answers_238_value_no")).click();
+    webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.cssSelector("#answers_238_comment")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
     Thread.sleep(2000);
@@ -199,8 +198,8 @@ public class ScorpQuestionsPage {
         "If the ownership is not held through a trust, select N/A. SBA will treat ownership by a trust, such as a living trust, as the functional equivalent of ownership by the qualifying individual where the trust is revocable, and the qualifying individual is the grantor, the trustee, and the sole current beneficiary of the trust. Reference: 13 C.F.R. 127.201(c)";
     assertEquals(actual_Text17, expected_Text17);
     webDriver.findElement(By.cssSelector("label.no.last")).click();
-    webDriver.findElement(By.id("answers_245_value_no")).click();
-    webDriver.findElement(By.id("answers_246_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
+    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 
@@ -230,7 +229,7 @@ public class ScorpQuestionsPage {
     String expected_Text22 =
         "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b)";
     assertEquals(actual_Text22, expected_Text22);
-    webDriver.findElement(By.id("answers_245_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     String actual_Text201 =
         webDriver.findElement(By.cssSelector("#answers_oper2_q2 > fieldset > h4")).getText();
@@ -243,13 +242,10 @@ public class ScorpQuestionsPage {
     String expected_Text221 =
         "If the ownership is not held through a trust, select N/A. SBA will treat ownership by a trust, such as a living trust, as the functional equivalent of ownership by the qualifying individual where the trust is revocable, and the qualifying individual is the grantor, the trustee, and the sole current beneficiary of the trust. Reference: 13 C.F.R. 127.201(c)";
     assertEquals(actual_Text221, expected_Text221);
-    webDriver.findElement(By.id("answers_246_value_no")).click();
-    webDriver.findElement(By.id("answers_246_comment")).sendKeys(
-        "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
+    webDriver.findElement(By.id("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-
-
     // Locate the Management questions, Verify, select No for
     // both and continue.
     // 1st question.
@@ -277,7 +273,7 @@ public class ScorpQuestionsPage {
     String expected_Text26 =
         "If yes, please upload a resume to show managerial experience. The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b)";
     assertEquals(actual_Text26, expected_Text26);
-    webDriver.findElement(By.id("answers_248_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     String actual_Text251 =
         webDriver.findElement(By.cssSelector("#answers_oper4_q1 > fieldset > h4")).getText();
@@ -290,7 +286,7 @@ public class ScorpQuestionsPage {
     String expected_Text261 =
         "The woman manager does not need to have the technical expertise or possess the required license to be found to control the business if she can demonstrate that she has ultimate managerial and supervisory control over those who possess the required licenses or technical expertise. Reference: 13 C.F.R. 127.202(b)";
     assertEquals(actual_Text261, expected_Text261);
-    webDriver.findElement(By.id("answers_249_value_no")).click();
+    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // 4th question.
     String actual_Text252 =
         webDriver.findElement(By.cssSelector("#answers_oper4_q2 > fieldset > h4")).getText();
@@ -303,7 +299,7 @@ public class ScorpQuestionsPage {
     String expected_Text262 =
         "The qualifying individual(s) may not engage in outside employment that prevents her from devoting sufficient time and attention to the daily affairs or the business. Reference: 13 C.F.R. 127.202(c)";
     assertEquals(actual_Text262, expected_Text262);
-    webDriver.findElement(By.id("answers_250_value_no")).click();
+    webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // 5th question.
     String actual_Text211 =
         webDriver.findElement(By.cssSelector("#answers_oper5_q2 > fieldset > h4")).getText();
@@ -316,16 +312,15 @@ public class ScorpQuestionsPage {
     String expected_Text311 =
         "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
     assertEquals(actual_Text311, expected_Text311);
-    webDriver.findElement(By.id("answers_251_value_no")).click();
+    webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
     // 6th question meaning.
     String actual_Text331 =
         webDriver.findElement(By.cssSelector("#answers_oper6_q2 > fieldset > h4")).getText();
     String expected_Text331 =
         "Is the qualifying individual(s) in control of long-term decision making and day-to-day operations?";
     assertEquals(actual_Text331, expected_Text331);
-    webDriver.findElement(By.id("answers_252_value_no")).click();
-    webDriver.findElement(By.id("answers_252_comment")).sendKeys(
-        "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+    webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
+    webDriver.findElement(By.id("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     logger.info("  Operations questions have been answered");
@@ -357,7 +352,7 @@ public class ScorpQuestionsPage {
     String expected_Text30 =
         "In order to be considered economically disadvantaged, the woman's personal net worth must be less than $750,000, excluding her ownership interest in the business and her equity interest in her primary personal residence. Other exclusions include business income reinvested in the business or received for purposes of paying taxes and retirement funds not available until retirement age without a significant penalty. The qualifying individual(s) must provide information on the business income and retirement funds in the Financial Data section to claim exclusions. Reference: 13 C.F.R. Part 127.203(b)";
     assertEquals(actual_Text30, expected_Text30);
-    webDriver.findElement(By.id("answers_254_value_no")).click();
+    webDriver.findElement(By.xpath("//label[2]")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Adjusted Gross Income Section
@@ -374,7 +369,7 @@ public class ScorpQuestionsPage {
     String expected_Text32 =
         "The adjusted gross income may be found on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on Form 1040EZ; or Line 21 on Form 1040A). You will be asked to provide information on your AGI in the Financial Data section. Reference: 13 C.F.R. 127.203(c)(3)";
     assertEquals(actual_Text32, expected_Text32);
-    webDriver.findElement(By.id("answers_255_value_no")).click();
+    webDriver.findElement(By.xpath("//label[2]")).click();
     // 2nd question.
     String actual_Text33 = webDriver
         .findElement(By.cssSelector("#answers_agi_3_year_exceeds_but_uncommon > fieldset > h4"))
@@ -388,7 +383,7 @@ public class ScorpQuestionsPage {
         .getText();
     String expected_Text34 = "If this situation does not apply, select N/A.";
     assertEquals(actual_Text34, expected_Text34);
-    webDriver.findElement(By.id("answers_256_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // webDriver.findElement(By.id("answers_256_comment")).sendKeys("Also is their earth so. Dry
     // female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him
     // winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own.
@@ -422,7 +417,7 @@ public class ScorpQuestionsPage {
     String expected_Text351 =
         "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4)";
     assertEquals(actual_Text351, expected_Text351);
-    webDriver.findElement(By.id("answers_257_value_no")).click();
+    webDriver.findElement(By.xpath("//label[2]")).click();
     // 2nd question.
     String actual_Text37 = webDriver
         .findElement(By.cssSelector("#answers_woman_has_not_transferred_assets > fieldset > h4"))
@@ -442,7 +437,7 @@ public class ScorpQuestionsPage {
     String expected_Text381 =
         "To or on behalf of an immediate family member for that individual's education, medical expenses, or some other form of essential support; or";
     assertEquals(actual_Text381, expected_Text381);
-    webDriver.findElement(By.id("answers_258_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd qestion.
     String actual_Text371 = webDriver
         .findElement(By.cssSelector("#answers_woman_asset_transfer_excusable > fieldset > h4"))
@@ -472,7 +467,7 @@ public class ScorpQuestionsPage {
         .getText();
     String expected_Text44 = "Assets include her primary residence and the value of the business.";
     assertEquals(actual_Text44, expected_Text44);
-    webDriver.findElement(By.id("answers_257_value_no")).click();
+    webDriver.findElement(By.xpath("//label[2]")).click();
     Thread.sleep(2000);
     String actual_Text45 = webDriver
         .findElement(By.cssSelector("#answers_woman_has_not_transferred_assets > fieldset > h4"))
@@ -488,7 +483,7 @@ public class ScorpQuestionsPage {
     String expected_Text46 =
         "Assets that a qualifying individual(s) transferred within two years of the date of the concern's certification will be attributed to the qualifying individual(s) if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. Reference: 13 C.F.R. 127.203(d)";
     assertEquals(actual_Text46, expected_Text46);
-    webDriver.findElement(By.id("answers_258_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 2nd question.
     String actual_Text47 = webDriver
         .findElement(By.cssSelector("#answers_woman_asset_transfer_excusable > fieldset > h4"))
@@ -502,7 +497,7 @@ public class ScorpQuestionsPage {
         .getText();
     String expected_Text48 = "If this situation does not apply, select N/A.";
     assertEquals(actual_Text48, expected_Text48);
-    webDriver.findElement(By.id("answers_259_value_no")).click();
+    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Economic Disadvantage Section.
@@ -523,7 +518,7 @@ public class ScorpQuestionsPage {
     String expected_Text5211 =
         "The personal financial condition of the woman claiming economic disadvantage, including her personal net worth, her adjusted gross income for the past three years (including bonuses, and the value of company stock given in lieu of cash), and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged.";
     assertEquals(actual_Text5211, expected_Text5211);
-    webDriver.findElement(By.id("answers_260_value_no")).click();
+    webDriver.findElement(By.xpath("//label[2]")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     logger.info("EDWOSB application questions have been answered");
@@ -541,11 +536,11 @@ public class ScorpQuestionsPage {
         "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program.";
     assertEquals(actual_Text52, expected_Text52);
     // Validate the Personal Information.
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
+    webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
+    webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
     Thread.sleep(2000);
     // Verify that the section to Create new record is been seen by user and
     // enter record2.
@@ -572,7 +567,7 @@ public class ScorpQuestionsPage {
     // Select No for question Is anyone listed above divorced? If yes,
     // please provide separation documents.
     Actions act4 = new Actions(webDriver);
-    act4.doubleClick(webDriver.findElement(By.id("answers_262_value_no"))).build().perform();
+    act4.doubleClick(webDriver.findElement(By.xpath("//label[2]"))).build().perform();
     // Locate the Continue Button and click on it to continue.
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();

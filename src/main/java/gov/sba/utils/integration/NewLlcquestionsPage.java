@@ -34,7 +34,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If the qualifying individual is both 8(a) and Third-Party Certified, upload the documentation for both certifications.";
       assertEquals(Actual_Text, Expected_Text);
       //Answer No.
-      webDriver.findElement(By.id("answers_247_value_no")).click();
+      webDriver.findElement(By.id("answers_324_value_no")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Third Party section.
@@ -46,7 +46,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_248_value_no")).click();
+      webDriver.findElement(By.id("answers_325_value_no")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Non-qualification section page.
@@ -58,7 +58,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If yes, please upload the denial letter. Being denied eligibility by one of the SBA-approved certifiers does not necessarily prevent you from qualifying for a self-certification if circumstances have changed. Any business determined not to be qualified may request that SBA review its eligibility once it believes in good faith that it satisfies all of the requirements. Reference: 13 C.F.R. 127.305";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_250_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>LLC program 1st question.
@@ -70,8 +70,8 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; and Operating Agreement and any amendments; Joint Venture Agreement, if applicable. Reference: 13 C.F.R. 127.201(e)";
       assertEquals(Actual_Text, Expected_Text);
       //Select No and continue.
-      webDriver.findElement(By.id("answers_260_value_no")).click();
-      webDriver.findElement(By.id("answers_260_comment")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
+      webDriver.findElement(By.xpath("//label[2]")).click();
+      webDriver.findElement(By.xpath("//textarea")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
       //2nd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_llc_q2 > fieldset > h4")).getText();
       Expected_Text = "Do the Articles of Organization and any amendments or Operating Agreement and any amendments show that the qualifying individual(s) serve as management members, with control over all decisions of the limited liability company?";
@@ -81,8 +81,8 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; or Operating Agreement and any amendments that show that one or more women serve as management members, with control over all decisions; the Joint Venture Agreement if applicable. Reference: 13 C.F.R. 127.202(e)";
       assertEquals(Actual_Text, Expected_Text);
       //Select No and continue.
-      webDriver.findElement(By.id("answers_261_value_no")).click();
-      webDriver.findElement(By.id("answers_261_comment")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div[4]/textarea")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Citizenship section.
@@ -94,7 +94,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If yes, please upload birth certificates, naturalization papers, or current, unexpired U.S. passports for all qualifying individual(s).";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_262_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Ownership section.1st question.
@@ -105,7 +105,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper1_q2']/fieldset/p[2]")).getText();
       Expected_Text = "In order for ownership to be unconditional, there cannot be any arrangements that could pass the business to a person or entity not eligible for the WOSB Program. However, stock ownership interest pledged as collateral would be still considered unconditional if the terms follow commercial practices and the owner retains control. Reference: 13 C.F.R. 127.201(b)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_263_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       //2nd question
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper2_q1 > fieldset > h4")).getText();
       Expected_Text = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
@@ -114,7 +114,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper2_q1']/fieldset/p[2]")).getText();
       Expected_Text = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_264_value_no")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
       //3rd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper2_q2 > fieldset > h4")).getText();
       Expected_Text = "If the 51% ownership is held through a trust, is the trust revocable, and does it designate the qualifying individual(s) as the grantor, the trustee, and the sole current beneficiary?";
@@ -124,8 +124,8 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If the ownership is not held through a trust, select N/A. SBA will treat ownership by a trust, such as a living trust, as the functional equivalent of ownership by the qualifying individual where the trust is revocable, and the qualifying individual is the grantor, the trustee, and the sole current beneficiary of the trust. Reference: 13 C.F.R. 127.201(c)";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_265_value_no")).click();
-      webDriver.findElement(By.id("answers_265_comment")).sendKeys("Also is their earth so. Dry given, place itself for were third. Itself second gathered fruit from");
+      webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//textarea")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Management section.
@@ -136,7 +136,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper3_q1']/fieldset/p[2]")).getText();
       Expected_Text = "Control means that both the long-term decision making and the day-to-day management and administration of the business operations are conducted by the qualifying individuals. Reference: 13 C.F.R. 127.202(a)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_266_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       // 2nd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper3_q2 > fieldset > h4")).getText();
       Expected_Text = "Does the qualifying individual(s) hold the highest officer position in the business and does she have the managerial experience needed to run the business?";
@@ -145,7 +145,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper3_q2']/fieldset/p[2]")).getText();
       Expected_Text = "If yes, please upload a resume to show managerial experience. The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_267_value_no")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
       //3rd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper4_q1 > fieldset > h4")).getText();
       Expected_Text = "Does the qualifying individual(s) have ultimate managerial and supervisory control over those who possess the required licenses or technical expertise for the business? The qualifying individual(s) herself may have the technical expertise or possess the required license for the business.";
@@ -154,7 +154,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper4_q1']/fieldset/p[2]")).getText();
       Expected_Text = "The woman manager does not need to have the technical expertise or possess the required license to be found to control the business if she can demonstrate that she has ultimate managerial and supervisory control over those who possess the required licenses or technical expertise. Reference: 13 C.F.R. 127.202(b)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_268_value_no")).click();
+      webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
       //4th question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper4_q2 > fieldset > h4")).getText();
       Expected_Text = "Does the qualifying individual(s) who holds the highest officer position manage the business on a full-time basis and devote full-time attention to the business during the normal working hours of similar businesses?";
@@ -163,7 +163,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper4_q2']/fieldset/p[2]")).getText();
       Expected_Text = "The qualifying individual(s) may not engage in outside employment that prevents her from devoting sufficient time and attention to the daily affairs or the business. Reference: 13 C.F.R. 127.202(c)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_269_value_no")).click();
+      webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
       //5th question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper5_q2 > fieldset > h4")).getText();
       Expected_Text = "Does the qualifying individual(s) fully control the business, that is, no one else has actual control or has the power to control the business?";
@@ -172,14 +172,13 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper5_q2']/fieldset/p[2]")).getText();
       Expected_Text = "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_270_value_no")).click();
+      webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
       //6th question meaning.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper6_q2 > fieldset > h4")).getText();
       Expected_Text = "Is the qualifying individual(s) in control of long-term decision making and day-to-day operations?";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_271_value_no")).click();
-      webDriver.findElement(By.id("answers_271_comment")).sendKeys(
-          "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
+      webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//textarea")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       Thread.sleep(2000);
@@ -191,7 +190,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper6_q1']/fieldset/p[2]")).getText();
       Expected_Text = "Any business that SBA found to be ineligible for the WOSB Program may request that SBA re- examine its WOSB or EDWOSB eligibility at any time if it believes in good faith that it has cured the reason(s) for its ineligibility. Reference: 13 C.F.R. 127.405(g)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_272_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       Thread.sleep(2000);
@@ -207,7 +206,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "SBA may consider a spouse's financial situation in determining a woman's access to credit and capital. When married, an individual claiming economic disadvantage must submit separate financial information for her spouse, unless the individual and the spouse are legally separated.";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_273_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       Thread.sleep(2000);
@@ -222,7 +221,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_agi_3_year_less_than_350k']/fieldset/p[3]")).getText();
       Expected_Text = "Income received by an EDWOSB that is an S corporation, LLC, or partnership will be excluded from an individual's income where the EDWOSB provides documentary evidence demonstrating that the income was reinvested in the EDWOSB or the distribution was solely for the purposes of paying taxes arising in the normal course of operations of the business concern. Losses from the S corporation, LLC or partnership, however, are losses to the EDWOSB only, not losses to the individual, and cannot be used to reduce a woman's personal income. Reference 13 C.F.R. 127.203(c)(3)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_274_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       //2nd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_agi_3_year_exceeds_but_uncommon > fieldset > h4")).getText();
       Expected_Text = "Does the adjusted gross income of the qualifying individual(s) averaged over the three years preceding the certification exceed $350,000; however, the woman can show that (1) this income level was unusual and not likely to occur in the future; (2) that losses commensurate with and directly related to the earnings were suffered; or (3) that the income is not indicative of lack of economic disadvantage?";
@@ -231,7 +230,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_agi_3_year_exceeds_but_uncommon']/fieldset/p[2]")).getText();
       Expected_Text = "If this situation does not apply, select N/A.";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_275_value_no")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       Thread.sleep(2000);
@@ -243,7 +242,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_woman_assets_less_than_6m']/fieldset/p[3]")).getText();
       Expected_Text = "Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable until retirement age without a significant penalty will not be considered in determining the qualifying individual’s assets. Reference: 13 C.F.R. 127.203(c)(4)";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_276_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       //2nd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_woman_has_not_transferred_assets > fieldset > h4")).getText();
       Expected_Text = "Can the qualifying individual(s) confirm that no assets were transferred within two years of the date of EDWOSB certification?";
@@ -252,7 +251,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_woman_has_not_transferred_assets']/fieldset/p[2]")).getText();
       Expected_Text = "Assets that a qualifying individual(s) transferred within two years of the date of the concern's certification will be attributed to the qualifying individual(s) if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_277_value_no")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
       //3rd question.
       Actual_Text = webDriver.findElement(By.cssSelector("#answers_woman_asset_transfer_excusable > fieldset > h4")).getText();
       Expected_Text = "If the qualifying individual(s) transferred assets within two years of the date of the certification, can she confirm that the assets were transferred: (1) to or on behalf of an immediate family member for that individual’s education, medical expenses, or some other form of essential support; or (2) to an immediate family member in recognition of a special occasion, such as a birthday, graduation, anniversary, or retirement?";
@@ -262,7 +261,7 @@ import org.openqa.selenium.interactions.Actions;
       Expected_Text = "If this situation does not apply, select N/A.";
       assertEquals(Actual_Text, Expected_Text);
       //select no and continue.
-      webDriver.findElement(By.id("answers_278_value_no")).click();
+      webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       //==>Economic Disadvantage section.
@@ -276,7 +275,7 @@ import org.openqa.selenium.interactions.Actions;
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_woman_financial_condition']/fieldset/p[3]")).getText();
       Expected_Text = "The personal financial condition of the woman claiming economic disadvantage, including her personal net worth, her adjusted gross income for the past three years (including bonuses, and the value of company stock given in lieu of cash), and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged.";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("answers_279_value_no")).click();
+      webDriver.findElement(By.xpath("//label[2]")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       // Validate that user successfully navigated to the Financial Data
@@ -292,7 +291,7 @@ import org.openqa.selenium.interactions.Actions;
           "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program.";
       assertEquals(actual_Text52, expected_Text52);
       // Validate the Personal Information.
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
+      webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
       Thread.sleep(2000);
       // Verify that the section to Create new record is been seen by user and
       // enter record2.
@@ -319,7 +318,7 @@ import org.openqa.selenium.interactions.Actions;
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.id("answers_281_value_no"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.xpath("//label[2]"))).build().perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();

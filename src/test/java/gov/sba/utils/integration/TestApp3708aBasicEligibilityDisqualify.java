@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import junit.framework.TestCase;
 
   public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
@@ -39,6 +41,7 @@ import junit.framework.TestCase;
           deleteDraftCert.DeleteDraftCert();
           Thread.sleep(2000);
           webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
+          //webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
           //Verify the Basic Eligibility link.
           Actual_Text = webDriver.findElement(By.linkText("Basic Eligibility")).getText();
@@ -50,6 +53,10 @@ import junit.framework.TestCase;
           assertEquals(Actual_Text, Expected_Text);
           //Click on the link to start eligibility check.
           webDriver.findElement(By.linkText("Basic Eligibility")).click();
+          //Verify intro page.
+          //Actual_Text = webDriver.findElement(By.xpath(".//*[@id='new_sba_application_sub_application']/div/div[1]")).getText();
+          //Expected_Text = "Basic Eligibility Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+          //assertEquals(Actual_Text, Expected_Text);         
           //Click on the accept button.
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
           Thread.sleep(2000);
@@ -177,8 +184,7 @@ import junit.framework.TestCase;
           Expected_Text = "If yes, describe what happened to the previous application to the 8(a) Business Development Program. Possibilities may include that the applicant firm may have applied but failed to respond to a screening letter, or the applicant firm may have withdrawn the application prior to a formal decision, or the applicant firm may have been denied program participation. If the applicant firm was previously denied, it must wait one year from the date of the last denial letter to apply. Please include the date of the last denial letter. Please respond ‘yes’ if the applicant firm has ever submitted an application under another name.";
           assertEquals(Actual_Text, Expected_Text);
           //Select Yes.
-          webDriver.findElement(By.id("answers_187_value_yes")).click();
-          webDriver.findElement(By.id("answers_187_comment")).sendKeys("Cats are among the most feared and revered creatures on the planet.  Their power, strength, and enigmatic nature have fascinated us for centuries.  They’ve dominated human culture since the dawn of civilization.  Go from the rainforests, to the savannah, to the mountain peaks all the way into the comfort of our homes.  Get an in-depth look at this unique species and the evolutionary tricks and adaptations that truly make a cat, a cat. Cats are loving animals as all creature of mother nature are.");
+          webDriver.findElement(By.id("answers_187_value_no")).click();
           //1.2.c
           //Verify and Validate this Question.
           Actual_Text = webDriver.findElement(By.cssSelector("#answers_previous_participant_assets_over_50_percent > fieldset > h4")).getText();
@@ -189,11 +195,11 @@ import junit.framework.TestCase;
           Expected_Text = "If yes, provide the name of the 8(a) Program Participant and any relevant acquisition documents. Assets may include machinery, contracts, equipment, etc. At the time of application, if the assets of a former 8(a) Program Participant constitute 50% or more of applicant firm’s assets, then the applicant firm will not be eligible for participation in the program because of one-time eligibility.";
           assertEquals(Actual_Text, Expected_Text);
           //Select Yes and attached a doc.          
-          webDriver.findElement(By.id("answers_188_value_yes")).click();
+          webDriver.findElement(By.id("answers_188_value_no")).click();
           //Upload document.
-          String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-          MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-          MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+          //String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+          //MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
+          //MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
           Thread.sleep(5000);
           //Click on the Save and Continue button.
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -230,11 +236,11 @@ import junit.framework.TestCase;
           //}
           //}
           //Select Yes and attached a doc.         
-          webDriver.findElement(By.id("answers_189_value_yes")).click();
+          webDriver.findElement(By.id("answers_189_value_no")).click();
           //Upload Doc.
-          file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-          MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-          MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
+          //file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+          //MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
+          //MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
           Thread.sleep(3000);
           //Click on the Save and Continue button.
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -292,39 +298,33 @@ import junit.framework.TestCase;
           Actual_Text = webDriver.findElement(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[6]")).getText();
           Expected_Text = "To qualify for the 8(a) Business Development Program, the applicant firm must meet SBA’s small business size standards. Please email 8aBD@sba.gov for assistance if you are unsure if the firm meets SBA’s small business size standards. Include your firm name, DUNS number and address in the email.";
           assertEquals(Actual_Text, Expected_Text);
-          //Click on the change answer link and change the warning questions answers.
-          webDriver.findElement(By.xpath("//div[@id='applicant_for_profit']/div/div[2]/p/a")).click();
-          //Change answer to Yes
           Thread.sleep(2000);
-          webDriver.findElement(By.id("answers_181_value_yes")).click();
-          //Change answer to No
-          webDriver.findElement(By.id("answers_182_value_no")).click();
-          //Change answer to N/A
-          webDriver.findElement(By.xpath("//label[3]")).click();
-          //Change answer to Yes
-          webDriver.findElement(By.id("answers_184_value_yes")).click();
-          //Click on the save and continue button.
-          webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-          Thread.sleep(2000);
-          //Change answer to YNo
-          webDriver.findElement(By.id("answers_186_value_no")).click();
-          //Click on the save and continue button.
-          webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-          Thread.sleep(2000);
-          //Click on the Business size link.
-          webDriver.findElement(By.id("eight_a_basic_eligibility_size")).click();
-          Thread.sleep(2000);
-          //Change answer to Yes
-          webDriver.findElement(By.id("answers_190_value_yes")).click();
-          //Click on the save and continue button.
-          webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-          Thread.sleep(2000);
-          webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-     //Remove this commit when the skip logic is implemented.
-          Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-          Expected_Text = "8(A) Eligibility Summary";
+          //webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+          //Navigate back and verify in-progress status for the draft.
+          webDriver.findElement(By.xpath("//a/span")).click();
+          //click on the draft 8(a) Initial Program.
+          webDriver.findElement(By.linkText("8(a) Initial Program")).click();
+          Actual_Text = webDriver.findElement(By.xpath("//td[3]")).getText();
+          Expected_Text = "IN PROGRESS";
           assertEquals(Actual_Text, Expected_Text);
-          //Click on the submit button.
+          WebElement EligibilityInProgressStatus =webDriver.findElement(By.xpath("//td[3]"));
+          HighLight.highLightElement(webDriver, EligibilityInProgressStatus);
+          webDriver.findElement(By.linkText("Basic Eligibility")).click();
+          Thread.sleep(2000);
+          webDriver.findElement(By.id("eight_a_basic_eligibility_assistance")).click();
+          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+          Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+          Expected_Text = "Business Size";
+          assertEquals(Actual_Text, Expected_Text);
+          webDriver.findElement(By.id("answers_190_value_no")).click();
+          webDriver.findElement(By.id("answers_191_value_no")).click();
+          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//input[@name='commit']")).click();          
+          Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+          Expected_Text = "Review";
+          assertEquals(Actual_Text, Expected_Text);       
+          //Click on the Submit button.
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
           webDriver.switchTo().alert().accept();
           Thread.sleep(1000);
@@ -332,6 +332,8 @@ import junit.framework.TestCase;
           Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
           Expected_Text = "8(a) Basic Eligibility section is complete";
           assertEquals(Actual_Text, Expected_Text); 
+          WebElement EligibilityCompleteStatus =webDriver.findElement(By.xpath("//td[3]"));
+          HighLight.highLightElement(webDriver, EligibilityCompleteStatus);
           webDriver.findElement(By.linkText("Logout")).click();
           logger.info("Success");
       }

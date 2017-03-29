@@ -66,7 +66,7 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text); 
     WebElement OtherSource  = webDriver.findElement(By.xpath("//div[@id='answers_edwosb_salary']/fieldset/p"));
     HighLight.highLightElement(webDriver, OtherSource);
-    WebElement OtherIncome  = webDriver.findElement(By.cssSelector("#answers_edwosb_other_income > fieldset > p"));
+    WebElement OtherIncome  = webDriver.findElement(By.cssSelector("#answers_edwosb_other_income_comment > fieldset > p"));
     HighLight.highLightElement(webDriver, OtherIncome);
     WebElement AppBuzEquity  = webDriver.findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p"));
     HighLight.highLightElement(webDriver, AppBuzEquity);
@@ -78,6 +78,8 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/div[2]/input")).sendKeys("80000");
     // Locate the applicant Business Type and enter amount of applicant
     // equity.
+    //Enter comment.
+    webDriver.findElement(By.xpath("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/div[2]/input")).sendKeys("800000");
     // Locate the applicant equity in other firm and enter applicant
     // business equity.
@@ -135,7 +137,7 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text); 
     WebElement RothDetail  = webDriver.findElement(By.cssSelector("fieldset > p"));
     HighLight.highLightElement(webDriver, RothDetail);
-    webDriver.findElement(By.id("answers_301_value_yes")).click();
+    webDriver.findElement(By.id("answers_304_value_yes")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("980000.56");
     webDriver.findElement(By.id("DTE_Field_contributions_thus_far")).sendKeys("98000.46");
@@ -149,9 +151,9 @@ public class FinancialSectionPage {
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
-    webDriver.findElement(By.id("answers_302_value_yes")).click();
+    webDriver.findElement(By.id("answers_305_value_yes")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//div[@id='answers_302_details_table_wrapper']/div/a/span")).click();
+    webDriver.findElement(By.xpath("//div[@id='answers_305_details_table_wrapper']/div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_type")).click();
     webDriver.findElement(By.xpath("//option[4]")).click();
     webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("687000.87");
@@ -177,7 +179,7 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     WebElement LifeInsuranceDetail  = webDriver.findElement(By.xpath("//div[@id='answers_life_insurance_cash_surrender']/fieldset/p"));
     HighLight.highLightElement(webDriver, LifeInsuranceDetail);    
-    webDriver.findElement(By.id("answers_303_value_yes")).click();
+    webDriver.findElement(By.id("answers_306_value_yes")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
     webDriver.findElement(By.id("DTE_Field_cash_surrender_value")).sendKeys("20000.98");
@@ -187,8 +189,8 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     // Locate and select yes for question, Do you have loan against a life
     // insurance.
-    webDriver.findElement(By.id("answers_304_value_yes")).click();
-    webDriver.findElement(By.id("answers_305_value")).sendKeys("50000.45");
+    webDriver.findElement(By.id("answers_307_value_yes")).click();
+    webDriver.findElement(By.id("answers_308_value")).sendKeys("50000.45");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Select Yes for the Stock and Bonds Section.
@@ -203,7 +205,7 @@ public class FinancialSectionPage {
     Thread.sleep(2000);
     WebElement StocksBonds  = webDriver.findElement(By.xpath("//div[@id='answers_stocks_bonds']/fieldset/p"));
     HighLight.highLightElement(webDriver, StocksBonds);    
-    webDriver.findElement(By.xpath(".//*[@id='answers[306][value]']/label[1]")).click();
+    webDriver.findElement(By.xpath(".//*[@id='answers[309][value]']/label[1]")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test 2000");
     webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("50000");
@@ -224,37 +226,37 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text);  
     Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("label.yes")).click();
-    webDriver.findElement(By.id("answers_308_1_1_value")).sendKeys("8597 weems rd 2000 ln manassas va 30998");
-    webDriver.findElement(By.xpath("//div[@id='answers[308][1][2][value]']/label")).click();
-    webDriver.findElement(By.id("answers_308_1_3_value")).sendKeys("50");
-    webDriver.findElement(By.id("answers_308_1_4_value")).sendKeys("98");
-    webDriver.findElement(By.xpath("//div[@id='answers[308][1][5][value]']/label")).click();
+    webDriver.findElement(By.id("answers_311_1_1_value")).sendKeys("8597 weems rd 2000 ln manassas va 30998");
+    webDriver.findElement(By.xpath("//div[@id='answers[311][1][2][value]']/label")).click();
+    webDriver.findElement(By.id("answers_311_1_3_value")).sendKeys("50");
+    webDriver.findElement(By.id("answers_311_1_4_value")).sendKeys("98");
+    webDriver.findElement(By.xpath("//div[@id='answers[311][1][5][value]']/label")).click();
     // mydriver.findElement(By.xpath(".//*[@id='answers_48_2_5_value']")).sendKeys(Percentage);
-    webDriver.findElement(By.id("answers_308_1_6_value")).sendKeys("78");
-    webDriver.findElement(By.id("answers_308_1_7_value")).sendKeys("76");
-    webDriver.findElement(By.xpath("//div[@id='answers[308][1][8][value]']/label")).click();
-    webDriver.findElement(By.id("answers_308_1_9_value")).sendKeys("50");
-    webDriver.findElement(By.xpath("//div[@id='answers[308][1][10][value]']/label")).click();
-    webDriver.findElement(By.id("answers_308_1_11_value")).sendKeys("50");
+    webDriver.findElement(By.id("answers_311_1_6_value")).sendKeys("78");
+    webDriver.findElement(By.id("answers_311_1_7_value")).sendKeys("76");
+    webDriver.findElement(By.xpath("//div[@id='answers[311][1][8][value]']/label")).click();
+    webDriver.findElement(By.id("answers_311_1_9_value")).sendKeys("50");
+    webDriver.findElement(By.xpath("//div[@id='answers[311][1][10][value]']/label")).click();
+    webDriver.findElement(By.id("answers_311_1_11_value")).sendKeys("50");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
     logger.info("Heyyyy! Stocks and Bones section answered.");
     // Select Yes for Real Estate - Other section.
-    webDriver.findElement(By.id("answers_309_value_yes")).click();
+    webDriver.findElement(By.id("answers_312_value_yes")).click();
     webDriver.findElement(By.xpath("//fieldset/a/span")).click();
     Thread.sleep(3000);
-    webDriver.findElement(By.id("answers_310_1_1_value")).sendKeys("1000");
-    webDriver.findElement(By.id("answers_310_1_2_value_no")).click();
-    webDriver.findElement(By.xpath("//div[@id='answers[310][1][4][value]']/label[2]")).click();
+    webDriver.findElement(By.id("answers_313_1_1_value")).sendKeys("1000");
+    webDriver.findElement(By.id("answers_313_1_2_value_no")).click();
+    webDriver.findElement(By.xpath("//div[@id='answers[313][1][4][value]']/label[2]")).click();
     // mydriver.findElement(By.xpath(".//*[@id='answers_310_2_5_value']")).sendKeys(Percentage);
-    webDriver.findElement(By.id("answers_310_1_6_value")).sendKeys("76");
-    webDriver.findElement(By.id("answers_310_1_7_value")).sendKeys("87");
+    webDriver.findElement(By.id("answers_313_1_6_value")).sendKeys("76");
+    webDriver.findElement(By.id("answers_313_1_7_value")).sendKeys("87");
     // Select yes for the last two question.
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//div[@id='answers[310][1][8][value]']/label")).click();
-    webDriver.findElement(By.id("answers_310_1_9_value")).sendKeys("65");
-    webDriver.findElement(By.xpath("//div[@id='answers[310][1][10][value]']/label")).click();
-    webDriver.findElement(By.id("answers_310_1_11_value")).sendKeys("56");
+    webDriver.findElement(By.xpath("//div[@id='answers[313][1][8][value]']/label")).click();
+    webDriver.findElement(By.id("answers_313_1_9_value")).sendKeys("65");
+    webDriver.findElement(By.xpath("//div[@id='answers[313][1][10][value]']/label")).click();
+    webDriver.findElement(By.id("answers_313_1_11_value")).sendKeys("56");
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
     Thread.sleep(3000);
@@ -273,8 +275,8 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text); 
     WebElement PersonalProperty  = webDriver.findElement(By.xpath("//div[@id='answers_automobiles']/fieldset/p"));
     HighLight.highLightElement(webDriver, PersonalProperty);
-    webDriver.findElement(By.xpath(".//*[@id='answers[311][value]']/label[1]")).click();
-    webDriver.findElement(By.xpath("//div[@id='answers_311_details_table_wrapper']/div/a/span")).click();
+    webDriver.findElement(By.xpath(".//*[@id='answers[314][value]']/label[1]")).click();
+    webDriver.findElement(By.xpath("//div[@id='answers_314_details_table_wrapper']/div/a/span")).click();
     // Locate current value search box and enter a valid value for you
     // automobile.
     webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000.56");
@@ -296,7 +298,7 @@ public class FinancialSectionPage {
     HighLight.highLightElement(webDriver, OtherPersonalProperty);
     Thread.sleep(3000);
     // Select Yes for question; 'Do you own any other personal property or assets?.
-    webDriver.findElement(By.id("answers_312_value_yes")).click();
+    webDriver.findElement(By.id("answers_315_value_yes")).click();
     webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000.98");
     webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("453000");
@@ -329,7 +331,7 @@ public class FinancialSectionPage {
       assertEquals(Actual_Text, Expected_Text); 
       WebElement otherAccountsPayable  = webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
       HighLight.highLightElement(webDriver, otherAccountsPayable);     
-      webDriver.findElement(By.id("answers_313_value_yes")).click();
+      webDriver.findElement(By.id("answers_316_value_yes")).click();
       webDriver.findElement(By.xpath("//div/a/span")).click();
       //Verify the added drop down Type. Open when on develop.
       Actual_Text = webDriver.findElement(By.id("DTE_Field_type")).getText();
@@ -351,8 +353,8 @@ public class FinancialSectionPage {
       webDriver.findElement(By.id("DTE_Field_noteholder_address")).sendKeys("8576 jumple ln manassas va 20998");
       webDriver.findElement(By.cssSelector("button.btn")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_314_value_yes")).click();
-      webDriver.findElement(By.id("answers_315_value")).sendKeys("4500000");
+      webDriver.findElement(By.id("answers_317_value_yes")).click();
+      webDriver.findElement(By.id("answers_318_value")).sendKeys("4500000");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
     } catch (Error e) {
@@ -393,7 +395,7 @@ public class FinancialSectionPage {
             webDriver.getPageSource().contains("Do you have any Assessed Taxes that were unpaid"));
         logger.info(
             "Assessed Taxes question; 'Do you have any Assessed Taxes that were unpaid?' is present, Pass");
-        webDriver.findElement(By.id("answers_316_value_yes")).click();
+        webDriver.findElement(By.id("answers_319_value_yes")).click();
         Thread.sleep(3000);
       } catch (Error e) {
         logger.info(
@@ -406,7 +408,7 @@ public class FinancialSectionPage {
     // Verify data table and complete it if taxes were unpaid.
     assertTrue(webDriver.getPageSource().contains("Include only assessed taxes that are unpaid"));
     logger.info("Assessed taxes data tabl is present, Pass");
-    webDriver.findElement(By.xpath("//div[@id='answers_316_details_table_wrapper']/div/a/span"))
+    webDriver.findElement(By.xpath("//div[@id='answers_319_details_table_wrapper']/div/a/span"))
         .click();
     // Locate the whom payable search box and enter a valid data.
     webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Max Mill");
@@ -425,7 +427,7 @@ public class FinancialSectionPage {
     Thread.sleep(3000);
     // Verify and select YES for the next assessed taxes section question;
     // 'Do you have any other liabilities?'.
-    webDriver.findElement(By.id("answers_317_value_yes")).click();
+    webDriver.findElement(By.id("answers_320_value_yes")).click();
     assertTrue(webDriver.getPageSource().contains("Whom Payable"));
     logger.info(
         "Assessed taxes data tabl is present for question 'Do you have any other liabilities?', Pass");
@@ -456,9 +458,9 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text); 
     WebElement AdjustedGrossIncome  = webDriver.findElement(By.cssSelector("fieldset > p"));
     HighLight.highLightElement(webDriver, AdjustedGrossIncome);
-    webDriver.findElement(By.id("answers_318_value")).sendKeys("30000"); 
-    webDriver.findElement(By.id("answers_319_value")).sendKeys("10000");
-    webDriver.findElement(By.id("answers_320_value")).sendKeys("20000");
+    webDriver.findElement(By.id("answers_321_value")).sendKeys("30000"); 
+    webDriver.findElement(By.id("answers_322_value")).sendKeys("10000");
+    webDriver.findElement(By.id("answers_323_value")).sendKeys("20000");
     // Locate and click on the continue button.
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();

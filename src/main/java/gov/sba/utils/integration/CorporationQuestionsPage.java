@@ -108,11 +108,8 @@ public class CorporationQuestionsPage {
         assertEquals(actual_Text11, expected_Text11);
         //webDriver.findElement(By.xpath(".//*[@id='answers_238_comment']")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
         Thread.sleep(2000);
-        webDriver.findElement(By.name("commit")).click();
-
-        
-        
-     // Locate the Citizenship & Ownership question 1and2, Verify,select No
+        webDriver.findElement(By.name("commit")).click();      
+        //Locate the Citizenship & Ownership question 1and2, Verify,select No
         // and continue.
         String actual_Text121 = webDriver.findElement(By.cssSelector("h4")).getText();
         String expected_Text121 = "Do the birth certificates, naturalization papers, or passports show the qualifying individual(s) are U.S. citizens?";
@@ -382,8 +379,7 @@ public class CorporationQuestionsPage {
         webDriver.findElement(By.id("answers_281_value_no")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-        logger.info("EDWOSB application questions have been answered");
-        
+        logger.info("EDWOSB application questions have been answered");       
         // Validate that user successfully navigated to the Financial Data
         // section.
         String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
