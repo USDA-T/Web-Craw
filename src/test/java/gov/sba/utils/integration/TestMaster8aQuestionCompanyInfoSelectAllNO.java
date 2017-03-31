@@ -1,7 +1,5 @@
 package gov.sba.utils.integration;
 
-
-
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;

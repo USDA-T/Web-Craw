@@ -356,7 +356,7 @@ import org.openqa.selenium.interactions.Actions;
         // Select No for question Is anyone listed above divorced? If yes,
         // please provide separation documents.
         Actions act4 = new Actions(webDriver);
-        webDriver.findElement(By.xpath("//label[2]")).click();
+        act4.doubleClick(webDriver.findElement(By.xpath("//label[2]"))).build().perform();
         // Locate the Continue Button and click on it to continue.
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
