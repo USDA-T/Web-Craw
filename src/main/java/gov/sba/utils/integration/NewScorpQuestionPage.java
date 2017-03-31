@@ -1,18 +1,13 @@
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
-
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.awt.geom.RoundRectangle2D.Double;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.internal.Coordinates;
 
 public class NewScorpQuestionPage {
   private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
@@ -133,37 +128,33 @@ public class NewScorpQuestionPage {
     String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
     String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
     assertEquals(actual_Text52, expected_Text52);
-    // Validate the Personal Information.
-    webDriver.findElement(By.id("answers_290_value_new_button")).click();
-    Thread.sleep(1000);
-    webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_290_value_new_button")).click();
+    //Validate the Personal Information.
+    webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
     Thread.sleep(2000);
     // Verify that the section to Create new record is been seen by user and
     // enter record2.
     String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
     String expected_Text511 = "Create new record";
     assertEquals(actual_Text511, expected_Text511);
-    logger.info("the page to Create and Add new Record");
-    webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("DeepaMahesh");
-    webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("P");
-    webDriver.findElement(By.id("DTE_Field_title")).click();
-    webDriver.findElement(By.xpath("//option[@value='Owner']")).click();
-    webDriver.findElement(By.id("DTE_Field_ssn")).sendKeys("121-11-1211");
-    webDriver.findElement(By.id("DTE_Field_marital_status")).click();
-    webDriver.findElement(By.xpath("//option[@value='Married']")).click();
-    webDriver.findElement(By.id("DTE_Field_address")).sendKeys("8421 Broad dr");
-    webDriver.findElement(By.id("DTE_Field_city")).sendKeys("Mclean");
-    webDriver.findElement(By.id("DTE_Field_state")).sendKeys("Virginia");
-    webDriver.findElement(By.id("DTE_Field_postal_code")).sendKeys("22102");
-    webDriver.findElement(By.id("DTE_Field_country")).sendKeys("United State");
-    webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("123-123-1234");
-    webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("123-123-1234");
-    webDriver.findElement(By.id("DTE_Field_email")).sendKeys("Dee@gmail.com");
-    Thread.sleep(1000);
-    webDriver.findElement(By.xpath("//div[3]/button")).click();
+    logger.info("the page to Create and Add new Record is Present, PASS");
+    webDriver.findElement(By.id("owners__first_name")).sendKeys("Denzel");
+    webDriver.findElement(By.id("owners__last_name")).sendKeys("Washington");
+    webDriver.findElement(By.id("owners__title")).click();
+    webDriver.findElement(By.xpath("//option[2]")).click();
+    webDriver.findElement(By.id("owners__ssn")).sendKeys("187669987");
+    webDriver.findElement(By.id("owners__email")).sendKeys("DWashington@mailinator.com");
+    webDriver.findElement(By.id("owners__marital_status")).click();
+    webDriver.findElement(By.xpath("//div[5]/span/select/option[3]")).click();
+    webDriver.findElement(By.id("owners__address")).sendKeys("8765 Weems dr");
+    webDriver.findElement(By.id("owners__city")).sendKeys("Manassas");
+    webDriver.findElement(By.id("owners__state")).sendKeys("Virginia");
+    webDriver.findElement(By.id("owners__postal_code")).sendKeys("28776");
+    webDriver.findElement(By.id("owners__country")).sendKeys("United State");
+    webDriver.findElement(By.id("owners__home_phone")).sendKeys("7024762987");
+    webDriver.findElement(By.id("owners__business_phone")).sendKeys("7023764876");
     Thread.sleep(2000);
+    webDriver.findElement(By.xpath("//button[2]")).click();
+    Thread.sleep(3000);
     // Select No for question Is anyone listed above divorced? If yes,
     // please provide separation documents.
     //Actions act4 = new Actions(webDriver);
