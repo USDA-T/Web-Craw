@@ -1,9 +1,12 @@
 package gov.sba.automation.utils;
 
+import gov.sba.utils.integration.FixtureUtils;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -552,5 +555,14 @@ public class CommonApplicationMethods {
         default:
             Assert.assertEquals("Navigation Menu Not correct", "among present Options");
         }
+    }
+    public static String getflagvalue() throws Exception {
+        String flagforRunfile = FixtureUtils.fixturesDir() + "flagforRunEmailNotification.config";
+
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(flagforRunfile));
+
+        String detailFlag = bufferedReader.readLine();
+
+        return detailFlag;
     }
 }
