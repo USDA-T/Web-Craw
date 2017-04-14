@@ -30,13 +30,13 @@ public class EdwobEightAMppTestPage {
                 .getText();
         String expected_Text2 = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
         assertEquals(actual_Text2, expected_Text2);
-        webDriver.findElement(By.id("answers_117_value_yes")).click();
+        webDriver.findElement(By.xpath("//label")).click();
         //Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        webDriver.findElement(By.id("section_submit_button")).click();
         Thread.sleep(2000);
         webDriver.findElement(By.id("duns-value-167")).sendKeys("172115728");
         webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
@@ -49,7 +49,7 @@ public class EdwobEightAMppTestPage {
         assertEquals(Actual_Text, Expected_Text);
         webDriver.switchTo().alert().accept();
         Thread.sleep(3000);
-        webDriver.findElement(By.xpath("//form[@id='mpp']/input[4]")).click();
+        webDriver.findElement(By.id("section_submit_button")).click();
         logger.info("  8(a) question has been answered");
         // Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -59,7 +59,7 @@ public class EdwobEightAMppTestPage {
         Expected_Text = "Please review below answers and Submit.";
         assertEquals(Actual_Text, Expected_Text);
         Thread.sleep(3000);
-        webDriver.findElement(By.xpath("//form[@id='mpp']/input[4]")).click();
+        webDriver.findElement(By.xpath("//input[4]")).click();
         logger.info(webDriver.switchTo().alert().getText());
         webDriver.switchTo().alert().accept();
         // Step - Verify the Signature page for MPP

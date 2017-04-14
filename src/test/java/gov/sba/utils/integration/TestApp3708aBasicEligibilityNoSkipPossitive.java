@@ -277,7 +277,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         //Verify the section.
         Actual_Text = webDriver.findElement(By.cssSelector("div.review_questions.question-separator > h3")).getText();
-        Expected_Text = "Screen";
+        Expected_Text = "General Assessment";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[2]/h3")).getText();
         Expected_Text = "Prior 8(a) Involvement";

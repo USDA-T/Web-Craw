@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -28,6 +29,7 @@ import junit.framework.TestCase;
 
     @Test
     public void testMainTest() throws Exception {
+       //try{
         String Actual_Text;
         String Expected_Text;
         logger.info("Apply Analyst permissions to All Cases page, Elastic Search");
@@ -39,16 +41,17 @@ import junit.framework.TestCase;
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
         Thread.sleep(2000);
-        webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
+        //webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
         //webDriver.navigate().to("http://localhost/sba_analyst/cases/all_cases/");
         //Verify the All case page.
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-        Expected_Text = "All cases";
+        Expected_Text = "Cases";
         assertEquals(Actual_Text, Expected_Text);
         //Verify Status.
-        webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click(); 
+        webDriver.findElement(By.xpath("//div/div[2]/button")).click(); 
         //Click on the search button without selecting any filter and verify.
-        webDriver.findElement(By.xpath("//div/div[2]/button")).click();
+        webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click();
+        Thread.sleep(2000);
         //Select program, Review Type and status.
         webDriver.findElement(By.id("hubzone")).click();
         webDriver.findElement(By.id("continuing_eligibility")).click();
@@ -64,16 +67,75 @@ import junit.framework.TestCase;
         webDriver.findElement(By.xpath("//div[3]/div[3]/input")).sendKeys("Tes4");
         webDriver.findElement(By.cssSelector("input.autocomplete.ui-autocomplete-input")).sendKeys("Testing234");
         //Enter an invalid search data.
-        webDriver.findElement(By.id("search-field-small")).sendKeys("Testing234");
+        //webDriver.findElement(By.id("search-field-small")).sendKeys("Testing234");
         //Click the search button.
         Thread.sleep(2000);
-        webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();        
+        webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click(); 
+        Thread.sleep(2000);
+        webDriver.findElement(By.id("search-field-small")).clear();
         //Verify that no data is return.
-        Actual_Text = webDriver.findElement(By.cssSelector("td")).getText();
-        Expected_Text = "No results found.";
-        assertEquals(Actual_Text, Expected_Text);
-        WebElement NoReturnData =webDriver.findElement(By.cssSelector("td"));
-        HighLight.highLightElement(webDriver, NoReturnData);
+        if (webDriver.getPageSource().contains("EDWOSB")) {
+          logger.info("Search return EDWOSB application");
+        }
+        else{
+          if (webDriver.getPageSource().contains("WOSB")) {
+            logger.info("Search return WOSB application");
+          }
+          else{
+            
+            //Fail test if Mpp or 8a application is return.
+            if (webDriver.getPageSource().contains("MPP, 8(a) Document Upload")) {
+              logger.info("Search return MPP application");
+              logger.info("Search return an 8(a) or MPP application");
+              Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+            }
+            else{
+              
+              logger.info("Search successful");
+
+            }
+          }
+        }
+        
+        if (webDriver.getPageSource().contains("WOSB")) {
+          logger.info("Search return WOSB application");
+        }
+        else{
+          if (webDriver.getPageSource().contains("EDWOSB")) {
+            logger.info("Search return EDWOSB application");
+          }
+          else{
+            //Fail test if Mpp or 8a application is return.
+            if (webDriver.getPageSource().contains("MPP, 8(a) Document Upload")) {
+              logger.info("Search return MPP application");
+              logger.info("Search return an 8(a) or MPP application");
+              Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+            }
+            else{
+              Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td")).getText();
+              Expected_Text = "No results found.";
+              assertEquals(Actual_Text, Expected_Text);
+              logger.info("Search successful");
+
+            }
+          }
+        } 
+        
+        if (webDriver.getPageSource().contains("Pending")) {
+          logger.info("Search return MPP application, Permission failed");
+          Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+        }
+        else{
+            logger.info("Search successful, Permission Pass");   
+            }
+        
+        if (webDriver.getPageSource().contains("8(a) Document Upload")) {
+          logger.info("Search return MPP application, Permission failed");
+          Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+        }
+        else{
+            logger.info("Search successful, Permission Pass");   
+            }                  
         //Click on the clear filter button.
         webDriver.findElement(By.name("commit")).click();        
         Thread.sleep(2000);
@@ -126,54 +188,89 @@ import junit.framework.TestCase;
         get_The_Row_From_Login_Data = 0;
         LoginPageWithReference login_Data2 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data2.Login_With_Reference();
-        webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
+        //webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
         //filter by DUNs and verify.
-        webDriver.findElement(By.id("search-field-small")).sendKeys("172115728");
+        webDriver.findElement(By.id("search-field-small")).clear();
+        webDriver.findElement(By.id("search-field-small")).sendKeys("EDWOSB");
         //Click on the search button.
         webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
-        //Verify that the MPP and EDWOSB programs are return.
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[2]/a")).getText();
-        Expected_Text = "172115728";
-        assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr[2]/td[2]/a")).getText();
-        Expected_Text = "172115728";
-        assertEquals(Actual_Text, Expected_Text);
-        //Filter search EDWOSB program only.
-        webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click();
-        webDriver.findElement(By.id("edwosb")).click();
-        webDriver.findElement(By.cssSelector("input.autocomplete.ui-autocomplete-input")).sendKeys("Analyst2 X");
-        Thread.sleep(4000);
-        webDriver.findElement(By.id("search-field-small")).sendKeys("172115728");
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
-        //Verify that only the EDWOSB program is return.
-        Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[3]")).getText();
-        Expected_Text = "EDWOSB";
-        assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.linkText("172115728")).getText();
-        Expected_Text = "172115728";
-        assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[3]")).getText();
-        Expected_Text = "MPP";
-        assertNotSame(Actual_Text, Expected_Text);
+        if (webDriver.getPageSource().contains("EDWOSB")) {
+          logger.info("Search return EDWOSB application");
+        }
+        else{
+          if (webDriver.getPageSource().contains("WOSB")) {
+            logger.info("Search return WOSB application");
+          }
+          else{
+            
+            //Fail test if Mpp or 8a application is return.
+            if (webDriver.getPageSource().contains("8(a) Document Upload")) {
+              logger.info("Search return MPP application");
+              logger.info("Search return an 8(a) or MPP application");
+              Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+            }
+            else{
+              
+              logger.info("Search successful");
+
+            }
+          }
+        }
+        
+        if (webDriver.getPageSource().contains("WOSB")) {
+          logger.info("Search return WOSB application");
+        }
+        else{
+          if (webDriver.getPageSource().contains("EDWOSB")) {
+            logger.info("Search return EDWOSB application");
+          }
+          else{
+            //Fail test if Mpp or 8a application is return.
+            if (webDriver.getPageSource().contains("Pending")) {
+              logger.info("Search return MPP application");
+              logger.info("Search return an 8(a) or MPP application");
+              Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+            }
+            else{
+              Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td")).getText();
+              Expected_Text = "No results found.";
+              assertEquals(Actual_Text, Expected_Text);
+              logger.info("Search successful");
+
+            }
+          }
+        } 
         //Filter search MPP program only.
         webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click();
         webDriver.findElement(By.id("mpp")).click();
-        webDriver.findElement(By.cssSelector("input.autocomplete.ui-autocomplete-input")).sendKeys("Analyst2 X");
+        webDriver.findElement(By.cssSelector("input.autocomplete.ui-autocomplete-input")).sendKeys("Analyst1 X");
         Thread.sleep(4000);
-        webDriver.findElement(By.id("search-field-small")).sendKeys("172115728");
+        webDriver.findElement(By.id("search-field-small")).clear();
+        webDriver.findElement(By.id("search-field-small")).sendKeys("MPP Application");
         Thread.sleep(2000);
         webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
         //Verify that only the MPP program is return.
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[3]")).getText();
-        Expected_Text = "MPP";
-        assertEquals(Actual_Text, Expected_Text);
-        Actual_Text = webDriver.findElement(By.linkText("172115728")).getText();
-        Expected_Text = "172115728";
-        assertEquals(Actual_Text, Expected_Text);
+        if (webDriver.getPageSource().contains("Pending")) {
+          logger.info("Search return MPP application, pass");
+        }
+        else{
+          if (webDriver.getPageSource().contains("EDWOSB")) {
+            logger.info("Search return EDWOSB application even when filter by MPP only, failed");
+            Assert.fail(); //Only Only MPP should be return.          
+          }
+          else{
+            //Fail test if Mpp or 8a application is return.
+            if (webDriver.getPageSource().contains("WOSB")) {
+              logger.info("Search return WOSB application, even when filter by MPP only, failed");
+              logger.info("Search return an 8(a) or MPP application");
+              Assert.fail(); //Only WOSB & EDWOSB are supposed to be return if any.
+            }
+            else{
+              logger.info("Search successful, only MPP applications are being return");
+            }
+          }
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[3]")).getText();
         Expected_Text = "EDWOSB";
         assertNotSame(Actual_Text, Expected_Text);
@@ -234,9 +331,17 @@ import junit.framework.TestCase;
         Thread.sleep(2000);
         DeleteDraftCertPage deleteDraftCert21 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert21.DeleteDraftCert();       
-        logger.info("SUCCESS");
-    }
-
+        logger.info("SUCCESS");  
+      }
+    } 
+     //catch(Exception e){
+       //Thread.sleep(2000);
+       //ScreenShotPage1 screenShot = new ScreenShotPage1(webDriver);
+       //screenShot.ScreenShot();
+       //logger.info("Error");
+       //Assert.fail(); //fail test in case of any element identification failure     
+       //}
+       //} 
     @After
     public void tearDown() throws Exception {
         webDriver.close();

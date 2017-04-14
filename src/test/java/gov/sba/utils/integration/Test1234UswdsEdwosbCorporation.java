@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import junit.framework.TestCase;
 
 public class Test1234UswdsEdwosbCorporation extends TestCase {
@@ -28,7 +27,8 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
     @Test
     public void testMainTest() throws Exception {
         logger.info("Test EDWOSB Corporation Flow");
-        // Login to dashboard.
+        // Login to dashboard.      
+        //try{
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
@@ -61,12 +61,20 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
         WebElement ReturnDraft =
             webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
         HighLight.highLightElement(webDriver, ReturnDraft); 
-        webDriver.findElement(By.linkText("Logout")).click();
-        logger.info("Success");
-    }
+        }
+        //catch(Exception e){
+        //Thread.sleep(2000);
+        //ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+        //screenShot.ScreenShot();
+        //logger.info("Error");
+        //}
+        //logger.info("Success");
+        //} 
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+     
+      webDriver.close();
+      
     }
-}
+  }

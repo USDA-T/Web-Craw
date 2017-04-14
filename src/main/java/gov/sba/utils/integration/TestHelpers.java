@@ -22,6 +22,7 @@ public class TestHelpers {
         WebDriver driver = null;
 
         // Setup the configuration based on the browser we are using
+        System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\chrome\\firefox.exe");
         String browser = props.getProperty(Constants.BROWSER);
         System.setProperty(Constants.BROWSER, browser);
         String envUnderTest = System.getenv(Constants.TEST_ENV);
