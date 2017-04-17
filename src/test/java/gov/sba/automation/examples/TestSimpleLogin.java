@@ -13,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import gov.sba.automation.utils.FormHelpers;
 import gov.sba.automation.utils.WaitUtils;
 import gov.sba.utils.integration.TestHelpers;
