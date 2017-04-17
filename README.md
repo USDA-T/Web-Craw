@@ -60,6 +60,25 @@ base_url_staging=https://staging-certify.sba.gov/
 
 You will need to edit the following line in `src/test/java/gov/sba/utils/Test*.java`
 
+- Export the library from `automation-libs` project
+
+```
+git clone https://github.com/SBA-ONE/automation-libs.git
+cd automation-libs
+# Then install the library locally so that we can use locally
+mvn clean install
+```
+
+This will publish the library that the `sba-automation` can use e.g.
+
+```xml
+  <dependency>
+    <groupId>gov.sba.automation</groupId>
+    <artifactId>automation_libs</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+```
+
 - To execute the test from command line
 
 ```sh
