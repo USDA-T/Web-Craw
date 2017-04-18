@@ -238,8 +238,6 @@ import junit.framework.TestCase;
               assertEquals(Actual_Text, Expected_Text);
               logger.info("Search successful");
 
-           }
-
             }
 
           }

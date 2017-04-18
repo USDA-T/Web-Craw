@@ -18,7 +18,6 @@ public class FinancialSectionPage {
   }
 
   public void Financialsection() throws Exception {
-    try{
     String Actual_Text = null;
     String Expected_Text = null;
     Thread.sleep(3000);
@@ -642,14 +641,8 @@ public class FinancialSectionPage {
     String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
     String expected_Text5 = "Accept";
     assertEquals(actual_Text5, expected_Text5);
-    }
-    catch(Exception e){
-    Thread.sleep(2000);
-    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    screenShot.ScreenShot();
-    logger.info("Error");
-    }
-    } 
-   
   }
- 
+  private void assertEquals(String actual_Text1, String expected_Text1) {
+    // TODO Auto-generated method stub
+  }
+}
