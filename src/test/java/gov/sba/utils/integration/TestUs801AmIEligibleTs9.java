@@ -408,6 +408,6 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

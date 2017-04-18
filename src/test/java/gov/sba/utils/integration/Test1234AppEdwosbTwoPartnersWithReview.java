@@ -69,6 +69,6 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

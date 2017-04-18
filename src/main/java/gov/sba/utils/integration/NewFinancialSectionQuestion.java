@@ -18,6 +18,7 @@ public class NewFinancialSectionQuestion {
 
   public void NewFinancialQuestion() throws Exception {
     Thread.sleep(1500);
+    try{
     // Locate section for 'Cash on Hand' enter all valid data as required.
     // Locate the As of Date: Search box for user and enter the information
     // as required.
@@ -199,9 +200,18 @@ public class NewFinancialSectionQuestion {
 //    String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
  //   String expected_Text5 = "Accept";
  //   assertEquals(actual_Text5, expected_Text5);
+      }
+    catch(Exception e){
+      Thread.sleep(2000);
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info("Error");
+      }
   }
-
   private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub
+  
+  
+  
   }
-}
+  }

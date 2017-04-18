@@ -80,6 +80,6 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

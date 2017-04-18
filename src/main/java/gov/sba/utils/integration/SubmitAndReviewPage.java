@@ -88,7 +88,7 @@ public class SubmitAndReviewPage extends TestCase {
     // Click on the dashboard button.
     webDriver.findElement(By.linkText("Dashboard")).click();
     WebElement ActiveCert =
-        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     // Login as WOSB-analyst and return WOSB program back to vendor.
     Thread.sleep(2000);
@@ -106,7 +106,7 @@ public class SubmitAndReviewPage extends TestCase {
     Thread.sleep(2000);
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
-      webDriver.switchTo().alert().accept();
+     // webDriver.switchTo().alert().accept();
       // Logout and log back in with the vendor to add the second partner.
       webDriver.findElement(By.linkText("Logout")).click();
       get_The_Row_From_Login_Data = 8;
@@ -120,7 +120,7 @@ public class SubmitAndReviewPage extends TestCase {
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
       WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[4]"));
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       // Click on the Draft cert.
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
@@ -128,44 +128,30 @@ public class SubmitAndReviewPage extends TestCase {
       Thread.sleep(2000);
       webDriver.findElement(By.id("form413")).click();
       Thread.sleep(2000);
-      logger.info("Adding second partner personal information");
-      // Verify that user is being navigated to the Review Page.
-      String actual_Text2 = webDriver.findElement(By.cssSelector("h2")).getText();
-      String expected_Text2 = "Financial Data";
-      assertEquals(actual_Text2, expected_Text2);
-      // Validate the Personal Information.
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
+      webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__first_name'])[2]")).sendKeys("Will");
+      webDriver.findElement(By.xpath("(//input[@id='owners__last_name'])[2]")).sendKeys("Smith");
+      webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
+      webDriver.findElement(By.xpath("(//option[@value='Partner'])[2]")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__ssn'])[2]")).sendKeys("187669987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]")).sendKeys("DWashington@mailinator.com");
+      webDriver.findElement(By.xpath("(//select[@id='owners__marital_status'])[2]")).click();
+      webDriver.findElement(By.xpath("(//option[@value='Married'])[2]")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]")).sendKeys("8765 Weems dr");
+      webDriver.findElement(By.xpath("(//input[@id='owners__city'])[2]")).sendKeys("Manassas");
+      webDriver.findElement(By.xpath("(//input[@id='owners__state'])[2]")).sendKeys("Virginia");
+      webDriver.findElement(By.xpath("(//input[@id='owners__postal_code'])[2]")).sendKeys("28776");
+      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]")).sendKeys("United State");
+      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]")).sendKeys("7024762987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]")).sendKeys("7023764876");
       Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
-      Thread.sleep(2000);
-      // Verify that the section to Create new record is been seen by user and
-      // enter record2.
-      String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-      String expected_Text511 = "Create new record";
-      assertEquals(actual_Text511, expected_Text511);
-      logger.info("the page to Create and Add new Record is Present, PASS");
-      webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Will");
-      webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Smith");
-      webDriver.findElement(By.id("DTE_Field_title")).click();
-      webDriver.findElement(By.xpath("//option[@value='President']")).click();
-      webDriver.findElement(By.id("DTE_Field_ssn")).sendKeys("187669987");
-      webDriver.findElement(By.id("DTE_Field_address")).sendKeys("8765 Jungle Drive");
-      webDriver.findElement(By.id("DTE_Field_city")).sendKeys("Washington City");
-      webDriver.findElement(By.id("DTE_Field_state")).sendKeys("Washington");
-      webDriver.findElement(By.id("DTE_Field_postal_code")).sendKeys("28776");
-      webDriver.findElement(By.id("DTE_Field_country")).sendKeys("United State");
-      webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
-      webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
-      webDriver.findElement(By.id("DTE_Field_email")).sendKeys("Wsmith@mailinator.com");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//div[3]/button")).click();
+      webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
       Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.id("answers_281_value_yes"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build().perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.
@@ -213,44 +199,30 @@ public class SubmitAndReviewPage extends TestCase {
       Thread.sleep(2000);
       webDriver.findElement(By.id("form413")).click();
       Thread.sleep(2000);
-      logger.info("Adding second partner personal information");
-      // Verify that user is being navigated to the Review Page.
-      String actual_Text2 = webDriver.findElement(By.cssSelector("h2")).getText();
-      String expected_Text2 = "Financial Data";
-      assertEquals(actual_Text2, expected_Text2);
-      // Validate the Personal Information.
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
+      webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
       Thread.sleep(2000);
-      webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__first_name'])[2]")).sendKeys("Will");
+      webDriver.findElement(By.xpath("(//input[@id='owners__last_name'])[2]")).sendKeys("Smith");
+      webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
+      webDriver.findElement(By.xpath("(//option[@value='Partner'])[2]")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__ssn'])[2]")).sendKeys("187669987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]")).sendKeys("DWashington@mailinator.com");
+      webDriver.findElement(By.xpath("(//select[@id='owners__marital_status'])[2]")).click();
+      webDriver.findElement(By.xpath("(//option[@value='Married'])[2]")).click();
+      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]")).sendKeys("8765 Weems dr");
+      webDriver.findElement(By.xpath("(//input[@id='owners__city'])[2]")).sendKeys("Manassas");
+      webDriver.findElement(By.xpath("(//input[@id='owners__state'])[2]")).sendKeys("Virginia");
+      webDriver.findElement(By.xpath("(//input[@id='owners__postal_code'])[2]")).sendKeys("28776");
+      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]")).sendKeys("United State");
+      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]")).sendKeys("7024762987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]")).sendKeys("7023764876");
       Thread.sleep(2000);
-      webDriver.findElement(By.id("answers_280_value_new_button")).click();
-      Thread.sleep(2000);
-      // Verify that the section to Create new record is been seen by user and
-      // enter record2.
-      String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-      String expected_Text511 = "Create new record";
-      assertEquals(actual_Text511, expected_Text511);
-      logger.info("the page to Create and Add new Record is Present, PASS");
-      webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Will");
-      webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Smith");
-      webDriver.findElement(By.id("DTE_Field_title")).click();
-      webDriver.findElement(By.xpath("//option[@value='President']")).click();
-      webDriver.findElement(By.id("DTE_Field_ssn")).sendKeys("187669987");
-      webDriver.findElement(By.id("DTE_Field_address")).sendKeys("8765 Jungle Drive");
-      webDriver.findElement(By.id("DTE_Field_city")).sendKeys("Washington City");
-      webDriver.findElement(By.id("DTE_Field_state")).sendKeys("Washington");
-      webDriver.findElement(By.id("DTE_Field_postal_code")).sendKeys("28776");
-      webDriver.findElement(By.id("DTE_Field_country")).sendKeys("United State");
-      webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
-      webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
-      webDriver.findElement(By.id("DTE_Field_email")).sendKeys("Wsmith@mailinator.com");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//div[3]/button")).click();
+      webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
       Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.id("answers_281_value_yes"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build().perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.

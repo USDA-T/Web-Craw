@@ -28,6 +28,7 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
     public void testMainTest() throws Exception {
         logger.info("Test EDWOSB Corporation Flow");
         // Login to dashboard.      
+
         //try{
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
@@ -61,20 +62,12 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
         WebElement ReturnDraft =
             webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
         HighLight.highLightElement(webDriver, ReturnDraft); 
-        }
-        //catch(Exception e){
-        //Thread.sleep(2000);
-        //ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-        //screenShot.ScreenShot();
-        //logger.info("Error");
-        //}
-        //logger.info("Success");
-        //} 
-
+        logger.info("Success");
+       }
+       
     @After
-    public void tearDown() throws Exception {
+    public void tearDown()  throws Exception {
      
-      webDriver.close();
-      
-    }
-  }
+       webDriver.close();
+        }
+        

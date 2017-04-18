@@ -30,11 +30,6 @@ public class AddOrStartCertificationPage {
       Expected_Text = "Join a new program";
       assertEquals(Actual_Text, Expected_Text);
       // Verify and Click on the EDWOSB Certification to select.
-      Actual_Text = webDriver
-          .findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]"))
-          .getText();
-      Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
-      assertEquals(Actual_Text, Expected_Text);
       if (webDriver.getPageSource()
           .contains("Economically Disadvantaged Woman Owned Small Business")) {
         webDriver.findElement(By.id("certificate_type_edwosb")).click();

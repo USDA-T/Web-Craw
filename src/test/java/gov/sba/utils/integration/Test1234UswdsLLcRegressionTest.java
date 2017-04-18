@@ -64,6 +64,6 @@ public class Test1234UswdsLLcRegressionTest extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

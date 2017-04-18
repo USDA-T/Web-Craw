@@ -60,7 +60,7 @@ import junit.framework.TestCase;
 
       @After
       public void tearDown() throws Exception {
-          webDriver.quit();
+          webDriver.close();
       }
   }
 

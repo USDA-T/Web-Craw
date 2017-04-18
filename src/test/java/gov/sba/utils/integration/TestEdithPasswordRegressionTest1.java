@@ -126,7 +126,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 
     private void assertElementpresent(WebElement findElement) {

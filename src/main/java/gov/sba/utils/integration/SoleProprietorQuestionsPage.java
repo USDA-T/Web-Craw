@@ -19,6 +19,7 @@ public class SoleProprietorQuestionsPage {
   }
 
   public void SoleProprietorQuestions() throws Exception {
+    try{
     String actual_Text = null;
     String expected_Text = null;
     // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -683,15 +684,6 @@ public class SoleProprietorQuestionsPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Economic Disadvantage Section.
     String actual_Text491 = webDriver.findElement(By.xpath("//h4")).getText();
@@ -764,6 +756,13 @@ public class SoleProprietorQuestionsPage {
     // Locate the Continue Button and click on it to continue.
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-  }
-}
-}
+    }
+    }
+    catch(Exception e){
+    Thread.sleep(2000);
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info("Error");
+    }
+    }
+    }

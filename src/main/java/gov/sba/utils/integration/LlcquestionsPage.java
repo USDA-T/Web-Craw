@@ -16,6 +16,7 @@ public class LlcquestionsPage {
   }
 
   public void Llcquestions() throws Exception {
+    try{
     String actual_Text = null;
     String expected_Text = null;
     // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -84,8 +85,8 @@ public class LlcquestionsPage {
     String expected_Text13 =
         "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; and Operating Agreement and any amendments; Joint Venture Agreement, if applicable. Reference: 13 C.F.R. 127.201(e)";
     assertEquals(actual_Text13, expected_Text13);
-    webDriver.findElement(By.id("answers_241_value_no")).click();
-    webDriver.findElement(By.id("answers_241_comment")).sendKeys(
+    webDriver.findElement(By.xpath("//label[2]")).click();
+    webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
     // 2nd question
     String actual_Text44 =
@@ -100,7 +101,7 @@ public class LlcquestionsPage {
     String expected_Text77 =
         "If yes, please upload Articles of Organization (also referred to as Certificate of Organization, or Articles of Formation) and any amendments; or Operating Agreement and any amendments that show that one or more women serve as management members, with control over all decisions; the Joint Venture Agreement if applicable. Reference: 13 C.F.R. 127.202(e)";
     assertEquals(actual_Text77, expected_Text77);
-    webDriver.findElement(By.id("answers_242_value_no")).click();
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.id("answers_242_comment")).sendKeys(
         "This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard. This character is a man in his late twenties, who can be quite reckless. He comes from a poor background, lives in a mansion and tends to work too hard.");
     Thread.sleep(2000);
@@ -489,40 +490,41 @@ public class LlcquestionsPage {
         "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program.";
     assertEquals(actual_Text52, expected_Text52);
     // Validate the Personal Information.
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
+    webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.cssSelector("div.DTED_Lightbox_Close")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("answers_261_value_new_button")).click();
-    Thread.sleep(2000);
-    // Verify that the section to Create new record is been seen by user and
-    // enter record2.
-    String actual_Text511 = webDriver.findElement(By.className("DTE_Header_Content")).getText();
-    String expected_Text511 = "Create new record";
-    assertEquals(actual_Text511, expected_Text511);
     logger.info("the page to Create and Add new Record is Present, PASS");
-    webDriver.findElement(By.id("DTE_Field_first_name")).sendKeys("Denzel");
-    webDriver.findElement(By.id("DTE_Field_last_name")).sendKeys("Washington");
-    webDriver.findElement(By.id("DTE_Field_title")).click();
-    webDriver.findElement(By.xpath("//option[@value='President']")).click();
-    webDriver.findElement(By.id("DTE_Field_ssn")).sendKeys("187669987");
-    webDriver.findElement(By.id("DTE_Field_address")).sendKeys("8765 Weems dr");
-    webDriver.findElement(By.id("DTE_Field_city")).sendKeys("Manassas");
-    webDriver.findElement(By.id("DTE_Field_state")).sendKeys("Virginia");
-    webDriver.findElement(By.id("DTE_Field_postal_code")).sendKeys("28776");
-    webDriver.findElement(By.id("DTE_Field_country")).sendKeys("United State");
-    webDriver.findElement(By.id("DTE_Field_home_phone")).sendKeys("7024762987");
-    webDriver.findElement(By.id("DTE_Field_business_phone")).sendKeys("7023764876");
-    webDriver.findElement(By.id("DTE_Field_email")).sendKeys("DWashington@mailinator.com");
+    webDriver.findElement(By.id("owners__first_name")).sendKeys("Denzel");
+    webDriver.findElement(By.id("owners__last_name")).sendKeys("Washington");
+    webDriver.findElement(By.id("owners__title")).click();
+    webDriver.findElement(By.xpath("//option[2]")).click();
+    webDriver.findElement(By.id("owners__ssn")).sendKeys("187669987");
+    webDriver.findElement(By.id("owners__email")).sendKeys("DWashington@mailinator.com");
+    webDriver.findElement(By.id("owners__marital_status")).click();
+    webDriver.findElement(By.xpath("//div[5]/span/select/option[3]")).click();
+    webDriver.findElement(By.id("owners__address")).sendKeys("8765 Weems dr");
+    webDriver.findElement(By.id("owners__city")).sendKeys("Manassas");
+    webDriver.findElement(By.id("owners__state")).sendKeys("Virginia");
+    webDriver.findElement(By.id("owners__postal_code")).sendKeys("28776");
+    webDriver.findElement(By.id("owners__country")).sendKeys("United State");
+    webDriver.findElement(By.id("owners__home_phone")).sendKeys("7024762987");
+    webDriver.findElement(By.id("owners__business_phone")).sendKeys("7023764876");
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//div[3]/button")).click();
+    webDriver.findElement(By.xpath("//button[2]")).click();
     Thread.sleep(3000);
     // Select No for question Is anyone listed above divorced? If yes,
     // please provide separation documents.
     Actions act4 = new Actions(webDriver);
-    act4.doubleClick(webDriver.findElement(By.id("answers_262_value_no"))).build().perform();
+    act4.doubleClick(webDriver.findElement(By.xpath("//label[2]"))).build().perform();
     // Locate the Continue Button and click on it to continue.
     Thread.sleep(3000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-  }
+    }
+    catch(Exception e){
+    Thread.sleep(2000);
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info("Error");
+    }
+    logger.info("Success");
+    } 
 }

@@ -73,6 +73,6 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

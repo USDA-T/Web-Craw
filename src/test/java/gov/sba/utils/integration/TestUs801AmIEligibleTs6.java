@@ -122,6 +122,6 @@ public class TestUs801AmIEligibleTs6 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

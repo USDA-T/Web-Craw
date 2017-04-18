@@ -197,7 +197,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Thread.sleep(2000);
             if (webDriver.getPageSource().contains("Return to Vendor")) {
                 webDriver.findElement(By.linkText("Return to Vendor")).click();
-                webDriver.switchTo().alert().accept();
+                //webDriver.switchTo().alert().accept();
                 webDriver.findElement(By.linkText("Logout")).click();
             } else {
                 logger.info("Return to Vendor Link is missing please verify why.");
@@ -222,7 +222,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             Thread.sleep(2000);
             if (webDriver.getPageSource().contains("Return to Vendor")) {
                 webDriver.findElement(By.linkText("Return to Vendor")).click();
-                webDriver.switchTo().alert().accept();
+                //webDriver.switchTo().alert().accept();
                 webDriver.findElement(By.linkText("Logout")).click();
             } else {
                 logger.info("Return to Vendor Link is missing please verify why.");
@@ -401,6 +401,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

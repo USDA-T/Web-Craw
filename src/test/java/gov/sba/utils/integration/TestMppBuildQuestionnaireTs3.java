@@ -791,6 +791,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

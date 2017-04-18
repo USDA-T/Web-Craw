@@ -333,9 +333,12 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
         // Select yes for the Second questions.
-        webDriver.findElement(By.id("answers_132_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
         Thread.sleep(3000);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+        Expected_Text = "Active Agreements";
+        assertEquals(Actual_Text, Expected_Text);
         // Active Agreements Section, Verifying Question.
         Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_protege_active_agreements']/fieldset/h4"))
                 .getText();
@@ -344,15 +347,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         // Click on the continue button and verify alert message.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-        Expected_Text = "Active Agreements";
-        assertEquals(Actual_Text, Expected_Text);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //Verify that user is prompted to answer this section b4 navigating to the next section
         Actual_Text = webDriver.findElement(By.id("answers_134_agreement-error")).getText();
         Expected_Text = "Please add an agreement";
         assertEquals(Actual_Text, Expected_Text);
-        //webDriver.switchTo().alert().accept();
+        webDriver.switchTo().alert().accept();
         // Add Agreement (s).
         Thread.sleep(2000);
         webDriver.findElement(By.cssSelector("span.add-color")).click();
@@ -884,6 +883,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }

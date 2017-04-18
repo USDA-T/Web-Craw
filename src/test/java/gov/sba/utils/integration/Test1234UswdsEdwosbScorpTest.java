@@ -67,6 +67,6 @@ public class Test1234UswdsEdwosbScorpTest extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }
