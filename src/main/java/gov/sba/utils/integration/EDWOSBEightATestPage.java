@@ -93,12 +93,8 @@ public class EDWOSBEightATestPage {
         //assertEquals(Actual_Text, Expected_Text);
         // Step 9 - Click the Continue button
         logger.info("Step 9 - Click the Continue button");
-        webDriver.findElement(By.id("accept-button")).click();
+        //webDriver.findElement(By.id("accept-button")).click();
         Thread.sleep(3000);
-        // Step 10 - Accept the error message
-        logger.info("Step 10 - Accept the error message");
-        webDriver.switchTo().alert().accept();
-        // Step 11 - Accept the statements and click Continue
         logger.info("Step 11 - Click to accept the statements");
         webDriver.findElement(By.id("legal_0")).click();
         webDriver.findElement(By.id("legal_1")).click();

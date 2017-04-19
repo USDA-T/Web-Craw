@@ -119,14 +119,6 @@ public class EdwobEightAMppTestPage {
         Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
         Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
         assertEquals(Actual_Text, Expected_Text);
-        // Step 9 - Click the Continue button
-        logger.info("Step 9 - Click the Continue button");
-        webDriver.findElement(By.id("accept-button")).click();
-        Thread.sleep(3000);
-        // Step 10 - Accept the error message
-        logger.info("Step 10 - Accept the error message");
-        webDriver.switchTo().alert().accept();
-        // Step 11 - Accept the statements and click Continue
         logger.info("Step 11 - Click to accept the statements");
         webDriver.findElement(By.id("legal_0")).click();
         webDriver.findElement(By.id("legal_1")).click();
