@@ -54,11 +54,8 @@
   <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-server</artifactId>
- Release_2_2_10&Sprint37
-    <version>2.53.0</version
     <version>3.0.1</version>
   </dependency>
- develop
   <dependency>
     <groupId>org.apache.logging.log4j</groupId>
     <artifactId>log4j-api</artifactId>
