@@ -332,7 +332,7 @@ public class FinancialSectionPage {
     Actual_Text = webDriver.findElement(By.xpath("//div[7]/fieldset/h4")).getText();
     Expected_Text = "What is the mortgage balance on your primary residence?";
     assertEquals(Actual_Text, Expected_Text); 
-    //===> Add Jeans questions here.
+    //===> Add Mikes questions here.
     Actual_Text = webDriver.findElement(By.xpath("//div[8]/fieldset/h4")).getText();
     Expected_Text = "Is there a lien, 2nd mortgage or Home Equity Line of Credit on your primary residence?";
     assertEquals(Actual_Text, Expected_Text);  
@@ -354,10 +354,38 @@ public class FinancialSectionPage {
     // mydriver.findElement(By.xpath(".//*[@id='answers_48_2_5_value']")).sendKeys(Percentage);
     webDriver.findElement(By.xpath("//div[6]/fieldset/div/div[2]/input")).sendKeys("78");
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/div[2]/input")).sendKeys("76");
+    
+    
     webDriver.findElement(By.xpath("//div[8]/fieldset/div/input")).click();
-    webDriver.findElement(By.xpath("//div[9]/fieldset/div/div[2]/input")).sendKeys("50");
-    webDriver.findElement(By.xpath("//div[10]/fieldset/div/input")).click();
-    webDriver.findElement(By.xpath("//div[11]/fieldset/div/div[2]/input")).sendKeys("50");
+    logger.info("Heyyyy! Verifying the newly added question on Real Estate");
+    //Verify the new added question.
+    //A-Question.
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_your_name_1 > fieldset > h4")).getText();
+    Expected_Text = "Is your name on the lien, 2nd mortgage or Home Equity Line of Credit against your primary residence?";
+    assertEquals(Actual_Text, Expected_Text);
+    //B-Question
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4")).getText();
+    Expected_Text = "What is the current balance of the lien(s)?";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement NewQuestionA  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_your_name_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionA);
+    WebElement NewQuestionB  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionB);
+    //Answers yes for A question.
+    webDriver.findElement(By.xpath("//div[9]/fieldset/div/input")).click();
+    //Verify question triggered.
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_percent_1 > fieldset > h4")).getText();
+    Expected_Text = "What percentage of the lien, 2nd mortgage or Home Equity Line of Credit are you responsible for in your primary residence?";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement NewQuestionT  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_percent_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionT);   
+    webDriver.findElement(By.xpath("//div[10]/fieldset/div/div[2]/input")).sendKeys("87");
+    webDriver.findElement(By.xpath("//div[11]/fieldset/div/div[2]/input")).sendKeys("500");
+
+   
+    webDriver.findElement(By.xpath("//div[12]/fieldset/div/input")).click();
+    webDriver.findElement(By.xpath("//div[13]/fieldset/div/div[2]/input")).sendKeys("50");
+    
     Thread.sleep(2000);
     webDriver.findElement(By.id("section_submit_button")).click();
     logger.info("Heyyyy! Real Estate - Primary Residence section answered.");
@@ -405,11 +433,34 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/div[2]/input")).sendKeys("76");
     webDriver.findElement(By.xpath("//div[8]/fieldset/div/div[2]/input")).sendKeys("87");
     // Select yes for the last two question.
-    Thread.sleep(2000);
+    Thread.sleep(2000);    
     webDriver.findElement(By.xpath("//div[9]/fieldset/div/input")).click();
-    webDriver.findElement(By.xpath("//div[10]/fieldset/div/div[2]/input")).sendKeys("65000000");
-    webDriver.findElement(By.xpath("//div[11]/fieldset/div/input")).click();
-    webDriver.findElement(By.xpath("//div[12]/fieldset/div/div[2]/input")).sendKeys("56000000");
+    logger.info("Heyyyy! Verifying the newly added question on Real Estate");
+    //Verify the new added question.
+    //A-Question.
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_your_name_1 > fieldset > h4")).getText();
+    Expected_Text = "Is your name on the lien, 2nd mortgage or Home Equity Line of Credit against your primary residence?";
+    assertEquals(Actual_Text, Expected_Text);
+    //B-Question
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4")).getText();
+    Expected_Text = "What is the current balance of the lien(s)?";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement NewQuestionREO  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_your_name_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionREO);
+    WebElement NewQuestionReoB  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionReoB);
+    //Answers yes for A question.
+    webDriver.findElement(By.xpath("//div[10]/fieldset/div/input")).click();
+    //Verify question triggered.
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_percent_1 > fieldset > h4")).getText();
+    Expected_Text = "What percentage of the lien, 2nd mortgage or Home Equity Line of Credit are you responsible for in your primary residence?";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement NewQuestionReoT  = webDriver.findElement(By.cssSelector("#answers_real_estate_second_mortgage_percent_1 > fieldset > h4"));
+    HighLight.highLightElement(webDriver, NewQuestionReoT);   
+    webDriver.findElement(By.xpath("//div[11]/fieldset/div/div[2]/input")).sendKeys("87");
+    webDriver.findElement(By.xpath("//div[12]/fieldset/div/div[2]/input")).sendKeys("500");  
+    webDriver.findElement(By.xpath("//div[13]/fieldset/div/input")).click();
+    webDriver.findElement(By.xpath("//div[14]/fieldset/div/div[2]/input")).sendKeys("50");  
     Thread.sleep(3000);
     //Click on the add button to another real estate other section.   
     webDriver.findElement(By.xpath("//fieldset/a/span")).click();
@@ -423,10 +474,20 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[2]/div/div[6]/fieldset/div/div[2]/input")).sendKeys("76");
     webDriver.findElement(By.xpath("//div[2]/div/div[7]/fieldset/div/div[2]/input")).sendKeys("7600000.87");
     webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input")).sendKeys("8700998.76");
-    // Select No for the last two question.
+    //ON the last two question, select Yes to trigger the new question then select No .
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
-    webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/div/label[2]")).click();    
+    webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
+    WebElement SecondForm  = webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
+    HighLight.highLightElement(webDriver, SecondForm);
+    WebElement SecondForm1  = webDriver.findElement(By.xpath("//div[2]/div/div[12]/fieldset/h4"));
+    HighLight.highLightElement(webDriver, SecondForm1);   
+    webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/input")).click();
+    WebElement SecondForm2  = webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/h4"));
+    HighLight.highLightElement(webDriver, SecondForm2);
+    //Select no to disable section.
+    webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
+    webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();    
+    webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.id("section_submit_button")).click();
     Thread.sleep(2000);
     // Beginning Test For Personal Property.
