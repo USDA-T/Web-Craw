@@ -23,7 +23,7 @@ public class ScreenShotPage {
         File src = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
         try {
             // now copy the screenshot to the screenshot folder.
-            FileUtils.copyFile(src, new File("./Screenshots/TestScreenshots.png"));
+            FileUtils.copyFile(src, new File("/sba-automation/misc/Screenshots/ErrorPage.png"));
         } catch (IOException e) {
             logger.info(e.getMessage());
 
