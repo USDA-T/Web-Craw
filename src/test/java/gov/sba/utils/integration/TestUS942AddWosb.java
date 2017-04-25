@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.junit.After;
@@ -34,7 +35,7 @@ public class TestUS942AddWosb extends TestCase {
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
+
 
         VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();
         VerifyWOSBFlow.VerifyWOSBFlowSetDriver(webDriver);
@@ -43,7 +44,7 @@ public class TestUS942AddWosb extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+       webDriver.quit();
     }
 
 }

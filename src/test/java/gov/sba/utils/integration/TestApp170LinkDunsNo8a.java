@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -41,7 +42,6 @@ public class TestApp170LinkDunsNo8a extends TestCase {
 
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(3000);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             CommonApplicationMethods.createApplication(webDriver, "8A");
@@ -54,10 +54,9 @@ public class TestApp170LinkDunsNo8a extends TestCase {
             // Click on Case Link on main navigator-- 8(a) Analyst
             LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 57);
             login_Data_01.Login_With_Reference();
-            Thread.sleep(2000);
-
             String typ_App_Passed = "8(a) Document Upload";
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             if (!webDriver.getPageSource().contains("No results found")) {
                 // All cases page 8(a) Analyst
                 String xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'"

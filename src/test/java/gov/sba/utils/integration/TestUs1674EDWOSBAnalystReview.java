@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -43,7 +44,6 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
         String app_Type_Passed = "EDWOSB";
         // For WOSB and EDWOSB Active status - Create new app if not existing
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
@@ -62,8 +62,8 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         // Thread.sleep(3000);
         try {
 
-            WebElement Cases_Link = webDriver.findElement(By.cssSelector("a[href*='/sba_analyst/cases']"));
-            Cases_Link.click();
+            CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
             List<WebElement> current_Row_EDWOSB = webDriver.findElements(
@@ -249,6 +249,6 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 }

@@ -1,3 +1,4 @@
+//TS created by Deepa Patri
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
@@ -66,8 +67,8 @@ public class VerifyWosbFlow {
         List<WebElement> all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "WOSB Self-Certification");
         // assertEquals(all_Cells.get(1).getText(), "");
-        assertEquals(all_Cells.get(3).getText(), "Draft");
-        assertEquals(all_Cells.get(5).getText(), "Delete");
+        assertEquals(all_Cells.get(4).getText(), "Draft");
+        assertEquals(all_Cells.get(6).getText(), "Delete");
         all_Cells.get(4)
                 .findElement(By
                         .xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
@@ -103,8 +104,8 @@ public class VerifyWosbFlow {
         all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "WOSB Self-Certification");
         // assertEquals(all_Cells.get(1).getText(), "");
-        assertEquals(all_Cells.get(3).getText(), "Active");
-        assertEquals(all_Cells.get(5).getText(), "");
+        assertEquals(all_Cells.get(4).getText(), "Active");
+        assertEquals(all_Cells.get(6).getText(), "");
         all_Cells.get(0).findElement(By.xpath("a")).click();
         logger.info(webDriver.getPageSource());
         assertTrue(webDriver.getPageSource().contains("Women-Owned Small Business Program Self-Certification Summary"));

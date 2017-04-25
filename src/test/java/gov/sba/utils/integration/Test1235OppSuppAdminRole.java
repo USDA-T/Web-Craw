@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.utils.CommonApplicationMethods;
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.UnstableTests.class })
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class Test1235OppSuppAdminRole extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;
@@ -50,7 +51,6 @@ public class Test1235OppSuppAdminRole extends TestCase {
             CommonApplicationMethods.searchDuns_Number(webDriver, "159165917");
             // Click on the Business Name - opp Supp Staft can access
             // Draft,Completed Application
-
             WebElement business_Name = webDriver.findElement(By.xpath(
                     "//article[@id='main-content']/div[@id='business_search']//div[contains(@class,'business_search_result_per_entry')]//h4/a[contains(text(),'Legal Business Name')]"));
             business_Name.click();

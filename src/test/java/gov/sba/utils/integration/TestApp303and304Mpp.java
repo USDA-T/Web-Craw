@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -42,7 +43,6 @@ public class TestApp303and304Mpp extends TestCase {
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
         // Create application Mpp/Edwosb/Wosb/8a
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
@@ -66,7 +66,7 @@ public class TestApp303and304Mpp extends TestCase {
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
-        Thread.sleep(1000);
+        Thread.sleep(1000); //CheckSleep
         checkBoxElement = webDriver.findElement(By.id("answers_117_value_yes")).getAttribute("outerHTML");
         assertTrue(checkBoxElement.toLowerCase().contains("checked"));
         // Reset to Default

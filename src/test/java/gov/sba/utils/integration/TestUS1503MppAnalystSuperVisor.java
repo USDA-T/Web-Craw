@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.sql.Connection;
@@ -20,7 +21,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.StableTests.class })
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class TestUS1503MppAnalystSuperVisor extends TestCase {
     // Set The variabl.es/Define
     private static WebDriver webDriver;

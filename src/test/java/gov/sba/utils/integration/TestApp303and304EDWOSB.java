@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -42,7 +43,6 @@ public class TestApp303and304EDWOSB extends TestCase {
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
         // Create application
         // Mpp/EdC:\IdeaProj\SBA_One\src\main\DataFiles\Upload.pdf
@@ -73,7 +73,8 @@ public class TestApp303and304EDWOSB extends TestCase {
         // the prepulate falg = 'false';
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
-        String checkBoxElement = webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");
+       // String checkBoxElement = webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");
+        String checkBoxElement = webDriver.findElement(By.xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]")).getAttribute("outerHTML");
         assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
         // Update the - Prepopulate flag- True ---should Prepopluate the answers
@@ -83,8 +84,9 @@ public class TestApp303and304EDWOSB extends TestCase {
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
         webDriver.navigate().refresh();
-        Thread.sleep(1000);
-        checkBoxElement = webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");
+        Thread.sleep(1000); //CheckSleep
+
+        checkBoxElement = webDriver.findElement(By.xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]")).getAttribute("outerHTML");
         assertTrue(checkBoxElement.toLowerCase().contains("checked"));
         // Reset to Default
         sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
@@ -98,6 +100,6 @@ public class TestApp303and304EDWOSB extends TestCase {
         String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
         DatabaseUtils dbcall = new DatabaseUtils();
         dbcall.executeSQLScript(sql_Q_01);
-        // webDriver.quit();
+         webDriver.quit();
     }
 }

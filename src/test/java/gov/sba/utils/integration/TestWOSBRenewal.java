@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import gov.sba.automation.utils.CommonApplicationMethods;
@@ -9,10 +10,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestWOSBRenewal  extends TestCase {
   private static WebDriver webDriver;
   private static final Logger logger_TestWOSBRenewal = LogManager.getLogger(TestWOSBRenewal.class.getName());
@@ -36,7 +38,6 @@ public class TestWOSBRenewal  extends TestCase {
     // Login to dashboard.
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
-    Thread.sleep(3000);
     try
     {
       // Create application Mpp/Edwosb/Wosb/8a

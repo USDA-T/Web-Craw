@@ -1,8 +1,11 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -12,7 +15,7 @@ import gov.sba.automation.utils.CommonApplicationMethods;
 import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.UnstableTests.class })
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     WebDriver webDriver;
     private static final Logger logger_TestEDWOSBWorkflow = LogManager
@@ -37,9 +40,8 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
         try {
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(1500);
-            typ_App = "EDWOSB";
 
+            typ_App = "EDWOSB";
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
@@ -49,12 +51,14 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
             fillApplCreatePages.finalSignatureSubmit(webDriver);
 
             // Assert Application is Created
-            org.junit.Assert.assertTrue(CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active"));
+            Assert.assertTrue(CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active"));
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
             LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
             login_Data_01.Login_With_Reference();
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+
             AnalystReviewPage TestReviewProcess = new AnalystReviewPage();
             TestReviewProcess.TestReviewDriver(webDriver, duns_Number, typ_App, "Initial Review", "Analyst2 X",
                     "Analyst3 X", "Analyst4 X");

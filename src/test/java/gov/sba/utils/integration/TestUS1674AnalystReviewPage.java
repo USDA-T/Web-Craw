@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -43,7 +44,6 @@ public class TestUS1674AnalystReviewPage extends TestCase {
 
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(3000);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             CommonApplicationMethods.createApplication(webDriver, "WOSB");
@@ -55,9 +55,9 @@ public class TestUS1674AnalystReviewPage extends TestCase {
 
             LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 11);
             login_Data1.Login_With_Reference();
-            Thread.sleep(3000);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             logger_US1674.info("Cases link is on Main Navigator is Clicked");
 
             assertFalse(webDriver.getPageSource().contains("Under Review"));
@@ -109,6 +109,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
             }
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             assertFalse(webDriver.getPageSource().contains("Under Review"));
 
             current_Row_WOSB = webDriver.findElements(By.xpath(

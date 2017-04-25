@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -60,10 +61,10 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(1500);
 
             // Verify the Business type is changes to Scorp[from LLC]
-            webDriver.findElement(By.xpath("//button[@aria-controls='more-details']")).click();
+            CommonApplicationMethods.click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
+
             String business_Type = webDriver.findElement(By.id("more-details")).getText();
 
             assertTrue(business_Type.contains("C-Corporation"));
@@ -88,6 +89,6 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        //webDriver.quit();
     }
 }

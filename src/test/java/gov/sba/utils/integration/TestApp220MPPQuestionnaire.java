@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -45,10 +46,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
             login_Data.Login_With_Details();
 
             CommonApplicationMethods.createApplication(webDriver, "MPP");
-            webDriver
-                    .findElement(By
-                            .xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
-                    .click();
+            webDriver.findElement(By.xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]")).click();
 
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
@@ -63,15 +61,12 @@ public class TestApp220MPPQuestionnaire extends TestCase {
             if (duns_No.size() > 0) {
                 duns_No.get(0).sendKeys(duns_Number);
                 webDriver.findElement(By.xpath("//a[contains(@id,'search-duns')]")).click();
-                Thread.sleep(1200);
-                webDriver.switchTo().alert().accept();
+                CommonApplicationMethods.accept_Alert(webDriver);
             }
 
-            Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            Thread.sleep(2000);
-            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-            webDriver.switchTo().alert().accept();
+            CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
+            CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
+            CommonApplicationMethods.accept_Alert(webDriver);
 
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             TestApp220MPPQuestionnaire.info("Application has been submitted sucessfully.");

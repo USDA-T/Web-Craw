@@ -1,3 +1,4 @@
+
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.StableTests.class })
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 // @Category(StableTests.class)
 public class TestSearchPage extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestSearchPage.class.getName());

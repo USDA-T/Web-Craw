@@ -1,0 +1,204 @@
+#Login
+
+SBA_Login_Email: {Locator: 'name', Value: "user[email]"}
+SBA_Login_Pwd: {Locator: 'name', Value: "user[password]"}
+
+# Case Page
+Apllication_Case_Search_Text:            {Locator: 'xpath', Value: '//input[ contains(@id, "search-field-small") ]'}
+Apllication_Case_Search_Button:          {Locator: 'xpath', Value: '//div[@role="search"]/div/button[@type="submit"]'}
+
+# EDWOSB Questionnaire Page
+
+# Navigation Links On Top
+Navigation_Logout:          {Locator: 'xpath', Value: "//a[ contains(@class, 'ogout' ) and contains(text(), 'ogout') ]"}
+Navigation_Help:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Help')]"}
+Navigation_Cases:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Cases')]"}
+#Navigation_Programs:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'rograms')]"}
+Navigation_Programs:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div//span[contains(text(),'rograms')]"}
+Navigation_Dashboard:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Dashboard')]"}
+Navigation_Business:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
+Navigation_Documents:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Documents')]"}
+Navigation_Home:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Home')]"}
+
+#EDWOSB Pages
+Verify_EDWOSB_Pages_Add_Cert:   {Locator: 'id', Value: "add_certification"}
+
+#Common
+Application_Common_Accept_Button:     {Locator: 'classname', Value: "accept_button"}
+Application_Common_Submit_Button:     {Locator: 'xpath', Value: "//input[@type='submit']"}
+
+#Search Duns
+Search_Duns_Search_Text:    {Locator: 'id', Value: "searchtext"}
+Search_Duns_Search_Query:   {Locator: 'id', Value: "query"}
+Search_Duns_Search_Submit:  {Locator: 'xpath', Value: "//div[@role='search']/button[@type='submit']"}
+
+#Vendor Admin Dashboard
+Vendor_Admin_Dashboard_More_Details:     {Locator: 'xpath', Value: "//button[@aria-controls='more-details']"}
+
+#Join New Program Page
+JoinNewPgm_Create_App_EDWOSB:   {Locator: 'id', Value: "certificate_type_edwosb"}
+JoinNewPgm_Create_App_WOSB:     {Locator: 'id', Value: "certificate_type_wosb"}
+JoinNewPgm_Create_App_MPP:      {Locator: 'id', Value: "certificate_type_mpp"}
+JoinNewPgm_Create_App_8A:       {Locator: 'id', Value: "certificate_type_eight_a"}
+JoinNewPgm_Add_Cert:            {Locator: 'id', Value: "add_certification"}
+
+
+#Opp Support Page
+Opp_Support_Page_Govt_Profile_Search: {Locator: 'xpath', Value:  "//input[@id='user_type_gov_user']"}
+Opp_Support_Page_Vendor_Prof_Search: {Locator: 'xpath', Value:  "//input[@id='user_type_vendor_user']"}
+
+#EDWOSB_Scorp Questionnaire_Page with No flow
+EDWOSB_Questionnaire_Page_Titl1_Main: {Locator: 'xpath', Value: "//div[@id='answers_8aq1']/fieldset/h4"}
+
+EDWOSB_Questionnaire_Page_Ans_389_N: {Locator: 'id', Value: "answers_389_value_no"}
+EDWOSB_Questionnaire_Page_Ans_390_Y: {Locator: 'id', Value: "answers_390_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_391_Y: {Locator: 'id', Value: "answers_391_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_393_N: {Locator: 'id', Value: "answers_393_value_no"}
+EDWOSB_Questionnaire_Page_Ans_393_setText: {Locator: 'id', Value: "answers_393_comment"}
+EDWOSB_Questionnaire_Page_Ans_394_N: {Locator: 'id', Value: "answers_394_value_no"}
+EDWOSB_Questionnaire_Page_Ans_395_N: {Locator: 'id', Value: "answers_395_value_no"}
+EDWOSB_Questionnaire_Page_Ans_396_N: {Locator: 'id', Value: "answers_396_value_no"}
+EDWOSB_Questionnaire_Page_Ans_397_N: {Locator: 'id', Value: "answers_397_value_no"}
+EDWOSB_Questionnaire_Page_Ans_398_N: {Locator: 'id', Value: "answers_398_value_no"}
+EDWOSB_Questionnaire_Page_Ans_399_N: {Locator: 'id', Value: "answers_399_value_no"}
+EDWOSB_Questionnaire_Page_Ans_399_setText: {Locator: 'id', Value: "answers_399_comment"}
+#EDWOSB_Questionnaire_Page_Ans_400_N: {Locator: 'id', Value: "answers_400_value_no"}
+#EDWOSB_Questionnaire_Page_Ans_401_N: {Locator: 'id', Value: "answers_401_value_no"}
+#EDWOSB_Questionnaire_Page_Ans_402_N: {Locator: 'id', Value: "answers_402_value_no"}
+#EDWOSB_Questionnaire_Page_Ans_403_N: {Locator: 'id', Value: "answers_403_value_no"}
+EDWOSB_Questionnaire_Page_Ans_404_N: {Locator: 'id', Value: "answers_404_value_no"}
+EDWOSB_Questionnaire_Page_Ans_405_N: {Locator: 'id', Value: "answers_405_value_no"}
+EDWOSB_Questionnaire_Page_Ans_406_N: {Locator: 'id', Value: "answers_406_value_no"}
+EDWOSB_Questionnaire_Page_Ans_407_N: {Locator: 'id', Value: "answers_407_value_no"}
+EDWOSB_Questionnaire_Page_Ans_407_setText: {Locator: 'id', Value: "answers_407_comment"}
+EDWOSB_Questionnaire_Page_Ans_408_N: {Locator: 'id', Value: "answers_408_value_no"}
+EDWOSB_Questionnaire_Page_Ans_409_N: {Locator: 'id', Value: "answers_409_value_no"}
+EDWOSB_Questionnaire_Page_Ans_410_N: {Locator: 'id', Value: "answers_410_value_no"}
+EDWOSB_Questionnaire_Page_Ans_411_N: {Locator: 'id', Value: "answers_411_value_no"}
+EDWOSB_Questionnaire_Page_Ans_412_N: {Locator: 'id', Value: "answers_412_value_no"}
+EDWOSB_Questionnaire_Page_Ans_413_N: {Locator: 'id', Value: "answers_413_value_no"}
+EDWOSB_Questionnaire_Page_Ans_413_setText: {Locator: 'id', Value: "answers_413_comment"}
+EDWOSB_Questionnaire_Page_Ans_414_N: {Locator: 'id', Value: "answers_414_value_no"}
+EDWOSB_Questionnaire_Page_Ans_415_N: {Locator: 'id', Value: "answers_415_value_no"}
+EDWOSB_Questionnaire_Page_Ans_416_N: {Locator: 'id', Value: "answers_416_value_no"}
+EDWOSB_Questionnaire_Page_Ans_417_N: {Locator: 'id', Value: "answers_417_value_no"}
+EDWOSB_Questionnaire_Page_Ans_418_N: {Locator: 'id', Value: "answers_418_value_no"}
+EDWOSB_Questionnaire_Page_Ans_419_N: {Locator: 'id', Value: "answers_419_value_no"}
+EDWOSB_Questionnaire_Page_Ans_420_N: {Locator: 'id', Value: "answers_420_value_no"}
+EDWOSB_Questionnaire_Page_Ans_421_N: {Locator: 'id', Value: "answers_421_value_no"}
+EDWOSB_Questionnaire_Page_Add_Person: {Locator: 'xpath', Value: "//button[ contains(@class,'owner_add_button')]"}
+
+# Text Fields
+EDWOSB_Questionnaire_Page_FirstName: {Locator: 'id', Value: "owners__first_name"}
+EDWOSB_Questionnaire_Page_LastName: {Locator: 'id', Value: "owners__last_name"}
+EDWOSB_Questionnaire_Page_SSN: {Locator: 'id', Value: "owners__ssn"}
+EDWOSB_Questionnaire_Page_Email: {Locator: 'id', Value: "owners__email"}
+EDWOSB_Questionnaire_Page_Address: {Locator: 'id', Value: "owners__address"}
+EDWOSB_Questionnaire_Page_City: {Locator: 'id', Value: "owners__city"}
+EDWOSB_Questionnaire_Page_State: {Locator: 'id', Value: "owners__state"}
+EDWOSB_Questionnaire_Page_Postal: {Locator: 'id', Value: "owners__postal_code"}
+EDWOSB_Questionnaire_Page_Co: {Locator: 'id', Value: "owners__country"}
+EDWOSB_Questionnaire_Page_HPhone: {Locator: 'id', Value: "owners__home_phone"}
+EDWOSB_Questionnaire_Page_Bphone: {Locator: 'id', Value: "owners__business_phone"}
+# Options
+EDWOSB_Questionnaire_Page_title: {Locator: 'id', Value: "owners__title"}
+EDWOSB_Questionnaire_Page_MaritalSt: {Locator: 'id', Value: "owners__marital_status"}
+
+EDWOSB_Questionnaire_Page_Done_Button: {Locator: 'xpath', Value: "//button[ contains(@class, 'owner_edit owner_done_button')]"}
+EDWOSB_Questionnaire_Page_Ans_423_N: {Locator: 'id', Value: "answers_423_value_no"}
+
+EDWOSB_Questionnaire_Page_Commit: {Locator: 'name', Value: "commit"}
+EDWOSB_Questionnaire_Page_Continue: {Locator: 'xpath', Value:  "//div[3]/button"}
+#EDWOSB_Questionnaire_Page_FinancialData: {Locator: 'xpath', Value:  "//h2[contains(text(),'Financial Data')]"}
+
+#EDWOSB_ financial Questionnaire_Page with No flow
+EDWOSB_financial_Page_Ans_363_setText: {Locator: 'id', Value: "date-363"}
+EDWOSB_financial_Page_Ans_364_setText: {Locator: 'xpath', Value: "//*[@id='answers_364_value']"}
+EDWOSB_financial_Page_Ans_365_setText: {Locator: 'xpath', Value: "//*[@id='answers_365_value']"}
+EDWOSB_financial_Page_Ans_366_setText: {Locator: 'xpath', Value: "//*[@id='answers_366_value']"}
+EDWOSB_financial_Page_Ans_367_setText: {Locator: 'xpath', Value: "//*[@id='answers_367_value']"}
+EDWOSB_financial_Page_Ans_368_setText: {Locator: 'id', Value: 'answers_368_value'}
+EDWOSB_financial_Page_Ans_369_setText: {Locator: 'id', Value: 'answers_369_value'}
+EDWOSB_financial_Page_Ans_370_setText: {Locator: 'id', Value: 'answers_370_value'}
+
+EDWOSB_financial_Page_Ans_371_N: {Locator: 'id', Value: "answers_371_value_no"}
+EDWOSB_financial_Page_Ans_372_N: {Locator: 'id', Value: "answers_372_value_no"}
+EDWOSB_financial_Page_Ans_373_N: {Locator: 'id', Value: "answers_373_value_no"}
+EDWOSB_financial_Page_Ans_374_N: {Locator: 'id', Value: "answers_374_value_no"}
+EDWOSB_financial_Page_Ans_375_N: {Locator: 'id', Value: "answers_375_value_no"}
+EDWOSB_financial_Page_Ans_377_N: {Locator: 'id', Value: "answers_377_value_no"}
+EDWOSB_financial_Page_Ans_378_N: {Locator: 'id', Value: "answers_378_value_no"}
+EDWOSB_financial_Page_Ans_380_N: {Locator: 'id', Value: "answers_380_value_no"}
+EDWOSB_financial_Page_Ans_382_N: {Locator: 'id', Value: "answers_382_value_no"}
+EDWOSB_financial_Page_Ans_383_N: {Locator: 'id', Value: "answers_383_value_no"}
+EDWOSB_financial_Page_Ans_384_N: {Locator: 'id', Value: "answers_384_value_no"}
+EDWOSB_financial_Page_Ans_385_N: {Locator: 'id', Value: "answers_385_value_no"}
+EDWOSB_financial_Page_Ans_386_SetText: {Locator: 'id', Value: "answers_386_value"}
+EDWOSB_financial_Page_Ans_387_SetText: {Locator: 'id', Value: "answers_387_value"}
+EDWOSB_financial_Page_Ans_388_SetText: {Locator: 'id', Value: "answers_388_value"}
+#WOSB_Questionaaire for LLC with No flow
+WOSB_Questionnaire_Page_Ans_188_N: {Locator: 'xpath', Value: "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_no') ]"}
+WOSB_Questionnaire_Page_Ans_189_Y: {Locator: 'xpath', Value: "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"}
+WOSB_Questionnaire_Page_Ans_190_Y: {Locator: 'id', Value: "answers_190_value_yes"}
+WOSB_Questionnaire_Page_Ans_201_N: {Locator: 'id', Value: "answers_201_value_no"}
+WOSB_financial_Page_Ans_201_setText: {Locator: 'id', Value: "answers_201_comment"}
+WOSB_Questionnaire_Page_Ans_202_N: {Locator: 'id', Value: "answers_202_value_no"}
+WOSB_financial_Page_Ans_202_setText: {Locator: 'id', Value: "answers_202_comment"}
+WOSB_Questionnaire_Page_Ans_203_N: {Locator: 'id', Value: "answers_203_value_no"}
+WOSB_Questionnaire_Page_Ans_204_N: {Locator: 'id', Value: "answers_204_value_no"}
+WOSB_Questionnaire_Page_Ans_205_N: {Locator: 'id', Value: "answers_205_value_no"}
+WOSB_Questionnaire_Page_Ans_206_N: {Locator: 'id', Value: "answers_206_value_no"}
+WOSB_financial_Page_Ans_206_setText: {Locator: 'id', Value: "answers_206_comment"}
+WOSB_Questionnaire_Page_Ans_207_N: {Locator: 'id', Value: "answers_207_value_no"}
+WOSB_Questionnaire_Page_Ans_208_N: {Locator: 'id', Value: "answers_208_value_no"}
+WOSB_Questionnaire_Page_Ans_209_N: {Locator: 'id', Value: "answers_209_value_no"}
+WOSB_Questionnaire_Page_Ans_210_N: {Locator: 'id', Value: "answers_210_value_no"}
+WOSB_Questionnaire_Page_Ans_211_N: {Locator: 'id', Value: "answers_211_value_no"}
+WOSB_Questionnaire_Page_Ans_212_N: {Locator: 'id', Value: "answers_212_value_no"}
+WOSB_financial_Page_Ans_212_setText: {Locator: 'id', Value: "answers_212_comment"}
+WOSB_Questionnaire_Page_Ans_213_N: {Locator: 'id', Value: "answers_213_value_no"}
+
+
+#8A_Page_Question_Ans_N_General: {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id,'_value_no' ) ]"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

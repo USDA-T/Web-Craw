@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.automation.utils.CommonApplicationMethods;
 import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
-
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
     // Submit Wosb/EDWOSBApplication
     // Login with Supervisor acccont Decline

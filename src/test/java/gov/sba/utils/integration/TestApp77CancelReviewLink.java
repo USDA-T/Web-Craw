@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -46,7 +47,10 @@ public class TestApp77CancelReviewLink extends TestCase {
             login_Data.Login_With_Details();
 
             CommonApplicationMethods.createApplication(webDriver, "WOSB");
-            webDriver.findElement(By.id("answers_5_value_yes")).click();
+           // webDriver.findElement(By.id("answers_188_value_yes")).click();
+            webDriver.findElement(By
+                    .xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
+                .click();
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
             TestApp77CancelReviewLink.info(file_path_abs);
@@ -62,6 +66,9 @@ public class TestApp77CancelReviewLink extends TestCase {
 
             // Click on Case Link on main navigator
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+           //upddate - case page based on Elastic search
+            //clear the input text before set text
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
             List<WebElement> current_Row = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr"
                     + "[ " + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
@@ -107,10 +114,8 @@ public class TestApp77CancelReviewLink extends TestCase {
 
                 // Verify Cancel Review link -APP 77 Acceptance Criteria
                 webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
-                Thread.sleep(1000);
-                webDriver.switchTo().alert().accept();
-                Thread.sleep(3000);
-                
+                CommonApplicationMethods.accept_Alert(webDriver);
+
                 String organization_Id = CommonApplicationMethods.returnOrganization_Id(duns_Number);
                 
                 String sql_Q = "select count(case_number) from sbaone.reviews "
@@ -127,6 +132,7 @@ public class TestApp77CancelReviewLink extends TestCase {
                 assertEquals(count_Case_Count, "1");
 
                 CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+                CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
                 webDriver
                         .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr[ "

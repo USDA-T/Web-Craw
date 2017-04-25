@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.sql.Connection;
@@ -46,7 +47,6 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
         // Login to dashboard.
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
         try {
             CommonApplicationMethods.createApplication(webDriver, "MPP");
@@ -60,14 +60,14 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
             List<WebElement> count_Pending = webDriver.findElements(
                     By.xpath("//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
-                            + " and " + "td[position()=4 and (contains(text(),'ending'))]" + "]"));
+                            + " and " + "td[position()=5 and (contains(text(),'ending'))]" + "]"));
 
             assertTrue(count_Pending.size() >= 1);
 
             CommonApplicationMethods.clickOnApplicationAllCasesPage(webDriver, "MPP");
 
             WebElement current_Title = webDriver.findElement(By.xpath(
-                    "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
+                    "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Program Self-Certification Summary']"));
 
             logger_US1463.info(current_Title.getText());
             WebElement current_Title_Business = webDriver.findElement(By.xpath(
@@ -77,6 +77,8 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
             Statement statement_SQL = databaseConnection.createStatement();
+
+
 
             ResultSet result_Set = statement_SQL
                     .executeQuery("select  issue_date, expiry_date, workflow_state from sbaone.certificates A,"
@@ -114,13 +116,12 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
             logger_US1463.info(current_Title_Txt.getText());
 
             webDriver.findElement(By.xpath("//a[@data-method='delete']")).click();
-            Thread.sleep(3000);
 
             LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 29);
             login_Data1.Login_With_Reference();
-            Thread.sleep(3000);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
             webDriver.findElement(By.xpath("//td/a[contains(text(),'" + duns_Number + "')]")).click();
 

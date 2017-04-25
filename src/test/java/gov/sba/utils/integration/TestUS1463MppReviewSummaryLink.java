@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -41,7 +42,6 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         // Login to dashboard.
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
         try {
 

@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.sql.Connection;
@@ -44,7 +45,6 @@ public class TestUS1457MPPPending extends TestCase {
         // Login to dashboard.
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
         try {
 
@@ -118,7 +118,6 @@ public class TestUS1457MPPPending extends TestCase {
             logger_US1457.info(current_Title_Txt.getText());
 
             webDriver.findElement(By.xpath("//a[@data-method='delete']")).click();
-            Thread.sleep(3000);
 
             LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 29);
 
@@ -143,6 +142,7 @@ public class TestUS1457MPPPending extends TestCase {
 
         } catch (Exception e) {
             logger_US1457.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1081AllCasesAnalyst.class.getName(), "Exception"});
             throw new Exception("Error: ", e);
         }
     }

@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import gov.sba.automation.utils.CommonApplicationMethods;
 import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
-@Category({ gov.sba.utils.integration.StableTests.class })
+@Category({ gov.sba.utils.integration.UnstableTests.class })
 public class Testapp244AllCasesMpp extends TestCase {
     // Set The variables/Define
     private static WebDriver webDriver;
@@ -59,6 +60,7 @@ public class Testapp244AllCasesMpp extends TestCase {
         login_Data_01.Login_With_Reference();
 
         CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+        CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
         // Check Column 1 - Business Name - Ascending
         List<WebElement> row_cell = webDriver

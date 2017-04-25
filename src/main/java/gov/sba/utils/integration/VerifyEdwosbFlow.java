@@ -1,3 +1,4 @@
+//TS created by Deepa Patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -44,16 +45,15 @@ public class VerifyEdwosbFlow extends TestCase {
         }
 
         assertTrue(Boolean.toString(add_button.isEnabled()), true);
-        Thread.sleep(2000);
+
         try {
-            webDriver.findElement(By.id("add_certification")).click();
-            webDriver.findElement(By.id("add_certification")).click();
+            CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
+            CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
         } catch (Exception e) {
             logger.info("Nothing here");
         }
 
-        Thread.sleep(5000);
-        webDriver.findElement(By.className("accept_button")).click();
+        CommonApplicationMethods.click_Element(webDriver, "Application_Common_Accept_Button");
 
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         WebElement current_Row_Draft = webDriver.findElement(By
@@ -65,27 +65,30 @@ public class VerifyEdwosbFlow extends TestCase {
         List<WebElement> all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "EDWOSB Self-Certification");
         // assertEquals(all_Cells.get(1).getText(), "");
-        assertEquals(all_Cells.get(3).getText(), "Draft");
-        assertEquals(all_Cells.get(5).getText(), "Delete");
+        assertEquals(all_Cells.get(4).getText(), "Draft");
+        assertEquals(all_Cells.get(6).getText(), "Delete");
+
         all_Cells.get(4)
                 .findElement(By
                         .xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
                 .click();
-        Thread.sleep(4000);
-        webDriver.switchTo().alert().accept();
+        CommonApplicationMethods.accept_Alert(webDriver);
+
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
 
         // First Flow - Check For Active
         webDriver.findElement(By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']"))
                 .click();
-        webDriver.findElement(By.id("add_certification")).click();
+
+        CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
         try {
-            webDriver.findElement(By.id("add_certification")).click();
-            webDriver.findElement(By.id("add_certification")).click();
+            CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
+            CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
         } catch (Exception e) {
             logger.info("Nothing here");
         }
-        webDriver.findElement(By.className("accept_button")).click();
+
+        CommonApplicationMethods.click_Element(webDriver, "Application_Common_Accept_Button");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
         logger.info(file_path_abs);
@@ -94,8 +97,10 @@ public class VerifyEdwosbFlow extends TestCase {
 
         // Check the section that its active and no delete in action is there
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
+
         current_Row_Draft = webDriver.findElement(By
                 .xpath("//article[@id='main-content']//section/article/table/tbody/tr/td[contains(text(),'Active')]"));
+
         assertEquals(current_Row_Draft.getText(), "Active");
         logger.info(current_Row_Draft.getText());
         current_Row = current_Row_Draft.findElement(By.xpath(".."));
@@ -103,19 +108,14 @@ public class VerifyEdwosbFlow extends TestCase {
 
         all_Cells = current_Row.findElements(By.xpath("td"));
         assertEquals(all_Cells.get(0).getText(), "EDWOSB Self-Certification");
-        assertEquals(all_Cells.get(3).getText(), "Active");
-        assertEquals(all_Cells.get(5).getText(), "");
+        assertEquals(all_Cells.get(4).getText(), "Active");
+        assertEquals(all_Cells.get(6).getText(), "");
         all_Cells.get(0).findElement(By.xpath("a")).click();
         Thread.sleep(1000);
 
         assertTrue(webDriver.getPageSource()
                 .contains("Economically Disadvantaged Women-Owned Small Business Program Self-Certification Summary"));
-        assertTrue(webDriver.getPageSource().contains("By submitting this certification I"));
-        // assertTrue(webDriver.getPageSource().contains("QA User"));
-        // assertTrue(webDriver.getPageSource().contains(
-        // "am an officer or owner of Entity 454 Legal Business Name authorized
-        // to represent it and electronically sign this certification on its
-        // behalf."));
 
     }
+
 }

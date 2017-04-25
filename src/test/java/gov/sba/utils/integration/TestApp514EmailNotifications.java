@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import com.opencsv.CSVParser;
@@ -13,10 +14,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp514EmailNotifications extends TestCase {
   //
   // set the flag as 0 day
@@ -52,7 +54,7 @@ public class TestApp514EmailNotifications extends TestCase {
       // Login to dashboard.
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
-      Thread.sleep(3000);
+
 
       try {
 

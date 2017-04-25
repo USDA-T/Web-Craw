@@ -1,3 +1,5 @@
+// Created BY Deepa Patri
+
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -26,6 +28,7 @@ public class AnalystReviewPage extends TestCase {
 
     public void TestReviewDriver(WebDriver mydriver, String duns_Numb, String typ_App, String rev_Type_p,
             String curr_Review_p, String owner_p, String supervisor_p) {
+        AnalystReviewPage.info("Came In to Set Values");
         this.webDriver = mydriver;
         this.duns_Number = duns_Numb;
         this.typ_App_Passed = typ_App;
@@ -184,6 +187,8 @@ public class AnalystReviewPage extends TestCase {
                     + "td[position()=3 and contains(text(),'" + typ_App_Passed + "')]	" + "]"));
 
             AnalystReviewPage.info(current_Row.size() + ": Is the total Under Review Elements");
+
+            Assert.assertTrue(current_Row.size()>0);
 
             if (current_Row.size() > 0) {
 

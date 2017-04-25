@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.sql.Connection;
@@ -30,6 +31,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 
     @Before
     public void setUp() throws Exception {
+
         CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
@@ -46,7 +48,8 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         // Create a application to check
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
+
+        CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1081AllCasesAnalyst", "Login_Screenshot"});
 
         CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "WOSB");
@@ -59,20 +62,19 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         // Login to verify analyst Dashboard
         LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 21);
         login_Data_01.Login_With_Reference();
-        Thread.sleep(3000);
 
         try {
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-            Thread.sleep(1000);
-            logger_US1081.info("Cases link is on Main Navigator is Clicked");
+            CommonApplicationMethods.casesPageSearch(webDriver, "WOSB");
+                        logger_US1081.info("Cases link is on Main Navigator is Clicked");
 
             String Allcases_PageTitle = webDriver
-                    .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'All cases')]")).getText();
-            assertEquals(Allcases_PageTitle, "All cases");
+                    .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'ases')]")).getText();
+            assertEquals(Allcases_PageTitle, "Cases");
 
             String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Submitted",
-                    "Owner", "Current reviewer", "Status" };
+                    "Owner", "Current reviewer", "Certificate Status","Recommendation & Determination"};
             List<WebElement> rows_Header = webDriver
                     .findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
 
@@ -118,7 +120,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
                 db_rows_array.add(db_rows_Cell);
             }
             logger_US1081.info("db data :" + db_rows_array.toString());
-            Thread.sleep(50000);
+            Thread.sleep(50000);//Sleep Needed - Deepa
             result_Set.close();
 
             // Entire Table Verification for next Sprint
@@ -150,7 +152,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         }
 
         catch (Exception e) {
-            logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1081AllCasesAnalyst"});
             throw e;
         }
     }

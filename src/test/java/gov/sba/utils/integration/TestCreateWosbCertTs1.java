@@ -1,6 +1,8 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import junit.framework.TestCase;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.apache.logging.log4j.LogManager;
 import gov.sba.automation.utils.CommonApplicationMethods;
@@ -8,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestCreateWosbCertTs1 extends TestCase {
   //Get the questions names for which Prepopulate flag set to true
 //Start create New Wosb/Edwosb application
@@ -31,7 +34,6 @@ public class TestCreateWosbCertTs1 extends TestCase {
       // Check Dashboard Pending status
       LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
-      Thread.sleep(2000);
     //Return the Applicatiom;
     if (CommonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active"))
     { CommonApplicationMethods.navigationMenuClick(webDriver,"LOGOUT");
@@ -44,22 +46,22 @@ public class TestCreateWosbCertTs1 extends TestCase {
 
   //start New WOSB Applicatiom
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      webDriver.findElement(By.id("certificate_type_wosb")).click();
-      webDriver.findElement(By.id("add_certification")).click();
-      webDriver.findElement(By.className("accept_button")).click();
-      NewLLCQuestionaire NewLLCQuestionaire = new NewLLCQuestionaire(webDriver);
-      NewLLCQuestionaire.NewLlcquestions();
+      CommonApplicationMethods.createApplication(webDriver,"WOSB");
+      NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
+      NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
 
 
     } catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
-      throw new Exception("Error: ", e);
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1081AllCasesAnalyst.class.getName(), "Exception"});
+      throw e;
     }
   }
 
   @After
   public void tearDown() throws Exception {
-    //webDriver.quit();
+
+    webDriver.quit();
   }
 }

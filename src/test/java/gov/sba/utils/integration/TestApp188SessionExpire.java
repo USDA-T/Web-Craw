@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +38,7 @@ public class TestApp188SessionExpire extends TestCase {
             // Login to dashboard. Ops Support Staff
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
-            Thread.sleep(2000);
+            Thread.sleep(2000); //CheckSleep
 
             // Asserting Selectable App 187 AC
             assertEquals(webDriver.findElement(By.xpath("//li[input[@id='user_type_gov_user']]/label")).getText(),
@@ -62,7 +63,7 @@ public class TestApp188SessionExpire extends TestCase {
             // Login to dashboard. Analyst
             login_Data = new LoginPageWithReference(webDriver, 11);
             login_Data.Login_With_Reference();
-            Thread.sleep(2000);
+
 
             CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
@@ -80,8 +81,8 @@ public class TestApp188SessionExpire extends TestCase {
             // Login to dashboard. Vendor
             login_Data = new LoginPageWithReference(webDriver, 9);
             login_Data.Login_With_Reference();
-            Thread.sleep(2000);
 
+            Thread.sleep(2000); //CheckSleep
             TestApp188SessionExpire.info(webDriver.manage().getCookies());
             for (Cookie ck : webDriver.manage().getCookies()) {
                 TestApp188SessionExpire.info(ck.getName());

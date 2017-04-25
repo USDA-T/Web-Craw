@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -37,11 +38,9 @@ public class Test1235OPPSupportStaftRole extends TestCase {
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        Thread.sleep(3000);
         // Need to submit the application in EDWosb, Wosb,MPP
-        // Log in As OppSupport Staft - validate as per the US1235 cceptance
-        // criteria
-        // on Opp Support Staft/Admin page
+        // Log in As OppSupport Staft - validate as per the US1235 AC on Opp Support Staft/Admin page
+
         try {
             // Opp Supp Staft search vendor records.
             CommonApplicationMethods.searchDuns_Number(webDriver, "159165917");
@@ -84,14 +83,12 @@ public class Test1235OPPSupportStaftRole extends TestCase {
             Boolean element_Found = false;
             try {
                 Set<String> handle_02 = webDriver.getWindowHandles();
-
                 for (String s : handle_02) {
                     System.out.println(s);
                     if (handle_01_Value != s) {
                         webDriver.switchTo().window(s);
                     }
                 }
-
                 WebElement HelpPage_Edit = webDriver.findElement(By.xpath("//a[@href='/help_pages/edit']"));
                 logger_US1235.info("Opp supp Staft not having Edit on Help Page-HelpPage_Edit");
                 element_Found = true;

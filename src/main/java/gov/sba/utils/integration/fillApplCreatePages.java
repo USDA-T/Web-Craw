@@ -1,3 +1,4 @@
+//TS created by Deepa Patri
 package gov.sba.utils.integration;
 
 import java.util.Iterator;
@@ -93,7 +94,7 @@ public class fillApplCreatePages {
                     all_Rows.next().click();
                 }
 
-                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                newMppUploadDocumentPageDeepa deepaUploadMppDocument1 = new newMppUploadDocumentPageDeepa(webDriver);
                 deepaUploadMppDocument1.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");
                 Thread.sleep(2000);
@@ -131,7 +132,7 @@ public class fillApplCreatePages {
                     all_Rows.next().click();
                 }
 
-                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                newMppUploadDocumentPageDeepa deepaUploadMppDocument1 = new newMppUploadDocumentPageDeepa(webDriver);
                 deepaUploadMppDocument1.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");
                 Thread.sleep(2000);
@@ -162,7 +163,7 @@ public class fillApplCreatePages {
                     all_Rows.next().click();
                 }
 
-                newMppUploadDocumentPage deepaUploadMppDocument1 = new newMppUploadDocumentPage(webDriver);
+                newMppUploadDocumentPageDeepa deepaUploadMppDocument1 = new newMppUploadDocumentPageDeepa(webDriver);
                 deepaUploadMppDocument1.deepaUploadMppDocument(path);
                 logger.info("Doc has been uploaded.");
                 Thread.sleep(2000);
@@ -207,19 +208,20 @@ public class fillApplCreatePages {
             }
         } catch (Exception e) {
             logger.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"page8aFillUpDunsNo"});
             throw e;
         }
     }
 
     public static void finalSignatureSubmit(WebDriver webDriver) throws Exception {
         try {
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_0']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_1']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_2']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_3']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_4']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//*[@id='legal_5']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@type='submit']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_0']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_1']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_2']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_3']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_4']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_5']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
 //            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
 //            webDriver.findElement(By.xpath("//*[@id='legal_1']")).click();
 //            webDriver.findElement(By.xpath("//*[@id='legal_2']")).click();
@@ -229,18 +231,20 @@ public class fillApplCreatePages {
 //            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit"});
             throw e;
         }
     }
 
     public static void finalSignatureSubmit8A(WebDriver webDriver) throws Exception {
         try {
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@id='legal_0']");
-            CommonApplicationMethods.click_Element(webDriver, "Xpath", "//input[@type='submit']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@id='legal_0']");
+            CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
 //            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
 //            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit8A"});
             throw e;
         }
     }

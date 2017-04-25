@@ -60,6 +60,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
         String xpath = "";
 
         CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+        CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
         // Seperate XPaths for Each Type of Application
         if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
@@ -142,7 +143,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
 
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
         TestApp40AndApp190.info(duns_Number);
         run_This_app("MPP", duns_Number);
 

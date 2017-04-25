@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -41,7 +42,6 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
 
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(3000);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             CommonApplicationMethods.createApplication(webDriver, "WOSB");

@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.util.List;
@@ -38,13 +39,9 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
     @Test
     public void testMainTest() throws Exception {
         try {
-
             // __________________________________________________________________________________
-
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            Thread.sleep(3000);
-
             CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             CommonApplicationMethods.createApplication(webDriver, "MPP");
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
@@ -52,11 +49,9 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
             fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-
             // Click on Case Link on main navigator-- Mpp Analyst
             LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 29);
             login_Data_01.Login_With_Reference();
-            Thread.sleep(2000);
             String typ_App_Passed = "MPP";
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             if (!webDriver.getPageSource().contains("No results found")) {

@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -49,7 +50,7 @@ public class TestAnalystReview {
 
             LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
             login_Data_01.Login_With_Reference();
-            Thread.sleep(1000);
+
             // Click on Case Link on main navigator
             // //Come Back Later
             // WebElement Cases_Link =

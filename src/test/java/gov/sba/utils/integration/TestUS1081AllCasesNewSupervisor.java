@@ -1,3 +1,4 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
 import java.sql.Connection;
@@ -46,40 +47,41 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         // Create a application to check
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        Thread.sleep(3000);
 
-        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+/*        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "WOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
         logger_US1081.info(file_path_abs);
         fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
         fillApplCreatePages.finalSignatureSubmit(webDriver);
+        */
         CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
         // Login to verify analyst Dashboard
         LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 55);
         login_Data_01.Login_With_Reference();
-        Thread.sleep(3000);
 
         try {
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, "WOSB");
             Thread.sleep(1000);
             logger_US1081.info("Cases link is on Main Navigator is Clicked");
 
             String Allcases_PageTitle = webDriver
-                    .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'All cases')]")).getText();
-            assertEquals(Allcases_PageTitle, "All cases");
+                    .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'Cases')]")).getText();
+            assertEquals(Allcases_PageTitle, "Cases");
 
             String[] header_Names_Array = new String[] { "Business name", "DUNS", "Program", "Review type", "Submitted",
-                    "Owner", "Current reviewer", "Status" };
+                    "Owner", "Current reviewer", "Certificate Status","Recommendation & Determination" };
 
             List<WebElement> rows_Header = webDriver
                     .findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
             // Get Table Header Cells
-            String[] header_Names_Array_Validate = new String[8];
+            String[] header_Names_Array_Validate = new String[9];
             java.util.Iterator<WebElement> list_elements = rows_Header.iterator();
             int i = 0;
+            logger_US1081.info(rows_Header.size());
             while (list_elements.hasNext()) {
                 header_Names_Array_Validate[i] = list_elements.next().getText();
                 i = i + 1;
@@ -163,9 +165,10 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
             }
 
             List<WebElement> rows_Body_01 = webDriver.findElements(By
-                    .xpath("//table[@id='certifications']/tbody/tr[ td[position()=4 and contains(text(),'Draft')]  ]")); // Get
+                    .xpath("//table[@id='certifications']/tbody/tr[ td[position()=5 and contains(text(),'Draft')]  ]")); // Get
             Assert.assertTrue(rows_Body_01.size() > 0);
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             Assert.assertFalse(webDriver.getPageSource().contains(duns_Number));
 
         }
@@ -179,6 +182,6 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+       // webDriver.quit();
     }
 }

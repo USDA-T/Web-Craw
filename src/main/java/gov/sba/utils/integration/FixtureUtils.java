@@ -15,6 +15,11 @@ public class FixtureUtils {
                 + "DataFiles" + File.separator;
     }
 
+    public static String get_SS_Dir() {
+        return System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator
+                + "Screenshots" + File.separator;
+    }
+
     public static String fixturesDir_Duns() {
         return System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator
                 + "resources" + File.separator;

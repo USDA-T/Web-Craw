@@ -1,5 +1,7 @@
+//TS created by Deepa Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -21,10 +23,11 @@ public class LoginPageWithReference {
         logger.debug("Using test password: "
                 + LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
         webDriver.findElement(By.cssSelector("button.button-full")).click();
-        webDriver.findElement(By.name("user[email]"))
-                .sendKeys(LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
-        webDriver.findElement(By.name("user[password]"))
-                .sendKeys(LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
+
+        CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
+
+        CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
+
         webDriver.findElement(By.id("business_signin")).click();
         // String url = webDriver.getCurrentUrl();
         // org.junit.Assert.assertTrue(url.contains("certify"));

@@ -1,5 +1,7 @@
+//TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +9,10 @@ import org.openqa.selenium.WebElement;
 
 public class TestuserProfileSearchType {
 
-    public static void TestuserProfileSearch(WebDriver webDriver, String last_name, String Radio_xpath,
+    public static void TestuserProfileSearch(WebDriver webDriver, String last_name, String xpathSearch,
             String Expected_Result) throws Exception {
-
         // Select Government User Radio button
-        webDriver.findElement(By.xpath(Radio_xpath)).click();
+        CommonApplicationMethods.click_Element(webDriver, xpathSearch);
         webDriver.findElement(By.xpath("//input[@id='ops_query']")).sendKeys(last_name);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         // User Search results
