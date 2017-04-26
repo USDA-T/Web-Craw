@@ -88,36 +88,39 @@ public class CommonApplicationMethods {
         }
       }
       //============================================================================================================
-      public static WebElement find_Element_Loc1InProgress(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
-        String flag = "";
-        WebElement element_01 = null;
-          for (int i = 0; i < 15; i++) {
-            flag = "N";
+      public static List<WebElement> find_Elements_Loc_InPrg(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+        List<WebElement> element_01 = null;
+          for (int i = 0; i < 2; i++) {
             try {
               switch (type_Locator.toLowerCase()) {
                 case "xpath":
-                  element_01 = webdriver.findElement(By.xpath(value_Locator));
+                  element_01 = webdriver.findElements(By.xpath(value_Locator));
                 case "id":
-                  element_01 = webdriver.findElement(By.id(value_Locator));
+                  element_01 = webdriver.findElements(By.id(value_Locator));
                 case "classname":
-                  element_01 = webdriver.findElement(By.className(value_Locator));
+                  element_01 = webdriver.findElements(By.className(value_Locator));
                 case "name":
-                  element_01 = webdriver.findElement(By.name(value_Locator));
+                  element_01 = webdriver.findElements(By.name(value_Locator));
                 case "cssselector":
-                  element_01 = webdriver.findElement(By.cssSelector(value_Locator));
+                  element_01 = webdriver.findElements(By.cssSelector(value_Locator));
                 case "linktext":
-                  element_01 = webdriver.findElement(By.linkText(value_Locator));
+                  element_01 = webdriver.findElements(By.linkText(value_Locator));
               }
-              flag = "Y";
-              break;
+
+              if (element_01.size()>0){break;}
+
             } catch (Exception e) {
               commonApplicationMethodsLogs.info("Trying to find BY " + type_Locator + ":" + value_Locator);
-              Thread.sleep(300); //DEEPA: Sleep is needed here since we are Repeatedly Finding
+              Thread.sleep(100); //DEEPA: Sleep is needed here since we are Repeatedly Finding
             }
           }
-
-         if (flag == "Y") { return element_01; } else { throw new Exception();}
-
+          return element_01;
+      };
+      //===========================================================================================================
+      public static List<WebElement> find_Elements(WebDriver webdriver, String locator_Yaml) throws Exception {
+        Map locator = getLocator(locator_Yaml);
+        return find_Elements_Loc_InPrg(webdriver, locator.get("Locator").toString(),
+            locator.get("Value").toString());
       }
       //============================================================================================================
       public static WebElement find_Element_Loc(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
@@ -213,9 +216,47 @@ public class CommonApplicationMethods {
         }
       }
       //============================================================================================================
+      public static WebElement find_Element_Loc_InProg(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+
+        String flag = "";
+        WebElement element_01 = null;
+        for (int i = 0; i < 15; i++) {
+          flag = "N";
+          try {
+            switch (type_Locator.toLowerCase()) {
+              case "xpath":
+                element_01 = webdriver.findElement(By.xpath(value_Locator));
+              case "id":
+                element_01 = webdriver.findElement(By.id(value_Locator));
+              case "classname":
+                element_01 = webdriver.findElement(By.className(value_Locator));
+              case "name":
+                element_01 = webdriver.findElement(By.name(value_Locator));
+              case "cssselector":
+                element_01 = webdriver.findElement(By.cssSelector(value_Locator));
+              case "linktext":
+                element_01 = webdriver.findElement(By.linkText(value_Locator));
+            }
+            flag = "Y";
+            break;
+
+          } catch (Exception e) {
+            commonApplicationMethodsLogs.info("Trying to find BY " + type_Locator + ":" + value_Locator);
+            Thread.sleep(200); //DEEPA: Sleep is needed here since we are Repeatedly Finding
+          }
+        }
+        if (flag == "Y") {
+          return element_01;
+        } else {
+          throw new Exception();
+        }
+      }
+      //============================================================================================================
       public static WebElement find_Element(WebDriver webdriver, String locator_Yaml) throws Exception {
         Map locator = getLocator(locator_Yaml);
-        return find_Element_Loc(webdriver, locator.get("Locator").toString(),
+//        return find_Element_Loc(webdriver, locator.get("Locator").toString(),
+//            locator.get("Value").toString());
+        return find_Element_Loc_InProg(webdriver, locator.get("Locator").toString(),
             locator.get("Value").toString());
       }
       //============================================================================================================
@@ -241,7 +282,7 @@ public class CommonApplicationMethods {
       }
       //============================================================================================================
       public static void accept_Optional_Alert(WebDriver webDriver) throws Exception {
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 6; i++) {
           try {
             webDriver.switchTo().alert().accept();
             return;
@@ -311,7 +352,7 @@ public class CommonApplicationMethods {
             for (int i = 0; i < current_Row_Check.size(); i++) {
               current_Row_Check.get(0).click();
               Thread.sleep(3000);
-              webDriver.switchTo().alert().accept();
+              accept_Optional_Alert(webDriver);
             }
           }
 
@@ -379,8 +420,7 @@ public class CommonApplicationMethods {
         Boolean FlagForAddEDWOSBNotPresent = true;
         navigationMenuClick(webDriver, "DashBoard");
         List<WebElement> current_Row_Check_02 = webDriver.findElements(
-            By.xpath(
-                "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+            By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
         if (current_Row_Check_02.size() > 0) {
 
           for (int i = 0; i < current_Row_Check_02.size(); i++) {
@@ -389,9 +429,8 @@ public class CommonApplicationMethods {
             CommonApplicationMethods.accept_Optional_Alert(webDriver);
             Thread.sleep(1500); //Sleep Needed Deepa
             webDriver.navigate().refresh();
-            current_Row_Check_02 = webDriver.findElements(By
-                .xpath(
-                    "//table[@id='certifications']/tbody/tr/td[position()=6]/a[contains(text(),'elete')] "));
+            current_Row_Check_02 = webDriver.
+                              findElements(By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
             i = 0;
             FlagForAddEDWOSBNotPresent = true;
           }
@@ -522,6 +561,23 @@ public class CommonApplicationMethods {
         login_Data = new LoginPageWithReference(webDriver, which_Log_BackAgain);
         login_Data.Login_With_Reference();
 
+      }
+      //============================================================================================================
+      public static void returnAll_App_To_Vendor(WebDriver webDriver, String duns_Number) throws Exception {
+
+        Boolean FlagForReturn = true;
+        List<WebElement> current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
+        if (current_Row_Check_02.size() > 0) {
+          for (int i = 0; i < current_Row_Check_02.size(); i++) {
+            FlagForReturn = false;
+            current_Row_Check_02.get(0).click();
+            webDriver.navigate().refresh();
+            current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
+            i = 0;
+            FlagForReturn = true;
+          }
+        }
+        Assert.assertTrue(FlagForReturn);
       }
       //============================================================================================================
       public static void onlyReturnAppToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number,
@@ -680,6 +736,11 @@ public class CommonApplicationMethods {
         CommonApplicationMethods.click_Element(webDriver, "Search_Duns_Search_Text");
         CommonApplicationMethods.setText_Element(webDriver, "Search_Duns_Search_Query", search_Text);
         CommonApplicationMethods.click_Element(webDriver, "Search_Duns_Search_Submit");
+      }
+      //============================================================================================================
+      public static void search_Cases_Duns_Number_Table(WebDriver webDriver, String search_Text) throws Exception {
+        CommonApplicationMethods.setText_Element(webDriver, "Search_Duns_Cases_Test", search_Text);
+        CommonApplicationMethods.click_Element(webDriver, "Search_Duns_Cases_Submit");
       }
       //============================================================================================================
       public static void navigationMenuClick(WebDriver webDriver, String which_Button) throws Exception {

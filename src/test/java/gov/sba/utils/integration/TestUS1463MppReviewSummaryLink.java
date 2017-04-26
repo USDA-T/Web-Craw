@@ -54,7 +54,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
             List<WebElement> count_Pending = webDriver.findElements(
                     By.xpath("//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
-                            + " and " + "td[position()=4 and (contains(text(),'ending'))]" + "]"));
+                            + " and " + "td[position()=5 and (contains(text(),'ending'))]" + "]"));
 
             assertEquals(count_Pending.size(), 1);
 
@@ -70,9 +70,9 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
             assertEquals(stext,
                     "Thank you for submitting your application to participate in SBA’s All Small Mentor-Protégé Program. Once your application is processed and evaluated, a member of the All Small Mentor-Protégé Program Office will contact you to verify your application status.");
 
-            stext = webDriver.findElement(By.xpath("//h1[contains(text(),'Program Application Summary')]")).getText();
+            stext = webDriver.findElement(By.xpath("//h1[contains(text(),'Program Self-Certification Summary')]")).getText();
             logger_US1463.info(stext);
-            assertEquals(stext, "All Small Mentor Protégé Program Application Summary");
+            assertEquals(stext, "All Small Mentor Protégé Program Program Self-Certification Summary");
 
             Boolean found = false;
             try {

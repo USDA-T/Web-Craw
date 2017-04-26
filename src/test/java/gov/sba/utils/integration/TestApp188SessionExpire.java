@@ -38,12 +38,11 @@ public class TestApp188SessionExpire extends TestCase {
             // Login to dashboard. Ops Support Staff
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
-            Thread.sleep(2000); //CheckSleep
 
             // Asserting Selectable App 187 AC
-            assertEquals(webDriver.findElement(By.xpath("//li[input[@id='user_type_gov_user']]/label")).getText(),
+            assertEquals(CommonApplicationMethods.find_Element(webDriver, "OppSup_Dashboard_Govt_User_Radio" ).getText(),
                     "Government User");
-            assertEquals(webDriver.findElement(By.xpath("//li[input[@id='user_type_vendor_user']]/label")).getText(),
+            assertEquals(CommonApplicationMethods.find_Element(webDriver, "OppSup_Dashboard_Vend_User_Radio" ).getText(),
                     "Vendor User");
             CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
@@ -75,14 +74,14 @@ public class TestApp188SessionExpire extends TestCase {
             }
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "DASHBOARD");
-            assertEquals(webDriver.findElement(By.id("business_signin")).getAttribute("value"), "Sign-in");
+            assertEquals(CommonApplicationMethods.find_Element(webDriver, "OppSup_Dashboard_Business_Signin").getAttribute("value"), "Sign-in");
             CommonApplicationMethods.navigationMenuClick(webDriver, "Home");
 
             // Login to dashboard. Vendor
             login_Data = new LoginPageWithReference(webDriver, 9);
             login_Data.Login_With_Reference();
 
-            Thread.sleep(2000); //CheckSleep
+            CommonApplicationMethods.find_Element(webDriver, "Navigation_Dashboard");
             TestApp188SessionExpire.info(webDriver.manage().getCookies());
             for (Cookie ck : webDriver.manage().getCookies()) {
                 TestApp188SessionExpire.info(ck.getName());

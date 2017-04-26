@@ -48,13 +48,13 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
         LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
 
-/*        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         CommonApplicationMethods.createApplication(webDriver, "WOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
         logger_US1081.info(file_path_abs);
         fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
         fillApplCreatePages.finalSignatureSubmit(webDriver);
-        */
+
         CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 
         // Login to verify analyst Dashboard
@@ -124,7 +124,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
             // Entire Table Verification for next Sprint
             List<ArrayList<String>> ui_rows_array = new ArrayList<>();
-
+            CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
             List<WebElement> rows_Body = webDriver.findElements(
                     By.xpath("//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[ contains( text(),'"
                             + duns_Number + "') ] ]")); // Get
@@ -155,14 +155,8 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
                     .findElement(
                             By.xpath("//div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]"))
                     .click();
-            Thread.sleep(1500);
-            webDriver.findElement(By.linkText("Return to Vendor")).click();
-            Thread.sleep(1500);
-            try {
-                webDriver.switchTo().alert().accept();
-            } catch (Exception e) {
-                logger_US1081.info("None Alert");
-            }
+            CommonApplicationMethods.click_Element(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
+            CommonApplicationMethods.accept_Optional_Alert(webDriver);
 
             List<WebElement> rows_Body_01 = webDriver.findElements(By
                     .xpath("//table[@id='certifications']/tbody/tr[ td[position()=5 and contains(text(),'Draft')]  ]")); // Get

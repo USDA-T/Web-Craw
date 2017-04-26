@@ -38,7 +38,6 @@ public class TestUS1280_OppSuppStaff extends TestCase {
             // Login to dashboard.
             LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
-            Thread.sleep(1500);
 
             // US1280- Search Government ;
             // Get Email,First,Name,Last from the Db to use as serach term in UI
@@ -48,9 +47,8 @@ public class TestUS1280_OppSuppStaff extends TestCase {
             logger_US1280.info(returned_GovProfile_Rows[1][1]);
 
             // pass Government/vendor profile criteria
-            String Gov_Radio_xpath = "//input[@id='user_type_gov_user']";
             String Expected_Result = "Government user profile";
-            TestuserProfileSearchType.TestuserProfileSearch(webDriver, returned_GovProfile_Rows[1][1], Gov_Radio_xpath,
+            TestuserProfileSearchType.TestuserProfileSearch(webDriver, returned_GovProfile_Rows[1][1], "OppSup_Dashboard_Govt_User_Radio_Bt",
                     Expected_Result);
             webDriver.navigate().back();
             // US1280- Search Vendor ;
@@ -64,9 +62,8 @@ public class TestUS1280_OppSuppStaff extends TestCase {
             // Pass the user search radio button,the serach term to the
             // userprofile search function
             // pass Government/vendor profile criteria
-            String Ven_Radio_xpath = "//input[@id='user_type_vendor_user']";
             String Expected_Result1 = "Vendor user profile";
-            TestuserProfileSearchType.TestuserProfileSearch(webDriver, areturned_Rows[1][1], Ven_Radio_xpath,
+            TestuserProfileSearchType.TestuserProfileSearch(webDriver, areturned_Rows[1][1], "OppSup_Dashboard_Vend_User_Radio_Bt",
                     Expected_Result1);
 
         } catch (Exception e) {

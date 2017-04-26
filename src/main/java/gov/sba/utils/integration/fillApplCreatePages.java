@@ -122,6 +122,7 @@ public class fillApplCreatePages {
             throw e;
         }
     }
+
     public static void genericUploadDoc(WebDriver webDriver, String answer01, String path) throws Exception {
         try {
             if (answer01.toUpperCase().contains("YES")) {
@@ -150,7 +151,6 @@ public class fillApplCreatePages {
             throw e;
         }
     }
-
 
     public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String path, String duns_No_Given)
             throws Exception {
@@ -222,13 +222,6 @@ public class fillApplCreatePages {
             CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_4']");
             CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_5']");
             CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
-//            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
-//            webDriver.findElement(By.xpath("//*[@id='legal_1']")).click();
-//            webDriver.findElement(By.xpath("//*[@id='legal_2']")).click();
-//            webDriver.findElement(By.xpath("//*[@id='legal_3']")).click();
-//            webDriver.findElement(By.xpath("//*[@id='legal_4']")).click();
-//            webDriver.findElement(By.xpath("//*[@id='legal_5']")).click();
-//            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
             CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit"});
@@ -240,8 +233,6 @@ public class fillApplCreatePages {
         try {
             CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@id='legal_0']");
             CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
-//            webDriver.findElement(By.xpath("//*[@id='legal_0']")).click();
-//            webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         } catch (Exception e) {
             logger.info(e.toString());
             CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit8A"});

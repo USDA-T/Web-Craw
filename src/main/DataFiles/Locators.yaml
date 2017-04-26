@@ -13,7 +13,6 @@ Apllication_Case_Search_Button:          {Locator: 'xpath', Value: '//div[@role=
 Navigation_Logout:          {Locator: 'xpath', Value: "//a[ contains(@class, 'ogout' ) and contains(text(), 'ogout') ]"}
 Navigation_Help:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Help')]"}
 Navigation_Cases:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Cases')]"}
-#Navigation_Programs:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'rograms')]"}
 Navigation_Programs:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div//span[contains(text(),'rograms')]"}
 Navigation_Dashboard:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Dashboard')]"}
 Navigation_Business:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
@@ -31,6 +30,8 @@ Application_Common_Submit_Button:     {Locator: 'xpath', Value: "//input[@type='
 Search_Duns_Search_Text:    {Locator: 'id', Value: "searchtext"}
 Search_Duns_Search_Query:   {Locator: 'id', Value: "query"}
 Search_Duns_Search_Submit:  {Locator: 'xpath', Value: "//div[@role='search']/button[@type='submit']"}
+Search_Duns_Cases_Test:     {Locator: 'id', Value: "search-field-small"}
+Search_Duns_Cases_Submit:     {Locator: 'xpath', Value: "//article[@id='main-content']//button[@type='submit']/span[contains(text(), 'earch')]"}
 
 #Vendor Admin Dashboard
 Vendor_Admin_Dashboard_More_Details:     {Locator: 'xpath', Value: "//button[@aria-controls='more-details']"}
@@ -40,6 +41,8 @@ JoinNewPgm_Create_App_EDWOSB:   {Locator: 'id', Value: "certificate_type_edwosb"
 JoinNewPgm_Create_App_WOSB:     {Locator: 'id', Value: "certificate_type_wosb"}
 JoinNewPgm_Create_App_MPP:      {Locator: 'id', Value: "certificate_type_mpp"}
 JoinNewPgm_Create_App_8A:       {Locator: 'id', Value: "certificate_type_eight_a"}
+General_Answer_Page_8A_No:      {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id, 'answer') and contains( @id, 'value_no') ]"}
+General_Answer_Page_8A_Yes:     {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id, 'answer') and contains( @id, 'value_yes') ]"}
 JoinNewPgm_Add_Cert:            {Locator: 'id', Value: "add_certification"}
 
 
@@ -161,6 +164,15 @@ WOSB_Questionnaire_Page_Ans_213_N: {Locator: 'id', Value: "answers_213_value_no"
 
 #8A_Page_Question_Ans_N_General: {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id,'_value_no' ) ]"}
 
+#Dashboard
+Vendor_Overview_Page_Rt_Vend_All: {Locator: 'linkText', Value: "Return to Vendor"}
+#Dashboard
+OppSup_Dashboard_Business_Signin: {Locator: 'id', Value: "business_signin"}
+OppSup_Dashboard_Govt_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_gov_user']]/label"}
+OppSup_Dashboard_Govt_User_Radio_Bt: {Locator: 'id', Value: "user_type_gov_user"}
+OppSup_Dashboard_Vend_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_vendor_user']]/label"}
+OppSup_Dashboard_Vend_User_Radio_Bt: {Locator: 'id', Value: "user_type_vendor_user"}
+OppSup_Dashboard_User_Search_Text: {Locator: 'xpath', Value: "//input[@id='ops_query']"}
 
 
 

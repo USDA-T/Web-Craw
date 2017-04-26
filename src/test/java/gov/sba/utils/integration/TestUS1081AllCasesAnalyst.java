@@ -78,10 +78,11 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             List<WebElement> rows_Header = webDriver
                     .findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
 
-            String[] header_Names_Array_Validate = new String[8];
+            String[] header_Names_Array_Validate = new String[9];
             java.util.Iterator<WebElement> list_elements = rows_Header.iterator();
             int i = 0;
             while (list_elements.hasNext()) {
+                logger_US1081.info(i);
                 header_Names_Array_Validate[i] = list_elements.next().getText();
                 i = i + 1;
             }
@@ -120,7 +121,8 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
                 db_rows_array.add(db_rows_Cell);
             }
             logger_US1081.info("db data :" + db_rows_array.toString());
-            Thread.sleep(50000);//Sleep Needed - Deepa
+
+            CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
             result_Set.close();
 
             // Entire Table Verification for next Sprint
@@ -145,6 +147,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
             logger_US1081.info(ui_rows_array.toString());
             for (int j = 0; j < ui_rows_array.size(); j++) {
                 for (int k = 0; k < ui_rows_array.get(j).size(); k++) {
+                    logger_US1081.info("Asserting" + ui_rows_array.get(j).get(k).toString());
                     assertEquals(ui_rows_array.get(j).get(k), db_rows_array.get(j).get(k));
                 }
             }

@@ -13,8 +13,8 @@ public class TestuserProfileSearchType {
             String Expected_Result) throws Exception {
         // Select Government User Radio button
         CommonApplicationMethods.click_Element(webDriver, xpathSearch);
-        webDriver.findElement(By.xpath("//input[@id='ops_query']")).sendKeys(last_name);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        CommonApplicationMethods.setText_Element(webDriver, "OppSup_Dashboard_User_Search_Text", last_name);
+        CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
         // User Search results
         @SuppressWarnings("unused")
         WebElement table = webDriver.findElement(By.xpath("//table[@class='searchable']"));

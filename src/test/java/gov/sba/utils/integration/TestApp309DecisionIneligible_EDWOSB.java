@@ -66,6 +66,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
             LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 55);
             login_Data_01.Login_With_Reference();
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
             List<WebElement> current_Row = webDriver.findElements(By.xpath(
                     "//div[@id='table-search']/table/tbody/tr[ " + "td[position()=2]/a[contains(text(),'" + duns_Number
                             + "')]	and " + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]"));
@@ -94,7 +95,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
             Thread.sleep(2000);
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             List<WebElement> current_Row1 = webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                    + "td[position()=8 and contains(text(),'Ineligible')]   and "
+                    + "td[position()=8 and contains(text(),'neligible')]   and "
                     + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
                     + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]"));
             Assert.assertTrue(current_Row1.size() > 0);
@@ -103,7 +104,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
             login_Data.Login_With_Details();
             // Certificate status - Ineligible, decision- Sba Declined
             List<WebElement> listOfIneliglebEDWOSB = webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/"
-                    + "tr[  " + "" + "		(td[position()=4 and contains(text(),'neligible')]) "
+                    + "tr[  " + "" + "		(td[position()=5 and contains(text(),'neligible')]) "
                     + "and  (td[position()=1]/a[contains(text(),'EDWOSB')]) " + "	]"));
             Assert.assertTrue(listOfIneliglebEDWOSB.size() > 0);
 
