@@ -1,6 +1,7 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -56,6 +57,7 @@ public class TestApp187OppSupport extends TestCase {
 
         } catch (Exception e) {
             TestApp187OppSupport.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp187OppSupport", "Exception"});
             TestApp187OppSupport.info("test failed ");
         }
     }

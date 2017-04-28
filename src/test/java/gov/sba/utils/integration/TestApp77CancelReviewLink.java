@@ -152,6 +152,7 @@ public class TestApp77CancelReviewLink extends TestCase {
 
         } catch (Exception e) {
             TestApp77CancelReviewLink.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp77CancelReviewLink", "Exception"});
             throw e;
         }
     }

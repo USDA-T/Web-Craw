@@ -243,6 +243,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
         } catch (Exception e) {
             logger_US1674_EDWOSB.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUs1674EDWOSBAnalystReview", "Exception"});
             throw e;
         }
     }

@@ -83,12 +83,13 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
         } catch (Exception e) {
             logger_37OpsSpStfCh.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp37OpsSupportStaffChangeBusinessType", "Exception"});
             throw e;
         }
     }
 
     @After
     public void tearDown() throws Exception {
-        //webDriver.quit();
+        webDriver.quit();
     }
 }

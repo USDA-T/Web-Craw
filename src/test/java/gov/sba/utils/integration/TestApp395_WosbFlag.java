@@ -132,6 +132,7 @@ private static final Logger logger_TestApp395 = LogManager.getLogger(TestApp395_
       CommonApplicationMethods.return_all_Applications(webDriver, 11, "159165917");
     } catch (Exception e) {
       logger_TestApp395.info(e.toString());
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp395_WosbFlag", "Exception"});
       throw new Exception("Error: ", e);
     }
   }

@@ -169,6 +169,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
         catch (Exception e) {
             logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1081AllCasesNewSupervisor.class.getName(), "Exception"});
             throw e;
         }
 
@@ -176,6 +177,6 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-       // webDriver.quit();
+        webDriver.quit();
     }
 }

@@ -269,6 +269,6 @@ public class Testapp244AllCasesMpp extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+         webDriver.quit();
     }
 }

@@ -83,6 +83,7 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
 
         } catch (Exception e) {
             TestApp170LinkDunsNo.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoWOSB", "Exception"});
             throw e;
         }
     }

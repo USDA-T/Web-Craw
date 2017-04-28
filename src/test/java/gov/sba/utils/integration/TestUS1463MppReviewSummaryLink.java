@@ -86,6 +86,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
         } catch (Exception e) {
             logger_US1463.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1463MppReviewSummaryLink", "Exception"});
             throw new Exception("Error: ", e);
         }
     }

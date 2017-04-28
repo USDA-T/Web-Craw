@@ -198,6 +198,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       CommonApplicationMethods.return_all_Applications(webDriver, 11, "148832876");
     } catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp395EdwosbFlag", "Exception"});
       throw new Exception("Error: ", e);
     }
   }

@@ -1,6 +1,7 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -68,6 +69,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
 
         } catch (Exception e) {
             logger_US1280.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1280_OppSuppStaff", "Exception"});
             throw e;
             // logger_US1081.info("test failed as return_vendor link dididnot
             // work");

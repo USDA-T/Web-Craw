@@ -77,6 +77,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
 
         } catch (Exception e) {
             logger_TestEDWOSBWorkflow.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestAnalystEDWOSBReviewWorkflow", "Exception"});
             throw e;
         }
     }

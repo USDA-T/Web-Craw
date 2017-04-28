@@ -90,6 +90,7 @@ public class TestWOSBRenewal  extends TestCase {
       assertEquals(count_Edwosb_Expire.size(), 1);
     } catch (Exception e) {
       logger_TestWOSBRenewal.info(e.toString());
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestWOSBRenewal.class.getName(), "Exception"});
       throw new Exception("Error: ", e);
     }
   }

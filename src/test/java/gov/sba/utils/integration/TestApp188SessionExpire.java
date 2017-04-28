@@ -94,6 +94,7 @@ public class TestApp188SessionExpire extends TestCase {
 
         } catch (Exception e) {
             TestApp188SessionExpire.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp188SessionExpire", "Exception"});
             throw e;
         }
     }

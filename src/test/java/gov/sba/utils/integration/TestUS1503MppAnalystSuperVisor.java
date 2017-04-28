@@ -1,6 +1,7 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -140,6 +141,7 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
 
         catch (Exception e) {
             logger_US1503.info("Cases link is on Main Navigator is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1503MppAnalystSuperVisor", "Exception"});
         }
 
     }

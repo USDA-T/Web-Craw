@@ -155,7 +155,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         }
 
         catch (Exception e) {
-            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1081AllCasesAnalyst"});
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1081AllCasesAnalyst", "Exception"});
             throw e;
         }
     }

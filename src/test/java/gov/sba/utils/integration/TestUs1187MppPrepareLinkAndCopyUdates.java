@@ -1,6 +1,7 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -74,13 +75,14 @@ public class TestUs1187MppPrepareLinkAndCopyUdates extends TestCase {
             assertEquals(Actual_Text, Expected_Text);
         } catch (Exception e) {
             logger.info("Link is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUs1187MppPrepareLinkAndCopyUdates.class.getName(), "Exception"});
             throw e;
         }
     }
 
     @After
     public void tearDown() throws Exception {
-        // webDriver.quit();
+        webDriver.quit();
     }
 
 }

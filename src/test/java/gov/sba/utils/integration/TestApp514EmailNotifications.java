@@ -94,6 +94,7 @@ public class TestApp514EmailNotifications extends TestCase {
 
 
       } catch (Exception e){
+        CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp514EmailNotifications", "Exception"});
           throw e;
       }
     }

@@ -1,6 +1,7 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.utils.CommonApplicationMethods;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -39,6 +40,7 @@ public class TestUS1230HomePage extends TestCase {
 
         } catch (Exception e) {
             logger.info("welcome text is not present");
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1230HomePage.class.getName(), "Exception"});
         }
         Expected_Text = "The U.S. Small Business Administration (SBA) is working to modernize the application process for federal contracting programs. Manage your application and eligibility documentation for the WOSB and All Small Mentor-Protégé programs online from our easy-to-use dashboard. Get started today!";
         assertEquals(Expected_Text, Actual_Text);
@@ -53,6 +55,7 @@ public class TestUS1230HomePage extends TestCase {
 
         } catch (Exception e) {
             logger.info("upcoming event text is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1230HomePage.class.getName(), "Exception"});
         }
         Expected_Text = "Upcoming Activities\nNew programs will soon be incorporated onto certify.SBA.gov including the 8(a) Business Development Program (Winter 2017), HUBZone Program (Spring 2017) and Dynamic Small Business Search (DSBS) (Summer 2017).";
         assertEquals(Expected_Text, Actual_Text);
@@ -66,6 +69,7 @@ public class TestUS1230HomePage extends TestCase {
 
         } catch (Exception e) {
             logger.info("Grey Box text is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1230HomePage.class.getName(), "Exception"});
         }
         Expected_Text = "Currently, this website is available for the Women-Owned Small Business (WOSB) and All Small Mentor Protégé programs only. For the 8(a) Business Development and HUBZone programs, please continue to use the SBA General Login System (GLS) to manage your certifications.";
         assertEquals(Expected_Text, Actual_Text);

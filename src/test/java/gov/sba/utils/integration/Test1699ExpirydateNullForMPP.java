@@ -151,7 +151,9 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
         } catch (Exception e) {
             logger_US1699.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"Test1699ExpirydateNullForMPP", "Exception"});
             throw new Exception("Error: ", e);
+
         }
     }
 

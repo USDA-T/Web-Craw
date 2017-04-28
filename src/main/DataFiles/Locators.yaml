@@ -53,6 +53,8 @@ Opp_Support_Page_Vendor_Prof_Search: {Locator: 'xpath', Value:  "//input[@id='us
 #EDWOSB_Scorp Questionnaire_Page with No flow
 EDWOSB_Questionnaire_Page_Titl1_Main: {Locator: 'xpath', Value: "//div[@id='answers_8aq1']/fieldset/h4"}
 
+WOSB_Self_Certification_Link: {Locator: 'linktext', Value: "WOSB Self-Certification"}
+
 EDWOSB_Questionnaire_Page_Ans_389_N: {Locator: 'id', Value: "answers_389_value_no"}
 EDWOSB_Questionnaire_Page_Ans_390_Y: {Locator: 'id', Value: "answers_390_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_391_Y: {Locator: 'id', Value: "answers_391_value_yes"}

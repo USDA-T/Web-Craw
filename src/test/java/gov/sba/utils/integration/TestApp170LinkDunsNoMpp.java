@@ -74,6 +74,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
         } catch (Exception e) {
             TestApp170LinkDunsNo.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoMpp", "Exception"});
             throw e;
         }
     }

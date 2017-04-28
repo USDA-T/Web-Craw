@@ -66,6 +66,7 @@ public class TestAnalystReview {
 
         } catch (Exception e) {
             TestAnalystReview.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestAnalystReview", "Exception"});
         }
     }
 

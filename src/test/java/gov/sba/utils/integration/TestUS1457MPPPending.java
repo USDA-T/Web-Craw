@@ -142,7 +142,7 @@ public class TestUS1457MPPPending extends TestCase {
 
         } catch (Exception e) {
             logger_US1457.info(e.toString());
-            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1081AllCasesAnalyst.class.getName(), "Exception"});
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1457MPPPending.class.getName(), "Exception"});
             throw new Exception("Error: ", e);
         }
     }

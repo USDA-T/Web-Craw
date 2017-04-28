@@ -28,33 +28,33 @@ public class TestCreateWosbCertTs1 extends TestCase {
     CommonApplicationMethods.focus_window();
     get_The_Row_From_Login_Data = 10;
   }
-  public void testMainTest() throws Exception {
-    // Login to dashboard.
-    try {
-      // Check Dashboard Pending status
-      LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-      login_Data.Login_With_Reference();
-    //Return the Applicatiom;
-    if (CommonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active"))
-    { CommonApplicationMethods.navigationMenuClick(webDriver,"LOGOUT");
-      CommonApplicationMethods.return_all_Applications(webDriver, 11, "159165917");
-      login_Data = new LoginPageWithReference(webDriver, 10);
-      login_Data.Login_With_Reference();
-    }
-    CommonApplicationMethods.deleteApplication(webDriver, "Edwosb", "Draft");
-    CommonApplicationMethods.deleteApplication( webDriver, "Wosb", "Draft");
+    public void testMainTest() throws Exception {
+      // Login to dashboard.
+      try {
+        // Check Dashboard Pending status
+        LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+        login_Data.Login_With_Reference();
+      //Return the Applicatiom;
+      if (CommonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active"))
+      { CommonApplicationMethods.navigationMenuClick(webDriver,"LOGOUT");
+        CommonApplicationMethods.return_all_Applications(webDriver, 11, "159165917");
+        login_Data = new LoginPageWithReference(webDriver, 10);
+        login_Data.Login_With_Reference();
+      }
+      CommonApplicationMethods.deleteApplication(webDriver, "Edwosb", "Draft");
+      CommonApplicationMethods.deleteApplication( webDriver, "Wosb", "Draft");
 
-  //start New WOSB Applicatiom
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver,"WOSB");
-      NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
-      NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+    //start New WOSB Applicatiom
+        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+        CommonApplicationMethods.createApplication(webDriver,"WOSB");
+        NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
+        NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
+        fillApplCreatePages.finalSignatureSubmit(webDriver);
 
 
     } catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestUS1081AllCasesAnalyst.class.getName(), "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestCreateWosbCertTs1.class.getName(), "Exception"});
       throw e;
     }
   }

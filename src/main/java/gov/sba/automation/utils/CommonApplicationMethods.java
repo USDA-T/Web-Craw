@@ -6,19 +6,24 @@ import com.esotericsoftware.yamlbeans.YamlReader;
 import gov.sba.utils.integration.FixtureUtils;
 import gov.sba.utils.integration.LoginPageWithReference;
 import java.awt.AWTException;
+import java.awt.Rectangle;
 import java.awt.Robot;
+import java.awt.Toolkit;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +34,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 
 public class CommonApplicationMethods {
 
@@ -56,9 +60,22 @@ public class CommonApplicationMethods {
             FileUtils.copyFile(src, new File(FixtureUtils.get_SS_Dir() + stringValueArray[0] + "Exception"  + ".png")   );
           }
         }
-        catch (IOException e){
-          throw e;
+
+        catch (IOException e){ throw e; }
+
+      };
+      //============================================================================================================
+      public static void take_Desktop_SShot_TestCaseName( String[] stringValueArray) throws Exception {
+        Robot robot = new Robot();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd hh mm ss a");
+        Calendar now = Calendar.getInstance();
+        BufferedImage screenShot = robot.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+        if (stringValueArray.length == 2){
+          ImageIO.write(screenShot, "JPG", new File(FixtureUtils.get_SS_Dir() + stringValueArray[0] + stringValueArray[1] +".jpg"));
+        }else {
+          ImageIO.write(screenShot, "JPG", new File(FixtureUtils.get_SS_Dir() + stringValueArray[0] + "_Exception" +".jpg"));
         }
+
 
       };
       //============================================================================================================
@@ -123,7 +140,7 @@ public class CommonApplicationMethods {
             locator.get("Value").toString());
       }
       //============================================================================================================
-      public static WebElement find_Element_Loc(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+      public static WebElement find_Element_Loc_Old(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
 
         String flag = "";
         WebElement element_01 = null;
@@ -216,7 +233,7 @@ public class CommonApplicationMethods {
         }
       }
       //============================================================================================================
-      public static WebElement find_Element_Loc_InProg(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+      public static WebElement find_Element_Loc(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
 
         String flag = "";
         WebElement element_01 = null;
@@ -254,14 +271,14 @@ public class CommonApplicationMethods {
       //============================================================================================================
       public static WebElement find_Element(WebDriver webdriver, String locator_Yaml) throws Exception {
         Map locator = getLocator(locator_Yaml);
-//        return find_Element_Loc(webdriver, locator.get("Locator").toString(),
+//        return find_Element_Loc_Old(webdriver, locator.get("Locator").toString(),
 //            locator.get("Value").toString());
-        return find_Element_Loc_InProg(webdriver, locator.get("Locator").toString(),
+        return find_Element_Loc(webdriver, locator.get("Locator").toString(),
             locator.get("Value").toString());
       }
       //============================================================================================================
       public static void click_Element_Loc(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
-        WebElement click_element = find_Element_Loc(webdriver, type_Locator, value_Locator);
+        WebElement click_element = find_Element_Loc_Old(webdriver, type_Locator, value_Locator);
         click_element.click();
       }
       //============================================================================================================
@@ -295,13 +312,13 @@ public class CommonApplicationMethods {
       //============================================================================================================
       public static void click_Element(WebDriver webdriver, String locator_Yaml) throws Exception {
         Map locator = getLocator(locator_Yaml);
-        click_Element_Loc(webdriver, locator.get("Locator").toString(),
-        locator.get("Value").toString());
+        find_Element_Loc(webdriver, locator.get("Locator").toString(),
+            locator.get("Value").toString()).click();
       }
       //============================================================================================================
       public static void setText_Element(WebDriver webdriver, String locator_Yaml, String textVal)throws Exception {
         Map locator = getLocator(locator_Yaml);
-        WebElement click_element = find_Element_Loc(webdriver, locator.get("Locator").toString(),
+        WebElement click_element = find_Element_Loc_Old(webdriver, locator.get("Locator").toString(),
             locator.get("Value").toString());
         click_element.click();
         click_element.clear();
@@ -310,7 +327,7 @@ public class CommonApplicationMethods {
       //============================================================================================================
       public static void sendKeys_Element(WebDriver webdriver, String locator_Yaml, String textVal)throws Exception {
         Map locator = getLocator(locator_Yaml);
-        WebElement click_element = find_Element_Loc(webdriver, locator.get("Locator").toString(),
+        WebElement click_element = find_Element_Loc_Old(webdriver, locator.get("Locator").toString(),
             locator.get("Value").toString());
         click_element.sendKeys(textVal);
       }

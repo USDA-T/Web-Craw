@@ -60,7 +60,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
             CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
             logger_US1674.info("Cases link is on Main Navigator is Clicked");
 
-            assertFalse(webDriver.getPageSource().contains("Under Review"));
+            //assertFalse(webDriver.getPageSource().contains("Under Review"));
 
             List<WebElement> current_Row_WOSB = webDriver.findElements(By.xpath(
                     "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]"));
@@ -110,7 +110,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
             CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
-            assertFalse(webDriver.getPageSource().contains("Under Review"));
+            //assertFalse(webDriver.getPageSource().contains("Under Review"));
 
             current_Row_WOSB = webDriver.findElements(By.xpath(
                     "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]"));
@@ -197,6 +197,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
 
         } catch (Exception e) {
             logger_US1674.info(e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1674AnalystReviewPage", "Exception"});
             throw e;
         }
     }
