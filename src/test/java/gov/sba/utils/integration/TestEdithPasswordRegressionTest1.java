@@ -36,7 +36,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         Weak_PassW = "1234";
         New_PassW = "Map Effect Applied Furniture 9883";
         Confirm_New_PassW = "Map Effect Applied Furniture 9883";
-        Better_PW = "Derico#3365";
+        Better_PW = "Derico#336587";
     }
 
     @Test
@@ -118,7 +118,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         Thread.sleep(2000);
         // Verify that the Better password alert is activated when user enter a
         // weak password.
-        String actual_Text3 = webDriver.findElement(By.id("password_strength")).getText();
+        String actual_Text3 = webDriver.findElement(By.xpath("//div[3]/span")).getText();
         String expected_Text3 = "Better";
         assertEquals(actual_Text3, expected_Text3);
         logger.info("Success");

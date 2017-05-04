@@ -194,7 +194,7 @@ import junit.framework.TestCase;
       assertEquals(Actual_Text, Expected_Text);
       //Detail section.
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_agi_3_year_less_than_350k']/fieldset/p[2]")).getText();
-      Expected_Text = "Use the adjusted gross income (AGI) on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on 1040EZ; or Line 21 on Form 1040(a). Please note that this is rough guidance and should not be construed as SBA’s official position on calculating the AGI.";
+      Expected_Text = "In answering this question, you may consider the adjusted gross income (AGI) on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on Form 040EZ; or Line 21 on Form 1040(A). Please note that this is rough guidance and should not be construed as the official SBA’s position on calculating the AGI. You will be asked to provide information on your AGI in the Financial Data section.";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/p[2]")).getText();
       Expected_Text = "If this situation does not apply, select N/A.";

@@ -134,7 +134,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     // Verify Denzel's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$65,255,653.05";
+    Expected_Text = "-$256,153.05";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Denzel's.
     webDriver.findElement(By.id("note_link")).click();
@@ -155,7 +155,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     // Verify Will's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$65,255,653.05";
+    Expected_Text = "-$256,153.05";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Will Smith.
     webDriver.findElement(By.id("note_link")).click();

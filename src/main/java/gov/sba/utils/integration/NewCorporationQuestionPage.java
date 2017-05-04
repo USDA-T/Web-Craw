@@ -253,9 +253,15 @@ import org.openqa.selenium.interactions.Actions;
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
         Expected_Text = "Is the qualifying individual’s adjusted gross income averaged over the previous three years at or less than $350,000?";
         assertEquals(Actual_Text, Expected_Text);
+        Actual_Text = webDriver.findElement(By.cssSelector("#answers_agi_3_year_exceeds_but_uncommon > fieldset > h4")).getText();
+        Expected_Text = "Does the adjusted gross income of the qualifying individual(s) averaged over the three years preceding the certification exceed $350,000; however, the woman can show that (1) this income level was unusual and not likely to occur in the future; (2) that losses commensurate with and directly related to the earnings were suffered; or (3) that the income is not indicative of lack of economic disadvantage?";
+        assertEquals(Actual_Text, Expected_Text);
         //Detail section.
-        Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_agi_3_year_less_than_350k']/fieldset/p[2]")).getText();
-        Expected_Text = "Use the adjusted gross income (AGI) on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on 1040EZ; or Line 21 on Form 1040(a). Please note that this is rough guidance and should not be construed as SBA’s official position on calculating the AGI.";
+        Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+        Expected_Text = "In answering this question, you may consider the adjusted gross income (AGI) on your Federal income tax return forms (Line 37 on Form 1040; Line 4 on Form 040EZ; or Line 21 on Form 1040(A). Please note that this is rough guidance and should not be construed as the official SBA’s position on calculating the AGI. You will be asked to provide information on your AGI in the Financial Data section.";
+        assertEquals(Actual_Text, Expected_Text);
+        Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
+        Expected_Text = "Income received by an EDWOSB that is an S corporation, LLC, or partnership will be excluded from an individual's income where the EDWOSB provides documentary evidence demonstrating that the income was reinvested in the EDWOSB or the distribution was solely for the purposes of paying taxes arising in the normal course of operations of the business concern. Losses from the S corporation, LLC or partnership, however, are losses to the EDWOSB only, not losses to the individual, and cannot be used to reduce a woman's personal income. Reference13 C.F.R. 127.203(c)(3)";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/p[2]")).getText();
         Expected_Text = "If this situation does not apply, select N/A.";

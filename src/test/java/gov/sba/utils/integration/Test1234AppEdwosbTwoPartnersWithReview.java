@@ -27,7 +27,7 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
     @Test
     public void testMainTest() throws Exception {
         logger.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
-        // Login to dashboard.
+        // Login to Dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
         Thread.sleep(3000);
