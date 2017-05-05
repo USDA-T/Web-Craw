@@ -138,27 +138,23 @@ import junit.framework.TestCase;
           // No Detail section.
           // Select yes to all question.
           // question1, 1.4a
-          webDriver.findElement(By.id("answers_173_value_no")).click();
-          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//label[2]")).click();
           // question2, 1.4b
-          webDriver.findElement(By.id("answers_174_value_no")).click();
-          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
           // question 3, 1.4c
-          webDriver.findElement(By.id("answers_175_value_no")).click();
-          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
           // question 4, 1.4d
-          webDriver.findElement(By.id("answers_176_value_no")).click();
+          webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
           Thread.sleep(2000);
           // question 5, 1.4e Upload Doc only
           String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
           Upload4pdfOnSamePage MontanaUploadDocument3 = new Upload4pdfOnSamePage(webDriver);
           MontanaUploadDocument3.Upload4pdfOnSame(file_path_abs);
+          Thread.sleep(2000);
           // question 6, 1.4f with comment.
-          webDriver.findElement(By.id("answers_178_value_no")).click();
-          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
           // question 7, 1.4g select with skip to Review.
-          webDriver.findElement(By.id("answers_179_value_no")).click();
-          Thread.sleep(2000);
+          webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")).click();
           // Click on the save and continue button and verify that user is
           // requested to enter comment.
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -166,12 +162,12 @@ import junit.framework.TestCase;
           Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
           Expected_Text = "Comment is required";
           assertEquals(Actual_Text, Expected_Text);
-         // Enter comment.
+          //Enter comment.
           webDriver.findElement(By.id("answers_176_comment")).sendKeys(
                   "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
           Thread.sleep(2000);
-          // Review Page.
+          //Review Page.
           Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
           Expected_Text = "Review";
           assertEquals(Actual_Text, Expected_Text);
@@ -184,10 +180,10 @@ import junit.framework.TestCase;
           webDriver.findElement(By.xpath("//a/span")).click();
           //click on the draft 8(a) Initial Program.
           webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-          Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+          Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
           Expected_Text = "IN PROGRESS";
           assertEquals(Actual_Text, Expected_Text);
-          WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+          WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[5]/td[3]"));
           HighLight.highLightElement(webDriver, CharacterInProgressStatus);
           webDriver.findElement(By.linkText("Control")).click();
           Thread.sleep(2000);
@@ -201,10 +197,10 @@ import junit.framework.TestCase;
           webDriver.findElement(By.xpath("//input[@name='commit']")).click();
           webDriver.switchTo().alert().accept();
           //Verify status.
-          Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+          Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
           Expected_Text = "COMPLETE";
           assertEquals(Actual_Text, Expected_Text);
-          WebElement ControlComplteStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+          WebElement ControlComplteStatus =webDriver.findElement(By.xpath("//tr[5]/td[3]"));
           HighLight.highLightElement(webDriver, ControlComplteStatus);
           webDriver.findElement(By.linkText("Logout")).click();
 

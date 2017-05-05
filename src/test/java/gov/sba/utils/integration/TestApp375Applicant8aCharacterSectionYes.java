@@ -48,7 +48,7 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         Expected_Text = "Character";
         assertEquals(Actual_Text, Expected_Text);
         //Verify Status.
-        Actual_Text = webDriver.findElement(By.cssSelector("td.not_started")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
         Expected_Text = "NOT STARTED";
         assertEquals(Actual_Text, Expected_Text);
         //Click on the link to start eligibility check.
@@ -171,10 +171,10 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         webDriver.findElement(By.xpath("//a/span")).click();
         //click on the draft 8(a) Initial Program.
         webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-        Actual_Text = webDriver.findElement(By.xpath("//tr[2]/td[3]")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
         Expected_Text = "IN PROGRESS";
         assertEquals(Actual_Text, Expected_Text);
-        WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[2]/td[3]"));
+        WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[4]/td[3]"));
         HighLight.highLightElement(webDriver, CharacterInProgressStatus);
         webDriver.findElement(By.linkText("Character")).click();
         Thread.sleep(2000);
@@ -189,10 +189,10 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         //Click on the Save and Continue button.
         //Verify status.
         Thread.sleep(2000);
-        Actual_Text = webDriver.findElement(By.xpath("//tr[2]/td[3]")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
         Expected_Text = "COMPLETE";
         assertEquals(Actual_Text, Expected_Text);
-        WebElement CharacterComplteStatus =webDriver.findElement(By.xpath("//tr[2]/td[3]"));
+        WebElement CharacterComplteStatus =webDriver.findElement(By.xpath("//tr[4]/td[3]"));
         HighLight.highLightElement(webDriver, CharacterComplteStatus);
         webDriver.findElement(By.linkText("Logout")).click();
     }

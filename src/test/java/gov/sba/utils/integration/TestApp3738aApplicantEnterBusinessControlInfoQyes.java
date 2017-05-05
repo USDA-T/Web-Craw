@@ -49,7 +49,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase 
         Expected_Text = "Control";
         assertEquals(Actual_Text, Expected_Text);
         //Verify Status.
-        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
         Expected_Text = "NOT STARTED";
         assertEquals(Actual_Text, Expected_Text);
         //Click on the link to start eligibility check.
@@ -138,42 +138,47 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase 
         // No Detail section.
         // Select yes to all question.
         // question1, 1.4a
-        webDriver.findElement(By.id("answers_173_value_yes")).click();
+        webDriver.findElement(By.xpath("//div/input")).click();
         Thread.sleep(2000);
         // Upload a document.
         String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
         MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+        Thread.sleep(2000);
         // question2, 1.4b
-        webDriver.findElement(By.id("answers_174_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
         Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         Upload2pdfOnSamePage MontanaUploadDocument1 = new Upload2pdfOnSamePage(webDriver);
         MontanaUploadDocument1.Upload2pdfOnSame(file_path_abs);
+        Thread.sleep(2000);
         // question 3, 1.4c
-        webDriver.findElement(By.id("answers_175_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
         Thread.sleep(2000);
         // Upload a document optional.
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         Upload3pdfOnSamePage MontanaUploadDocument2 = new Upload3pdfOnSamePage(webDriver);
         MontanaUploadDocument2.Upload3pdfOnSame(file_path_abs);
+        Thread.sleep(2000);
         // question 4, 1.4d
-        webDriver.findElement(By.id("answers_176_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")).click();
         Thread.sleep(2000);
         // question 5, 1.4e Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         Upload4pdfOnSamePage MontanaUploadDocument3 = new Upload4pdfOnSamePage(webDriver);
         MontanaUploadDocument3.Upload4pdfOnSame(file_path_abs);
+        Thread.sleep(2000);
         // question 6, 1.4f with comment.
-        webDriver.findElement(By.id("answers_178_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[6]/fieldset/div/input")).click();
         Thread.sleep(2000);
         // question 6, Upload Doc only
         file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
         Upload5pdfOnSamePage MontanaUploadDocument4 = new Upload5pdfOnSamePage(webDriver);
         MontanaUploadDocument4.Upload5pdfOnSame(file_path_abs);
+        Thread.sleep(2000);
         // question 7, 1.4g select with no skip.
-        webDriver.findElement(By.id("answers_179_value_yes")).click();
+        webDriver.findElement(By.xpath("//div[7]/fieldset/div/input")).click();
         Thread.sleep(2000);
         // Click on the save and continue button and verify that user is
         // requested to enter comment.
@@ -213,7 +218,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase 
         Expected_Text = "Please answer this question";
         assertEquals(Actual_Text, Expected_Text);
         // Select yes.
-        webDriver.findElement(By.id("answers_180_value_yes")).click();
+        webDriver.findElement(By.xpath("//div/input")).click();
         // Click on the save and continue button and verify that user is
         // requested to enter comment.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
@@ -240,10 +245,10 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase 
         webDriver.findElement(By.xpath("//a/span")).click();
         //click on the draft 8(a) Initial Program.
         webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
         Expected_Text = "IN PROGRESS";
         assertEquals(Actual_Text, Expected_Text);
-        WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+        WebElement CharacterInProgressStatus =webDriver.findElement(By.xpath("//tr[5]/td[3]"));
         HighLight.highLightElement(webDriver, CharacterInProgressStatus);
         webDriver.findElement(By.linkText("Control")).click();
         Thread.sleep(2000);
@@ -257,10 +262,10 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQyes extends TestCase 
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
         //Verify status.
-        Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
+        Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
         Expected_Text = "COMPLETE";
         assertEquals(Actual_Text, Expected_Text);
-        WebElement ControlComplteStatus =webDriver.findElement(By.xpath("//tr[3]/td[3]"));
+        WebElement ControlComplteStatus =webDriver.findElement(By.xpath("//tr[5]/td[3]"));
         HighLight.highLightElement(webDriver, ControlComplteStatus);
         webDriver.findElement(By.linkText("Logout")).click();
 

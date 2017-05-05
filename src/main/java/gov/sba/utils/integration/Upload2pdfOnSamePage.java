@@ -19,7 +19,8 @@ package gov.sba.utils.integration;
     }
     public void Upload2pdfOnSame(String upload_Path) throws Exception {
       logger.debug("Uploading a new document");
-      webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[2]")).click();
+      Thread.sleep(2000);
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div/div/div/div/a")).click();
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//button[@id='doc-upload-button'])[2]")).click();
       Thread.sleep(2000);
