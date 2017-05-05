@@ -9,6 +9,10 @@ import org.apache.logging.log4j.LogManager;
   import org.apache.logging.log4j.Logger;
   import org.openqa.selenium.By;
   import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import gov.sba.automation.CoreUtils;
 
   public class NewWosbQuestionPage {
           private static final Logger logger = LogManager.getLogger(NewWosbQuestionPage.class.getName());
@@ -19,6 +23,8 @@ import org.apache.logging.log4j.LogManager;
           }
           public void NewWosbQuestion() throws Exception {
         logger.debug(" new sole proprietorship question page");
+        //Explicit wait.
+        WebDriverWait wait = new WebDriverWait(webDriver,30);
         String Actual_Text = null;
         String Expected_Text = null;
         //8(a) question section.
@@ -31,7 +37,7 @@ import org.apache.logging.log4j.LogManager;
         assertEquals(Actual_Text, Expected_Text);
         //Answer No.
         webDriver.findElement(By.xpath("//label[2]")).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>Third Party question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -46,7 +52,7 @@ import org.apache.logging.log4j.LogManager;
         assertEquals(Actual_Text, Expected_Text);
         //Answer No.
         webDriver.findElement(By.xpath("//label[2]")).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>Non-qualification section page.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -58,7 +64,7 @@ import org.apache.logging.log4j.LogManager;
         assertEquals(Actual_Text, Expected_Text);
         //select no and continue.
         webDriver.findElement(By.xpath("//label[2]")).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click(); 
         //==>Partnership program 1st question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -82,7 +88,7 @@ import org.apache.logging.log4j.LogManager;
         //Select No and continue.
         webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
         webDriver.findElement(By.xpath("//div[2]/fieldset/div[4]/textarea")).sendKeys("Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>Citizenship section.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -94,7 +100,7 @@ import org.apache.logging.log4j.LogManager;
         assertEquals(Actual_Text, Expected_Text);
         //select no and continue.
         webDriver.findElement(By.xpath("//label[2]")).click();
-        Thread.sleep(2000);
+        CoreUtils.clickContinue(webDriver);
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>Ownership section.1st question.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -125,7 +131,7 @@ import org.apache.logging.log4j.LogManager;
         //select no and continue.
         webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
         webDriver.findElement(By.xpath("//textarea")).sendKeys("Also is their earth so. Dry given, place itself for were third. Itself second gathered fruit from");
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>Management section.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -202,7 +208,7 @@ import org.apache.logging.log4j.LogManager;
         }        
         webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
         webDriver.findElement(By.xpath("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //==>SBA Exam section.
         Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -213,7 +219,7 @@ import org.apache.logging.log4j.LogManager;
         Expected_Text = "Any business that SBA found to be ineligible for the WOSB Program may request that SBA re- examine its WOSB or EDWOSB eligibility at any time if it believes in good faith that it has cured the reason(s) for its ineligibility. Reference: 13 C.F.R. 127.405(g)";
         assertEquals(Actual_Text, Expected_Text);
         webDriver.findElement(By.xpath("//label[2]")).click();
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //Review page.
         Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -242,7 +248,7 @@ import org.apache.logging.log4j.LogManager;
         Expected_Text = "SBA Exam";
         assertEquals(Actual_Text, Expected_Text);
         //Click on the submit button.
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));        
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         webDriver.switchTo().alert().accept();
         }}

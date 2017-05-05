@@ -20,12 +20,10 @@ package gov.sba.utils.integration;
     public void Upload2pdfOnSame(String upload_Path) throws Exception {
       logger.debug("Uploading a new document");
       Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div/div/div/div/a")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("(//button[@id='doc-upload-button'])[2]")).click();
+      webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[2]")).click();
       Thread.sleep(2000);
       Actions act = new Actions(webDriver);
-      act.doubleClick(webDriver.findElement(By.xpath("(//a[contains(text(),'Choose a .pdf file')])[2]"))).build().perform();
+      act.doubleClick(webDriver.findElement(By.xpath("(//button[@id='doc-upload-button'])[2]"))).build().perform();
       StringSelection ss = new StringSelection(upload_Path);
       Thread.sleep(1000);
       Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
