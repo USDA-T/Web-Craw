@@ -23,7 +23,6 @@ public class MontanaUploadDocumentPage {
     logger.debug("Uploading a new document");
     webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
     Thread.sleep(2000);
-
     webDriver.findElement(By.id("doc-upload-button")).click();
     Thread.sleep(2000);
     Actions act = new Actions(webDriver);
