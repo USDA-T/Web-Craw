@@ -478,7 +478,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_trade_ed > fieldset > h4"))
                 .getText();
-        Expected_Text = "Will the Mentor be providing the Protégé with “Trade Education” assistance?";
+        Expected_Text = "Will the Mentor be providing the Protégé with “International Trade Education” assistance?";
         assertEquals(Actual_Text, Expected_Text);
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_mpp_providing_biz_dev > fieldset > h4")).getText();
         Expected_Text = "Will the Mentor be providing the Protégé with “Business Development” assistance?";

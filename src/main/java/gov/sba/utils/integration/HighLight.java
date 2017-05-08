@@ -9,10 +9,10 @@ public class HighLight {
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
         js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", element);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
         try {
-            Thread.sleep(600);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
 
             System.out.println(e.getMessage());
