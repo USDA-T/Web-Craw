@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.TestCase;
 
@@ -30,6 +32,7 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     public void testMainTest() throws Exception {
         String Actual_Text;
         String Expected_Text;
+        WebDriverWait wait = new WebDriverWait(webDriver,30);
         logger.info("As an 8(a) applicant, I want to enter my business's Character information on an 8(a) application");
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
@@ -41,7 +44,13 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         Thread.sleep(2000);
-        webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
+        webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+        //webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
+        //Verify new intro page.
+  	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));        
+        Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
+        Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+        assertEquals(Actual_Text, Expected_Text);          
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //Verify the Basic Eligibility link.
         Actual_Text = webDriver.findElement(By.linkText("Character")).getText();
@@ -53,6 +62,10 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         //Click on the link to start eligibility check.
         webDriver.findElement(By.linkText("Character")).click();
+        //Verify intro page.
+        Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
+        Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+        assertEquals(Actual_Text, Expected_Text);   
         //Click on the accept button.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);  

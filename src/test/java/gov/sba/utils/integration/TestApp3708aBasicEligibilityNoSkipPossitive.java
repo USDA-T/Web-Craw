@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.TestCase;
 
@@ -31,6 +33,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     public void testMainTest() throws Exception {
       String Actual_Text = null;
       String Expected_Text = null;
+      WebDriverWait wait = new WebDriverWait(webDriver,30);
         logger.info("8(a) Applicant determines their Basic Eligibility (i.e., a section) for the program");
         //Locate the accept button and click on it.
         //Login to dashboard.
@@ -42,7 +45,13 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
         Thread.sleep(2000);
-        webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
+        webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+        //webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
+        //Verify new intro page.
+  	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));        
+        Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
+        Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+        assertEquals(Actual_Text, Expected_Text);          
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         //Verify the Basic Eligibility link.
         Actual_Text = webDriver.findElement(By.linkText("Basic Eligibility")).getText();
@@ -54,6 +63,10 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
         assertEquals(Actual_Text, Expected_Text);
         //Click on the link to start eligibility check.
         webDriver.findElement(By.linkText("Basic Eligibility")).click();
+        //Verify intro page.
+        Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
+        Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+        assertEquals(Actual_Text, Expected_Text);   
         //Click on the accept button.
         webDriver.findElement(By.xpath("//input[@name='commit']")).click();
         Thread.sleep(2000);
@@ -68,7 +81,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
         Expected_Text = "The applicant firm must be a for-profit business in order to qualify for the 8(a) Business Development Program. If the applicant firm is not a for-profit business, it is not eligible for program participation.";
         assertEquals(Actual_Text, Expected_Text);
         //Select Yes.
-        webDriver.findElement(By.id("answers_181_value_yes")).click();
+        webDriver.findElement(By.xpath("//div/input")).click();
         //Q1.1.b.
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_is_broker > fieldset > h4")).getText();
         Expected_Text = "Is the applicant firm operating as a broker?";
@@ -77,26 +90,6 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_is_broker > fieldset > p")).getText();
         Expected_Text = "A broker adds no material value to an item being supplied to a procuring activity. If the applicant firm does not take ownership or possession of, or handle the item being procured with its own equipment or facilities, the applicant firm may be operating as a broker. Please note that SBA’s definition of ‘broker’ does not include real estate or investment brokers.";
         assertEquals(Actual_Text, Expected_Text);
-        /////Verify link. +++Open when link added.
-        //webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        //String main_window = webDriver.getWindowHandle();
-        //logger.info("Before switching, title is = certify.sba.gov");
-        //webDriver.findElement(By.linkText("13 CFR § 124.108(d).")).click();
-        //assertEquals(Actual_Text, Expected_Text);
-        //java.util.Set<String> S = webDriver.getWindowHandles();
-        //Iterator<String> i = S.iterator();
-        //while (i.hasNext()) {
-        //String Second_window = i.next();
-        //if (!main_window.equalsIgnoreCase(Second_window)) {
-        //webDriver.switchTo().window(Second_window);
-        //logger.info("After switching title is = certify.sba.gov");
-        //webDriver.close();
-        //webDriver.switchTo().window(main_window);
-        //logger.info("Back to manin_window = certify.sba.gov");
-        //} else {
-        //logger.info("Second Window is not thesame as first window");
-        //}
-        //}
         //Select No.
         webDriver.findElement(By.id("answers_182_value_no")).click();
         //Q1.1.c.
@@ -347,6 +340,6 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
 
     @After
     public void tearDown() throws Exception {
-        webDriver.quit();
+        webDriver.close();
     }
 }
