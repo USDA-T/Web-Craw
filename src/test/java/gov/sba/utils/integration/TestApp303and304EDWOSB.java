@@ -10,6 +10,7 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.automation.AssertionUtils;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
@@ -69,7 +70,7 @@ public class TestApp303and304EDWOSB extends TestCase {
 
         login_Data = new LoginPageWithDetails(webDriver, email, password);
         login_Data.Login_With_Details();
-        CommonApplicationMethods.delete_all_Drafts(webDriver);
+        AssertionUtils.delete_all_Drafts(webDriver);
 
         // Verify the Answers are not prefilling from the previous answers when
         // the prepulate falg = 'false';

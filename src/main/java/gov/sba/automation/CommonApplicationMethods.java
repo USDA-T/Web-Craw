@@ -3,9 +3,9 @@ package gov.sba.automation;
 
 import static gov.sba.automation.ConfigUtils.isUnix;
 import static gov.sba.automation.ConfigUtils.systemType;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertTrue;
 
 import java.awt.AWTException;
 import java.awt.Rectangle;
@@ -293,38 +293,38 @@ public class CommonApplicationMethods {
 
 	}
 
-	public static void verify_Element_Property(WebDriver webdriver, String locator_Yaml, String property_Yaml)
-			throws Exception {
-		Map locator = getLocator(locator_Yaml);
-
-		WebElement click_element = find_Element_Loc(webdriver, locator.get("Locator").toString(),
-				locator.get("Value").toString());
-
-		Map prop = getLocator(property_Yaml);
-		String prop_Name = prop.get("PropName").toString();
-		String prop_Value = prop.get("PropValue").toString();
-
-		switch (prop_Name.toLowerCase()) {
-		case "enabled":
-			assertTrue(click_element.isEnabled());
-			break;
-		case "disabled":
-			assertFalse(click_element.isEnabled());
-			break;
-		case "visible":
-			assertTrue(click_element.isDisplayed());
-			break;
-		case "notvisible":
-		case "invisible":
-		case "hidden":
-			assertFalse(click_element.isDisplayed());
-			break;
-		default:
-			assertEquals("Assertion Type is", "Incorrect");
-			break;
-		}
-
-	}
+//	public static void verify_Element_Property(WebDriver webdriver, String locator_Yaml, String property_Yaml)
+//			throws Exception {
+//		Map locator = getLocator(locator_Yaml);
+//
+//		WebElement click_element = find_Element_Loc(webdriver, locator.get("Locator").toString(),
+//				locator.get("Value").toString());
+//
+//		Map prop = getLocator(property_Yaml);
+//		String prop_Name = prop.get("PropName").toString();
+//		String prop_Value = prop.get("PropValue").toString();
+//
+//		switch (prop_Name.toLowerCase()) {
+//		case "enabled":
+//			assertTrue(click_element.isEnabled());
+//			break;
+//		case "disabled":
+//			assertFalse(click_element.isEnabled());
+//			break;
+//		case "visible":
+//			assertTrue(click_element.isDisplayed());
+//			break;
+//		case "notvisible":
+//		case "invisible":
+//		case "hidden":
+//			assertFalse(click_element.isDisplayed());
+//			break;
+//		default:
+//			assertEquals("Assertion Type is", "Incorrect");
+//			break;
+//		}
+//
+//	}
 
 	public static void sendKeys_Element(WebDriver webdriver, String locator_Yaml, String textVal) throws Exception {
 		Map locator = getLocator(locator_Yaml);
@@ -419,29 +419,29 @@ public class CommonApplicationMethods {
 		CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 	}
 
-	public static void delete_all_Drafts(WebDriver webDriver) throws Exception {
-
-		Boolean FlagForAddEDWOSBNotPresent = true;
-		navigationMenuClick(webDriver, "DashBoard");
-		List<WebElement> current_Row_Check_02 = webDriver
-				.findElements(By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
-		if (current_Row_Check_02.size() > 0) {
-
-			for (int i = 0; i < current_Row_Check_02.size(); i++) {
-				FlagForAddEDWOSBNotPresent = false;
-				current_Row_Check_02.get(0).click();
-				accept_Optional_Alert(webDriver, 8);
-				Thread.sleep(1500); // Sleep Needed Deepa
-				webDriver.navigate().refresh();
-				current_Row_Check_02 = webDriver
-						.findElements(By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
-				i = 0;
-				FlagForAddEDWOSBNotPresent = true;
-			}
-		}
-		assertTrue(FlagForAddEDWOSBNotPresent);
-
-	}
+//	public static void delete_all_Drafts(WebDriver webDriver) throws Exception {
+//
+//		Boolean FlagForAddEDWOSBNotPresent = true;
+//		navigationMenuClick(webDriver, "DashBoard");
+//		List<WebElement> current_Row_Check_02 = webDriver
+//				.findElements(By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
+//		if (current_Row_Check_02.size() > 0) {
+//
+//			for (int i = 0; i < current_Row_Check_02.size(); i++) {
+//				FlagForAddEDWOSBNotPresent = false;
+//				current_Row_Check_02.get(0).click();
+//				accept_Optional_Alert(webDriver, 8);
+//				Thread.sleep(1500); // Sleep Needed Deepa
+//				webDriver.navigate().refresh();
+//				current_Row_Check_02 = webDriver
+//						.findElements(By.xpath("//table[@id='certifications']//td/a[contains(text(),'elete')] "));
+//				i = 0;
+//				FlagForAddEDWOSBNotPresent = true;
+//			}
+//		}
+//		assertTrue(FlagForAddEDWOSBNotPresent);
+//
+//	}
 
 	public static void clear_Env_Chrome() throws InterruptedException, IOException {
 		if (System.getProperty("os.name").startsWith("Windows")) {
@@ -565,22 +565,22 @@ public class CommonApplicationMethods {
 
 	}
 
-	public static void returnAll_App_To_Vendor(WebDriver webDriver, String duns_Number) throws Exception {
-
-		Boolean FlagForReturn = true;
-		List<WebElement> current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
-		if (current_Row_Check_02.size() > 0) {
-			for (int i = 0; i < current_Row_Check_02.size(); i++) {
-				FlagForReturn = false;
-				current_Row_Check_02.get(0).click();
-				webDriver.navigate().refresh();
-				current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
-				i = 0;
-				FlagForReturn = true;
-			}
-		}
-		assertTrue(FlagForReturn);
-	}
+//	public static void returnAll_App_To_Vendor(WebDriver webDriver, String duns_Number) throws Exception {
+//
+//		Boolean FlagForReturn = true;
+//		List<WebElement> current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
+//		if (current_Row_Check_02.size() > 0) {
+//			for (int i = 0; i < current_Row_Check_02.size(); i++) {
+//				FlagForReturn = false;
+//				current_Row_Check_02.get(0).click();
+//				webDriver.navigate().refresh();
+//				current_Row_Check_02 = find_Elements(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
+//				i = 0;
+//				FlagForReturn = true;
+//			}
+//		}
+//		assertTrue(FlagForReturn);
+//	}
 
 	public static void onlyReturnAppToVendorMethd(WebDriver webDriver, int which_Loginto_ReturnApp, String duns_Number,
 			String type_Of_App, String status_Of_App, int which_Log_BackAgain) throws Exception {
