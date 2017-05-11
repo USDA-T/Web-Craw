@@ -108,7 +108,7 @@ public class SubmitAndReviewPage extends TestCase {
     Thread.sleep(2000);
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
-     // webDriver.switchTo().alert().accept();
+      // webDriver.switchTo().alert().accept();
       // Logout and log back in with the vendor to add the second partner.
       webDriver.findElement(By.linkText("Logout")).click();
       get_The_Row_From_Login_Data = 8;
@@ -137,23 +137,29 @@ public class SubmitAndReviewPage extends TestCase {
       webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
       webDriver.findElement(By.xpath("(//option[@value='Partner'])[2]")).click();
       webDriver.findElement(By.xpath("(//input[@id='owners__ssn'])[2]")).sendKeys("187669987");
-      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]")).sendKeys("DWashington@mailinator.com");
+      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]"))
+          .sendKeys("DWashington@mailinator.com");
       webDriver.findElement(By.xpath("(//select[@id='owners__marital_status'])[2]")).click();
       webDriver.findElement(By.xpath("(//option[@value='Married'])[2]")).click();
-      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]")).sendKeys("8765 Weems dr");
+      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]"))
+          .sendKeys("8765 Weems dr");
       webDriver.findElement(By.xpath("(//input[@id='owners__city'])[2]")).sendKeys("Manassas");
       webDriver.findElement(By.xpath("(//input[@id='owners__state'])[2]")).sendKeys("Virginia");
       webDriver.findElement(By.xpath("(//input[@id='owners__postal_code'])[2]")).sendKeys("28776");
-      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]")).sendKeys("United State");
-      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]")).sendKeys("7024762987");
-      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]")).sendKeys("7023764876");
+      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]"))
+          .sendKeys("United State");
+      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]"))
+          .sendKeys("7024762987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]"))
+          .sendKeys("7023764876");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
       Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build()
+          .perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.
@@ -208,23 +214,29 @@ public class SubmitAndReviewPage extends TestCase {
       webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
       webDriver.findElement(By.xpath("(//option[@value='Partner'])[2]")).click();
       webDriver.findElement(By.xpath("(//input[@id='owners__ssn'])[2]")).sendKeys("187669987");
-      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]")).sendKeys("DWashington@mailinator.com");
+      webDriver.findElement(By.xpath("(//input[@id='owners__email'])[2]"))
+          .sendKeys("DWashington@mailinator.com");
       webDriver.findElement(By.xpath("(//select[@id='owners__marital_status'])[2]")).click();
       webDriver.findElement(By.xpath("(//option[@value='Married'])[2]")).click();
-      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]")).sendKeys("8765 Weems dr");
+      webDriver.findElement(By.xpath("(//input[@id='owners__address'])[2]"))
+          .sendKeys("8765 Weems dr");
       webDriver.findElement(By.xpath("(//input[@id='owners__city'])[2]")).sendKeys("Manassas");
       webDriver.findElement(By.xpath("(//input[@id='owners__state'])[2]")).sendKeys("Virginia");
       webDriver.findElement(By.xpath("(//input[@id='owners__postal_code'])[2]")).sendKeys("28776");
-      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]")).sendKeys("United State");
-      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]")).sendKeys("7024762987");
-      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]")).sendKeys("7023764876");
+      webDriver.findElement(By.xpath("(//input[@id='owners__country'])[2]"))
+          .sendKeys("United State");
+      webDriver.findElement(By.xpath("(//input[@id='owners__home_phone'])[2]"))
+          .sendKeys("7024762987");
+      webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]"))
+          .sendKeys("7023764876");
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
       Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build().perform();
+      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build()
+          .perform();
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(2000);
       // Upload document.

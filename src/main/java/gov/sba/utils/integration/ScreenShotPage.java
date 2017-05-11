@@ -11,22 +11,22 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 public class ScreenShotPage {
-    private static final Logger logger = LogManager.getLogger(ScreenShotPage.class.getName());
-    WebDriver webDriver;
+  private static final Logger logger = LogManager.getLogger(ScreenShotPage.class.getName());
+  WebDriver webDriver;
 
-    public ScreenShotPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
+  public ScreenShotPage(WebDriver webDriver) {
+    this.webDriver = webDriver;
+  }
+
+  public void ScreenShot() throws Exception {
+    // Take screenshot and store as a file format
+    File src = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+    try {
+      // now copy the screenshot to the screenshot folder.
+      FileUtils.copyFile(src, new File("/sba-automation/misc/Screenshots/ErrorPage.png"));
+    } catch (IOException e) {
+      logger.info(e.getMessage());
+
     }
-
-    public void ScreenShot() throws Exception {
-        // Take screenshot and store as a file format
-        File src = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
-        try {
-            // now copy the screenshot to the screenshot folder.
-            FileUtils.copyFile(src, new File("/sba-automation/misc/Screenshots/ErrorPage.png"));
-        } catch (IOException e) {
-            logger.info(e.getMessage());
-
-        }
-    }
+  }
 }
