@@ -1,24 +1,27 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.utils.CommonApplicationMethods.checkApplicationExists;
-import static gov.sba.automation.utils.CommonApplicationMethods.createApplication;
-import static gov.sba.automation.utils.CommonApplicationMethods.deleteApplication;
-import static gov.sba.automation.utils.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.utils.CommonApplicationMethods.return_all_Applications;
-import static gov.sba.automation.utils.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.automation.utils.CommonApplicationMethods.verify_Element_Attribute;
-import static gov.sba.automation.utils.CommonApplicationMethods.verify_Element_Property;
-
 import junit.framework.TestCase;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
+
+import static gov.sba.automation.CommonApplicationMethods.checkApplicationExists;
+import static gov.sba.automation.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.CommonApplicationMethods.deleteApplication;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.return_all_Applications;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.automation.CommonApplicationMethods.verify_Element_Attribute;
+import static gov.sba.automation.CommonApplicationMethods.verify_Element_Property;
+
 import org.apache.logging.log4j.LogManager;
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestCreateWosbCertTs1 extends TestCase {
   //Get the questions names for which Prepopulate flag set to true

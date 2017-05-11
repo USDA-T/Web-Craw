@@ -3,7 +3,6 @@ package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +12,9 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
 
 public class NewScorpQuestionPageDeepa {
   private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());

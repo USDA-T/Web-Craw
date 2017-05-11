@@ -1,7 +1,7 @@
 //TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.utils.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.CommonApplicationMethods;
 
 public class fillApplCreatePages {
     private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());

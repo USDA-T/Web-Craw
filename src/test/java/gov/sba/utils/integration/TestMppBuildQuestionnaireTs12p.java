@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs12p extends TestCase {

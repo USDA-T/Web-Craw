@@ -11,7 +11,8 @@ package gov.sba.utils.integration;
   import org.openqa.selenium.WebDriver;
   import org.openqa.selenium.WebElement;
 
-  import junit.framework.TestCase;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 
   public class TestAppAddContributors extends TestCase {
 

@@ -1,14 +1,17 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.utils.CommonApplicationMethods.accept_Optional_Alert;
-import static gov.sba.automation.utils.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.utils.CommonApplicationMethods.setText_Element;
-import gov.sba.automation.utils.CommonApplicationMethods;
+import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
 
 public class NewLLCQuestionanireDeepa {
 

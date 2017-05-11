@@ -13,8 +13,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.UnstableTests.class })

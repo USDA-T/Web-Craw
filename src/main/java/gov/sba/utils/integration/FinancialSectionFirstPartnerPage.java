@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import gov.sba.automation.FixtureUtils;
+
 public class FinancialSectionFirstPartnerPage {
   private static final Logger logger =
       LogManager.getLogger(FinancialSectionFirstPartnerPage.class.getName());

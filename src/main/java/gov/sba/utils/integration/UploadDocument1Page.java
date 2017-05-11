@@ -11,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import gov.sba.automation.FixtureUtils;
+
 public class UploadDocument1Page {
     private static final Logger logger = LogManager.getLogger(UploadDocument1Page.class.getName());
     WebDriver webDriver;

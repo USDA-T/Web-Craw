@@ -12,8 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
 import junit.framework.TestCase;
 
 public class AnalystReviewPage extends TestCase {

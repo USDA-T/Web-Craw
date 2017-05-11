@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {

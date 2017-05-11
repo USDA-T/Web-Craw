@@ -6,7 +6,6 @@ import static org.junit.Assert.assertEquals;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +13,10 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp395EdwosbFlag extends TestCase {
 

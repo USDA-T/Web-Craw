@@ -14,8 +14,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestApp309DecisionIneligible_EDWOSB extends TestCase {

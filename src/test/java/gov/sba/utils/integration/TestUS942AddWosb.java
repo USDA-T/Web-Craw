@@ -7,8 +7,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })

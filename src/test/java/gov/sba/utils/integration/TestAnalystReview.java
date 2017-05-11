@@ -8,8 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 
 public class TestAnalystReview {
     // Set The variabl.es/Define

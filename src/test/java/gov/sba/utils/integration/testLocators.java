@@ -1,21 +1,16 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-import java.util.Set;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })

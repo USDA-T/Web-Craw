@@ -10,7 +10,8 @@ import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import gov.sba.automation.utils.ConfigUtils;
+import gov.sba.automation.ConfigUtils;
+import gov.sba.automation.Constants;
 
 public class LoginHelpers {
     private static final Logger logger = LogManager.getLogger(LoginHelpers.class.getName());

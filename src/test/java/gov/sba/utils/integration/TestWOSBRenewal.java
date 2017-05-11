@@ -1,8 +1,6 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
-import gov.sba.automation.utils.DatabaseUtils;
 import java.util.List;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -14,6 +12,11 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
 @Category({ gov.sba.utils.integration.StableTests.class })
 public class TestWOSBRenewal  extends TestCase {
   private static WebDriver webDriver;

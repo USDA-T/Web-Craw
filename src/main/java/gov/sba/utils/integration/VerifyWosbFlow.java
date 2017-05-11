@@ -12,7 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
 
 public class VerifyWosbFlow {
     private static final Logger logger = LogManager.getLogger(VerifyWosbFlow.class.getName());

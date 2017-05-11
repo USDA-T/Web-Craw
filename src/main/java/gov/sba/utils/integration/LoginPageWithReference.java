@@ -1,14 +1,15 @@
 //TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.utils.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.utils.CommonApplicationMethods.setText_Element;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.CommonApplicationMethods;
 
 public class LoginPageWithReference {
     private static final Logger logger = LogManager.getLogger(LoginPageWithReference.class.getName());

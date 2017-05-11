@@ -11,15 +11,19 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import static gov.sba.automation.utils.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.utils.CommonApplicationMethods.createApplication;
-import static gov.sba.automation.utils.CommonApplicationMethods.focus_window;
-import static gov.sba.automation.utils.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.utils.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.CommonApplicationMethods.focus_window;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
 import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUpDunsNo;
 
-import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })

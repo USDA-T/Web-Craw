@@ -3,12 +3,13 @@ package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertTrue;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+
+import gov.sba.automation.CommonApplicationMethods;
 //*Deepa-
 public class NewFinancialSectionQuestionDeepa {
   private static final Logger logger = LogManager.getLogger(FinancialSectionPage.class.getName());

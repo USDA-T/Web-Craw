@@ -1,7 +1,6 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,6 +10,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })

@@ -1,11 +1,12 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import gov.sba.automation.CommonApplicationMethods;
 
 public class TestuserProfileSearchType {
 
