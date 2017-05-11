@@ -1,6 +1,8 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.utils.CommonApplicationMethods.accept_Optional_Alert;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import gov.sba.automation.utils.CommonApplicationMethods;
@@ -124,7 +126,7 @@ private static final Logger logger_TestApp395 = LogManager.getLogger(TestApp395_
 
      //Review Section
       CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
-      CommonApplicationMethods.accept_Optional_Alert(webDriver);
+      accept_Optional_Alert(webDriver, 6);
     fillApplCreatePages.finalSignatureSubmit(webDriver);
     //Check if the Active certificate is exist-Then Return by analyst
       CommonApplicationMethods.checkApplicationExists(webDriver,"wosb","Active");

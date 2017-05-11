@@ -1,6 +1,8 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.utils.CommonApplicationMethods.accept_Optional_Alert;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -156,7 +158,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
                             By.xpath("//div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]"))
                     .click();
             CommonApplicationMethods.click_Element(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
-            CommonApplicationMethods.accept_Optional_Alert(webDriver);
+            accept_Optional_Alert(webDriver, 8);
 
             List<WebElement> rows_Body_01 = webDriver.findElements(By
                     .xpath("//table[@id='certifications']/tbody/tr[ td[position()=5 and contains(text(),'Draft')]  ]")); // Get

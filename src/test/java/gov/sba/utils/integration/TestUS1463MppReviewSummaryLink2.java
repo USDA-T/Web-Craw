@@ -1,6 +1,8 @@
 //TS Created By _deepa patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.utils.CommonApplicationMethods.clear_Env_Chrome;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -31,7 +33,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        CommonApplicationMethods.clear_Env_Chrome();
+        clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();

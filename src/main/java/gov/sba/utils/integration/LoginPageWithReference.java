@@ -1,6 +1,9 @@
 //TS created by Deepa Patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.utils.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.utils.CommonApplicationMethods.setText_Element;
+
 import gov.sba.automation.utils.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,14 +25,10 @@ public class LoginPageWithReference {
                 + LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
         logger.debug("Using test password: "
                 + LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
+
         webDriver.findElement(By.cssSelector("button.button-full")).click();
-
-        CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
-
-        CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
-
-        webDriver.findElement(By.id("business_signin")).click();
-        // String url = webDriver.getCurrentUrl();
-        // org.junit.Assert.assertTrue(url.contains("certify"));
+        setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
+        setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
+        click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
     }
 }

@@ -1,6 +1,8 @@
 //TS created by Deepa Patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.utils.CommonApplicationMethods.click_Element;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,8 +18,12 @@ import gov.sba.automation.utils.CommonApplicationMethods;
 public class fillApplCreatePages {
     private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
 
-    public static void pageCaseOverviewFillup(WebDriver webDriver, String review_Type, String curr_Reviewer,
-            String owner, String supervisor) throws Exception {
+    public static void pageCaseOverviewFillup(
+        WebDriver webDriver,
+        String review_Type,
+        String curr_Reviewer,
+        String owner,
+        String supervisor) throws Exception {
 
         try {
             webDriver.findElement(By.xpath("//ul[@class='usa-sidenav-list']/li/a[contains(text(),'ase overview')]"))
@@ -45,6 +51,45 @@ public class fillApplCreatePages {
                 Select dropdown1 = new Select(webDriver
                         .findElement(By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
                 dropdown1.selectByVisibleText(supervisor);
+            }
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+
+    }
+
+    public static void answer_Finance_Questions(
+        WebDriver webDriver,
+        String answer_01_Some_Description,String answer_02_Some_Description, String answer_03_Some_Description,
+        String answer_04_Some_Description, String answer_05_Some_Description) throws Exception {
+        try {
+            if (answer_01_Some_Description.length() > 0) {
+                if (answer_01_Some_Description == "Yes") {
+                    click_Element(webDriver, "Answer_Element_Yes");
+                }
+                else {
+                    click_Element(webDriver, "Answer_Element_No");
+                }
+            }
+
+            if (answer_02_Some_Description.length() > 0) {
+                if (answer_02_Some_Description == "Yes") {
+                    click_Element(webDriver, "Answer_Element_02_Yes");
+                }
+                else {
+                    click_Element(webDriver, "Answer_Element_02_No");
+                }
+            }
+
+            if (answer_03_Some_Description.length() > 0) {
+                if (answer_03_Some_Description == "Yes") {
+                    click_Element(webDriver, "Answer_Element_03_Yes");
+                }
+                else {
+                    click_Element(webDriver, "Answer_Element_03_No");
+                }
             }
 
         } catch (Exception e) {

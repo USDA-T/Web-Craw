@@ -1,0 +1,89 @@
+      //============================================================================================================
+      //      public static WebElement check_Element_Loc(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+      //
+      //        String flag = "";
+      //        WebElement element_01 = null;
+      //
+      //        for (int i = 0; i < 15; i++) {
+      //          flag = "N";
+      //          try {
+      //            switch (type_Locator.toLowerCase()) {
+      //              case "xpath":
+      //                element_01 = webdriver.findElement(By.xpath(value_Locator));
+      //                break;
+      //              case "id":
+      //                element_01 = webdriver.findElement(By.id(value_Locator));
+      //                break;
+      //              case "classname":
+      //                element_01 = webdriver.findElement(By.className(value_Locator));
+      //                break;
+      //              case "name":
+      //                element_01 = webdriver.findElement(By.name(value_Locator));
+      //                break;
+      //              case "cssselector":
+      //                element_01 = webdriver.findElement(By.cssSelector(value_Locator));
+      //                break;
+      //              case "linktext":
+      //                element_01 = webdriver.findElement(By.linkText(value_Locator));
+      //                break;
+      //            }
+      //            flag = "Y";
+      //            break;
+      //
+      //          } catch (Exception e) {
+      //            display("Trying to find BY " + type_Locator + ":" + value_Locator);
+      //            Thread.sleep(200); //DEEPA: Sleep is needed here since we are Repeatedly Finding
+      //          }
+      //        }
+      //        if (flag == "Y") {
+      //          return element_01;
+      //        } else {
+      //          throw new Exception();
+      //        }
+      //      }
+      //============================================================================================================
+      //===== Obsolete
+      //============================================================================================================
+      //      public static WebElement check_Element_Loc_Original(WebDriver webdriver, String type_Locator, String value_Locator) throws Exception {
+      //
+      //        String flag = "";
+      //        WebElement element_01 = null;
+      //
+      //        for (int i = 0; i < 15; i++) {
+      //          flag = "N";
+      //          try {
+      //            switch (type_Locator.toLowerCase()) {
+      //              case "xpath":
+      //                element_01 = webdriver.findElement(By.xpath(value_Locator));
+      //                break;
+      //              case "id":
+      //                element_01 = webdriver.findElement(By.id(value_Locator));
+      //                break;
+      //              case "classname":
+      //                element_01 = webdriver.findElement(By.className(value_Locator));
+      //                break;
+      //              case "name":
+      //                element_01 = webdriver.findElement(By.name(value_Locator));
+      //                break;
+      //              case "cssselector":
+      //                element_01 = webdriver.findElement(By.cssSelector(value_Locator));
+      //                break;
+      //              case "linktext":
+      //                element_01 = webdriver.findElement(By.linkText(value_Locator));
+      //                break;
+      //            }
+      //            flag = "Y";
+      //            break;
+      //
+      //          } catch (Exception e) {
+      //            display("Trying to find BY " + type_Locator + ":" + value_Locator);
+      //            Thread.sleep(200); //DEEPA: Sleep is needed here since we are Repeatedly Finding
+      //          }
+      //        }
+      //        if (flag == "Y") {
+      //          return element_01;
+      //        } else {
+      //          throw new Exception("Tried to find BY " + type_Locator + ":" + value_Locator);
+      //        }
+      //      }
+      //============================================================================================================

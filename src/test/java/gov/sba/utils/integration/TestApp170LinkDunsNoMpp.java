@@ -2,7 +2,6 @@
 package gov.sba.utils.integration;
 
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,8 +11,14 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import static gov.sba.automation.utils.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.utils.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.utils.CommonApplicationMethods.focus_window;
+import static gov.sba.automation.utils.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.utils.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUpDunsNo;
 
-import gov.sba.automation.utils.CommonApplicationMethods;
 import gov.sba.automation.utils.DatabaseUtils;
 import junit.framework.TestCase;
 
@@ -26,10 +31,10 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        CommonApplicationMethods.clear_Env_Chrome();
+        clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
-        CommonApplicationMethods.focus_window();
+        focus_window();
         String[] details = DatabaseUtils.findUnusedDunsNumber();
         email = details[0];
         password = details[1];
@@ -42,18 +47,22 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
             // __________________________________________________________________________________
             LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
             login_Data.Login_With_Details();
-            CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-            CommonApplicationMethods.createApplication(webDriver, "MPP");
+
+            navigationMenuClick(webDriver, "Programs");
+            createApplication(webDriver, "MPP");
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
             TestApp170LinkDunsNo.info(file_path_abs);
-            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
-            CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+
+            page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
+            finalSignatureSubmit(webDriver);
+            navigationMenuClick(webDriver, "Logout");
+
             // Click on Case Link on main navigator-- Mpp Analyst
-            LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 29);
-            login_Data_01.Login_With_Reference();
+            new LoginPageWithReference(webDriver, 29).Login_With_Reference();
+
             String typ_App_Passed = "MPP";
-            CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+            navigationMenuClick(webDriver, "Cases");
+
             if (!webDriver.getPageSource().contains("No results found")) {
                 // All cases page for Mpp Analyst
                 String xpath_Value = "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'"
@@ -69,12 +78,12 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
                     assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
 
                 }
-                CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+                navigationMenuClick(webDriver, "Logout");
             }
 
         } catch (Exception e) {
             TestApp170LinkDunsNo.info(e.toString());
-            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoMpp", "Exception"});
+            take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoMpp", "Exception"});
             throw e;
         }
     }

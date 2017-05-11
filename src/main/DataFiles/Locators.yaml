@@ -177,9 +177,14 @@ OppSup_Dashboard_Vend_User_Radio_Bt: {Locator: 'id', Value: "user_type_vendor_us
 OppSup_Dashboard_User_Search_Text: {Locator: 'xpath', Value: "//input[@id='ops_query']"}
 
 
+Main_Page_Menu_Button: {Locator: "xpath", Value: "//button[contains(@class,'usa-menu-btn') and contains( text(), 'Menu' )]"}
+Main_Page_Menu_Button_Name: {PropName: "name", PropValue: "Menu"}
+Main_Page_Menu_Button_Class: {PropName: "class", PropValue: "usa-menu-btn"}
+General_Element_Property_Enabled: {PropName: "enabled", PropValue: "true"}
 
 
-
+Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
+Analyst_Review_Determ_Page_Return_Mod_Link: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
 
 
 
