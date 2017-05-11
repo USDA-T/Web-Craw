@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -244,6 +246,78 @@ public class AssertionUtils {
 		login_Data = new LoginPageWithReference(webDriver, which_Log_BackAgain);
 		login_Data.Login_With_Reference();
 
+	}
+	
+	public static void return_all_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
+		Logger commonApplicationMethodsLogs = LogManager
+				.getLogger(gov.sba.automation.CommonApplicationMethods.class.getName());
+
+		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, login_Id);
+		login_Data.Login_With_Reference();
+
+		CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
+
+		webDriver.findElement(By.xpath("//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a")).click();
+		String paS = webDriver.getPageSource().toLowerCase();
+		WebElement current_Row_Check_01;
+
+		try {
+			current_Row_Check_01 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody"));
+			List<WebElement> current_Row_Check = current_Row_Check_01
+					.findElements(By.xpath("tr/td/a[contains(text(),'Return to Vendor')]"));
+			if (current_Row_Check.size() > 0) {
+				for (int i = 0; i < current_Row_Check.size(); i++) {
+					current_Row_Check.get(0).click();
+					CommonApplicationMethods.accept_Optional_Alert(webDriver, 30);
+				}
+			}
+
+		} catch (Exception ex) {
+			commonApplicationMethodsLogs.info(ex);
+		}
+
+		try {
+			if ((paS.contains("return to vendor") || paS.contains("active"))
+					&& (paS.contains("wosb") || paS.contains("mpp"))) {
+				current_Row_Check_01 = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody"));
+				List<WebElement> current_Row_Check_02 = current_Row_Check_01.findElements(
+						By.xpath("tr[" + "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and "
+								+ "td[(position()=4) and" + "               ( "
+								+ "                   (contains(text(),'ctive')) or "
+								+ "                   (contains(text(),'ending')) " + "               )" + "   ]"
+								+ "]/td[position()=1]/a"));
+				if (current_Row_Check_02.size() > 0) {
+					for (int i = 0; i < current_Row_Check_02.size(); i++) {
+						current_Row_Check_02.get(0).click();
+						CommonApplicationMethods.click_Element(webDriver, "Analyst_Review_Determ_Page_Link");
+						CommonApplicationMethods.click_Element(webDriver, "Analyst_Review_Determ_Page_Return_Mod_Link");
+						CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
+						Thread.sleep(1500); // Deepa - Sleep needed here to
+											// navigate
+						webDriver.navigate().back();
+						webDriver.navigate().back();
+						webDriver.navigate().back();
+						webDriver.navigate().refresh();
+						try {
+							current_Row_Check_01 = webDriver
+									.findElement(By.xpath("//table[@id='certifications']/tbody"));
+						} catch (Exception ex) {
+							return;
+						}
+
+						current_Row_Check_02 = current_Row_Check_01.findElements(By.xpath("tr["
+								+ "td[position()=1]/a[contains(text(),'WOSB') or contains(text(),'MPP')] and "
+								+ "td[(position()=4) and (contains(text(),'ctive'))]" + "]/td[position()=1]/a"));
+
+						i = 0;
+					}
+				}
+			}
+		} catch (Exception ex1) {
+			commonApplicationMethodsLogs.info(ex1);
+		}
+
+		CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 	}
 
 }

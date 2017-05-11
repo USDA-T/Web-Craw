@@ -19,73 +19,82 @@ import gov.sba.automation.WaitUtils;
 
 public class TestSimpleLogin {
 
-    private static final Logger logger = LogManager.getLogger(TestSimpleLogin.class.getName());
+	private static final Logger logger = LogManager.getLogger(TestSimpleLogin.class.getName());
 
-    private static WebDriver webDriver;
+	private static WebDriver webDriver;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
 
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
 
-    @Before
-    public void setUp() throws Exception {
-        webDriver = TestHelpers.getDefaultWebDriver();
-    }
+	@Before
+	public void setUp() throws Exception {
+		webDriver = TestHelpers.getDefaultWebDriver();
+	}
 
-    @After
-    public void tearDown() throws Exception {
-        webDriver.quit();
-    }
+	@After
+	public void tearDown() throws Exception {
+		webDriver.quit();
+	}
 
-    @Test
-    public void testSimpleLogin() throws Exception {
-        
-        String baseUrl = TestHelpers.getBaseUrl();
-        
-        logger.debug("FYI: your test baseUrl: " + baseUrl);
-        
-        // CommonApplicationMethods.clear_Env_Chrome();
-        webDriver.get(baseUrl);
-        // CommonApplicationMethods.focus_window();
+	@Test
+	public void testSimpleLogin() throws Exception {
 
-        WaitUtils waitUtils = new WaitUtils();
+		String baseUrl = TestHelpers.getBaseUrl();
 
-        WebElement element;
+		logger.debug("FYI: your test baseUrl: " + baseUrl);
 
-        // Better - we can pick the next element we like to use after the page is loaded!
-        element = waitUtils.waitForElement(webDriver, By.cssSelector("button.button-full"));
+		// CommonApplicationMethods.clear_Env_Chrome();
+		webDriver.get(baseUrl);
+		// CommonApplicationMethods.focus_window();
 
-        String expectedText = element.getText();
+		WaitUtils waitUtils = new WaitUtils();
 
-        System.out.println("FYI: the element's text :" + expectedText);
-        assertTrue(expectedText.contains("Login"));
+		WebElement element;
 
-        // Now we ready to proceed the login button
-        element.click();
+		// Better - we can pick the next element we like to use after the page
+		// is loaded!
+		element = waitUtils.waitForElement(webDriver, By.cssSelector("button.button-full"));
 
-        // Now we should be able to see the login page e.g. "/user/sign_in" in the url
-        // at this point we have two items that we can use e.g. login/password or the sign-in button
+		String expectedText = element.getText();
 
-        // Q: What happen if we have the wrong id or the code is updated by the Rails's team?
-        // A: It should not wait longer than 10 seconds and should report error in the test!
-        WebElement signinButton = waitUtils.waitForElement(webDriver, By.id("business_signin")); // the "Sign-in" button
-        // System.out.println("FYI: the text :" + signinButton.getAttribute("id"));
+		System.out.println("FYI: the element's text :" + expectedText);
+		assertTrue(expectedText.contains("Login"));
 
-        assert(signinButton.getAttribute("id").equalsIgnoreCase("business_signin"));
+		// Now we ready to proceed the login button
+		element.click();
 
-        // Now pick the element we need to interact with e.g. in this page we need to fill in "Email" and "Passphase"
-        FormHelpers.fillElement(webDriver, By.name("user[email]"), "john@mailinator.com");
-        FormHelpers.fillElement(webDriver, By.name("user[password]"), "password");
+		// Now we should be able to see the login page e.g. "/user/sign_in" in
+		// the url
+		// at this point we have two items that we can use e.g. login/password
+		// or the sign-in button
 
-        // Now we are ready to click the submit button
-        FormHelpers.submitForm(signinButton);
-        String url = webDriver.getCurrentUrl();
+		// Q: What happen if we have the wrong id or the code is updated by the
+		// Rails's team?
+		// A: It should not wait longer than 10 seconds and should report error
+		// in the test!
+		WebElement signinButton = waitUtils.waitForElement(webDriver, By.id("business_signin")); // the
+																									// "Sign-in"
+																									// button
+		// System.out.println("FYI: the text :" +
+		// signinButton.getAttribute("id"));
 
-        org.junit.Assert.assertTrue(url.contains("dashboard"));
-    }
+		assert (signinButton.getAttribute("id").equalsIgnoreCase("business_signin"));
+
+		// Now pick the element we need to interact with e.g. in this page we
+		// need to fill in "Email" and "Passphase"
+		FormHelpers.fillElement(webDriver, By.name("user[email]"), "john@mailinator.com");
+		FormHelpers.fillElement(webDriver, By.name("user[password]"), "password");
+
+		// Now we are ready to click the submit button
+		FormHelpers.submitForm(signinButton);
+		String url = webDriver.getCurrentUrl();
+
+		org.junit.Assert.assertTrue(url.contains("dashboard"));
+	}
 
 }
