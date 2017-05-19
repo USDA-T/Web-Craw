@@ -38,11 +38,9 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
-    Thread.sleep(2000);
     // webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
     // webDriver.navigate().to("http://localhost/sba_analyst/cases/all_cases/");
     // Verify the All case page.
@@ -53,13 +51,11 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     webDriver.findElement(By.xpath("//div/div[2]/button")).click();
     // Click on the search button without selecting any filter and verify.
     webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click();
-    Thread.sleep(2000);
     // Select program, Review Type and status.
     webDriver.findElement(By.id("hubzone")).click();
     webDriver.findElement(By.id("continuing_eligibility")).click();
     webDriver.findElement(By.id("proposed_ineligible")).click();
-    // Enter invalid data on the date range owner and the search box and
-    // verify.
+    // Enter invalid data on the date range owner and the search box and verify.
     // From date.
     webDriver.findElement(By.id("date_of_birth_1")).sendKeys("Test");
     webDriver.findElement(By.id("date_of_birth_2")).sendKeys("Test");
@@ -73,9 +69,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     // Enter an invalid search data.
     // webDriver.findElement(By.id("search-field-small")).sendKeys("Testing234");
     // Click the search button.
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("search-field-small")).clear();
     // Verify that no data is return.
     if (webDriver.getPageSource().contains("EDWOSB")) {
@@ -89,8 +83,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         if (webDriver.getPageSource().contains("MPP, 8(a) Document Upload")) {
           logger.info("Search return MPP application");
           logger.info("Search return an 8(a) or MPP application");
-          Assert.fail(); // Only WOSB & EDWOSB are supposed to be
-                         // return if any.
+          Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
         } else {
 
           logger.info("Search successful");
@@ -109,8 +102,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         if (webDriver.getPageSource().contains("MPP, 8(a) Document Upload")) {
           logger.info("Search return MPP application");
           logger.info("Search return an 8(a) or MPP application");
-          Assert.fail(); // Only WOSB & EDWOSB are supposed to be
-                         // return if any.
+          Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
         } else {
           Actual_Text = webDriver
               .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td")).getText();
@@ -124,16 +116,14 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
 
     if (webDriver.getPageSource().contains("Pending")) {
       logger.info("Search return MPP application, Permission failed");
-      Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if
-                     // any.
+      Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
     } else {
       logger.info("Search successful, Permission Pass");
     }
 
     if (webDriver.getPageSource().contains("8(a) Document Upload")) {
       logger.info("Search return MPP application, Permission failed");
-      Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if
-                     // any.
+      Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
     } else {
       logger.info("Search successful, Permission Pass");
     }
@@ -155,11 +145,9 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     LoginPageWithReference login_Data1 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data1.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
-    Thread.sleep(2000);
     DeleteDraftCertPage deleteDraftCert13 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert13.DeleteDraftCert();
     AddOrStartCertificationPage addOrStartCertification =
@@ -175,7 +163,6 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert2.DeleteDraftCert();
-    Thread.sleep(2000);
     AddOrStartNewMppProgramPage1 addOrStartNewMppProgram =
         new AddOrStartNewMppProgramPage1(webDriver);
     addOrStartNewMppProgram.AddOrStartNewMppProgram();
@@ -201,7 +188,6 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     webDriver.findElement(By.id("search-field-small")).sendKeys("EDWOSB");
     // Click on the search button.
     webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
-    Thread.sleep(2000);
     if (webDriver.getPageSource().contains("EDWOSB")) {
       logger.info("Search return EDWOSB application");
     } else {
@@ -213,8 +199,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         if (webDriver.getPageSource().contains("8(a) Document Upload")) {
           logger.info("Search return MPP application");
           logger.info("Search return an 8(a) or MPP application");
-          Assert.fail(); // Only WOSB & EDWOSB are supposed to be
-                         // return if any.
+          Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
         } else {
 
           logger.info("Search successful");
@@ -233,8 +218,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         if (webDriver.getPageSource().contains("Pending")) {
           logger.info("Search return MPP application");
           logger.info("Search return an 8(a) or MPP application");
-          Assert.fail(); // Only WOSB & EDWOSB are supposed to be
-                         // return if any.
+          Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
         } else {
           Actual_Text = webDriver
               .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td")).getText();
@@ -251,13 +235,10 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     webDriver.findElement(By.id("mpp")).click();
     webDriver.findElement(By.cssSelector("input.autocomplete.ui-autocomplete-input"))
         .sendKeys("Analyst1 X");
-    Thread.sleep(4000);
     webDriver.findElement(By.id("search-field-small")).clear();
     webDriver.findElement(By.id("search-field-small")).sendKeys("MPP Application");
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
     // Verify that only the MPP program is return.
-    Thread.sleep(2000);
     if (webDriver.getPageSource().contains("Pending")) {
       logger.info("Search return MPP application, pass");
     } else {
@@ -269,8 +250,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         if (webDriver.getPageSource().contains("WOSB")) {
           logger.info("Search return WOSB application, even when filter by MPP only, failed");
           logger.info("Search return an 8(a) or MPP application");
-          Assert.fail(); // Only WOSB & EDWOSB are supposed to be
-                         // return if any.
+          Assert.fail(); // Only WOSB & EDWOSB are supposed to be return if any.
         } else {
           logger.info("Search successful, only MPP applications are being return");
         }
@@ -279,17 +259,12 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
           .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr/td[3]")).getText();
       Expected_Text = "EDWOSB";
       assertNotSame(Actual_Text, Expected_Text);
-      // Navigate back to case page, search the business and return the
-      // EDWOSB certification.
-      Thread.sleep(3000);
+      // Navigate back to case page, search the business and return the EDWOSB certification.
       webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         webDriver.switchTo().alert().accept();
@@ -297,7 +272,6 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -313,9 +287,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         webDriver.switchTo().alert().accept();
@@ -323,7 +295,6 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -336,7 +307,6 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data11.Login_With_Reference();
       // delete one draft.
-      Thread.sleep(2000);
       DeleteDraftCertPage deleteDraftCert21 = new DeleteDraftCertPage(webDriver);
       deleteDraftCert21.DeleteDraftCert();
       logger.info("SUCCESS");
@@ -356,3 +326,4 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     webDriver.close();
   }
 }
+

@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.Constants;
 import gov.sba.automation.TestHelpers;
@@ -32,11 +34,13 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
     // page.
     logger.info(
         "User is NOT eligible for Any of the programs because user answer NO for Qs4: 8(a), WOSB, EDWOSB & Hob-zone");
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Locate the Am I Eligible or the Find Out button on the
     // Certify.SBA.Gov landing page and click on it.
     webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span"))
         .click();
-    Thread.sleep(2000);
+    wait.until(
+        ExpectedConditions.elementSelectionStateToBe(By.xpath(".//*[@id='am-i']/h1"), false));
     // Verify that user navigates to the am i eligible page.
     String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
     String expected_Text = "Is there an SBA Contracting Program for me?";
@@ -56,7 +60,8 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
     assertEquals(actual_Text3, expected_Text3);
     // verify and click on the Yes button.
     webDriver.findElement(By.cssSelector("button.yes_button")).click();
-    Thread.sleep(5000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p"), false));
     // Locate the 2nd question and select yes and verify the More Detail
     // meaning of the question.
     String actual_error3 = webDriver
@@ -83,10 +88,10 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
     String expected_error5 =
         "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
     assertEquals(actual_error5, expected_error5);
-    Thread.sleep(3000);
     // verify and click on the yes button.
     webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='for_profit']/div/div/p"), false));
     // Locate the Third question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text6 =
@@ -110,9 +115,9 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
     String expected_Text9 =
         "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
     assertEquals(actual_Text9, expected_Text9);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("yes_button_for_profit")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='non_suspended']/div/div/p"), false));
     // Locate the 4th question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text10 =
@@ -126,9 +131,9 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
     String expected_Text11 =
         "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
     assertEquals(actual_Text11, expected_Text11);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("no_button_non_suspended")).click();
     // Verify searched results.
+    wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("span.message"), false));
     String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
     String expected_Text1 =
         "In order to participate in SBA small business programs, the owner(s) of the firm must not have been debarred or suspended by a federal entity.";

@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -28,13 +30,15 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
   public void testMainTest() throws Exception {
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
     // page.
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     logger.info(
         "User is NOT eligible for Any of the programs because user answer NO for Qs7 and the rest of the questions that apply: 8(a), WOSB, EDWOSB & Hob-zone");
     // Locate the Am I Eligible or the Find Out button on the
     // Certify.SBA.Gov landing page and click on it.
     webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span"))
         .click();
-    Thread.sleep(2000);
+    wait.until(
+        ExpectedConditions.elementSelectionStateToBe(By.xpath(".//*[@id='am-i']/h1"), false));
     // Verify that user is navigated to the right page.
     String actual_error6 = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
     String expected_error6 = "Is there an SBA Contracting Program for me?";
@@ -54,7 +58,8 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text3, expected_Text3);
     // verify and click on the Yes button.
     webDriver.findElement(By.cssSelector("button.yes_button")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p"), false));
     // Locate the 2nd question and select No and verify the More Detail
     // meaning of the question.
     String actual_error3 = webDriver
@@ -81,10 +86,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     String expected_error5 =
         "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
     assertEquals(actual_error5, expected_error5);
-    Thread.sleep(2000);
     // verify and click on the yes button.
     webDriver.findElement(By.id("yes_button_unconditional_direct_51_percent")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='for_profit']/div/div/p"), false));
     // Locate the Third question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text6 =
@@ -108,9 +113,9 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     String expected_Text9 =
         "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
     assertEquals(actual_Text9, expected_Text9);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("yes_button_for_profit")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='non_suspended']/div/div/p"), false));
     // Locate the 4th question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text10 =
@@ -124,9 +129,9 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     String expected_Text11 =
         "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
     assertEquals(actual_Text11, expected_Text11);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("yes_button_non_suspended")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='us_business']/div/div/p"), false));
     // Locate the 5th question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text12 =
@@ -139,9 +144,9 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
         webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
     String expected_Text13 = "None";
     assertEquals(actual_Text13, expected_Text13);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("yes_button_us_business")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.xpath("//div[@id='small_naics']/div/div/p"), false));
     // Locate the 6th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text14 =
@@ -160,9 +165,11 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     String expected_Text16 =
         "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available at http://www.census.gov/eos/www/naics/.";
     assertEquals(actual_Text16, expected_Text16);
-    Thread.sleep(2000);
     webDriver.findElement(By.id("yes_button_small_naics")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#women_owning_business > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 7th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text17 = webDriver
@@ -193,7 +200,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text20, expected_Text20);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_women_owning_business")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#naics_fed_set_asides > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 8th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text21 = webDriver
@@ -217,13 +227,15 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     // verify and click on the Yes button.
     webDriver.findElement(By.id("naics_button")).click();
     // Verify that the entered NAICS Code for WOSB set-asides.
-    Thread.sleep(2000);
     String actual_Text0 = webDriver
         .findElement(By.xpath("//div[@id='naics_fed_set_asides']/div[2]/div/div/div")).getText();
     String expected_Text0 =
         "Yes, WOSB Federal Contract Program set-asides are available in your primary NAICS code.";
     assertEquals(actual_Text0, expected_Text0);
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 9th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text24 = webDriver
@@ -261,7 +273,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text28, expected_Text28);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_economically_disadvantaged_wosb")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 10th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text29 = webDriver
@@ -299,7 +314,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text33, expected_Text33);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_economically_disadvantaged_8a")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 11th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text34 = webDriver
@@ -339,7 +357,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text41, expected_Text41);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_socially_disadvantaged")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#socially_disadvantaged_chronic > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 12th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text42 = webDriver
@@ -358,7 +379,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text43, expected_Text43);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_socially_disadvantaged_chronic")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#eighta_certified > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 13th question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text44 = webDriver
@@ -382,7 +406,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text46, expected_Text46);
     // verify and click on the NO button.
     webDriver.findElement(By.id("no_button_eighta_certified")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#eighta_one_time_used > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 14th question and select NO and verify the More Detail
     // meaning of the question.
     String actual_Text47 = webDriver
@@ -402,7 +429,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text48, expected_Text48);
     // verify and click on the NO button.
     webDriver.findElement(By.id("no_button_eighta_one_time_used")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#address_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 15th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text49 = webDriver
@@ -427,7 +457,10 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text51, expected_Text51);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_address_in_hubzone")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.cssSelector(
+            "#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+        false));
     // Locate the 16th question and select Yes and verify the More Detail
     // meaning of the question.
     String actual_Text52 = webDriver
@@ -451,9 +484,9 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     assertEquals(actual_Text54, expected_Text54);
     // verify and click on the Yes button.
     webDriver.findElement(By.id("yes_button_employees_in_hubzone")).click();
-    Thread.sleep(3000);
     // Verify searched results.
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .elementSelectionStateToBe(By.cssSelector("#edwosb > div.eligible > p > b"), false));
     // Women-Owned Small Business (WOSB).
     String actual_Text01 =
         webDriver.findElement(By.cssSelector("#edwosb > div.eligible > p > b")).getText();

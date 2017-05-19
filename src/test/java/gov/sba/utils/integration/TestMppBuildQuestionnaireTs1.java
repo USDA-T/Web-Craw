@@ -8,7 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -29,6 +31,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text;
     String Expected_Text;
     // Login to dashboard.
@@ -36,7 +39,6 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing program on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -59,8 +61,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Click on the continue button without answering the question and
     // verify error message.
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.id("answers[117][value]-error")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -72,18 +73,15 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
     // fillApplCreatePages.finalSignatureSubmit(webDriver);
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(3000);
+    CoreUtils.clickContinue(webDriver);
     // Enter a valid DUNS# and verify business.
     webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
     webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.alertIsPresent());
     logger.info(webDriver.switchTo().alert().getText());
     webDriver.switchTo().alert().accept();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Review page.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -97,15 +95,14 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     Actual_Text = webDriver.findElement(By.cssSelector("#currently_attached > h4")).getText();
     Expected_Text = "Documents previously added";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Business Info";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     // Verify Business name
     logger.info("  Verify Business name");
     Actual_Text = webDriver.findElement(By.xpath("//h3")).getText();
@@ -121,9 +118,9 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
     Expected_Text = "137151292";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    logger.info(webDriver.switchTo().alert().getText());
-    webDriver.switchTo().alert().accept();
+    CoreUtils.clickContinue(webDriver);
+    // logger.info(webDriver.switchTo().alert().getText());
+    // webDriver.switchTo().alert().accept();
     // Verify first paragraph
     logger.info("  Verify first paragraph");
     // Verify Second paragraph
@@ -165,6 +162,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     Expected_Text =
         "In order to submit your application, you must accept all of the conditions of authorization.";
     assertEquals(Actual_Text, Expected_Text);
+    wait.until(ExpectedConditions.alertIsPresent());
     webDriver.switchTo().alert().accept();
     // Step 11 - Accept the statements and click Continue
     logger.info("Step 11 - Click to accept the statements");
@@ -175,8 +173,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
     webDriver.findElement(By.id("accept-button")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.linkText("Dashboard")).click();
+    webDriver.findElement(By.xpath("//a/span")).click();
     WebElement ActiveCert =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
@@ -189,9 +186,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("137151292");
     webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
-    Thread.sleep(2000);
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
       // webDriver.switchTo().alert().accept();
@@ -199,7 +194,6 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     } else {
       logger.info("Return to Vendor Link is missing please verify why.");
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-      Thread.sleep(3000);
       webDriver.findElement(By.id("submit_button")).click();
       webDriver.findElement(By.linkText("Determination")).click();
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -41,14 +42,12 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
@@ -75,16 +74,13 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
         "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the accept button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Firm Control";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div[3]/fieldset/div/span")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -186,7 +182,6 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // question 4, 1.4d
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
-    Thread.sleep(2000);
     // question 5, 1.4e Upload Doc only
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     Upload4pdfOnSamePage MontanaUploadDocument3 = new Upload4pdfOnSamePage(webDriver);
@@ -198,8 +193,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")).click();
     // Click on the save and continue button and verify that user is
     // requested to enter comment.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
     Expected_Text = "Comment is required";
     assertEquals(Actual_Text, Expected_Text);
@@ -207,7 +201,6 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     webDriver.findElement(By.id("answers_176_comment")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
     // Review Page.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -229,16 +222,14 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     WebElement CharacterInProgressStatus = webDriver.findElement(By.xpath("//tr[5]/td[3]"));
     HighLight.highLightElement(webDriver, CharacterInProgressStatus);
     webDriver.findElement(By.linkText("Control")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("eight_a_firm_control")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the Submit button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    webDriver.switchTo().alert().accept();
+    CoreUtils.clickContinue(webDriver);
+    // webDriver.switchTo().alert().accept();
     // Verify status.
     Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();
     Expected_Text = "COMPLETE";
@@ -254,3 +245,4 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
     webDriver.close();
   }
 }
+

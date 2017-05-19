@@ -12,6 +12,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -36,13 +38,13 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
 
   @Test
   public void testMainTest() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text = null;
     String Expected_Text = null;
     // Login to dashboard.
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
@@ -53,7 +55,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new EDWOSB certification.
-    Thread.sleep(2000);
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
@@ -67,7 +68,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert2.DeleteDraftCert();
-    Thread.sleep(2000);
     AddOrStartNewMppProgramPage1 addOrStartNewMppProgram =
         new AddOrStartNewMppProgramPage1(webDriver);
     addOrStartNewMppProgram.AddOrStartNewMppProgram();
@@ -95,7 +95,8 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // message.
       webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
+      wait.until(ExpectedConditions
+          .elementSelectionStateToBe(By.xpath(".//*[@id='vendor_found_not_certified']/h3"), false));
       Actual_Text =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
       Expected_Text =
@@ -104,32 +105,29 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       WebElement NewText =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3"));
       HighLight.highLightElement(webDriver, NewText);
-      Thread.sleep(6000);
       // Take screenshot and store as a file format
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
-      Thread.sleep(3000);
       // Search Invalid DUNs verify message.
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("135000634");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
+      wait.until(ExpectedConditions
+          .elementSelectionStateToBe(By.xpath(".//*[@id='no_vendor_found']/h3"), false));
       Actual_Text = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3")).getText();
       Expected_Text =
           "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
       assertEquals(Actual_Text, Expected_Text);
       WebElement NewText1 = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3"));
       HighLight.highLightElement(webDriver, NewText1);
-      Thread.sleep(6000);
       // Take screenshot and store as a file format
       ScreenShotPage screenShot1 = new ScreenShotPage(webDriver);
       screenShot1.ScreenShot();
-      Thread.sleep(3000);
       // Search valid DUNs With active MPP and WOSB verify..
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.id("vendor_name"), false));
       Actual_Text = webDriver.findElement(By.id("vendor_name")).getText();
       Expected_Text = "Entity 81 Legal Business Name";
       assertEquals(Actual_Text, Expected_Text);
@@ -137,12 +135,12 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.id("access_request_solicitation_number")).sendKeys("1721157");
       webDriver.findElement(By.id("access_request_solicitation_naics")).sendKeys("656782");
       // On type of procurement, select WOSB set-aside.
-      webDriver.findElement(By.id("access_request_procurement_type_wosb_set_aside")).click();
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li/input")));
+      webDriver.findElement(By.xpath("//li/input")).click();
       // Click on i accept.
-      webDriver.findElement(By.id("contracting_officer_certification")).click();
-      Thread.sleep(3000);
+      webDriver.findElement(By.xpath("//div/div/input")).click();
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("submit_request_access")));
       webDriver.findElement(By.id("submit_request_access")).click();
-      Thread.sleep(2000);
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
       Expected_Text = "Review vendor certifications";
       assertEquals(Actual_Text, Expected_Text);
@@ -155,14 +153,12 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       login_Data11.Login_With_Reference();
       // click on the Business link.
       webDriver.findElement(By.linkText("Business")).click();
-      Thread.sleep(3000);
       // Click on Manage CO access.
       webDriver.findElement(By.linkText("Manage CO access")).click();
-      Thread.sleep(3000);
       // Click on the accept button.
       webDriver.findElement(By.xpath("//input[@value='Accept']")).click();
+      wait.until(ExpectedConditions.alertIsPresent());
       webDriver.switchTo().alert().accept();
-      Thread.sleep(3000);
       // Logout and login to the requester, CO profile and verify that CO
       // sees only the WOSB and not the MPP certification.
       webDriver.findElement(By.linkText("Logout")).click();
@@ -196,7 +192,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // Take screenshot and store as a file format
       ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
       screenShot11.ScreenShot();
-      Thread.sleep(3000);
       webDriver.findElement(By.linkText("Logout")).click();
       // Login as MPP-analyst and return MPP back to vendor.
       get_The_Row_From_Login_Data = 29;
@@ -206,9 +201,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -216,7 +211,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -232,9 +226,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -242,7 +236,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -262,7 +255,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // message.
       webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
+      Thread.sleep(2000);
+      wait.until(ExpectedConditions
+          .elementSelectionStateToBe(By.xpath(".//*[@id='vendor_found_not_certified']/h3"), false));
       Actual_Text =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
       Expected_Text =
@@ -271,46 +266,42 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       WebElement NewText =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3"));
       HighLight.highLightElement(webDriver, NewText);
-      Thread.sleep(6000);
       // Take screenshot and store as a file format
       ScreenShotPage screenShot2 = new ScreenShotPage(webDriver);
       screenShot2.ScreenShot();
-      Thread.sleep(3000);
       // Search Invalid DUNs verify message.
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("1721157");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
+      Thread.sleep(2000);
+      wait.until(ExpectedConditions
+          .elementSelectionStateToBe(By.xpath("//div[@id='no_vendor_found']/h3"), false));
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3")).getText();
       Expected_Text =
           "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
       assertEquals(Actual_Text, Expected_Text);
       WebElement NewText1 = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3"));
       HighLight.highLightElement(webDriver, NewText1);
-      Thread.sleep(6000);
       // Take screenshot and store as a file format
       ScreenShotPage screenShot3 = new ScreenShotPage(webDriver);
       screenShot3.ScreenShot();
-      Thread.sleep(3000);
       // Search valid DUNs With active MPP and WOSB verify..
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(3000);
-      Actual_Text = webDriver.findElement(By.id("vendor_name")).getText();
+      Thread.sleep(2000);
+      Actual_Text = webDriver.findElement(By.xpath("//td[2]")).getText();
       Expected_Text = "Entity 81 Legal Business Name";
       assertEquals(Actual_Text, Expected_Text);
       // Enter a Solicitation and NAICS number.
       webDriver.findElement(By.id("access_request_solicitation_number")).sendKeys("1721157");
       webDriver.findElement(By.id("access_request_solicitation_naics")).sendKeys("656782");
       // On type of procurement, select WOSB set-aside.
-      Thread.sleep(3000);
       webDriver.findElement(By.id("access_request_procurement_type_wosb_set_aside")).click();
       // Click on i accept.
       webDriver.findElement(By.id("contracting_officer_certification")).click();
-      Thread.sleep(3000);
       webDriver.findElement(By.id("submit_request_access")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h2"), false));
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
       Expected_Text = "Review vendor certifications";
       assertEquals(Actual_Text, Expected_Text);
@@ -324,13 +315,11 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // click on the Business link.
       webDriver.findElement(By.linkText("Business")).click();
       // Click on Manage CO access.
-      Thread.sleep(3000);
       webDriver.findElement(By.linkText("Manage CO access")).click();
       // Click on the accept button.
-      Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@value='Accept']")).click();
+      wait.until(ExpectedConditions.alertIsPresent());
       webDriver.switchTo().alert().accept();
-      Thread.sleep(3000);
       // Logout and login to the requester, CO profile and verify that CO
       // sees only the WOSB and not the MPP certification.
       webDriver.findElement(By.linkText("Logout")).click();
@@ -364,7 +353,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // Take screenshot and store as a file format
       ScreenShotPage screenShot11 = new ScreenShotPage(webDriver);
       screenShot11.ScreenShot();
-      Thread.sleep(3000);
       webDriver.findElement(By.linkText("Logout")).click();
       // Login as MPP-analyst and return MPP back to vendor.
       get_The_Row_From_Login_Data = 29;
@@ -374,9 +362,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -384,7 +372,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -400,9 +387,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -410,7 +397,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
         webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-        Thread.sleep(3000);
         webDriver.findElement(By.id("submit_button")).click();
         webDriver.findElement(By.linkText("Determination")).click();
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -420,9 +406,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       }
       logger.info("Success");
     }
-
   }
-
   @After
   public void tearDown() throws Exception {
     webDriver.close();

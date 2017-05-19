@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -37,7 +37,6 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
@@ -48,7 +47,6 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new EDWOSB certification.
-    Thread.sleep(2000);
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
@@ -62,14 +60,12 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert2.DeleteDraftCert();
-    Thread.sleep(2000);
     AddOrStartNewMppProgramPage1 addOrStartNewMppProgram =
         new AddOrStartNewMppProgramPage1(webDriver);
     addOrStartNewMppProgram.AddOrStartNewMppProgram();
     // Start new 8(a) application.
     EdwobEightAMppTestPage edwobEightAMppTest = new EdwobEightAMppTestPage(webDriver);
     edwobEightAMppTest.EdwobEightAMppTest();
-    Thread.sleep(3000);
     webDriver.findElement(By.linkText("Logout")).click();
     // Login as WOSB-analyst and return EDWOSB back to vendor.
     get_The_Row_From_Login_Data = 0;
@@ -79,12 +75,9 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("137151292");
     webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
-    Thread.sleep(2000);
     // Locate the Active EDWOSB application and click on it.
     webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-    Thread.sleep(3000);
     // Verify the Open Application Summary link.
     Actual_Text = webDriver.findElement(By.cssSelector("button.usa-button-outline")).getText();
     Expected_Text = "Open application summary";
@@ -97,7 +90,6 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     webDriver.findElement(By.cssSelector("button.usa-button-outline")).click();
     // Click on the back button
     webDriver.findElement(By.linkText("Back")).click();
-    Thread.sleep(3000);
     // Click on the Return to Vendor link.
     webDriver.findElement(By.xpath("//div[2]/a/button")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
@@ -112,10 +104,8 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("137151292");
     webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
     // Locate the business name and click on it.
     webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
-    Thread.sleep(3000);
     // Locate the Pending MPP application and click on it.
     webDriver.findElement(By.linkText("MPP Application")).click();
     // Verify the Open Application Summary link.
@@ -130,12 +120,20 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     webDriver.findElement(By.cssSelector("button.usa-button-outline")).click();
     // Click on the back button
     webDriver.findElement(By.linkText("Back")).click();
-    Thread.sleep(3000);
     // Click on the Return to Vendor link.
     webDriver.findElement(By.xpath("//div[2]/a/button")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text = "A new application has been reopenned for the vendor";
     assertEquals(Actual_Text, Expected_Text);
+    webDriver.findElement(By.linkText("Logout")).click();
+    get_The_Row_From_Login_Data = 25;
+    LoginPageWithReference login_Data1 =
+        new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+    login_Data1.Login_With_Reference();
+    WebElement ReturnMppDraft = webDriver.findElement(By.xpath("//td[5]"));
+    HighLight.highLightElement(webDriver, ReturnMppDraft);
+    WebElement ReturnEDWASBdraft = webDriver.findElement(By.xpath("//tr[2]/td[5]"));
+    HighLight.highLightElement(webDriver, ReturnEDWASBdraft);
     webDriver.findElement(By.linkText("Logout")).click();
     logger.info("Success");
   }

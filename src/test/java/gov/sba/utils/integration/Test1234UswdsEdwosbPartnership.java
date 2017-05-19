@@ -34,7 +34,6 @@ public class Test1234UswdsEdwosbPartnership extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -47,7 +46,6 @@ public class Test1234UswdsEdwosbPartnership extends TestCase {
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
-    Thread.sleep(2000);
     // partnership test for 1st person.
     NewPartnershipQuestionsPage newPartnershipQuestions =
         new NewPartnershipQuestionsPage(webDriver);

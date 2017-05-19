@@ -34,7 +34,6 @@ public class Test1234UswdsEdwosbScorpTest extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -44,11 +43,9 @@ public class Test1234UswdsEdwosbScorpTest extends TestCase {
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new one.
-    Thread.sleep(2000);
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
-    Thread.sleep(2000);
     // Corp test for 1st person.
     NewScorpQuestionsPage newScorpQuestions = new NewScorpQuestionsPage(webDriver);
     newScorpQuestions.NewScorpQuestions();

@@ -8,10 +8,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -41,14 +41,12 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
@@ -58,7 +56,7 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     Expected_Text =
         "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Verify the Basic Eligibility link.
     Actual_Text = webDriver.findElement(By.linkText("Character")).getText();
     Expected_Text = "Character";
@@ -75,14 +73,13 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the accept button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Character";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.id("answers[169][value]-error")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -99,7 +96,6 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         "If yes, provide the details regarding the debarment or suspension. Debarred or suspended firms or firms owned by debarred or suspended persons are ineligible for admission to the 8(a) Business Development program. If you have documents showing the debarment has been lifted please upload.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_169_value_yes")).click();
-    Thread.sleep(2000);
     // Upload a document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
@@ -107,7 +103,7 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     Thread.sleep(2000);
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.id("answers[170][value]-error")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -125,7 +121,6 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         "Report any obligations including delinquent tax returns and delinquent SBA loans. If yes, provide any of the following that may apply:";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_170_value_yes")).click();
-    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     Upload2pdfOnSamePage upload2pdfOnSame = new Upload2pdfOnSamePage(webDriver);
@@ -134,7 +129,7 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     // Pending Lawsuit section.
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.id("answers[171][value]-error")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -151,13 +146,12 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         "If yes, summarize its interest in the suit, the claims, the current status, and provide a copy of the complaint, answer, and/or counterclaim filed in the suit.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_171_value_yes")).click();
-    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     Upload3pdfOnSamePage upload3pdfOnSame1 = new Upload3pdfOnSamePage(webDriver);
     upload3pdfOnSame1.Upload3pdfOnSame(file_path_abs);
     Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Bankruptcy Section.
     Actual_Text = webDriver.findElement(By.id("answers[172][value]-error")).getText();
     Expected_Text = "Please answer this question";
@@ -176,20 +170,16 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
         "If yes, provide details and a copy of the bankruptcy court’s final order or discharge.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.id("answers_172_value_yes")).click();
-    Thread.sleep(2000);
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     Upload4pdfOnSamePage upload4pdfOnSame2 = new Upload4pdfOnSamePage(webDriver);
     upload4pdfOnSame2.Upload4pdfOnSame(file_path_abs);
     Thread.sleep(2000);
-    Actions act = new Actions(webDriver);
-    act.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
-    Thread.sleep(6000);
+    CoreUtils.clickContinue(webDriver);
     // Review Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     Actual_Text = webDriver
         .findElement(By.cssSelector("div.review_questions.question-separator > h3")).getText();
     Expected_Text = "Character";
@@ -219,18 +209,15 @@ public class TestApp375Applicant8aCharacterSectionYes extends TestCase {
     WebElement CharacterInProgressStatus = webDriver.findElement(By.xpath("//tr[4]/td[3]"));
     HighLight.highLightElement(webDriver, CharacterInProgressStatus);
     webDriver.findElement(By.linkText("Character")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("character")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    webDriver.switchTo().alert().accept();
+    CoreUtils.clickContinue(webDriver);
+    // webDriver.switchTo().alert().accept();
     // Click on the Save and Continue button.
     // Verify status.
-    Thread.sleep(2000);
     Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
     Expected_Text = "COMPLETE";
     assertEquals(Actual_Text, Expected_Text);

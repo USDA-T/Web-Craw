@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -150,7 +149,6 @@ public class TestApp356VendorMakeChangesToHisHerUserProfile extends TestCase {
     }
     // Logout of the system.
     webDriver.findElement(By.linkText("Logout")).click();
-
     logger.info("Success");
   }
 

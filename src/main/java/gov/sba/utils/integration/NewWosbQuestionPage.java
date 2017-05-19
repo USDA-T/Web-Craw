@@ -77,6 +77,7 @@ public class NewWosbQuestionPage {
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // ==>Partnership program 1st question.
+    Thread.sleep(2000);
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
         "Does the partnership agreement show that at least 51% of each class of partnership interest is unconditionally and directly owned by the qualifying individual(s)?";
@@ -123,7 +124,7 @@ public class NewWosbQuestionPage {
     // select no and continue.
     webDriver.findElement(By.xpath("//label[2]")).click();
     CoreUtils.clickContinue(webDriver);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    Thread.sleep(3000);
     // ==>Ownership section.1st question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -166,7 +167,7 @@ public class NewWosbQuestionPage {
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Also is their earth so. Dry given, place itself for were third. Itself second gathered fruit from");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>Management section.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =

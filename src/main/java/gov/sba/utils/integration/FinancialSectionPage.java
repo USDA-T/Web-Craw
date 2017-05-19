@@ -580,7 +580,8 @@ public class FinancialSectionPage {
         .sendKeys("7600000.87");
     webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input"))
         .sendKeys("8700998.76");
-    // ON the last two question, select Yes to trigger the new question then select No .
+    // ON the last two question, select Yes to trigger the new question then
+    // select No .
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
     WebElement SecondForm = webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
@@ -627,7 +628,8 @@ public class FinancialSectionPage {
     // make,model and year of your automobile.
     webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("nissan maxima");
     webDriver.findElement(By.xpath("//div[3]/button")).click();
-    // Does any of the above listed property is pledged as security? question.
+    // Does any of the above listed property is pledged as security?
+    // question.
     Actual_Text = webDriver
         .findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4")).getText();
     Expected_Text = "Do you own any other personal property or assets?";
@@ -640,7 +642,8 @@ public class FinancialSectionPage {
     WebElement OtherPersonalProperty = webDriver.findElement(By.xpath("//div[2]/fieldset/p"));
     HighLight.highLightElement(webDriver, OtherPersonalProperty);
     Thread.sleep(2000);
-    // Select Yes for question; 'Do you own any other personal property or assets?.
+    // Select Yes for question; 'Do you own any other personal property or
+    // assets?.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000.98");
@@ -829,4 +832,3 @@ public class FinancialSectionPage {
     // TODO Auto-generated method stub
   }
 }
-

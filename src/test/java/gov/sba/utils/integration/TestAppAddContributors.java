@@ -36,14 +36,12 @@ public class TestAppAddContributors extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();

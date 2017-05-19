@@ -36,7 +36,6 @@ public class TestApp45ApplyAllCasePageToOpsSupport extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify that the Case tap was added.
     WebElement Case = webDriver.findElement(By.xpath("//li[2]/a/span"));
     HighLight.highLightElement(webDriver, Case);

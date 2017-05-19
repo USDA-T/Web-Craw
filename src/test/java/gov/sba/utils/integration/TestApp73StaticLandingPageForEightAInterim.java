@@ -2,7 +2,6 @@ package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -50,18 +49,18 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
         "You have been directed to certify.SBA.gov from BDMIS in order to submit the supporting documentation required for your 8(a) application submission. Please review the instructions below in full before establishing your account and attempting to submit your PDF documents. Please feel free to submit any questions you may have to 8aquestions@sba.gov.";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-    Expected_Text = "Purpose:";
+    Expected_Text = "Instructions:";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver
         .findElement(By.xpath("//article[@id='main-content']/div/section/article/p[2]")).getText();
-    Expected_Text =
-        "On August 24, 2016, the U.S. Small Business Administration (SBA)’s 8(a) Business Development (BD) Program updated Title 13 of the Code of Federal Regulations (C.F.R.) Part 124. These changes included the requirement that all 8(a) applications along with supporting documentation must now be filed electronically. As a result, the 8(a) BD program is establishing an interim business process for 8(a) Applicant Firms to meet this requirement. For electronic filing, we have established a website portal for you to upload your 8(a) application and supporting documentation to the SBA.";
+    Expected_Text = "Please download the following:";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.xpath("//h3[2]")).getText();
-    Expected_Text = "Instructions:";
+    Expected_Text = "Contacts for Assistance:";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
-    Expected_Text = "Please download the following:";
+    Expected_Text =
+        "For general questions about uploading 8(a) documents, please email: certify@sba.gov.";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.cssSelector("ol > li")).getText();
     Expected_Text =
@@ -87,13 +86,12 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     webDriver.navigate().back();
     Thread.sleep(2000);
-    webDriver.navigate().back();
     // Verify the 2nd download links.
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window1 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
     webDriver.findElement(By.linkText("Guidance to Submitting an 8(a) Application")).click();
-    Thread.sleep(4000);
+    Thread.sleep(2000);
     java.util.Set<String> S1 = webDriver.getWindowHandles();
     Iterator<String> i1 = S1.iterator();
     while (i1.hasNext()) {
@@ -147,6 +145,7 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    webDriver.quit();
+    webDriver.close();
   }
 }
+

@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -33,18 +32,15 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new one.
-    Thread.sleep(2000);
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
-    Thread.sleep(2000);
     // partnership test for 1st person.
     NewSoleProprietorQuestionsPage newSoleProprietorQuestions =
         new NewSoleProprietorQuestionsPage(webDriver);

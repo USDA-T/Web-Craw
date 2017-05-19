@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -44,7 +45,6 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
@@ -54,7 +54,7 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     Expected_Text =
         "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Verify the Basic Eligibility link.
     Actual_Text = webDriver.findElement(By.linkText("Basic Eligibility")).getText();
     Expected_Text = "Basic Eligibility";
@@ -71,7 +71,7 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
         "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the accept button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
     // ===>Section 1: Eligibility Screening, Subsection 1.1: Screen.
     // Verify and validate this question
@@ -145,7 +145,8 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     // Select No and verify the disqualifying warning message.
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // Verify the warning message.
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions
+        .visibilityOfElementLocated(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[3]")));
     Actual_Text = webDriver
         .findElement(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[3]")).getText();
     Expected_Text =
@@ -166,9 +167,9 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     // Select No and verify the disqualifying warning message.
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // Verify the warning message.
-    Thread.sleep(2000);
-    Actual_Text = webDriver
-        .findElement(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[4]")).getText();
+    wait.until(ExpectedConditions
+        .visibilityOfElementLocated(By.xpath("//div[4]/fieldset/div[2]/div/div/p")));
+    Actual_Text = webDriver.findElement(By.xpath("//div[4]/fieldset/div[2]/div/div/p")).getText();
     Expected_Text =
         "In order to participate in 8(a) Business Development Program, the individual(s) claiming disadvantaged status must be a U.S. citizen.";
     assertEquals(Actual_Text, Expected_Text);
@@ -188,8 +189,7 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Cats are among the most feared and revered creatures on the planet.  Their power, strength, and enigmatic nature have fascinated us for centuries.  They’ve dominated human culture since the dawn of civilization.  Go from the rainforests, to the savannah, to the mountain peaks all the way into the comfort of our homes.  Get an in-depth look at this unique species and the evolutionary tricks and adaptations that truly make a cat, a cat. Cats are loving animals as all creature of mother nature are.");
     // Click on the Save and Continue button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(3000);
+    CoreUtils.clickContinue(webDriver);
     // ===>Subsection 1.2: Prior 8(a) Involvement.
     // Q1.2.a.
     // Verify and Validate this Question.
@@ -207,7 +207,6 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Select Yes and verify the disqualifying warning message.
     webDriver.findElement(By.xpath("//div/input")).click();
-    Thread.sleep(2000);
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text = "The 8(a) Business Development Program has one-time eligibility.";
     assertEquals(Actual_Text, Expected_Text);
@@ -245,20 +244,16 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Select NO and attached a doc.
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
-    Thread.sleep(2000);
     // Upload document.
-    // String file_path_abs = FixtureUtils.fixturesDir() +
-    // "MainTestUploadDoc.pdf";
-    // MontanaUploadDocumentPage MontanaUploadDocument = new
-    // MontanaUploadDocumentPage(webDriver);
+    // String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+    // MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
     // MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
     // Thread.sleep(2000);
     // Click on the Save and Continue button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Cats are among the most feared and revered creatures on the planet.  Their power, strength, and enigmatic nature have fascinated us for centuries.  They’ve dominated human culture since the dawn of civilization.  Go from the rainforests, to the savannah, to the mountain peaks all the way into the comfort of our homes.  Get an in-depth look at this unique species and the evolutionary tricks and adaptations that truly make a cat, a cat. Cats are loving animals as all creature of mother nature are.");
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ===>Subsection 1.3: Outside Assistance.
     // 1.3.a
     // Verify and Validate this Question.
@@ -276,8 +271,7 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     // webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     // String main_window = webDriver.getWindowHandle();
     // logger.info("Before switching, title is = certify.sba.gov");
-    // webDriver.findElement(By.linkText("representative
-    // information")).click();
+    // webDriver.findElement(By.linkText("representative information")).click();
     // assertEquals(Actual_Text, Expected_Text);
     // java.util.Set<String> S1 = webDriver.getWindowHandles();
     // Iterator<String> i1 = S1.iterator();
@@ -297,13 +291,10 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     webDriver.findElement(By.xpath("//label[2]")).click();
     // Upload Doc.
     // file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    // MontanaUploadDocumentPage MontanaUploadDocument1 = new
-    // MontanaUploadDocumentPage(webDriver);
+    // MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
     // MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
-    Thread.sleep(3000);
     // Click on the Save and Continue button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // ===>Subsection 1.4: Business Size.
     // Q1.4.a.
     // Verify and Validate this Question.
@@ -319,7 +310,6 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     // Select No and verify the disqualifying warning message.
     webDriver.findElement(By.xpath("//label[2]")).click();
     // Verify the warning message.
-    Thread.sleep(2000);
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text =
         "To qualify for the 8(a) Business Development Program, the applicant firm must meet SBA’s small business size standards. Please email 8aBD@sba.gov for assistance if you are unsure if the firm meets SBA’s small business size standards. Include your firm name, DUNS number and address in the email.";
@@ -333,15 +323,12 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Select No and verify that user navigates to the review page.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    // Verify that Size Determination section is skipped and user is
-    // navigated to the review page.
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
+    // Verify that Size Determination section is skipped and user is navigated to the review page.
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text =
         "To qualify for the 8(a) Business Development Program, the applicant firm must be organized as for-profit business.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     // ===>Review section.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "8(A) Eligibility Summary";
@@ -372,7 +359,6 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     Expected_Text =
         "To qualify for the 8(a) Business Development Program, the applicant firm must meet SBA’s small business size standards. Please email 8aBD@sba.gov for assistance if you are unsure if the firm meets SBA’s small business size standards. Include your firm name, DUNS number and address in the email.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     // webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Navigate back and verify in-progress status for the draft.
     webDriver.findElement(By.xpath("//a/span")).click();
@@ -384,25 +370,20 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     WebElement EligibilityInProgressStatus = webDriver.findElement(By.xpath("//td[3]"));
     HighLight.highLightElement(webDriver, EligibilityInProgressStatus);
     webDriver.findElement(By.linkText("Basic Eligibility")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("eight_a_basic_eligibility_assistance")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Business Size";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.xpath("//label[2]")).click();
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the Submit button.
-    Thread.sleep(1000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     webDriver.switchTo().alert().accept();
-    Thread.sleep(1000);
     // verify completion of eligibility.
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text = "8(a) Basic Eligibility section is complete";
@@ -418,3 +399,4 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     webDriver.close();
   }
 }
+

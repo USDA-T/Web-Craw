@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.Constants;
 import gov.sba.automation.TestHelpers;
@@ -29,11 +31,14 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
   public void testMainTest() throws Exception {
     logger.info(
         "User is NOT eligible(due to NO for Qs1) for Any of the programs 8(a), WOSB, EDWOSB & Hob-zone");
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Locate the Am I Eligible or the Find Out button on the
     // Certify.SBA.Gov landing page and click on it.
     webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span"))
         .click();
     // Verify that user navigates to the am i eligible page.
+    wait.until(
+        ExpectedConditions.elementSelectionStateToBe(By.xpath(".//*[@id='am-i']/h1"), false));
     String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
     String expected_Text = "Is there an SBA Contracting Program for me?";
     assertEquals(expected_Text, actual_Text);

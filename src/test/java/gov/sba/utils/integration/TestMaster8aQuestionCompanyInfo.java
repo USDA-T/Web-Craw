@@ -2,7 +2,6 @@ package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -40,18 +40,16 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initia");
     // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Verify the Basic Company Info link.
     Actual_Text = webDriver.findElement(By.linkText("Company Info")).getText();
     Expected_Text = "Company Info";
@@ -64,8 +62,7 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
     HighLight.highLightElement(webDriver, CompanyInfoStatusNotStarted);
     // Click on the contributor link and verify page.
     webDriver.findElement(By.linkText("Company Info")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Company Stuff";
     assertEquals(Actual_Text, Expected_Text);
@@ -116,11 +113,9 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
         logger.info("Second Window is not thesame as first window");
       }
     }
-    Thread.sleep(2000);
     // Select Yes and continue.
     webDriver.findElement(By.id("answers_196_value_yes")).click();
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Verify the More Co Stuff page.
     // 1st question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -129,7 +124,7 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Select Yes and continue.
     webDriver.findElement(By.id("answers_197_value_yes")).click();
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Click on the Save and Continue button.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "8(A) Company Information Summary";
@@ -144,15 +139,13 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
     WebElement EligibilityInProgressStatus = webDriver.findElement(By.xpath("//tr[5]/td[3]"));
     HighLight.highLightElement(webDriver, EligibilityInProgressStatus);
     webDriver.findElement(By.linkText("Company Info")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("eight_a_company_stuff_too")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the Submit button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     webDriver.switchTo().alert().accept();
     // Verify status.
     Actual_Text = webDriver.findElement(By.xpath("//tr[5]/td[3]")).getText();

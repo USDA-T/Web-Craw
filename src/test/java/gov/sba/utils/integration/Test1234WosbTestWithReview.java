@@ -34,7 +34,6 @@ public class Test1234WosbTestWithReview extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -48,7 +47,6 @@ public class Test1234WosbTestWithReview extends TestCase {
     // Start a new WOSB Question.
     NewWosbQuestionPage newWosbQuestion = new NewWosbQuestionPage(webDriver);
     newWosbQuestion.NewWosbQuestion();
-    Thread.sleep(2000);
     // Submit and review the WOSB application.
     WosbReturnCertPage wosbReturnCert = new WosbReturnCertPage(webDriver);
     wosbReturnCert.WosbReturnCert();
@@ -69,3 +67,4 @@ public class Test1234WosbTestWithReview extends TestCase {
     webDriver.close();
   }
 }
+

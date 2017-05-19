@@ -41,7 +41,6 @@ public class TestApp8AInterimQuestion extends TestCase {
     // Upload a document.
     UploadDocumentPage montanaUploadDocument0 = new UploadDocumentPage(webDriver);
     montanaUploadDocument0.MontanaUploadDocument();
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     logger.info("  8(a) question has been answered");
     // Review page.
@@ -51,7 +50,6 @@ public class TestApp8AInterimQuestion extends TestCase {
     Actual_Text = webDriver.findElement(By.cssSelector("p")).getText();
     Expected_Text = "Please review below answers and Submit.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     logger.info(webDriver.switchTo().alert().getText());
     webDriver.switchTo().alert().accept();
@@ -102,7 +100,6 @@ public class TestApp8AInterimQuestion extends TestCase {
     // Step 9 - Click the Continue button
     logger.info("Step 9 - Click the Continue button");
     webDriver.findElement(By.id("accept-button")).click();
-    Thread.sleep(3000);
     // Step 10 - Accept the error message
     logger.info("Step 10 - Accept the error message");
     webDriver.switchTo().alert().accept();
@@ -114,7 +111,6 @@ public class TestApp8AInterimQuestion extends TestCase {
     webDriver.findElement(By.id("legal_3")).click();
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("accept-button")).click();
 
   }

@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Upload4pdfOnSamePage {
   private static final Logger logger = LogManager.getLogger(Upload4pdfOnSamePage.class.getName());
@@ -20,6 +22,7 @@ public class Upload4pdfOnSamePage {
   }
 
   public void Upload4pdfOnSame(String upload_Path) throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     logger.debug("Uploading a new document");
     webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[4]")).click();
     Thread.sleep(2000);
@@ -47,10 +50,11 @@ public class Upload4pdfOnSamePage {
     Thread.sleep(2000);
     robot.keyPress(KeyEvent.VK_ENTER);
     robot.keyRelease(KeyEvent.VK_ENTER);
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@id='attach'])[4]")));
     Actions act1 = new Actions(webDriver);
     act1.doubleClick(webDriver.findElement(By.xpath("(//button[@id='attach'])[4]"))).build()
         .perform();
+    Thread.sleep(2000);
 
   }
 

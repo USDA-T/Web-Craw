@@ -35,7 +35,6 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -45,11 +44,9 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new one.
-    Thread.sleep(2000);
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
-    Thread.sleep(2000);
     // partnership test for 1st person.
     NewSoleProprietorQuestionsPage newSoleProprietorQuestions =
         new NewSoleProprietorQuestionsPage(webDriver);
@@ -66,7 +63,6 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
     LoginPageWithReference login_Data1 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data1.Login_With_Reference();
-    Thread.sleep(3000);
     Actual_Text =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
     Expected_Text = "Draft";

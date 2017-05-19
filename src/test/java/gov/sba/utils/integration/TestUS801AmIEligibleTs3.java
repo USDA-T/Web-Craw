@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -29,11 +31,13 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
     // page.
     logger.info(
         "User is NOT eligible for Any of the programs because user answer NO for Qs2: 8(a), WOSB, EDWOSB & Hob-zone");
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Locate the Am I Eligible or the Find Out button on the
     // Certify.SBA.Gov landing page and click on it.
     webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span"))
         .click();
-    Thread.sleep(2000);
+    wait.until(
+        ExpectedConditions.elementSelectionStateToBe(By.xpath(".//*[@id='am-i']/h1"), false));
     // Verify that user navigates to the am i eligible page.
     String actual_Text = webDriver.findElement(By.xpath(".//*[@id='am-i']/h1")).getText();
     String expected_Text = "Is there an SBA Contracting Program for me?";
@@ -53,7 +57,8 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
     assertEquals(actual_Text3, expected_Text3);
     // verify and click on the Yes button.
     webDriver.findElement(By.cssSelector("button.yes_button")).click();
-    Thread.sleep(5000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(
+        By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p"), false));
     // Locate the 2nd question and select No and verify the More Detail
     // meaning of the question.
     String actual_error3 = webDriver
@@ -80,9 +85,9 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
     String expected_error5 =
         "Controlmeans that both the long-term decision making and the day-to-day management of the business are controlled by qualifying individual(s).";
     assertEquals(actual_error5, expected_error5);
-    Thread.sleep(3000);
     // verify and click on the No button.
     webDriver.findElement(By.id("no_button_unconditional_direct_51_percent")).click();
+    wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("span.message"), false));
     // Verify searched results.
     String actual_error7 = webDriver.findElement(By.cssSelector("span.message")).getText();
     String expected_error7 =
