@@ -6,10 +6,13 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
+import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
 public class newMppUploadDocumentPageDeepa {
   private static final Logger logger =
@@ -22,38 +25,12 @@ public class newMppUploadDocumentPageDeepa {
 
   public void deepaUploadMppDocument(String upload_Path) throws Exception {
     logger.info("Uploading a new document");
-    for (int i = 0; i < 21; i++) {
-
-      try {
-        webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-        i = 100;
-        Thread.sleep(300);
-      } catch (Exception e) {
-        logger.info("trying to click again - add");
-      }
-    }
-
-    for (int i = 0; i < 21; i++) {
-      try {
-        webDriver.findElement(By.id("doc-upload-button")).click();
-        i = 100;
-        Thread.sleep(300);
-      } catch (Exception e) {
-        logger.info("trying to click again - upld");
-      }
-    }
-
-    for (int i = 0; i < 21; i++) {
-      try {
-        webDriver.findElement(By.linkText("Choose a .pdf file")).click();
-        i = 100;
-        Thread.sleep(300);
-      } catch (Exception e) {
-        logger.info("trying to click again - choose");
-      }
-    }
-
-    Thread.sleep(700);
+    click_Element(webDriver, "Upload_Add_Req_Button");
+    Thread.sleep(1500); // Need to
+    click_Element(webDriver, "Upload_doc_Upload_Button");
+    Thread.sleep(1500);
+    click_Element(webDriver, "Upload_doc_Choose_File");
+    Thread.sleep(1500);
 
     StringSelection ss = new StringSelection(upload_Path);
     Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
@@ -111,17 +88,10 @@ public class newMppUploadDocumentPageDeepa {
     robot.keyPress(KeyEvent.VK_ENTER);
     robot.keyRelease(KeyEvent.VK_ENTER);
     logger.info("Uploading a new document - Clicked on All Enters");
-
-    for (int i = 0; i < 11; i++) {
-      Thread.sleep(400);
-      try {
-        webDriver.findElement(By.id("attach")).click();
-        i = 100;
-      } catch (Exception e) {
-        logger.info("trying to click again - attach");
-      }
-
-    }
+    Thread.sleep(1500);
+    click_Element(webDriver, "Upload_Attach_Button");
+    Thread.sleep(1500);
+    logger.info("Doc has been uploaded.");
 
   }
 

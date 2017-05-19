@@ -186,12 +186,38 @@ General_Element_Property_Enabled: {PropName: "enabled", PropValue: "true"}
 Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
 Analyst_Review_Determ_Page_Return_Mod_Link: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
 
+# My Contracting SBA Program  Draft
+SBA_My_Cont_Pgm_Delete_App_8a_Inital_Delete: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Initial Program') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
+SBA_My_Cont_Pgm_Delete_App_EDWOSB_Delete:    {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
+SBA_My_Cont_Pgm_Delete_App_WOSB_Delete:      {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'WOSB Self-Certification') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
+SBA_My_Cont_Pgm_Delete_App_MPP_Delete:       {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'MPP Application') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
+SBA_My_Cont_Pgm_Delete_App_8a_upload_Delete: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Document Upload') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
 
 
 
+# My Contracting SBA Program
+SBA_My_Cont_Pgm_Create_App_8a_Inital: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Initial Program') ] "}
+SBA_My_Cont_Pgm_Create_App_EDWOSB:    {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification') ]"}
+SBA_My_Cont_Pgm_Create_App_WOSB:      {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'WOSB Self-Certification') ]"}
+SBA_My_Cont_Pgm_Create_App_MPP:       {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'MPP Application') ] "}
+SBA_My_Cont_Pgm_Create_App_8a_upload: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Document Upload') ] "}
+
+# 8a Initial Program
+8a_Master_Application_Page_Contributers_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] "}
+8a_Master_Application_Page_BasicEligibility_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility') ] "}
+8a_Master_Application_Page_Business Ownership_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership') ] "}
+8a_Master_Application_Page_Character_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character') ] "}
+8a_Master_Application_Page_Control_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ] "}
+8a_Master_Application_Page_Company_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company') ] "}
+
+Upload_Attach_Button:             {Locator: "id", Value: "attach"}
+Upload_Add_Req_Button:            {Locator: "cssselector", Value: "#add-req-doc-button > a"}
+Upload_doc_Upload_Button:         {Locator: "id", Value: "doc-upload-button"}
+Upload_doc_Choose_File:           {Locator: "linktext", Value: "Choose a .pdf file"}
 
 
-
+Search_Duns_No:                   {Locator: "xpath", Value: "//a[contains(@id,'search-duns')]"}
+Review_Application:               {Locator: "id", Value: "review"}
 
 
 

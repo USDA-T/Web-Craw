@@ -1,19 +1,15 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-
 import java.util.Iterator;
 import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import gov.sba.automation.CommonApplicationMethods;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class fillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
@@ -140,11 +136,9 @@ public class fillApplCreatePages {
             new newMppUploadDocumentPageDeepa(webDriver);
         deepaUploadMppDocument1.deepaUploadMppDocument(path);
         logger.info("Doc has been uploaded.");
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        Thread.sleep(2000);
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        click_Element(webDriver, "Application_Common_Submit_Button");
+
         try {
           logger.info("Check Alert");
           webDriver.switchTo().alert().accept();
@@ -181,13 +175,7 @@ public class fillApplCreatePages {
             new newMppUploadDocumentPageDeepa(webDriver);
         deepaUploadMppDocument1.deepaUploadMppDocument(path);
         logger.info("Doc has been uploaded.");
-        Thread.sleep(2000);
-        try {
-          logger.info("Check Alert");
-          webDriver.switchTo().alert().accept();
-        } catch (Exception excp) {
-          logger.info("No Alert");
-        }
+        accept_Optional_Alert(webDriver, 20);
         logger.info("Doc has been uploaded and accepted");
 
       }
@@ -201,77 +189,81 @@ public class fillApplCreatePages {
       String duns_No_Given) throws Exception {
     try {
       if (answer01.toUpperCase().contains("YES")) {
-        List<WebElement> current_Row = webDriver.findElements(By.xpath(
-            "//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
-        Iterator<WebElement> all_Rows = current_Row.iterator();
-        while (all_Rows.hasNext()) {
-          all_Rows.next().click();
-        }
+              List<WebElement> current_Row = webDriver.findElements(By.xpath(
+                  "//input[contains(@id,'answers_') and contains(@id,'value') and contains(@id,'yes') ]"));
+              Iterator<WebElement> all_Rows = current_Row.iterator();
+              while (all_Rows.hasNext()) {
+                all_Rows.next().click();
+              }
 
-        newMppUploadDocumentPageDeepa deepaUploadMppDocument1 =
-            new newMppUploadDocumentPageDeepa(webDriver);
-        deepaUploadMppDocument1.deepaUploadMppDocument(path);
-        logger.info("Doc has been uploaded.");
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        List<WebElement> duns_No = webDriver
-            .findElements(By.xpath("//input[@type='number' and contains(@id,'duns-value')]"));
-        if (duns_No.size() > 0) {
-          duns_No.get(0).sendKeys(duns_No_Given);
-          webDriver.findElement(By.xpath("//a[contains(@id,'search-duns')]")).click();
-          duns_No = webDriver.findElements(By.xpath("//a[contains(@id,'search-duns')]"));
-          if (duns_No.size() > 0) {
-            logger.info("Clicked now.");
-            duns_No.get(0).click();
-          }
-          Thread.sleep(2000);
-          try {
-            webDriver.switchTo().alert().accept();
-          } catch (Exception ex) {
-            logger.info("No alerts available");
-          }
-        }
+              new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
 
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        Thread.sleep(2000);
-        webDriver.findElement(By.className("review")).click();
-        logger.info("Doc has been uploaded and accepted");
+              click_Element(webDriver, "Application_Common_Submit_Button");
 
-        try {
-          webDriver.switchTo().alert().accept();
-        } catch (Exception ex) {
-          logger.info("No alerts available");
-        }
 
-      } else {
-        try {
-          webDriver.findElement(By.id("answers_117_value_no")).click();
-        } catch (Exception e1) {
-          webDriver.findElement(By.id("answers_228_value_yes")).click();
-        }
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+              for (int i=0;i<1000;i++){
+                List<WebElement> duns_No = webDriver
+                        .findElements(By.xpath("//input[@type='number' and contains(@id,'duns-value')]"));
+
+                if (duns_No.size() > 0) {
+                  duns_No.get(0).sendKeys(duns_No_Given);
+                  click_Element(webDriver, "Search_Duns_No");
+
+                  duns_No = webDriver.findElements(By.xpath("//a[contains(@id,'search-duns')]"));
+                  if (duns_No.size() > 0) {
+                    logger.info("Clicked now.");
+                    duns_No.get(0).click();
+                  }
+                  accept_Optional_Alert(webDriver, 20);
+                  i = 2000;
+                }
+
+              }
+
+              click_Element(webDriver, "Application_Common_Submit_Button");
+
+              click_Element(webDriver, "Review_Application");
+
+              click_Element(webDriver, "Application_Common_Submit_Button");
+
+              accept_Optional_Alert(webDriver, 20);
+
+              logger.info("Doc has been uploaded and accepted");
+
+              try {
+                webDriver.switchTo().alert().accept();
+              } catch (Exception ex) {
+                logger.info("No alerts available");
+              }
+
+            }
+      else {
+            try {
+              webDriver.findElement(By.id("answers_117_value_no")).click();
+            } catch (Exception e1) {
+              webDriver.findElement(By.id("answers_228_value_yes")).click();
+            }
+            click_Element(webDriver, "Application_Common_Submit_Button");
       }
     } catch (Exception e) {
-      logger.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"page8aFillUpDunsNo"});
-      throw e;
+        logger.info(e.toString());
+        take_ScreenShot_TestCaseName(webDriver,new String[] {"page8aFillUpDunsNo"});
+        throw e;
     }
   }
 
   public static void finalSignatureSubmit(WebDriver webDriver) throws Exception {
     try {
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_0']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_1']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_2']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_3']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_4']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_5']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_0']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_1']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_2']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_3']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_4']");
+      click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_5']");
+      click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
     } catch (Exception e) {
       logger.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
+      take_ScreenShot_TestCaseName(webDriver,
           new String[] {"finalSignatureSubmit"});
       throw e;
     }
@@ -279,11 +271,11 @@ public class fillApplCreatePages {
 
   public static void finalSignatureSubmit8A(WebDriver webDriver) throws Exception {
     try {
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@id='legal_0']");
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
+      click_Element_Loc(webDriver, "Xpath", "//input[@id='legal_0']");
+      click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
     } catch (Exception e) {
       logger.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
+      take_ScreenShot_TestCaseName(webDriver,
           new String[] {"finalSignatureSubmit8A"});
       throw e;
     }
