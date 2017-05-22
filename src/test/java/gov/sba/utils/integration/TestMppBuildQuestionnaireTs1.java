@@ -31,6 +31,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text;
     String Expected_Text;
@@ -201,9 +202,13 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       webDriver.findElement(By.linkText("Vendor Overview")).click();
       webDriver.findElement(By.linkText("Logout")).click();
     }
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());    }
+    
     logger.info("Success");
-  }
-
+}
   @After
   public void tearDown() throws Exception {
     webDriver.close();

@@ -391,11 +391,9 @@ public class NewSoleProprietorQuestionsPage extends TestCase {
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
 
-    catch (Exception e) {
-      Thread.sleep(2000);
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info("Error");
-    }
+   catch (Exception e) {
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info(e.getMessage());    }
   }
 }

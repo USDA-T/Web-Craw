@@ -37,6 +37,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Open Firefox,Chrome,and IE and navigate to the valid url.
     webDriver.findElement(By.cssSelector("button.button-full")).click();
@@ -231,10 +232,16 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         }
       }
     }
-  }
-
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());    }
+    
+    logger.info("Success");
+}
   @After
   public void tearDown() throws Exception {
     webDriver.close();
   }
 }
+

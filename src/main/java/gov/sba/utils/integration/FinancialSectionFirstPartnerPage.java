@@ -874,13 +874,11 @@ public class FinancialSectionFirstPartnerPage {
       Thread.sleep(2000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
       logger.info("Entering Second partner Finances");
-    } catch (Exception e) {
-      Thread.sleep(2000);
+      } catch (Exception e) {
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
-      logger.info("Error");
-    }
-  }
+      logger.info(e.getMessage());    }
+      }
 
   private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub

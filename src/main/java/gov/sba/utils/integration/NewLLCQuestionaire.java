@@ -16,6 +16,7 @@ public class NewLLCQuestionaire {
   }
 
   public void NewLlcquestions() throws Exception {
+    try{
     String Actual_Text = null;
     String Expected_Text = null;
     // Locate the 8(a) question and select No and continue.
@@ -300,8 +301,12 @@ public class NewLLCQuestionaire {
       }
     }
 
+  
+  } catch (Exception e) {
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info(e.getMessage());    }
   }
-
   private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub
   }

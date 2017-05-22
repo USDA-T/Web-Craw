@@ -22,6 +22,7 @@ public class FinancialSectionPage {
   }
 
   public void Financialsection() throws Exception {
+    try{
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text = null;
     String Expected_Text = null;
@@ -407,7 +408,7 @@ public class FinancialSectionPage {
     HighLight.highLightElement(webDriver, PRDetails);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/input")));
     webDriver.findElement(By.xpath("//div[2]/input"))
-        .sendKeys("8597 weems rd 2000 ln manassas va 30998");
+    .sendKeys("8597 weems rd 2000 ln manassas va 30998");
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/div[2]/input")).sendKeys("50");
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/div[2]/input")).sendKeys("98");
@@ -783,12 +784,30 @@ public class FinancialSectionPage {
     String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
     String expected_Text6 = "Denzel Washington";
     assertEquals(actual_Text6, expected_Text6);
-    // Verify updated int type for total assets.
+    // Verify total assets.
     String actual_Text11 = webDriver.findElement(By.xpath("//tr[15]/td[2]")).getText();
-    String expected_Text11 = "$3,245,079.95";
+    String expected_Text11 = "$10,845,158.82";
     assertEquals(actual_Text11, expected_Text11);
     WebElement $TotalAssets = webDriver.findElement(By.xpath("//tr[15]/td[2]"));
     HighLight.highLightElement(webDriver, $TotalAssets);
+    //Verify total liabilities.=========>>v
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[10]/td[2]")).getText();
+    Expected_Text = "$11,101,809.87";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement $TotalLiabilities = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[10]/td[2]"));
+    HighLight.highLightElement(webDriver, $TotalLiabilities);
+    //verify Net Worth Total Assets - Total Liabilities
+    Actual_Text = webDriver.findElement(By.id("//div[2]/table/tbody/tr[11]/td[2]")).getText();
+    Expected_Text = "-$256,651.05";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement $NetWorthTotalAssetsMibusTotalLiabilities = webDriver.findElement(By.xpath("//div[3]/div[2]/table/tbody/tr[4]/td[2]"));
+    HighLight.highLightElement(webDriver, $NetWorthTotalAssetsMibusTotalLiabilities);
+    //Verify AGI Total Avg.
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]")).getText();
+    Expected_Text = "$20,000.00";
+    assertEquals(Actual_Text, Expected_Text);
+    WebElement $AGItotalAvg = webDriver.findElement(By.xpath("//div[3]/div[2]/table/tbody/tr[4]/td[2]"));
+    HighLight.highLightElement(webDriver, $AGItotalAvg);   
     // Locate and click on the continue button.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("section_submit_button")));
     Actions act13 = new Actions(webDriver);
@@ -826,9 +845,13 @@ public class FinancialSectionPage {
     String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
     String expected_Text5 = "Accept";
     assertEquals(actual_Text5, expected_Text5);
-  }
-
-  private void assertEquals(String actual_Text1, String expected_Text1) {
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());    }
+    }
+   private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub
-  }
-}
+   }
+   }
+

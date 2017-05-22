@@ -475,12 +475,10 @@ public class NewCorporationQuestionPage {
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    } catch (Exception e) {
-      Thread.sleep(2000);
+      } catch (Exception e) {
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
-      logger.info("Error");
-    }
-    logger.info("Success");
+      logger.info(e.getMessage());    }
+      }
   }
-}
+

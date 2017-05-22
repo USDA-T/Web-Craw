@@ -20,13 +20,24 @@ public class ScreenShotPage {
 
   public void ScreenShot() throws Exception {
     // Take screenshot and store as a file format
-    File src = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+    
+    File src= ((TakesScreenshot)webDriver).getScreenshotAs(OutputType.FILE);
     try {
-      // now copy the screenshot to the screenshot folder.
-      FileUtils.copyFile(src, new File("/sba-automation/misc/Screenshots/ErrorPage.png"));
-    } catch (IOException e) {
-      logger.info(e.getMessage());
+      // now copy the  screenshot to desired location using copyFile method
+     
+     FileUtils.copyFile(src, new File("C:/SbaProject/sba-automation-develop/ScreenShots/"+System.currentTimeMillis()+".png"));
+           }
+     
+   catch (IOException e) {
+    logger.info(e.getMessage());
 
-    }
-  }
-}
+    {
+     
+    System.out.println(e.getMessage());
+     
+        }
+     
+    
+  }  
+   
+  }}
