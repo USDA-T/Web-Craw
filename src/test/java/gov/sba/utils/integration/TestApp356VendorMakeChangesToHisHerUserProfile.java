@@ -30,6 +30,7 @@ public class TestApp356VendorMakeChangesToHisHerUserProfile extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     String Actual_Text;
     String Expected_Text;
     logger.info("Upding vendor's user profile.");
@@ -150,10 +151,17 @@ public class TestApp356VendorMakeChangesToHisHerUserProfile extends TestCase {
     // Logout of the system.
     webDriver.findElement(By.linkText("Logout")).click();
     logger.info("Success");
-  }
-
-  @After
-  public void tearDown() throws Exception {
-    webDriver.close();
-  }
+    }
+    catch (Exception e) {
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info(e.getMessage());    }
+  
+    logger.info("Success");
+    }
+@After
+public void tearDown() throws Exception {
+  webDriver.close();
 }
+}
+
