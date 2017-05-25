@@ -23,7 +23,6 @@ public class NewWosbQuestionPage {
   }
 
   public void NewWosbQuestion() throws Exception {
-    try{
     logger.debug(" new sole proprietorship question page");
     // Explicit wait.
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
@@ -320,9 +319,5 @@ public class NewWosbQuestionPage {
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     webDriver.switchTo().alert().accept();
-    } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());    }
-    }
+  }
 }

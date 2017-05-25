@@ -18,7 +18,6 @@ public class NewPartnershipQuestionsPage {
 
   public void NewPartnershipQuestions() throws Exception {
     logger.debug(" new sole proprietorship question page");
-    try {
       String Actual_Text = null;
       String Expected_Text = null;
       // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -430,11 +429,5 @@ public class NewPartnershipQuestionsPage {
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    }
-
-     catch (Exception e) {
-    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    screenShot.ScreenShot();
-    logger.info(e.getMessage());    }
     }
 }

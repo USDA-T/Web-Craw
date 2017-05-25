@@ -17,7 +17,6 @@ public class NewScorpQuestionsPage {
 
   public void NewScorpQuestions() throws Exception {
     logger.debug(" new Scorp question page");
-    try {
       String Actual_Text = null;
       String Expected_Text = null;
       // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -474,12 +473,6 @@ public class NewScorpQuestionsPage {
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    }
-
-   catch (Exception e) {
-    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    screenShot.ScreenShot();
-    logger.info(e.getMessage());    }
     }
   }
 

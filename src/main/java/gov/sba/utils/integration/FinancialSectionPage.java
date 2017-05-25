@@ -22,7 +22,6 @@ public class FinancialSectionPage {
   }
 
   public void Financialsection() throws Exception {
-    try{
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text = null;
     String Expected_Text = null;
@@ -797,16 +796,16 @@ public class FinancialSectionPage {
     WebElement $TotalLiabilities = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[10]/td[2]"));
     HighLight.highLightElement(webDriver, $TotalLiabilities);
     //verify Net Worth Total Assets - Total Liabilities
-    Actual_Text = webDriver.findElement(By.id("//div[2]/table/tbody/tr[11]/td[2]")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]")).getText();
     Expected_Text = "-$256,651.05";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement $NetWorthTotalAssetsMibusTotalLiabilities = webDriver.findElement(By.xpath("//div[3]/div[2]/table/tbody/tr[4]/td[2]"));
+    WebElement $NetWorthTotalAssetsMibusTotalLiabilities = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]"));
     HighLight.highLightElement(webDriver, $NetWorthTotalAssetsMibusTotalLiabilities);
     //Verify AGI Total Avg.
-    Actual_Text = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='table2-pad']/table/tbody/tr[4]/td[2]")).getText();
     Expected_Text = "$20,000.00";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement $AGItotalAvg = webDriver.findElement(By.xpath("//div[3]/div[2]/table/tbody/tr[4]/td[2]"));
+    WebElement $AGItotalAvg = webDriver.findElement(By.xpath("//div[@id='table2-pad']/table/tbody/tr[4]/td[2]"));
     HighLight.highLightElement(webDriver, $AGItotalAvg);   
     // Locate and click on the continue button.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("section_submit_button")));
@@ -845,10 +844,6 @@ public class FinancialSectionPage {
     String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
     String expected_Text5 = "Accept";
     assertEquals(actual_Text5, expected_Text5);
-    } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());    }
     }
    private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub

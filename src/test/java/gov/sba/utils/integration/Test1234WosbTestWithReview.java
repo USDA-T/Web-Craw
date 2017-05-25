@@ -3,12 +3,12 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -29,6 +29,7 @@ public class Test1234WosbTestWithReview extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     logger.info("Test WOSB Partnership Flow");
     // Login to dashboard.
     LoginPageWithReference login_Data =
@@ -59,9 +60,14 @@ public class Test1234WosbTestWithReview extends TestCase {
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
     webDriver.findElement(By.linkText("Logout")).click();
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());
+      Assert.fail();
+    }
     logger.info("Success");
-  }
-
+    }
   @After
   public void tearDown() throws Exception {
     webDriver.close();

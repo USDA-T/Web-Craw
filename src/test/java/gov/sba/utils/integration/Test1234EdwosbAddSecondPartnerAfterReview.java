@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -27,6 +28,7 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     logger.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
     // Login to dashboard.
     LoginPageWithReference login_Data =
@@ -69,8 +71,14 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
     webDriver.findElement(By.linkText("Logout")).click();
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());
+      Assert.fail();
+    }
     logger.info("Success");
-  }
+    }
 
   @After
   public void tearDown() throws Exception {

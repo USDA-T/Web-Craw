@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -47,12 +48,10 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    Thread.sleep(3000);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
-    Thread.sleep(2000);
     webDriver.navigate().to(
         "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
@@ -279,7 +278,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
     // Click on the Save and Continue button.
     CoreUtils.clickContinue(webDriver);
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
     // ===>Sub-Subsection 1.4.1: Size Determination.
     // Q1.4.1.a
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -292,18 +291,17 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     MontanaUploadDocument2.MontanaUploadDocument(file_path_abs);
     // Q1.4.1.b.
     Actual_Text =
-        webDriver.findElement(By.cssSelector("#answers_sba_area_office > fieldset > h4")).getText();
+        webDriver.findElement(By.xpath("//div[2]/fieldset/h4")).getText();
     Expected_Text = "Which SBA area office sent the most recent letter?";
     assertEquals(Actual_Text, Expected_Text);
     // Verify and Select area office.
-    Actual_Text = webDriver.findElement(By.id("answers_193_value")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_sba_area_office']/fieldset/div/div[2]/select")).getText();
     Expected_Text =
         "SBA Area Office 1\nSBA Area Office 2\nSBA Area Office 3\nSBA Area Office 4\nSBA Area Office 5\nSBA Area Office 6\nSBA Headquarters";
     assertEquals(Actual_Text, Expected_Text);
-    webDriver.findElement(By.id("answers_193_value")).click();
+    webDriver.findElement(By.xpath("//select")).click();
     Actions act = new Actions(webDriver);
     act.doubleClick(webDriver.findElement(By.xpath("//option[3]"))).build().perform();
-    Thread.sleep(2000);
     // Q1.4.1.c.
     Actual_Text = webDriver
         .findElement(By.cssSelector("#answers_redetermination_date > fieldset > h4")).getText();
@@ -313,7 +311,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     webDriver.findElement(By.xpath("//input[5]")).sendKeys("09/20/2017");
     // Click on the Save and Continue button.
     CoreUtils.clickContinue(webDriver);
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
     // ===>Review section.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "8(A) Eligibility Summary";
@@ -371,9 +369,7 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     WebElement EligibilityInProgressStatus = webDriver.findElement(By.xpath("//td[3]"));
     HighLight.highLightElement(webDriver, EligibilityInProgressStatus);
     webDriver.findElement(By.linkText("Basic Eligibility")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("eight_a_basic_eligibility_size_determination")).click();
-    Thread.sleep(2000);
     CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -393,7 +389,9 @@ public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
     catch (Exception e) {
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
     screenShot.ScreenShot();
-    logger.info(e.getMessage());    }
+    logger.info(e.getMessage());
+    Assert.fail();
+    }
      }
 @After
 public void tearDown() throws Exception {

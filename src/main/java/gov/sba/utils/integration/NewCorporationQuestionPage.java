@@ -17,7 +17,6 @@ public class NewCorporationQuestionPage {
   }
 
   public void NewCorporationQuestion() throws Exception {
-    try {
       logger.debug(" new sole proprietorship question page");
       String Actual_Text = null;
       String Expected_Text = null;
@@ -475,10 +474,6 @@ public class NewCorporationQuestionPage {
       // Locate the Continue Button and click on it to continue.
       Thread.sleep(3000);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());    }
       }
   }
 

@@ -18,7 +18,6 @@ public class NewSoleProprietorQuestionsPage extends TestCase {
 
   public void NewSoleProprietorQuestions() throws Exception {
     logger.debug(" new sole proprietorship question page");
-    try {
       String Actual_Text = null;
       String Expected_Text = null;
       // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -391,9 +390,5 @@ public class NewSoleProprietorQuestionsPage extends TestCase {
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     }
 
-   catch (Exception e) {
-    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    screenShot.ScreenShot();
-    logger.info(e.getMessage());    }
-  }
+  
 }
