@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddOrStartEightACertificationPage {
   private static final Logger logger =
@@ -21,7 +22,6 @@ public class AddOrStartEightACertificationPage {
     String Actual_Text = null;
     String Expected_Text = null;
     // Verify for active certification on the dashboard.
-    Thread.sleep(3000);
     if (webDriver.getPageSource().contains("Active")) {
       logger.info("There is (are) an active certification on the dashboard");
       // Click on the certification link.
@@ -68,7 +68,6 @@ public class AddOrStartEightACertificationPage {
       Expected_Text =
           "Get started now on your WOSB self-certification, EDWOSB self-certification, All Small Business Mentor-Protégé agreement, or 8(a) Document Upload.";
       assertEquals(Actual_Text, Expected_Text);
-      Thread.sleep(3000);
       // Click on the EDWOSB link.
       webDriver.findElement(By.linkText("8(a) Document Upload")).click();
       // Verify link 13 CFR § 124.3.

@@ -24,7 +24,6 @@ public class Test1234WosbTestWithReview extends TestCase {
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 3;
-
   }
 
   @Test
@@ -61,10 +60,10 @@ public class Test1234WosbTestWithReview extends TestCase {
     HighLight.highLightElement(webDriver, ReturnDraft);
     webDriver.findElement(By.linkText("Logout")).click();
     } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());
-      Assert.fail();
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info(e.getMessage());
+    Assert.fail();
     }
     logger.info("Success");
     }

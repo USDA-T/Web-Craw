@@ -72,7 +72,6 @@ public class ScorpQuestionsPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     logger.info("  Third Party questions have been answered");
-
     // Locate the Three Business Corporation and S-Corp(Stocks) question
     // 1,2and2, Verify select N/A and continue.
     String actual_Text6 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -151,8 +150,6 @@ public class ScorpQuestionsPage {
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from Him winged winged fifth man heaven won't it first .");
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-
-
     // Locate the Citizenship & Ownership question 1and2, Verify,select No
     // and continue.
     String actual_Text121 = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -203,7 +200,6 @@ public class ScorpQuestionsPage {
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-
     // Locate the Ownership questions, Verify, select No for
     // both and continue.
     // 1st question
@@ -459,7 +455,6 @@ public class ScorpQuestionsPage {
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//input[@name='commit']")).click();
     // Assets
-
     String actual_Text43 = webDriver.findElement(By.cssSelector("h4")).getText();
     String expected_Text43 =
         "Is the fair market value of all the assets of the qualifying individual(s) at or less than $6 million?";

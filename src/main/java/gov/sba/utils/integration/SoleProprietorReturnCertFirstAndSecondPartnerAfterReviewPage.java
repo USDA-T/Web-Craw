@@ -6,6 +6,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import gov.sba.automation.CoreUtils;
 import junit.framework.TestCase;
 
 public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extends TestCase {
@@ -19,6 +23,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
   }
 
   public void SoleProprietorReturnCertFirstAndSecondPartnerAfterReview() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text;
     String Expected_Text;
     logger.debug("Returning submited certification back to the two partners (Vendor)");
@@ -65,14 +70,12 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
         "By submitting this certification I, QA User, am an officer or owner of Entity 23 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
     assertEquals(Actual_Text, Expected_Text);
     // Step 9 - Click the Continue button
-    logger.info("Step 9 - Click the Continue button");
+    logger.info("Clicking accept buuton to trigger pop up alert");
     webDriver.findElement(By.id("accept-button")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.alertIsPresent());
     Actual_Text = webDriver.switchTo().alert().getText();
-    Expected_Text =
-        "In order to submit your application, you must accept all of the conditions of authorization.";
+    Expected_Text ="In order to submit your application, you must accept all of the conditions of authorization.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(3000);
     // Step 10 - Accept the error message
     logger.info("Step 10 - Accept the error message");
     webDriver.switchTo().alert().accept();
@@ -84,7 +87,6 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     webDriver.findElement(By.id("legal_3")).click();
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("accept-button")).click();
     // Click on the dashboard button.
     webDriver.findElement(By.linkText("Dashboard")).click();
@@ -92,7 +94,6 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     // Login as WOSB-analyst and return WOSB program back to vendor.
-    Thread.sleep(2000);
     webDriver.findElement(By.linkText("Logout")).click();
     get_The_Row_From_Login_Data = 0;
     LoginPageWithReference login_Data7 =
@@ -101,12 +102,11 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("158899368");
     webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));   
     webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
-    Thread.sleep(2000);
-    logger.info("Return to Vendor Link is missing please verify why.");
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("EDWOSB Self-Certification")));   
     webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-    Thread.sleep(3000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("submit_button")));   
     webDriver.findElement(By.id("submit_button")).click();
     // Question review.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -116,14 +116,11 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     webDriver.findElement(By.id("note_link")).click();
     webDriver.findElement(By.id("assessments__note_body")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[20]")).click();
     webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[20]")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
     // Click on the save and continue button.
-    Thread.sleep(2000);
     webDriver.findElement(By.id("save_notes")).click();
-    Thread.sleep(2000);
     // Take screenshot and store as a file format
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
     screenShot.ScreenShot();
@@ -134,20 +131,17 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     // Verify Denzel's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$256,153.05";
+    Expected_Text = "-$256,651.05";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Denzel's.
     webDriver.findElement(By.id("note_link")).click();
     webDriver.findElement(By.id("assessments__note_body")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[12]")).click();
     webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[12]")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
     // Click on the save and continue button.
-    Thread.sleep(2000);
     webDriver.findElement(By.id("save_notes")).click();
-    Thread.sleep(2000);
     // Financial review for Will Smith.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Will Smith";
@@ -155,21 +149,18 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     // Verify Will's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$256,153.05";
+    Expected_Text = "-$256,651.05";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Will Smith.
     webDriver.findElement(By.id("note_link")).click();
     webDriver.findElement(By.id("assessments__note_body")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[12]")).click();
     webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[12]")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
     // Click on the save and continue button.
-    Thread.sleep(2000);
     webDriver.findElement(By.id("save_notes")).click();
     // Verify signature review for both partners.
-    Thread.sleep(2000);
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Signature review";
     assertEquals(Actual_Text, Expected_Text);
@@ -177,16 +168,12 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     webDriver.findElement(By.id("assessment_status")).click();
     webDriver.findElement(By.xpath("//option[5]")).click();
     webDriver.findElement(By.id("note_link")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
-    Thread.sleep(2000);
     // Click on the save and continue button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Verify that the notes are being saved.
     webDriver.findElement(By.linkText("Question review")).click();
-    Thread.sleep(1000);
     webDriver.findElement(By.linkText("Show more")).click();
     Actual_Text = webDriver.findElement(By.xpath("//div[3]/p")).getText();
     Expected_Text =
@@ -196,7 +183,6 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     HighLight.highLightElement(webDriver, SavedNotes);
     // Click on Determination.
     webDriver.findElement(By.linkText("Determination")).click();
-    Thread.sleep(2000);
     // Verify Determination page and return certification back to vendor.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Determination";
@@ -205,15 +191,13 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     webDriver.findElement(By.cssSelector("#assessment_note_body")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll.");
     // Click on the save and continue button.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Verifying that the application was successfully return.
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
     Expected_Text = "You can view the vendor's record but can not make edits";
     assertEquals(Actual_Text, Expected_Text);
     ScreenShotPage screenShot1 = new ScreenShotPage(webDriver);
     screenShot1.ScreenShot();
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
     // Verify that the return certification is now on draft.
     Actual_Text =

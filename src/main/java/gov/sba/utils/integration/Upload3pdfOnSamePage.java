@@ -22,6 +22,7 @@ public class Upload3pdfOnSamePage {
   }
 
   public void Upload3pdfOnSame(String upload_Path) throws Exception {
+    Thread.sleep(2000);
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     logger.debug("Uploading a new document");
     webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[3]")).click();

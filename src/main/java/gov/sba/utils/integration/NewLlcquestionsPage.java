@@ -6,6 +6,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import gov.sba.automation.CoreUtils;
 
 public class NewLlcquestionsPage {
   private static final Logger logger = LogManager.getLogger(NewLlcquestionsPage.class.getName());
@@ -16,13 +19,13 @@ public class NewLlcquestionsPage {
   }
 
   public void NewLlcquestions() throws Exception {
-    try {
+      WebDriverWait wait = new WebDriverWait(webDriver, 40);   
       logger.debug(" new sole proprietorship question page");
       String Actual_Text = null;
       String Expected_Text = null;
       // Locate the accept button at the bottom of the EDWOSB agreement and
       // click on it to continue.
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // 8(a) question section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -41,8 +44,7 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // Answer No.
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>Third Party section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -56,8 +58,7 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // select no and continue.
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>Non-qualification section page.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -71,8 +72,7 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // select no and continue.
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>LLC program 1st question.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -104,8 +104,7 @@ public class NewLlcquestionsPage {
       webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
       webDriver.findElement(By.xpath("//div[2]/fieldset/div[4]/textarea")).sendKeys(
           "Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>Citizenship section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -119,8 +118,7 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // select no and continue.
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>Ownership section.1st question.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -162,8 +160,7 @@ public class NewLlcquestionsPage {
       webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
       webDriver.findElement(By.xpath("//textarea")).sendKeys(
           "Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);      
       // ==>Management section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -237,9 +234,8 @@ public class NewLlcquestionsPage {
       webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
       webDriver.findElement(By.xpath("//textarea")).sendKeys(
           "Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // ==>SBA Exam section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -252,9 +248,8 @@ public class NewLlcquestionsPage {
           "Any business that SBA found to be ineligible for the WOSB Program may request that SBA re- examine its WOSB or EDWOSB eligibility at any time if it believes in good faith that it has cured the reason(s) for its ineligibility. Reference: 13 C.F.R. 127.405(g)";
       assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // ==>Net Worth section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -275,9 +270,8 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // select no and continue.
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // ==>Adjusted Gross Income section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -317,9 +311,8 @@ public class NewLlcquestionsPage {
       Expected_Text = "If this situation does not apply, select N/A.";
       assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // ==>Assets section.
       Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
       Expected_Text =
@@ -365,8 +358,8 @@ public class NewLlcquestionsPage {
       assertEquals(Actual_Text, Expected_Text);
       // select no and continue.
       webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // ==>Economic Disadvantage section.
       Actual_Text = webDriver.findElement(By.xpath("//h4")).getText();
       Expected_Text =
@@ -386,11 +379,10 @@ public class NewLlcquestionsPage {
           "The personal financial condition of the woman claiming economic disadvantage, including her personal net worth, her adjusted gross income for the past three years (including bonuses, and the value of company stock given in lieu of cash), and the fair market value of all of her assets, whether encumbered or not, will be considered in determining whether she is economically disadvantaged.";
       assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.xpath("//label[2]")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
       // Validate that user successfully navigated to the Financial Data
       // section.
-      Thread.sleep(2000);
       String actual_Text49 = webDriver
           .findElement(By.xpath("//article[@id='main-content']/section/article/h2")).getText();
       String expected_Text49 = "Financial Data";
@@ -402,8 +394,8 @@ public class NewLlcquestionsPage {
       assertEquals(actual_Text52, expected_Text52);
       // Validate the Personal Information.
       webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
-      Thread.sleep(2000);
       logger.info("the page to Create and Add new Record is Present, PASS");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("owners__first_name")));
       webDriver.findElement(By.id("owners__first_name")).sendKeys("Denzel");
       webDriver.findElement(By.id("owners__last_name")).sendKeys("Washington");
       webDriver.findElement(By.id("owners__title")).click();
@@ -419,20 +411,13 @@ public class NewLlcquestionsPage {
       webDriver.findElement(By.id("owners__country")).sendKeys("United State");
       webDriver.findElement(By.id("owners__home_phone")).sendKeys("7024762987");
       webDriver.findElement(By.id("owners__business_phone")).sendKeys("7023764876");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("//button[2]")).click();
-      Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
       // please provide separation documents.
       Actions act4 = new Actions(webDriver);
       act4.doubleClick(webDriver.findElement(By.xpath("//label[2]"))).build().perform();
       // Locate the Continue Button and click on it to continue.
-      Thread.sleep(3000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());    }
+      CoreUtils.clickContinue(webDriver);
       }
     
 }

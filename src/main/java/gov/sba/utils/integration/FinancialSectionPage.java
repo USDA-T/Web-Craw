@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 
 public class FinancialSectionPage {
@@ -88,7 +89,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/div[2]/input")).sendKeys("45000");
     // Locate the Continue button and click on it to continue.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Locate section for Other Source of Income enter all valid data as
     // required.
     // Locate the Salary search box and enter salary.
@@ -148,7 +149,7 @@ public class FinancialSectionPage {
     HighLight.highLightElement(webDriver, AppEquityOtherFirm);
     // Click on the continue button to veriy section is required.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
     Expected_Text = "This field is required.";
     assertEquals(Actual_Text, Expected_Text);
@@ -166,7 +167,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/div[2]/input")).sendKeys("50000");
     // Locate the continue button and click on it to continue.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Locate and YES for question 'Do you have any notes receivable from
     // Verify the question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -184,7 +185,7 @@ public class FinancialSectionPage {
     // others?'.
     webDriver.findElement(By.cssSelector("label.yes")).click();
     // Click on the continue button to veriy section is required.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
     Expected_Text = "At least one row is required";
     webDriver.findElement(By.xpath("//div/a/span")).click();
@@ -210,8 +211,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.cssSelector("button.btn")).click();
     // locate the 'CONTINUE' button at the right bottom of the page and
     // click on it to save
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Select Yes for the two question on Retirement Accounts.
     // Verify the question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -225,7 +225,7 @@ public class FinancialSectionPage {
     WebElement RothDetail = webDriver.findElement(By.cssSelector("fieldset > p"));
     HighLight.highLightElement(webDriver, RothDetail);
     // Click on the continue button to veriy section is required.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
     Expected_Text = "Please answer this question";
     webDriver.findElement(By.xpath("//div/input")).click();
@@ -237,7 +237,6 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_investment_company")).sendKeys("The Alliance One");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
     // Upload document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
@@ -264,17 +263,15 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_investment_company")).sendKeys("The Alliance One");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
     /// Upload document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
     Upload2pdfOnSamePage upload2pdfOnSame = new Upload2pdfOnSamePage(webDriver);
     upload2pdfOnSame.Upload2pdfOnSame(file_path_abs);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Life Insurance section.
     // Click on the continue button to verify section is required.
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
@@ -306,22 +303,26 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("5000.76");
     webDriver.findElement(By.id("DTE_Field_beneficiaries")).sendKeys("John Peter");
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
     // Locate and select yes for question, Do you have loan against a life
     // insurance.
-    webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
+    Actual_Text = webDriver.findElement(By.cssSelector("#answers_life_insurance_loans > fieldset > h4")).getText();
+    Expected_Text = "Do you have any loans against a life insurance policy?";
+    assertEquals(Actual_Text, Expected_Text);
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/fieldset/div/label")));
+    Thread.sleep(2000);
+    webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("50000.45");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
     // And remove this two line
     // webDriver.findElement(By.xpath("//label[2]")).click();
     // webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Select Yes for the Stock and Bonds Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Stocks & Bonds";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the continue button to verify section is required.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
     Expected_Text = "Please answer this question";
     // Verify the question.
@@ -350,8 +351,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000.56");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     logger.info("Heyyyy! Stocks and Bones section answered.");
     // Select Yes for Real Estate - Primary Residence Section questions.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -456,14 +456,17 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[12]/fieldset/div/input")).click();
     webDriver.findElement(By.xpath("//div[13]/fieldset/div/div[2]/input")).sendKeys("50");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("section_submit_button")));
-    webDriver.findElement(By.id("section_submit_button")).click();
+    CoreUtils.clickContinue(webDriver);
     logger.info("Heyyyy! Real Estate - Primary Residence section answered.");
     // Select Yes for Real Estate - Other section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Real Estate - Other";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the continue button to verify section is required.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    wait.until(ExpectedConditions.elementToBeClickable(By.id("section_submit_button"))); 
+    Actions act = new Actions(webDriver);
+    act.doubleClick(webDriver.findElement(By.id("section_submit_button"))).build().perform();    
+    wait.until(ExpectedConditions.alertIsPresent());
     webDriver.switchTo().alert().accept();
     webDriver.findElement(By.xpath("//div/input")).click();
     Actual_Text = webDriver
@@ -521,7 +524,6 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/div[2]/input")).sendKeys("76");
     webDriver.findElement(By.xpath("//div[8]/fieldset/div/div[2]/input")).sendKeys("87");
     // Select yes for the last two question.
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//div[9]/fieldset/div/input")).click();
     logger.info("Heyyyy! Verifying the newly added question on Real Estate");
     // Verify the new added question.
@@ -582,7 +584,6 @@ public class FinancialSectionPage {
         .sendKeys("8700998.76");
     // ON the last two question, select Yes to trigger the new question then
     // select No .
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
     WebElement SecondForm = webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
     HighLight.highLightElement(webDriver, SecondForm);
@@ -595,7 +596,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
-    webDriver.findElement(By.id("section_submit_button")).click();
+    CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     // Beginning Test For Personal Property.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -641,7 +642,6 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text);
     WebElement OtherPersonalProperty = webDriver.findElement(By.xpath("//div[2]/fieldset/p"));
     HighLight.highLightElement(webDriver, OtherPersonalProperty);
-    Thread.sleep(2000);
     // Select Yes for question; 'Do you own any other personal property or
     // assets?.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
@@ -650,13 +650,11 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("453000");
     webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("TOYOTA CAMRY");
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("section_submit_button")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Verify that User navigate to the Next section of 'Notes Payable' in
     // form 413 successfully.
     // Click on the continue button to veriy section is required.
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
     Expected_Text = "Please answer this question";
     assertTrue(webDriver.getPageSource().contains("Notes Payable"));
@@ -703,15 +701,13 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_noteholder_address"))
         .sendKeys("8576 jumple ln manassas va 20998");
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("section_submit_button")).click();
+    CoreUtils.clickContinue(webDriver);
     // US660 'Assessed Taxes' test begin here.
     logger.info("US660'Assessed Taxes' test begin here");
     // Verify that user successfully navigated to the section 'Assessed
     // Taxes' on form 413.
     // Click on the continue button to veriy section is required.
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
     Expected_Text = "Please answer this question";
     assertTrue(webDriver.getPageSource().contains("Assessed Taxes"));
@@ -738,12 +734,10 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("Factory");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]/button")));
     webDriver.findElement(By.xpath("//div[3]/button")).click();
-    Thread.sleep(2000);
     // Locate and click on the continue button.
-    webDriver.findElement(By.id("section_submit_button")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Click on the continue button to veriy section is required.
-    webDriver.findElement(By.id("section_submit_button")).click();
+    CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
     Expected_Text = "Please answer this question";
     // Locate the next 3 search boxes for Adjusted Gross Income and enter
@@ -776,9 +770,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/div[2]/input")).sendKeys("10000");
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/div[2]/input")).sendKeys("20000");
     // Locate and click on the continue button.
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("section_submit_button")).click();
-    Thread.sleep(2000);
+    CoreUtils.clickContinue(webDriver);
     // Verify that user is being navigated to the Summary Page.
     String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
     String expected_Text6 = "Denzel Washington";
@@ -809,8 +801,7 @@ public class FinancialSectionPage {
     HighLight.highLightElement(webDriver, $AGItotalAvg);   
     // Locate and click on the continue button.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("section_submit_button")));
-    Actions act13 = new Actions(webDriver);
-    act13.doubleClick(webDriver.findElement(By.id("section_submit_button"))).build().perform();
+    CoreUtils.clickContinue(webDriver);
     logger.info(
         "Detail test for the Privacy Statements section for Paul Washington on form413 begins here");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
@@ -819,8 +810,7 @@ public class FinancialSectionPage {
     String expected_Text1 = "Privacy Statements";
     assertEquals(actual_Text1, expected_Text1);
     // Click on the save and continue button.
-    Thread.sleep(2000);
-    webDriver.findElement(By.id("section_submit_button")).click();
+    CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     // Verify that user is being navigated to the Review Page.
     String actual_Text2 = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -833,7 +823,7 @@ public class FinancialSectionPage {
     assertEquals(Actual_Text, Expected_Text);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[4]")));
     webDriver.findElement(By.xpath("//input[4]")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.alertIsPresent());
     logger.info(webDriver.switchTo().alert().getText());
     webDriver.switchTo().alert().accept();
     // Verify that user is being navigated to the Signature Page.

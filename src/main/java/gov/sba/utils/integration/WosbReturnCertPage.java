@@ -6,6 +6,11 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import gov.sba.automation.CoreUtils;
 import junit.framework.TestCase;
 
 public class WosbReturnCertPage extends TestCase {
@@ -18,7 +23,7 @@ public class WosbReturnCertPage extends TestCase {
   }
 
   public void WosbReturnCert() throws Exception {
-    try {
+      WebDriverWait wait = new WebDriverWait(webDriver, 30);
       String Actual_Text;
       String Expected_Text;
       logger.debug("Returning submited certification back to vendor");
@@ -59,14 +64,14 @@ public class WosbReturnCertPage extends TestCase {
           "By submitting this certification I, QA User, am an officer or owner of Entity 81 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
       assertEquals(Actual_Text, Expected_Text);
       // Step 9 - Click the Continue button
-      logger.info("Step 9 - Click the Continue button");
-      webDriver.findElement(By.id("accept-button")).click();
-      Thread.sleep(2000);
+      logger.info("Clicking accept buuton to trigger pop up alert");
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("accept-button")));
+      Actions act = new Actions(webDriver);
+      act.doubleClick(webDriver.findElement(By.id("accept-button"))).build().perform();
+      wait.until(ExpectedConditions.alertIsPresent());
       Actual_Text = webDriver.switchTo().alert().getText();
-      Expected_Text =
-          "In order to submit your application, you must accept all of the conditions of authorization.";
+      Expected_Text ="In order to submit your application, you must accept all of the conditions of authorization.";
       assertEquals(Actual_Text, Expected_Text);
-      Thread.sleep(3000);
       // Step 10 - Accept the error message
       logger.info("Step 10 - Accept the error message");
       webDriver.switchTo().alert().accept();
@@ -78,16 +83,13 @@ public class WosbReturnCertPage extends TestCase {
       webDriver.findElement(By.id("legal_3")).click();
       webDriver.findElement(By.id("legal_4")).click();
       webDriver.findElement(By.id("legal_5")).click();
-      Thread.sleep(2000);
       webDriver.findElement(By.id("accept-button")).click();
       // Click on the dashboard button.
-      Thread.sleep(2000);
       webDriver.findElement(By.linkText("Dashboard")).click();
       WebElement ActiveCert =
           webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ActiveCert);
       // Login as WOSB-analyst and return WOSB program back to vendor.
-      Thread.sleep(2000);
       webDriver.findElement(By.linkText("Logout")).click();
       get_The_Row_From_Login_Data = 0;
       LoginPageWithReference login_Data7 =
@@ -96,9 +98,8 @@ public class WosbReturnCertPage extends TestCase {
       webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));    
       webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
-      Thread.sleep(2000);
       // Click on the application link name.
       webDriver.findElement(By.linkText("WOSB Self-Certification")).click();
       Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -113,59 +114,45 @@ public class WosbReturnCertPage extends TestCase {
       webDriver.findElement(By.xpath("//div[2]/div/div[2]/a")).click();
       webDriver.findElement(By.xpath("//textarea")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[2]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[2]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[3]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[3]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[4]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[4]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[5]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[5]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[6]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[6]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[7]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[7]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[8]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[8]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[9]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[9]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[10]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[10]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[11]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[11]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[12]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[12]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[13]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[13]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[14]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[14]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add a note')])[15]")).click();
       webDriver.findElement(By.xpath("(//textarea[@id='assessments__note_body'])[15]")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
@@ -180,9 +167,8 @@ public class WosbReturnCertPage extends TestCase {
       webDriver.findElement(By.xpath("//div/div[2]/div[2]/a")).click();
       webDriver.findElement(By.xpath("//textarea")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       // Click on the save and continue button.
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
       Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
       Expected_Text = "Determination";
       assertEquals(Actual_Text, Expected_Text);
@@ -190,23 +176,15 @@ public class WosbReturnCertPage extends TestCase {
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
       webDriver.findElement(By.xpath("//textarea")).sendKeys(
           "so you can tell me there is a bird trapped in the terminal all the people ignoring it because they do not know what to do with it except to leave it alone until it scares itself to death it makes you terribly terribly sad You wish you could take the bird outside and set it free or(failing that) call a bird-understander to come help the bird All you can do is notice the bird and feel for the bird and write to tell me how language feels. test101");
-      Thread.sleep(2000);
       // Click on the save and continue button.
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
       Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
       Expected_Text = "You can view the vendor's record but can not make edits";
       assertEquals(Actual_Text, Expected_Text);
       // Click on Vendor Overview link.
       webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
-      webDriver.findElement(By.linkText("Logout")).click();
-    } catch (Exception e) {
-      e.printStackTrace();
-      Thread.sleep(2000);
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info("Error");
-    }
-    logger.info("Success");
+      webDriver.findElement(By.linkText("Logout")).click();   
+      logger.info("Success");
   }
 
 }

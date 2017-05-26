@@ -25,7 +25,6 @@ public class AddOrStartNewMppProgramPage1 extends TestCase {
     String Actual_Text = null;
     String Expected_Text = null;
     // Verify for active certification on the dashboard.
-    Thread.sleep(3000);
     if (webDriver.getPageSource().contains("Pending")) {
       logger.info("There is (are) an active certification on the dashboard");
       // Click on the certification link.

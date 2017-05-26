@@ -22,6 +22,7 @@ public class UploadDocument1Page {
   }
 
   public void MontanaUploadDocument1() throws Exception {
+    Thread.sleep(2000);
     logger.info("Uploading a new document");
     webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
     Thread.sleep(2000);

@@ -5,6 +5,8 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.TestCase;
 
@@ -18,6 +20,7 @@ public class LLcReturnCertPage extends TestCase {
   }
 
   public void LLcReturnCert() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text;
     String Expected_Text;
     logger.debug("Returning submited certification back to vendor");
@@ -64,14 +67,12 @@ public class LLcReturnCertPage extends TestCase {
         "By submitting this certification I, QA User, am an officer or owner of Entity 70 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
     assertEquals(Actual_Text, Expected_Text);
     // Step 9 - Click the Continue button
-    logger.info("Step 9 - Click the Continue button");
+    logger.info("Clicking accept buuton to trigger pop up alert");
     webDriver.findElement(By.id("accept-button")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.alertIsPresent());
     Actual_Text = webDriver.switchTo().alert().getText();
-    Expected_Text =
-        "In order to submit your application, you must accept all of the conditions of authorization.";
+    Expected_Text ="In order to submit your application, you must accept all of the conditions of authorization.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(3000);
     // Step 10 - Accept the error message
     logger.info("Step 10 - Accept the error message");
     webDriver.switchTo().alert().accept();
@@ -83,16 +84,13 @@ public class LLcReturnCertPage extends TestCase {
     webDriver.findElement(By.id("legal_3")).click();
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("accept-button")).click();
     // Click on the dashboard button.
-    Thread.sleep(2000);
     webDriver.findElement(By.linkText("Dashboard")).click();
     WebElement ActiveCert =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     // Login as WOSB-analyst and return WOSB program back to vendor.
-    Thread.sleep(2000);
     webDriver.findElement(By.linkText("Logout")).click();
     get_The_Row_From_Login_Data = 0;
     LoginPageWithReference login_Data7 =
@@ -101,9 +99,8 @@ public class LLcReturnCertPage extends TestCase {
     webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("245652494");
     webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));    
     webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
-    Thread.sleep(2000);
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
       // webDriver.switchTo().alert().accept();
@@ -111,7 +108,6 @@ public class LLcReturnCertPage extends TestCase {
     } else {
       logger.info("Return to Vendor Link is missing please verify why.");
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-      Thread.sleep(3000);
       webDriver.findElement(By.id("submit_button")).click();
       webDriver.findElement(By.linkText("Determination")).click();
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();

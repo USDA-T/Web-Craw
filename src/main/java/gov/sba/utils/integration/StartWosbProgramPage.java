@@ -5,6 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import gov.sba.automation.CoreUtils;
 
 public class StartWosbProgramPage {
   private static final Logger logger = LogManager.getLogger(StartWosbProgramPage.class.getName());
@@ -18,7 +21,6 @@ public class StartWosbProgramPage {
     String Actual_Text = null;
     String Expected_Text = null;
     // Verify for active certification on the dashboard.
-    Thread.sleep(3000);
     if (webDriver.getPageSource().contains("Active")) {
       logger.info("There is (are) an active certification on the dashboard");
       // Click on the certification link.
@@ -39,8 +41,7 @@ public class StartWosbProgramPage {
           "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible for a contract authorized under the WOSB Program. The definitions for the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 C.F.R. Part 127), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government's right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
       assertEquals(Actual_Text, Expected_Text);
       // Click on the Accept button..
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
     } else {
       if (webDriver.getPageSource().contains("Pending")) {
         logger.info("There is (are) an active certification on the dashboard");
@@ -62,8 +63,7 @@ public class StartWosbProgramPage {
             "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible for a contract authorized under the WOSB Program. The definitions for the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 C.F.R. Part 127), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government's right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the Accept button..
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+        CoreUtils.clickContinue(webDriver);
       } else {
         Actual_Text = webDriver.findElement(By.cssSelector("div.usa-font-lead")).getText();
         Expected_Text =
@@ -82,9 +82,7 @@ public class StartWosbProgramPage {
             "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible for a contract authorized under the WOSB Program. The definitions for the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 C.F.R. Part 127), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government's right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the Accept button..
-        Thread.sleep(2000);
-        webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-
+        CoreUtils.clickContinue(webDriver);
       }
     }
   }

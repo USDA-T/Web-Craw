@@ -1,17 +1,14 @@
 package gov.sba.utils.integration;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.CoreUtils;
 
 public class NewWosbQuestionPage {
@@ -41,8 +38,7 @@ public class NewWosbQuestionPage {
     assertEquals(Actual_Text, Expected_Text);
     // Answer No.
     webDriver.findElement(By.xpath("//label[2]")).click();
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>Third Party question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -59,8 +55,7 @@ public class NewWosbQuestionPage {
     assertEquals(Actual_Text, Expected_Text);
     // Answer No.
     webDriver.findElement(By.xpath("//label[2]")).click();
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>Non-qualification section page.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -74,10 +69,9 @@ public class NewWosbQuestionPage {
     assertEquals(Actual_Text, Expected_Text);
     // select no and continue.
     webDriver.findElement(By.xpath("//label[2]")).click();
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>Partnership program 1st question.
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));  
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
         "Does the partnership agreement show that at least 51% of each class of partnership interest is unconditionally and directly owned by the qualifying individual(s)?";
@@ -108,8 +102,7 @@ public class NewWosbQuestionPage {
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//div[2]/fieldset/div[4]/textarea")).sendKeys(
         "Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>Citizenship section.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -166,7 +159,6 @@ public class NewWosbQuestionPage {
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Also is their earth so. Dry given, place itself for were third. Itself second gathered fruit from");
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
     CoreUtils.clickContinue(webDriver);
     // ==>Management section.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -266,8 +258,7 @@ public class NewWosbQuestionPage {
     webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // ==>SBA Exam section.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -280,8 +271,7 @@ public class NewWosbQuestionPage {
         "Any business that SBA found to be ineligible for the WOSB Program may request that SBA re- examine its WOSB or EDWOSB eligibility at any time if it believes in good faith that it has cured the reason(s) for its ineligibility. Reference: 13 C.F.R. 127.405(g)";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.xpath("//label[2]")).click();
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Review page.
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Women-Owned Small Business Program Self-Certification Summary";
@@ -316,8 +306,6 @@ public class NewWosbQuestionPage {
     Expected_Text = "SBA Exam";
     assertEquals(Actual_Text, Expected_Text);
     // Click on the submit button.
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-    webDriver.switchTo().alert().accept();
+    CoreUtils.clickContinue(webDriver);
   }
 }

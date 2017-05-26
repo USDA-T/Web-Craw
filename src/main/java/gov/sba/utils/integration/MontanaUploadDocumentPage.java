@@ -21,6 +21,7 @@ public class MontanaUploadDocumentPage {
   }
 
   public void MontanaUploadDocument(String upload_Path) throws Exception {
+    Thread.sleep(2000);
     logger.debug("Uploading a new document");
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
     webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();

@@ -79,7 +79,6 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
     }
     logger.info("Success");
     }
-
   @After
   public void tearDown() throws Exception {
     webDriver.close();

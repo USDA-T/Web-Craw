@@ -6,7 +6,10 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import junit.framework.TestCase;
 
 public class AddSecondPatnerAfterReviewPage extends TestCase {
@@ -20,7 +23,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
   }
 
   public void AddSecondPatnerAfterReview() throws Exception {
-    Thread.sleep(3000);
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Locate section for 'Cash on Hand' enter all valid data as required.
     // Locate the As of Date: Search box for user and enter the information
     // as required.
@@ -35,8 +38,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     // and enter the information as required.
     webDriver.findElement(By.xpath(".//*[@id='answers_35_value']")).sendKeys("45000000");
     // Locate the Continue button and click on it to continue.
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Locate section for Other Source of Income enter all valid data as
     // required.
     // Locate the Salary search box and enter salary.
@@ -50,8 +52,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     // business equity.
     webDriver.findElement(By.xpath(".//*[@id='answers_39_value']")).sendKeys("5000000.87");
     // Locate the continue button and click on it to continue.
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Locate and YES for question 'Do you have any notes receivable from
     // others?'.
     webDriver.findElement(By.cssSelector("label.yes")).click();
@@ -59,7 +60,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
         .click();
     logger.info(
         "User is prompted to enter Atleast one row  field or to select no if not applicable. Valid error Message is ");
-    Thread.sleep(3000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("DTE_Field_debtor_name")));    
     // Locate the 'Name of Debtor' search box and enter a valid name.
     webDriver.findElement(By.id("DTE_Field_debtor_name")).sendKeys("John Mall");
     // Locate the 'Address of Debtor' search box and enter a valid address.
@@ -79,14 +80,11 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.cssSelector("button.btn")).click();
     // locate the 'CONTINUE' button at the right bottom of the page and
     // click on it to save
-    Thread.sleep(3000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Select NO for the two question on Retirement Accounts.
     webDriver.findElement(By.xpath(".//*[@id='answers[41][value]']/label[2]")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.xpath(".//*[@id='answers[42][value]']/label[2]")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     webDriver.findElement(By.id("answers_43_value_yes")).click();
     webDriver.findElement(By.xpath("//div[@id='answers_43_details_table_wrapper']/div/a/span"))
         .click();
@@ -95,14 +93,13 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("5000.76");
     webDriver.findElement(By.id("DTE_Field_beneficiaries")).sendKeys("John Peter");
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(5000);
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//*[@id='answers[44][value]']/label[1]")));    
     // Locate and select yes for question, Do you have loan against a life
     // insurance.
     webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
     webDriver.findElement(By.xpath(".//*[@id='answers[44][value]']/label[1]")).click();
     webDriver.findElement(By.xpath(".//*[@id='answers_45_value']")).sendKeys("50000.45");
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Select Yes for the Stock and Bonds Section.
     webDriver.findElement(By.xpath(".//*[@id='answers[46][value]']/label[1]")).click();
     webDriver.findElement(By.xpath("//div[@id='answers_46_details_table_wrapper']/div/a/span"))
@@ -115,13 +112,11 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("DTE_Field_date")).clear();
     webDriver.findElement(By.id("DTE_Field_date")).sendKeys("04/12/2016");
     webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("760000.56");
-    Thread.sleep(2000);
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.cssSelector("input[name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Select Yes for Real Estate - Primary Residence Section questions.
     webDriver.findElement(By.xpath(".//*[@id='answers[47][value]']/label[1]")).click();
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("answers_48_1_1_value")));    
     webDriver.findElement(By.id("answers_48_1_1_value"))
         .sendKeys("8597 weems rd 2000 ln manassas va 30998");
     webDriver.findElement(By.xpath("//div[@id='answers[48][1][2][value]']/label")).click();
@@ -135,8 +130,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("answers_48_1_9_value")).sendKeys("50");
     webDriver.findElement(By.xpath("//div[@id='answers[48][1][10][value]']/label")).click();
     webDriver.findElement(By.id("answers_48_1_11_value")).sendKeys("50");
-    Thread.sleep(2000);
-    webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
+    CoreUtils.clickContinue(webDriver);
     logger.info("Heyyyy! Stocks and Bones section answered.");
     // Select Yes for Real Estate - Other section.
     webDriver.findElement(By.xpath(".//*[@id='answers[49][value]']/label[1]")).click();
@@ -154,9 +148,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("answers_50_1_9_value")).sendKeys("65");
     webDriver.findElement(By.xpath("//div[@id='answers[50][1][10][value]']/label")).click();
     webDriver.findElement(By.id("answers_50_1_11_value")).sendKeys("56");
-    Thread.sleep(3000);
-    webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
-    Thread.sleep(3000);
+    CoreUtils.clickContinue(webDriver);
     // Beginning Test For Personal Property.
     assertTrue(webDriver.getPageSource().contains("Do you own any automobiles"));
     logger.info("User is being navigated to the Personal Property section, PASS");
@@ -177,9 +169,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     // amount for the automobile.
     webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("3000000.56");
     // Locate the Create button and click on it.
-    Thread.sleep(3000);
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(3000);
     // Select Yes for question; 'Does any of the above listed property
     // is pledged as security?'.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
@@ -192,22 +182,21 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("DTE_Field_lien_amount")).sendKeys("200000.45");
     // Locate the Terms of Payment search box and enter a valid data.
     webDriver.findElement(By.id("DTE_Field_pay_terms")).sendKeys("4years");
-    Thread.sleep(3000);
     // Locate the Create button and click on it.
     webDriver.findElement(By.cssSelector("button.btn")).click();
-    Thread.sleep(3000);
+    Thread.sleep(2000);
     // Select yes for question; 'Are any leans delinquent?'.
     webDriver.findElement(By.xpath(".//*[@id='answers[53][value]']/label[1]")).click();
     webDriver.findElement(By.id("answers_53_comment")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-    Thread.sleep(3000);
+    Thread.sleep(2000);
     // Select yes for question; 'Do you own any other personal property
     // or assets?'.
     webDriver.findElement(By.xpath(".//*[@id='answers[54][value]']/label[1]")).click();
     // Locate the new button on the data table and click on it to add
     // another data for personal property.
     webDriver.findElement(By.xpath("//div[3]/div/a/span")).click();
-    Thread.sleep(3000);
+    Thread.sleep(2000);
     // Locate current value search box and enter a valid value for you
     // automobile.
     webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("600000.76");
@@ -220,7 +209,6 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     // amount for the automobile.
     webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("2000000.98");
     // Locate the Create button and click on it.
-    Thread.sleep(3000);
     webDriver.findElement(By.cssSelector("button.btn")).click();
     Thread.sleep(3000);
     // Select Yes for question; 'Does any of the above listed property
@@ -235,7 +223,6 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
     webDriver.findElement(By.id("DTE_Field_lien_amount")).sendKeys("2000000.98");
     // Locate the Terms of Payment search box and enter a valid data.
     webDriver.findElement(By.id("DTE_Field_pay_terms")).sendKeys("2years");
-    Thread.sleep(3000);
     // Locate the Create button and click on it.
     webDriver.findElement(By.cssSelector("button.btn")).click();
     Thread.sleep(3000);
@@ -245,11 +232,7 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
     Thread.sleep(3000);
     // Locate the continue button and click on it.
-    webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
-    Thread.sleep(3000);
-    // Locate the continue button and click on it.
-    webDriver.findElement(By.xpath(".//*[@id='edwosb']/input[4]")).click();
-    Thread.sleep(3000);
+    CoreUtils.clickContinue(webDriver);
     // Verify that User navigate to the Next section of 'Notes Payable' in
     // form 413 successfully.
     try {
@@ -258,13 +241,11 @@ public class AddSecondPatnerAfterReviewPage extends TestCase {
       webDriver.findElement(By.xpath(".//*[@id='answers[57][value]']/label[2]")).click();
       webDriver.findElement(By.xpath(".//*[@id='answers[58][value]']/label[1]")).click();
       webDriver.findElement(By.xpath(".//*[@id='answers_59_value']")).sendKeys("45");
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//form[@id='edwosb']/input[4]")).click();
+      CoreUtils.clickContinue(webDriver);
     } catch (Error e) {
       logger
           .info("User is NOT being navigated to the 'Notes Payable' section on the form 413, Pass");
     }
-    Thread.sleep(3000);
     // US660 'Assessed Taxes' test begin here.
     logger.info("US660 'Assessed Taxes' test begin here");
     // Verify that user successfully navigated to the section 'Assessed
