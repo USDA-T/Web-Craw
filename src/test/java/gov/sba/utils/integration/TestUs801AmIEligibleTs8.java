@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -391,7 +392,8 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
   catch (Exception e) {
   ScreenShotPage screenShot = new ScreenShotPage(webDriver);
   screenShot.ScreenShot();
-  logger.info(e.getMessage());  
+  logger.info(e.getMessage());
+  Assert.fail();
   }
   logger.info("Success");
 
