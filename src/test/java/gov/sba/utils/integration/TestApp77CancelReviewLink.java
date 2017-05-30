@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -14,20 +18,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestApp77CancelReviewLink extends TestCase {
+  private static final Logger TestApp77CancelReviewLink =
+          LogManager.getLogger(TestApp77CancelReviewLink.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
-  private static final Logger TestApp77CancelReviewLink =
-      LogManager.getLogger(TestApp77CancelReviewLink.class.getName());
-  int get_The_Row_From_Login_Data;
-  String duns_Number, email, password;
+  int       get_The_Row_From_Login_Data;
+  String    duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
@@ -48,12 +51,12 @@ public class TestApp77CancelReviewLink extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      CommonApplicationMethods.createApplication(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       // webDriver.findElement(By.id("answers_188_value_yes")).click();
       webDriver
-          .findElement(By.xpath(
-              "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
-          .click();
+              .findElement(By.xpath(
+                      "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
+              .click();
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       TestApp77CancelReviewLink.info(file_path_abs);
@@ -74,27 +77,27 @@ public class TestApp77CancelReviewLink extends TestCase {
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
       List<WebElement> current_Row =
-          webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr" + "[ "
-              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-              + "td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]	"
-              + "]"));
+              webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr" + "[ "
+                      + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
+                      + "td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]	"
+                      + "]"));
 
       if (current_Row.size() > 0) {
         TestApp77CancelReviewLink.info(current_Row.get(0).getAttribute("innerHTML"));
         WebElement a1 = current_Row.get(0)
-            .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+                .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
         TestApp77CancelReviewLink.info(a1.getText() + "__1");
         a1.click();
         // webDriver.findElement(By.xpath("//div[@id='table-search']/table[contains(@class,'usa-table')]/tbody/tr/td[text()='WOSB']"));
         WebElement current_Page_Title =
-            webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
+                webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
         TestApp77CancelReviewLink.info(current_Page_Title.getText());
 
         String Expected_Text = "Case Overview";
         assertEquals(Expected_Text, current_Page_Title.getText());
 
         WebElement current_Review_Text =
-            webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
+                webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
         assertEquals("Start a review", current_Review_Text.getText());
 
         Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
@@ -102,15 +105,15 @@ public class TestApp77CancelReviewLink extends TestCase {
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
         Select dropdown1 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
         dropdown1.selectByIndex(0);
 
         Select dropdown2 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
         dropdown2.selectByIndex(1);
 
         Select dropdown3 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
         dropdown3.selectByIndex(1);
 
         webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
@@ -120,14 +123,14 @@ public class TestApp77CancelReviewLink extends TestCase {
 
         // Verify Cancel Review link -APP 77 Acceptance Criteria
         webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
-        CommonApplicationMethods.accept_Alert(webDriver);
+          accept_Optional_Alert(webDriver, 10);
 
         String organization_Id = CommonApplicationMethods.returnOrganization_Id(duns_Number);
 
         String sql_Q = "select count(case_number) from sbaone.reviews "
-            + "		where workflow_state = 'cancelled' " + "	and sba_application_id 	 = "
-            + "								(select max(id) from sbaone.sba_applications where organization_id = "
-            + organization_Id.toString() + " and deleted_at is null )";
+                + "		where workflow_state = 'cancelled' " + "	and sba_application_id 	 = "
+                + "								(select max(id) from sbaone.sba_applications where organization_id = "
+                + organization_Id.toString() + " and deleted_at is null )";
 
         TestApp77CancelReviewLink.info(sql_Q);
 
@@ -141,18 +144,18 @@ public class TestApp77CancelReviewLink extends TestCase {
         CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
         webDriver
-            .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]" + "]"))
-            .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+                .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
+                        + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]" + "]"))
+                .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
 
         fillApplCreatePages.pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X",
-            "Analyst1 X", "Analyst1 X");
+                "Analyst1 X", "Analyst1 X");
         webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
         webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();
 
         webDriver.findElement(By.xpath("//a[contains(text(),'Case overview')]")).click();
         List<WebElement> cancelLInk =
-            webDriver.findElements(By.xpath("//a[contains(text(),'Cancel review')]"));
+                webDriver.findElements(By.xpath("//a[contains(text(),'Cancel review')]"));
         assertEquals(cancelLInk.size(), 0);
         //
       }
@@ -160,7 +163,7 @@ public class TestApp77CancelReviewLink extends TestCase {
     } catch (Exception e) {
       TestApp77CancelReviewLink.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp77CancelReviewLink", "Exception"});
+              new String[] {"TestApp77CancelReviewLink", "Exception"});
       throw e;
     }
   }

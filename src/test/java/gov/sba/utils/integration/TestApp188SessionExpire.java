@@ -1,6 +1,9 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,17 +14,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestApp188SessionExpire extends TestCase {
+  private static final Logger TestApp188SessionExpire =
+          LogManager.getLogger(TestApp188SessionExpire.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
-  private static final Logger TestApp188SessionExpire =
-      LogManager.getLogger(TestApp188SessionExpire.class.getName());
-  int get_The_Row_From_Login_Data;
+  int       get_The_Row_From_Login_Data;
 
   @Before
   public void setUp() throws Exception {
@@ -39,15 +41,15 @@ public class TestApp188SessionExpire extends TestCase {
 
       // Login to dashboard. Ops Support Staff
       LoginPageWithReference login_Data =
-          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+              new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
 
       // Asserting Selectable App 187 AC
       assertEquals(CommonApplicationMethods
-          .find_Element(webDriver, "OppSup_Dashboard_Govt_User_Radio").getText(),
-          "Government User");
+                      .find_Element(webDriver, "OppSup_Dashboard_Govt_User_Radio").getText(),
+              "Government User");
       assertEquals(CommonApplicationMethods
-          .find_Element(webDriver, "OppSup_Dashboard_Vend_User_Radio").getText(), "Vendor User");
+              .find_Element(webDriver, "OppSup_Dashboard_Vend_User_Radio").getText(), "Vendor User");
       CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
       TestApp188SessionExpire.info(webDriver.manage().getCookies());
@@ -56,13 +58,18 @@ public class TestApp188SessionExpire extends TestCase {
         TestApp188SessionExpire.info(ck.getValue());
         webDriver.manage().deleteCookie(ck);
       }
+        webDriver.navigate().refresh();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "DASHBOARD");
+        try {
+            navigationMenuClick(webDriver, "DASHBOARD");
+        } catch (Exception e) {
+            TestApp188SessionExpire.info("Its Good");
+        }
 
       assertEquals(webDriver.findElement(By.id("business_signin")).getAttribute("value"),
-          "Sign-in");
+              "Sign-in");
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Home");
+        navigationMenuClick(webDriver, "Home");
 
       // Login to dashboard. Analyst
       login_Data = new LoginPageWithReference(webDriver, 11);
@@ -71,17 +78,24 @@ public class TestApp188SessionExpire extends TestCase {
       CommonApplicationMethods.searchDuns_Number(webDriver, "111");
 
       TestApp188SessionExpire.info(webDriver.manage().getCookies());
+
       for (Cookie ck : webDriver.manage().getCookies()) {
         TestApp188SessionExpire.info(ck.getName());
         TestApp188SessionExpire.info(ck.getValue());
         webDriver.manage().deleteCookie(ck);
       }
+        webDriver.navigate().refresh();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "DASHBOARD");
+        try {
+            navigationMenuClick(webDriver, "DASHBOARD");
+        } catch (Exception e) {
+            TestApp188SessionExpire.info("Its Good");
+        }
+
       assertEquals(CommonApplicationMethods
-          .find_Element(webDriver, "OppSup_Dashboard_Business_Signin").getAttribute("value"),
-          "Sign-in");
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Home");
+                      .find_Element(webDriver, "OppSup_Dashboard_Business_Signin").getAttribute("value"),
+              "Sign-in");
+        navigationMenuClick(webDriver, "Home");
 
       // Login to dashboard. Vendor
       login_Data = new LoginPageWithReference(webDriver, 9);
@@ -94,15 +108,20 @@ public class TestApp188SessionExpire extends TestCase {
         TestApp188SessionExpire.info(ck.getValue());
         webDriver.manage().deleteCookie(ck);
       }
+        webDriver.navigate().refresh();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Dashboard");
+        try {
+            navigationMenuClick(webDriver, "DASHBOARD");
+        } catch (Exception e) {
+            TestApp188SessionExpire.info("Its Good");
+        }
       assertEquals(webDriver.findElement(By.id("business_signin")).getAttribute("value"),
-          "Sign-in");
+              "Sign-in");
 
     } catch (Exception e) {
       TestApp188SessionExpire.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp188SessionExpire", "Exception"});
+              new String[] {"TestApp188SessionExpire", "Exception"});
       throw e;
     }
   }

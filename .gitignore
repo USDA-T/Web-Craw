@@ -22,8 +22,6 @@ src/main/resources/default.properties
 .metadata
 .project
 .classpath
-.project
-.metadata
 .recommenders/
 bin
 
@@ -33,6 +31,14 @@ bin
 *.iml
 *.ipr
 *.iws
+
+# Project Files
+*/misc/*.*
+*/misc/
+*/misc/*
+misc
+misc/
+
 
 # Misc files
 debug.log

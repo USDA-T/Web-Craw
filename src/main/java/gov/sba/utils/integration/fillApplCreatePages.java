@@ -1,14 +1,16 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import java.util.Iterator;
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.Iterator;
+import java.util.List;
+
 import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class fillApplCreatePages {
@@ -132,19 +134,12 @@ public class fillApplCreatePages {
           all_Rows.next().click();
         }
 
-        newMppUploadDocumentPageDeepa deepaUploadMppDocument1 =
-            new newMppUploadDocumentPageDeepa(webDriver);
-        deepaUploadMppDocument1.deepaUploadMppDocument(path);
+          new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
         logger.info("Doc has been uploaded.");
         click_Element(webDriver, "Application_Common_Submit_Button");
         click_Element(webDriver, "Application_Common_Submit_Button");
 
-        try {
-          logger.info("Check Alert");
-          webDriver.switchTo().alert().accept();
-        } catch (Exception excp) {
-          logger.info("No Alert");
-        }
+          accept_Optional_Alert(webDriver, 22);
         logger.info("Doc has been uploaded and accepted");
       } else {
         try {
@@ -230,11 +225,7 @@ public class fillApplCreatePages {
 
               logger.info("Doc has been uploaded and accepted");
 
-              try {
-                webDriver.switchTo().alert().accept();
-              } catch (Exception ex) {
-                logger.info("No alerts available");
-              }
+          accept_Optional_Alert(webDriver, 22);
 
             }
       else {
@@ -260,7 +251,9 @@ public class fillApplCreatePages {
       click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_3']");
       click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_4']");
       click_Element_Loc(webDriver, "Xpath", "//*[@id='legal_5']");
+        accept_Optional_Alert(webDriver, 14);
       click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
+        accept_Optional_Alert(webDriver, 14);
     } catch (Exception e) {
       logger.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver,
@@ -272,7 +265,9 @@ public class fillApplCreatePages {
   public static void finalSignatureSubmit8A(WebDriver webDriver) throws Exception {
     try {
       click_Element_Loc(webDriver, "Xpath", "//input[@id='legal_0']");
+        accept_Optional_Alert(webDriver, 14);
       click_Element_Loc(webDriver, "Xpath", "//input[@type='submit']");
+        accept_Optional_Alert(webDriver, 14);
     } catch (Exception e) {
       logger.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver,

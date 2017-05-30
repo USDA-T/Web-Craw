@@ -2,8 +2,11 @@
 
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -12,10 +15,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
 
 public class AnalystReviewPage extends TestCase {
   private static final Logger AnalystReviewPage =
@@ -71,7 +73,7 @@ public class AnalystReviewPage extends TestCase {
         CommonApplicationMethods.deleteApplication(webDriver, "WOSB", "Draft");
 
         if (!CommonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active")) {
-          CommonApplicationMethods.createApplication(webDriver, "WOSB");
+            programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
           webDriver.findElement(By.id("answers_5_value_yes")).click();
 
@@ -137,7 +139,7 @@ public class AnalystReviewPage extends TestCase {
         // Verify Cancel Review link -APP 77 Acceptance Criteria
         webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
         Thread.sleep(1000);
-        webDriver.switchTo().alert().accept();
+          accept_Optional_Alert(webDriver, 22);
         // To call DB-- pass Sql query, no of rows,no of cols to db
         // function
         String sql_query =
@@ -148,7 +150,7 @@ public class AnalystReviewPage extends TestCase {
                 + "    and  A.duns_number='159165917' " + "    order by D.updated_at desc ";
 
         DatabaseUtils dbcall = new DatabaseUtils();
-        String[][] returned_workflow_review_status = dbcall.queryForData(sql_query, 2, 3);
+          String[][] returned_workflow_review_status = DatabaseUtils.queryForData(sql_query, 2, 3);
         AnalystReviewPage.info("aaaaa+" + returned_workflow_review_status[1][0].toString()
             + returned_workflow_review_status[1][1].toString()
             + returned_workflow_review_status[1][2].toString());

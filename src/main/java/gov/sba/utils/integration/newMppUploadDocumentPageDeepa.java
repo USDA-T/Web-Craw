@@ -1,16 +1,14 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
-import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
@@ -88,7 +86,7 @@ public class newMppUploadDocumentPageDeepa {
     robot.keyPress(KeyEvent.VK_ENTER);
     robot.keyRelease(KeyEvent.VK_ENTER);
     logger.info("Uploading a new document - Clicked on All Enters");
-    Thread.sleep(1500);
+    Thread.sleep(3500);
     click_Element(webDriver, "Upload_Attach_Button");
     Thread.sleep(1500);
     logger.info("Doc has been uploaded.");

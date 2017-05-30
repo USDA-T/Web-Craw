@@ -1,5 +1,4 @@
 #Login
-
 SBA_Login_Email: {Locator: 'name', Value: "user[email]"}
 SBA_Login_Pwd: {Locator: 'name', Value: "user[password]"}
 
@@ -11,20 +10,22 @@ Apllication_Case_Search_Button:          {Locator: 'xpath', Value: '//div[@role=
 
 # Navigation Links On Top
 Navigation_Logout:          {Locator: 'xpath', Value: "//a[ contains(@class, 'ogout' ) and contains(text(), 'ogout') ]"}
-Navigation_Help:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Help')]"}
-Navigation_Cases:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Cases')]"}
-Navigation_Programs:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div//span[contains(text(),'rograms')]"}
-Navigation_Dashboard:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Dashboard')]"}
-Navigation_Business:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
-Navigation_Documents:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Documents')]"}
-Navigation_Home:          {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Home')]"}
+Navigation_Help:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Help')]"}
+Navigation_Cases:           {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'ases')]"}
+Navigation_Programs:        {Locator: 'xpath', Value: "//nav[@role='navigation']/div//span[contains(text(),'rograms')]"}
+Navigation_Dashboard:       {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Dashboard')]"}
+Navigation_Business:        {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
+Navigation_Documents:       {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Documents')]"}
+Navigation_Home:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Home')]"}
 
 #EDWOSB Pages
-Verify_EDWOSB_Pages_Add_Cert:   {Locator: 'id', Value: "add_certification"}
+#Verify_EDWOSB_Pages_Add_Cert:   {Locator: 'id', Value: "add_certification"}
+Verify_EDWOSB_Pages_Add_Cert:    {Locator: 'xpath', Value: "//button[ @id='add_certification' and not(contains(@disabled, '')) ]"}
 
 #Common
 Application_Common_Accept_Button:     {Locator: 'classname', Value: "accept_button"}
 Application_Common_Submit_Button:     {Locator: 'xpath', Value: "//input[@type='submit']"}
+Application_Common_Continue_Button:     {Locator: 'xpath', Value: "//input[ @type='submit' and @value='Continue' ]"}
 
 #Search Duns
 Search_Duns_Search_Text:    {Locator: 'id', Value: "searchtext"}
@@ -36,15 +37,16 @@ Search_Duns_Cases_Submit:     {Locator: 'xpath', Value: "//article[@id='main-con
 #Vendor Admin Dashboard
 Vendor_Admin_Dashboard_More_Details:     {Locator: 'xpath', Value: "//button[@aria-controls='more-details']"}
 
-#Join New Program Page
+#  @Join_New_Program_Page  Start
 JoinNewPgm_Create_App_EDWOSB:   {Locator: 'id', Value: "certificate_type_edwosb"}
 JoinNewPgm_Create_App_WOSB:     {Locator: 'id', Value: "certificate_type_wosb"}
 JoinNewPgm_Create_App_MPP:      {Locator: 'id', Value: "certificate_type_mpp"}
 JoinNewPgm_Create_App_8A:       {Locator: 'id', Value: "certificate_type_eight_a"}
 General_Answer_Page_8A_No:      {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id, 'answer') and contains( @id, 'value_no') ]"}
 General_Answer_Page_8A_Yes:     {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id, 'answer') and contains( @id, 'value_yes') ]"}
+#JoinNewPgm_Add_Cert:            {Locator: 'xpath', Value: "//button[ @id='add_certification' and not(contains(@disabled, '')) ]"}
 JoinNewPgm_Add_Cert:            {Locator: 'id', Value: "add_certification"}
-
+#  @Join_New_Program_Page  End
 
 #Opp Support Page
 Opp_Support_Page_Govt_Profile_Search: {Locator: 'xpath', Value:  "//input[@id='user_type_gov_user']"}
@@ -91,6 +93,7 @@ EDWOSB_Questionnaire_Page_Ans_418_N: {Locator: 'id', Value: "answers_418_value_n
 EDWOSB_Questionnaire_Page_Ans_419_N: {Locator: 'id', Value: "answers_419_value_no"}
 EDWOSB_Questionnaire_Page_Ans_420_N: {Locator: 'id', Value: "answers_420_value_no"}
 EDWOSB_Questionnaire_Page_Ans_421_N: {Locator: 'id', Value: "answers_421_value_no"}
+# FinancialData Page - EDWOSB
 EDWOSB_Questionnaire_Page_Add_Person: {Locator: 'xpath', Value: "//button[ contains(@class,'owner_add_button')]"}
 
 # Text Fields
@@ -186,7 +189,15 @@ General_Element_Property_Enabled: {PropName: "enabled", PropValue: "true"}
 Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
 Analyst_Review_Determ_Page_Return_Mod_Link: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
 
-# My Contracting SBA Program  Draft
+# My Contracting SBA Program start
+# @My_Contracting_Programs
+#       Links for Selecting Programs
+SBA_My_Cont_Pgm_Create_App_8a_Inital: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Initial Program')       ] "}
+SBA_My_Cont_Pgm_Create_App_EDWOSB:    {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification')  ]"}
+SBA_My_Cont_Pgm_Create_App_WOSB:      {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'WOSB Self-Certification')    ]"}
+SBA_My_Cont_Pgm_Create_App_MPP:       {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'MPP Application')            ]"}
+SBA_My_Cont_Pgm_Create_App_8a_upload: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Document Upload')       ]"}
+#       Links for Deleting Programs
 SBA_My_Cont_Pgm_Delete_App_8a_Inital_Delete: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Initial Program') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
 SBA_My_Cont_Pgm_Delete_App_EDWOSB_Delete:    {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
 SBA_My_Cont_Pgm_Delete_App_WOSB_Delete:      {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'WOSB Self-Certification') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
@@ -194,56 +205,214 @@ SBA_My_Cont_Pgm_Delete_App_MPP_Delete:       {Locator: "xpath", Value: "//table[
 SBA_My_Cont_Pgm_Delete_App_8a_upload_Delete: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Document Upload') ] and td[5][ contains(text(),'Draft') ] and td[7]/a[ contains(text(),'Delete')] ]/td/a[ contains(text(),'Delete')]"}
 
 
+# My Contracting SBA Program End
 
-# My Contracting SBA Program
-SBA_My_Cont_Pgm_Create_App_8a_Inital: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Initial Program') ] "}
-SBA_My_Cont_Pgm_Create_App_EDWOSB:    {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification') ]"}
-SBA_My_Cont_Pgm_Create_App_WOSB:      {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'WOSB Self-Certification') ]"}
-SBA_My_Cont_Pgm_Create_App_MPP:       {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'MPP Application') ] "}
-SBA_My_Cont_Pgm_Create_App_8a_upload: {Locator: "xpath", Value: "//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'8(a) Document Upload') ] "}
+# @8a_Initial_Program  Start
+8a_Master_Application_Page_Contributers_Link:               {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] ]/td/a "}
+8a_Master_Application_Page_Contributers_Link_Start_Indv:    {Locator: "xpath", Value: "//a[ contains (@href, 'eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
+8a_Master_Application_Page_BasicEligibility_Link:           {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility') ]]/td/a "}
+8a_Master_Application_Page_Business Ownership_Link:         {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership') ]]/td/a "}
+8a_Master_Application_Page_Character_Link:                  {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character') ]]/td/a "}
+8a_Master_Application_Page_Control_Link:                    {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ]]/td/a "}
+8a_Master_Application_Page_Company_Link:                    {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company') ]]/td/a "}
+# @8a_Initial_Program  End
 
-# 8a Initial Program
-8a_Master_Application_Page_Contributers_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] "}
-8a_Master_Application_Page_BasicEligibility_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility') ] "}
-8a_Master_Application_Page_Business Ownership_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership') ] "}
-8a_Master_Application_Page_Character_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character') ] "}
-8a_Master_Application_Page_Control_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ] "}
-8a_Master_Application_Page_Company_Link: {Locator: "xpath", Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company') ] "}
+# Links for My Certifications
+# @Links_Under_DashBoard Start
+SBA_Certificate_Links_Wosb:       {Locator: "xpath", Value: "//a[ contains( @href, 'certificate_types/wosb/' ) ]"}
+SBA_Certificate_Links_EdWosb:       {Locator: "xpath", Value: "//a[ contains( @href, 'certificate_types/edwosb/' ) ]"}
+SBA_Certificate_Links_Mpp:       {Locator: "xpath", Value: "//a[ contains( @href, 'certificate_types/mpp/' ) ]"}
+SBA_Certificate_Links_8ADocUpload:       {Locator: "xpath", Value: "//a[ contains( @href, 'certificate_types/eight_a/' ) ]"}
+# @Links_Under_DashBoard End
 
 Upload_Attach_Button:             {Locator: "id", Value: "attach"}
-Upload_Add_Req_Button:            {Locator: "cssselector", Value: "#add-req-doc-button > a"}
-Upload_doc_Upload_Button:         {Locator: "id", Value: "doc-upload-button"}
-Upload_doc_Choose_File:           {Locator: "linktext", Value: "Choose a .pdf file"}
+Upload_Add_Req_Button:            {Locator: "xpath", Value: "//div[ contains(@id, 'attachment')  and contains(@id, 'answers') and contains(@style, 'inline') ]//div[@id='add-req-doc-button']/a"}
+Upload_doc_Upload_Button:         {Locator: "xpath", Value: "//div[ contains(@class, 'doc-options') and contains(@style, 'block') ]/button[@id='doc-upload-button']"}
+Upload_doc_Choose_File:           {Locator: "xpath", Value: "//div[ contains(@class, 'box') and contains(@style, 'block') ]/div[ contains(@class, 'dropzone') ]/div/a[ contains(text(), 'pdf file') ]"}
 
 
 Search_Duns_No:                   {Locator: "xpath", Value: "//a[contains(@id,'search-duns')]"}
 Review_Application:               {Locator: "id", Value: "review"}
 
+#@vendor_Admin_8a_Master_Application_Page_Gender Start
+8a_MasterApp_Gender:              {Locator: 'id', Value: "answers_512_value"}
+#@vendor_Admin_8a_Master_Application_Page_Gender End
+
+#@vendor_Admin_8a_Master_Application_Page_martial_Status Start
+8a_MasterApp_Status_Unmarried:                         {Locator: "xpath", Value: "//input[@id='answers_513_value_Unmarried']"}
+8a_MasterApp_Status_Married:                           {Locator: "xpath",  Value: "//input[@id='answers_513_value_Married']"}
+8a_MasterApp_Status_LegallySeperated:                   {Locator: "xpath",  Value: "//input[@id='answers_513_value_Legally_Separated']"}
+#@vendor_Admin_8a_Master_Application_Page_martial_Status End
+
+#@vendor_Admin_8a_Master_Application_Page_Social_Secuirty_Number Page
+8a_Master_Application_Page_Social_Secuirty_Number:     {Locator: 'id', Value: "answers[514][value]"}
+
+#@vendor_Admin_8a_Master_Application_Page_ContactInfo Page
+8a_Master_Application_Page_ContactInfo:     {Locator: 'id', Value: "answers[515][value]"}
+
+#@vendor_Admin_8a_Master_Application_Page_CurrentHomeAddress Page Start
+8a_Master_Application_Page_StreetAddress:     {Locator: "xpath", Value: "//input[contains(@id,'answers_516_value_mailing_address')]"}
+8a_Master_Application_Page_City:              {Locator: "xpath", Value: "//input[contains(@id,'answers_516_value_city')]"}
+8a_Master_Application_Page_State:             {Locator: "xpath", Value: "//select[contains(@id,'answers_516_value_state')]"}
+8a_Master_Application_Page_Zip:               {Locator: "xpath", Value: "//input[contains(@id,'answers_516_value_zip')]"}
+8a_Master_Application_Page_country:           {Locator: "xpath", Value: "//select[contains(@id,'answers_516_value_country')]"}
+8a_Master_Application_Page_DateOfresidenecy:  {Locator: "xpath", Value: "//input[contains(@name,'answers[517][value]')]"}
+#@vendor_Admin_8a_Master_Application_Page_CurrentHomeAddress Page End
+
+#@vendor_Admin_8a_Master_Application_Page_length og Residency Start
+8a_MasterApp_length_of_Residency_yes:         {Locator: 'id', Value: "answers_518_value_yes"}
+8a_MasterApp_length_of_Residency_no:          {Locator: 'id', Value: "answers_518_value_no"}
+#@vendor_Admin_8a_Master_Application_Page_length of Residency End
+
+#@vendor_Admin_8a_Master_Application_Page_Date and palce of Birth Start
+8a_MasterApp_DateofBirth:                     {Locator: 'name', Value: "answers[521][value]"}
+8a_MasterApp_PlaceofBirth:                    {Locator: 'id',   Value: "answers[522][value]"}
+8a_MasterApp_CountryofBirth:                  {Locator: "xpath", Value: "//select[contains(@id,'answers_523_value')]"}
+#@vendor_Admin_8a_Master_Application_Page_length of Residency End
+
+#@vendor_Admin_8a_Master_Application_US Citizenship Start
+8a_MasterApp_US_Citizenship_yes:         {Locator: 'id', Value: "answers_524_value_yes"}
+8a_MasterApp_US_citizenship_no:          {Locator: 'id', Value: "answers_524_value_no"}
+#@vendor_Admin_8a_Master_Application_US Citizenship  End
+
+#@vendor_Admin_8a_MasterApp_Appl_Firm_Ownership Page Start
+8a_MasterApp_Firm_Owner_Percent:         {Locator: 'id', Value: "answers_526_value"}
+8a_MasterApp_Firm_All_Positions:         {Locator: 'name', Value: "answers[527][value]"}
+#@vendor_Admin_8a_MasterApp_Appl_Firm_Ownership Page  End
+
+#@vendor_Admin_8a_Bank_Acct_Access Page Start
+8a_MasterApp_Bank_Acct_Access_Yes:         {Locator: 'id', Value: "answers_528_value_yes"}
+8a_MasterApp_Bank_Acct_Access_Yes_Text:    {Locator: 'id', Value: "answers_528_comment"}
+8a_MasterApp_Bank_Acct_Access_No:          {Locator: 'id', Value: "answers_528_value_no"}
+#@vendor_Admin_8a_Bank_Acct_Access Page  End
+
+#@vendor_Admin_8a_Full_time_Devotion Page Start
+8a_MasterApp_Full_time_Devotion_Yes:         {Locator: 'id', Value: "answers_529_value_yes"}
+8a_MasterApp_Full_time_Devotion_No:          {Locator: 'id', Value: "answers_529_value_no"}
+#@vendor_Admin_8a_Full_time_Devotion Page End
+
+#@vendor_Admin_8a_Business_Affiliation Page Start
+8a_MasterApp_Business_Affiliation_AnyOther_Yes:                  {Locator: 'id', Value: "answers_530_value_yes"}
+8a_MasterApp_Business_Affiliation_AnyOther_No:                   {Locator: 'id', Value: "answers_530_value_no"}
+8a_MasterApp_Business_Affiliation_RelationOwnContract_Yes:       {Locator: 'id', Value: "answers_531_value_yes"}
+8a_MasterApp_Business_Affiliation_RelationOwnContract_Yes_Text:  {Locator: 'id', Value: "answers_531_comment"}
+8a_MasterApp_Business_Affiliation_RelationOwnContract_No:        {Locator: 'id', Value: "answers_531_value_no"}
+#@vendor_Admin_8a_Business_Affiliation Page End
+
+#@vendor_Admin_8a_Prior 8a Involvement Page Start
+8a_MasterApp_Prior_8a_Involvement_Owned_Yes:                  {Locator: 'id', Value: "answers_532_value_yes"}
+8a_MasterApp_Prior_8a_Involvement_Owned_No:                   {Locator: 'id', Value: "answers_532_value_no"}
+8a_MasterApp_Prior_8a_Involvement_Owned_one-time-only_Yes:    {Locator: 'id', Value: "answers_533_value_yes"}
+8a_MasterApp_Prior_8a_Involvement_Owned_one-time-only_No:     {Locator: 'id', Value: "answers_533_value_no"}
+8a_MasterApp_Priro_8a_Involvement_Owned_ever_owned_Yes:       {Locator: 'id', Value: "answers_534_value_yes"}
+8a_MasterApp_Prior_8a_Involvement_Owned_ever_owned_No:        {Locator: 'id', Value: "answers_534_value_no"}
+#@vendor_Admin_8a_Prior 8a Involvement Page End
+
+#@vendor_Admin_8a_Federal Employment Page Start
+8a_MasterApp_Federal_Employment_Yes:         {Locator: 'id', Value: "answers_535_value_yes"}
+8a_MasterApp_Federal_Employment_No:          {Locator: 'id', Value: "answers_535_value_no"}
+#@vendor_Admin_8a_Federal Employment Page End
+
+#@vendor_Admin_8a_Household_Federal Employment Page Start
+8a_MasterApp_Household_Federal_Employment_Yes:         {Locator: 'id', Value: "answers_536_value_yes"}
+8a_MasterApp_Household_Federal_Employment_No:          {Locator: 'id', Value: "answers_536_value_no"}
+#@vendor_Admin_8a_Federal Employment Page End
 
 
+#@vendor_Admin_8a_Financial Page Start
+8a_MasterApp_Prior_8a_personal bankruptcy_Yes:         {Locator: 'id', Value: "answers_537_value_yes"}
+8a_MasterApp_Prior_8a_personal bankruptcy_No:          {Locator: 'id', Value: "answers_537_value_no"}
+8a_MasterApp_Prior_8a_Previously_SBA loan_Yes:         {Locator: 'id', Value: "answers_538_value_yes"}
+8a_MasterApp_Prior_8a_Previously_SBA loan_No:          {Locator: 'id', Value: "answers_538_value_no"}
+8a_MasterApp_Priro_8a_pending_civil_lawsuit_Yes:       {Locator: 'id', Value: "answers_539_value_yes"}
+8a_MasterApp_Prior_8a_pending_civil_lawsuit_No:        {Locator: 'id', Value: "answers_539_value_no"}
+8a_MasterApp_Priro_8a_paying_Yes:                      {Locator: 'id', Value: "answers_540_value_yes"}
+8a_MasterApp_Prior_8a_paying_No:                       {Locator: 'id', Value: "answers_540_value_no"}
+#@vendor_Admin_8a_Financial Page  End
+
+#@vendor_Admin_8a_Criminal history Page Start
+8a_MasterApp_Prior_8a_criminal_Hist_names_Yes:         {Locator: 'id', Value: "answers_541_value_yes"}
+8a_MasterApp_Prior_8a_criminal_Hist_names_Yes_Text:    {Locator: 'id', Value: "answers_541_comment"}
+8a_MasterApp_Prior_8a_criminal_Hist_names_No:          {Locator: 'id', Value: "answers_541_value_no"}
+8a_MasterApp_Prior_8a_criminal_Charges_Yes:            {Locator: 'id', Value: "answers_542_value_yes"}
+8a_MasterApp_Prior_8a_criminal_Charges_No:             {Locator: 'id', Value: "answers_542_value_no"}
+8a_MasterApp_Priro_8a_criminal_Offense_Yes:            {Locator: 'id', Value: "answers_543_value_yes"}
+8a_MasterApp_Prior_8a_criminal_Offense_No:             {Locator: 'id', Value: "answers_543_value_no"}
+8a_MasterApp_Priro_8a_criminal_Violations_Yes:         {Locator: 'id', Value: "answers_544_value_yes"}
+8a_MasterApp_Prior_8a_criminal_Violations_No:          {Locator: 'id', Value: "answers_544_value_no"}
+#@vendor_Admin_8a_Criminal history Page  End
+
+#@vendor_Admin_8a_Crim_Hist_Doc Page  Start
+8a_Master_CrimHistDoc_Up1_Add_Req:            {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='545' ]/a/i"}
+8a_Master_CrimHistDoc_Up1_Add_Req_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='545' ]"}
+8a_Master_CrimHistDoc_Up1_Add_Req_Choose:     {Locator: "id", Value: "dz-select-criminal_history_doc_q0"}
+8a_Master_CrimHistDoc_Up2_Add_Req:            {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='546' ]/a/i"}
+8a_Master_CrimHistDoc_Up2_Add_Req_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='546' ]"}
+8a_Master_CrimHistDoc_Up2_Add_Req_Choose:     {Locator: "id", Value: "dz-select-criminal_history_doc_q1"}
+8a_Master_CrimHistDoc_Up3_Add_Req:            {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='547' ]/a/i"}
+8a_Master_CrimHistDoc_Up3_Add_Req_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='547' ]"}
+8a_Master_CrimHistDoc_Up3_Add_Req_Choose:     {Locator: "id", Value: "dz-select-criminal_history_doc_q2"}
+#@vendor_Admin_8a_Crim_Hist_Doc Page  End
+
+#@vendor_Admin_8a_Basic_Of_Disadvantage Page Start
+8a_MasterApp_Basic_Of_DisAdv_Sel:                    {Locator: 'id', Value: "answers_548_value"}
+8a_MasterApp_Basic_Of_DisAdv_Text:                   {Locator: 'id', Value: "answers_548_comment"}
+#@vendor_Admin_8a_Federal Employment Page End
+
+#@vendor_Admin_8a_Social_Narrative Page  Start
+8a_Master_Social_Narrative_Up1_Add_Req:            {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='551' ]/a/i"}
+8a_Master_Social_Narrative_Up1_Add_Req_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='551' ]"}
+8a_Master_Social_Narrative_Up1_Add_Req_Choose:     {Locator: "id", Value: "dz-select-eight_a_social_narative"}
+#@vendor_Admin_8a_Social_Narrative Page  End
+
+#@vendor_Admin_8a_Transfer Assets Page Start
+8a_MasterApp_Transfer Assets_Yes:                   {Locator: 'id', Value: "answers_552_value_yes"}
+8a_MasterApp_Transfer Assets_Yes_Text:              {Locator: 'id', Value: "answers_552_comment"}
+8a_MasterApp_Transfer Assets_No:                   {Locator: 'id', Value: "answers_552_value_no"}
+#@vendor_Admin_8a_Transfer Assets Page End
+
+#@vendor_Admin_8a_Tax_Returns Page  Start
+8a_Master_Tax_Returns_Up1_Add_Req:            {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='553' ]/a/i"}
+8a_Master_Tax_Returns_Up1_Add_Req_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='553' ]"}
+8a_Master_Tax_Returns_Up1_Add_Req_Choose:     {Locator: "id", Value: "dz-select-eight_a_tax_ret"}
+#@vendor_Admin_8a_Social_Narrative Page  End
 
 
+#@vendor_Admin_8a_financial_Legallyseparted   Start
+8a_Master_financial_Legally_Separted_Yes:        {Locator: 'id', Value: "answers_555_value_yes"}
+8a_Master_financial_Legally_Separted_Add_Req:    {Locator: "xpath", Value: "//div[ @id = 'add-req-doc-button' and @name='555' ]/a/i"}
+8a_Master_financial_Legally_Separted_Upload:     {Locator: "xpath", Value: "//button[ @id = 'doc-upload-button' and @name='555' ]"}
+8a_Master_financial_Legally_Separted_Choose:     {Locator: "id", Value: "dz-select-owner_divorced"}
+8a_Master_financial_Legally_Separted_No:         {Locator: 'id', Value: "answers_555_value_no"}
+#@vendor_Admin_8a8a_financial_Legallyseparted  End
+
+#@vendor_Admin_8a_financial_CashOnHand   Start
+8a_Master_financial_CashOnHand_Date:              {Locator: 'id', Value: "date-489"}
+8a_Master_financial_CashOnHand_Dollar:            {Locator: 'id', Value: "answers_490_value"}
+8a_Master_financial_CashOnHand_Saving:            {Locator: 'id', Value: "answers_491_value"}
+8a_Master_financial_CashOnHand_Checking:          {Locator: 'id', Value: "answers_492_value"}
+#@vendor_Admin_8a8a_financial_CashOnHand End
+
+#@vendor_Admin_8a_financial_OtherSource_Of_Income  Start
+8a_Master_financial_OtherSource_Salary:              {Locator: 'id', Value: "answers_493_value"}
+8a_Master_financial_OtherSource_OtherIncome:         {Locator: 'id', Value: "answers_494_value"}
+8a_Master_financial_OtherSource_OtherIncome_Text:    {Locator: 'id', Value: "answers_494_comment"}
+8a_Master_financial_OtherSource_Appfirm:             {Locator: 'id', Value: "answers_495_value"}
+8a_Master_financial_OtherSource_EquityFirm:          {Locator: 'id', Value: "answers_496_value"}
+#@vendor_Admin_8a8a_financial_OtherSource_Of_income End
+
+#@vendor_Admin_8a_financial_Notes Receivable  Start
+8a_Master_financial_Notes_Receivable_Yes:        {Locator: 'id', Value: "answers_497_value"}
+8a_Master_financial_Notes_Receivable_New_Button: {Locator: "xpath", Value: "//div[ @class = 'dt-buttons']/a/span[contains(text(),'New')]"}
+8a_Master_financial_Notes_Name_Of_Debtor:        {Locator: 'id', Value: "DTE_Field_debtor_name"}
+8a_Master_financial_Notes_Addr_Of_Debtor:        {Locator: 'id', Value: "DTE_Field_debtor_address"}
+8a_Master_financial_Notes_Original_Balance:      {Locator: 'id', Value: "DTE_Field_original_balance"}
+8a_Master_financial_Notes_Current_Balance:       {Locator: 'id', Value: "DTE_Field_current_balance"}
+8a_Master_financial_Notes_Payment_Amount:        {Locator: 'id', Value: "DTE_Field_pay_amount"}
+8a_Master_financial_Notes_Type_Of_Collateral:    {Locator: 'id', Value: "DTE_Field_collateral_type"}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#@vendor_Admin_8a8a_financial_Notes Receivable End
 
 
 

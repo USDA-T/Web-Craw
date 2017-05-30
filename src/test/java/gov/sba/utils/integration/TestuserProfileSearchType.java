@@ -1,12 +1,11 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import gov.sba.automation.CommonApplicationMethods;
 
 public class TestuserProfileSearchType {
 

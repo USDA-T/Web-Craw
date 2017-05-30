@@ -1,12 +1,6 @@
 package gov.sba.automation;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Map;
-
+import gov.sba.utils.integration.LoginPageWithReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,7 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.utils.integration.LoginPageWithReference;
+import java.util.List;
+import java.util.Map;
+
+import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
+import static org.junit.Assert.*;
 
 public class AssertionUtils {
   public static void verify_Element_Property(WebDriver webdriver, String locator_Yaml,
@@ -60,7 +58,7 @@ public class AssertionUtils {
       for (int i = 0; i < current_Row_Check_02.size(); i++) {
         FlagForAddEDWOSBNotPresent = false;
         current_Row_Check_02.get(0).click();
-        CommonApplicationMethods.accept_Optional_Alert(webDriver, 8);
+          accept_Optional_Alert(webDriver, 8);
         Thread.sleep(1500); // Sleep Needed Deepa
         webDriver.navigate().refresh();
         current_Row_Check_02 = webDriver.findElements(
@@ -113,21 +111,21 @@ public class AssertionUtils {
             .findElement(By.xpath(
                 "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
-        webDriver.switchTo().alert().accept();
+          accept_Optional_Alert(webDriver, 22);
         break;
       case "wosbactive":
         webDriver
             .findElement(By.xpath(
                 "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
-        webDriver.switchTo().alert().accept();
+          accept_Optional_Alert(webDriver, 22);
         break;
       case "mppactive":
         webDriver
             .findElement(By.xpath(
                 "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'MPP') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
-        webDriver.switchTo().alert().accept();
+          accept_Optional_Alert(webDriver, 22);
         break;
     }
     CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
@@ -239,7 +237,7 @@ public class AssertionUtils {
           dropdown3.selectByIndex(1);
           webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
           webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-          webDriver.switchTo().alert().accept();
+            accept_Optional_Alert(webDriver, 22);
 
           webDriver
               .findElement(By
@@ -284,7 +282,7 @@ public class AssertionUtils {
       if (current_Row_Check.size() > 0) {
         for (int i = 0; i < current_Row_Check.size(); i++) {
           current_Row_Check.get(0).click();
-          CommonApplicationMethods.accept_Optional_Alert(webDriver, 30);
+            accept_Optional_Alert(webDriver, 30);
         }
       }
 

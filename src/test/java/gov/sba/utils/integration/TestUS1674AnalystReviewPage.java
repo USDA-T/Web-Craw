@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -14,18 +18,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestUS1674AnalystReviewPage extends TestCase {
+  private static final Logger logger_US1674 =
+          LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
-  private static final Logger logger_US1674 =
-      LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
   String duns_Number, email, password;
 
   @Before
@@ -49,7 +50,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       login_Data.Login_With_Details();
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_US1674.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
@@ -66,33 +67,33 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       // assertFalse(webDriver.getPageSource().contains("Under Review"));
 
       List<WebElement> current_Row_WOSB = webDriver.findElements(By.xpath(
-          "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]"));
+              "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]"));
 
       if (current_Row_WOSB.size() > 0) {
         for (int i = 0; i < current_Row_WOSB.size(); i++) {
           logger_US1674.info(current_Row_WOSB.get(i).getText());
           assertTrue(
-              current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
+                  current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
           assertTrue(
-              current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
+                  current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
         }
 
         CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
 
         webDriver.findElement(By.xpath("//a[contains(text(),'Legal Business Name')]")).click();
         webDriver
-            .findElement(
-                By.xpath("//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"))
-            .click();
+                .findElement(
+                        By.xpath("//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"))
+                .click();
 
         WebElement current_Page_Title =
-            webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
+                webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
         logger_US1674.info(current_Page_Title.getText());
 
         String Expected_Text = "Case Overview";
         assertEquals(Expected_Text, current_Page_Title.getText());
         WebElement current_Review_Text =
-            webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
+                webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
         assertEquals("Start a review", current_Review_Text.getText());
 
         Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
@@ -100,15 +101,15 @@ public class TestUS1674AnalystReviewPage extends TestCase {
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
         Select dropdown1 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
         dropdown1.selectByVisibleText("Analyst2 X");
 
         Select dropdown2 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
         dropdown1.selectByVisibleText("Analyst3 X");
 
         Select dropdown3 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
         dropdown1.selectByVisibleText("Analyst4 X");
         webDriver.findElement(By.id("submit_button")).click();
 
@@ -121,7 +122,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       // assertFalse(webDriver.getPageSource().contains("Under Review"));
 
       current_Row_WOSB = webDriver.findElements(By.xpath(
-          "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]"));
+              "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]"));
 
       if (current_Row_WOSB.size() > 0) {
         for (int i = 0; i < current_Row_WOSB.size(); i++) {
@@ -206,7 +207,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
     } catch (Exception e) {
       logger_US1674.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestUS1674AnalystReviewPage", "Exception"});
+              new String[] {"TestUS1674AnalystReviewPage", "Exception"});
       throw e;
     }
   }

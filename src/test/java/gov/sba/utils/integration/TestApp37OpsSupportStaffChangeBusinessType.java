@@ -1,6 +1,10 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -11,18 +15,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.searchDuns_Number;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+@Category({gov.sba.utils.integration.StableTests.class})
+
+//@Category({gov.sba.utils.integration.UnstableTests.class})
 public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
   private static final Logger logger_37OpsSpStfCh =
-      LogManager.getLogger(TestApp37OpsSupportStaffChangeBusinessType.class.getName());
+          LogManager.getLogger(TestApp37OpsSupportStaffChangeBusinessType.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
-  String duns_Number, email, password;
+  String    duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
@@ -44,17 +47,14 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
     try {
 
-      webDriver.findElement(By.id("query")).sendKeys(duns_Number);
+      searchDuns_Number(webDriver, duns_Number);
+
       webDriver
-          .findElement(
-              By.xpath("//*[@id='analyst-search']/div/button[ span[contains(text(),'Search')] ]"))
-          .click();
-      webDriver
-          .findElement(By.xpath(
-              "//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
-          .click();
+              .findElement(By.xpath(
+                      "//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
+              .click();
       webDriver.findElement(By.xpath("//a[contains(text(),'endor') and contains(text(),'upport')]"))
-          .click();
+              .click();
 
       webDriver.findElement(By.id("change_business_type_link")).click();
       Select dropdown1 = new Select(webDriver.findElement(By.id("business_type")));
@@ -74,13 +74,13 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
       assertTrue(business_Type.contains("C-Corporation"));
       assertTrue(business_Type.contains("C-Corporation"));
 
-      // CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
+      // programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       webDriver.findElement(By.id("certificate_type_edwosb")).click();
       webDriver.findElement(By.id("add_certification")).click();
       webDriver
-          .findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]"))
-          .click();
+              .findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]"))
+              .click();
       webDriver.findElement(By.id("certificate_type_edwosb")).click();
       webDriver.findElement(By.id("add_certification")).click();
 
@@ -90,7 +90,7 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
     } catch (Exception e) {
       logger_37OpsSpStfCh.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp37OpsSupportStaffChangeBusinessType", "Exception"});
+              new String[] {"TestApp37OpsSupportStaffChangeBusinessType", "Exception"});
       throw e;
     }
   }

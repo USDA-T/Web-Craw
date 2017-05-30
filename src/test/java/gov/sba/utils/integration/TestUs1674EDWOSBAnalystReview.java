@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -14,18 +18,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestUs1674EDWOSBAnalystReview extends TestCase {
+  private static final Logger logger_US1674_EDWOSB =
+          LogManager.getLogger(TestUs1674EDWOSBAnalystReview.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
-  private static final Logger logger_US1674_EDWOSB =
-      LogManager.getLogger(TestUs1674EDWOSBAnalystReview.class.getName());
   String duns_Number, email, password;
 
   @Before
@@ -49,7 +50,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
     String app_Type_Passed = "EDWOSB";
     // For WOSB and EDWOSB Active status - Create new app if not existing
     CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-    CommonApplicationMethods.createApplication(webDriver, app_Type_Passed);
+    programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
 
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
@@ -69,20 +70,20 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
       List<WebElement> current_Row_EDWOSB = webDriver.findElements(
-          By.xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'"
-              + duns_Number + "')]  ]/td[1]/a"));
+              By.xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'"
+                      + duns_Number + "')]  ]/td[1]/a"));
 
       if (current_Row_EDWOSB.size() >= 1) {
         current_Row_EDWOSB.get(0).click();
         WebElement current_Page_Title =
-            webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
+                webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
         logger_US1674_EDWOSB.info(current_Page_Title.getText());
 
         String Expected_Text = "Case Overview";
         assertEquals(Expected_Text, current_Page_Title.getText());
 
         WebElement current_Review_Text =
-            webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
+                webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
         assertEquals("Start a review", current_Review_Text.getText());
 
         Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
@@ -90,17 +91,17 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
         Select dropdown1 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
         dropdown1.selectByIndex(0);
 
         @SuppressWarnings("unused")
         Select dropdown2 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
         dropdown1.selectByVisibleText("Analyst3 X");
 
         @SuppressWarnings("unused")
         Select dropdown3 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
+                By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
         dropdown1.selectByVisibleText("Analyst4 X");
         webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
         webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();
@@ -115,20 +116,20 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       //
       //
       webDriver.findElement(By
-          .xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains( text(), '"
-              + duns_Number + "' )]  ]/td[1]/a"))
-          .click();
+              .xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains( text(), '"
+                      + duns_Number + "' )]  ]/td[1]/a"))
+              .click();
 
       webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
 
       // Question Review Page
       webDriver
-          .findElement(By.xpath(
-              "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-          .click();
+              .findElement(By.xpath(
+                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
+              .click();
       List<WebElement> dropdown =
-          new Select(webDriver.findElement(By.xpath("//select[@id='assessments__status']")))
-              .getOptions();
+              new Select(webDriver.findElement(By.xpath("//select[@id='assessments__status']")))
+                      .getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
 
       assertEquals("Confirmed", dropdown.get(0).getText());
@@ -139,15 +140,15 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       assertEquals("Needs further review", dropdown.get(4).getText());
       webDriver.findElement(By.id("note_link")).click();
       webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']"))
-          .sendKeys("Adding notes QA");
+              .sendKeys("Adding notes QA");
       webDriver.findElement(By.id("save_notes")).click();
 
       // webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
       // Financia Data Review Page
       webDriver
-          .findElement(By.xpath(
-              "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Financial review')]"))
-          .click();
+              .findElement(By.xpath(
+                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Financial review')]"))
+              .click();
 
       // Come back Later add a new test case for Questionaire flow and
       // check Enabled //Use below later
@@ -230,11 +231,11 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
       // Signature Review Page
       webDriver
-          .findElement(By.xpath(
-              "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Signature review')]"))
-          .click();
+              .findElement(By.xpath(
+                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Signature review')]"))
+              .click();
       dropdown = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']")))
-          .getOptions();
+              .getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -243,14 +244,14 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       assertEquals("Needs further review", dropdown.get(4).getText());
       webDriver.findElement(By.id("note_link")).click();
       webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
-          .sendKeys("Adding notes QA Signature Page");
+              .sendKeys("Adding notes QA Signature Page");
 
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
 
     } catch (Exception e) {
       logger_US1674_EDWOSB.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestUs1674EDWOSBAnalystReview", "Exception"});
+              new String[] {"TestUs1674EDWOSBAnalystReview", "Exception"});
       throw e;
     }
   }

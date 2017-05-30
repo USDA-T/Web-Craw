@@ -1,17 +1,17 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.pageObjetcs.master_Application_8A.masterApp_8a_Page_Click;
+import static gov.sba.pageObjetcs.vendor_Admin_8a_Master_Application_Page.*;
 
 public class delete {
     // Set The variabl.es/Define
@@ -25,7 +25,9 @@ public class delete {
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
-        get_The_Row_From_Login_Data = 58;
+
+        get_The_Row_From_Login_Data = 43;
+
     }
 
     @Test
@@ -37,14 +39,48 @@ public class delete {
                     new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
 
-            new programs_Page().select_MyCertifications(webDriver, "Delete_8a_Initial_Draft");
+            // new programs_Page().select_MyCertifications_Table(webDriver, "Delete_8a_Initial_Draft");
+            webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+            click_Element(webDriver, "Application_Common_Accept_Button");
+
+//            new programs_Page().select_MyCertifications_Table(webDriver,"8a_Initial_Program");
+//            click_Element(webDriver, "Application_Common_Accept_Button");
+            masterApp_8a_Page_Click(webDriver, "page_contributors_Start_Indv_Cont");
+            masterApp_Gender_Info_Page(webDriver, "Male");
+            masterApp_MaritalStatus_Page(webDriver, "Married");
+            masterApp_SocialSecNum_Page(webDriver, "12345678");
+            masterApp_ContactInfo_Page(webDriver, "12345678");
+            masterApp_CuurentHomeAddress_Page(webDriver, "mclean", "mclean", "AL", "10002", "USA", "01/01/2019");
+            masterApp_LengthofResidency_Page(webDriver, "yes");
+            masterApp_DateandPlaceofBirth_Page(webDriver, "01/01/2019", "Mclean", "United States");
+            masterApp_Us_Citizenship_Page(webDriver, "yes");
+            masterApp_Appl_Firm_Ownership_Page(webDriver, "80", "Anything");
+            masterApp_Bank_Acct_Access_Page(webDriver, "yes", "Anything");
+            masterApp_Full_Time_Devotion_Page(webDriver, "yes");
+            masterApp_Business_Affiliations_Page(webDriver, "yes", "yes", "something To Test");
+            masterApp_8a_Prior_Involvement_Page(webDriver, "yes", "yes", "yes");
+            masterApp_8a_Federal_Employment_Page(webDriver, "yes");
+            masterApp_8a_Household_Federal_Employment_Page(webDriver, "yes");
+            masterApp_8a_Financial_Page(webDriver, "yes", "yes", "yes", "yes");
+            masterApp_8a_Criminal_History_Page(webDriver, "yes", "Anything", "yes", "yes", "yes");
+            masterApp_criminal_Hist_Doc_Page(webDriver);
+            masterApp_Basic_Of_Disadvantage_Page(webDriver, "Black American", "Anything");
+            masterApp_Social_Narrative_Page(webDriver);
+            masterApp_Transfer_Assets_Page(webDriver, "Yes", "Anything");
+            masterApp_Tax_Returns_Page(webDriver);
+            masterApp_FinancialData_AddPerson(webDriver, "deepa", "Mahesh", "Owner", "123456789", "Married", "d@gmail.com", "m", "1", "MN", "1", "US", "1", "1");
+            masterApp_FinancialData_Legally_Separted(webDriver, "Yes");
+            masterApp_financial_CashOnHand_Page(webDriver, "01/01/2019", "111", "111", "111");
+            masterApp_financial_OtherSource_Page(webDriver, "111", "111", "Anything", "111", "111");
+            masterApp_financial_Notes_Receivable_Page(webDriver, "Yes");
+
 
         } catch (Exception e) {
             TestAnalystReview.info(e.toString());
         }
     }
 
-    @After
+  @After
     public void tearDown() throws Exception {
         webDriver.quit();
     }

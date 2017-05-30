@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -13,18 +17,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
+@Category({gov.sba.utils.integration.StableTests.class})
+
+//@Category({gov.sba.utils.integration.UnstableTests.class})
 public class Testapp244AllCases8a extends TestCase {
+  private static final Logger logger_244 = LogManager.getLogger(VerifyWosbFlow.class.getName());
   // Set The variables/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
-  private static final Logger logger_244 = LogManager.getLogger(VerifyWosbFlow.class.getName());
 
   @Before
   public void setUp() throws Exception {
@@ -45,24 +49,24 @@ public class Testapp244AllCases8a extends TestCase {
     login_Data.Login_With_Details();
     Thread.sleep(1500);
     // Create 2 MPP Apps
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-    CommonApplicationMethods.createApplication(webDriver, "8a");
+    navigationMenuClick(webDriver, "Programs");
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "8a");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_244.info(file_path_abs);
     fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
     fillApplCreatePages.finalSignatureSubmit8A(webDriver);
 
     // Login as Analyst
-    CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
-    LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 35);
+    navigationMenuClick(webDriver, "LOGOUT");
+      LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 34);
     login_Data_01.Login_With_Reference();
 
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+    navigationMenuClick(webDriver, "Cases");
     CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
     // Check Column 1 - Business Name - Ascending
     List<WebElement> row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[1]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[1]"));
     Boolean something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) == 1) {
@@ -75,11 +79,11 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[1]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[1]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[1]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim()
-          .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
+              .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
         something = true;
         break;
       }
@@ -90,7 +94,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[2]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[2]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[2]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) == 1) {
@@ -103,11 +107,11 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[2]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[2]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[2]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim()
-          .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
+              .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
         something = true;
         break;
       }
@@ -118,7 +122,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[3]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[3]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[3]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) == 1) {
@@ -131,11 +135,11 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[3]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[3]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[3]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim()
-          .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
+              .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
         something = true;
         break;
       }
@@ -146,7 +150,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[5]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[5]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[5]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) == 1) {
@@ -159,11 +163,11 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[5]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[5]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[5]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim()
-          .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
+              .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
         something = true;
         break;
       }
@@ -174,7 +178,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[8]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[8]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[8]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) == 1) {
@@ -187,11 +191,11 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[8]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[8]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[8]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim()
-          .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
+              .compareTo(row_cell.get(i + 1).getText().trim())) == -1) {
         something = true;
         break;
       }
@@ -203,7 +207,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[4]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[4]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[4]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) > 0) {
@@ -216,7 +220,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[4]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[4]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[4]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) < 0) {
@@ -231,7 +235,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[6]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[6]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[6]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) > 0) {
@@ -244,7 +248,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[6]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[6]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[6]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) < 0) {
@@ -259,7 +263,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[7]")).click();
 
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[7]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[7]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) > 0) {
@@ -272,7 +276,7 @@ public class Testapp244AllCases8a extends TestCase {
     webDriver.findElement(By.xpath("//div[@id='table-search']/div/table/thead/tr/th[7]")).click();
     something = false;
     row_cell =
-        webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[7]"));
+            webDriver.findElements(By.xpath("//div[@id='table-search']/div/table/tbody/tr/td[7]"));
     something = false;
     for (int i = 0; i < row_cell.size() - 1; i++) {
       if ((row_cell.get(i).getText().trim().compareTo(row_cell.get(i + 1).getText().trim())) < 0) {

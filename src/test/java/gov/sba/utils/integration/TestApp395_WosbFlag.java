@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
-
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,21 +16,18 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestApp395_WosbFlag extends TestCase {
 
+  private static final Logger logger_TestApp395 =
+          LogManager.getLogger(TestApp395_WosbFlag.class.getName());
   // Get the questions names for which Prepopulate flag set to true
   // Start create New Wosb/Edwosb application
   // Check the Answers are prepopulating with previous answers.
   private static WebDriver webDriver;
-  private static final Logger logger_TestApp395 =
-      LogManager.getLogger(TestApp395_WosbFlag.class.getName());
   String duns_Number, email, password;
   int get_The_Row_From_Login_Data;
 
@@ -47,7 +48,7 @@ public class TestApp395_WosbFlag extends TestCase {
     try {
       // Check Dashboard Pending status
       LoginPageWithReference login_Data =
-          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+              new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
 
       // Return the Applicatiom;
@@ -62,7 +63,7 @@ public class TestApp395_WosbFlag extends TestCase {
 
       // start New WOSB Applicatiom
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
       NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
@@ -77,17 +78,17 @@ public class TestApp395_WosbFlag extends TestCase {
 
       // start New WOSB Applicatiom again - to check the prepopulation
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
       String checkBoxElement =
-          webDriver.findElement(By.id("answers_188_value_no")).getAttribute("outerHTML");
+              webDriver.findElement(By.id("answers_188_value_no")).getAttribute("outerHTML");
       assertFalse(checkBoxElement.toLowerCase().contains("checked"));
       CommonApplicationMethods.click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_N");
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       logger_TestApp395.info(" 8(a) question assert not being prepopulated");
 
       checkBoxElement =
-          webDriver.findElement(By.id("answers_189_value_no")).getAttribute("outerHTML");
+              webDriver.findElement(By.id("answers_189_value_no")).getAttribute("outerHTML");
       assertFalse(checkBoxElement.toLowerCase().contains("checked"));
       CommonApplicationMethods.click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_189_Y");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
@@ -95,66 +96,66 @@ public class TestApp395_WosbFlag extends TestCase {
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       checkBoxElement =
-          webDriver.findElement(By.id("answers_190_value_yes")).getAttribute("outerHTML");
+              webDriver.findElement(By.id("answers_190_value_yes")).getAttribute("outerHTML");
       assertFalse(checkBoxElement.toLowerCase().contains("checked"));
       CommonApplicationMethods.click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_190_Y");
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_201_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_201_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_202_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-
-      CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
-
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_203_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_202_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_204_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_205_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_206_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_203_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_207_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_208_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_209_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_210_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_204_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_211_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_205_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       assertTrue(
-          CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_212_N")
-              .getAttribute("outerHTML").toLowerCase().contains("checked"));
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_206_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+
+      CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_207_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_208_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_209_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_210_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_211_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+
+      assertTrue(
+              CommonApplicationMethods.find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_212_N")
+                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       checkBoxElement =
-          webDriver.findElement(By.id("answers_213_value_no")).getAttribute("outerHTML");
+              webDriver.findElement(By.id("answers_213_value_no")).getAttribute("outerHTML");
       assertFalse(checkBoxElement.toLowerCase().contains("checked"));
       CommonApplicationMethods.click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_213_N");
       CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
@@ -170,7 +171,7 @@ public class TestApp395_WosbFlag extends TestCase {
     } catch (Exception e) {
       logger_TestApp395.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp395_WosbFlag", "Exception"});
+              new String[] {"TestApp395_WosbFlag", "Exception"});
       throw new Exception("Error: ", e);
     }
   }

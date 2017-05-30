@@ -1,20 +1,16 @@
 
 package gov.sba.utils.integration;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.Constants;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.*;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 @Category({gov.sba.utils.integration.UnstableTests.class})
 // @Category(StableTests.class)
@@ -48,10 +44,11 @@ public class TestSearchPage extends TestCase {
     logger.debug("Using test login   : " + LoginHelpers.getLoginData().getEmail());
     logger.debug("Using test password: " + LoginHelpers.getLoginData().getPassword());
     webDriver.findElement(By.cssSelector("button.button-full")).click();
-    webDriver.findElement(By.name("user[email]")).sendKeys(LoginHelpers.getLoginData().getEmail());
-    webDriver.findElement(By.name("user[password]"))
-        .sendKeys(LoginHelpers.getLoginData().getPassword());
-    webDriver.findElement(By.id("business_signin")).click();
+
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginData().getEmail());
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginData().getPassword());
+
+    CommonApplicationMethods.click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
     String url = webDriver.getCurrentUrl();
     org.junit.Assert.assertTrue(url.contains("dashboard"));
   }

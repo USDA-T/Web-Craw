@@ -1,12 +1,10 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -18,17 +16,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+//@Category({gov.sba.utils.integration.UnstableTests.class})
+
+@Category({gov.sba.utils.integration.StableTests.class})
+
+
 public class TestUS1503MppAnalystSuperVisor extends TestCase {
-  // Set The variabl.es/Define
-  private static WebDriver webDriver;
   private static final Logger logger_US1503 =
       LogManager.getLogger(TestUS1503MppAnalystSuperVisor.class.getName());
+    // Set The variabl.es/Define
+    private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
   @Before

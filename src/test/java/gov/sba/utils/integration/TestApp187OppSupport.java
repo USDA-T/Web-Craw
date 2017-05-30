@@ -1,6 +1,9 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,17 +13,14 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
-
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestApp187OppSupport extends TestCase {
 
+  private static final Logger TestApp187OppSupport =
+          LogManager.getLogger(TestApp187OppSupport.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
-  private static final Logger TestApp187OppSupport =
-      LogManager.getLogger(TestApp187OppSupport.class.getName());
   int get_The_Row_From_Login_Data;
 
   @Before
@@ -35,7 +35,7 @@ public class TestApp187OppSupport extends TestCase {
   public void testMainTest() throws Exception {
     // Login to dashboard.
     LoginPageWithReference login_Data =
-        new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
 
     try {
@@ -48,25 +48,25 @@ public class TestApp187OppSupport extends TestCase {
       // TestuserProfileSearchType.TestuserProfileSearch(webDriver,
       // returned_GovProfile_Rows[1][1],Gov_Radio_xpath,Expected_Result);
       TestuserProfileSearchType.TestuserProfileSearch(webDriver, "Analyst",
-          "Opp_Support_Page_Govt_Profile_Search", Expected_Result);
+              "Opp_Support_Page_Govt_Profile_Search", Expected_Result);
       webDriver.navigate().back();
       // US1280- Search Vendor ; //userprofile search function pass
       // Government/vendor profile criteria
       Expected_Result = "Vendor user profile";
       TestuserProfileSearchType.TestuserProfileSearch(webDriver, "QA",
-          "Opp_Support_Page_Vendor_Prof_Search", Expected_Result);
+              "Opp_Support_Page_Vendor_Prof_Search", Expected_Result);
       // Click organization
       webDriver.findElement(By.xpath("//table/tbody/tr/td/a[contains(text(),'Business Name')]"))
-          .click();
+              .click();
       Expected_Result = "Vendor Support";
       String Actual_Result = webDriver
-          .findElement(By.xpath("//div[@id='business_search']/div/div/a")).getText().toString();
+              .findElement(By.xpath("//div[@id='business_search']/div/div/a")).getText().toString();
       assertEquals(Expected_Result, Actual_Result);
 
     } catch (Exception e) {
       TestApp187OppSupport.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp187OppSupport", "Exception"});
+              new String[] {"TestApp187OppSupport", "Exception"});
       TestApp187OppSupport.info("test failed ");
     }
   }

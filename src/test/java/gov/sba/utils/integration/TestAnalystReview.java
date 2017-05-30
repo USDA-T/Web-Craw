@@ -1,25 +1,23 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.WebDriver;
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-@Category({gov.sba.utils.integration.UnstableTests.class})
+import gov.sba.pageObjetcs.programs_Page;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
 public class TestAnalystReview {
-  // Set The variabl.es/Define
-  WebDriver webDriver;
   private static final Logger TestAnalystReview =
       LogManager.getLogger(TestAnalystReview.class.getName());
+    // Set The variabl.es/Define
+    WebDriver webDriver;
   int get_The_Row_From_Login_Data;
   String duns_Number, email, password;
 
@@ -43,7 +41,7 @@ public class TestAnalystReview {
       login_Data.Login_With_Details();
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, "EDWOSB");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 

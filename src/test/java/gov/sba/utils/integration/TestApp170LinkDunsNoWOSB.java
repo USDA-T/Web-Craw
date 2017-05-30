@@ -1,8 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -13,18 +17,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp170LinkDunsNoWOSB extends TestCase {
-  // Set The variabl.es/Define
-  WebDriver webDriver;
   private static final Logger TestApp170LinkDunsNo =
       LogManager.getLogger(TestApp170LinkDunsNoWOSB.class.getName());
+    // Set The variabl.es/Define
+    WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
@@ -47,7 +47,7 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       login_Data.Login_With_Details();
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, "WOSB");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       TestApp170LinkDunsNo.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);

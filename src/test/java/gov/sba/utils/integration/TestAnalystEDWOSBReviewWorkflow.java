@@ -1,6 +1,12 @@
-// TS Created By _deepa patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -10,18 +16,16 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.casesPageSearch;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
 @Category({gov.sba.utils.integration.StableTests.class})
+
 public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
-  WebDriver webDriver;
   private static final Logger logger_TestEDWOSBWorkflow =
-      LogManager.getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
-  String duns_Number, email, password, typ_App;
+          LogManager.getLogger(TestAnalystEDWOSBReviewWorkflow.class.getName());
+  WebDriver webDriver;
+  String    duns_Number, email, password, typ_App;
 
   @Before
   public void setUp() throws Exception {
@@ -45,25 +49,25 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
       typ_App = "EDWOSB";
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      CommonApplicationMethods.createApplication(webDriver, typ_App);
+        navigationMenuClick(webDriver, "Programs");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
       logger_TestEDWOSBWorkflow.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
 
       // Assert Application is Created
       Assert.assertTrue(
-          CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active"));
+              CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active"));
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+        navigationMenuClick(webDriver, "Logout");
       LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
       login_Data_01.Login_With_Reference();
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+        navigationMenuClick(webDriver, "Cases");
+        casesPageSearch(webDriver, duns_Number);
 
       AnalystReviewPage TestReviewProcess = new AnalystReviewPage();
       TestReviewProcess.TestReviewDriver(webDriver, duns_Number, typ_App, "Initial Review",
-          "Analyst2 X", "Analyst3 X", "Analyst4 X");
+              "Analyst2 X", "Analyst3 X", "Analyst4 X");
       TestReviewProcess.testUnderReview();
 
       // //Come Back Later
@@ -80,7 +84,7 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
     } catch (Exception e) {
       logger_TestEDWOSBWorkflow.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestAnalystEDWOSBReviewWorkflow", "Exception"});
+              new String[] {"TestAnalystEDWOSBReviewWorkflow", "Exception"});
       throw e;
     }
   }
