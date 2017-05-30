@@ -28,6 +28,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
     // page.
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
@@ -526,8 +527,15 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
     String actual_Text07 = webDriver.findElement(By.cssSelector("h1")).getText();
     String expected_Text07 = "Is there an SBA Contracting Program for me?";
     assertEquals(actual_Text07, expected_Text07);
+    }
+    catch (Exception e) {
+    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    screenShot.ScreenShot();
+    logger.info(e.getMessage());  
+    }
     logger.info("Success");
-  }
+
+}
 
   @After
   public void tearDown() throws Exception {

@@ -27,6 +27,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     logger.info("User is eligible for ALL programs, 8(a), WOSB, EDWOSB set-asides & Hob-zone");
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
@@ -536,9 +537,15 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
     String expected_Text03 =
         "Based on the information you provided, you may be eligible for the HUBZone Program.";
     assertEquals(actual_Text03, expected_Text03);
-    logger.info("Success");
   }
+  catch (Exception e) {
+  ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+  screenShot.ScreenShot();
+  logger.info(e.getMessage());  
+  }
+  logger.info("Success");
 
+}
   @After
   public void tearDown() throws Exception {
     webDriver.close();

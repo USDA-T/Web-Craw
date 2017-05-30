@@ -395,14 +395,14 @@ public class TestApp3708aBasicEligibilityDisqualify extends TestCase {
     WebElement EligibilityCompleteStatus = webDriver.findElement(By.xpath("//td[3]"));
     HighLight.highLightElement(webDriver, EligibilityCompleteStatus);
     webDriver.findElement(By.linkText("Logout")).click();
-    logger.info("Success");
     }
     catch (Exception e) {
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
     screenShot.ScreenShot();
     logger.info(e.getMessage());  
     }
-  
+    logger.info("Success");
+
 }
 @After
 public void tearDown() throws Exception {

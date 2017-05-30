@@ -29,6 +29,7 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     logger.info(
         "User is NOT eligible(due to NO for Qs1) for Any of the programs 8(a), WOSB, EDWOSB & Hob-zone");
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
@@ -63,8 +64,15 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
         "In order to participate in SBA small business programs, the qualifying individual(s) of the firm must be U.S. citizens.";
     assertEquals(actual_Text1, expected_Text1);
     webDriver.findElement(By.linkText("Exit")).click();
-    logger.info("Success");
   }
+  catch (Exception e) {
+  ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+  screenShot.ScreenShot();
+  logger.info(e.getMessage());  
+  }
+  logger.info("Success");
+
+}
 
   @After
   public void tearDown() throws Exception {

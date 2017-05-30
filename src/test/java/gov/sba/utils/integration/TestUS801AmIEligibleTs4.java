@@ -29,6 +29,7 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
     // page.
     logger.info(
@@ -122,8 +123,15 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
         "In order to participate in SBA small business programs, firms must be for profit.";
     assertEquals(actual_Text1, expected_Text1);
     webDriver.findElement(By.linkText("Exit")).click();
-    logger.info("Success");
   }
+  catch (Exception e) {
+  ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+  screenShot.ScreenShot();
+  logger.info(e.getMessage());  
+  }
+  logger.info("Success");
+
+}
 
   @After
   public void tearDown() throws Exception {

@@ -27,6 +27,7 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
     // page.
     logger.info(
@@ -508,8 +509,15 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
     String expected_Text03 =
         "Based on the information you provided, you may be eligible for the HUBZone Program.";
     assertEquals(actual_Text03, expected_Text03);
-    logger.info("Success");
   }
+  catch (Exception e) {
+  ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+  screenShot.ScreenShot();
+  logger.info(e.getMessage());  
+  }
+  logger.info("Success");
+
+}
 
   @After
   public void tearDown() throws Exception {

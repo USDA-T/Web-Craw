@@ -27,6 +27,7 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    try{
     // Open Firefox,Chrome or IE and navigate to the certify.sba.gov landing
     // page.
     logger.info(
@@ -95,9 +96,15 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
     assertEquals(actual_error7, expected_error7);
     // Click on the Exit button.
     webDriver.findElement(By.linkText("Exit")).click();
-    logger.info("Success");
   }
+  catch (Exception e) {
+  ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+  screenShot.ScreenShot();
+  logger.info(e.getMessage());  
+  }
+  logger.info("Success");
 
+}
   @After
   public void tearDown() throws Exception {
     webDriver.close();
