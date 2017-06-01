@@ -50,13 +50,13 @@ public class TestSimpleLogin {
     webDriver.get(baseUrl);
     // CommonApplicationMethods.focus_window();
 
-    WaitUtils waitUtils = new WaitUtils();
+    // WaitUtils waitUtils = new WaitUtils();
 
     WebElement element;
 
     // Better - we can pick the next element we like to use after the page
     // is loaded!
-    element = waitUtils.waitForElement(webDriver, By.cssSelector("button.button-full"));
+    element = WaitUtils.waitForElement(webDriver, By.cssSelector("button.button-full"));
 
     String expectedText = element.getText();
 
@@ -75,7 +75,7 @@ public class TestSimpleLogin {
     // Rails's team?
     // A: It should not wait longer than 10 seconds and should report error
     // in the test!
-    WebElement signinButton = waitUtils.waitForElement(webDriver, By.id("business_signin")); // the
+    WebElement signinButton = WaitUtils.waitForElement(webDriver, By.id("business_signin")); // the
                                                                                              // "Sign-in"
                                                                                              // button
     // System.out.println("FYI: the text :" +
