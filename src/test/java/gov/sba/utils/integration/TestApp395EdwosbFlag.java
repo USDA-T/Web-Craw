@@ -35,6 +35,7 @@ public class TestApp395EdwosbFlag extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -285,7 +286,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       logger_TestApp395Edwosb.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestApp395EdwosbFlag", "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

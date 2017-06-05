@@ -18,6 +18,9 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Set;
 
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 public class Test1235OppSuppAdminRole extends TestCase {
   private static final Logger logger_US1235 =
@@ -29,7 +32,8 @@ public class Test1235OppSuppAdminRole extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.clear_Env_Chrome();
+    get_Stop_Execution_Flag();
+    clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();

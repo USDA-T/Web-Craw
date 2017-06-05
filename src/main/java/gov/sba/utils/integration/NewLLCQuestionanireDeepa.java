@@ -1,17 +1,13 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Optional_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
+import gov.sba.automation.FixtureUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class NewLLCQuestionanireDeepa {
 
@@ -29,7 +25,7 @@ public class NewLLCQuestionanireDeepa {
     assertEquals(Actual_Text, Expected_Text);
 
     // Verify the More detail meaning for the 8(A) question.
-    click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_N");
+    click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_No");
     click_Element(webDriver, "Application_Common_Submit_Button");
     logger.info("  8(a) question has been answered");
 

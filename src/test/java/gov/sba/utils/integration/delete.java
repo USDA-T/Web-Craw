@@ -1,6 +1,7 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +11,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.pageObjetcs.master_Application_8A.masterApp_8a_Page_Click;
+import static gov.sba.pageObjetcs.master_Application_8A.*;
 import static gov.sba.pageObjetcs.vendor_Admin_8a_Master_Application_Page.*;
 
 public class delete {
@@ -22,6 +23,10 @@ public class delete {
 
     @Before
     public void setUp() throws Exception {
+        if (CommonApplicationMethods.get_Stop_Execution_Flag()) {
+            return;
+        }
+        CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
@@ -35,16 +40,21 @@ public class delete {
         try{
             TestAnalystReview.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
             // Login to Dashboard.
-            LoginPageWithReference login_Data =
-                    new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-            login_Data.Login_With_Reference();
+            new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();
 
             // new programs_Page().select_MyCertifications_Table(webDriver, "Delete_8a_Initial_Draft");
             webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
             click_Element(webDriver, "Application_Common_Accept_Button");
 
-//            new programs_Page().select_MyCertifications_Table(webDriver,"8a_Initial_Program");
-//            click_Element(webDriver, "Application_Common_Accept_Button");
+
+            //masterApp_8a_Page_Click(webDriver,"page_basiceligibility");
+            //Basic Eligibility Page
+            BasicEligiblity_General_Assessment_Page(webDriver, "Yes", "Yes", "Yes", "Yes", "Yes");
+            BasicEligiblity_Prior_8a_Involvement_Page(webDriver, "Yes", "Yes", "Yes");
+            BasicEligiblity_Outside_Assistance_Page(webDriver, "Yes");
+            BasicEligiblity_Business_Size_Page(webDriver, "Yes", "Yes");
+            BasicEligiblity_Size_Determination_Page(webDriver);
+            //Contributor Page- Vendor Admin application
             masterApp_8a_Page_Click(webDriver, "page_contributors_Start_Indv_Cont");
             masterApp_Gender_Info_Page(webDriver, "Male");
             masterApp_MaritalStatus_Page(webDriver, "Married");
@@ -73,10 +83,19 @@ public class delete {
             masterApp_financial_CashOnHand_Page(webDriver, "01/01/2019", "111", "111", "111");
             masterApp_financial_OtherSource_Page(webDriver, "111", "111", "Anything", "111", "111");
             masterApp_financial_Notes_Receivable_Page(webDriver, "Yes");
-
-
+            masterApp_financial_Retirement_Account_Page(webDriver, "Yes", "Yes");
+            masterApp_financial_RealEstate_Page(webDriver, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
+            masterApp_financial_RealEstateOther_Page(webDriver, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
+            masterApp_financial_Personal_Property_Page(webDriver, "Yes", "Yes");
+            masterApp_financial_NotesPayableandOther_Page(webDriver, "Yes");
+            masterApp_financial_Assessed_Taxes_Page(webDriver, "Yes");
+            //Personal summary Report
+            masterApp_financial_PersonalSummary_Page(webDriver);
+            masterApp_financial_PrivacyStatements_Page(webDriver);
+            masterApp_financial_Review_Page(webDriver);
         } catch (Exception e) {
             TestAnalystReview.info(e.toString());
+            throw new Exception(e);
         }
     }
 

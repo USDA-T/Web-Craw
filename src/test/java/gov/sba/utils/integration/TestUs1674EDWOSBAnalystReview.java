@@ -20,6 +20,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.cases_Page.search_Duns_And_Verify;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestUs1674EDWOSBAnalystReview extends TestCase {
@@ -31,6 +34,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -69,87 +73,52 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
-      List<WebElement> current_Row_EDWOSB = webDriver.findElements(
-              By.xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'"
-                      + duns_Number + "')]  ]/td[1]/a"));
+      List<WebElement> current_Row_EDWOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')]  ]/td[1]/a");
 
       if (current_Row_EDWOSB.size() >= 1) {
         current_Row_EDWOSB.get(0).click();
-        WebElement current_Page_Title =
-                webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
-        logger_US1674_EDWOSB.info(current_Page_Title.getText());
 
-        String Expected_Text = "Case Overview";
-        assertEquals(Expected_Text, current_Page_Title.getText());
+        assertEquals("Case Overview", find_Element(webDriver,"Case_CaseOverview_title").getText());
+        assertEquals("Start a review", find_Element(webDriver,"Case_CaseOverview_startReview").getText());
 
-        WebElement current_Review_Text =
-                webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
-        assertEquals("Start a review", current_Review_Text.getText());
 
-        Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
-        assertEquals(1, dropdown.getOptions().size());
-        assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
+        assertEquals(1, new Select(find_Element(webDriver,"Case_Current_Review")).getOptions().size());
+        assertEquals("Initial Review", new Select(find_Element(webDriver,"Case_Current_ReviewType")).getFirstSelectedOption().getText());
+        new Select(find_Element(webDriver,"Case_Current_Reviewer")).selectByIndex(0);
+        new Select(find_Element(webDriver,"Case_Current_Owner")).selectByVisibleText("Analyst3 X");
 
-        Select dropdown1 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
-        dropdown1.selectByIndex(0);
-
-        @SuppressWarnings("unused")
-        Select dropdown2 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
-        dropdown1.selectByVisibleText("Analyst3 X");
-
-        @SuppressWarnings("unused")
-        Select dropdown3 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
-        dropdown1.selectByVisibleText("Analyst4 X");
-        webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-        webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();
-
+        new Select(find_Element(webDriver,"Case_Current_Supervisor")).selectByVisibleText("Analyst4 X");
+        click_Element(webDriver,"Case_Submit_Button");
+        click_Element(webDriver,"Case_SaveNotes_Button");
         webDriver.navigate().back();
         webDriver.navigate().back();
         CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 
       }
 
-      // Come back Later
-      //
-      //
-      webDriver.findElement(By
-              .xpath("//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains( text(), '"
-                      + duns_Number + "' )]  ]/td[1]/a"))
-              .click();
+      search_Duns_And_Verify(webDriver, duns_Number, "Yes","","");
 
-      webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
+      click_Element(webDriver, "Case_Submit_Button");
+      click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
 
-      // Question Review Page
-      webDriver
-              .findElement(By.xpath(
-                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
-              .click();
-      List<WebElement> dropdown =
-              new Select(webDriver.findElement(By.xpath("//select[@id='assessments__status']")))
-                      .getOptions();
+      List<WebElement> dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
-
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
       assertEquals("Information missing", dropdown.get(2).getText());
 
       assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
       assertEquals("Needs further review", dropdown.get(4).getText());
-      webDriver.findElement(By.id("note_link")).click();
-      webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']"))
-              .sendKeys("Adding notes QA");
-      webDriver.findElement(By.id("save_notes")).click();
+      click_Element(webDriver,"SBA_Note_Link");
+
+      setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
+
+      click_Element(webDriver,"Application_Common_Save_Notes");
+      click_Element(webDriver,"SBA_Question_Financial_Review_SideNav");
+
 
       // webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
       // Financia Data Review Page
-      webDriver
-              .findElement(By.xpath(
-                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Financial review')]"))
-              .click();
-
       // Come back Later add a new test case for Questionaire flow and
       // check Enabled //Use below later
 
@@ -230,23 +199,19 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       // webDriver.navigate().back();
 
       // Signature Review Page
-      webDriver
-              .findElement(By.xpath(
-                      "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Signature review')]"))
-              .click();
-      dropdown = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']")))
-              .getOptions();
+      click_Element(webDriver,"SBA_Question_Signature_Review_SideNav");
+
+      dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
       assertEquals("Information missing", dropdown.get(2).getText());
       assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
       assertEquals("Needs further review", dropdown.get(4).getText());
-      webDriver.findElement(By.id("note_link")).click();
-      webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
-              .sendKeys("Adding notes QA Signature Page");
+      click_Element(webDriver,"SBA_Note_Link");
+      setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
 
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      click_Element(webDriver,"EDWOSB_Common_Page_Commit");
 
     } catch (Exception e) {
       logger_US1674_EDWOSB.info(e.toString());

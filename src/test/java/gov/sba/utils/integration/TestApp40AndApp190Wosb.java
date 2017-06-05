@@ -20,6 +20,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp40AndApp190Wosb extends TestCase {
@@ -30,7 +32,6 @@ public class TestApp40AndApp190Wosb extends TestCase {
   String duns_Number, email, password;
 
   public void run_This_app(String app_Type_Passed, String duns_No_Passed) throws Exception {
-
     // Delete if Draft
     TestApp40AndApp190.info(app_Type_Passed);
 
@@ -97,37 +98,26 @@ public class TestApp40AndApp190Wosb extends TestCase {
       TestApp40AndApp190.info(a1.getText());
       a1.click();
 
-      webDriver.findElement(By.xpath("//*[@id='submit_button']")).click();
-      webDriver.findElement(By.xpath("//*[@id='save_notes']")).click();
 
-      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")
-              || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-        List<WebElement> check_Side_Panels =
-                webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
-                        + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
+      click_Element(webDriver, "Application_Common_Submit_Button_Id");
+      click_Element(webDriver, "Application_Common_Save_Notes");
+
+      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb") || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
+        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
         Assert.assertEquals(check_Side_Panels.size(), 0);
-
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
       }
       if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
-        List<WebElement> check_Side_Panels =
-                webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
-                        + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
-
+        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
         Assert.assertTrue(check_Side_Panels.size() > 0);
-
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
       }
     }
@@ -136,6 +126,7 @@ public class TestApp40AndApp190Wosb extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());

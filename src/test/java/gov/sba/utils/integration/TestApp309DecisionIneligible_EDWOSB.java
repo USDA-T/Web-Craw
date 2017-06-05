@@ -37,6 +37,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+      CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -61,7 +62,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
+        programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
       logger_TestApp309.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
@@ -121,7 +122,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       logger_TestApp309.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestApp309DecisionIneligible_EDWOSB", "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

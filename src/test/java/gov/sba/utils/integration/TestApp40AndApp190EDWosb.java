@@ -1,6 +1,5 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
-
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
@@ -20,8 +19,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp40AndApp190EDWosb extends TestCase {
   private static final Logger TestApp40AndApp190 =
           LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
@@ -47,17 +47,13 @@ public class TestApp40AndApp190EDWosb extends TestCase {
       LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 29);
       login_Data.Login_With_Reference();
     } else {
-      // For WOSB and EDWOSB Active status - Create new app if not
-      // existing
+      // For WOSB and EDWOSB Active status - Create new app if not existing
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
-
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
       TestApp40AndApp190.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
-
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
       LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
       login_Data.Login_With_Reference();
@@ -97,37 +93,29 @@ public class TestApp40AndApp190EDWosb extends TestCase {
       TestApp40AndApp190.info(a1.getText());
       a1.click();
 
-      webDriver.findElement(By.xpath("//*[@id='submit_button']")).click();
-      webDriver.findElement(By.xpath("//*[@id='save_notes']")).click();
+      click_Element(webDriver, "Application_Common_Submit_Button_Id");
+      click_Element(webDriver, "Application_Common_Save_Notes");
 
-      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")
-              || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
+      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb") || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
         List<WebElement> check_Side_Panels =
                 webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
                         + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
         Assert.assertEquals(check_Side_Panels.size(), 0);
-
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
       }
+
       if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
         List<WebElement> check_Side_Panels =
                 webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]"
                         + "/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
-
         Assert.assertTrue(check_Side_Panels.size() > 0);
-
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
-        webDriver.findElement(By.xpath("//input[@type='submit']")).click();
-        webDriver.findElement(
-                By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
       }
     }
@@ -136,6 +124,7 @@ public class TestApp40AndApp190EDWosb extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());

@@ -22,7 +22,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Category({gov.sba.utils.integration.UnstableTests.class})
+//@Category({gov.sba.utils.integration.StableTests.class})
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -36,7 +36,8 @@ public class TestUS1503MppAnalystSuperVisor extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+      CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     // webDriver.manage().window().maximize();

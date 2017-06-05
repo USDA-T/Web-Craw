@@ -49,7 +49,6 @@ public class programs_Page {
         }
 
 
-
     }
 
     public static void select_MyCertifications_Links(WebDriver webDriver, String which_Cert) throws Exception {
@@ -94,7 +93,6 @@ public class programs_Page {
                     Assert.assertEquals("Edwosb or WOSB or MPP or 8a", "Not Found");
                     break;
             }
-            Thread.sleep(1500); // Needed - Deepa, Figuring Enabled click
             click_Element(webDriver, "JoinNewPgm_Add_Cert");
             click_Element(webDriver, "Application_Common_Accept_Button");
         }

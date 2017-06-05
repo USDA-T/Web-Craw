@@ -19,6 +19,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.*;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp170LinkDunsNoWOSB extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
@@ -29,6 +31,7 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -46,45 +49,20 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-      String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      TestApp170LinkDunsNo.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+      navigationMenuClick(webDriver, "Programs");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      fillApplCreatePages.page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
       fillApplCreatePages.finalSignatureSubmit(webDriver);
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+      navigationMenuClick(webDriver, "Logout");
 
-      LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
-      login_Data_01.Login_With_Reference();
+      new LoginPageWithReference(webDriver, 11).Login_With_Reference();
 
       // Click on Case Link on main navigator-- SBA Analyst
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      String xpath_Value;
-      List<WebElement> current_Row;
-      WebElement asset_Exists;
-      String typ_App_Passed = "WOSB";
-
-      if (!webDriver.getPageSource().contains("No results found")) {
-        xpath_Value =
-            "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-                + "')]	and " + "td[position()=3 and (text()= '" + typ_App_Passed + "')]" + "]";
-        // All cases page
-        TestApp170LinkDunsNo.info(xpath_Value);
-        current_Row = webDriver.findElements(By.xpath(xpath_Value));
-        TestApp170LinkDunsNo.info(current_Row.size());
-        if (current_Row.size() > 0) {
-          TestApp170LinkDunsNo.info(current_Row.get(0).getText());
-          current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
-          asset_Exists = webDriver
-              .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
-                  + duns_Number + "')] ]"));
-          // Vendor Overview page should display clicking on Duns
-          // Number Link
-          assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
-        }
-
-      }
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+      navigationMenuClick(webDriver, "Cases");
+      casesPageSearch(webDriver, duns_Number);
+      click_Element_Locators(webDriver, "Xpath", "//div[@id='table-search']/table/tbody//a[contains(text(),'" +  duns_Number + "')]");
+      find_Element_Loc(webDriver, "xpath","//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
+      navigationMenuClick(webDriver, "Logout");
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());

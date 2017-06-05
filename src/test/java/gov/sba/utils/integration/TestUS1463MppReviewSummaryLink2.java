@@ -23,7 +23,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -37,6 +37,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -55,7 +56,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
     login_Data.Login_With_Details();
 
     try {
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
@@ -70,15 +71,11 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
       assertTrue(count_Pending.size() >= 1);
 
-      CommonApplicationMethods.clickOnApplicationAllCasesPage(webDriver, "MPP");
+        click_Element(webDriver, "SBA_Application_All_Cases_Page_MPP");
 
-      WebElement current_Title = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Program Self-Certification Summary']"));
 
-      logger_US1463.info(current_Title.getText());
-      WebElement current_Title_Business = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
-      logger_US1463.info(current_Title_Business.getText());
+        logger_US1463.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title").getText());
+        logger_US1463.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name").getText());
 
       Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
@@ -142,13 +139,14 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
         logger_US1463.info(isPresent);
+          isPresent = false;
       }
 
     } catch (Exception e) {
       logger_US1463.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestUS1463MppReviewSummaryLink2", "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

@@ -15,11 +15,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import static gov.sba.automation.CommonApplicationMethods.searchDuns_Number;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
-//@Category({gov.sba.utils.integration.UnstableTests.class})
+//@Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
   private static final Logger logger_37OpsSpStfCh =
           LogManager.getLogger(TestApp37OpsSupportStaffChangeBusinessType.class.getName());
@@ -29,6 +29,7 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -48,46 +49,32 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
     try {
 
       searchDuns_Number(webDriver, duns_Number);
+      click_Element(webDriver,"Ops_Support_Cases_Search_Results_First");
+      click_Element(webDriver,"Ops_Support_Cases_Search_Vendor_Supp_Link");
+      click_Element(webDriver,"Ops_Support_Change_Business_Link");
+      new Select(find_Element(webDriver, "Ops_Support_Change_Business_Type")).selectByIndex(2);
+      click_Element(webDriver,"Application_Common_Save_button");
+      navigationMenuClick(webDriver, "Logout");
 
-      webDriver
-              .findElement(By.xpath(
-                      "//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
-              .click();
-      webDriver.findElement(By.xpath("//a[contains(text(),'endor') and contains(text(),'upport')]"))
-              .click();
-
-      webDriver.findElement(By.id("change_business_type_link")).click();
-      Select dropdown1 = new Select(webDriver.findElement(By.id("business_type")));
-
-      dropdown1.selectByIndex(1);
-      webDriver.findElement(By.id("save")).click();
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-
-      LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-      login_Data.Login_With_Details();
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 
       // Verify the Business type is changes to Scorp[from LLC]
-      CommonApplicationMethods.click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
+      click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
 
       String business_Type = webDriver.findElement(By.id("more-details")).getText();
 
-      assertTrue(business_Type.contains("C-Corporation"));
-      assertTrue(business_Type.contains("C-Corporation"));
+      assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText().contains("S-Corporation"));
 
       // programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      webDriver.findElement(By.id("certificate_type_edwosb")).click();
-      webDriver.findElement(By.id("add_certification")).click();
-      webDriver
-              .findElement(By.xpath("//*[@id='js-navigation-menu']/li/a[contains(text(),'Programs')]"))
-              .click();
-      webDriver.findElement(By.id("certificate_type_edwosb")).click();
-      webDriver.findElement(By.id("add_certification")).click();
+      navigationMenuClick(webDriver, "Programs");
+      click_Element(webDriver, "JoinNewPgm_Create_App_EDWOSB");
+      click_Element(webDriver, "JoinNewPgm_Add_Cert");
+      click_Element(webDriver, "Application_Common_Accept_Button");
 
-      ScorpQuestionsPage scorpQuestionsPage = new ScorpQuestionsPage(webDriver);
-      scorpQuestionsPage.ScorpQuestions();
+      new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
 
-    } catch (Exception e) {
+    }
+    catch (Exception e) {
       logger_37OpsSpStfCh.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestApp37OpsSupportStaffChangeBusinessType", "Exception"});

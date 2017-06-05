@@ -30,6 +30,7 @@ public class TestWOSBRenewal extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -49,7 +50,7 @@ public class TestWOSBRenewal extends TestCase {
     try {
       // Create application Mpp/Edwosb/Wosb/8a
       CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_TestWOSBRenewal.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
@@ -104,7 +105,7 @@ public class TestWOSBRenewal extends TestCase {
       logger_TestWOSBRenewal.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {TestWOSBRenewal.class.getName(), "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

@@ -37,6 +37,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -62,7 +63,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
               .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger_US1699.info(get_Current_Duns_No);
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_US1699.info(file_path_abs);
       fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, get_Current_Duns_No);
@@ -154,13 +155,14 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
         logger_US1699.info(isPresent);
+          isPresent = false;
       }
 
     } catch (Exception e) {
       logger_US1699.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"Test1699ExpirydateNullForMPP", "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
 
     }
   }
@@ -168,5 +170,6 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
   @After
   public void tearDown() throws Exception {
     webDriver.quit();
+
   }
 }

@@ -18,12 +18,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+
 public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
-  // Set The variabl.es/Define
-  private static WebDriver webDriver;
   private static final Logger logger =
       LogManager.getLogger(TestUs1531RestrictCoAccessToActiveOrPendingMppRecords.class.getName());
+  // Set The variabl.es/Define
+  private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
   @Before

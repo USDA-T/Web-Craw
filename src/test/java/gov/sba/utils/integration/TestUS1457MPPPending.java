@@ -5,6 +5,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.cases_Page;
 import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +24,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 
@@ -34,6 +38,7 @@ public class TestUS1457MPPPending extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -61,20 +66,18 @@ public class TestUS1457MPPPending extends TestCase {
       logger_US1457.info("Doc has been uploaded.");
 
       List<WebElement> count_Pending = webDriver.findElements(By.xpath(
-              "//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
-                      + " and " + "td[position()=4 and (contains(text(),'ending'))]" + "]"));
+              "//*[@id='certifications']/tbody/tr" +
+                      "[ " +
+                      "     td[position()=1]/a[contains(text(),'MPP')] and " +
+                      "     td[position()=5 and (contains(text(),'ending'))] " +
+                      "]"));
 
       assertEquals(count_Pending.size(), 1);
 
-      CommonApplicationMethods.clickOnApplicationAllCasesPage(webDriver, "MPP");
+      click_Element(webDriver, "SBA_Application_All_Cases_Page_MPP");
 
-      WebElement current_Title = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']//div[contains(@class,'wosb_detail_title')]/h1[text()='All Small Mentor Protégé Program Application Summary']"));
-
-      logger_US1457.info(current_Title.getText());
-      WebElement current_Title_Business = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"));
-      logger_US1457.info(current_Title_Business.getText());
+      logger_US1457.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title").getText());
+      logger_US1457.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name").getText());
 
       Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
@@ -112,15 +115,10 @@ public class TestUS1457MPPPending extends TestCase {
       WebElement current_Duns = webDriver.findElement(By.xpath(
               "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/p/b[contains(text(),'DUNS')]"));
       logger_US1457.info(current_Duns.getText());
-      WebElement current_Duns_Value = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/p/span[contains(text(),'"
-                      + duns_Number + "')]"));
+      WebElement current_Duns_Value = webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/p/span[contains(text(),'" + duns_Number + "')]"));
       logger_US1457.info(current_Duns_Value.getText());
-      String text_To_Find =
-              "Thank you for submitting your application to participate in SBA’s All Small Mentor-Protégé Program. Once your application is processed and evaluated, a member of the All Small Mentor-Protégé Program Office will contact you to verify your application status.";
-      WebElement current_Title_Txt = webDriver.findElement(By.xpath(
-              "//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h4[contains(text(),'"
-                      + text_To_Find + "')]"));
+      String text_To_Find = "Thank you for submitting your application to participate in SBA’s All Small Mentor-Protégé Program. Once your application is processed and evaluated, a member of the All Small Mentor-Protégé Program Office will contact you to verify your application status.";
+      WebElement current_Title_Txt = webDriver.findElement(By.xpath("//article[@id='main-content']/div[@class='print-summary']/div[@class='wosb-detail-page']/div/div/h4[contains(text(),'" + text_To_Find + "')]"));
       logger_US1457.info(current_Title_Txt.getText());
 
       webDriver.findElement(By.xpath("//a[@data-method='delete']")).click();
@@ -131,28 +129,13 @@ public class TestUS1457MPPPending extends TestCase {
       login_Data1.Login_With_Reference();
       logger_US1457.info(login_Data1);
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-
-      webDriver.findElement(By.xpath("//td/a[contains(text(),'" + duns_Number + "')]")).click();
-
-      WebElement duns_Row_Pending_Check =
-              webDriver.findElement(By.xpath("//td[contains(text(),'ending')]"));
-
-      // else Delete it if in Draft all of the Draft applications
-      Boolean isPresent =
-              (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
-      logger_US1457.info(isPresent);
-      while (isPresent) {
-        webDriver.findElement(By.xpath("//a[@class='delete-cert']")).click();
-        webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-        isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
-        logger_US1457.info(isPresent);
-      }
+      cases_Page.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
 
     } catch (Exception e) {
       logger_US1457.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {TestUS1457MPPPending.class.getName(), "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

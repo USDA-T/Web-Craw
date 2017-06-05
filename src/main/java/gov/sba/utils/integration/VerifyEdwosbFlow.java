@@ -1,17 +1,20 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
 
 public class VerifyEdwosbFlow extends TestCase {
   private static final Logger logger = LogManager.getLogger(VerifyEdwosbFlow.class.getName());
@@ -29,38 +32,14 @@ public class VerifyEdwosbFlow extends TestCase {
     CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
     logger.info("Certifications Deleted To start again");
 
-    String myCertText = webDriver
-        .findElement(By.xpath(
-            "//article[@id='main-content']//h1[contains(text(),'My SBA Contracting Programs')]"))
-        .getText();
-    assertEquals(myCertText, "My SBA Contracting Programs");
+    assertEquals(find_Element(webDriver, "SBA_My_App_Contracting_Programs").getText(), "My SBA Contracting Programs");
 
-    WebElement add_button = webDriver.findElement(By.id("add_certification"));
-    logger.info(add_button.getAttribute("disabled"));
-    assertEquals(add_button.getAttribute("disabled"), "true");
-    try {
-      webDriver
-          .findElement(
-              By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']"))
-          .click();
-    } catch (Exception e) {
-      logger.info("Nothing here");
-    }
+    assertEquals(find_Element(webDriver, "JoinNewPgm_Add_Cert").getAttribute("disabled"), "true");
+    createApplication(webDriver, "EdWOSB");
 
-    assertTrue(Boolean.toString(add_button.isEnabled()), true);
+    click_Element(webDriver, "SBA_Vendor_My_Certifications");
 
-    try {
-      CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
-      CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
-    } catch (Exception e) {
-      logger.info("Nothing here");
-    }
-
-    CommonApplicationMethods.click_Element(webDriver, "Application_Common_Accept_Button");
-
-    webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-    WebElement current_Row_Draft = webDriver.findElement(By.xpath(
-        "//article[@id='main-content']//section/article/table/tbody/tr/td[contains(text(), 'Draft')]"));
+    WebElement current_Row_Draft = find_Element(webDriver, "SBA_Draft_Table_EDWOSB");
     assertEquals(current_Row_Draft.getText(), "Draft");
     logger.info(current_Row_Draft.getText());
     WebElement current_Row = current_Row_Draft.findElement(By.xpath(".."));
@@ -71,29 +50,14 @@ public class VerifyEdwosbFlow extends TestCase {
     assertEquals(all_Cells.get(4).getText(), "Draft");
     assertEquals(all_Cells.get(6).getText(), "Delete");
 
-    all_Cells.get(4)
-        .findElement(By.xpath(
-            "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
-        .click();
+    all_Cells.get(4).findElement(By.xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]")).click();
     CommonApplicationMethods.accept_Alert(webDriver);
 
-    webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
+    click_Element(webDriver, "SBA_Vendor_My_Certifications");
 
     // First Flow - Check For Active
-    webDriver
-        .findElement(
-            By.xpath("//div[@id='certificate_choice']//input[@id='certificate_type_edwosb']"))
-        .click();
+    createApplication(webDriver, "EdWOSB");
 
-    CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
-    try {
-      CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
-      CommonApplicationMethods.click_Element(webDriver, "Verify_EDWOSB_Pages_Add_Cert");
-    } catch (Exception e) {
-      logger.info("Nothing here");
-    }
-
-    CommonApplicationMethods.click_Element(webDriver, "Application_Common_Accept_Button");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
     logger.info(file_path_abs);
@@ -101,7 +65,7 @@ public class VerifyEdwosbFlow extends TestCase {
     fillApplCreatePages.finalSignatureSubmit(webDriver);
 
     // Check the section that its active and no delete in action is there
-    webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
+    click_Element(webDriver, "SBA_Vendor_My_Certifications");
 
     current_Row_Draft = webDriver.findElement(By.xpath(
         "//article[@id='main-content']//section/article/table/tbody/tr/td[contains(text(),'Active')]"));

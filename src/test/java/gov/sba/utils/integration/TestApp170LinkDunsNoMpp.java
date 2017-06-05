@@ -1,6 +1,7 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
@@ -33,6 +34,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -86,8 +88,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver,
-              new String[] {"TestApp170LinkDunsNoMpp", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoMpp", "Exception"});
       throw e;
     }
   }

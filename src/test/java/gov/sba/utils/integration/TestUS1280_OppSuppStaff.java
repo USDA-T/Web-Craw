@@ -13,8 +13,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+import static gov.sba.utils.integration.TestuserProfileSearchType.TestuserProfileSearch;
 
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestUS1280_OppSuppStaff extends TestCase {
   private static final Logger logger_US1280 =
           LogManager.getLogger(TestUS1280_OppSuppStaff.class.getName());
@@ -24,7 +25,8 @@ public class TestUS1280_OppSuppStaff extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+    CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 28;
@@ -53,7 +55,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
 
       // pass Government/vendor profile criteria
       String Expected_Result = "Government user profile";
-      TestuserProfileSearchType.TestuserProfileSearch(webDriver, returned_GovProfile_Rows[1][1],
+      TestuserProfileSearch(webDriver, returned_GovProfile_Rows[1][1],
               "OppSup_Dashboard_Govt_User_Radio_Bt", Expected_Result);
       webDriver.navigate().back();
       // US1280- Search Vendor ;
@@ -69,7 +71,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
       // userprofile search function
       // pass Government/vendor profile criteria
       String Expected_Result1 = "Vendor user profile";
-      TestuserProfileSearchType.TestuserProfileSearch(webDriver, areturned_Rows[1][1],
+      TestuserProfileSearch(webDriver, areturned_Rows[1][1],
               "OppSup_Dashboard_Vend_User_Radio_Bt", Expected_Result1);
 
     } catch (Exception e) {

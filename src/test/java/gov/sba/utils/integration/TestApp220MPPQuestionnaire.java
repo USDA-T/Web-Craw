@@ -30,6 +30,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -44,14 +45,9 @@ public class TestApp220MPPQuestionnaire extends TestCase {
   public void testMainTest() throws Exception {
     try {
 
-      LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-      login_Data.Login_With_Details();
-
+        new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
         programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
-      webDriver
-          .findElement(By.xpath(
-              "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
-          .click();
+        webDriver.findElement(By.xpath("//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]")).click();
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 

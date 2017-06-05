@@ -1,10 +1,7 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
+import gov.sba.automation.*;
 import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -27,7 +24,8 @@ public class TestApp303and304WOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    clear_Env_Chrome();
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+      CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     focus_window();
@@ -47,10 +45,9 @@ public class TestApp303and304WOSB extends TestCase {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
-    Thread.sleep(3000);
     // Create application Mpp/Edwosb/Wosb/8a
     navigationMenuClick(webDriver, "Programs");
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_303.info(file_path_abs);
     fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
@@ -67,7 +64,7 @@ public class TestApp303and304WOSB extends TestCase {
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
     navigationMenuClick(webDriver, "Programs");
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
@@ -78,7 +75,6 @@ public class TestApp303and304WOSB extends TestCase {
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
-    Thread.sleep(1000);
     checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes")
             .getAttribute("outerHTML");
     assertTrue(checkBoxElement.toLowerCase().contains("checked"));

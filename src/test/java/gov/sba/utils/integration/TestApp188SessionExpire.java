@@ -17,7 +17,6 @@ import org.openqa.selenium.WebDriver;
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
 @Category({gov.sba.utils.integration.StableTests.class})
-
 public class TestApp188SessionExpire extends TestCase {
   private static final Logger TestApp188SessionExpire =
           LogManager.getLogger(TestApp188SessionExpire.class.getName());
@@ -27,6 +26,8 @@ public class TestApp188SessionExpire extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+    CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 27;

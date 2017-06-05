@@ -155,7 +155,7 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_LengthofResidency_Page(WebDriver webDriver, String which_value) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Master_Application_Page_length of Residency
         if (!which_value.equals(null) && !which_value.equals("")) {
-            switch (which_value) {
+            switch (which_value.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_length_of_Residency_yes");
                     break;
@@ -179,7 +179,7 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_Us_Citizenship_Page(WebDriver webDriver, String which_value) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Master_Application_US Citizenship Page
         if (!which_value.equals(null) && !which_value.equals("")) {
-            switch (which_value) {
+             switch (which_value.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_US_Citizenship_yes");
                     new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
@@ -202,7 +202,7 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_Bank_Acct_Access_Page(WebDriver webDriver, String yesOrNO, String textVal) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Bank_Acct_Access Page
         if (!yesOrNO.equals(null) && !yesOrNO.equals("")) {
-            switch (yesOrNO) {
+            switch (yesOrNO.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Bank_Acct_Access_Yes");
                     setText_Element(webDriver, "8a_MasterApp_Bank_Acct_Access_Yes_Text", textVal);
@@ -218,7 +218,7 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_Full_Time_Devotion_Page(WebDriver webDriver, String which_value) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Full_time_Devotion Citizenship Page
         if (!which_value.equals(null) && !which_value.equals("")) {
-            switch (which_value) {
+            switch (which_value.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Full_time_Devotion_Yes");
                     new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
@@ -234,7 +234,7 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_Business_Affiliations_Page(WebDriver webDriver, String ans1, String ans2, String ans2Text) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Business_Affiliation Page
         if (!ans1.equals(null) && !ans1.equals("") && !ans2.equals(null) && !ans2.equals("")) {
-            switch (ans1) {
+            switch (ans1.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Business_Affiliation_AnyOther_Yes");
                     new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
@@ -243,7 +243,8 @@ public class vendor_Admin_8a_Master_Application_Page {
                     click_Element(webDriver, "8a_MasterApp_Business_Affiliation_AnyOther_No");
                     break;
             }
-            switch (ans2) {
+
+            switch (ans2.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Business_Affiliation_RelationOwnContract_Yes");
                     setText_Element(webDriver, "8a_MasterApp_Business_Affiliation_RelationOwnContract_Yes_Text", ans2Text);
@@ -292,7 +293,8 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_8a_Federal_Employment_Page(WebDriver webDriver, String which_value) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Federal Employment Page
         if (!which_value.equals(null) && !which_value.equals("")) {
-            switch (which_value) {
+
+            switch (which_value.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Federal_Employment_Yes");
                     new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
@@ -308,7 +310,8 @@ public class vendor_Admin_8a_Master_Application_Page {
     public static void masterApp_8a_Household_Federal_Employment_Page(WebDriver webDriver, String which_value) throws Exception {
         //  Elements Tags: @vendor_Admin_8a_Household_Federal Employment Page
         if (!which_value.equals(null) && !which_value.equals("")) {
-            switch (which_value) {
+
+            switch (which_value.toLowerCase()) {
                 case "yes":
                     click_Element(webDriver, "8a_MasterApp_Household_Federal_Employment_Yes");
                     new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
@@ -600,6 +603,7 @@ public class vendor_Admin_8a_Master_Application_Page {
                         setText_Element(webDriver, "8a_Master_financial_Notes_Current_Balance", "100");
                         setText_Element(webDriver, "8a_Master_financial_Notes_Payment_Amount", "100");
                         setText_Element(webDriver, "8a_Master_financial_Notes_Type_Of_Collateral", "XYZ");
+                        click_Element(webDriver, "Application_Common_Create_button");
                         break;
                     case "No":
                         click_Element(webDriver, "8a_Master_financial_Notes Receivable_No");
@@ -612,5 +616,403 @@ public class vendor_Admin_8a_Master_Application_Page {
             logger.info(e.toString());
             throw e;
         }
+    }
+
+    public static void masterApp_financial_Retirement_Account_Page(WebDriver webDriver, String IRAYesNo, String OTHYesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
+            if (!IRAYesNo.equals(null) && !IRAYesNo.equals("")) {
+                switch (IRAYesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Notes Receivable_Yes");
+                        click_Element(webDriver, "8a_Master_financial_Retirement Accounts__IRA_New_Button");
+                        new Select(find_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_Type")).selectByIndex(1);
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_TotVal", "9999");
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_Contributions", "100");
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_Date_Of_InCon", "05/31/2017");
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_Name_Of_InvCom", "ABC");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Retirement Accounts_IRA_No");
+                        break;
+                }
+            }
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts Do you have any other retirement accounts?
+            if (!OTHYesNo.equals(null) && !OTHYesNo.equals("")) {
+                switch (OTHYesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_Yes");
+                        new Select(find_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_Type")).selectByIndex(1);
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_TotalValue", "9999");
+                        click_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_New_Button");
+                        setText_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_Name_Of_InvCom", "100");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Retirement Accounts_OTH_ No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_Life_Insurance_Page(WebDriver webDriver, String PolicyYesNo, String LoanesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
+            if (!PolicyYesNo.equals(null) && !PolicyYesNo.equals("")) {
+                switch (PolicyYesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_Yes");
+                        click_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_New_Button");
+                        setText_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_Name", "ABC");
+                        setText_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_Cash", "9999");
+                        setText_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_Amount", "100");
+                        setText_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_Beneficiaries", "XYZ");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Life_Insurance_Policy_No");
+                        break;
+                }
+            }
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts Do you have any other retirement accounts?
+            if (!LoanesNo.equals(null) && !LoanesNo.equals("")) {
+                switch (LoanesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Life_Insurance_Loan_Yes");
+                        setText_Element(webDriver, "8a_Master_financial_Life_Insurance_Loan_Balance", "100");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Life_Insurance_Loan_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_StocksAndBonds_Page(WebDriver webDriver, String YesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
+            if (!YesNo.equals(null) && !YesNo.equals("")) {
+                switch (YesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_StockandBonds_Yes");
+                        click_Element(webDriver, "8a_Master_financial_StockandBonds_New_Button");
+                        new Select(find_Element(webDriver, "8a_Master_financial_StockandBonds_Type")).selectByIndex(1);
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_Name", "ABCD");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_totlVal", "100");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_Share", "10");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_Cost", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_Market_Val", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_Date", "05/31/2017");
+                        setText_Element(webDriver, "8a_Master_financial_StockandBonds_dividends", "10");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_StockandBonds_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_RealEstate_Page(WebDriver webDriver, String YesNo, String JointOwnedYesNo, String MortageNameYesNo, String ndMortageYesNo, String ndMortageNameYesNo, String IncomeYesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Real Estate
+            if (!YesNo.equals(null) && !YesNo.equals("")) {
+                switch (YesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Real_Estate_Yes");
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Primary_Address", "ABCD");
+                        if (!JointOwnedYesNo.equals(null) && !JointOwnedYesNo.equals("")) {
+                            switch (JointOwnedYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Jointly_Owned_Yes");
+                                    setText_Element(webDriver, "8a_Master_financial_Real_Estate_Percentage_Ownership", "100");
+                                    setText_Element(webDriver, "8a_Master_financial_Real_Estate_Percentage_Mortage", "10");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Jointly_Owned_No");
+                            }
+                        }
+                        if (!MortageNameYesNo.equals(null) && !MortageNameYesNo.equals("")) {
+                            switch (MortageNameYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Name_Mortage_Yes");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Name_Mortage_No");
+                            }
+                        }
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Current_Residence_Val", "11111");
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Mortage_Balance_Val", "111");
+
+                        if (!ndMortageYesNo.equals(null) && !ndMortageYesNo.equals("")) {
+                            switch (ndMortageYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_2nd_Mortgage_Yes");
+                                    if (!ndMortageNameYesNo.equals(null) && !ndMortageNameYesNo.equals("")) {
+                                        switch (ndMortageNameYesNo) {
+                                            case "Yes":
+                                                click_Element(webDriver, "8a_Master_financial_Real_Estate_Name_2nd_Mortgage_Yes");
+                                                setText_Element(webDriver, "8a_Master_financial_Real_Estate_Percentage_2nd_Mortgage", "11");
+                                                setText_Element(webDriver, "8a_Master_financial_Real_Estate_CurrBal_2nd_Mortgage", "1111");
+                                                break;
+                                            case "No":
+                                                click_Element(webDriver, "8a_Master_financial_Real_Estate_Name_2nd_Mortgage_No");
+                                        }
+                                    }
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_2nd_Mortgage_No");
+                            }
+                        }
+                        if (!IncomeYesNo.equals(null) && !IncomeYesNo.equals("")) {
+                            switch (IncomeYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Income_yes");
+                                    setText_Element(webDriver, "8a_Master_financial_Real_Estate_Income_Val", "1000");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Income_No");
+                            }
+                        }
+
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Real_Estate_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_RealEstateOther_Page(WebDriver webDriver, String YesNo, String OthJointOwnedYesNo, String OthMortageNameYesNo, String OthndMortageYesNo, String OthndMortageNameYesNo, String OthIncomeYesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Real Estate Other
+            if (!YesNo.equals(null) && !YesNo.equals("")) {
+                switch (YesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Real_Estate_Yes");
+                        click_Element(webDriver, "a_Master_financial_Real_Estate_Oth_Add_Button");
+                        new Select(find_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Type")).selectByIndex(1);
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Address", "11111");
+                        if (!OthJointOwnedYesNo.equals(null) && !OthJointOwnedYesNo.equals("")) {
+                            switch (OthJointOwnedYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Jointly_Owned_Yes");
+                                    setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Percentage_RealEstate", "100");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Jointly_Owned_No");
+                            }
+                        }
+                        if (!OthMortageNameYesNo.equals(null) && !OthMortageNameYesNo.equals("")) {
+                            switch (OthMortageNameYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Name_Mortage_Yes");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Name_Mortage_No");
+                            }
+                        }
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Percentage_Mortage", "11");
+                        setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Current_Val", "111");
+
+                        if (!OthndMortageYesNo.equals(null) && !OthndMortageYesNo.equals("")) {
+                            switch (OthndMortageYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_2nd_Mortgage_Yes");
+                                    if (!OthndMortageNameYesNo.equals(null) && !OthndMortageNameYesNo.equals("")) {
+                                        switch (OthndMortageNameYesNo) {
+                                            case "Yes":
+                                                click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Name_2nd_Mortgage_Yes");
+                                                setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Percentage_2nd_Mortgage", "11");
+                                                setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_CurrBal_2nd_Mortgage", "1111");
+                                                break;
+                                            case "No":
+                                                click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Name_2nd_Mortgage_No");
+                                        }
+                                    }
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_2nd_Mortgage_No");
+                            }
+                        }
+                        if (!OthIncomeYesNo.equals(null) && !OthIncomeYesNo.equals("")) {
+                            switch (OthIncomeYesNo) {
+                                case "Yes":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Income_yes");
+                                    setText_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Income_Val", "1000");
+                                    break;
+                                case "No":
+                                    click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_Income_No");
+                            }
+                        }
+
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Real_Estate_Oth_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_Personal_Property_Page(WebDriver webDriver, String PersonalYesNo, String OthPersonalYesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
+            if (!PersonalYesNo.equals(null) && !PersonalYesNo.equals("")) {
+                switch (PersonalYesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Personal_Property_Yes");
+                        click_Element(webDriver, "8a_Master_financial_Personal_Property_New_Button");
+                        setText_Element(webDriver, "8a_Master_financial_Personal_Property_CurrVal", "100");
+                        setText_Element(webDriver, "8a_Master_financial_Personal_Property_LoadBal", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_Personal_Property_DescAss", "10ToT2010");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Personal_Property_No");
+                        break;
+                }
+            }
+            if (!OthPersonalYesNo.equals(null) && !OthPersonalYesNo.equals("")) {
+                switch (OthPersonalYesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_Yes");
+                        click_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_New_Button");
+                        setText_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_CurrVal", "100");
+                        setText_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_LoadBal", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_DescAss", "10ToT2012");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Oth_Personal_Property_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_NotesPayableandOther_Page(WebDriver webDriver, String YesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Notes Payable and Other Liabilities
+            if (!YesNo.equals(null) && !YesNo.equals("")) {
+                switch (YesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Yes");
+                        click_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_New_Button");
+                        new Select(find_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Type")).selectByIndex(1);
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_OrgBal", "100");
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_CurrBal", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Amount", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Collateral", "100");
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Noteholder", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_Addressholder", "1000");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_NotesPayable_OtherLiabilities_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+    }
+
+    public static void masterApp_financial_Assessed_Taxes_Page(WebDriver webDriver, String YesNo) throws Exception {
+        try {
+            //  Elements Tags: @vendor_Admin_8a_financial_Assessed Taxes Start
+            if (!YesNo.equals(null) && !YesNo.equals("")) {
+                switch (YesNo) {
+                    case "Yes":
+                        click_Element(webDriver, "8a_Master_financial_Assessed_Taxes_Yes");
+                        click_Element(webDriver, "8a_Master_financial_Assessed_Taxes_New_Button");
+                        setText_Element(webDriver, "8a_Master_financial_Assessed_Taxes_Whom_Payable", "ABCD");
+                        setText_Element(webDriver, "8a_Master_financial_Assessed_Taxes_Amount", "1000");
+                        setText_Element(webDriver, "8a_Master_financial_Assessed_Taxes_Whendue", "05/31/2017");
+                        click_Element(webDriver, "Application_Common_Create_button");
+                        break;
+                    case "No":
+                        click_Element(webDriver, "8a_Master_financial_Assessed_Taxes_No");
+                        break;
+                }
+            }
+            click_Element(webDriver, "Application_Common_Continue_Button");
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+
+    }
+
+    public static void masterApp_financial_PersonalSummary_Page(WebDriver webDriver) throws Exception {
+        try { //  Elements Tags: Application_Common_Continue_Button
+            click_Element(webDriver, "Application_Common_Continue_Button");
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+
+    }
+
+    public static void masterApp_financial_PrivacyStatements_Page(WebDriver webDriver) throws Exception {
+        try { /*  Elements Tags: Application_Common_Continue_Button*/
+            click_Element(webDriver, "Application_Common_Continue_Button");
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+
+    }
+
+    public static void masterApp_financial_Review_Page(WebDriver webDriver) throws Exception {
+        try {
+            //  Elements Tags: Application_Common_Submit_Button
+            click_Element(webDriver, "Application_Common_Submit_Button");
+            accept_Alert(webDriver);
+        } catch (Exception e) {
+            logger.info(e.toString());
+            throw e;
+        }
+
     }
 }

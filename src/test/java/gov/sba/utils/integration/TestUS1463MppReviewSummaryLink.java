@@ -30,6 +30,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -49,7 +50,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
     try {
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+        programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, duns_Number);
@@ -94,7 +95,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
       logger_US1463.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestUS1463MppReviewSummaryLink", "Exception"});
-      throw new Exception("Error: ", e);
+        throw e;
     }
   }
 

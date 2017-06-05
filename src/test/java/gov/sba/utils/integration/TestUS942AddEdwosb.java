@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestUS942AddEdwosb extends TestCase {
@@ -20,7 +22,8 @@ public class TestUS942AddEdwosb extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.clear_Env_Chrome();
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+      clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();

@@ -1,6 +1,5 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
-
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
@@ -20,17 +19,18 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+import static gov.sba.automation.CommonApplicationMethods.*;
 
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestUS1674AnalystReviewPage extends TestCase {
-  private static final Logger logger_US1674 =
-          LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
+  private static final Logger logger_US1674 = LogManager.getLogger(TestUS1674AnalystReviewPage.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -45,84 +45,59 @@ public class TestUS1674AnalystReviewPage extends TestCase {
   public void testMainTest() throws Exception {
 
     try {
-
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+      navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_US1674.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+      navigationMenuClick(webDriver, "Logout");
 
       LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 11);
       login_Data1.Login_With_Reference();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+      navigationMenuClick(webDriver, "Cases");
+      casesPageSearch(webDriver, duns_Number);
       logger_US1674.info("Cases link is on Main Navigator is Clicked");
 
       // assertFalse(webDriver.getPageSource().contains("Under Review"));
 
-      List<WebElement> current_Row_WOSB = webDriver.findElements(By.xpath(
-              "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]"));
+      List<WebElement> current_Row_WOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]");
 
       if (current_Row_WOSB.size() > 0) {
         for (int i = 0; i < current_Row_WOSB.size(); i++) {
           logger_US1674.info(current_Row_WOSB.get(i).getText());
-          assertTrue(
-                  current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
-          assertTrue(
-                  current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
+          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
+          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
         }
 
-        CommonApplicationMethods.searchDuns_Number(webDriver, duns_Number);
+        searchDuns_Number(webDriver, duns_Number);
 
-        webDriver.findElement(By.xpath("//a[contains(text(),'Legal Business Name')]")).click();
-        webDriver
-                .findElement(
-                        By.xpath("//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"))
-                .click();
+        click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
 
-        WebElement current_Page_Title =
-                webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
-        logger_US1674.info(current_Page_Title.getText());
+        click_Element(webDriver, "SBA_WOSB_Cert_Link");
+        assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
+        assertEquals("Start a review", find_Element(webDriver, "Case_CaseOverview_startReview").getText());
 
-        String Expected_Text = "Case Overview";
-        assertEquals(Expected_Text, current_Page_Title.getText());
-        WebElement current_Review_Text =
-                webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
-        assertEquals("Start a review", current_Review_Text.getText());
-
-        Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
+        Select dropdown = new Select(find_Element(webDriver, "Case_Current_ReviewType"));
         assertEquals(1, dropdown.getOptions().size());
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
-        Select dropdown1 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
-        dropdown1.selectByVisibleText("Analyst2 X");
-
-        Select dropdown2 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
-        dropdown1.selectByVisibleText("Analyst3 X");
-
-        Select dropdown3 = new Select(webDriver.findElement(
-                By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
-        dropdown1.selectByVisibleText("Analyst4 X");
-        webDriver.findElement(By.id("submit_button")).click();
-
+        new Select(find_Element(webDriver, "Case_Current_Reviewer")).selectByVisibleText("Analyst2 X");
+        new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst2 X");
+        new Select(find_Element(webDriver, "Case_Current_Supervisor")).selectByVisibleText("Analyst2 X");
+        click_Element(webDriver, "Application_Common_Submit_Button_Id");
         webDriver.navigate().back();
 
       }
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+      navigationMenuClick(webDriver, "Cases");
+      casesPageSearch(webDriver, duns_Number);
       // assertFalse(webDriver.getPageSource().contains("Under Review"));
-
-      current_Row_WOSB = webDriver.findElements(By.xpath(
-              "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]"));
+      current_Row_WOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]");
 
       if (current_Row_WOSB.size() > 0) {
         for (int i = 0; i < current_Row_WOSB.size(); i++) {

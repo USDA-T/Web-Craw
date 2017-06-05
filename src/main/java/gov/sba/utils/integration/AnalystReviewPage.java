@@ -73,7 +73,7 @@ public class AnalystReviewPage extends TestCase {
         CommonApplicationMethods.deleteApplication(webDriver, "WOSB", "Draft");
 
         if (!CommonApplicationMethods.checkApplicationExists(webDriver, "WOSB", "Active")) {
-            programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+          programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
           webDriver.findElement(By.id("answers_5_value_yes")).click();
 

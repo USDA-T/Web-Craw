@@ -29,6 +29,7 @@ public class TestCreateWosbCertTs1 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -67,8 +68,7 @@ public class TestCreateWosbCertTs1 extends TestCase {
       fillApplCreatePages.finalSignatureSubmit(webDriver);
     } catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver,
-              new String[] {TestCreateWosbCertTs1.class.getName(), "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[]{TestCreateWosbCertTs1.class.getName(), "Exception"});
       throw e;
     }
   }

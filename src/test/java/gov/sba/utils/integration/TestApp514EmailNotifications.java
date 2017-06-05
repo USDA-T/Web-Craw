@@ -18,7 +18,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
+@Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp514EmailNotifications extends TestCase {
   private static final Logger logger_App514 =
@@ -36,6 +36,7 @@ public class TestApp514EmailNotifications extends TestCase {
   String duns_Number, email, password, flagvalue;
 
   public void setUp() throws Exception {
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
