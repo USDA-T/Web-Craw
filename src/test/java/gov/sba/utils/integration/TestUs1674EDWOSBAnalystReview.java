@@ -82,7 +82,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         assertEquals("Start a review", find_Element(webDriver,"Case_CaseOverview_startReview").getText());
 
 
-        assertEquals(1, new Select(find_Element(webDriver,"Case_Current_Review")).getOptions().size());
+        assertEquals(1, new Select(find_Element(webDriver,"Case_Current_ReviewType")).getOptions().size());
         assertEquals("Initial Review", new Select(find_Element(webDriver,"Case_Current_ReviewType")).getFirstSelectedOption().getText());
         new Select(find_Element(webDriver,"Case_Current_Reviewer")).selectByIndex(0);
         new Select(find_Element(webDriver,"Case_Current_Owner")).selectByVisibleText("Analyst3 X");
