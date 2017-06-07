@@ -23,7 +23,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.pageObjetcs.cases_Page.search_Duns_And_Verify;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 

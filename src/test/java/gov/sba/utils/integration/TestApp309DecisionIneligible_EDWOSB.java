@@ -119,8 +119,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
     } catch (Exception e) {
       logger_TestApp309.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-              new String[] {"TestApp309DecisionIneligible_EDWOSB", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp309DecisionIneligible_EDWOSB", "Exception"});
         throw e;
     }
   }

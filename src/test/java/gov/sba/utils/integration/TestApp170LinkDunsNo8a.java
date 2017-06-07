@@ -81,8 +81,7 @@ public class TestApp170LinkDunsNo8a extends TestCase {
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp170LinkDunsNo8a", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {"TestApp170LinkDunsNo8a", "Exception"});
       throw e;
     }
   }

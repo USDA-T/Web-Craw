@@ -74,8 +74,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
 
     } catch (Exception e) {
       TestApp220MPPQuestionnaire.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp220MPPQuestionnaire", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {"TestApp220MPPQuestionnaire", "Exception"});
       throw e;
     }
   }

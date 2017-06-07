@@ -46,8 +46,7 @@ public class testLocators extends TestCase {
 
     } catch (Exception e) {
       logger_US1235.info("Search TextBox is on Main Navigator is not present" + e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"Test1235OppSuppAdminRole", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {"Test1235OppSuppAdminRole", "Exception"});
       throw e;
     }
   }

@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestUS1674AnalystReviewPage extends TestCase {
@@ -49,14 +51,11 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       login_Data.Login_With_Details();
 
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-      String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      logger_US1674.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
+      finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");
 
-      LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 11);
-      login_Data1.Login_With_Reference();
+      new LoginPageWithReference(webDriver, 11).Login_With_Reference();
 
       navigationMenuClick(webDriver, "Cases");
       casesPageSearch(webDriver, duns_Number);
@@ -121,6 +120,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
         click_Element(webDriver, "SBA_Note_Link");
         setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
         click_Element(webDriver, "EDWOSB_Common_Page_Commit");
+
       }
      // //Under Review Process Changed - to be updated
       //
@@ -197,8 +197,7 @@ public class TestUS1674AnalystReviewPage extends TestCase {
 
     } catch (Exception e) {
       logger_US1674.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-              new String[] {"TestUS1674AnalystReviewPage", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestUS1674AnalystReviewPage", "Exception"});
       throw e;
     }
   }
