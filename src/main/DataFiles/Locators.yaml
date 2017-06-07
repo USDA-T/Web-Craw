@@ -81,6 +81,7 @@ JoinNewPgm_Create_App_WOSB:     {Locator: 'id', Value: "certificate_type_wosb"}
 JoinNewPgm_Create_App_MPP:      {Locator: 'id', Value: "certificate_type_mpp"}
 JoinNewPgm_Create_App_8A:       {Locator: 'id', Value: "certificate_type_eight_a"}
 General_Answer_Page_8A_117:      {Locator: 'id', Value: "answers_117_value_no"}
+General_Answer_Page_8A_117_Yes:  {Locator: 'id', Value: "answers_117_value_yes"}
 General_Answer_Page_8A_228:      {Locator: 'id', Value: "answers_228_value_yes"}
 General_Answer_Page_8A_No:      {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id, 'answer') and contains( @id, 'value_no') ]"}
 General_Answer_Page_8A_Yes:     { Locator: 'xpath', Value: "//input[ contains( @id , 'value_yes' ) ]" }
@@ -238,7 +239,9 @@ General_Element_Property_Enabled: {PropName: "enabled", PropValue: "true"}
 
 
 Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
+SBA_Review_Determ_Made: {Locator: 'xpath', Value: "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Determination Made')]"}
 Analyst_Review_Determ_Page_Return_Mod_Link: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
+Analyst_Review_Determ_Decision: {Locator: 'xpath', Value: "//select[@id='determination_decision']"}
 
 # My Contracting SBA Program start
 # @My_Contracting_Programs
@@ -358,7 +361,7 @@ Case_Current_Reviewer:           {Locator: 'xpath', Value: "//select[@id='review
 Case_Current_Owner:              {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
 Case_Current_Supervisor:         {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
 Case_Submit_Button:             {Locator: 'xpath', Value: "//input[@id='submit_button']"}
-Case_SaveNotes_Button :          {Locator: 'xpath', Value: "//input[@id='save_notes']"}
+Case_SaveNotes_Button:          {Locator: 'xpath', Value: "//input[@id='save_notes']"}
 
 #
 

@@ -22,10 +22,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Category({gov.sba.utils.integration.StableTests.class})
-
 @Category({gov.sba.utils.integration.StableTests.class})
-
 
 public class TestUS1503MppAnalystSuperVisor extends TestCase {
   private static final Logger logger_US1503 =

@@ -20,6 +20,8 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.*;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
@@ -60,61 +62,53 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       String typ_App = "EDWOSB";
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
-        programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
+      programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
       logger_TestApp309.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-      LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 55);
-      login_Data_01.Login_With_Reference();
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+      navigationMenuClick(webDriver, "Logout");
+      new LoginPageWithReference(webDriver, 55).Login_With_Reference();
+      navigationMenuClick(webDriver, "Cases");
       CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
-      List<WebElement> current_Row =
-              webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                      + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-                      + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]"));
+
+      String xpath_Element = "//div[@id='table-search']/table/tbody/tr[ "
+              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
+              + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
+      List<WebElement> current_Row = find_Elements(webDriver, "xpath", xpath_Element);
       logger_TestApp309.info(current_Row.size() + ": Is the total  Elements");
       if (current_Row.size() > 0) {
         logger_TestApp309.info(current_Row.get(0).getAttribute("innerHTML"));
+        WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+        logger_TestApp309.info(a1.getText() + "__1");
+        a1.click();
       }
-      WebElement a1 =
-              current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-      logger_TestApp309.info(a1.getText() + "__1");
-      a1.click();
-      webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-      webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();
-      webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+      click_Element(webDriver, "Case_Submit_Button");
+      click_Element(webDriver, "Case_SaveNotes_Button");
+      click_Element(webDriver, "Application_Common_Submit_Button");
+
       // Select Determination -Decision as -Decline Ineligible
-      webDriver
-              .findElement(By.xpath(
-                      "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Determination Made')]"))
-              .click();
-      Select dropdown =
-              new Select(webDriver.findElement(By.xpath("//select[@id='determination_decision']")));
-      // dropdown.selectByValue("Declined Ineliglible");
-      webDriver.findElement(By.xpath("//input[@type='submit']")).click();
+      click_Element(webDriver, "SBA_Review_Determ_Made");
+      Select dropdown = new Select(find_Element(webDriver, "webDriver.findElement(By.xpath())"));
+      click_Element(webDriver, "Application_Common_Submit_Button");
       webDriver.navigate().back();
       Thread.sleep(2000);
       webDriver.navigate().back();
+      Thread.sleep(2000);
       webDriver.navigate().back();
       Thread.sleep(2000);
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      List<WebElement> current_Row1 =
-              webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                      + "td[position()=8 and contains(text(),'neligible')]   and "
-                      + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-                      + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]"));
+      navigationMenuClick(webDriver, "Cases");
+      xpath_Element = "//div[@id='table-search']/table/tbody/tr[ "
+              + "td[position()=8 and contains(text(),'neligible')]   and "
+              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
+              + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
+      List<WebElement> current_Row1 = find_Elements(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(current_Row1.size() > 0);
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-      login_Data = new LoginPageWithDetails(webDriver, email, password);
-      login_Data.Login_With_Details();
+      navigationMenuClick(webDriver, "Logout");
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       // Certificate status - Ineligible, decision- Sba Declined
-      List<WebElement> listOfIneliglebEDWOSB =
-              webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/" + "tr[  " + ""
-                      + "		(td[position()=5 and contains(text(),'neligible')]) "
-                      + "and  (td[position()=1]/a[contains(text(),'EDWOSB')]) " + "	]"));
+      xpath_Element = "//*[@id='certifications']/tbody/tr[ (td[position()=5 and contains(text(),'neligible')]) and (td[position()=1]/a[contains(text(),'EDWOSB')]) ]";
+      List<WebElement> listOfIneliglebEDWOSB = find_Elements(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(listOfIneliglebEDWOSB.size() > 0);
 
     } catch (Exception e) {

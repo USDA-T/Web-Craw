@@ -21,9 +21,8 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
-@Category({gov.sba.utils.integration.StableTests.class})
 
-//@Category({gov.sba.utils.integration.StableTests.class})
+
 public class Testapp244AllCases8a extends TestCase {
   private static final Logger logger_244 = LogManager.getLogger(VerifyWosbFlow.class.getName());
   // Set The variables/Define
@@ -315,9 +314,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-@Category({gov.sba.utils.integration.StableTests.class})
 
-//@Category({gov.sba.utils.integration.StableTests.class})
 public class Testapp244AllCasesMpp extends TestCase {
   private static final Logger logger_244 = LogManager.getLogger(VerifyWosbFlow.class.getName());
   // Set The variables/Define

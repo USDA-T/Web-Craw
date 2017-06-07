@@ -9,14 +9,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
-//@Category({gov.sba.utils.integration.StableTests.class})
 
+
+@Category({gov.sba.utils.integration.StableTests.class})
 public class testLocators extends TestCase {
-  private static final Logger logger_US1235 =
-      LogManager.getLogger(Test1235OppSuppAdminRole.class.getName());
-    // Set The variabl.es/Define
-    private static WebDriver webDriver;
+  private static final Logger logger = LogManager.getLogger(Test1235OppSuppAdminRole.class.getName());
+  private static WebDriver webDriver;
   String duns_Number, email, password;
   int get_The_Row_From_Login_Data;
 
@@ -32,20 +32,16 @@ public class testLocators extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    // Login to dashboard.
-    LoginPageWithReference login_Data =
-        new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+    LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
 
     // Need to submit the application in EDWosb, Wosb, MPP::
     // Log in As OppSupport Staft - validate as per the US1235 Acceptance
     // criteria on Opp Support Staft/Admin page
 
-    try {
-      CommonApplicationMethods.click_Element(webDriver, "WOSB_Self_Certification_Link");
-
-    } catch (Exception e) {
-      logger_US1235.info("Search TextBox is on Main Navigator is not present" + e.toString());
+    try { CommonApplicationMethods.click_Element(webDriver, "WOSB_Self_Certification_Link"); }
+    catch (Exception e) {
+      logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {"Test1235OppSuppAdminRole", "Exception"});
       throw e;
     }

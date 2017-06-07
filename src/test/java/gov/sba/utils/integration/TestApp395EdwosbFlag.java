@@ -18,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -112,118 +113,72 @@ public class TestApp395EdwosbFlag extends TestCase {
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       logger_TestApp395Edwosb.info("  Change in Eligiblity assert not being prepopulated");
       // Locate the Three Business Corporation and S-Corp(Stocks) question
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_393_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_393_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_394_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_394_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_395_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_395_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_396_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_396_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_397_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_397_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_398_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_398_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_398_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_398_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
       // Locate the Citizenship & Ownership question 1and2, Verify,select
       // No
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_399_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_399_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_404_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_405_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_406_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_407_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_404_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_405_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_406_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_407_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
-
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_408_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_409_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_410_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_411_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_412_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
-      assertTrue(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_413_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_408_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_409_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_410_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_411_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_412_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_413_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Locate the SBA Exam & Daily Operations questions,Verify, select
       // No
-      assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N");
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // NetWorth
-      assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N");
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Adjusted Gross Income
-      assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N");
-      assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N");
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       // Assets
-      assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N")
-                      .getAttribute("outerHTML").toLowerCase().contains("checked"));
+      assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N");
       assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N")
+              find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N");
       assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N")
+              find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N");
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Economic Disadvantage
       assertFalse(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N")
+              find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N");
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
@@ -266,10 +221,10 @@ public class TestApp395EdwosbFlag extends TestCase {
               "1012023004");
 
       new Select(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_title"))
+              find_Element(webDriver, "EDWOSB_Questionnaire_Page_title"))
               .selectByIndex(2);
       new Select(
-              CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_MaritalSt"))
+              find_Element(webDriver, "EDWOSB_Questionnaire_Page_MaritalSt"))
               .selectByIndex(2);
 
         click_Element(webDriver, "EDWOSB_Questionnaire_Page_Done_Button");
