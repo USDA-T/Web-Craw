@@ -9,6 +9,7 @@ import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -71,12 +72,15 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
       assertTrue(count_Pending.size() >= 1);
 
         click_Element(webDriver, "SBA_Application_All_Cases_Page_MPP");
+        WebElement title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title");
+        logger_US1463.info(title_01.getText());
+        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("All Small Mentor"));
+        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Program Self-Certification Summary"));
+        title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name");
+        logger_US1463.info(title_01.getText());
+        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Legal Business Name"));
 
-
-        logger_US1463.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title").getText());
-        logger_US1463.info(find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name").getText());
-
-      Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
+        Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
       Statement statement_SQL = databaseConnection.createStatement();
 
