@@ -57,7 +57,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
     CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
             new String[] {"TestUS1081AllCasesAnalyst", "Login_Screenshot"});
 
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+
     programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_US1081.info(file_path_abs);

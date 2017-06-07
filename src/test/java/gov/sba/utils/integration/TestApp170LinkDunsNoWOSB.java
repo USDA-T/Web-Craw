@@ -49,7 +49,6 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
       fillApplCreatePages.finalSignatureSubmit(webDriver);

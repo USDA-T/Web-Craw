@@ -52,8 +52,7 @@ public class TestWOSBRenewal extends TestCase {
     login_Data.Login_With_Details();
     try {
       // Create application Mpp/Edwosb/Wosb/8a
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_TestWOSBRenewal.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);

@@ -46,7 +46,6 @@ public class TestApp303and304WOSB extends TestCase {
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
     // Create application Mpp/Edwosb/Wosb/8a
-    navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_303.info(file_path_abs);
@@ -63,7 +62,6 @@ public class TestApp303and304WOSB extends TestCase {
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-    navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));

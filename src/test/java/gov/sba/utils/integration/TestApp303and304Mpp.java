@@ -50,7 +50,6 @@ public class TestApp303and304Mpp extends TestCase {
     login_Data.Login_With_Details();
 
     // Create application Mpp/Edwosb/Wosb/8a
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_303.info(file_path_abs);
@@ -59,7 +58,6 @@ public class TestApp303and304Mpp extends TestCase {
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
     String checkBoxElement =
             webDriver.findElement(By.id("answers_117_value_yes")).getAttribute("outerHTML");

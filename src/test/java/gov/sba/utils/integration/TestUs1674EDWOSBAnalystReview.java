@@ -56,7 +56,6 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
     String app_Type_Passed = "EDWOSB";
     // For WOSB and EDWOSB Active status - Create new app if not existing
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
     programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
 
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";

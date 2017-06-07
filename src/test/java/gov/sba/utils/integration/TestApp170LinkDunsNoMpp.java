@@ -52,7 +52,6 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      navigationMenuClick(webDriver, "Programs");
       join_New_Program_CheckBoxes(webDriver, "MPP");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       TestApp170LinkDunsNo.info(file_path_abs);

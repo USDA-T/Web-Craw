@@ -50,7 +50,6 @@ public class TestAnalystEDWOSBReviewWorkflow extends TestCase {
       typ_App = "EDWOSB";
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
-        navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
       logger_TestEDWOSBWorkflow.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);

@@ -47,7 +47,7 @@ public class TestApp170LinkDunsNo8a extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+
       programs_Page.join_New_Program_CheckBoxes(webDriver, "8A");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       TestApp170LinkDunsNo.info(file_path_abs);

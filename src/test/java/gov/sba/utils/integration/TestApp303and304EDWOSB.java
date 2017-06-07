@@ -49,7 +49,6 @@ public class TestApp303and304EDWOSB extends TestCase {
     // Mpp/EdC:\IdeaProj\SBA_One\src\main\DataFiles\Upload.pdf
     //
     // wosb/Wosb/8a
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_303.info(file_path_abs);
@@ -72,7 +71,6 @@ public class TestApp303and304EDWOSB extends TestCase {
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
     // String checkBoxElement =
     // webDriver.findElement(By.id("answers_228_value_yes")).getAttribute("outerHTML");

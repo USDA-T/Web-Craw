@@ -62,7 +62,7 @@ public class TestApp395_WosbFlag extends TestCase {
       CommonApplicationMethods.deleteApplication(webDriver, "Wosb", "Draft");
 
       // start New WOSB Applicatiom
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
       NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
@@ -77,7 +77,7 @@ public class TestApp395_WosbFlag extends TestCase {
       CommonApplicationMethods.deleteApplication(webDriver, "wosb", "Draft");
 
       // start New WOSB Applicatiom again - to check the prepopulation
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
+
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
       String checkBoxElement = find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_No").getAttribute("outerHTML");

@@ -57,8 +57,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
 
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_US1081.info(file_path_abs);
     page8aFillUp(webDriver, "Yes", file_path_abs);

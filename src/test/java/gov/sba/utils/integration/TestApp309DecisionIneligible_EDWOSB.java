@@ -61,7 +61,6 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
       logger_TestApp309.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);

@@ -48,7 +48,6 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_US1674.info(file_path_abs);

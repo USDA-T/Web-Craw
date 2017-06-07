@@ -64,7 +64,6 @@ public class TestApp395EdwosbFlag extends TestCase {
       CommonApplicationMethods.deleteApplication(webDriver, "Wosb", "Draft");
 
       // start New Applicatiom
-        navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       // Create New Edwosb Application with select No to all questions
       // with one person's 413 form

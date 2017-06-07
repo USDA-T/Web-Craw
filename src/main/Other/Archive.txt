@@ -48,9 +48,7 @@ public class Testapp244AllCases8a extends TestCase {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
-    Thread.sleep(1500);
     // Create 2 MPP Apps
-    navigationMenuClick(webDriver, "Programs");
     programs_Page.join_New_Program_CheckBoxes(webDriver, "8a");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_244.info(file_path_abs);
@@ -349,7 +347,6 @@ public class Testapp244AllCasesMpp extends TestCase {
     // Create 2 MPP Apps
     for (int i = 0; i < 2; i++) {
       // Create application Mpp/Edwosb/Wosb/8a
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
       programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_244.info(file_path_abs);

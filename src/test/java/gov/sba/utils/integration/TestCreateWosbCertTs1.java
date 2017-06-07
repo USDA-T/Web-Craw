@@ -62,7 +62,6 @@ public class TestCreateWosbCertTs1 extends TestCase {
       deleteApplication(webDriver, "Wosb", "Draft");
 
       // start New WOSB Applicatiom
-      navigationMenuClick(webDriver, "Programs");
       join_New_Program_CheckBoxes(webDriver, "WOSB");
       new NewLLCQuestionanireDeepa().NewLLCQuestionanireDeepa(webDriver);
       fillApplCreatePages.finalSignatureSubmit(webDriver);

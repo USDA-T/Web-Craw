@@ -35,7 +35,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
 
         // Check Pending for MPP
         if (app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-            CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
             TestApp40AndApp190Mpp.info(file_path_abs);
@@ -47,7 +46,6 @@ public class TestApp40AndApp190Mpp extends TestCase {
             login_Data.Login_With_Reference();
         } else {
             // For WOSB and EDWOSB Active status - Create new app if not
-            CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
             programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
             TestApp40AndApp190Mpp.info(file_path_abs);

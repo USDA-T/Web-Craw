@@ -41,7 +41,6 @@ public class TestAnalystReview {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
         programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
