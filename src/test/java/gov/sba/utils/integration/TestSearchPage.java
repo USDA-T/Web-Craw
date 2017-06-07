@@ -12,6 +12,8 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 // @Category(StableTests.class)
 public class TestSearchPage extends TestCase {
@@ -43,14 +45,13 @@ public class TestSearchPage extends TestCase {
   public void testMainLogic() throws Exception {
     logger.debug("Using test login   : " + LoginHelpers.getLoginData().getEmail());
     logger.debug("Using test password: " + LoginHelpers.getLoginData().getPassword());
-    webDriver.findElement(By.cssSelector("button.button-full")).click();
+    click_Element(webDriver, "SBA_Login_Button");
 
     CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginData().getEmail());
     CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginData().getPassword());
 
-    CommonApplicationMethods.click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
-    String url = webDriver.getCurrentUrl();
-    org.junit.Assert.assertTrue(url.contains("dashboard"));
+    click_Element(webDriver, "OppSup_Dashboard_Business_Signin"); Thread.sleep(1500); //Deepa Sleep needed here
+    org.junit.Assert.assertTrue(webDriver.getCurrentUrl().contains("dashboard"));
   }
 
 }

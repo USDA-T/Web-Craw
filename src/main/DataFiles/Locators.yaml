@@ -1,4 +1,6 @@
 #Login
+
+SBA_Login_Button: {Locator: 'xpath', Value: "//form[ contains(@action, '/users/sign_in') ]/div/button[ contains(text(), 'Login') ] "}
 SBA_Login_Email: {Locator: 'name', Value: "user[email]"}
 SBA_Login_Pwd: {Locator: 'name', Value: "user[password]"}
 
