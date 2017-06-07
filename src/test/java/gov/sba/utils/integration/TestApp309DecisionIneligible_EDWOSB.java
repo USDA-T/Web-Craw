@@ -79,9 +79,8 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       logger_TestApp309.info(current_Row.size() + ": Is the total  Elements");
       if (current_Row.size() > 0) {
         logger_TestApp309.info(current_Row.get(0).getAttribute("innerHTML"));
-        WebElement a1 = current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-        logger_TestApp309.info(a1.getText() + "__1");
-        a1.click();
+        xpath_Element = xpath_Element + "/td/a[contains(text(),'Legal Business Name')]";
+        click_Element_Locators(webDriver, "xpath", xpath_Element);
       }
       click_Element(webDriver, "Case_Submit_Button");
       click_Element(webDriver, "Case_SaveNotes_Button");
