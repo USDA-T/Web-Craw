@@ -65,9 +65,8 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
       fillApplCreatePages.finalSignatureSubmit(webDriver);
       logger_US1463.info("Doc has been uploaded.");
 
-      List<WebElement> count_Pending = webDriver.findElements(By.xpath(
-              "//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
-                      + " and " + "td[position()=5 and (contains(text(),'ending'))]" + "]"));
+      List<WebElement> count_Pending = find_Elements(webDriver,"xpath","//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
+              + " and " + "td[position()=5 and (contains(text(),'ending'))]" + "]");
 
       assertTrue(count_Pending.size() >= 1);
 

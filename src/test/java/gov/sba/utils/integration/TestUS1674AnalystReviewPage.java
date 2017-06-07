@@ -68,17 +68,11 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       List<WebElement> current_Row_WOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][not(contains(text(),'eview'))]  ]");
 
       if (current_Row_WOSB.size() > 0) {
-        for (int i = 0; i < current_Row_WOSB.size(); i++) {
-          logger_US1674.info(current_Row_WOSB.get(i).getText());
-          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
-          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
-        }
-
         searchDuns_Number(webDriver, duns_Number);
 
         click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
 
-        click_Element(webDriver, "SBA_WOSB_Cert_Link");
+        //click_Element(webDriver, "SBA_WOSB_Cert_Link");
         assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
         assertEquals("Start a review", find_Element(webDriver, "Case_CaseOverview_startReview").getText());
 
@@ -90,8 +84,6 @@ public class TestUS1674AnalystReviewPage extends TestCase {
         new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst2 X");
         new Select(find_Element(webDriver, "Case_Current_Supervisor")).selectByVisibleText("Analyst2 X");
         click_Element(webDriver, "Application_Common_Submit_Button_Id");
-        webDriver.navigate().back();
-
       }
 
       navigationMenuClick(webDriver, "Cases");
@@ -100,13 +92,38 @@ public class TestUS1674AnalystReviewPage extends TestCase {
       current_Row_WOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[3][contains(text(),'WOSB')]  and td[8][contains(text(),'Active')]   and td[4][(contains(text(),'eview'))]  ]");
 
       if (current_Row_WOSB.size() > 0) {
-        for (int i = 0; i < current_Row_WOSB.size(); i++) {
-          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() > 0);
-          assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() > 0);
-        }
-      }
+        click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
 
-      // //Under Review Process Changed - to be updated
+        List<WebElement> dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+        logger_US1674.info(dropdown.get(0).getText());
+        assertEquals("Confirmed", dropdown.get(0).getText());
+        assertEquals("Not reviewed", dropdown.get(1).getText());
+        assertEquals("Information missing", dropdown.get(2).getText());
+
+        assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+        assertEquals("Needs further review", dropdown.get(4).getText());
+        click_Element(webDriver, "SBA_Note_Link");
+
+        setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
+
+        click_Element(webDriver, "Application_Common_Save_Notes");
+        click_Element(webDriver, "SBA_Question_Financial_Review_SideNav");
+
+        // Signature Review Page
+        click_Element(webDriver, "SBA_Question_Signature_Review_SideNav");
+
+        dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+        logger_US1674.info(dropdown.get(0).getText());
+        assertEquals("Confirmed", dropdown.get(0).getText());
+        assertEquals("Not reviewed", dropdown.get(1).getText());
+        assertEquals("Information missing", dropdown.get(2).getText());
+        assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+        assertEquals("Needs further review", dropdown.get(4).getText());
+        click_Element(webDriver, "SBA_Note_Link");
+        setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
+        click_Element(webDriver, "EDWOSB_Common_Page_Commit");
+      }
+     // //Under Review Process Changed - to be updated
       //
       // current_Row_WOSB = webDriver.findElements(By.xpath(
       // "//div[@id='table-search']/table/tbody/tr[

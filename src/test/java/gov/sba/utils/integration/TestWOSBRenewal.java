@@ -19,6 +19,9 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Elements;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestWOSBRenewal extends TestCase {
@@ -55,11 +58,7 @@ public class TestWOSBRenewal extends TestCase {
       logger_TestWOSBRenewal.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
-      List<WebElement> count_Active =
-              webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
-                      + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
-                      + "td[position()=5 and (contains(text(),'Active'))]" + "]"));
-
+      List<WebElement> count_Active = find_Elements(webDriver,"xpath","//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB') ] and td[5][ contains(text(),'Active') ]]");
       assertEquals(count_Active.size(), 1);
       logger_TestWOSBRenewal
               .info("Doc has been uploaded.-Edwosb application submitted sucessfully");
@@ -75,31 +74,22 @@ public class TestWOSBRenewal extends TestCase {
       // check the status of the certificate to - Expired
       // verify the Renewal link - submit new renew application
       webDriver.navigate().refresh();
-      List<WebElement> count_ReNew =
-              webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
-                      + "td [ position()=1]/a[contains(text(),'EDWOSB')]  and "
-                      + "td [ position()=7]/a[contains(text(),'Renew') ] " + "]"));
-
+      List<WebElement> count_ReNew = find_Elements(webDriver,"xpath","//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB') ] and td[7]/a[ contains(text(),'Renew')] ]");
       assertEquals(count_ReNew.size(), 1);
       // Create new renew application - submit
-      count_ReNew.get(0).findElement(By.xpath("td[position()=7]/a")).click();
-      webDriver.findElement(By.className("accept_button")).click();
+      count_ReNew.get(0).findElement(By.xpath("td[7]/a")).click();
+      click_Element(webDriver,"Application_Common_Accept_Button");
       file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_TestWOSBRenewal.info(file_path_abs);
       fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
       fillApplCreatePages.finalSignatureSubmit(webDriver);
       // Verify the old application's status - Expired
       // The renewed Application's status - Active
-      List<WebElement> count_Edwosb_Active =
-              webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
-                      + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
-                      + "td[position()=5 and (contains(text(),'Active'))]" + "]"));
+      List<WebElement> count_Edwosb_Active = find_Elements(webDriver,"xpath","//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB Self-Certification') ] and td[5][ contains(text(),'Active') ]]");
       assertTrue(count_Edwosb_Active.size() > 0);
-      List<WebElement> count_Edwosb_Expire =
-              webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
-                      + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
-                      + "td[position()=5 and (contains(text(),'Active'))]" + "]"));
-
+      List<WebElement> count_Edwosb_Expire = find_Elements(webDriver,"xpath","//*[@id='certifications']/tbody/tr" + "["
+              + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
+              + "td[position()=5 and (contains(text(),'Expired'))]" + "]");
       assertEquals(count_Edwosb_Expire.size(), 1);
     } catch (Exception e) {
       logger_TestWOSBRenewal.info(e.toString());

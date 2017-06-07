@@ -1,6 +1,7 @@
 //TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
@@ -10,6 +11,7 @@ import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -51,6 +53,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
+
     String app_Type_Passed = "EDWOSB";
     // For WOSB and EDWOSB Active status - Create new app if not existing
     CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
@@ -73,147 +76,61 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
-      List<WebElement> current_Row_EDWOSB = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')]  ]/td[1]/a");
+      List<WebElement> current_Row_EDWOSB = find_Elements_Optional(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[4][ not(text()) ] ]/td[1]/a");
 
-      if (current_Row_EDWOSB.size() >= 1) {
-        current_Row_EDWOSB.get(0).click();
+      if (current_Row_EDWOSB.size() > 0 ){
+        Assert.assertTrue(current_Row_EDWOSB.size() == 1);
+        {
+          current_Row_EDWOSB.get(0).click();
+          assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
+          assertEquals("Start a review", find_Element(webDriver, "Case_CaseOverview_startReview").getText());
+          assertEquals(1, new Select(find_Element(webDriver, "Case_Current_ReviewType")).getOptions().size());
+          assertEquals("Initial Review", new Select(find_Element(webDriver, "Case_Current_ReviewType")).getFirstSelectedOption().getText());
+          new Select(find_Element(webDriver, "Case_Current_Reviewer")).selectByIndex(0);
+          new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst3 X");
+          new Select(find_Element(webDriver, "Case_Current_Supervisor")).selectByVisibleText("Analyst4 X");
+          click_Element(webDriver, "Case_Submit_Button");
+          click_Element(webDriver, "Case_SaveNotes_Button");
+        }
+      }
+      else {
+          List<WebElement> current_Row_EDWOSB1 = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[4][ contains(text(),'Initial Review')] ]/td[1]/a");
+          current_Row_EDWOSB1.get(0).click();
+          click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
 
-        assertEquals("Case Overview", find_Element(webDriver,"Case_CaseOverview_title").getText());
-        assertEquals("Start a review", find_Element(webDriver,"Case_CaseOverview_startReview").getText());
+          List<WebElement> dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+          logger_US1674_EDWOSB.info(dropdown.get(0).getText());
+          assertEquals("Confirmed", dropdown.get(0).getText());
+          assertEquals("Not reviewed", dropdown.get(1).getText());
+          assertEquals("Information missing", dropdown.get(2).getText());
 
+          assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+          assertEquals("Needs further review", dropdown.get(4).getText());
+          click_Element(webDriver, "SBA_Note_Link");
 
-        assertEquals(1, new Select(find_Element(webDriver,"Case_Current_ReviewType")).getOptions().size());
-        assertEquals("Initial Review", new Select(find_Element(webDriver,"Case_Current_ReviewType")).getFirstSelectedOption().getText());
-        new Select(find_Element(webDriver,"Case_Current_Reviewer")).selectByIndex(0);
-        new Select(find_Element(webDriver,"Case_Current_Owner")).selectByVisibleText("Analyst3 X");
+          setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
 
-        new Select(find_Element(webDriver,"Case_Current_Supervisor")).selectByVisibleText("Analyst4 X");
-        click_Element(webDriver,"Case_Submit_Button");
-        click_Element(webDriver,"Case_SaveNotes_Button");
-        webDriver.navigate().back();
-        webDriver.navigate().back();
-        CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+          click_Element(webDriver, "Application_Common_Save_Notes");
+          click_Element(webDriver, "SBA_Question_Financial_Review_SideNav");
 
+          // Signature Review Page
+          click_Element(webDriver, "SBA_Question_Signature_Review_SideNav");
+
+          dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+          logger_US1674_EDWOSB.info(dropdown.get(0).getText());
+          assertEquals("Confirmed", dropdown.get(0).getText());
+          assertEquals("Not reviewed", dropdown.get(1).getText());
+          assertEquals("Information missing", dropdown.get(2).getText());
+          assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
+          assertEquals("Needs further review", dropdown.get(4).getText());
+          click_Element(webDriver, "SBA_Note_Link");
+          setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
+
+          click_Element(webDriver, "EDWOSB_Common_Page_Commit");
       }
 
-      search_Duns_And_Verify(webDriver, duns_Number, "Yes","","");
 
-      click_Element(webDriver, "Case_Submit_Button");
-      click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
-
-      List<WebElement> dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
-      logger_US1674_EDWOSB.info(dropdown.get(0).getText());
-      assertEquals("Confirmed", dropdown.get(0).getText());
-      assertEquals("Not reviewed", dropdown.get(1).getText());
-      assertEquals("Information missing", dropdown.get(2).getText());
-
-      assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-      assertEquals("Needs further review", dropdown.get(4).getText());
-      click_Element(webDriver,"SBA_Note_Link");
-
-      setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
-
-      click_Element(webDriver,"Application_Common_Save_Notes");
-      click_Element(webDriver,"SBA_Question_Financial_Review_SideNav");
-
-
-      // webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
-      // Financia Data Review Page
-      // Come back Later add a new test case for Questionaire flow and
-      // check Enabled //Use below later
-
-      // List<WebElement> table_Left_Rows =
-      // webDriver.findElements(By.xpath(
-      // "//article[@id='main-content']/form/div[contains(@class,'review_outer')]/div[contains(@class,'review_main')]/div/div[contains(@class,'tab-content')]/div/div[not(contains(@id,'table1-pad'))]/table/tbody/tr"));
-      // List<WebElement> table_Right_Rows =
-      // webDriver.findElements(By.xpath(
-      // "//article[@id='main-content']/form/div[contains(@class,'review_outer')]/div[contains(@class,'review_main')]/div/div[contains(@class,'tab-content')]/div/div[contains(@id,'table1-pad')]/table/tbody/tr"));
-      //
-      // String[] table1_Data = { "Cash on Hand $100.00", "Savings
-      // Account(s) Balances $100.00",
-      // "Checking Account(s) Balances $100.00", "Accounts & Notes
-      // Receivable $100.00",
-      // "IRA, 401K or Other Retirement Account $100.00", "Roth IRA
-      // $100.00",
-      // "Cash Surrender Value of Whole Life Insurance $100.00",
-      // "Stocks and Bonds or Mutual Funds? $100.00", "Real Estate
-      // (Primary Residence) $100.00",
-      // "Other Real Estate $0.00", "Automobiles $100.00", "Other Personal
-      // Property/Assets $100.00",
-      // "Applicant's Business Equity $100.00", "Applicant's Equity in
-      // Other Firms $100.00",
-      // "Total Assets $1,300.00", "Salary $100.00", "Investment Income
-      // $100.00",
-      // "Real Estate Income $100.00", "Other Income $100.00", "Most
-      // Recent Tax Year $100.00",
-      // "Year 2 $100.00", "Year 3 $100.00", "Total (Avg) $100.00" };
-      // String[] table2_Data = { "Accounts Payable $100.00", "Notes
-      // Payable to Banks & Others $100.00",
-      // "Installment Account (Auto) $100.00", "Installment Account
-      // (Other) $100.00",
-      // "Loan(s) Against Life Insurance $100.00", "Mortgage (Primary
-      // Residence)* $200.00",
-      // "Mortgages on other Real Estate $0.00", "Unpaid Taxes $100.00",
-      // "Other Liabilities $100.00",
-      // "Total Liabilities $900.00", "Net Worth\nTotal Assets - Total
-      // Liabilities $400.00" };
-      // for (int i = 0; i < table_Left_Rows.size(); i++) {
-      // logger_US1674_EDWOSB.info(table_Left_Rows.get(i).getText());
-      // assertEquals(table_Left_Rows.get(i).getText(), table1_Data[i]);
-      // }
-      //
-      // for (int j = 0; j < table_Right_Rows.size(); j++) {
-      // logger_US1674_EDWOSB.info(table_Right_Rows.get(j).getText());
-      // assertEquals(table_Right_Rows.get(j).getText(), table2_Data[j]);
-      // }
-      //
-      // logger_US1674_EDWOSB.info(table_Left_Rows.size());
-      // logger_US1674_EDWOSB.info(table_Left_Rows.get(0).getText());
-      // logger_US1674_EDWOSB.info(table_Right_Rows.size());
-      // logger_US1674_EDWOSB.info(table_Right_Rows.get(0).getText());
-      //
-      // WebElement ret_Accounts = webDriver.findElement(By.xpath(
-      // "//article[@id='main-content']/form/div[contains(@class,'review_outer')]/div[contains(@class,'review_main')]/div/div[contains(@class,'tab-content')]/form/div/div/div/h3[contains(text(),'Retirement
-      // Accounts')]"));
-      // logger_US1674_EDWOSB.info(ret_Accounts.getText());
-      // WebElement ret_Account_Title =
-      // ret_Accounts.findElement(By.xpath("..")).findElement(
-      // By.xpath("div/div[contains(@class,'table-top')]/strong[text()='Vendor
-      // attachments:']"));
-      // logger_US1674_EDWOSB.info(ret_Account_Title.getText());
-      // WebElement ret_Account_Attach_Link =
-      // ret_Account_Title.findElement(By.xpath(".."))
-      // .findElement(By.xpath("table/tbody/tr/td/a[contains(text(),'.pdf')]"));
-      // logger_US1674_EDWOSB.info(ret_Account_Attach_Link.getText());
-      // @SuppressWarnings("unused")
-      // WebElement ret_Account_Attach_Text =
-      // ret_Account_Title.findElement(By.xpath("..")).findElement(
-      // By.xpath("table/tbody/tr/td[contains(text(),'Retirement Account
-      // Terms and Conditions')]"));
-      // logger_US1674_EDWOSB.info(ret_Account_Attach_Link.getText());
-      //
-      // Thread.sleep(20000);
-      // //
-      // webDriver.findElement(By.xpath("//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor
-      // // Overview')]")).click();
-      // webDriver.navigate().back();
-
-      // Signature Review Page
-      click_Element(webDriver,"SBA_Question_Signature_Review_SideNav");
-
-      dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
-      logger_US1674_EDWOSB.info(dropdown.get(0).getText());
-      assertEquals("Confirmed", dropdown.get(0).getText());
-      assertEquals("Not reviewed", dropdown.get(1).getText());
-      assertEquals("Information missing", dropdown.get(2).getText());
-      assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-      assertEquals("Needs further review", dropdown.get(4).getText());
-      click_Element(webDriver,"SBA_Note_Link");
-      setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
-
-      click_Element(webDriver,"EDWOSB_Common_Page_Commit");
-
-    } catch (Exception e) {
+       } catch (Exception e) {
       logger_US1674_EDWOSB.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestUs1674EDWOSBAnalystReview", "Exception"});
