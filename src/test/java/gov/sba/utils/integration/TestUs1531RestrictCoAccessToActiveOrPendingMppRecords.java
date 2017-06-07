@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -48,16 +47,12 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
-    DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
-    deleteDraftCert.DeleteDraftCert();
+    new DeleteDraftCertPage(webDriver).DeleteDraftCert();
     // Delete second draft if any.
-    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
-    deleteDraftCert1.DeleteDraftCert();
+    new DeleteDraftCertPage(webDriver).DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new EDWOSB certification.
-    AddOrStartCertificationPage addOrStartCertification =
-        new AddOrStartCertificationPage(webDriver);
-    addOrStartCertification.AddOrStartCertification();
+    new AddOrStartCertificationPage(webDriver).AddOrStartCertification();
     // Start new 8(a) application.
     EDWOSBEightATestPage eDWOSBEightATest = new EDWOSBEightATestPage(webDriver);
     eDWOSBEightATest.EDWOSBEightATest();

@@ -1,5 +1,6 @@
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
 import static org.junit.Assert.assertEquals;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,9 +33,8 @@ public class AddOrStartCertificationPage {
       Expected_Text = "Join a new program";
       assertEquals(Actual_Text, Expected_Text);
       // Verify and Click on the EDWOSB Certification to select.
-      if (webDriver.getPageSource()
-          .contains("Economically Disadvantaged Woman Owned Small Business")) {
-        webDriver.findElement(By.id("certificate_type_edwosb")).click();
+      if (webDriver.getPageSource().contains("Economically Disadvantaged Woman Owned Small Business")) {
+        click_Element(webDriver, "JoinNewPgm_Create_App_EDWOSB");
       } else {
         logger.info(
             "There is no more EDWOSB program, User Already have an Active EDWOSB Certification.");
