@@ -18,6 +18,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp514EmailNotifications extends TestCase {
@@ -59,8 +61,7 @@ public class TestApp514EmailNotifications extends TestCase {
 
       try {
 
-        CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+        join_New_Program_CheckBoxes(webDriver, "EDWOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
         logger_App514.info(file_path_abs);
         fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
