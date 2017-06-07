@@ -25,8 +25,7 @@ import static gov.sba.automation.CommonApplicationMethods.*;
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
-  private static final Logger logger_TestApp309 =
-          LogManager.getLogger(TestApp309DecisionIneligible_EDWOSB.class.getName());
+  private static final Logger logger_TestApp309 = LogManager.getLogger(TestApp309DecisionIneligible_EDWOSB.class.getName());
   // Submit Wosb/EDWOSBApplication
   // Login with Supervisor acccont Decline
   // Login as vendor and Verfiy the dasboard, certificate,Sba_application
@@ -39,7 +38,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      CommonApplicationMethods.get_Stop_Execution_Flag();
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -88,7 +87,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
       // Select Determination -Decision as -Decline Ineligible
       click_Element(webDriver, "SBA_Review_Determ_Made");
-      Select dropdown = new Select(find_Element(webDriver, "webDriver.findElement(By.xpath())"));
+      new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision"));
       click_Element(webDriver, "Application_Common_Submit_Button");
       webDriver.navigate().back();
       Thread.sleep(2000);
@@ -113,7 +112,7 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
     } catch (Exception e) {
       logger_TestApp309.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp309DecisionIneligible_EDWOSB", "Exception"});
-        throw e;
+      throw e;
     }
   }
 
