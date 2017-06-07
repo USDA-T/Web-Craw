@@ -478,7 +478,8 @@ Review_Application:               {Locator: "id", Value: "review"}
 8a_MasterApp_Household_Federal_Employment_Yes:         {Locator: 'id', Value: "answers_536_value_yes"}
 8a_MasterApp_Household_Federal_Employment_No:          {Locator: 'id', Value: "answers_536_value_no"}
 #@vendor_Admin_8a_Federal Employment Page End
-
+SBA_EDWOSB_Financial_Title_H2:                          {Locator: 'cssselector', Value: "h2"}
+SBA_EDWOSB_Financial_Title_Fp:                          {Locator: 'cssselector', Value: "fieldset > p"}
 
 #@vendor_Admin_8a_Financial Page Start
 8a_MasterApp_Prior_8a_personal bankruptcy_Yes:         {Locator: 'id', Value: "answers_537_value_yes"}
