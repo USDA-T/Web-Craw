@@ -330,6 +330,14 @@ BasicEligibility_determination_Date:      {Locator: "id", Value: "date-362"}
 # @8a_Initial_Program- Size Determination  End
 
 
+# @8a_Initial_Program- Contributor Start
+Contributor_Add_DisAdv_Ind_Link:          {Locator: 'xpath ', Value: "a[@id='add_link_1905' and contains(text(),'another Disadvantaged Individual')]"}
+Contributor_Add_Spouse_Ind_Link:          {Locator: 'xpath ', Value: "a[@id='add_link_1906' and contains(text(),'a spouse of a Disadvantaged')]"}
+Contributor_Add_Business_Ind_Link:        {Locator: 'xpath ', Value: "a[@id='add_link_1907' and contains(text(),'Add other individuals')]"}
+Contributor_Invite_First_Link:            {Locator: 'xpath ', Value: "x"}
+
+# @8a_Initial_Program- Contributor  End
+
 # Links Signature Submit Legal 0
 SBA_Sig_Submit_Legal_0: {Locator: 'xpath', Value: "//input[@id='legal_0']"}
 SBA_Sig_Submit_Legal_1: {Locator: 'xpath', Value: "//input[@id='legal_1']"}

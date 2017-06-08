@@ -44,7 +44,22 @@ public class master_Application_8A {
 
         }
     }
-
+    public static void Contributor_Page(WebDriver webDriver, String link_To_Click) throws Exception {
+        // Elements tag: @8a_Initial_Program- Contributor
+        if (!link_To_Click.equals(null) && !link_To_Click.equals("")) {
+            switch (link_To_Click.toLowerCase()) {
+                case "8a_DisAdvInd_contributor":
+                    click_Element(webDriver, "Contributor_Add_DisAdv_Ind_Link");
+                    break;
+                case "8a_AddSpouse_contributor":
+                    click_Element(webDriver, "Contributor_Add_Spouse_Ind_Link");
+                    break;
+                case "8a_AddBusPart_contributor":
+                    click_Element(webDriver, "Contributor_Add_Business_Ind_Link");
+                    break;
+            }
+        }
+    }
     public static void BasicEligiblity_General_Assessment_Page(WebDriver webDriver, String ProfileYesNo, String BrokenYesNo, String RevenueYesNo, String CitizenYesNo, String DBANameYesNo) throws Exception {
         try {
             // Elements tag: @8a_Initial_Program Basic Eligiblity -General Assessment
@@ -224,7 +239,7 @@ public class master_Application_8A {
             vendor_Admin_8a_Master_Application_Page.doUpload_Action();
             new Select(find_Element(webDriver, "BasicEligibility_SBA_Office")).selectByIndex(1);
             setText_Element(webDriver, "BasicEligibility_determination_Date", "05/31/2017");
-            click_Element(webDriver, "Application_Common_Submit_Button");
+            click_Element(webDriver, "Application_Common_SectionSubmit_Button");
         } catch (Exception e) {
             logger.info(e.toString());
             throw e;
