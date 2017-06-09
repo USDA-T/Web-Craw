@@ -1,4 +1,4 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -25,8 +25,8 @@ import static gov.sba.automation.CommonApplicationMethods.*;
 public class TestApp170LinkDunsNoWOSB extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
       LogManager.getLogger(TestApp170LinkDunsNoWOSB.class.getName());
-    // Set The variabl.es/Define
-    WebDriver webDriver;
+  // Set The variabl.es/Define
+  WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
@@ -60,8 +60,10 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       // Click on Case Link on main navigator-- SBA Analyst
       navigationMenuClick(webDriver, "Cases");
       casesPageSearch(webDriver, duns_Number);
-      click_Element_Locators(webDriver, "Xpath", "//div[@id='table-search']/table/tbody//a[contains(text(),'" +  duns_Number + "')]");
-      find_Element_Loc(webDriver, "xpath","//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
+      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath",
+          "//div[@id='table-search']/table/tbody//a[contains(text(),'" + duns_Number + "')]");
+      find_Element_Loc(webDriver, "xpath",
+          "//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
       navigationMenuClick(webDriver, "Logout");
 
     } catch (Exception e) {

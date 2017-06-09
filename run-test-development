@@ -1,4 +1,4 @@
 #!/bin/bash
-\cp src/main/resources/default-development.properties src/main/resources/default.properties
+#\cp src/main/resources/default-development.properties src/main/resources/default.properties
 mvn clean
 export TEST_ENV=development && mvn test
