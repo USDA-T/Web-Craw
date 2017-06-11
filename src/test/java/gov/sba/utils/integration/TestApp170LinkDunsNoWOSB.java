@@ -59,7 +59,7 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       // Click on Case Link on main navigator-- SBA Analyst
       navigationMenuClick(webDriver, "Cases");
       casesPageSearch(webDriver, duns_Number);
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath",
+      CommonApplicationMethods.click_Element_Locators(webDriver, "Xpath",
           "//div[@id='table-search']/table/tbody//a[contains(text(),'" + duns_Number + "')]");
       find_Element_Loc(webDriver, "xpath",
           "//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
