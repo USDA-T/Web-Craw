@@ -78,8 +78,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       List<WebElement> current_Row_EDWOSB = find_Elements_Optional(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[4][ not(text()) ] ]/td[1]/a");
 
       if (current_Row_EDWOSB.size() > 0 ){
-        Assert.assertTrue(current_Row_EDWOSB.size() == 1);
-        {
+          Assert.assertTrue(current_Row_EDWOSB.size() == 1);
           current_Row_EDWOSB.get(0).click();
           assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
           assertEquals("Start a review", find_Element(webDriver, "Case_CaseOverview_startReview").getText());
