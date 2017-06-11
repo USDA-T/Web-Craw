@@ -74,6 +74,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
+
       List<WebElement> current_Row_EDWOSB = find_Elements_Optional(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[4][ not(text()) ] ]/td[1]/a");
 
       if (current_Row_EDWOSB.size() > 0 ){
@@ -90,30 +91,23 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
           click_Element(webDriver, "Case_Submit_Button");
           click_Element(webDriver, "Case_SaveNotes_Button");
         }
-      }
       else {
           List<WebElement> current_Row_EDWOSB1 = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[4][ contains(text(),'Initial Review')] ]/td[1]/a");
           current_Row_EDWOSB1.get(0).click();
           click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
-
           List<WebElement> dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
           logger_US1674_EDWOSB.info(dropdown.get(0).getText());
           assertEquals("Confirmed", dropdown.get(0).getText());
           assertEquals("Not reviewed", dropdown.get(1).getText());
           assertEquals("Information missing", dropdown.get(2).getText());
-
           assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
           assertEquals("Needs further review", dropdown.get(4).getText());
           click_Element(webDriver, "SBA_Note_Link");
-
           setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
-
           click_Element(webDriver, "Application_Common_Save_Notes");
           click_Element(webDriver, "SBA_Question_Financial_Review_SideNav");
-
           // Signature Review Page
           click_Element(webDriver, "SBA_Question_Signature_Review_SideNav");
-
           dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
           logger_US1674_EDWOSB.info(dropdown.get(0).getText());
           assertEquals("Confirmed", dropdown.get(0).getText());
@@ -123,7 +117,6 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
           assertEquals("Needs further review", dropdown.get(4).getText());
           click_Element(webDriver, "SBA_Note_Link");
           setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
-
           click_Element(webDriver, "EDWOSB_Common_Page_Commit");
       }
 
