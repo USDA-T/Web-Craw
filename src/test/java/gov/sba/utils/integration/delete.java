@@ -8,12 +8,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
 import static gov.sba.pageObjetcs.master_Application_8A.*;
 import static gov.sba.pageObjetcs.vendor_Admin_8a_Master_Application_Page.*;
-
+//Still in progress
+@Category({gov.sba.utils.integration.UnstableTests.class})
 public class delete {
     // Set The variabl.es/Define
     private static final Logger TestAnalystReview =

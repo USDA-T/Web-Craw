@@ -70,7 +70,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       // with one person's 413 form
       NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);
       scorpQuestionsPage.NewScorpQuestionPageDeepa();
-        new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
+      new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
       fillApplCreatePages.finalSignatureSubmit(webDriver);
       // Return the Applicatiom;
         navigationMenuClick(webDriver, "LOGOUT");
