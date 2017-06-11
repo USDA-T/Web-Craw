@@ -2,6 +2,8 @@ package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+
+import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -24,6 +26,8 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
+
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     BaseUrl = "https://certify.qa.sba-one.net/8a-docs/";
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 4;

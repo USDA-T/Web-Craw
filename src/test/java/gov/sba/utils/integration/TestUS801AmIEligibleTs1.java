@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -23,6 +23,7 @@ public class TestUS801AmIEligibleTs1 extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
   }

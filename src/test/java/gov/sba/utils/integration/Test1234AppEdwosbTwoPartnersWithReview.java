@@ -1,5 +1,6 @@
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -21,6 +22,7 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();
         get_The_Row_From_Login_Data = 8;

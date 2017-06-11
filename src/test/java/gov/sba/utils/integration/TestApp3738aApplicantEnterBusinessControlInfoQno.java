@@ -15,7 +15,7 @@ import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
-
+import gov.sba.automation.CommonApplicationMethods;
 public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
 
   private static final Logger logger =
@@ -26,6 +26,7 @@ public class TestApp3738aApplicantEnterBusinessControlInfoQno extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 12;

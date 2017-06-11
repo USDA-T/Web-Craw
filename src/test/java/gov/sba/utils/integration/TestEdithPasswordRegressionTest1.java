@@ -9,7 +9,7 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -30,6 +30,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     Email = "staging2@mailinator.com";

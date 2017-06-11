@@ -1,5 +1,6 @@
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -23,6 +24,7 @@ public class TestUs801AmIEligibleTs7 extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     naics = "335932";

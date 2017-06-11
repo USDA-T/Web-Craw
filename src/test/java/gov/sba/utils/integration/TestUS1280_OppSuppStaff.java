@@ -28,6 +28,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
     CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 28;
   }
