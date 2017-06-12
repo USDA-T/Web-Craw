@@ -97,7 +97,7 @@ public class PartnershipReturnCertPage extends TestCase {
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+    //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("172115728");
     webDriver.findElement(By.xpath("//form/div/button")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));    
@@ -105,6 +105,7 @@ public class PartnershipReturnCertPage extends TestCase {
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
       // webDriver.switchTo().alert().accept();
+      webDriver.findElement(By.id("profileid")).click();
       webDriver.findElement(By.linkText("Logout")).click();
     } else {
       logger.info("Return to Vendor Link is missing please verify why.");
@@ -114,6 +115,7 @@ public class PartnershipReturnCertPage extends TestCase {
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
       webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
       webDriver.findElement(By.linkText("Vendor Overview")).click();
+      webDriver.findElement(By.id("profileid")).click();
       webDriver.findElement(By.linkText("Logout")).click();
     }
   }

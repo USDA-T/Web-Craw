@@ -6,11 +6,12 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import gov.sba.automation.CommonApplicationMethods;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -40,11 +41,12 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     Weak_PassW = "1234";
     New_PassW = "Map Effect Applied Furniture 9883";
     Confirm_New_PassW = "Map Effect Applied Furniture 9883";
-    Better_PW = "Derico#336587";
+    Better_PW = "Derico#33658712DDD";
   }
 
   @Test
   public void testMainTest() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver,30);
     // Open Firefox,Chrome,and IE and navigate to the valid url.
     EdithpasswordPage edithpassword = new EdithpasswordPage(webDriver);
     edithpassword.Edithpassword();
@@ -58,27 +60,26 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     } else {
       logger.info("First attempt to log-in with current password was successful, PASS");
     }
-    Thread.sleep(2000);
     try {
       assertTrue(webDriver.getPageSource().contains("Signed in successfully"));
       // webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
     } catch (Error e) {
       logger.info("Successful sign in alert message not present");
     }
-    Thread.sleep(3000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[5]/a/span")));
     // Locate the My Profile button on the left navigation and click on it.
-    String actual_Text = webDriver.findElement(By.linkText("Profile")).getText();
+    String actual_Text = webDriver.findElement(By.xpath("//li[5]/a/span")).getText();
     String expected_Text = "Profile";
     assertEquals(actual_Text, expected_Text);
     webDriver.findElement(By.linkText("Profile")).click();
-    Thread.sleep(5000);
+    wait.until(ExpectedConditions.elementSelectionStateToBe(By.linkText("Edit passphrase"), false));
     // Verify and click on the link Edit Passphrase.
-    assertElementpresent(webDriver.findElement(By.cssSelector("a.usa-button")));
-    String actual_Text1 = webDriver.findElement(By.cssSelector("a.usa-button")).getText();
+    assertElementpresent(webDriver.findElement(By.linkText("Edit passphrase")));
+    String actual_Text1 = webDriver.findElement(By.linkText("Edit passphrase")).getText();
     String expected_Text1 = "Edit passphrase";
     assertEquals(actual_Text1, expected_Text1);
-    webDriver.findElement(By.cssSelector("a.usa-button")).click();
-    Thread.sleep(5000);
+    webDriver.findElement(By.linkText("Edit passphrase")).click();
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
     // Verify that user is navigated to the change password page.
     assertElementpresent(webDriver.findElement(By.cssSelector("h1")));
     String actual_Text2 = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -87,12 +88,11 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     // Enter current and new password and Attempt to Update without entering
     // the confirm new password data.
     webDriver.findElement(By.id("user_current_password")).sendKeys(Current_PassW);
-    Thread.sleep(3000);
     webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
-    Thread.sleep(2000);
     logger.info(webDriver.findElement(By.id("text_strength")).getText());
+    wait.until(ExpectedConditions.elementToBeClickable(By.id("submit")));
     webDriver.findElement(By.id("submit")).click();
-    Thread.sleep(3000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.usa-alert-body > ul > li")));    
     // Verify that user sees alert message requesting user to enter all or
     // confirm password.
     String actual_Text5 =
@@ -106,23 +106,20 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     // entering the confirm new password data.
     webDriver.findElement(By.id("user_current_password")).clear();
     webDriver.findElement(By.id("user_current_password")).sendKeys(Current_PassW);
-    Thread.sleep(3000);
     webDriver.findElement(By.id("user_password")).clear();
     webDriver.findElement(By.id("user_password")).sendKeys(Weak_PassW);
-    Thread.sleep(2000);
     logger.info(webDriver.findElement(By.id("text_strength")).getText());
-    Thread.sleep(3000);
     // Verify that the weak password alert is activated when user enter a
     // weak password.
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password_strength")));
     String actual_Text4 = webDriver.findElement(By.id("password_strength")).getText();
     String expected_Text4 = "Weak";
     assertEquals(actual_Text4, expected_Text4);
-    Thread.sleep(3000);
     webDriver.findElement(By.id("user_password")).clear();
     webDriver.findElement(By.id("user_password")).sendKeys(Better_PW);
-    Thread.sleep(2000);
     // Verify that the Better password alert is activated when user enter a
     // weak password.
+    Thread.sleep(2000);
     String actual_Text3 = webDriver.findElement(By.xpath("//div[3]/span")).getText();
     String expected_Text3 = "Better";
     assertEquals(actual_Text3, expected_Text3);

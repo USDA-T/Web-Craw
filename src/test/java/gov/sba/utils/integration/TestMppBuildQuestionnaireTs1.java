@@ -188,13 +188,14 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     LoginPageWithReference login_Data61 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data61.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+    //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("137151292");
     webDriver.findElement(By.xpath("//form/div/button")).click();
     webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
       // webDriver.switchTo().alert().accept();
+      webDriver.findElement(By.id("profileid")).click();
       webDriver.findElement(By.linkText("Logout")).click();
     } else {
       logger.info("Return to Vendor Link is missing please verify why.");
@@ -204,6 +205,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
       webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
       webDriver.findElement(By.linkText("Vendor Overview")).click();
+      webDriver.findElement(By.id("profileid")).click();
       webDriver.findElement(By.linkText("Logout")).click();
     }
     } catch (Exception e) {
