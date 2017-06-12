@@ -1,3 +1,4 @@
+//@Montana
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +30,7 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    try{
+    //try{
     logger.info("Test EDWOSB Corporation Flow");
     // Login to dashboard.
     // try{
@@ -65,12 +66,12 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
     WebElement ReturnDraft =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
-    } catch (Exception e) {
-    ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    screenShot.ScreenShot();
-    logger.info(e.getMessage());
-    Assert.fail();
-    }
+    //} catch (Exception e) {
+    //ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+    //screenShot.ScreenShot();
+    //logger.info(e.getMessage());
+    //Assert.fail();
+    //}
     logger.info("Success");
     }
 

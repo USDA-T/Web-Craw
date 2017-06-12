@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import junit.framework.TestCase;
 
@@ -23,7 +24,8 @@ public class DeleteDraftCertPage extends TestCase {
     // delete to start a new certification.
     try {
       assertTrue(webDriver.getPageSource().contains("Draft"));
-      webDriver.findElement(By.linkText("Delete")).click();
+      Actions act = new Actions(webDriver);
+      act.doubleClick(webDriver.findElement(By.linkText("Delete"))).build().perform();
       webDriver.switchTo().alert().accept();
       try {
         Thread.sleep(5000);
