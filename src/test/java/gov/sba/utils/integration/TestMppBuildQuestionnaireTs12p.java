@@ -21,9 +21,6 @@ import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 import org.openqa.selenium.*;
 
-
-
-
 public class TestMppBuildQuestionnaireTs12p extends TestCase {
 
   private static final Logger logger =
@@ -33,7 +30,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
   
-
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
@@ -984,7 +980,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     LoginPageWithReference login_Data61 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data61.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+    //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("129913885");
     webDriver.findElement(By.xpath("//form/div/button")).click();
     webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
@@ -1003,6 +999,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     WebElement ReturnDraft =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
     } catch (Exception e) {
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);

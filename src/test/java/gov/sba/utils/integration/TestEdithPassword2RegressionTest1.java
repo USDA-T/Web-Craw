@@ -10,7 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -39,6 +38,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    
     try{
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Open Firefox,Chrome,and IE and navigate to the valid url.
@@ -64,11 +64,9 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
       // Locate the current password search box and enter a valid current
       // password.
       webDriver.findElement(By.id("user_current_password")).sendKeys(Old_PassW);
-      Thread.sleep(2000);
       // locate that new password search box and enter the new password you
       // wish to update to.
       webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
-      Thread.sleep(2000);
       // Verify the strength of the new password and accept only better or
       // strong password.
       String actual_Text6 = webDriver.findElement(By.id("text_strength")).getText();
@@ -77,7 +75,6 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
       // Locate the confirm new password search box and re-enter the new
       // password.
       webDriver.findElement(By.id("user_password_confirmation")).sendKeys(New_PassW);
-      Thread.sleep(2000);
       // Locate the Update button and click on it.
       webDriver.findElement(By.id("submit")).click();
       // Verify that User sees alert message 'Your account has been updated
@@ -126,10 +123,11 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
           assertEquals(actual_Text, expected_Text);
           webDriver.findElement(By.linkText("Profile")).click();
           // Verify and click on the link Edit Passphrase.
-          String actual_Text1 = webDriver.findElement(By.cssSelector("a.usa-button")).getText();
+          String actual_Text1 = webDriver.findElement(By.linkText("Edit passphrase")).getText();
           String expected_Text1 = "Edit passphrase";
           assertEquals(actual_Text1, expected_Text1);
-          webDriver.findElement(By.cssSelector("a.usa-button")).click();
+          webDriver.findElement(By.linkText("Edit passphrase")).click();
+          wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
           // Verify that user is navigated to the change password page.
           String actual_Text2 = webDriver.findElement(By.cssSelector("h1")).getText();
           String expected_Text2 = "Edit passphrase";
@@ -142,13 +140,13 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
           webDriver.findElement(By.id("user_password")).sendKeys(New_PassW);
           // Verify the strength of the new password and accept only better or
           // strong password.
+          Thread.sleep(1000);
           String actual_Text3 = webDriver.findElement(By.id("text_strength")).getText();
-          String expected_Text3 = "Passphrase strength -Strong";
+          String expected_Text3 = "Passphrase strength  -  Strong";
           assertEquals(actual_Text3, expected_Text3);
           // Locate the confirm new password search box and re-enter the new
           // password.
           webDriver.findElement(By.id("user_password_confirmation")).sendKeys(New_PassW);
-          Thread.sleep(2000);
           // Locate the Update button and click on it.
           webDriver.findElement(By.id("submit")).click();
           // Verify that User sees alert message 'Your account has been
@@ -175,7 +173,6 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
           return;
         } else {
 
-          Thread.sleep(2000);
           // Locate the My Profile button on the left navigation and click on
           // it.
           String actual_Text = webDriver.findElement(By.linkText("Profile")).getText();
@@ -197,10 +194,9 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
           // locate that new password search box and enter the new password
           // you wish to update to.
           webDriver.findElement(By.id("user_password")).sendKeys(New_PassW2);
-          Thread.sleep(2000);
           // Verify the strength of the new password and accept only better or
           // strong password.
-          wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]/span")));
+          Thread.sleep(1000);          
           String actual_Text3 = webDriver.findElement(By.id("text_strength")).getText();
           String expected_Text3 = "Passphrase strength  -  Strong";
           assertEquals(actual_Text3, expected_Text3);

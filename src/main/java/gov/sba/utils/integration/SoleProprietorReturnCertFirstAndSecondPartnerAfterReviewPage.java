@@ -99,7 +99,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+    //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
     webDriver.findElement(By.id("query")).sendKeys("158899368");
     webDriver.findElement(By.xpath("//form/div/button")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));   
@@ -207,6 +207,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReviewPage extend
     WebElement ReturnDraft =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
   }
 }
