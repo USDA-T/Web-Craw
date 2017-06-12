@@ -32,7 +32,7 @@ public class TestBusinessPartner413AddandRemoveFunctionality  extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
         CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());

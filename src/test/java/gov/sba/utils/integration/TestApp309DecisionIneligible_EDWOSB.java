@@ -14,7 +14,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -39,10 +38,10 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
 
@@ -116,6 +115,17 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp309DecisionIneligible_EDWOSB", "Exception"});
       throw e;
     }
+  }
+
+  private void click_Element_Locators(WebDriver webDriver2, String string, String xpath_Element) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  private List<WebElement> find_Elements(WebDriver webDriver2, String string,
+      String xpath_Element) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   @After

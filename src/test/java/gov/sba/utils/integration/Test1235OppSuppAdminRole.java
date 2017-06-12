@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Set;
 
 import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class Test1235OppSuppAdminRole extends TestCase {
@@ -32,10 +31,8 @@ public class Test1235OppSuppAdminRole extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    get_Stop_Execution_Flag();
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     get_The_Row_From_Login_Data = 28;

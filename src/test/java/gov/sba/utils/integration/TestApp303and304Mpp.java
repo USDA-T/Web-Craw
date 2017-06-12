@@ -30,10 +30,10 @@ public class TestApp303and304Mpp extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();

@@ -33,7 +33,7 @@ public class TestSimpleLogin {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
   }
 
   @After

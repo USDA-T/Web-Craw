@@ -34,10 +34,10 @@ public class TestWOSBRenewal extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -88,6 +88,11 @@ public class TestWOSBRenewal extends TestCase {
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{TestWOSBRenewal.class.getName(), "Exception"});
       throw e;
     }
+  }
+
+  private List<WebElement> find_Elements(WebDriver webDriver2, String string, String string2) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   @After

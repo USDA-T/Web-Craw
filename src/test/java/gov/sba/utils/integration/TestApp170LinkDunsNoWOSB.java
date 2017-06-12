@@ -31,10 +31,10 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -60,7 +60,7 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       // Click on Case Link on main navigator-- SBA Analyst
       navigationMenuClick(webDriver, "Cases");
       casesPageSearch(webDriver, duns_Number);
-      CommonApplicationMethods.click_Element_Locators(webDriver, "Xpath",
+      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath",
           "//div[@id='table-search']/table/tbody//a[contains(text(),'" + duns_Number + "')]");
       find_Element_Loc(webDriver, "xpath",
           "//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");

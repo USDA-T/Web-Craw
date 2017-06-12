@@ -19,9 +19,9 @@ public class TestXxxxxFinalCleanUp extends TestCase {
 
     @Test
     public void testMainTest() throws Exception {
-        PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
-        writer.println("Should_Execution_Stop: \"False\"");
-        writer.close();
+        //PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
+        //writer.println("Should_Execution_Stop: \"False\"");
+        //writer.close();
     }
 
     @After

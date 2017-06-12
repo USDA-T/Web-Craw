@@ -371,7 +371,7 @@ e.g. Avoid writing something like
 public void setup() throws Exception {
   // Common code re-use patterns as example
       webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment
@@ -388,7 +388,7 @@ Instead try to capture the to the shared/reusable class/modules like
 public void setup() throws Exception {
   // Common code re-use patterns as example
   webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
 
   // Note: hard-coded value, we will not be able to use this code easily between
   // different environment  e.g. `environment = "DEV" or "QA", "Staging", etc
@@ -438,7 +438,7 @@ public static void tearDownAfterClass() throws Exception {
 public void setUp() throws Exception {
   // This is the code that run before each test
   webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
   // more code here
 }
 

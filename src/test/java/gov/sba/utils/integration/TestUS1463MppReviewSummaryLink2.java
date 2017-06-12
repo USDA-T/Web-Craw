@@ -38,10 +38,10 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -152,6 +152,11 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
               new String[] {"TestUS1463MppReviewSummaryLink2", "Exception"});
         throw e;
     }
+  }
+
+  private List<WebElement> find_Elements(WebDriver webDriver2, String string, String string2) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   @After
