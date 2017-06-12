@@ -23,20 +23,20 @@ public class delete {
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
 
-    @Before
-    public void setUp() throws Exception {
-        if (CommonApplicationMethods.get_Stop_Execution_Flag()) {
-            return;
-        }
-        CommonApplicationMethods.clear_Env_Chrome();
-        webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
-        webDriver.get(TestHelpers.getBaseUrl());
-        webDriver.manage().window().maximize();
+    //@Before
+    //public void setUp() throws Exception {
+       //if (CommonApplicationMethods.get_Stop_Execution_Flag()) {
+            //return;
+        //}
+        //CommonApplicationMethods.clear_Env_Chrome();
+        //webDriver = TestHelpers.getDefaultWebDriver();
+        
+        //webDriver.get(TestHelpers.getBaseUrl());
+        //webDriver.manage().window().maximize();
 
-        get_The_Row_From_Login_Data = 43;
+        //get_The_Row_From_Login_Data = 43;
 
-    }
+    //}
 
     @Test
     public void testMainTest() throws Exception {

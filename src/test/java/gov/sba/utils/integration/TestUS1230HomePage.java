@@ -25,10 +25,10 @@ public class TestUS1230HomePage extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
       CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     int get_The_Row_From_Login_Data = 22;
   }

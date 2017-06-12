@@ -30,7 +30,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
   public void setUp() throws Exception {
 
     webDriver = TestHelpers.getDefaultWebDriver();
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 3;

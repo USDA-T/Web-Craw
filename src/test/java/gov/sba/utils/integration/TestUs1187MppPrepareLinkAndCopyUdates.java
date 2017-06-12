@@ -26,10 +26,10 @@ public class TestUs1187MppPrepareLinkAndCopyUdates extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
       CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     System.out.println(logger.isInfoEnabled());
     logger.entry();

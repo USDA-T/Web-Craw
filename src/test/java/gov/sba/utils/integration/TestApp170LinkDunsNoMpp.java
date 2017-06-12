@@ -34,10 +34,10 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.get_Stop_Execution_Flag();
+    
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();

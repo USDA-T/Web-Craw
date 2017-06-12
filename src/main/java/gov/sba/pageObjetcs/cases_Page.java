@@ -36,7 +36,7 @@ public class cases_Page {
                 Map    locator = getLocator("Cases_Page_Search_Duns_Link");
                 String a1      = locator.get("Locator").toString();
                 String a2      = locator.get("Value").toString().replace("duns_Number_Replace", which_Duns);
-                CommonApplicationMethods.click_Element_Locators(webDriver, a1, a2);
+                CommonApplicationMethods.click_Element_Loc(webDriver, a1, a2);
             }
         }
         if (!verify_State.equals(null) && !verify_State.equals("")) {

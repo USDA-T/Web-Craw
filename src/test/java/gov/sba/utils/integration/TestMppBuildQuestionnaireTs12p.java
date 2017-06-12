@@ -20,6 +20,10 @@ import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
+import org.openqa.selenium.*;
+
+
+
 
 public class TestMppBuildQuestionnaireTs12p extends TestCase {
 
@@ -27,11 +31,14 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       LogManager.getLogger(TestMppBuildQuestionnaireTs12p.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
+  
 
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 24;
@@ -275,6 +282,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
     wait.until(ExpectedConditions.elementToBeClickable(By.id("section_submit_button")));
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Training Section(Subsection 2.1), Verifying Question.
     wait.until(ExpectedConditions.elementSelectionStateToBe(
         By.xpath("//div[@id='answers_mpp_completion_cert']/fieldset/h4"), false));
@@ -385,6 +393,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     // Select yes for the Second questions.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Active Agreements";
     assertEquals(Actual_Text, Expected_Text);
@@ -476,6 +485,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.findElement(By.id("input-type-text")).clear();
     webDriver.findElement(By.id("input-type-text")).sendKeys("Cyber Tech Solution");
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Active Agreement Documents Section.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='answers_mpp_active_agreemets']/fieldset/h4")).getText();
@@ -492,6 +502,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument3.MontanaUploadDocument(file_path_abs);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // MPP Agreement Section.
     wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h4"), false));
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -514,6 +525,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     MontanaUploadDocumentPage MontanaUploadDocument4 = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument4.MontanaUploadDocument(file_path_abs);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Protégé Needs Section.
     Actual_Text =
         webDriver.findElement(By.cssSelector("article.usa-width-two-thirds > p")).getText();
@@ -594,6 +606,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window3111 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
+    wait.until(ExpectedConditions.elementToBeClickable(By.linkText("13 CFR 124.520 a) and e)")));
     webDriver.findElement(By.linkText("13 CFR 124.520 a) and e)")).click();
     assertEquals(Actual_Text, Expected_Text);
     java.util.Set<String> S3111 = webDriver.getWindowHandles();
@@ -610,11 +623,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         logger.info("Second Window is not thesame as first window");
       }
     }
-    Thread.sleep(2000);
     // Link 2.
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window31111 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[2]")));
     webDriver.findElement(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[2]"))
         .click();
     assertEquals(Actual_Text, Expected_Text);
@@ -632,11 +645,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         logger.info("Second Window is not thesame as first window");
       }
     }
-    Thread.sleep(2000);
     // Link 3.
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window4 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[3]")));
     webDriver.findElement(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[3]"))
         .click();
     assertEquals(Actual_Text, Expected_Text);
@@ -654,11 +667,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         logger.info("Second Window is not thesame as first window");
       }
     }
-    Thread.sleep(2000);
     // link 4.
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window41 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[4]")));
     webDriver.findElement(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[4]"))
         .click();
     assertEquals(Actual_Text, Expected_Text);
@@ -676,11 +689,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         logger.info("Second Window is not thesame as first window");
       }
     }
-    Thread.sleep(2000);
     // Link 5.
     webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     String main_window5 = webDriver.getWindowHandle();
     logger.info("Before switching, title is = certify.sba.gov");
+    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[5]")));
     webDriver.findElement(By.xpath("(//a[contains(text(),'13 CFR 124.520 a) and e)')])[5]"))
         .click();
     assertEquals(Actual_Text, Expected_Text);
@@ -789,6 +802,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.findElement(By.name("answers[149][value]")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Section 3/ Training, Verifying question.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
@@ -846,11 +860,13 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from";
     assertEquals(Actual_Text, Expected_Text);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // click on training to continue.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Training";
     assertEquals(Actual_Text, Expected_Text);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Enter a valid DUNS# and verify business.
     webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
     webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
@@ -871,6 +887,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Expected_Text = "The selected business is: Entity 45 Legal Business Name";
     assertEquals(Actual_Text, Expected_Text);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // Review page.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -880,6 +897,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Expected_Text = "Please review below answers and Submit.";
     assertEquals(Actual_Text, Expected_Text);
     CoreUtils.clickContinue(webDriver);
+    assertEquals("", webDriver.getTitle());
     // logger.info(webDriver.switchTo().alert().getText());
     // webDriver.switchTo().alert().accept();
     // Step - Verify the Signature page for MPP
@@ -956,6 +974,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
     webDriver.findElement(By.id("accept-button")).click();
+    assertEquals("", webDriver.getTitle());
     webDriver.findElement(By.xpath("//a/span")).click();
     WebElement ActiveCert =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
@@ -970,31 +989,74 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     webDriver.findElement(By.id("query")).sendKeys("129913885");
     webDriver.findElement(By.xpath("//form/div/button")).click();
     webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
-    if (webDriver.getPageSource().contains("Return to Vendor")) {
-      webDriver.findElement(By.linkText("Return to Vendor")).click();
-      // webDriver.switchTo().alert().accept();
-      webDriver.findElement(By.linkText("Logout")).click();
-    } else {
-      logger.info("Return to Vendor Link is missing please verify why.");
-      webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-      webDriver.findElement(By.id("submit_button")).click();
-      webDriver.findElement(By.linkText("Determination")).click();
-      webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-      webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
-      webDriver.findElement(By.linkText("Vendor Overview")).click();
-      webDriver.findElement(By.linkText("Logout")).click();
-    }
-  } catch (Exception e) {
+    wait.until(ExpectedConditions.elementToBeClickable(By.linkText("MPP Application"))); 
+    //Click on the MPP Program link name.
+    webDriver.findElement(By.linkText("MPP Application")).click();
+    logger.info("Starting Mpp Review");
+    //Start and complete a review for the MPP program.
+    MppReviewPage mppReview = new MppReviewPage(webDriver);
+    mppReview.MppReview();   
+    //Login with the vendor and verify the return draft.
+    get_The_Row_From_Login_Data = 24;
+    LoginPageWithReference login_Data1 =
+        new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+    login_Data1.Login_With_Reference();
+    WebElement ReturnDraft =
+        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+    HighLight.highLightElement(webDriver, ReturnDraft);
+    webDriver.findElement(By.linkText("Logout")).click();
+    } catch (Exception e) {
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
     screenShot.ScreenShot();
     logger.info(e.getMessage()); 
     Assert.fail();
 }
   
-  logger.info("Success");
+ // logger.info("Success");
 }
 @After
 public void tearDown() throws Exception {
   webDriver.close();
+  String verificationErrorString = verificationErrors.toString();
+  if (!"".equals(verificationErrorString)) {
+    fail(verificationErrorString);
+  }
+}
+
+@SuppressWarnings("unused")
+private boolean isElementPresent(By by) {
+  try {
+    webDriver.findElement(by);
+    return true;
+  } catch (NoSuchElementException e) {
+    return false;
+  }
+}
+
+@SuppressWarnings("unused")
+private boolean isAlertPresent() {
+  try {
+    webDriver.switchTo().alert();
+    return true;
+  } catch (NoAlertPresentException e) {
+    return false;
+  }
+}
+
+@SuppressWarnings("unused")
+private String closeAlertAndGetItsText() {
+  try {
+    Alert alert = webDriver.switchTo().alert();
+    String alertText = alert.getText();
+    if (acceptNextAlert) {
+      alert.accept();
+    } else {
+      alert.dismiss();
+    }
+    return alertText;
+  } finally {
+    acceptNextAlert = true;
+  }
 }
 }
+

@@ -23,7 +23,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        CommonApplicationMethods.get_Stop_Execution_Flag();
+        
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
   }
