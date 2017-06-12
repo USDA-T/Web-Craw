@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 
@@ -775,6 +774,39 @@ public class FinancialSectionPage {
     String actual_Text6 = webDriver.findElement(By.cssSelector("h2")).getText();
     String expected_Text6 = "Denzel Washington";
     assertEquals(actual_Text6, expected_Text6);
+    //Calculate all the assets to match the total.
+    
+    
+    
+    
+    
+    logger.info("Validating calculations for partners Assets");
+    //Cash on Hand.
+    //try{
+    //Get the cash on hand value and convert to integer.
+    String COH = null;
+    COH = webDriver.findElement(By.xpath("//td[2]")).getText();
+    logger.info("Cash on Hand value is" +COH);
+    //Convert the string value to integer.
+    int value1 = Integer.parseInt(COH);
+    //} catch (Exception E) {
+    //logger.info(E.getMessage());
+    //}
+    //Savings Account(s) Balances.
+    //try{
+    //Get the cash on hand value and convert to integer.
+    String SAB = null;
+    SAB = webDriver.findElement(By.xpath("//tr[2]/td[2]")).getText();
+    logger.info("Cash on Hand value is" +SAB);
+    //Convert the string value to integer.
+    int value2 = Integer.parseInt(SAB);
+    //} catch (Exception E) {
+    //logger.info(E.getMessage());
+    //}
+    
+    int total = value1 + value2;
+    System.out.println(total);
+
     // Verify total assets.
     String actual_Text11 = webDriver.findElement(By.xpath("//tr[15]/td[2]")).getText();
     String expected_Text11 = "$10,845,158.82";
@@ -835,7 +867,17 @@ public class FinancialSectionPage {
     String expected_Text5 = "Accept";
     assertEquals(actual_Text5, expected_Text5);
     }
-   private void assertEquals(String actual_Text1, String expected_Text1) {
+   private void assertEquals(String total, WebElement findElement) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  private void assertEquals(int totalAssets, WebElement findElement) {
+    // TODO Auto-generated method stub
+    
+  }
+
+  private void assertEquals(String actual_Text1, String expected_Text1) {
     // TODO Auto-generated method stub
    }
    }

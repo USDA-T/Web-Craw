@@ -12,13 +12,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.Constants;
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
-import gov.sba.automation.CommonApplicationMethods;
 public class TestApp3708aBasicEligibilityNoSkipPossitive extends TestCase {
   private static final Logger logger =
       LogManager.getLogger(TestApp3708aBasicEligibilityNoSkipPossitive.class.getName());

@@ -18,7 +18,7 @@ import gov.sba.automation.CommonApplicationMethods;
 public class TestApp3748aApplicantAnswerCompanyInfoSection extends TestCase {
 
   private static final Logger logger =
-      LogManager.getLogger(TestApp375Applicant8aCharacterSectionNo.class.getName());
+      LogManager.getLogger(TestApp3748aApplicantAnswerCompanyInfoSection.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
