@@ -29,7 +29,7 @@ import junit.framework.TestCase;
 
     @Test
     public void testMainTest() throws Exception {
-     // try{
+   // try{
       logger.info("Test for 8a initial master Flow");
       // Login to dashboard.
       LoginPageWithReference login_Data =

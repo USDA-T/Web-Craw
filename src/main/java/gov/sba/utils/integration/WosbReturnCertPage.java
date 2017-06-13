@@ -95,7 +95,7 @@ public class WosbReturnCertPage extends TestCase {
       LoginPageWithReference login_Data7 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data7.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+     // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));    
