@@ -999,7 +999,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     WebElement ReturnDraft =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
-    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
     } catch (Exception e) {
     ScreenShotPage screenShot = new ScreenShotPage(webDriver);

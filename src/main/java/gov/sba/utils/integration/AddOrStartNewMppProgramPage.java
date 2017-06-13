@@ -1,6 +1,7 @@
 package gov.sba.utils.integration;
 
 import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -114,41 +115,21 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 
         }
       }
-      Thread.sleep(2000);
-      // Verify the SAM.gov link.
-      webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-      String main_window2 = webDriver.getWindowHandle();
-      logger.info("Before switching, title is = certify.sba.gov");
-      webDriver.findElement(By.linkText("SAM.gov")).click();
-      assertEquals(Actual_Text, Expected_Text);
-      java.util.Set<String> S2 = webDriver.getWindowHandles();
-      Iterator<String> i2 = S2.iterator();
-      while (i2.hasNext()) {
-        String Second_window1 = i2.next();
-        if (!main_window2.equalsIgnoreCase(Second_window1)) {
-          webDriver.switchTo().window(Second_window1);
-          logger.info("After switching title is =" + webDriver.getTitle());
-          webDriver.close();
-          webDriver.switchTo().window(main_window2);
-          logger.info("Back to manin_window = certify.sba.gov");
-        } else {
-          logger.info("Second Window is not thesame as first window");
-        }
+      
         Thread.sleep(2000);
         webDriver.findElement(By.name("commit")).click();
-      }
 
     } else {
       if (webDriver.getPageSource().contains("Active")) {
         logger.info("There is (are) an active certification on the dashboard");
         // Click on the certification link.
-        webDriver.findElement(By.xpath("//a[contains(text(),'Programs')]")).click();
+        webDriver.findElement(By.xpath("//li[2]/a/span")).click();
         Actual_Text = webDriver.findElement(By.xpath("//h1[2]")).getText();
         Expected_Text = "Join a new program";
         assertEquals(Actual_Text, Expected_Text);
         // Verify and Click on the EDWOSB Certification to select.
         Actual_Text = webDriver
-            .findElement(By.xpath("//div[@id='certificate_choice']/fieldset/label[2]")).getText();
+            .findElement(By.xpath("//label")).getText();
         Expected_Text = "All Small Mentor-Protégé Program (Review requirements)";
         assertEquals(Actual_Text, Expected_Text);
         // Click on the add new certification button.
@@ -205,10 +186,22 @@ public class AddOrStartNewMppProgramPage extends TestCase {
             "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-Protégé Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government’s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
         assertEquals(Actual_Text, Expected_Text);
         // Verify links on the table.
+        logger.info("Before switching title is =" + webDriver.getWindowHandles());
+        webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
+        String winHandleBefore = webDriver.getWindowHandle();
+        logger.info("After switching window is =" + winHandleBefore );
+        for(String winHandle : webDriver.getWindowHandles()){
+              webDriver.switchTo().window(winHandle);
+          }
+        webDriver.close();
+        webDriver.switchTo().window(winHandleBefore);
+        logger.info("Back to main window = " + webDriver.getWindowHandle());  
+        // Verify the SAM.gov link.
+        Thread.sleep(2000);
         webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         String main_window = webDriver.getWindowHandle();
         logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
+        webDriver.findElement(By.linkText("SAM.gov")).click();
         assertEquals(Actual_Text, Expected_Text);
         java.util.Set<String> S1 = webDriver.getWindowHandles();
         Iterator<String> i1 = S1.iterator();
@@ -225,30 +218,9 @@ public class AddOrStartNewMppProgramPage extends TestCase {
 
           }
         }
-        Thread.sleep(2000);
-        // Verify the SAM.gov link.
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window2 = webDriver.getWindowHandle();
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.findElement(By.linkText("SAM.gov")).click();
-        assertEquals(Actual_Text, Expected_Text);
-        java.util.Set<String> S2 = webDriver.getWindowHandles();
-        Iterator<String> i2 = S2.iterator();
-        while (i2.hasNext()) {
-          String Second_window1 = i2.next();
-          if (!main_window2.equalsIgnoreCase(Second_window1)) {
-            webDriver.switchTo().window(Second_window1);
-            logger.info("After switching title is =" + webDriver.getTitle());
-            webDriver.close();
-            webDriver.switchTo().window(main_window2);
-            logger.info("Back to manin_window = certify.sba.gov");
-          } else {
-            logger.info("Second Window is not thesame as first window");
-          }
-          Thread.sleep(2000);
-          webDriver.findElement(By.className("usa-button")).click();
-        }
-
+        Thread.sleep(1000);
+        //Accept intro pgae terms       
+        webDriver.findElement(By.name("commit")).click();
       } else {
         Actual_Text = webDriver
             .findElement(By.xpath("//article[@id='main-content']/section/article/div/div[2]"))
@@ -312,50 +284,24 @@ public class AddOrStartNewMppProgramPage extends TestCase {
         Expected_Text =
             "Please read the following certification statements. The Federal government relies on the information in this form and any documents or supplemental information submitted to determine whether the business is eligible to participate in the All Small Business Mentor-Protégé Program. The definition of the terms used in this certification are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR Part 124.520 and 125.9), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person signing this certification may be prosecuted if they have provided false information. Any action taken with respect to this certification does not affect the Government’s right to pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
         assertEquals(Actual_Text, Expected_Text);
-        // Verify links on the table.
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window = webDriver.getWindowHandle();
-        logger.info("Before switching, title is =" + webDriver.getTitle());
+        //Verify links on the table.
+        logger.info("Before switching title is =" + webDriver.getWindowHandles());
         webDriver.findElement(By.linkText("Mentor-Protégé Program training module")).click();
-        java.util.Set<String> S1 = webDriver.getWindowHandles();
-        Iterator<String> i1 = S1.iterator();
-        while (i1.hasNext()) {
-          String Second_window = i1.next();
-          if (!main_window.equalsIgnoreCase(Second_window)) {
-            webDriver.switchTo().window(Second_window);
-            Thread.sleep(1000);
-            logger.info("After switching title is =" + webDriver.getTitle());
-            webDriver.close();
+        String winHandleBefore = webDriver.getWindowHandle();
+        logger.info("After switching window is =" + winHandleBefore );
+        for(String winHandle : webDriver.getWindowHandles()){
+              webDriver.switchTo().window(winHandle);
           }
-        }
-        Thread.sleep(2000);
-        webDriver.switchTo().window(main_window);
-        logger.info("Back to manin_window " + webDriver.getTitle());
-        // Verify the SAM.gov link.
-        logger.info("Before switching, title is = certify.sba.gov");
-        webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String main_window1 = webDriver.getWindowHandle();
-        logger.info("Before switching, title is =" + webDriver.getTitle());
-        webDriver.findElement(By.linkText("SAM.gov")).click();
-        java.util.Set<String> S11 = webDriver.getWindowHandles();
-        Iterator<String> i11 = S11.iterator();
-        while (i11.hasNext()) {
-          String Second_window = i11.next();
-          if (!main_window1.equalsIgnoreCase(Second_window)) {
-            webDriver.switchTo().window(Second_window);
-            Thread.sleep(1000);
-            logger.info("After switching title is =" + webDriver.getTitle());
-            webDriver.close();
-          }
-        }
-        webDriver.switchTo().window(main_window1);
-        logger.info("Back to manin_window " + webDriver.getTitle());
-        // Click on the Accept button.
-        Thread.sleep(2000);
+        webDriver.close();
+        webDriver.switchTo().window(winHandleBefore);
+        logger.info("Back to main window = " + webDriver.getWindowHandle());
+        Thread.sleep(1000);
+        //Accept intro pgae terms       
         webDriver.findElement(By.name("commit")).click();
+        
+        }
 
       }
     }
   }
-}
+
