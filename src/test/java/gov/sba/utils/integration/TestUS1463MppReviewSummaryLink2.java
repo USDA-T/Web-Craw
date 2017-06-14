@@ -38,10 +38,10 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -58,7 +58,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
     login_Data.Login_With_Details();
 
     try {
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
@@ -67,21 +67,20 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
       fillApplCreatePages.finalSignatureSubmit(webDriver);
       logger_US1463.info("Doc has been uploaded.");
 
-      List<WebElement> count_Pending = find_Elements(webDriver,"xpath","//*[@id='certifications']/tbody/tr" + "[" + "td[position()=1]/a[contains(text(),'MPP')]"
-              + " and " + "td[position()=5 and (contains(text(),'ending'))]" + "]");
+      List<WebElement> count_Pending = find_Elements_Locators(webDriver,"xpath","//*[@id='certifications']/tbody/tr[td[position()=1]/a[contains(text(),'MPP')] and td[position()=5 and (contains(text(),'ending'))]]");
 
       assertTrue(count_Pending.size() >= 1);
 
-        click_Element(webDriver, "SBA_Application_All_Cases_Page_MPP");
-        WebElement title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title");
-        logger_US1463.info(title_01.getText());
-        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("All Small Mentor"));
-        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Program Self-Certification Summary"));
-        title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name");
-        logger_US1463.info(title_01.getText());
-        Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Legal Business Name"));
+      click_Element(webDriver, "SBA_Application_All_Cases_Page_MPP");
+      WebElement title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Title");
+      logger_US1463.info(title_01.getText());
+      Assert.assertThat(title_01.getText(), CoreMatchers.containsString("All Small Mentor"));
+      Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Program Self-Certification Summary"));
+      title_01 = find_Element(webDriver, "SBA_MPP_Self_Cert_Summ_Name");
+      logger_US1463.info(title_01.getText());
+      Assert.assertThat(title_01.getText(), CoreMatchers.containsString("Legal Business Name"));
 
-        Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
+      Connection databaseConnection = DatabaseUtils.getDatabaseConnection();
 
       Statement statement_SQL = databaseConnection.createStatement();
 
@@ -143,20 +142,15 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
         logger_US1463.info(isPresent);
-          isPresent = false;
+        isPresent = false;
       }
 
     } catch (Exception e) {
       logger_US1463.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"TestUS1463MppReviewSummaryLink2", "Exception"});
-        throw e;
+      throw e;
     }
-  }
-
-  private List<WebElement> find_Elements(WebDriver webDriver2, String string, String string2) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   @After

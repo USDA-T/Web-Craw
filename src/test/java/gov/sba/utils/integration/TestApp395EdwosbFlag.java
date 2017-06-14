@@ -35,10 +35,10 @@ public class TestApp395EdwosbFlag extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     get_The_Row_From_Login_Data = 9;
@@ -56,7 +56,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       login_Data.Login_With_Reference();
       // Return the Applicatiom;
       if (CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active")) {
-          navigationMenuClick(webDriver, "LOGOUT");
+        navigationMenuClick(webDriver, "LOGOUT");
         AssertionUtils.return_all_Applications(webDriver, 11, "148832876");
         login_Data = new LoginPageWithReference(webDriver, 9);
         login_Data.Login_With_Reference();
@@ -73,7 +73,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
       fillApplCreatePages.finalSignatureSubmit(webDriver);
       // Return the Applicatiom;
-        navigationMenuClick(webDriver, "LOGOUT");
+      navigationMenuClick(webDriver, "LOGOUT");
       AssertionUtils.return_all_Applications(webDriver, 11, "148832876");
       // Delete All the Draft Applications
       login_Data = new LoginPageWithReference(webDriver, 9);
@@ -92,7 +92,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       logger_TestApp395Edwosb.info(" 8(a) question assert not being prepopulated");
       // Locate the Third Party Certification, question1 and select No and continue.
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_390_Y").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_390_Y");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_390_Y");
       page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
 
       click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
@@ -120,7 +120,7 @@ public class TestApp395EdwosbFlag extends TestCase {
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_406_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
 
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_407_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_408_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_409_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
@@ -128,50 +128,51 @@ public class TestApp395EdwosbFlag extends TestCase {
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_411_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_412_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
       assertTrue(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_413_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Locate the SBA Exam & Daily Operations questions,Verify, select
       // No
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N");
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_414_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // NetWorth
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N");
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_415_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Adjusted Gross Income
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_416_N");
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N");
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_417_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
       // Assets
       assertFalse(find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N").getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_418_N");
       assertFalse(
               find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_419_N");
       assertFalse(
               find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N");
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_420_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       // Economic Disadvantage
       assertFalse(
               find_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N")
                       .getAttribute("outerHTML").toLowerCase().contains("checked"));
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N");
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
       logger_TestApp395Edwosb.info("EDWOSB application questions have been answered");
       // Validate that user successfully navigated to the Financial Data
       // section.
-      assertEquals(find_Element(webDriver,"SBA_EDWOSB_Financial_Title_H2" ).getText(), "Financial Data");
+      //assertEquals(find_Element(webDriver,"SBA_EDWOSB_Financial_Title_H2" ).getText(), "Financial Data");
 
       String expected_Text52 = "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
       assertEquals(find_Element(webDriver,"SBA_EDWOSB_Financial_Title_Fp" ).getText(), expected_Text52);
+
       // Validate the Personal Information.
-        click_Element(webDriver, "EDWOSB_Questionnaire_Page_Add_Person");
+      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Add_Person");
       // Verify that the section to Create new record is been seen by user
       // and
       // enter record2.
@@ -206,7 +207,7 @@ public class TestApp395EdwosbFlag extends TestCase {
     catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp395EdwosbFlag", "Exception"});
-        throw e;
+      throw e;
     }
   }
 

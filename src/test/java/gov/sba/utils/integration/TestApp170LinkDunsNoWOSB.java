@@ -24,17 +24,17 @@ import static gov.sba.automation.CommonApplicationMethods.*;
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp170LinkDunsNoWOSB extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
-      LogManager.getLogger(TestApp170LinkDunsNoWOSB.class.getName());
+          LogManager.getLogger(TestApp170LinkDunsNoWOSB.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -58,18 +58,17 @@ public class TestApp170LinkDunsNoWOSB extends TestCase {
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();
 
       // Click on Case Link on main navigator-- SBA Analyst
-      navigationMenuClick(webDriver, "Cases");
+      navigationBarClick(webDriver, "Cases");
+
       casesPageSearch(webDriver, duns_Number);
-      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath",
-          "//div[@id='table-search']/table/tbody//a[contains(text(),'" + duns_Number + "')]");
-      find_Element_Loc(webDriver, "xpath",
-          "//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
-      navigationMenuClick(webDriver, "Logout");
+      CommonApplicationMethods.click_Element_Loc(webDriver, "Xpath", "//div[@id='table-search']/table/tbody//a[contains(text(),'" + duns_Number + "')]");
+      find_Element_Loc(webDriver, "xpath", "//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'" + duns_Number + "')] ]");
+      navigationBarClick(webDriver, "Logout");
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {"TestApp170LinkDunsNoWOSB", "Exception"});
+              new String[] {"TestApp170LinkDunsNoWOSB", "Exception"});
       throw e;
     }
   }

@@ -19,20 +19,24 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.casesPageSearch;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp170LinkDunsNo8a extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
-      LogManager.getLogger(TestApp170LinkDunsNo8a.class.getName());
-    // Set The variabl.es/Define
-    WebDriver webDriver;
+          LogManager.getLogger(TestApp170LinkDunsNo8a.class.getName());
+  // Set The variabl.es/Define
+  WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -48,25 +52,22 @@ public class TestApp170LinkDunsNo8a extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-
       programs_Page.join_New_Program_CheckBoxes(webDriver, "8A");
-      String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      TestApp170LinkDunsNo.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+      fillApplCreatePages.page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
       fillApplCreatePages.finalSignatureSubmit8A(webDriver);
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
+      navigationMenuClick(webDriver, "Logout");
 
       // Click on Case Link on main navigator-- 8(a) Analyst
       LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 57);
       login_Data_01.Login_With_Reference();
       String typ_App_Passed = "8(a) Document Upload";
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+      navigationBarClick(webDriver, "Cases");
+      casesPageSearch(webDriver, duns_Number);
       if (!webDriver.getPageSource().contains("No results found")) {
         // All cases page 8(a) Analyst
         String xpath_Value =
-            "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-                + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
+                "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
+                        + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
         List<WebElement> current_Row = webDriver.findElements(By.xpath(xpath_Value));
         // Vendor Overview page should display clicking on Duns Number
         // Link
@@ -74,8 +75,8 @@ public class TestApp170LinkDunsNo8a extends TestCase {
           current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
 
           WebElement asset_Exists = webDriver
-              .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
-                  + duns_Number + "')] ]"));
+                  .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
+                          + duns_Number + "')] ]"));
           assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
         }
       }

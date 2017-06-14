@@ -3,7 +3,6 @@
  */
 package gov.sba.pageObjetcs;
 
-import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,11 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
-
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.getLocator;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class cases_Page {
     private static final Logger logger_Cases_Page =
@@ -36,7 +31,7 @@ public class cases_Page {
                 Map    locator = getLocator("Cases_Page_Search_Duns_Link");
                 String a1      = locator.get("Locator").toString();
                 String a2      = locator.get("Value").toString().replace("duns_Number_Replace", which_Duns);
-                CommonApplicationMethods.click_Element_Loc(webDriver, a1, a2);
+                click_Element_Loc(webDriver, a1, a2);
             }
         }
         if (!verify_State.equals(null) && !verify_State.equals("")) {

@@ -28,10 +28,9 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -43,25 +42,22 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
   @Test
   public void testMainTest() throws Exception {
 
-    LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 27);
-    login_Data_01.Login_With_Reference();
+    new LoginPageWithReference(webDriver, 27).Login_With_Reference();
 
     try {
 
-      searchDuns_Number(webDriver, duns_Number);
+      non_Vendor_searchDuns_Number(webDriver, duns_Number);
       click_Element(webDriver,"Ops_Support_Cases_Search_Results_First");
       click_Element(webDriver,"Ops_Support_Cases_Search_Vendor_Supp_Link");
       click_Element(webDriver,"Ops_Support_Change_Business_Link");
       new Select(find_Element(webDriver, "Ops_Support_Change_Business_Type")).selectByIndex(2);
       click_Element(webDriver,"Application_Common_Save_button");
-      navigationMenuClick(webDriver, "Logout");
+      navigationBarClick(webDriver, "Logout");
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 
       // Verify the Business type is changes to Scorp[from LLC]
       click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
-
-      String business_Type = webDriver.findElement(By.id("more-details")).getText();
 
       assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText().contains("S-Corporation"));
 

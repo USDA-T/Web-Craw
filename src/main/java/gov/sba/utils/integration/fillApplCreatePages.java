@@ -16,7 +16,7 @@ public class fillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
 
   public static void pageCaseOverviewFillup(WebDriver webDriver, String review_Type,
-      String curr_Reviewer, String owner, String supervisor) throws Exception {
+                                            String curr_Reviewer, String owner, String supervisor) throws Exception {
 
     try {
       click_Element(webDriver, "SBA_Case_Overview_Select_Link");
@@ -79,8 +79,8 @@ public class fillApplCreatePages {
   }
 
   public static void pageQuestionReviewFillup(WebDriver webDriver) throws Exception {
-      click_Element(webDriver,"SBA_Question_Review_Fill_Up");
-      click_Element(webDriver,"SBA_Question_Review_Save_Continue");
+    click_Element(webDriver,"SBA_Question_Review_Fill_Up");
+    click_Element(webDriver,"SBA_Question_Review_Save_Continue");
   }
 
   public static void pageSignatureReviewFillup(WebDriver webDriver) throws Exception {
@@ -148,7 +148,7 @@ public class fillApplCreatePages {
 
       if (answer01.toUpperCase().contains("YES")) {
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 7; i++) {
           try {
             click_Element(webDriver, "All_Answers_Yes");
           } catch (Exception e) {
@@ -163,7 +163,7 @@ public class fillApplCreatePages {
         setText_Element(webDriver, "SBA_8a_Duns_Confrm_Text", duns_No_Given);
         click_Element(webDriver, "Search_Duns_No");
 
-        for (int i=0;i<1000;i++){
+        for (int i=0;i<3;i++){
           if ( webDriver.getPageSource().indexOf("You must confirm ") > 0){
             click_Element(webDriver, "Search_Duns_No");
             accept_Optional_Alert(webDriver, 10);
@@ -180,16 +180,16 @@ public class fillApplCreatePages {
         logger.info("Doc has been uploaded and accepted");
         accept_Optional_Alert(webDriver, 10);
 
-            }
+      }
       else {
         try                  { click_Element(webDriver, "General_Answer_Page_8A_117"); }
         catch (Exception e1) { click_Element(webDriver, "General_Answer_Page_8A_228"); }
         click_Element(webDriver, "Application_Common_Submit_Button");
       }
     } catch (Exception e) {
-        logger.info(e.toString());
-        take_ScreenShot_TestCaseName(webDriver,new String[] {"page8aFillUpDunsNo"});
-        throw e;
+      logger.info(e.toString());
+      take_ScreenShot_TestCaseName(webDriver,new String[] {"page8aFillUpDunsNo"});
+      throw e;
     }
   }
 
@@ -206,7 +206,7 @@ public class fillApplCreatePages {
       accept_Optional_Alert(webDriver, 8);
     } catch (Exception e) {
       logger.info(e.toString());
-        take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit"});
+      take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit"});
       throw e;
     }
   }
@@ -219,7 +219,7 @@ public class fillApplCreatePages {
       accept_Optional_Alert(webDriver, 14);
     } catch (Exception e) {
       logger.info(e.toString());
-        take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit8A"});
+      take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit8A"});
       throw e;
     }
   }

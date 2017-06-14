@@ -34,7 +34,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
@@ -73,7 +73,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
-      List<WebElement> current_Row_EDWOSB = CommonApplicationMethods.find_Elements_Loc_InPrg(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')]  ]/td[1]/a");
+      List<WebElement> current_Row_EDWOSB = CommonApplicationMethods.find_Elements_Locators_Optional(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')]  ]/td[1]/a");
 
       if (current_Row_EDWOSB.size() >= 1) {
         current_Row_EDWOSB.get(0).click();

@@ -28,7 +28,6 @@ import java.util.Date;
 import java.util.List;
 
 @Category({gov.sba.utils.integration.StableTests.class})
-
 public class Test1699ExpirydateNullForMPP extends TestCase {
   private static final Logger logger_US1699 =
           LogManager.getLogger(Test1699ExpirydateNullForMPP.class.getName());
@@ -37,10 +36,9 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
 
@@ -58,13 +56,10 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
     try {
       // Check Dashboard Pending status
-      String get_Current_Duns_No = webDriver
-              .findElement(By.xpath(
-                      "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
-              .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
+      String get_Current_Duns_No = webDriver.findElement(By.xpath("//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]")).findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger_US1699.info(get_Current_Duns_No);
 
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       logger_US1699.info(file_path_abs);
       fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", file_path_abs, get_Current_Duns_No);
@@ -156,14 +151,14 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
         webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
         isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
         logger_US1699.info(isPresent);
-          isPresent = false;
+        isPresent = false;
       }
 
     } catch (Exception e) {
       logger_US1699.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
               new String[] {"Test1699ExpirydateNullForMPP", "Exception"});
-        throw e;
+      throw e;
 
     }
   }
