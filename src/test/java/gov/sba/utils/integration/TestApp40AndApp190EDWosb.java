@@ -44,8 +44,7 @@ public class TestApp40AndApp190EDWosb extends TestCase {
       fillApplCreatePages.finalSignatureSubmit(webDriver);
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-      LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 29);
-      login_Data.Login_With_Reference();
+      new LoginPageWithReference(webDriver, 29).Login_With_Reference();
     } else {
       // For WOSB and EDWOSB Active status - Create new app if not existing
 
@@ -61,7 +60,7 @@ public class TestApp40AndApp190EDWosb extends TestCase {
 
     String xpath = "";
 
-    CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
+    CommonApplicationMethods.navigationBarClick(webDriver, "Cases");
     CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
 
     // Seperate XPaths for Each Type of Application
@@ -124,10 +123,10 @@ public class TestApp40AndApp190EDWosb extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();

@@ -38,10 +38,9 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
 
@@ -69,18 +68,18 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
 
       navigationMenuClick(webDriver, "Logout");
       new LoginPageWithReference(webDriver, 55).Login_With_Reference();
-      navigationMenuClick(webDriver, "Cases");
+      navigationBarClick(webDriver, "Cases");
       CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
 
       String xpath_Element = "//div[@id='table-search']/table/tbody/tr[ "
               + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
               + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
-      List<WebElement> current_Row = find_Elements(webDriver, "xpath", xpath_Element);
+      List<WebElement> current_Row = find_Elements_Locators(webDriver, "xpath", xpath_Element);
       logger_TestApp309.info(current_Row.size() + ": Is the total  Elements");
       if (current_Row.size() > 0) {
         logger_TestApp309.info(current_Row.get(0).getAttribute("innerHTML"));
         xpath_Element = xpath_Element + "/td/a[contains(text(),'Legal Business Name')]";
-        click_Element_Locators(webDriver, "xpath", xpath_Element);
+        click_Element_Loc(webDriver, "xpath", xpath_Element);
       }
       click_Element(webDriver, "Case_Submit_Button");
       click_Element(webDriver, "Case_SaveNotes_Button");
@@ -96,18 +95,17 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       Thread.sleep(2000);
       webDriver.navigate().back();
       Thread.sleep(2000);
-      navigationMenuClick(webDriver, "Cases");
-      xpath_Element = "//div[@id='table-search']/table/tbody/tr[ "
-              + "td[position()=8 and contains(text(),'neligible')]   and "
-              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-              + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
-      List<WebElement> current_Row1 = find_Elements(webDriver, "xpath", xpath_Element);
+      navigationBarClick(webDriver, "Cases");
+      xpath_Element = "//div[@id='table-search']/table/tbody/tr[ td[position()=8 and contains(text(),'neligible')] " +
+              "and td[position()=2]/a[contains(text(),'" + duns_Number + "')]	" +
+              "and td[position()=3 and contains(text()," + typ_App + ")] ]";
+      List<WebElement> current_Row1 = find_Elements_Locators(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(current_Row1.size() > 0);
-      navigationMenuClick(webDriver, "Logout");
+      navigationBarClick(webDriver, "Logout");
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       // Certificate status - Ineligible, decision- Sba Declined
       xpath_Element = "//*[@id='certifications']/tbody/tr[ (td[position()=5 and contains(text(),'neligible')]) and (td[position()=1]/a[contains(text(),'EDWOSB')]) ]";
-      List<WebElement> listOfIneliglebEDWOSB = find_Elements(webDriver, "xpath", xpath_Element);
+      List<WebElement> listOfIneliglebEDWOSB = find_Elements_Locators(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(listOfIneliglebEDWOSB.size() > 0);
 
     } catch (Exception e) {
@@ -115,17 +113,6 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp309DecisionIneligible_EDWOSB", "Exception"});
       throw e;
     }
-  }
-
-  private void click_Element_Locators(WebDriver webDriver2, String string, String xpath_Element) {
-    // TODO Auto-generated method stub
-    
-  }
-
-  private List<WebElement> find_Elements(WebDriver webDriver2, String string,
-      String xpath_Element) {
-    // TODO Auto-generated method stub
-    return null;
   }
 
   @After

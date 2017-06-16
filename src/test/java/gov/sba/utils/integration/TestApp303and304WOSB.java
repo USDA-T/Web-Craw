@@ -24,10 +24,10 @@ public class TestApp303and304WOSB extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
-      CommonApplicationMethods.clear_Env_Chrome();
+    CommonApplicationMethods.get_Stop_Execution_Flag();
+    CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+    CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
@@ -44,26 +44,23 @@ public class TestApp303and304WOSB extends TestCase {
     DatabaseUtils dbcall   = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
 
-    LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-    login_Data.Login_With_Details();
+    new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     // Create application Mpp/Edwosb/Wosb/8a
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-    String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-    logger_303.info(file_path_abs);
-    fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+
+    fillApplCreatePages.page8aFillUp(webDriver, "Yes", FixtureUtils.fixturesDir() + "Upload.pdf");
     fillApplCreatePages.finalSignatureSubmit(webDriver);
 
     navigationMenuClick(webDriver, "LOGOUT");
 
     AssertionUtils.return_all_Applications(webDriver, 11, duns_Number);
 
-    login_Data = new LoginPageWithDetails(webDriver, email, password);
-    login_Data.Login_With_Details();
+    new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     AssertionUtils.delete_all_Drafts(webDriver);
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
@@ -74,8 +71,7 @@ public class TestApp303and304WOSB extends TestCase {
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
-    checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes")
-            .getAttribute("outerHTML");
+    checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertTrue(checkBoxElement.toLowerCase().contains("checked"));
 
     // Reset to Default
