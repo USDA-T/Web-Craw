@@ -820,12 +820,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Verify first paragraph
     logger.info("  Verify first paragraph");
-    Actual_Text = webDriver.findElement(By.xpath("//div[2]/label")).getText();
-    Expected_Text =
-        "All required documents verifying eligibility for the All Small Mentor-Protégé Program (All Small MPP) have been uploaded to certify.SBA.gov. I understand if any changes are made after I submit this application, I must notify the All Small Mentor-Protégé Program Office and submit additional documentation if needed.";
-    assertEquals(Actual_Text, Expected_Text);
-    // Verify Second paragraph
-    logger.info("  Verify second paragraph");
     Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
     Expected_Text =
         "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
@@ -857,9 +851,13 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     // Step 9 - Click the Continue button
     logger.info("Step 9 - Click the Continue button");
     webDriver.findElement(By.id("accept-button")).click();
-    wait.until(ExpectedConditions.alertIsPresent());
     // Step 10 - Accept the error message
-    logger.info("Step 10 - Accept the error message");
+    logger.info(webDriver.switchTo().alert().getText());
+    Actual_Text = webDriver.switchTo().alert().getText();
+    Expected_Text =
+        "In order to submit your application, you must accept all of the conditions of authorization.";
+    assertEquals(Actual_Text, Expected_Text);
+    wait.until(ExpectedConditions.alertIsPresent());
     webDriver.switchTo().alert().accept();
     // Step 11 - Accept the statements and click Continue
     logger.info("Step 11 - Click to accept the statements");
@@ -870,7 +868,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
     webDriver.findElement(By.id("accept-button")).click();
-    webDriver.findElement(By.linkText("Dashboard")).click();
+    webDriver.findElement(By.xpath("//a/span")).click();
     WebElement ActiveCert =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);

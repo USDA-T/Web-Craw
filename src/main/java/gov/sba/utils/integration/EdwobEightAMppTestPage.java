@@ -41,7 +41,6 @@ public class EdwobEightAMppTestPage {
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
     Thread.sleep(2000);
     webDriver.findElement(By.id("section_submit_button")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("duns-value-167")).sendKeys("172115728");
     webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
     Thread.sleep(2000);

@@ -11,11 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.CoreUtils;
 
-public class NewWosbQuestionPage {
-  private static final Logger logger = LogManager.getLogger(NewWosbQuestionPage.class.getName());
+public class NewWosbQuestionAnswerNoPage {
+  private static final Logger logger = LogManager.getLogger(NewWosbQuestionAnswerNoPage.class.getName());
   WebDriver webDriver;
 
-  public NewWosbQuestionPage(WebDriver mydriver) {
+  public NewWosbQuestionAnswerNoPage(WebDriver mydriver) {
     this.webDriver = mydriver;
   }
 

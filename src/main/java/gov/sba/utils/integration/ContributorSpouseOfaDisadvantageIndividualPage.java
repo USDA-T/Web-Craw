@@ -197,8 +197,8 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   assertEquals("Attachment is required", webDriver.findElement(By.xpath("//div/span")).getText());     
   //Upload a document.
   String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+  UploadDocumentContributorsPage uploadDocumentContributors = new UploadDocumentContributorsPage(webDriver);
+  uploadDocumentContributors.UploadDocumentContributors(file_path_abs);
   //click on continue.
   CoreUtils.clickContinue(webDriver);       
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
@@ -228,9 +228,9 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   webDriver.findElement(By.xpath("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
   webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();     
   //Upload a document.
-  String file_path_abs1 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument1.MontanaUploadDocument(file_path_abs1);
+  file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+  UploadDocumentContributorsPage uploadDocumentContributors1 = new UploadDocumentContributorsPage(webDriver);
+  uploadDocumentContributors1.UploadDocumentContributors(file_path_abs);
   //click on continue.
   CoreUtils.clickContinue(webDriver);        
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
@@ -241,9 +241,9 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   assertEquals("Please answer this question", webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText());
   webDriver.findElement(By.xpath("//div/input")).click();     
   //Upload a document.
-  String file_path_abs2 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument2.MontanaUploadDocument(file_path_abs2);
+  file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+  UploadDocumentContributorsPage uploadDocumentContributors2 = new UploadDocumentContributorsPage(webDriver);
+  uploadDocumentContributors2.UploadDocumentContributors(file_path_abs);
   webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
   webDriver.findElement(By.xpath("//textarea")).sendKeys("Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
   //click on continue.
@@ -257,15 +257,15 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   assertEquals("Please answer this question", webDriver.findElement(By.xpath("//div[3]/fieldset/div/span")).getText());
   webDriver.findElement(By.xpath("//div/input")).click();      
   //Upload a document.
-  String file_path_abs3 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument3.MontanaUploadDocument(file_path_abs3);      
+  file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+  UploadDocumentContributorsPage uploadDocumentContributors3 = new UploadDocumentContributorsPage(webDriver);
+  uploadDocumentContributors3.UploadDocumentContributors(file_path_abs);      
   webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
   webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();      
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload2pdfOnSamePage upload2pdfOnSame = new Upload2pdfOnSamePage(webDriver);
-  upload2pdfOnSame.Upload2pdfOnSame(file_path_abs);     
+  ContributorUploadPage2 contributorUpload = new ContributorUploadPage2(webDriver);
+  contributorUpload.ContributorUpload(file_path_abs);     
   //click on continue.
   CoreUtils.clickContinue(webDriver);       
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
@@ -276,33 +276,33 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   webDriver.findElement(By.xpath("//div/input")).click();      
   //Upload a document.
   String file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument4 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument4.MontanaUploadDocument(file_path_abs4);     
+  UploadDocumentContributorsPage UploadDocumentContributors1 = new UploadDocumentContributorsPage(webDriver);
+  UploadDocumentContributors1.UploadDocumentContributors(file_path_abs4);     
   //click on continue.
   CoreUtils.clickContinue(webDriver);     
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
   assertEquals("Financial", webDriver.findElement(By.cssSelector("h2")).getText());
   webDriver.findElement(By.xpath("//div/input")).click();      
   //Upload a document.
-  String file_path_abs5 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument5 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument5.MontanaUploadDocument(file_path_abs5);
+  file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+  UploadDocumentContributorsPage UploadDocumentContributors2 = new UploadDocumentContributorsPage(webDriver);
+  UploadDocumentContributors2.UploadDocumentContributors(file_path_abs4);
   //Select yes and upload documents.
   webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();     
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload2pdfOnSamePage upload2pdfOnSame1 = new Upload2pdfOnSamePage(webDriver);
-  upload2pdfOnSame1.Upload2pdfOnSame(file_path_abs);      
+  ContributorUploadPage2 contributorUpload1 = new ContributorUploadPage2(webDriver);
+  contributorUpload1.ContributorUpload(file_path_abs);       
   webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();     
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload3pdfOnSamePage upload3pdfOnSame1 = new Upload3pdfOnSamePage(webDriver);
-  upload3pdfOnSame1.Upload3pdfOnSame(file_path_abs);      
+  ContributorUploadPage3 contributorUpload2 = new ContributorUploadPage3(webDriver);
+  contributorUpload2.ContributorUpload(file_path_abs);       
   webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")).click();     
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload4pdfOnSamePage upload4pdfOnSame2 = new Upload4pdfOnSamePage(webDriver);
-  upload4pdfOnSame2.Upload4pdfOnSame(file_path_abs);
+  ContributorUploadPage4 contributorUpload3 = new ContributorUploadPage4(webDriver);
+  contributorUpload3.ContributorUpload(file_path_abs);
   CoreUtils.clickContinue(webDriver);
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
   assertEquals("Criminal History", webDriver.findElement(By.cssSelector("h2")).getText());
@@ -323,16 +323,16 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   assertEquals("Attachment is required", webDriver.findElement(By.xpath("//div[2]/fieldset/div/div/span")).getText());      
   //Upload a document.
   file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument6 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument6.MontanaUploadDocument(file_path_abs4);      
+  UploadDocumentContributorsPage UploadDocumentContributors3 = new UploadDocumentContributorsPage(webDriver);
+  UploadDocumentContributors3.UploadDocumentContributors(file_path_abs4);      
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload2pdfOnSamePage upload2pdfOnSame4 = new Upload2pdfOnSamePage(webDriver);
-  upload2pdfOnSame4.Upload2pdfOnSame(file_path_abs);      
+  ContributorUploadPage2 contributorUpload4 = new ContributorUploadPage2(webDriver);
+  contributorUpload4.ContributorUpload(file_path_abs);      
   //Upload a document.
   file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  Upload3pdfOnSamePage upload3pdfOnSame5 = new Upload3pdfOnSamePage(webDriver);
-  upload3pdfOnSame5.Upload3pdfOnSame(file_path_abs);  
+  ContributorUploadPage3 contributorUpload5 = new ContributorUploadPage3(webDriver);
+  contributorUpload5.ContributorUpload(file_path_abs);   
   //click on continue.
   CoreUtils.clickContinue(webDriver);       
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
@@ -342,8 +342,8 @@ public void ContributorSpouseOfaDisadvantageIndividual() throws Exception {
   assertEquals("Attachment is required", webDriver.findElement(By.xpath("//div/span")).getText());      
   //Upload a document.
   file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-  MontanaUploadDocumentPage MontanaUploadDocument7 = new MontanaUploadDocumentPage(webDriver);
-  MontanaUploadDocument7.MontanaUploadDocument(file_path_abs4);
+  UploadDocumentContributorsPage UploadDocumentContributors4 = new UploadDocumentContributorsPage(webDriver);
+  UploadDocumentContributors4.UploadDocumentContributors(file_path_abs4);
   webDriver.findElement(By.id("section_submit_button")).click();
   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
   //Complete the SDvD financial section.

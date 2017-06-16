@@ -13,21 +13,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
-  private static final Logger logger =
-      LogManager.getLogger(TestUs1531RestrictCoAccessToActiveOrPendingMppRecords.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
+  private static final Logger logger =
+      LogManager.getLogger(TestUs1531RestrictCoAccessToActiveOrPendingMppRecords.class.getName());
   int get_The_Row_From_Login_Data;
 
   @Before
   public void setUp() throws Exception {
 
     webDriver = TestHelpers.getDefaultWebDriver();
-    
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 3;
@@ -46,12 +46,16 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
     logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
-    new DeleteDraftCertPage(webDriver).DeleteDraftCert();
+    DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert.DeleteDraftCert();
     // Delete second draft if any.
-    new DeleteDraftCertPage(webDriver).DeleteDraftCert();
+    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
     // delete and start a new EDWOSB certification.
-    new AddOrStartCertificationPage(webDriver).AddOrStartCertification();
+    AddOrStartCertificationPage addOrStartCertification =
+        new AddOrStartCertificationPage(webDriver);
+    addOrStartCertification.AddOrStartCertification();
     // Start new 8(a) application.
     EDWOSBEightATestPage eDWOSBEightATest = new EDWOSBEightATestPage(webDriver);
     eDWOSBEightATest.EDWOSBEightATest();
@@ -192,7 +196,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -201,6 +205,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
@@ -210,6 +215,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
         webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
         webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       }
       // Login as WOSB-analyst and return WOSB program back to vendor.
@@ -226,6 +232,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
@@ -235,6 +242,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
         webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
         webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
         logger.info("Success");
 
@@ -249,9 +257,9 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       // message.
       webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(2000);
       wait.until(ExpectedConditions
           .elementSelectionStateToBe(By.xpath(".//*[@id='vendor_found_not_certified']/h3"), false));
+      Thread.sleep(2000);
       Actual_Text =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
       Expected_Text =
@@ -267,9 +275,8 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("1721157");
       webDriver.findElement(By.id("find_business")).click();
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='no_vendor_found']/h3"), false));
       Thread.sleep(2000);
-      wait.until(ExpectedConditions
-          .elementSelectionStateToBe(By.xpath("//div[@id='no_vendor_found']/h3"), false));
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3")).getText();
       Expected_Text =
           "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
@@ -283,10 +290,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
       webDriver.findElement(By.id("find_business")).click();
-      Thread.sleep(2000);
-      Actual_Text = webDriver.findElement(By.xpath("//td[2]")).getText();
-      Expected_Text = "Entity 81 Legal Business Name";
-      assertEquals(Actual_Text, Expected_Text);
       // Enter a Solicitation and NAICS number.
       webDriver.findElement(By.id("access_request_solicitation_number")).sendKeys("1721157");
       webDriver.findElement(By.id("access_request_solicitation_naics")).sendKeys("656782");
@@ -353,7 +356,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -362,6 +365,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
@@ -371,6 +375,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
         webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
         webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       }
       // Login as WOSB-analyst and return WOSB program back to vendor.
@@ -378,7 +383,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data71 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data71.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -387,6 +392,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       } else {
         logger.info("Return to Vendor Link is missing please verify why.");
@@ -396,6 +402,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
         webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
         webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
       }
       logger.info("Success");

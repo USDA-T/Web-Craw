@@ -232,9 +232,9 @@ public class ContributorsFinancialSectionPage extends TestCase {
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
       webDriver.findElement(By.cssSelector("button.btn")).click();
       // Upload document.
-      String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-      MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
-      MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
+      String file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+      UploadDocumentContributorsPage UploadDocumentContributors2 = new UploadDocumentContributorsPage(webDriver);
+      UploadDocumentContributors2.UploadDocumentContributors(file_path_abs4);
       // Verify the expanded second question.
       Actual_Text =
           webDriver.findElement(By.cssSelector("#answers_other_retirement_accounts > fieldset > h4"))
@@ -258,9 +258,9 @@ public class ContributorsFinancialSectionPage extends TestCase {
       wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn")));
       webDriver.findElement(By.cssSelector("button.btn")).click();
       /// Upload document.
-      file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-      Upload2pdfOnSamePage upload2pdfOnSame = new Upload2pdfOnSamePage(webDriver);
-      upload2pdfOnSame.Upload2pdfOnSame(file_path_abs);
+      String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
+      ContributorUploadPage2 contributorUpload = new ContributorUploadPage2(webDriver);
+      contributorUpload.ContributorUpload(file_path_abs); 
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
       CoreUtils.clickContinue(webDriver);
       // Life Insurance section.

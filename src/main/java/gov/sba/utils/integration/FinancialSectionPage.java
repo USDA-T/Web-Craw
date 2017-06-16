@@ -1,6 +1,5 @@
 package gov.sba.utils.integration;
 
-import static org.junit.Assert.assertTrue;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,8 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
+import junit.framework.TestCase;
 
-public class FinancialSectionPage {
+public class FinancialSectionPage extends TestCase {
   private static final Logger logger = LogManager.getLogger(FinancialSectionPage.class.getName());
   private WebDriver webDriver;
   int get_The_Row_From_Login_Data;
@@ -229,8 +229,8 @@ public class FinancialSectionPage {
     Expected_Text = "Please answer this question";
     webDriver.findElement(By.xpath("//div/input")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
-    webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("980000.56");
-    webDriver.findElement(By.id("DTE_Field_contributions_thus_far")).sendKeys("98000.46");
+    webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("98000000");
+    webDriver.findElement(By.id("DTE_Field_contributions_thus_far")).sendKeys("98000");
     webDriver.findElement(By.id("DTE_Field_date_of_initial_contribution")).clear();
     webDriver.findElement(By.id("DTE_Field_date_of_initial_contribution")).sendKeys("09/24/2017");
     webDriver.findElement(By.id("DTE_Field_investment_company")).sendKeys("The Alliance One");
@@ -258,7 +258,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_type")).click();
     webDriver.findElement(By.xpath("//option[4]")).click();
-    webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("687000.87");
+    webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("68700000");
     webDriver.findElement(By.id("DTE_Field_investment_company")).sendKeys("The Alliance One");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
     webDriver.findElement(By.cssSelector("button.btn")).click();
@@ -298,8 +298,8 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div/input")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_company_name")).sendKeys("21 century");
-    webDriver.findElement(By.id("DTE_Field_cash_surrender_value")).sendKeys("20000.98");
-    webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("5000.76");
+    webDriver.findElement(By.id("DTE_Field_cash_surrender_value")).sendKeys("2000000");
+    webDriver.findElement(By.id("DTE_Field_face_amount")).sendKeys("500000");
     webDriver.findElement(By.id("DTE_Field_beneficiaries")).sendKeys("John Peter");
     webDriver.findElement(By.cssSelector("button.btn")).click();
     // Locate and select yes for question, Do you have loan against a life
@@ -310,7 +310,7 @@ public class FinancialSectionPage {
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/fieldset/div/label")));
     Thread.sleep(2000);
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
-    webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("50000.45");
+    webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("5000000");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
     // And remove this two line
     // webDriver.findElement(By.xpath("//label[2]")).click();
@@ -343,11 +343,11 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_securities_name")).sendKeys("Test 2000");
     webDriver.findElement(By.id("DTE_Field_total_value")).sendKeys("50000");
     webDriver.findElement(By.id("DTE_Field_num_of_shares")).sendKeys("60");
-    webDriver.findElement(By.id("DTE_Field_cost")).sendKeys("59000.87");
-    webDriver.findElement(By.id("DTE_Field_market_value")).sendKeys("98000.98");
+    webDriver.findElement(By.id("DTE_Field_cost")).sendKeys("5900000");
+    webDriver.findElement(By.id("DTE_Field_market_value")).sendKeys("9800000");
     webDriver.findElement(By.id("DTE_Field_date")).clear();
     webDriver.findElement(By.id("DTE_Field_date")).sendKeys("04/12/2016");
-    webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("76000.56");
+    webDriver.findElement(By.id("DTE_Field_interest_dividends")).sendKeys("7600000");
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button.btn")));
     webDriver.findElement(By.cssSelector("button.btn")).click();
     CoreUtils.clickContinue(webDriver);
@@ -621,9 +621,9 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div/a/span")).click();
     // Locate current value search box and enter a valid value for you
     // automobile.
-    webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000.56");
+    webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000000");
     // Locate the Loan Balance search box and enter a valid balance.
-    webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("20000.76");
+    webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("20000000");
     // Locate the description of asset search box and enter the
     // make,model and year of your automobile.
     webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("nissan maxima");
@@ -645,7 +645,7 @@ public class FinancialSectionPage {
     // assets?.
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
-    webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000.98");
+    webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000000");
     webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("453000");
     webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("TOYOTA CAMRY");
     webDriver.findElement(By.cssSelector("button.btn")).click();
@@ -687,11 +687,11 @@ public class FinancialSectionPage {
     webDriver.findElement(By.id("DTE_Field_type")).click();
     webDriver.findElement(By.xpath("//option[5]")).click();
     // Original balance.
-    webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("9809000.98");
+    webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("98090000");
     // current balance.
-    webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("876600.98");
+    webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("8766000");
     // payment amount.
-    webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("87600.98");
+    webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("8760000");
     // How Secured.
     webDriver.findElement(By.id("DTE_Field_collateral_type")).sendKeys("Private home");
     // Name of note-holder
@@ -727,7 +727,7 @@ public class FinancialSectionPage {
     webDriver.findElement(By.xpath("//div/input")).click();
     webDriver.findElement(By.xpath("//div/a/span")).click();
     webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Test Running");
-    webDriver.findElement(By.id("DTE_Field_amount")).sendKeys("1000045.92");
+    webDriver.findElement(By.id("DTE_Field_amount")).sendKeys("1000045");
     webDriver.findElement(By.id("DTE_Field_when_due")).clear();
     webDriver.findElement(By.id("DTE_Field_when_due")).sendKeys("03/24/2017");
     webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("Factory");
@@ -866,19 +866,8 @@ public class FinancialSectionPage {
     String actual_Text5 = webDriver.findElement(By.id("accept-button")).getText();
     String expected_Text5 = "Accept";
     assertEquals(actual_Text5, expected_Text5);
-    }
-   private void assertEquals(String total, WebElement findElement) {
-    // TODO Auto-generated method stub
     
-  }
-
-  private void assertEquals(int totalAssets, WebElement findElement) {
-    // TODO Auto-generated method stub
-    
-  }
-
-  private void assertEquals(String actual_Text1, String expected_Text1) {
-    // TODO Auto-generated method stub
+  
    }
    }
 
