@@ -1,7 +1,6 @@
 //@Montana
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;

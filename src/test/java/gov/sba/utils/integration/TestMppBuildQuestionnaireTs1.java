@@ -130,6 +130,8 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     logger.info("  Verify first paragraph");
     // Verify Second paragraph
     logger.info("  Verify second paragraph");
+    if(webDriver.getCurrentUrl().contains("qa.sba-one"))   
+    {
     Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
     Expected_Text =
         "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
@@ -183,6 +185,62 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     webDriver.findElement(By.linkText("Logout")).click();
+    }
+    else{
+      Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
+      Expected_Text =
+          "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
+      assertEquals(Actual_Text, Expected_Text);
+      // Verify third paragraph
+      logger.info("  Verify third paragraph");
+      Actual_Text = webDriver.findElement(By.xpath("//label[3]")).getText();
+      Expected_Text =
+          "I understand that the information submitted may be given to Federal, State and local agencies for determining violations of law and other purposes.";
+      assertEquals(Actual_Text, Expected_Text);
+      // Verify fourth paragraph
+      logger.info("  Verify fourth paragraph");
+      Actual_Text = webDriver.findElement(By.xpath("//label[4]")).getText();
+      Expected_Text =
+          "I understand that I may not misrepresent my status as a small business to: 1) obtain a contract under the Small Business Act; or 2) obtain any benefit under a provision of Federal law that references the All Small MPP for a definition of program eligibility.";
+      assertEquals(Actual_Text, Expected_Text);
+      // Verify fifth paragraph
+      logger.info("  Verify fifth paragraph");
+      Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
+      Expected_Text =
+          "By submitting this certification I, Ricky Mailinator, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
+      assertEquals(Actual_Text, Expected_Text);
+      // Verify sixth paragraph
+      logger.info("  Verify sixth paragraph");
+      Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
+      Expected_Text =
+          "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
+      assertEquals(Actual_Text, Expected_Text);
+      // Step 9 - Click the Continue button
+      logger.info("Step 9 - Click the Continue button");
+      webDriver.findElement(By.id("accept-button")).click();
+      // Step 10 - Accept the error message
+      logger.info(webDriver.switchTo().alert().getText());
+      Actual_Text = webDriver.switchTo().alert().getText();
+      Expected_Text =
+          "In order to submit your application, you must accept all of the conditions of authorization.";
+      assertEquals(Actual_Text, Expected_Text);
+      wait.until(ExpectedConditions.alertIsPresent());
+      webDriver.switchTo().alert().accept();
+      // Step 11 - Accept the statements and click Continue
+      logger.info("Step 11 - Click to accept the statements");
+      webDriver.findElement(By.id("legal_0")).click();
+      webDriver.findElement(By.id("legal_1")).click();
+      webDriver.findElement(By.id("legal_2")).click();
+      webDriver.findElement(By.id("legal_3")).click();
+      webDriver.findElement(By.id("legal_4")).click();
+      webDriver.findElement(By.id("legal_5")).click();
+      webDriver.findElement(By.id("accept-button")).click();
+      webDriver.findElement(By.xpath("//a/span")).click();
+      WebElement ActiveCert =
+          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+      HighLight.highLightElement(webDriver, ActiveCert);
+      webDriver.findElement(By.linkText("Logout")).click();
+    }
     // Login as MPP-analyst and return MPP back to vendor.
     get_The_Row_From_Login_Data = 29;
     LoginPageWithReference login_Data61 =
@@ -212,7 +270,6 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
       logger.info(e.getMessage());
-      Assert.fail();
       }
   
     logger.info("Success");

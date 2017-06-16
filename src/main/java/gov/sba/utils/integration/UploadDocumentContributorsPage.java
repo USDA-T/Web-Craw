@@ -12,15 +12,15 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class UploadDocumentStagingPage {
-  private static final Logger logger = LogManager.getLogger(UploadDocumentStagingPage.class.getName());
+public class UploadDocumentContributorsPage {
+  private static final Logger logger = LogManager.getLogger(UploadDocumentContributorsPage.class.getName());
   WebDriver webDriver;
 
-  public UploadDocumentStagingPage(WebDriver webDriver) {
+  public UploadDocumentContributorsPage(WebDriver webDriver) {
     this.webDriver = webDriver;
   }
 
-  public void UploadDocumentStaging(String upload_Path) throws Exception {
+  public void UploadDocumentContributors(String upload_Path) throws Exception {
     Thread.sleep(2000);
     logger.debug("Uploading a new document");
     WebDriverWait wait = new WebDriverWait(webDriver, 40);

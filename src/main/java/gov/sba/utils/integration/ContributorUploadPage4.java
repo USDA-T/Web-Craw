@@ -12,40 +12,15 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Upload4pdfOnSamePage {
-  private static final Logger logger = LogManager.getLogger(Upload4pdfOnSamePage.class.getName());
-  WebDriver webDriver;
+  public class ContributorUploadPage4 {
+      private static final Logger logger = LogManager.getLogger(ContributorUploadPage4.class.getName());
+      WebDriver webDriver;
 
-  public Upload4pdfOnSamePage(WebDriver webDriver) {
-    this.webDriver = webDriver;
-  }
-
-  public void Upload4pdfOnSame(String upload_Path) throws Exception {
-      Thread.sleep(1000);
-      logger.debug("Uploading a new document");
+      public ContributorUploadPage4(WebDriver webDriver) {
+        this.webDriver = webDriver;
+      }
       WebDriverWait wait = new WebDriverWait(webDriver, 40);
-      if(webDriver.getCurrentUrl().contains("qa.sba-one"))   
-      {
-      webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[4]")).click();
-      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@id='doc-lib-button'])[4]")));
-      webDriver.findElement(By.xpath("(//button[@id='doc-lib-button'])[4]")).click();
-      webDriver.findElement(By.xpath("(//input[@id='truth'])[4]")).click();
-      Thread.sleep(2000);;
-      webDriver.findElement(By.xpath("(//button[@id='document_library_associate'])[4]")).click();
-      Thread.sleep(2000);;
-      }
-      else{
-      if(webDriver.getCurrentUrl().contains("http://localhost/")){
-      Thread.sleep(1000);
-      webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[4]")).click();
-      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@id='doc-lib-button'])[4]")));
-      webDriver.findElement(By.xpath("(//button[@id='doc-lib-button'])[4]")).click();
-      webDriver.findElement(By.xpath("(//input[@id='truth'])[4]")).click();
-      Thread.sleep(1000);;
-      webDriver.findElement(By.xpath("(//button[@id='document_library_associate'])[4]")).click();
-      Thread.sleep(1000);;
-      }
-      else{            
+      public void ContributorUpload(String upload_Path) throws Exception {
       Thread.sleep(2000);
       logger.debug("Uploading a new document");
       webDriver.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[4]")).click();
@@ -79,7 +54,5 @@ public class Upload4pdfOnSamePage {
       act1.doubleClick(webDriver.findElement(By.xpath("(//button[@id='attach'])[4]"))).build()
           .perform();
       Thread.sleep(2000);
-      }
-      }
       }}
-      
+        

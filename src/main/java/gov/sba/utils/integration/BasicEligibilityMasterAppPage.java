@@ -28,16 +28,20 @@ import junit.framework.TestCase;
       logger.info(
           "8(a) Applicant determines their Basic Eligibility (i.e., a section) for the program");
       // Locate the accept button and click on it.
+      if(webDriver.getCurrentUrl().contains("qa.sba-one")){
       webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
-      // webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a");
-      // Verify new intro page.
+      }
+      else{
+      webDriver.navigate().to("http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+      }     
+      //Verify new introduction page.
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
       Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
       Expected_Text =
           "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
       assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      // ===>Section 1: Eligibility Screening, Subsection 1.1: Screen.
+      //===>Section 1: Eligibility Screening, Subsection 1.1: Screen.
       // Verify and validate this question
       // Q1.1.a.
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));

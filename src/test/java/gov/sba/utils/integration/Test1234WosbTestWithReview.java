@@ -46,7 +46,7 @@ public class Test1234WosbTestWithReview extends TestCase {
     StartWosbProgramPage startWosbProgram = new StartWosbProgramPage(webDriver);
     startWosbProgram.StartWosbProgram();
     // Start a new WOSB Question.
-    NewWosbQuestionPage newWosbQuestion = new NewWosbQuestionPage(webDriver);
+    NewWosbQuestionAnswerNoPage newWosbQuestion = new NewWosbQuestionAnswerNoPage(webDriver);
     newWosbQuestion.NewWosbQuestion();
     // Submit and review the WOSB application.
     WosbReturnCertPage wosbReturnCert = new WosbReturnCertPage(webDriver);
