@@ -1005,7 +1005,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
     Assert.fail();
 }
   
- // logger.info("Success");
+  logger.info("Success");
 }
 @After
 public void tearDown() throws Exception {

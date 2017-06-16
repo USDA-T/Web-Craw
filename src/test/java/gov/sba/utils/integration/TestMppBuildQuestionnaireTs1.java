@@ -4,7 +4,6 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -16,7 +15,6 @@ import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
-import gov.sba.automation.CommonApplicationMethods;
 
 public class TestMppBuildQuestionnaireTs1 extends TestCase {
   private static final Logger logger =
