@@ -1,12 +1,15 @@
-//Ts Created By Deepa Patri
+// Ts Created By Deepa Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.click_Element_Loc;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Elements_Locators;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -18,14 +21,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
-  private static final Logger logger_TestApp309 = LogManager.getLogger(TestApp309DecisionIneligible_EDWOSB.class.getName());
+  private static final Logger logger_TestApp309 =
+      LogManager.getLogger(TestApp309DecisionIneligible_EDWOSB.class.getName());
   // Submit Wosb/EDWOSBApplication
   // Login with Supervisor acccont Decline
   // Login as vendor and Verfiy the dasboard, certificate,Sba_application
@@ -72,8 +79,8 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
 
       String xpath_Element = "//div[@id='table-search']/table/tbody/tr[ "
-              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-              + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
+          + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
+          + "td[position()=3 and contains(text()," + typ_App + ")]	" + "]";
       List<WebElement> current_Row = find_Elements_Locators(webDriver, "xpath", xpath_Element);
       logger_TestApp309.info(current_Row.size() + ": Is the total  Elements");
       if (current_Row.size() > 0) {
@@ -96,21 +103,25 @@ public class TestApp309DecisionIneligible_EDWOSB extends TestCase {
       webDriver.navigate().back();
       Thread.sleep(2000);
       navigationBarClick(webDriver, "Cases");
-      xpath_Element = "//div[@id='table-search']/table/tbody/tr[ td[position()=8 and contains(text(),'neligible')] " +
-              "and td[position()=2]/a[contains(text(),'" + duns_Number + "')]	" +
-              "and td[position()=3 and contains(text()," + typ_App + ")] ]";
+      xpath_Element =
+          "//div[@id='table-search']/table/tbody/tr[ td[position()=8 and contains(text(),'neligible')] "
+              + "and td[position()=2]/a[contains(text(),'" + duns_Number + "')]	"
+              + "and td[position()=3 and contains(text()," + typ_App + ")] ]";
       List<WebElement> current_Row1 = find_Elements_Locators(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(current_Row1.size() > 0);
       navigationBarClick(webDriver, "Logout");
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       // Certificate status - Ineligible, decision- Sba Declined
-      xpath_Element = "//*[@id='certifications']/tbody/tr[ (td[position()=5 and contains(text(),'neligible')]) and (td[position()=1]/a[contains(text(),'EDWOSB')]) ]";
-      List<WebElement> listOfIneliglebEDWOSB = find_Elements_Locators(webDriver, "xpath", xpath_Element);
+      xpath_Element =
+          "//*[@id='certifications']/tbody/tr[ (td[position()=5 and contains(text(),'neligible')]) and (td[position()=1]/a[contains(text(),'EDWOSB')]) ]";
+      List<WebElement> listOfIneliglebEDWOSB =
+          find_Elements_Locators(webDriver, "xpath", xpath_Element);
       Assert.assertTrue(listOfIneliglebEDWOSB.size() > 0);
 
     } catch (Exception e) {
       logger_TestApp309.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp309DecisionIneligible_EDWOSB", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
+          new String[] {"TestApp309DecisionIneligible_EDWOSB", "Exception"});
       throw e;
     }
   }

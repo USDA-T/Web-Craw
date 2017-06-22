@@ -1,18 +1,22 @@
 
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.WebDriver;
+
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.Constants;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.*;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 // @Category(StableTests.class)
@@ -29,7 +33,7 @@ public class TestSearchPage extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     // Get the login based on the environment under test (e.g.
     // 'development', 'qa', 'staging')
@@ -48,10 +52,13 @@ public class TestSearchPage extends TestCase {
     logger.debug("Using test password: " + LoginHelpers.getLoginData().getPassword());
     click_Element(webDriver, "SBA_Login_Button");
 
-    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginData().getEmail());
-    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginData().getPassword());
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email",
+        LoginHelpers.getLoginData().getEmail());
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd",
+        LoginHelpers.getLoginData().getPassword());
 
-    click_Element(webDriver, "OppSup_Dashboard_Business_Signin"); Thread.sleep(1500); //Deepa Sleep needed here
+    click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
+    Thread.sleep(1500); // Deepa Sleep needed here
     org.junit.Assert.assertTrue(webDriver.getCurrentUrl().contains("dashboard"));
   }
 

@@ -1,15 +1,16 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -21,10 +22,10 @@ public class TestUS942AddWosb extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    
+
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();

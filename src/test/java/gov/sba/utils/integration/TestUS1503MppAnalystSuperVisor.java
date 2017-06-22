@@ -1,10 +1,12 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -16,27 +18,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestUS1503MppAnalystSuperVisor extends TestCase {
   private static final Logger logger_US1503 =
       LogManager.getLogger(TestUS1503MppAnalystSuperVisor.class.getName());
-    // Set The variabl.es/Define
-    private static WebDriver webDriver;
+  // Set The variabl.es/Define
+  private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
   @Before
   public void setUp() throws Exception {
-    
-      CommonApplicationMethods.clear_Env_Chrome();
+
+    CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     // webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 30;

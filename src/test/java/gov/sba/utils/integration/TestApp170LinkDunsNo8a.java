@@ -1,12 +1,12 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.casesPageSearch;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,16 +17,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.casesPageSearch;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestApp170LinkDunsNo8a extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
-          LogManager.getLogger(TestApp170LinkDunsNo8a.class.getName());
+      LogManager.getLogger(TestApp170LinkDunsNo8a.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
   String duns_Number, email, password;
@@ -66,8 +67,8 @@ public class TestApp170LinkDunsNo8a extends TestCase {
       if (!webDriver.getPageSource().contains("No results found")) {
         // All cases page 8(a) Analyst
         String xpath_Value =
-                "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-                        + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
+            "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
+                + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
         List<WebElement> current_Row = webDriver.findElements(By.xpath(xpath_Value));
         // Vendor Overview page should display clicking on Duns Number
         // Link
@@ -75,15 +76,16 @@ public class TestApp170LinkDunsNo8a extends TestCase {
           current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
 
           WebElement asset_Exists = webDriver
-                  .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
-                          + duns_Number + "')] ]"));
+              .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
+                  + duns_Number + "')] ]"));
           assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
         }
       }
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {"TestApp170LinkDunsNo8a", "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
+          new String[] {"TestApp170LinkDunsNo8a", "Exception"});
       throw e;
     }
   }

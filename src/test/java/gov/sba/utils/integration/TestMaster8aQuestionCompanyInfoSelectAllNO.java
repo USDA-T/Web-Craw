@@ -1,7 +1,5 @@
 package gov.sba.utils.integration;
 
-import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -14,7 +12,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
-import gov.sba.automation.CommonApplicationMethods;
+
 public class TestMaster8aQuestionCompanyInfoSelectAllNO extends TestCase {
 
   private static final Logger logger =
@@ -25,7 +23,7 @@ public class TestMaster8aQuestionCompanyInfoSelectAllNO extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 12;

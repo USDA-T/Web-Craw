@@ -2,7 +2,6 @@ package gov.sba.automation.examples;
 
 import static org.junit.Assert.assertTrue;
 
-import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -33,7 +32,7 @@ public class TestSimpleLogin {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
   }
 
   @After

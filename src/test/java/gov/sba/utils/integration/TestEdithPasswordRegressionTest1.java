@@ -1,4 +1,4 @@
-//@Montana
+// @Montana
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -32,7 +32,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     Email = "staging2@mailinator.com";
@@ -46,7 +46,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    WebDriverWait wait = new WebDriverWait(webDriver,30);
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Open Firefox,Chrome,and IE and navigate to the valid url.
     EdithpasswordPage edithpassword = new EdithpasswordPage(webDriver);
     edithpassword.Edithpassword();
@@ -92,7 +92,8 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     logger.info(webDriver.findElement(By.id("text_strength")).getText());
     wait.until(ExpectedConditions.elementToBeClickable(By.id("submit")));
     webDriver.findElement(By.id("submit")).click();
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.usa-alert-body > ul > li")));    
+    wait.until(ExpectedConditions
+        .visibilityOfElementLocated(By.cssSelector("div.usa-alert-body > ul > li")));
     // Verify that user sees alert message requesting user to enter all or
     // confirm password.
     String actual_Text5 =

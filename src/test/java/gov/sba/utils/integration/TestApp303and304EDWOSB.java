@@ -1,22 +1,26 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.*;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -43,8 +47,8 @@ public class TestApp303and304EDWOSB extends TestCase {
   public void testMainTest() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
 
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -67,10 +71,12 @@ public class TestApp303and304EDWOSB extends TestCase {
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     AssertionUtils.delete_all_Drafts(webDriver);
 
-    // Verify the Answers are not prefilling from the previous answers when the prepulate falg = 'false';
+    // Verify the Answers are not prefilling from the previous answers when the prepulate falg =
+    // 'false';
     programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
 
-    assertFalse(find_Element(webDriver, "Generic_Questionnaire_Page_Ans_Y").getAttribute("outerHTML").toLowerCase().contains("checked"));
+    assertFalse(find_Element(webDriver, "Generic_Questionnaire_Page_Ans_Y")
+        .getAttribute("outerHTML").toLowerCase().contains("checked"));
 
     // Update the - Prepopulate flag- True ---should Prepopluate the answers
     sql_Q_01 = "update sbaone.questions set  prepopulate = true where name in ('8aq1')";
@@ -80,7 +86,8 @@ public class TestApp303and304EDWOSB extends TestCase {
     webDriver.navigate().refresh();
     Thread.sleep(1000); // CheckSleep
 
-    assertTrue(find_Element(webDriver, "Generic_Questionnaire_Page_Ans_Y").getAttribute("outerHTML").toLowerCase().contains("checked"));
+    assertTrue(find_Element(webDriver, "Generic_Questionnaire_Page_Ans_Y").getAttribute("outerHTML")
+        .toLowerCase().contains("checked"));
     // Reset to Default
     sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
     dbcall = new DatabaseUtils();
@@ -89,8 +96,8 @@ public class TestApp303and304EDWOSB extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
     webDriver.quit();
   }

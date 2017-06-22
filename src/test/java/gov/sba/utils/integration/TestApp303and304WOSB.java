@@ -1,9 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.*;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.focus_window;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,7 +13,13 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -40,8 +47,8 @@ public class TestApp303and304WOSB extends TestCase {
   public void testMainTest() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
 
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -61,7 +68,8 @@ public class TestApp303and304WOSB extends TestCase {
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
     programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-    String checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
+    String checkBoxElement =
+        find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
     // Update the - Prepopulate flag- True ---should Prepopluate the answers
@@ -71,7 +79,8 @@ public class TestApp303and304WOSB extends TestCase {
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
-    checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
+    checkBoxElement =
+        find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertTrue(checkBoxElement.toLowerCase().contains("checked"));
 
     // Reset to Default
@@ -83,8 +92,8 @@ public class TestApp303and304WOSB extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
     webDriver.quit();
   }

@@ -1,8 +1,9 @@
-//@Montana
+// @Montana
 package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -196,7 +197,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -275,7 +276,8 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("1721157");
       webDriver.findElement(By.id("find_business")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='no_vendor_found']/h3"), false));
+      wait.until(ExpectedConditions
+          .elementSelectionStateToBe(By.xpath("//div[@id='no_vendor_found']/h3"), false));
       Thread.sleep(2000);
       Actual_Text = webDriver.findElement(By.xpath("//div[@id='no_vendor_found']/h3")).getText();
       Expected_Text =
@@ -356,7 +358,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -383,7 +385,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       LoginPageWithReference login_Data71 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data71.Login_With_Reference();
-      //webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
       webDriver.findElement(By.id("query")).sendKeys("172115728");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
@@ -408,6 +410,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
       logger.info("Success");
     }
   }
+
   @After
   public void tearDown() throws Exception {
     webDriver.close();

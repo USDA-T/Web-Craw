@@ -1,7 +1,6 @@
-//@Montana
+// @Montana
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -25,7 +24,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 0;

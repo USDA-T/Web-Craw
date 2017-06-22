@@ -1,5 +1,22 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
+
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static gov.sba.pageObjetcs.cases_Page.search_Duns_And_Verify;
+
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -7,27 +24,12 @@ import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.pageObjetcs.cases_Page.search_Duns_And_Verify;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestUs1674EDWOSBAnalystReview extends TestCase {
   private static final Logger logger_US1674_EDWOSB =
-          LogManager.getLogger(TestUs1674EDWOSBAnalystReview.class.getName());
+      LogManager.getLogger(TestUs1674EDWOSBAnalystReview.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
@@ -74,36 +76,45 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       logger_US1674_EDWOSB.info("Cases link is on Main Navigator is Clicked");
 
 
-      List<WebElement> current_Row_EDWOSB = CommonApplicationMethods.find_Elements_Locators_Optional(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'" + duns_Number + "')]  ]/td[1]/a");
+      List<WebElement> current_Row_EDWOSB =
+          CommonApplicationMethods.find_Elements_Locators_Optional(webDriver, "xpath",
+              "//div[@id='table-search']/table/tbody/tr[  td[position()=2]/a[contains(text(),'"
+                  + duns_Number + "')]  ]/td[1]/a");
 
 
       if (current_Row_EDWOSB.size() >= 1) {
         current_Row_EDWOSB.get(0).click();
 
-        assertEquals("Case Overview", find_Element(webDriver,"Case_CaseOverview_title").getText());
-        assertEquals("Start a review", find_Element(webDriver,"Case_CaseOverview_startReview").getText());
+        assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
+        assertEquals("Start a review",
+            find_Element(webDriver, "Case_CaseOverview_startReview").getText());
 
 
-        assertEquals(1, new Select(find_Element(webDriver,"Case_Current_ReviewType")).getOptions().size());
-        assertEquals("Initial Review", new Select(find_Element(webDriver,"Case_Current_ReviewType")).getFirstSelectedOption().getText());
-        new Select(find_Element(webDriver,"Case_Current_Reviewer")).selectByIndex(0);
-        new Select(find_Element(webDriver,"Case_Current_Owner")).selectByVisibleText("Analyst3 X");
+        assertEquals(1,
+            new Select(find_Element(webDriver, "Case_Current_ReviewType")).getOptions().size());
+        assertEquals("Initial Review",
+            new Select(find_Element(webDriver, "Case_Current_ReviewType")).getFirstSelectedOption()
+                .getText());
+        new Select(find_Element(webDriver, "Case_Current_Reviewer")).selectByIndex(0);
+        new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst3 X");
 
-        new Select(find_Element(webDriver,"Case_Current_Supervisor")).selectByVisibleText("Analyst4 X");
-        click_Element(webDriver,"Case_Submit_Button");
-        click_Element(webDriver,"Case_SaveNotes_Button");
+        new Select(find_Element(webDriver, "Case_Current_Supervisor"))
+            .selectByVisibleText("Analyst4 X");
+        click_Element(webDriver, "Case_Submit_Button");
+        click_Element(webDriver, "Case_SaveNotes_Button");
         webDriver.navigate().back();
         webDriver.navigate().back();
         CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
 
       }
 
-      search_Duns_And_Verify(webDriver, duns_Number, "Yes","","");
+      search_Duns_And_Verify(webDriver, duns_Number, "Yes", "", "");
 
       click_Element(webDriver, "Case_Submit_Button");
       click_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav");
 
-      List<WebElement> dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
+      List<WebElement> dropdown =
+          new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -111,12 +122,12 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
 
       assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
       assertEquals("Needs further review", dropdown.get(4).getText());
-      click_Element(webDriver,"SBA_Note_Link");
+      click_Element(webDriver, "SBA_Note_Link");
 
       setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QA");
 
-      click_Element(webDriver,"Application_Common_Save_Notes");
-      click_Element(webDriver,"SBA_Question_Financial_Review_SideNav");
+      click_Element(webDriver, "Application_Common_Save_Notes");
+      click_Element(webDriver, "SBA_Question_Financial_Review_SideNav");
 
 
       // webDriver.findElement(By.xpath("//a[@class='expand_notes']")).click();
@@ -201,24 +212,24 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
       // webDriver.navigate().back();
 
       // Signature Review Page
-      click_Element(webDriver,"SBA_Question_Signature_Review_SideNav");
+      click_Element(webDriver, "SBA_Question_Signature_Review_SideNav");
 
-      dropdown = new Select(find_Element(webDriver,"SBA_Assesment_Status")).getOptions();
+      dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
       logger_US1674_EDWOSB.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
       assertEquals("Information missing", dropdown.get(2).getText());
       assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
       assertEquals("Needs further review", dropdown.get(4).getText());
-      click_Element(webDriver,"SBA_Note_Link");
+      click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
 
-      click_Element(webDriver,"EDWOSB_Common_Page_Commit");
+      click_Element(webDriver, "EDWOSB_Common_Page_Commit");
 
     } catch (Exception e) {
       logger_US1674_EDWOSB.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-              new String[] {"TestUs1674EDWOSBAnalystReview", "Exception"});
+          new String[] {"TestUs1674EDWOSBAnalystReview", "Exception"});
       throw e;
     }
   }

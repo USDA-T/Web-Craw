@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import gov.sba.automation.CommonApplicationMethods;
+
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -21,7 +21,7 @@ public class TestAppAddContributors extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 12;
