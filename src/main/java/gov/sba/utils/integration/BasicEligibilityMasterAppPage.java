@@ -583,4 +583,4 @@ public class BasicEligibilityMasterAppPage extends TestCase {
     HighLight.highLightElement(webDriver, EligibilityCompleteStatus);
 
   }
-
+}
