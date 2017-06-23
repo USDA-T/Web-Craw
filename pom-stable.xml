@@ -102,6 +102,15 @@
     <version>1.0.0</version>
   </dependency>
 </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>21.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 <profiles>
   <profile>
     <id>findbugs</id>
@@ -168,6 +177,15 @@
             <testFailureIgnore>false</testFailureIgnore>
             <groups>gov.sba.utils.integration.StableTests</groups>
         </configuration>
+        <dependencyManagement>
+          <dependencies>
+            <dependency>
+              <groupId>com.google.guava</groupId>
+              <artifactId>guava</artifactId>
+              <version>21.0</version>
+            </dependency>
+          </dependencies>
+        </dependencyManagement>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.surefire</groupId>
@@ -200,6 +218,15 @@
         <configuration>
             <testFailureIgnore>false</testFailureIgnore>
         </configuration>
+      <dependencyManagement>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+          </dependency>
+        </dependencies>
+      </dependencyManagement>
       <dependencies>
         <dependency>
           <groupId>org.apache.maven.surefire</groupId>

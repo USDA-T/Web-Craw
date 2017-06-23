@@ -1,14 +1,16 @@
-// TS_Created_By_Deepa_Patri
+//TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.FixtureUtils;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-import junit.framework.TestCase;
+import java.io.PrintWriter;
 
-@Category({ gov.sba.utils.integration.StableTests.class })
+@Category({gov.sba.utils.integration.StableTests.class})
 public class TestXxxxxFinalCleanUp extends TestCase {
 
     @Before
@@ -17,10 +19,9 @@ public class TestXxxxxFinalCleanUp extends TestCase {
 
     @Test
     public void testMainTest() throws Exception {
-        // PrintWriter writer = new
-        // PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
-        // writer.println("Should_Execution_Stop: \"False\"");
-        // writer.close();
+        PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
+        writer.println("Should_Execution_Stop: \"False\"");
+        writer.close();
     }
 
     @After

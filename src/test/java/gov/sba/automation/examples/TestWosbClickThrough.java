@@ -55,7 +55,7 @@
 // driver.findElement(By.cssSelector("#business_signin")).click();
 // }
 //
-// @Test
+//@Test
 // public void testClickThrough() throws Exception {
 // logger.info("FYI: click through for program:" + programName);
 //
