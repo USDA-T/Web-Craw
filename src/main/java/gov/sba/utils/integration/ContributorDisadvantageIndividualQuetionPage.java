@@ -93,12 +93,12 @@ import junit.framework.TestCase;
     webDriver.findElement(By.linkText("Logout")).click();
     get_The_Row_From_Login_Data = 61;
     LoginPageWithReference login_Data =new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-    login_Data.Login_With_Reference();
-    
-    
-    //Verify intro page.
-    
-    
+    login_Data.Login_With_Reference();      
+    //Verify intro page for DvD.
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/div/div/p"))); 
+    Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
+    Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
+    assertEquals(Actual_Text, Expected_Text);    
     CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));      
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
