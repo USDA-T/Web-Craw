@@ -76,6 +76,7 @@ public class TestApp8aInitialMaterApplication extends TestCase {
         // }
         logger.info("Success");
     }
+>>>>>>> develop
 
     @After
     public void tearDown() throws Exception {

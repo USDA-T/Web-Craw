@@ -22,7 +22,6 @@ public class FinancialSectionSecondPartnerPage {
     public FinancialSectionSecondPartnerPage(WebDriver mydriver) {
         this.webDriver = mydriver;
     }
-
     public void FinancialSectionSecondPartner() throws Exception {
         WebDriverWait wait = new WebDriverWait(webDriver, 40);
         String Actual_Text = null;

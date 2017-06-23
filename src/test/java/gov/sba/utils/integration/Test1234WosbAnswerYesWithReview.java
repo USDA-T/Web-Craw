@@ -20,6 +20,7 @@ public class Test1234WosbAnswerYesWithReview extends TestCase {
 
     @Before
     public void setUp() throws Exception {
+
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         webDriver.manage().window().maximize();

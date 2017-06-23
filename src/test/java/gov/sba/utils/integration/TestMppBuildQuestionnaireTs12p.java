@@ -19,14 +19,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+<<<<<<< HEAD
+=======
 
+>>>>>>> develop
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 public class TestMppBuildQuestionnaireTs12p extends TestCase {
-
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs12p.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;

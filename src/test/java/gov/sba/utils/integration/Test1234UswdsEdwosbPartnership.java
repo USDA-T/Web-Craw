@@ -15,6 +15,7 @@ import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 public class Test1234UswdsEdwosbPartnership extends TestCase {
+
     private static final Logger logger = LogManager.getLogger(Test1234UswdsEdwosbPartnership.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;

@@ -14,13 +14,9 @@ import gov.sba.automation.FixtureUtils;
 import junit.framework.TestCase;
 
 public class BasicEligibilityMasterAppPage extends TestCase {
+
     private static final Logger logger = LogManager.getLogger(BasicEligibilityMasterAppPage.class.getName());
-    WebDriver webDriver;
-
-    public BasicEligibilityMasterAppPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-    }
-
+    WebDriver webDriver;  
     public void BasicEligibilityMasterApp() throws Exception {
         WebDriverWait wait = new WebDriverWait(webDriver, 30);
         logger.debug("Uploading a new document");

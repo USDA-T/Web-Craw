@@ -20,7 +20,6 @@ public class Upload4pdfOnSamePage {
     public Upload4pdfOnSamePage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
-
     public void Upload4pdfOnSame(String upload_Path) throws Exception {
         Thread.sleep(1000);
         logger.debug("Uploading a new document");
@@ -83,3 +82,4 @@ public class Upload4pdfOnSamePage {
         }
     }
 }
+>>>>>>> develop

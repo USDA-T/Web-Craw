@@ -20,7 +20,6 @@ public class Upload3pdfOnSamePage {
     public Upload3pdfOnSamePage(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
-
     public void Upload3pdfOnSame(String upload_Path) throws Exception {
         Thread.sleep(1000);
         logger.debug("Uploading a new document");

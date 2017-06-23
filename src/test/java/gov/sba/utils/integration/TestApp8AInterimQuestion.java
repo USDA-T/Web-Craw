@@ -5,12 +5,14 @@ import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
+@Category({gov.sba.utils.integration.UnstableTests.class})
 public class TestApp8AInterimQuestion extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestApp8AInterimQuestion.class.getName());
     private static WebDriver webDriver;

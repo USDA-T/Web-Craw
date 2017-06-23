@@ -781,9 +781,7 @@ public class FinancialSectionFirstPartnerPage {
         assertEquals(actual_Text111, expected_Text111);
         CoreUtils.clickContinue(webDriver);
         logger.info("Entering Second partner Finances");
-
     }
-
     private void assertEquals(String actual_Text1, String expected_Text1) {
         // TODO Auto-generated method stub
     }

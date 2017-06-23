@@ -21,7 +21,6 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestMppBuildQuestionnaireTs1.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
-
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();

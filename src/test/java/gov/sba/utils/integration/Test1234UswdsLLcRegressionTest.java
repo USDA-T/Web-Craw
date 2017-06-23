@@ -18,7 +18,6 @@ public class Test1234UswdsLLcRegressionTest extends TestCase {
     private static final Logger logger = LogManager.getLogger(Test1234UswdsLLcRegressionTest.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
-
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();

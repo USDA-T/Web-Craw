@@ -19,7 +19,6 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
             .getLogger(Test1234EdwosbAddSecondPartnerAfterReview.class.getName());
     private static WebDriver webDriver;
     int get_The_Row_From_Login_Data;
-
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
@@ -77,9 +76,8 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
         }
         logger.info("Success");
     }
-
-    @After
-    public void tearDown() throws Exception {
-        webDriver.close();
-    }
+  @After
+  public void tearDown() throws Exception {
+    webDriver.close();
+  }
 }

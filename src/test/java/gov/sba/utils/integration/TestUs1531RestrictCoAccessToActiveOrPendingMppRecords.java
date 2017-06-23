@@ -34,7 +34,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         get_The_Row_From_Login_Data = 3;
 
     }
-
     @Test
     public void testMainTest() throws Exception {
         WebDriverWait wait = new WebDriverWait(webDriver, 30);
@@ -230,6 +229,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
                 webDriver.findElement(By.linkText("Logout")).click();
                 logger.info("Success");
 
+
             }
         } else {
             // Click on the My Request Link.
@@ -381,6 +381,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
             }
             logger.info("Success");
         }
+
     }
 
     @After

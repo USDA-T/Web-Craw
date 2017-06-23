@@ -26,7 +26,6 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     String Better_PW;
     String New_PassW;
     String Confirm_New_PassW;
-
     @Before
     public void setUp() throws Exception {
         webDriver = TestHelpers.getDefaultWebDriver();
@@ -122,6 +121,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
         assertEquals(actual_Text3, expected_Text3);
         logger.info("Success");
     }
+
 
     @After
     public void tearDown() throws Exception {
