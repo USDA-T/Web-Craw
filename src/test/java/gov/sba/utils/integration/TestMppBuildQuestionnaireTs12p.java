@@ -1061,3 +1061,4 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       acceptNextAlert = true;
     }
   }
+}
