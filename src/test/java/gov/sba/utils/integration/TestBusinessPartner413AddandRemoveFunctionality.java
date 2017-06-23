@@ -1,28 +1,24 @@
 package gov.sba.utils.integration;
 
-import junit.framework.TestCase;
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.UnstableTests.class})
-public class TestBusinessPartner413AddandRemoveFunctionality  extends TestCase {
-    private static final Logger logger_TestApp395Edwosb =
-            LogManager.getLogger(TestBusinessPartner413AddandRemoveFunctionality.class.getName());
+@Category({ gov.sba.utils.integration.UnstableTests.class })
+public class TestBusinessPartner413AddandRemoveFunctionality extends TestCase {
+    private static final Logger logger_TestApp395Edwosb = LogManager
+            .getLogger(TestBusinessPartner413AddandRemoveFunctionality.class.getName());
     // Get the questions names for which Prepopulate flag set to true
     // Start create New Wosb/Edwosb application
     // Check the Answers are prepopulating with previous answers.
@@ -32,19 +28,19 @@ public class TestBusinessPartner413AddandRemoveFunctionality  extends TestCase {
 
     @Before
     public void setUp() throws Exception {
-        
+
         CommonApplicationMethods.clear_Env_Chrome();
         webDriver = TestHelpers.getDefaultWebDriver();
         webDriver.get(TestHelpers.getBaseUrl());
         CommonApplicationMethods.focus_window();
         get_The_Row_From_Login_Data = 49;
     }
+
     public void testMainTest() throws Exception {
         // Login to dashboard.
         try {
             // Check Dashboard Pending status
-            LoginPageWithReference login_Data =
-                    new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+            LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data.Login_With_Reference();
             // Return the Applicatiom;
             if (CommonApplicationMethods.checkApplicationExists(webDriver, "EDWOSB", "Active")) {
@@ -64,7 +60,8 @@ public class TestBusinessPartner413AddandRemoveFunctionality  extends TestCase {
             NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);
             scorpQuestionsPage.NewScorpQuestionPageDeepa();
 
-            new NewAddBusinessPartern413Deepa(webDriver).NewFinancialQuestion("Mahesh","Prem","987654321","12@gmail.com","1234","Virginia","11111","123","123","Mclean","USA");
+            new NewAddBusinessPartern413Deepa(webDriver).NewFinancialQuestion("Mahesh", "Prem", "987654321",
+                    "12@gmail.com", "1234", "Virginia", "11111", "123", "123", "Mclean", "USA");
             new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
             fillApplCreatePages.finalSignatureSubmit(webDriver);
             // Return the Applicatiom;
@@ -78,7 +75,7 @@ public class TestBusinessPartner413AddandRemoveFunctionality  extends TestCase {
         } catch (Exception e) {
             logger_TestApp395Edwosb.info(e.toString());
             CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-                    new String[] {"TestBusinessPartner413AddandRemoveFunctionality", "Exception"});
+                    new String[] { "TestBusinessPartner413AddandRemoveFunctionality", "Exception" });
             throw e;
         }
     }

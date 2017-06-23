@@ -10,31 +10,31 @@ import junit.framework.TestCase;
 
 public class DeleteDraftCertPage extends TestCase {
 
-  private static final Logger logger =
-      LogManager.getLogger(gov.sba.utils.integration.DeleteDraftCertPage.class.getName());
-  WebDriver webDriver;
+    private static final Logger logger = LogManager
+            .getLogger(gov.sba.utils.integration.DeleteDraftCertPage.class.getName());
+    WebDriver webDriver;
 
-  public DeleteDraftCertPage(WebDriver webDriver) {
-    this.webDriver = webDriver;
-  }
-
-  public void DeleteDraftCert() throws Exception {
-    logger.debug("Draft cert will be deleted");
-    // Verify if there is an existing certification on the dashboard and
-    // delete to start a new certification.
-    try {
-      assertTrue(webDriver.getPageSource().contains("Draft"));
-      Actions act = new Actions(webDriver);
-      act.doubleClick(webDriver.findElement(By.linkText("Delete"))).build().perform();
-      webDriver.switchTo().alert().accept();
-      try {
-        Thread.sleep(5000);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-      webDriver.navigate().refresh();
-    } catch (Error e) {
+    public DeleteDraftCertPage(WebDriver webDriver) {
+        this.webDriver = webDriver;
     }
-  }
+
+    public void DeleteDraftCert() throws Exception {
+        logger.debug("Draft cert will be deleted");
+        // Verify if there is an existing certification on the dashboard and
+        // delete to start a new certification.
+        try {
+            assertTrue(webDriver.getPageSource().contains("Draft"));
+            Actions act = new Actions(webDriver);
+            act.doubleClick(webDriver.findElement(By.linkText("Delete"))).build().perform();
+            webDriver.switchTo().alert().accept();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            webDriver.navigate().refresh();
+        } catch (Error e) {
+        }
+    }
 
 }

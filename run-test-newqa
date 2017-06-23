@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+mvn clean
+\cp src/main/resources/default-jenkins-chrome-linux-certify.newqa.sba-one.net.properties src/main/resources/default.properties
+export TEST_ENV=development && mvn clean test -e -Dtest=TestU*801AmIEligibleTs*

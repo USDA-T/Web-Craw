@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 mvn clean
-\cp src/main/resources/default-qa.properties src/main/resources/default.properties
-export TEST_ENV=development && mvn test
+\cp src/main/resources/default-jenkins-chrome-linux-certify.qa.sba-one.net.properties src/main/resources/default.properties
+export TEST_ENV=development && mvn clean test -e -Dtest=TestU*801AmIEligibleTs*
