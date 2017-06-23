@@ -12,42 +12,42 @@ import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({ gov.sba.utils.integration.StableTests.class })
 
 // _ Project Helpers
 public class TestUS942AddWosb extends TestCase {
-  // Set The variables/Define
-  private static WebDriver webDriver;
-  String duns_Number, email, password;
+    // Set The variables/Define
+    private static WebDriver webDriver;
+    String duns_Number, email, password;
 
-  @Before
-  public void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-    CommonApplicationMethods.clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+        CommonApplicationMethods.clear_Env_Chrome();
+        webDriver = TestHelpers.getDefaultWebDriver();
 
-    webDriver.get(TestHelpers.getBaseUrl());
-    CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
-    email = details[0];
-    password = details[1];
-    duns_Number = details[2];
-  }
+        webDriver.get(TestHelpers.getBaseUrl());
+        CommonApplicationMethods.focus_window();
+        String[] details = DatabaseUtils.findUnusedDunsNumber();
+        email = details[0];
+        password = details[1];
+        duns_Number = details[2];
+    }
 
-  @Test
-  public void testMainTest() throws Exception {
+    @Test
+    public void testMainTest() throws Exception {
 
-    LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-    login_Data.Login_With_Details();
+        LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+        login_Data.Login_With_Details();
 
-    VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();
-    VerifyWOSBFlow.VerifyWOSBFlowSetDriver(webDriver);
-    VerifyWOSBFlow.VerifyWOSBFlowLogic();
-  }
+        VerifyWosbFlow VerifyWOSBFlow = new VerifyWosbFlow();
+        VerifyWOSBFlow.VerifyWOSBFlowSetDriver(webDriver);
+        VerifyWOSBFlow.VerifyWOSBFlowLogic();
+    }
 
-  @After
-  public void tearDown() throws Exception {
-    webDriver.quit();
-  }
+    @After
+    public void tearDown() throws Exception {
+        webDriver.quit();
+    }
 
 }

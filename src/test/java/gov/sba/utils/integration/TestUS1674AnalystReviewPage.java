@@ -48,7 +48,8 @@
 // public void testMainTest() throws Exception {
 //
 // try {
-// LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+// LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email,
+//// password);
 // login_Data.Login_With_Details();
 //
 // navigationMenuClick(webDriver, "Programs");
@@ -59,7 +60,8 @@
 // fillApplCreatePages.finalSignatureSubmit(webDriver);
 // navigationMenuClick(webDriver, "Logout");
 //
-// LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 11);
+// LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver,
+//// 11);
 // login_Data1.Login_With_Reference();
 //
 // navigationMenuClick(webDriver, "Cases");
@@ -69,14 +71,18 @@
 // // assertFalse(webDriver.getPageSource().contains("Under Review"));
 //
 // List<WebElement> current_Row_WOSB = find_Elements(webDriver, "xpath",
-//// "//div[@id='table-search']/table/tbody/tr[ td[3][contains(text(),'WOSB')] and
-//// td[8][contains(text(),'Active')] and td[4][not(contains(text(),'eview'))] ]");
+//// "//div[@id='table-search']/table/tbody/tr[ td[3][contains(text(),'WOSB')]
+//// and
+//// td[8][contains(text(),'Active')] and td[4][not(contains(text(),'eview'))]
+//// ]");
 //
 // if (current_Row_WOSB.size() > 0) {
 // for (int i = 0; i < current_Row_WOSB.size(); i++) {
 // logger_US1674.info(current_Row_WOSB.get(i).getText());
-// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() <= 0);
-// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() <= 0);
+// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length()
+//// <= 0);
+// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length()
+//// <= 0);
 // }
 //
 // searchDuns_Number(webDriver, duns_Number);
@@ -84,17 +90,22 @@
 // click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
 //
 // click_Element(webDriver, "SBA_WOSB_Cert_Link");
-// assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
+// assertEquals("Case Overview", find_Element(webDriver,
+//// "Case_CaseOverview_title").getText());
 // assertEquals("Start a review", find_Element(webDriver,
 //// "Case_CaseOverview_startReview").getText());
 //
-// Select dropdown = new Select(find_Element(webDriver, "Case_Current_ReviewType"));
+// Select dropdown = new Select(find_Element(webDriver,
+//// "Case_Current_ReviewType"));
 // assertEquals(1, dropdown.getOptions().size());
 // assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 //
-// new Select(find_Element(webDriver, "Case_Current_Reviewer")).selectByVisibleText("Analyst2 X");
-// new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst2 X");
-// new Select(find_Element(webDriver, "Case_Current_Supervisor")).selectByVisibleText("Analyst2 X");
+// new Select(find_Element(webDriver,
+//// "Case_Current_Reviewer")).selectByVisibleText("Analyst2 X");
+// new Select(find_Element(webDriver,
+//// "Case_Current_Owner")).selectByVisibleText("Analyst2 X");
+// new Select(find_Element(webDriver,
+//// "Case_Current_Supervisor")).selectByVisibleText("Analyst2 X");
 // click_Element(webDriver, "Application_Common_Submit_Button_Id");
 // webDriver.navigate().back();
 //
@@ -103,14 +114,18 @@
 // navigationMenuClick(webDriver, "Cases");
 // casesPageSearch(webDriver, duns_Number);
 // // assertFalse(webDriver.getPageSource().contains("Under Review"));
-// current_Row_WOSB = CommonApplicationMethods.find_Element_Loc(webDriver, "xpath",
-//// "//div[@id='table-search']/table/tbody/tr[ td[3][contains(text(),'WOSB')] and
+// current_Row_WOSB = CommonApplicationMethods.find_Element_Loc(webDriver,
+//// "xpath",
+//// "//div[@id='table-search']/table/tbody/tr[ td[3][contains(text(),'WOSB')]
+//// and
 //// td[8][contains(text(),'Active')] and td[4][(contains(text(),'eview'))] ]");
 //
 // if (current_Row_WOSB.size() > 0) {
 // for (int i = 0; i < current_Row_WOSB.size(); i++) {
-// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length() > 0);
-// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length() > 0);
+// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[6]")).getText().length()
+//// > 0);
+// assertTrue(current_Row_WOSB.get(i).findElement(By.xpath("td[7]")).getText().length()
+//// > 0);
 // }
 // }
 //
@@ -142,7 +157,8 @@
 // // review')]"))
 // // .click();
 // // List<WebElement> dropdown = new Select(
-// // webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
+// //
+//// webDriver.findElement(By.xpath("//select[@id='assessments__status']"))).getOptions();
 // // logger_US1674.info(dropdown.get(0).getText());
 // // assertEquals("Confirmed", dropdown.get(0).getText());
 // // assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -151,7 +167,8 @@
 // // dropdown.get(3).getText());
 // // assertEquals("Needs further review", dropdown.get(4).getText());
 // // webDriver.findElement(By.id("note_link")).click();
-// // webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']")).sendKeys("Adding
+// //
+//// webDriver.findElement(By.xpath("//textarea[@id='assessments__note_body']")).sendKeys("Adding
 // // notes QA");
 // // webDriver.findElement(By.id("save_notes")).click();
 // //
@@ -165,7 +182,8 @@
 // // .click();
 // //
 // // dropdown = new
-// // Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']")))
+// //
+//// Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']")))
 // // .getOptions();
 // // logger_US1674.info(dropdown.get(0).getText());
 // // assertEquals("Confirmed", dropdown.get(0).getText());
@@ -178,7 +196,8 @@
 // // webDriver.findElement(By.xpath("//textarea[@id='assessment_note_body']"))
 // // .sendKeys("Adding notes QA Signature Page");
 // //
-// // webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[@value='Save
+// //
+//// webDriver.findElement(By.xpath("//*[@id='new_assessment']/div/input[@value='Save
 // // and commit']"))
 // // .click();
 // //

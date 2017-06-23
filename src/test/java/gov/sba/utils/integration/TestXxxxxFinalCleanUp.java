@@ -8,21 +8,23 @@ import org.junit.experimental.categories.Category;
 
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({ gov.sba.utils.integration.StableTests.class })
 public class TestXxxxxFinalCleanUp extends TestCase {
 
-  @Before
-  public void setUp() throws Exception {}
+    @Before
+    public void setUp() throws Exception {
+    }
 
-  @Test
-  public void testMainTest() throws Exception {
-    // PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
-    // writer.println("Should_Execution_Stop: \"False\"");
-    // writer.close();
-  }
+    @Test
+    public void testMainTest() throws Exception {
+        // PrintWriter writer = new
+        // PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
+        // writer.println("Should_Execution_Stop: \"False\"");
+        // writer.close();
+    }
 
-  @After
-  public void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
 
-  }
+    }
 }
