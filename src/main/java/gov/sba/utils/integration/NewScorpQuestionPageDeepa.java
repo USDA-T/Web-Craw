@@ -65,7 +65,7 @@ public class NewScorpQuestionPageDeepa {
         assertEquals(actual_Text, expected_Text);
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_390_Y");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.page8aFillUp(webDriver, "Yes");
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
         // Locate the Changes in Eligiblity
         actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();

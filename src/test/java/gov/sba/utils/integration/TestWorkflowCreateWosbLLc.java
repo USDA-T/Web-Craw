@@ -69,7 +69,7 @@ public class TestWorkflowCreateWosbLLc extends TestCase {
       // start New WOSB Applicatiom
       join_New_Program_CheckBoxes(webDriver, "WOSB");
       new NewLLCQuestionanireDeepa().NewLLCQuestionanireDeepa(webDriver);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
     } catch (Exception e) {
       logger_TestApp395Edwosb.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver, new String[]{TestWorkflowCreateWosbLLc.class.getName(), "Exception"});

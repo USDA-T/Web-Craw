@@ -70,7 +70,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
       MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
       MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
-      // fillApplCreatePages.finalSignatureSubmit(webDriver);
+      // FillApplCreatePages.finalSignatureSubmit(webDriver);
       Thread.sleep(2000);
       CoreUtils.clickContinue(webDriver);
       // Enter a valid DUNS# and verify business.

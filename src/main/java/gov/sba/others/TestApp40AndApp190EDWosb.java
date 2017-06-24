@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -46,8 +46,8 @@ public class TestApp40AndApp190EDWosb extends TestCase {
       programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
       //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       //TestApp40AndApp190.info(file_path_abs);
-      fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes",  "148832876");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes",  "148832876");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
       new LoginPageWithReference(webDriver, 29).Login_With_Reference();
@@ -57,8 +57,8 @@ public class TestApp40AndApp190EDWosb extends TestCase {
       programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
       //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       //TestApp40AndApp190.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
       LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, 11);
       login_Data.Login_With_Reference();

@@ -50,7 +50,7 @@ public class TestWorkflowWOSBVendorSelecting8aNo extends TestCase {
             // start New WOSB Applicatiom
             join_New_Program_CheckBoxes(webDriver, "WOSB");
             new NewLLCQuestionanireDeepa().NewLLCQuestionanireDeepa(webDriver);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
             //Return the Application to Vendor
             navigationMenuClick(webDriver, "LOGOUT");
             return_All_Applications(webDriver, 11, "159165917");

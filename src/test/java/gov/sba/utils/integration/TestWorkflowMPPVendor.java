@@ -57,8 +57,8 @@ public class TestWorkflowMPPVendor extends TestCase {
             String get_Current_Duns_No = webDriver.findElement(By.xpath("//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]")).findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
             logger.info(get_Current_Duns_No);
             programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
-            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
             WebElement current_Row_Draft1_A = webDriver.findElement(
                     By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP')]"));
             WebElement current_Row1_A =

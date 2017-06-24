@@ -12,8 +12,8 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 
-public class fillApplCreatePages {
-  private static final Logger logger = LogManager.getLogger(fillApplCreatePages.class.getName());
+public class FillApplCreatePages {
+  private static final Logger logger = LogManager.getLogger(FillApplCreatePages.class.getName());
 
   public static void pageCaseOverviewFillup(WebDriver webDriver, String review_Type,
                                             String curr_Reviewer, String owner, String supervisor) throws Exception {

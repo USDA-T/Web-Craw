@@ -67,8 +67,8 @@ public class TestApp514EmailNotifications extends TestCase {
         join_New_Program_CheckBoxes(webDriver, "EDWOSB");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
         logger_App514.info(file_path_abs);
-        fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-        fillApplCreatePages.finalSignatureSubmit(webDriver);
+        FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+        FillApplCreatePages.finalSignatureSubmit(webDriver);
         List<WebElement> count_Active =
                 webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
                         + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "

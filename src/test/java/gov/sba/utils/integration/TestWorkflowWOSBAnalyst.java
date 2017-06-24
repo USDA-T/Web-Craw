@@ -59,7 +59,7 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
             programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
             NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
             NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
 
             CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
             navigationBarClick(webDriver, "Cases");

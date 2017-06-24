@@ -50,7 +50,7 @@ public class TestWorkflowMPPVendorSelecting8aYes extends TestCase {
                 String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
                 logger.info(file_path_abs);
-                fillApplCreatePages.page8aFillUp(webDriver, "Yes");
+                FillApplCreatePages.page8aFillUp(webDriver, "Yes");
 
                 WebElement Business_text =
                         webDriver.findElement(By.xpath("//article/h2[contains(text(),'Business Info')]"));
@@ -67,7 +67,7 @@ public class TestWorkflowMPPVendorSelecting8aYes extends TestCase {
                 CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
                 CommonApplicationMethods.accept_Alert(webDriver, 4);
 
-                fillApplCreatePages.finalSignatureSubmit(webDriver);
+                FillApplCreatePages.finalSignatureSubmit(webDriver);
                 logger.info("Application has been submitted sucessfully.");
                 //Verify US1457
                 List<WebElement> count_Pending = webDriver.findElements(By.xpath(

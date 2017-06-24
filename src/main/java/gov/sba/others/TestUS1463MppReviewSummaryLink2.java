@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -66,8 +66,8 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
       //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       //logger_US1463.info(file_path_abs);
-      fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       logger_US1463.info("Doc has been uploaded.");
 
       List<WebElement> count_Pending = find_Elements(webDriver,"xpath","//*[@id='certifications']/tbody/tr[td[position()=1]/a[contains(text(),'MPP')] and td[position()=5 and (contains(text(),'ending'))]]");

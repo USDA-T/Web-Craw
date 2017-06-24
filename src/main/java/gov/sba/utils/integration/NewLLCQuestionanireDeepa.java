@@ -38,7 +38,7 @@ public class NewLLCQuestionanireDeepa {
 
         click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_189_Y");
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
 
         click_Element(webDriver, "Application_Common_Submit_Button");
 

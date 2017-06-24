@@ -61,8 +61,8 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
         logger_US1674_EDWOSB.info(file_path_abs);
-        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-        fillApplCreatePages.finalSignatureSubmit(webDriver);
+        FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+        FillApplCreatePages.finalSignatureSubmit(webDriver);
 
         CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 

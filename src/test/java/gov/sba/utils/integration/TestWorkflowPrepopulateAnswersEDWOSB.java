@@ -18,7 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -71,7 +71,7 @@ public class TestWorkflowPrepopulateAnswersEDWOSB extends TestCase {
       NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);
       scorpQuestionsPage.NewScorpQuestionPageDeepa();
       new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       // Return the Applicatiom;
       navigationMenuClick(webDriver, "LOGOUT");
       AssertionUtils.return_All_Applications(webDriver, 11, "148832876");

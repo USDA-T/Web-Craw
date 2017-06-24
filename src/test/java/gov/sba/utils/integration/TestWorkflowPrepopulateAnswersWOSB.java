@@ -25,9 +25,9 @@ import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
 
-public class TestApp395_WosbFlag extends TestCase {
+public class TestWorkflowPrepopulateAnswersWOSB extends TestCase {
 
-    private static final Logger logger_TestApp395 = LogManager.getLogger(TestApp395_WosbFlag.class.getName());
+    private static final Logger logger_TestApp395 = LogManager.getLogger(TestWorkflowPrepopulateAnswersWOSB.class.getName());
     // Get the questions names for which Prepopulate flag set to true
     // Start create New Wosb/Edwosb application
     // Check the Answers are prepopulating with previous answers.
@@ -57,7 +57,7 @@ public class TestApp395_WosbFlag extends TestCase {
             // Return the Applicatiom;
             if (checkApplicationExists(webDriver, "WOSB", "Active")) {
                 CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
-                AssertionUtils.return_all_Applications(webDriver, 11, "159165917");
+                AssertionUtils.return_All_Applications(webDriver, 11, "159165917");
                 login_Data = new LoginPageWithReference(webDriver, 10);
                 login_Data.Login_With_Reference();
             }
@@ -69,11 +69,11 @@ public class TestApp395_WosbFlag extends TestCase {
             programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
             NewLLCQuestionanireDeepa NewLLCQuestionanireDeepa = new NewLLCQuestionanireDeepa();
             NewLLCQuestionanireDeepa.NewLLCQuestionanireDeepa(webDriver);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
 
             // Return the Applicatiom;
             CommonApplicationMethods.navigationMenuClick(webDriver, "LOGOUT");
-            AssertionUtils.return_all_Applications(webDriver, 11, "159165917");
+            AssertionUtils.return_All_Applications(webDriver, 11, "159165917");
             // Delete All the Draft Applications
             login_Data = new LoginPageWithReference(webDriver, 10);
             login_Data.Login_With_Reference();
@@ -94,7 +94,7 @@ public class TestApp395_WosbFlag extends TestCase {
             assertFalse(checkBoxElement.toLowerCase().contains("checked"));
             click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_189_Y");
             String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-            fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+            FillApplCreatePages.page8aFillUp(webDriver, "Yes");
             click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
 
             checkBoxElement = find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_190_Y").getAttribute("outerHTML");
@@ -146,11 +146,11 @@ public class TestApp395_WosbFlag extends TestCase {
             // Review Section
             click_Element(webDriver, "Application_Common_Submit_Button");
             accept_Alert(webDriver, 6);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
             // Check if the Active certificate is exist-Then Return by analyst
             checkApplicationExists(webDriver, "wosb", "Active");
             navigationMenuClick(webDriver, "LOGOUT");
-            AssertionUtils.return_all_Applications(webDriver, 11, "159165917");
+            AssertionUtils.return_All_Applications(webDriver, 11, "159165917");
         } catch (Exception e) {
             logger_TestApp395.info(e.toString());
             take_ScreenShot_TestCaseName(webDriver, new String[] { "TestApp395_WosbFlag", "Exception" });

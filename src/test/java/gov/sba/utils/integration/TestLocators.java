@@ -14,8 +14,8 @@ import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class })
-public class testLocators extends TestCase {
-    private static final Logger logger = LogManager.getLogger(Test1235OppSuppAdminRole.class.getName());
+public class TestLocators extends TestCase {
+    private static final Logger logger = LogManager.getLogger(TestLocators.class.getName());
     private static WebDriver webDriver;
     String duns_Number, email, password;
     int get_The_Row_From_Login_Data;

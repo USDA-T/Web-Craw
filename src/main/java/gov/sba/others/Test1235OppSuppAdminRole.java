@@ -1,25 +1,38 @@
 //TS_Created_By_Deepa_Patri
-package gov.sba.utils.integration;
+package gov.sba.others;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Elements;
+import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+
+import java.util.List;
+import java.util.Set;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-import java.util.Set;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})

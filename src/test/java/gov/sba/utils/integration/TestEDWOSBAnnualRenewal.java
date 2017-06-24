@@ -18,8 +18,8 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.automation.CommonApplicationMethods.deleteApplication;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestEDWOSBAnnualRenewal extends TestCase {
     private static final Logger logger = LogManager.getLogger(TestEDWOSBAnnualRenewal.class.getName());
@@ -61,7 +61,7 @@ public class TestEDWOSBAnnualRenewal extends TestCase {
             NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);
             scorpQuestionsPage.NewScorpQuestionPageDeepa();
             new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
             //Check Application is submitted sucessfully
             List<WebElement> count_Active = find_Elements(webDriver,"xpath","//table[@id='certifications']/tbody/tr[ td[1]/a[ contains(text(),'EDWOSB') ] and td[5][ contains(text(),'Active') ]]");
             assertEquals(count_Active.size(), 1);

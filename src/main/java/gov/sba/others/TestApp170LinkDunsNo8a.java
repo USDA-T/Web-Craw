@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -59,8 +59,8 @@ public class TestApp170LinkDunsNo8a extends TestCase {
       login_Data.Login_With_Details();
 
       programs_Page.join_New_Program_CheckBoxes(webDriver, "8A");
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit8A(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit8A(webDriver);
       navigationMenuClick(webDriver, "Logout");
 
       // Click on Case Link on main navigator-- 8(a) Analyst

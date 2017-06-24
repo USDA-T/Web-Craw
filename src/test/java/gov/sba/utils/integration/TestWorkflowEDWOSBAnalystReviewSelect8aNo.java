@@ -47,7 +47,7 @@ public class TestWorkflowEDWOSBAnalystReviewSelect8aNo extends TestCase {
    programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB"); // Create New Edwosb Application with select No to all questions with one person's 413 form
    new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
    new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
-   fillApplCreatePages.finalSignatureSubmit(webDriver);
+   FillApplCreatePages.finalSignatureSubmit(webDriver);
    navigationMenuClick(webDriver, "LOGOUT");
     try {
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();

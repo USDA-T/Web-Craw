@@ -21,8 +21,8 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
 import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})

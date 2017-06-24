@@ -61,8 +61,8 @@ public class VerifyEdwosbFlow extends TestCase {
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
     logger.info(file_path_abs);
-    fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-    fillApplCreatePages.finalSignatureSubmit(webDriver);
+    FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+    FillApplCreatePages.finalSignatureSubmit(webDriver);
 
     // Check the section that its active and no delete in action is there
     click_Element(webDriver, "SBA_Vendor_My_Certifications");

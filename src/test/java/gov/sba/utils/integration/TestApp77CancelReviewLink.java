@@ -64,8 +64,8 @@ public class TestApp77CancelReviewLink extends TestCase {
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       // TestApp77CancelReviewLink.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       TestApp77CancelReviewLink.info("Doc has been uploaded.");
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
@@ -152,7 +152,7 @@ public class TestApp77CancelReviewLink extends TestCase {
                         + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]" + "]"))
                 .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
 
-        fillApplCreatePages.pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X",
+        FillApplCreatePages.pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X",
                 "Analyst1 X", "Analyst1 X");
         webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
         webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();

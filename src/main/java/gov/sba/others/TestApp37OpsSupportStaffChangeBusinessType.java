@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;

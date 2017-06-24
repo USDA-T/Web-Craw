@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -60,7 +60,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
      // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       //TestApp220MPPQuestionnaire.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
 
       WebElement Business_text =
           webDriver.findElement(By.xpath("//article/h2[contains(text(),'Business Info')]"));
@@ -77,7 +77,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
       CommonApplicationMethods.click_Element(webDriver, "Application_Common_Submit_Button");
       CommonApplicationMethods.accept_Alert(webDriver, 4);
 
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       TestApp220MPPQuestionnaire.info("Application has been submitted sucessfully.");
 
     } catch (Exception e) {

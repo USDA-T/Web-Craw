@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -61,8 +61,8 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
         programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       logger_US1463.info("Doc has been uploaded.");
 
       List<WebElement> count_Pending = webDriver.findElements(By.xpath(

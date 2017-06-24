@@ -2,7 +2,7 @@
 package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -62,8 +62,8 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
       programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
       //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       //logger_US1699.info(file_path_abs);
-      fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
 
       WebElement current_Row_Draft1_A = webDriver.findElement(
               By.xpath("//article[@id='main-content']//table/tbody/tr/td/a[contains(text(),'MPP')]"));

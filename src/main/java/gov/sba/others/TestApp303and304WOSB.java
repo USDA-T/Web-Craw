@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.*;
@@ -55,8 +55,8 @@ public class TestApp303and304WOSB extends TestCase {
     // Create application Mpp/Edwosb/Wosb/8a
      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
-    fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-    fillApplCreatePages.finalSignatureSubmit(webDriver);
+    FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+    FillApplCreatePages.finalSignatureSubmit(webDriver);
 
     navigationMenuClick(webDriver, "LOGOUT");
 

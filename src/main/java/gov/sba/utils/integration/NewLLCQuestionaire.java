@@ -57,7 +57,7 @@ public class NewLLCQuestionaire {
         Thread.sleep(2000);
         webDriver.findElement(By.name("commit")).click();
         String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
         webDriver.findElement(By.xpath("//input[@type='submit']")).click();
         Thread.sleep(2000);
         // Locate the Change in Eligiblity question,Verify,select No and
@@ -87,7 +87,7 @@ public class NewLLCQuestionaire {
             webDriver.findElement(By.id("answers_250_value_yes")).click();
         }
         file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
         try {
             Thread.sleep(2000);
             webDriver.findElement(By.id("answers_202_value_no")).click();
@@ -96,7 +96,7 @@ public class NewLLCQuestionaire {
             webDriver.findElement(By.id("answers_251_value_no")).click();
         }
         // file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        // fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+        // FillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
         try {
             Thread.sleep(2000);
             webDriver.findElement(By.id("answers_202_comment")).sendKeys(" QA Testing");
@@ -122,7 +122,7 @@ public class NewLLCQuestionaire {
             webDriver.findElement(By.id("answers_203_value_yes")).click();
         }
         file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.page8aFillUp(webDriver, "Yes");
         webDriver.findElement(By.name("commit")).click();
         // Verify the more detail meaning for Ownership questions.
         Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper1_q2 > fieldset > h4")).getText();
@@ -186,7 +186,7 @@ public class NewLLCQuestionaire {
         }
         Thread.sleep(2000);
         file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        fillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
+        FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
         Thread.sleep(2000);
         // 3rd question meaning.
         Actual_Text = webDriver.findElement(By.xpath("//*[@id='answers_oper4_q1']/fieldset/h4")).getText();

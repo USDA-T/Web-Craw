@@ -1,11 +1,6 @@
 //TS_Created_By_Deepa_Patri
-package gov.sba.utils.integration;
+package gov.sba.others;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -13,6 +8,15 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
 
 public class TestAnalystReview {
   private static final Logger TestAnalystReview =
@@ -48,8 +52,8 @@ public class TestAnalystReview {
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
       TestAnalystReview.info(file_path_abs);
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
 

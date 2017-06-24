@@ -45,8 +45,8 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
       login_Data.Login_With_Details();
 
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");
 
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();
@@ -70,8 +70,8 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
       new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
       programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-      fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-      fillApplCreatePages.finalSignatureSubmit(webDriver);
+      FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+      FillApplCreatePages.finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");
 
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();

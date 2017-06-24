@@ -3,7 +3,7 @@ package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -23,8 +23,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUpDunsNo;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})

@@ -20,8 +20,8 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 //Verify US1674
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestWorkflowWOSBSupervisor extends TestCase {

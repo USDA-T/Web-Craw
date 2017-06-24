@@ -5,7 +5,7 @@ package gov.sba.others;
  */
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.fillApplCreatePages;
+import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
@@ -63,8 +63,8 @@ import static gov.sba.pageObjetcs.vendor_Dashboard_Page.verify_Row_In_A_Table_An
             String get_Current_Duns_No = duns_Number;
             logger.info(get_Current_Duns_No);
             programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
-            fillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
-            fillApplCreatePages.finalSignatureSubmit(webDriver);
+            FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
+            FillApplCreatePages.finalSignatureSubmit(webDriver);
             navigationMenuClick(webDriver, "Dashboard");
 
             List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver, new String[]{"MPP Application","","Draft", "","","","Delete"});

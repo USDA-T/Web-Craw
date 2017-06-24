@@ -87,8 +87,8 @@ public class AnalystReviewPage extends TestCase {
                     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
                     AnalystReviewPage.info(file_path_abs);
-                    fillApplCreatePages.page8aFillUp(webDriver, "Yes", file_path_abs);
-                    fillApplCreatePages.finalSignatureSubmit(webDriver);
+                    FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+                    FillApplCreatePages.finalSignatureSubmit(webDriver);
                     AnalystReviewPage.info("Doc has been uploaded.");
 
                 }
@@ -165,7 +165,7 @@ public class AnalystReviewPage extends TestCase {
                 Assert.assertTrue(current_Row.size() > 0);
                 AnalystReviewPage.info(current_Row.get(0).getAttribute("innerHTML"));
                 current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
-                fillApplCreatePages.pageCaseOverviewFillup(webDriver, rev_Type, curr_Review, owner, supervisor);
+                FillApplCreatePages.pageCaseOverviewFillup(webDriver, rev_Type, curr_Review, owner, supervisor);
                 click_Element(webDriver, "Case_Submit_Button");
                 click_Element(webDriver, "Case_Submit_Button");
 

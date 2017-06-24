@@ -19,8 +19,8 @@ import java.util.List;
 import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
 import static gov.sba.automation.AssertionUtils.return_All_Applications;
 import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.fillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.fillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 /*
 WorkFlows for EDWOSB - Accomodating best minimal Workflow Tests

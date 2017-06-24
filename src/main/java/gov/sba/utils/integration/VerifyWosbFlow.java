@@ -94,8 +94,8 @@ public class VerifyWosbFlow {
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 
     logger.info(file_path_abs);
-    fillApplCreatePages.page8aFillUp(webDriver, "Yes");
-    fillApplCreatePages.finalSignatureSubmit(webDriver);
+    FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+    FillApplCreatePages.finalSignatureSubmit(webDriver);
 
     // Check the section that its active and no delete in action is there
     webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
