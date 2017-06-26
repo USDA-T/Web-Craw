@@ -1,15 +1,13 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import gov.sba.utils.integration.FillApplCreatePages;
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static gov.sba.pageObjetcs.analyst_Cases_Page.search_Duns_And_Verify;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -20,10 +18,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.pageObjetcs.analyst_Cases_Page.search_Duns_And_Verify;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 

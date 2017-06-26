@@ -1,7 +1,6 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.utils.integration.LoginPageWithReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
+import gov.sba.utils.integration.LoginPageWithReference;
 import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})

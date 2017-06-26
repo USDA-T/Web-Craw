@@ -1,11 +1,10 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,9 +16,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})

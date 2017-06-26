@@ -1,13 +1,14 @@
 // TS created By Deepa
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import gov.sba.automation.CommonApplicationMethods;
 
 // *Deepa-
 public class NewFinancialSectionQuestionDeepa {

@@ -1,19 +1,20 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
 
 public class VerifyWosbFlow {
   private static final Logger logger = LogManager.getLogger(VerifyWosbFlow.class.getName());

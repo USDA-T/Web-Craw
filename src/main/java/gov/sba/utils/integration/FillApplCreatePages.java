@@ -1,16 +1,22 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import gov.sba.pageObjetcs.programs_Page;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Elements;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
+import gov.sba.pageObjetcs.programs_Page;
 
 public class FillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(FillApplCreatePages.class.getName());

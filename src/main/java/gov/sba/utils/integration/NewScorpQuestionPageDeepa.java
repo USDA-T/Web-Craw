@@ -1,14 +1,15 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
+import static org.junit.Assert.assertEquals;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import static org.junit.Assert.assertEquals;
+import gov.sba.automation.CommonApplicationMethods;
 
 public class NewScorpQuestionPageDeepa {
   private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());

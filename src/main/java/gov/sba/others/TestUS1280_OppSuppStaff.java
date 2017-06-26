@@ -1,11 +1,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.utils.integration.LoginPageWithReference;
-import junit.framework.TestCase;
+import static gov.sba.others.TestuserProfileSearchType.TestuserProfileSearch;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -15,7 +12,11 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.others.TestuserProfileSearchType.TestuserProfileSearch;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})

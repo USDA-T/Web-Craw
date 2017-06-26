@@ -1,15 +1,12 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.FillApplCreatePages;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,11 +14,16 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
+import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
+import junit.framework.TestCase;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})

@@ -1,10 +1,15 @@
 // TS Created by Deepa Patri
 package gov.sba.others;
 
-import gov.sba.automation.*;
-import gov.sba.pageObjetcs.programs_Page;
-import gov.sba.utils.integration.LoginPageWithDetails;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.find_Elements;
+import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -15,11 +20,14 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestWorkflowWOSBVendorSelecting8aYes extends TestCase {

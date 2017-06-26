@@ -1,20 +1,21 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.createApplication;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
+import junit.framework.TestCase;
 
 public class VerifyEdwosbFlow extends TestCase {
   private static final Logger logger = LogManager.getLogger(VerifyEdwosbFlow.class.getName());

@@ -1,9 +1,10 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -13,9 +14,9 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})

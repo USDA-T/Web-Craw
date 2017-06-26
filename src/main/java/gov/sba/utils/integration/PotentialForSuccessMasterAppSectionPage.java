@@ -1,18 +1,11 @@
 package gov.sba.utils.integration;
 
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.bcel.verifier.exc.VerificationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.junit.After;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import junit.framework.TestCase;

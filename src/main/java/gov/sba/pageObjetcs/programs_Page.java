@@ -3,11 +3,12 @@
  */
 package gov.sba.pageObjetcs;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class programs_Page {
 

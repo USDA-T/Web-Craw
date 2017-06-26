@@ -2,15 +2,13 @@
 // TestApp395Edwosb
 package gov.sba.others;
 
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import gov.sba.utils.integration.FillApplCreatePages;
-import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.NewFinancialSectionQuestionDeepa;
-import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.createApplication;
+import static gov.sba.automation.CommonApplicationMethods.deleteApplication;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -20,8 +18,15 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithReference;
+import gov.sba.utils.integration.NewFinancialSectionQuestionDeepa;
+import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
+import junit.framework.TestCase;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})

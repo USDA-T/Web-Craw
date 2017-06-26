@@ -1,17 +1,10 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import gov.sba.utils.integration.FillApplCreatePages;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -19,12 +12,14 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import junit.framework.TestCase;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})

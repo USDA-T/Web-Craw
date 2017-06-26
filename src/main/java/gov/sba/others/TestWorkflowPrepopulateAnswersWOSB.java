@@ -1,14 +1,14 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
-import gov.sba.utils.integration.FillApplCreatePages;
-import gov.sba.utils.integration.LoginPageWithReference;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.checkApplicationExists;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,8 +17,14 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 

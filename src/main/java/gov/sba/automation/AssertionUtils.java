@@ -1,7 +1,18 @@
 package gov.sba.automation;
 
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,11 +20,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-import java.util.Map;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static org.junit.Assert.*;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
 
 public class AssertionUtils {
   public static void verify_Element_Property(WebDriver webdriver, String locator_Yaml,

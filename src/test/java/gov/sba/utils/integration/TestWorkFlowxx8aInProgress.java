@@ -1,9 +1,51 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_8a_Criminal_History_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_8a_Federal_Employment_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_8a_Financial_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_8a_Household_Federal_Employment_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_8a_Prior_Involvement_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Appl_Firm_Ownership_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Bank_Acct_Access_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Basic_Of_Disadvantage_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Business_Affiliations_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_ContactInfo_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_CuurentHomeAddress_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_DateandPlaceofBirth_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Full_Time_Devotion_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Gender_Info_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_LengthofResidency_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_MaritalStatus_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_SocialSecNum_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Social_Narrative_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Tax_Returns_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Transfer_Assets_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_UploadResume_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_Us_Citizenship_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_criminal_Hist_Doc_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_Assessed_Taxes_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_CashOnHand_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_NotesPayableandOther_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_Notes_Receivable_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_OtherSource_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_PersonalSummary_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_Personal_Property_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_PrivacyStatements_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_RealEstateOther_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_RealEstate_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_Retirement_Account_Page;
+import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.disAdvApp_financial_Review_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.BasicEligiblity_Business_Size_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.BasicEligiblity_General_Assessment_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.BasicEligiblity_Outside_Assistance_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.BasicEligiblity_Prior_8a_Involvement_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.BasicEligiblity_Size_Determination_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.Contributor_Page;
+import static gov.sba.pageObjetcs.master_Application_8A.masterApp_8a_Page_Click;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -12,10 +54,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.pageObjetcs.master_Application_8A.*;
-import static gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.*;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.programs_Page;
 
 // Still in progress
 @Category({gov.sba.utils.integration.UnstableTests.class})

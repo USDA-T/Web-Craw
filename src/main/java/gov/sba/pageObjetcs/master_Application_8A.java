@@ -2,14 +2,18 @@
 package gov.sba.pageObjetcs;
 
 
-import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static gov.sba.automation.FixtureUtils.fixturesDir;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.automation.FixtureUtils.fixturesDir;
+import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
 
 public class master_Application_8A {
 
