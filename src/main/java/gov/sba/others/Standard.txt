@@ -1,0 +1,21 @@
+  private static final Logger logger = LogManager.getLogger(TestWorkflowEDWOSB01.class.getName());
+  WebDriver webDriver;
+  String    duns_Number, email, password, typ_App;
+
+  @Before
+  public void setUp() throws Exception {
+    get_Stop_Execution_Flag();
+    clear_Env_Chrome();
+    webDriver = TestHelpers.getDefaultWebDriver();
+    webDriver.get(TestHelpers.getBaseUrl());
+    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    email = details[0]; password = details[1]; duns_Number = details[2];
+  }
+
+  @Test
+  //Test US1647- EDWosb financial section link disbaled for application not having finacial parterns information
+  public void testMainTest() throws Exception {
+    try {
+      return_All_Applications(webDriver, 11, duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();

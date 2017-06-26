@@ -1,16 +1,14 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import static org.junit.Assert.assertEquals;
-
+import gov.sba.automation.CommonApplicationMethods;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.FixtureUtils;
+import static org.junit.Assert.assertEquals;
 
 public class NewScorpQuestionPageDeepa {
     private static final Logger logger = LogManager.getLogger(ScorpQuestionsPage.class.getName());
@@ -25,46 +23,18 @@ public class NewScorpQuestionPageDeepa {
 
         String expected_Text = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
         assertEquals(actual_Text, expected_Text);
-
-        // // Verify the More detail meaning for the 8(A) question.
-        // actual_Text =
-        // webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[2]")).getText();
-        // expected_Text = "If the qualifying individual is not currently an
-        // 8(a) BD Program
-        // Participant, please select “No”. If the qualifying individual was
-        // already approved by the
-        // 8(a) BD Program and at least 51% of the business is held by women,
-        // you are eligible for the
-        // WOSB Program as an EDWOSB and you will skip forward to the “Review”
-        // section of this
-        // application. Please upload your original 8(a) Acceptance Letter and
-        // your most recent Annual
-        // Review Letter.";
-        // assertEquals(actual_Text, expected_Text);
-        //
-        // //
-        // actual_Text =
-        // webDriver.findElement(By.xpath("//div[@id='answers_8aq1']/fieldset/p[3]")).getText();
-        // expected_Text = "If the qualifying individual is both 8(a) and
-        // Third-Party Certified, upload
-        // the documentation for both certifications.";
-        // assertEquals(actual_Text, expected_Text);
-
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_389_N");
 
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
         logger.info("  8(a) question has been answered");
         // Locate the Third Party Certification, question1 and select No and
-        // continue.
-        actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-        expected_Text = "Is the qualifying individual(s) certified as a WOSB or EDWOSB by an SBA-approved Third-Party Certifier?";
         assertEquals(actual_Text, expected_Text);
         // Verify the detail meaning for the third party question.
         actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_tpc1_q1']/fieldset/p[2]")).getText();
         expected_Text = "You may self-certify for the WOSB Program through this website or you may elect to use the services of a Third-Party Certifier to demonstrate eligibility. There is no requirement to use a Third-Party Certifier. However, if you have worked with an SBA-approved Third-Party Certifier to review your business information, please upload the current Third-Party Certifier Certificate.";
         assertEquals(actual_Text, expected_Text);
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_390_Y");
-        String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+        //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
         FillApplCreatePages.page8aFillUp(webDriver, "Yes");
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
         // Locate the Changes in Eligiblity
@@ -151,28 +121,11 @@ public class NewScorpQuestionPageDeepa {
         CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Co", "Usa");
         CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_HPhone", "1234561234");
         CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Bphone", "1012023004");
-
         new Select(CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_title"))
                 .selectByIndex(2);
         new Select(CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_MaritalSt"))
                 .selectByIndex(2);
-
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Done_Button");
-
-        /*
-         * Point coordinates = webDriver.findElement(By.
-         * xpath("//h2[contains(text(),'Financial Data')]")).getLocation();;
-         * Robot robot = new Robot();; robot.keyPress(KeyEvent.VK_ESCAPE);
-         * robot.mouseMove(coordinates.getX(),coordinates.getY());
-         * webDriver.findElement(By.
-         * xpath("//h2[contains(text(),'Financial Data')]")).click();
-         * robot.keyPress(KeyEvent.VK_TAB); Thread.sleep(1500);
-         * robot.keyPress(KeyEvent.VK_TAB); Thread.sleep(1500);
-         * robot.keyPress(KeyEvent.VK_TAB); Thread.sleep(1500);
-         */
-        // robot.keyPress(KeyEvent.VK_RIGHT);
-        // robot.keyPress(KeyEvent.VK_DOWN);
-        // robot.keyPress(KeyEvent.VK_DOWN);
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_423_N");
         CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
     }

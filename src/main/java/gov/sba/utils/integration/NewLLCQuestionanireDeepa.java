@@ -1,24 +1,18 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.FixtureUtils;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class NewLLCQuestionanireDeepa {
 
-    private static final Logger logger = LogManager
-            .getLogger(gov.sba.utils.integration.NewLLCQuestionanireDeepa.class.getName());
-    WebDriver webDriver;
-
-    public void NewLLCQuestionanireDeepa(WebDriver webDriver) throws Exception {
+    public static void newLLCQuestionanireDeepa(WebDriver webDriver) throws Exception {
+        Logger logger = LogManager
+                .getLogger(gov.sba.utils.integration.NewLLCQuestionanireDeepa.class.getName());
         String Actual_Text = null;
         String Expected_Text = null;
         // Locate the 8(a) question and select No and continue.
@@ -37,8 +31,9 @@ public class NewLLCQuestionanireDeepa {
         assertEquals(Actual_Text, Expected_Text);
 
         click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_189_Y");
-        String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-        FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
+        //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+        FillApplCreatePages.page8aFillUp(webDriver, "Yes");
+        //FillApplCreatePages.genericUploadDoc(webDriver, "Yes", file_path_abs);
 
         click_Element(webDriver, "Application_Common_Submit_Button");
 
@@ -102,7 +97,7 @@ public class NewLLCQuestionanireDeepa {
 
     }
 
-    private void assertEquals(String actual_Text1, String expected_Text1) {
+    private static void assertEquals(String actual_Text1, String expected_Text1) {
         // TODO Auto-generated method stub
     }
 }

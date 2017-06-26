@@ -49,6 +49,8 @@ SBA_Assesment_Status:         {Locator: 'xpath', Value: "//select[@id='assessmen
 SBA_Question_Assesment_Status_Options:    {Locator: 'xpath', Value: "//select[@id='assessment_status']"}
 SBA_Note_Link:                {Locator: 'id', Value: "note_link"}
 
+SBA_Review_Nav:               {Locator: 'xpath', Value: "//div[contains(@class,'review_nav')]"}
+
 SBA_Assesments_Note_Body:     {Locator: 'xpath', Value: "//textarea[@id='assessments__note_body']"}
 SBA_Assesment_Note_Body:     {Locator: 'xpath', Value: "//textarea[@id='assessment_note_body']"}
 
@@ -57,6 +59,7 @@ SBA_Question_Financial_Review_SideNav:    {Locator: 'xpath', Value: "//ul[contai
 SBA_Question_Signature_Review_SideNav:    {Locator: 'xpath', Value: "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Signature review')]"}
 SBA_Question_Determinations_SideNav:      {Locator: 'xpath', Value: "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(@href,'determinations')]"}
 SBA_Question_Review_Save_Continue:        {Locator: 'xpath', Value: "//input[@value='Save and continue']"}
+SBA_Review_Determination_Save_Button:     {Locator: 'xpath', Value: "//input[ contains(@class,'save-button') ]"}
 
 SBA_Question_New_Determination_Review_Started:        {Locator: 'xpath', Value: "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]"}
 SBA_Question_New_Determination_Return_For_Mod:        {Locator: 'xpath', Value: "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]"}
@@ -64,19 +67,20 @@ SBA_Question_New_Determination_Reccomend_For_Eligibile:        {Locator: 'xpath'
 SBA_Question_New_Determination_Reccomend_For_InEligibile:        {Locator: 'xpath', Value: "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]"}
 
 #Case Overview Fill Up
-SBA_Case_Overview_Select_Link: {Locator: 'xpath', Value: "//ul[@class='usa-sidenav-list']/li/a[contains(text(),'ase overview')]"}
-SBA_Case_Overview_Select_Review_Type: {Locator: 'xpath', Value: "//select[@id='review_type']"}
-SBA_Case_Overview_Select_Reviewer_Id: {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_reviewer_id']"}
-SBA_Case_Overview_Select_Owner_Id: {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
-SBA_Case_Overview_Select_Supervisor_Id: {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
-SBA_Case_Overview_Open_Application_Summary: {Locator: 'xpath', Value: "//button[@id='open_app_sum_button']"}
-SBA_Case_Overview_Return_to_vendor:          {Locator: 'xpath', Value: "//button[@id='ret_to_vendor_button']"}
+SBA_Case_Overview_Select_Link:                {Locator: 'xpath', Value: "//ul[@class='usa-sidenav-list']/li/a[contains(text(),'ase overview')]"}
+SBA_Case_Overview_Select_Review_Type:         {Locator: 'xpath', Value: "//select[@id='review_type']"}
+SBA_Case_Overview_Select_Reviewer_Id:         {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_reviewer_id']"}
+SBA_Case_Overview_Select_Owner_Id:            {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
+SBA_Case_Overview_Select_Supervisor_Id:       {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
+SBA_Case_Overview_Open_Application_Summary:   {Locator: 'xpath', Value: "//button[@id='open_app_sum_button']"}
+SBA_Case_Overview_Return_to_vendor:           {Locator: 'xpath', Value: "//button[@id='ret_to_vendor_button']"}
+SBA_Analyst_Review_Vendor_Overview:           {Locator: 'xpath', Value: "//a [ contains (text(), 'Vendor Overview') ]"}
 
 #Common
 Application_Common_Accept_Button:             {Locator: 'classname', Value: "accept_button"}
 Application_Common_Submit_Button:             {Locator: 'xpath', Value: "//input[@type='submit']"}
 Application_Common_Submit_Button_Id:          {Locator: 'id', Value: "submit_button"}
-Application_Common_Save_Notes:                {Locator: 'id', Value: "save_notes"}
+Application_Common_Save_Notes_Id:                {Locator: 'id', Value: "save_notes"}
 Application_Common_Parent_Element:            {Locator: 'xpath', Value: ".."}
 
 Application_Common_Continue_Button:   {Locator: 'xpath', Value: "//input[ @type='submit' and @value='Continue' ]"}
@@ -126,7 +130,7 @@ Opp_Support_Admin_Page_Cases:                   {Locator: 'xpath', Value:  "//ar
 #EDWOSB_Scorp Questionnaire_Page with No flow
 EDWOSB_Questionnaire_Page_Titl1_Main: {Locator: 'xpath', Value: "//div[@id='answers_8aq1']/fieldset/h4"}
 
-WOSB_Self_Certification_Link: {Locator: 'linktext', Value: "WOSB Self-Certification"}
+
 
 EDWOSB_Questionnaire_Page_Ans_389_N: {Locator: 'id', Value: "answers_389_value_no"}
 EDWOSB_Questionnaire_Page_Ans_390_Y: {Locator: 'id', Value: "answers_390_value_yes"}
@@ -188,7 +192,7 @@ EDWOSB_Questionnaire_Page_Done_Button: {Locator: 'xpath', Value: "//button[ cont
 EDWOSB_Questionnaire_Page_Ans_423_N: {Locator: 'id', Value: "answers_423_value_no"}
 
 EDWOSB_Questionnaire_Page_Commit: {Locator: 'name', Value: "commit"}
-EDWOSB_Common_Page_Commit: {Locator: 'xpath', Value: "//input[@name='commit']"}
+SBA_Common_Page_Commit: {Locator: 'xpath', Value: "//input[@name='commit']"}
 EDWOSB_Questionnaire_Page_Continue: {Locator: 'xpath', Value:  "//div[3]/button"}
 #EDWOSB_Questionnaire_Page_FinancialData: {Locator: 'xpath', Value:  "//h2[contains(text(),'Financial Data')]"}
 
@@ -250,9 +254,14 @@ Generic_Questionnaire_Page_Ans_N: {Locator: 'xpath', Value: "//input[@type='radi
 #8A_Page_Question_Ans_N_General: {Locator: 'xpath', Value: "//input[ @type='radio' and contains( @id,'_value_no' ) ]"}
 
 #Dashboard
-Vendor_Overview_Page_Rt_Vend_All: {Locator: 'linkText', Value: "Return to Vendor"}
-SBA_EDWOSB_Table_Link: {Locator: 'linkText', Value: "EDWOSB Self-Certification"}
+Vendor_Overview_Page_Rt_Vend_All: {Locator: 'linktext', Value: "Return to Vendor"}
 Vendor_Overview_Page_Download_Zip: {Locator: 'xpath', Value: "//a[contains(text(), 'Zip') and ( contains(text(), 'Download') or contains(text(), 'Generate') ) ]"}
+
+SBA_EDWOSB_Table_Link:            {Locator: 'linktext', Value: "EDWOSB Self-Certification"}
+SBA_EDWOSB_Table_Renew_Link:      {Locator: 'linktext', Value: "Renew"}
+SBA_WOSB_Table_Link:              {Locator: 'linktext', Value: "WOSB Self-Certification"}
+SBA_WOSB_Table_Renew_Link:        {Locator: 'linktext', Value: "Renew"}
+SBA_MPP_Table_Link:               {Locator: 'linktext', Value: "MPP Application"}
 
 #Dashboard
 OppSup_Dashboard_Business_Signin: {Locator: 'id', Value: "business_signin"}
@@ -274,15 +283,14 @@ Main_Page_Help_Page_Link_Edit: {Locator: 'xpath', Value: "//a[@href='/help_pages
 
 
 Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
-Analyst_Review_Determ_Page_Return_Mod_Link: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
 Analyst_Review_Legal_Business_Name: {Locator: 'xpath', Value: "td/a[contains(text(),'Legal Business Name')]"}
-SBA_Review_Determ_Made:      {Locator: 'id', Value: "review_workflow_state_determination_made"}
-SBA_Review_Determ_Decision: {Locator: 'xpath', Value: "//select[@id='determination_decision')]"}
-SBA_Review_Review_Started: {Locator: 'id', Value: "review_workflow_state_assigned_in_progress"}
-SBA_Review_Return_For_Mod: {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
-SBA_Review_Recommend_Eligible: {Locator: 'id', Value: "review_workflow_state_recommend_eligible"}
-SBA_Review_Recommend_InEligible: {Locator: 'id', Value: "review_workflow_state_recommend_ineligible"}
-Analyst_Review_Determ_Decision: {Locator: 'id', Value: "determination_decision"}
+SBA_Review_Determ_Made:           {Locator: 'id', Value: "review_workflow_state_determination_made"}
+SBA_Review_Determ_Decision:       {Locator: 'xpath', Value: "//select[@id='determination_decision')]"}
+SBA_Review_Review_Started:        {Locator: 'id', Value: "review_workflow_state_assigned_in_progress"}
+SBA_Review_Return_For_Mod:        {Locator: 'id', Value: "review_workflow_state_returned_for_modification"}
+SBA_Review_Recommend_Eligible:    {Locator: 'id', Value: "review_workflow_state_recommend_eligible"}
+SBA_Review_Recommend_InEligible:  {Locator: 'id', Value: "review_workflow_state_recommend_ineligible"}
+Analyst_Review_Determ_Decision:   {Locator: 'id', Value: "determination_decision"}
 
 # My Contracting SBA Program start
 # @My_Contracting_Programs
@@ -386,14 +394,16 @@ SBA_Sig_Submit_Legal_4: {Locator: 'xpath', Value: "//input[@id='legal_4']"}
 SBA_Sig_Submit_Legal_5: {Locator: 'xpath', Value: "//input[@id='legal_5']"}
 
 # Links for My Certifications
-SBA_Vendor_My_Certifications:       {Locator: 'xpath', Value: "//a[contains(@href,'/vendor_admin/my_certifications') ]"}
+SBA_Vendor_My_Certifications:              {Locator: 'xpath', Value: "//a[contains(@href,'/vendor_admin/my_certifications') ]"}
 SBA_Table_My_Certifications_All_Rows:       {Locator: 'xpath', Value: "//table[@id='certifications']/tbody/tr"}
+SBA_Table_My_Certifications_All_Rows_Col:   {Locator: 'xpath', Value: "//table[@id='certifications']/tbody/tr/td[number_To_Replace]"}
 
 # @Links_Under_DashBoard Start
 SBA_Certificate_Links_Wosb:       {Locator: 'xpath', Value: "//a[ contains( @href, 'certificate_types/wosb/' ) ]"}
 SBA_Certificate_Links_EdWosb:       {Locator: 'xpath', Value: "//a[ contains( @href, 'certificate_types/edwosb/' ) ]"}
 SBA_Certificate_Links_Mpp:       {Locator: 'xpath', Value: "//a[ contains( @href, 'certificate_types/mpp/' ) ]"}
 SBA_Certificate_Links_8ADocUpload:       {Locator: 'xpath', Value: "//a[ contains( @href, 'certificate_types/eight_a/' ) ]"}
+Sba_App_Remove:                          {Locator: 'xpath', Value: "//a[ @class='remove' and contains(text(), 'emove')]"}
 
 # Mpp Self cert Summary page
 
@@ -402,6 +412,7 @@ SBA_MPP_Self_Cert_Summ_Title:       {Locator: 'xpath', Value: "//div[contains(@c
 SBA_MPP_Self_Cert_Summ_Name:        {Locator: 'xpath', Value: "//div[@class='wosb-detail-page']/div/div/h3[contains(text(),'Entity ') and contains(text(),' Legal Business Name')]"}
 SBA_Legal_Businesss_Name_Link:      {Locator: 'xpath', Value: "//a[contains(text(),'Legal Business Name')]"}
 SBA_Table_Applications:             {Locator: 'xpath', Value: "//table[@id='certifications']/tbody"}
+SBA_Table_Applications_Exist:       {Locator: 'id', Value: "certifications"}
 SBA_Table_Business_Search_First_App:   {Locator: 'xpath', Value: "//div[@id='business_search']/div[2]/div[1]/div[1]/h4/a"}
 SBA_WOSB_Cert_Link:                 {Locator: 'xpath', Value: "//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"}
 Case_CaseOverview_title:            {Locator: 'xpath', Value: "//article[@id='main-content']/div/div[2]/h1"}
@@ -430,7 +441,7 @@ SBA_Application_Any_Draft_Delete:                 {Locator: 'linktext', Value: "
 #Cases Search Main
 
 Cases_Page_Search_Duns_Button:                   {Locator: 'id', Value: "search-all-cases-button"}
-Cases_Page_Search_Duns_Link:                     {Locator: 'xpath', Value: "//td/a[contains(text(),'duns_Number_Replace')]"}
+Cases_Page_Search_Duns_Link:                     {Locator: 'xpath', Value: "//div[@id='table-search']/table/tbody/tr/td/a[contains(text(),'duns_Number_Replace')]"}
 Cases_Page_Verify_Duns_Pending:                  {Locator: 'xpath', Value: "//td[contains(text(),'ending')]"}
 
 #Ops Support

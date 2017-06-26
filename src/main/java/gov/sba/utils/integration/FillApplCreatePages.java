@@ -3,7 +3,6 @@ package gov.sba.utils.integration;
 import gov.sba.pageObjetcs.programs_Page;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -93,12 +92,14 @@ public class FillApplCreatePages {
     try {
       if (answer01.toUpperCase().contains("YES")) {
 
-        for (int i = 0; i < 10; i++) {
+        List<WebElement> all_Yes = find_Elements(webDriver, "All_Answers_Yes");
+
+        for (int i = 0; i < all_Yes.size(); i++) {
           try {
-            click_Element(webDriver, "All_Answers_Yes");
-            i = 20;
+            all_Yes.get(i).click();
           } catch (Exception e) {
             logger.info(e.toString());
+            throw e;
           }
         }
 
@@ -152,14 +153,17 @@ public class FillApplCreatePages {
 
       if (answer01.toUpperCase().contains("YES")) {
 
-        for (int i = 0; i < 7; i++) {
+        List<WebElement> all_Yes = find_Elements(webDriver, "All_Answers_Yes");
+
+        for (int i = 0; i < all_Yes.size(); i++) {
           try {
-            click_Element(webDriver, "All_Answers_Yes");
+            all_Yes.get(i).click();
           } catch (Exception e) {
             logger.info(e.toString());
-            i = 20;
+            throw e;
           }
         }
+
         programs_Page.generic_file_Upld(webDriver);
         //new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
 

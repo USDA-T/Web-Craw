@@ -2,17 +2,10 @@
 
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.checkApplicationExists;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.deleteApplication;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
-import java.util.List;
-
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.pageObjetcs.programs_Page;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -21,10 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.pageObjetcs.programs_Page;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class AnalystReviewPage extends TestCase {
     private static final Logger AnalystReviewPage = LogManager.getLogger(AnalystReviewPage.class.getName());
@@ -244,7 +236,7 @@ public class AnalystReviewPage extends TestCase {
                 click_Element(webDriver, "Application_Common_Submit_Button");
 
                 click_Element(webDriver, "SBA_Question_Determinations_SideNav");
-                click_Element(webDriver, "Analyst_Review_Determ_Page_Return_Mod_Link");
+                click_Element(webDriver, "SBA_Review_Return_For_Mod");
                 click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
 
                 webDriver.navigate().back();

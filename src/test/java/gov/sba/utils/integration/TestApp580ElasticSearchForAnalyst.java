@@ -38,7 +38,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
         // webDriver.navigate().to("https://certify.qa.sba-one.net/sba_analyst/cases/all_cases/");
@@ -148,7 +148,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         get_The_Row_From_Login_Data = 3;
         LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data1.Login_With_Reference();
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         DeleteDraftCertPage deleteDraftCert13 = new DeleteDraftCertPage(webDriver);
@@ -159,10 +159,10 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
         EDWOSBEightATestPage eDWOSBEightATest = new EDWOSBEightATestPage(webDriver);
         eDWOSBEightATest.EDWOSBEightATest();
         // Verify for active and Draft program on the dashboard, if draft
-        // delete and start a new one.
+        // TestWorkFlowxx8aInProgress and start a new one.
         webDriver.findElement(By.linkText("Dashboard")).click();
         // Verify if there is an existing certification on the dashboard and
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert2.DeleteDraftCert();
         AddOrStartNewMppProgramPage1 addOrStartNewMppProgram = new AddOrStartNewMppProgramPage1(webDriver);
@@ -304,7 +304,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
             get_The_Row_From_Login_Data = 3;
             LoginPageWithReference login_Data11 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
             login_Data11.Login_With_Reference();
-            // delete one draft.
+            // TestWorkFlowxx8aInProgress one draft.
             DeleteDraftCertPage deleteDraftCert21 = new DeleteDraftCertPage(webDriver);
             deleteDraftCert21.DeleteDraftCert();
             logger.info("SUCCESS");

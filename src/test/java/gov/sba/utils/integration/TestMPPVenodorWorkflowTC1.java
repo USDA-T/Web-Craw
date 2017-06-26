@@ -3,9 +3,7 @@ package gov.sba.utils.integration;
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.cases_Page;
 import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -153,7 +151,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
                                 + text_To_Find + "')]"));
                 logger.info(current_Title_Txt.getText());
 
-                webDriver.findElement(By.xpath("//a[@data-method='delete']")).click();
+                webDriver.findElement(By.xpath("//a[@data-method='TestWorkFlowxx8aInProgress']")).click();
 
                 LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 29);
                 login_Data1.Login_With_Reference();
@@ -168,12 +166,12 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
 
                 // else Delete it if in Draft all of the Draft applications
                 Boolean isPresent =
-                        (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
+                        (webDriver.findElements(By.xpath("//a[@class='TestWorkFlowxx8aInProgress-cert']")).size() > 0);
                 logger.info(isPresent);
                 while (isPresent) {
-                    webDriver.findElement(By.xpath("//a[@class='delete-cert']")).click();
+                    webDriver.findElement(By.xpath("//a[@class='TestWorkFlowxx8aInProgress-cert']")).click();
                     webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
-                    isPresent = (webDriver.findElements(By.xpath("//a[@class='delete-cert']")).size() > 0);
+                    isPresent = (webDriver.findElements(By.xpath("//a[@class='TestWorkFlowxx8aInProgress-cert']")).size() > 0);
                     logger.info(isPresent);
                     isPresent = false;
                 }

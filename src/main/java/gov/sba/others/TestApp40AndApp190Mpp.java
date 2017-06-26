@@ -93,7 +93,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
             a1.click();
 
             click_Element(webDriver, "Application_Common_Submit_Button_Id");
-            click_Element(webDriver, "Application_Common_Save_Notes");
+            click_Element(webDriver, "Application_Common_Save_Notes_Id");
 
             if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb") || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
                 List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));

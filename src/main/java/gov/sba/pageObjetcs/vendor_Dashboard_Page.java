@@ -15,11 +15,8 @@ import java.util.Map;
 import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class vendor_Dashboard_Page {
-    private static final Logger logger = LogManager.getLogger(vendor_Dashboard_Page.class.getName());
 
     public static List<WebElement> verify_Row_In_A_Table_And_Return(WebDriver webDriver, String[] values_To_Check) throws Exception {
-
-
 
             List<WebElement> table_Rows = find_Elements(webDriver,"SBA_Table_My_Certifications_All_Rows", true);
             for(int i=0;i<table_Rows.size();i++){
@@ -43,6 +40,25 @@ public class vendor_Dashboard_Page {
                 }
             }//Frist loop : Finish for all rows
             return null;
-
     }
+
+    public static void click_On_App_In_Vend_Dash(WebDriver webDriver, String values_To_Click) throws Exception {
+        List<WebElement> links = null;
+        switch (values_To_Click.toLowerCase()) {
+            case "wosb":
+                click_Element(webDriver, "SBA_WOSB_Table_Link");
+                //find_Elements(webDriver, "SBA_WOSB_Table_Link").get(0).click();
+                break;
+            case "edwosb":
+                click_Element(webDriver, "SBA_EDWOSB_Table_Link");
+                //find_Elements(webDriver, "SBA_EDWOSB_Table_Link").get(0).click();
+                break;
+            case "mpp":
+                click_Element(webDriver, "SBA_MPP_Table_Link");
+                //find_Elements(webDriver, "SBA_MPP_Table_Link").get(0).click();
+                break;
+        }
+    }
+
+
 }

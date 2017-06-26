@@ -2,7 +2,6 @@
 package gov.sba.others;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
 
 
@@ -10,7 +9,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.cases_Page;
+import gov.sba.pageObjetcs.analyst_Cases_Page;
 import gov.sba.pageObjetcs.programs_Page;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
@@ -134,7 +133,7 @@ public class TestUS1457MPPPending extends TestCase {
       login_Data1.Login_With_Reference();
       logger_US1457.info(login_Data1);
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      cases_Page.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
+      analyst_Cases_Page.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
 
     } catch (Exception e) {
       logger_US1457.info(e.toString());

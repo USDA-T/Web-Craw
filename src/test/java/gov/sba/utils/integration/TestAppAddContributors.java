@@ -36,10 +36,10 @@ public class TestAppAddContributors extends TestCase {
         // Login to dashboard.
         LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
         login_Data.Login_With_Reference();
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         webDriver.navigate().to(

@@ -44,24 +44,24 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         login_Data.Login_With_Reference();
         logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
         // Verify if there is an existing certification on the dashboard and
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
         deleteDraftCert.DeleteDraftCert();
         // Delete second draft if any.
         DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert1.DeleteDraftCert();
         // Verify for active and Draft certification on the dashboard, if draft
-        // delete and start a new EDWOSB certification.
+        // TestWorkFlowxx8aInProgress and start a new EDWOSB certification.
         AddOrStartCertificationPage addOrStartCertification = new AddOrStartCertificationPage(webDriver);
         addOrStartCertification.AddOrStartCertification();
         // Start new 8(a) application.
         EDWOSBEightATestPage eDWOSBEightATest = new EDWOSBEightATestPage(webDriver);
         eDWOSBEightATest.EDWOSBEightATest();
         // Verify for active and Draft program on the dashboard, if draft
-        // delete and start a new one.
+        // TestWorkFlowxx8aInProgress and start a new one.
         webDriver.findElement(By.linkText("Dashboard")).click();
         // Verify if there is an existing certification on the dashboard and
-        // delete to start a new certification.
+        // TestWorkFlowxx8aInProgress to start a new certification.
         DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
         deleteDraftCert2.DeleteDraftCert();
         AddOrStartNewMppProgramPage1 addOrStartNewMppProgram = new AddOrStartNewMppProgramPage1(webDriver);

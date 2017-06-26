@@ -51,11 +51,11 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
       // Verify if there is an existing program on the dashboard and
-      // delete to start a new certification.
+      // TestWorkFlowxx8aInProgress to start a new certification.
       DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
       deleteDraftCert.DeleteDraftCert();
       // Verify for active and Draft program on the dashboard, if draft
-      // delete and start a new one.
+      // TestWorkFlowxx8aInProgress and start a new one.
       AddOrStartNewMppProgramPage addOrStartNewMppProgram =
           new AddOrStartNewMppProgramPage(webDriver);
       addOrStartNewMppProgram.AddOrStartNewMppProgram();
