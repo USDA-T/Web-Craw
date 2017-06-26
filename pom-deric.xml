@@ -17,11 +17,6 @@
       <version>4.11</version>
   </dependency>
   <dependency>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava</artifactId>
-    <version>21.0</version>
-  </dependency>
-  <dependency>
     <groupId>org.apache.poi</groupId>
     <artifactId>poi</artifactId>
     <version>3.11</version>
@@ -58,15 +53,13 @@
   </dependency>
   <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
-    <!--<artifactId>selenium-java</artifactId>-->
-    <artifactId>selenium-support</artifactId>
-    <version>3.0.1</version>
+    <artifactId>selenium-java</artifactId>
+    <version>3.4.0</version>
   </dependency>
   <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-server</artifactId>
-    <!--<artifactId>selenium-support</artifactId>-->
-    <version>3.0.1</version>
+    <version>3.4.1</version>
   </dependency>
   <dependency>
     <groupId>org.apache.logging.log4j</groupId>
@@ -104,6 +97,37 @@
     <version>1.1.0</version>
   </dependency>
 </dependencies>
+<profiles>
+  <profile>
+    <id>findbugs</id>
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.4</version>
+          <configuration>
+            <effort>Max</effort>
+            <failOnError>true</failOnError>
+            <threshold>Low</threshold>
+            <xmlOutput>true</xmlOutput>
+            <includeTests>true</includeTests>
+          </configuration>
+          <executions>
+            <execution>
+              <id>analyze-compile</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>check</goal>
+                <goal>findbugs</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+  </profile>
+</profiles>
 <build>
   <pluginManagement>
     <plugins>
@@ -137,10 +161,7 @@
         <version>2.20</version>
         <configuration>
             <testFailureIgnore>false</testFailureIgnore>
-            <includes>
-              <include>**/TestWorkflow*.java</include>
-              <include>**/Test*FinalCleanUp*.java</include>
-            </includes>
+            <groups>gov.sba.utils.integration.DericTests</groups>
         </configuration>
         <dependencies>
           <dependency>
@@ -149,6 +170,11 @@
             <version>2.20</version>
           </dependency>
         </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.4</version>
       </plugin>
     </plugins>
   </pluginManagement>
@@ -177,7 +203,49 @@
         </dependency>
       </dependencies>
     </plugin>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>findbugs-maven-plugin</artifactId>
+      <version>3.0.4</version>
+      <configuration>
+        <effort>Max</effort>
+        <threshold>Low</threshold>
+        <xmlOutput>true</xmlOutput>
+        <includeTests>true</includeTests>
+        <!-- NOTE: don't stop on error -->
+        <failOnError>false</failOnError>
+        <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>verify</phase>
+          <goals>
+            <goal>check</goal>
+            <goal>findbugs</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
   </plugins>
 </build>
-<reporting> </reporting>
+<reporting>
+  <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>findbugs-maven-plugin</artifactId>
+      <version>3.0.4</version>
+      <configuration>
+        <effort>Max</effort>
+        <threshold>Low</threshold>
+        <xmlOutput>true</xmlOutput>
+        <includeTests>true</includeTests>
+      </configuration>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-report-plugin</artifactId>
+      <version>2.20</version>
+    </plugin>
+  </plugins>
+</reporting>
 </project>
