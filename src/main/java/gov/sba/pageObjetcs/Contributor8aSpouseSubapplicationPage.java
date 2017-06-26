@@ -20,10 +20,10 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
 
 
-public class contributor_8a_spouse_subapplication_Page {
+public class Contributor8aSpouseSubapplicationPage {
 
   private static final Logger logger =
-      LogManager.getLogger(contributor_8a_spouse_subapplication_Page.class.getName());
+      LogManager.getLogger(Contributor8aSpouseSubapplicationPage.class.getName());
 
 
   public static void doUpload_Action() throws Exception {

@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.automation.AssertionUtils;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewFinancialSectionQuestionDeepa;
@@ -73,7 +73,7 @@ public class TestWorkflowPrepopulateAnswersEDWOSB extends TestCase {
       deleteApplication(webDriver, "Wosb", "Draft");
 
       // start New Applicatiom
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       // Create New Edwosb Application with select No to all questions
       // with one person's 413 form
       NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);

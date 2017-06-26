@@ -3,7 +3,7 @@ package gov.sba.others;
 import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
 import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.pageObjetcs.vendor_Dashboard_Page.verify_Row_In_A_Table_And_Return;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 /**
  * Created by deepa on 6/19/2017.
@@ -66,7 +66,7 @@ public class TestWorkflowMPPVendor extends TestCase {
 
       String get_Current_Duns_No = duns_Number;
       logger.info(get_Current_Duns_No);
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
       FillApplCreatePages.finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Dashboard");

@@ -5,7 +5,7 @@ import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
 import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 

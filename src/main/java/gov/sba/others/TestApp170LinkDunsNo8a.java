@@ -21,7 +21,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -57,7 +57,7 @@ public class TestApp170LinkDunsNo8a extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "8A");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "8A");
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit8A(webDriver);
       navigationMenuClick(webDriver, "Logout");

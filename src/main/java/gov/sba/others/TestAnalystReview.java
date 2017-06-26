@@ -13,7 +13,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -48,7 +48,7 @@ public class TestAnalystReview {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
 
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 

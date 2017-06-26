@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
 
@@ -58,7 +58,7 @@ public class TestApp303and304Mpp extends TestCase {
     login_Data.Login_With_Details();
 
     // Create application Mpp/Edwosb/Wosb/8a
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
     // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     // logger_303.info(file_path_abs);
     page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
@@ -66,7 +66,7 @@ public class TestApp303and304Mpp extends TestCase {
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
     assertFalse(find_Element(webDriver, "General_Answer_Page_8A_117_Yes").getAttribute("outerHTML")
         .toLowerCase().contains("checked"));
 

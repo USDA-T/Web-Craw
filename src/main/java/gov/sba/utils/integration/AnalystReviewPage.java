@@ -23,7 +23,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import junit.framework.TestCase;
 
 public class AnalystReviewPage extends TestCase {
@@ -81,7 +81,7 @@ public class AnalystReviewPage extends TestCase {
         deleteApplication(webDriver, "WOSB", "Draft");
 
         if (!checkApplicationExists(webDriver, "WOSB", "Active")) {
-          programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+          ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
           click_Element(webDriver, "General_5a_Id_Answer");
 

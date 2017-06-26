@@ -1,7 +1,7 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 
 import java.util.List;
 

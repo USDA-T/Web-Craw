@@ -16,7 +16,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
@@ -50,7 +50,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
     try {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver
           .findElement(By.xpath(
               "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))

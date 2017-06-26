@@ -12,7 +12,7 @@ import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
 import static gov.sba.automation.CommonApplicationMethods.setText_Element;
 import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
 

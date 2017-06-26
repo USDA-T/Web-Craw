@@ -25,7 +25,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
@@ -66,7 +66,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
           .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger_US1699.info(get_Current_Duns_No);
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       // logger_US1699.info(file_path_abs);
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);

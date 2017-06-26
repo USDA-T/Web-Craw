@@ -27,7 +27,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import junit.framework.TestCase;
@@ -63,7 +63,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
 
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_US1081.info(file_path_abs);
     page8aFillUp(webDriver, "Yes");

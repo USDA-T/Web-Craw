@@ -17,7 +17,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
@@ -55,7 +55,7 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
 
     try {
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);

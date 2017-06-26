@@ -28,8 +28,8 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.analyst_Cases_Page;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.AnalystCasesPage;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -62,7 +62,7 @@ public class TestWorkflowMPPVendorSelecting8aYes extends TestCase {
     try {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver
           .findElement(By.xpath(
               "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
@@ -168,7 +168,7 @@ public class TestWorkflowMPPVendorSelecting8aYes extends TestCase {
       LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, 29);
       login_Data1.Login_With_Reference();
       CommonApplicationMethods.navigationBarClick(webDriver, "Cases");
-      analyst_Cases_Page.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
+      AnalystCasesPage.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
 
 
 

@@ -25,7 +25,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
 
@@ -58,7 +58,7 @@ public class TestWorkflowWOSBVendorSelecting8aYes extends TestCase {
     login_Data.Login_With_Details();
     String app_Type_Passed = "WOSB";
     // For WOSB and EDWOSB Active status - Create new app if not existing
-    programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     page8aFillUp(webDriver, "Yes");
     finalSignatureSubmit(webDriver);

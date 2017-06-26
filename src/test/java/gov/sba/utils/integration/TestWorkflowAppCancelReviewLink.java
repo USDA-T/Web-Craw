@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import junit.framework.TestCase;
 
 
@@ -54,7 +54,7 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
       // webDriver.findElement(By.id("answers_188_value_yes")).click();
       webDriver
           .findElement(By.xpath(

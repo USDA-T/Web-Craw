@@ -4,7 +4,7 @@ package gov.sba.others;
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
 import static gov.sba.automation.CommonApplicationMethods.find_Element;
 import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.pageObjetcs.analyst_Cases_Page.search_Duns_And_Verify;
+import static gov.sba.pageObjetcs.AnalystCasesPage.search_Duns_And_Verify;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -59,7 +59,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
     String app_Type_Passed = "EDWOSB";
     // For WOSB and EDWOSB Active status - Create new app if not existing
     CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
-    programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
 
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
 

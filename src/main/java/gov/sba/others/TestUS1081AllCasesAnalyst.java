@@ -23,7 +23,7 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -66,7 +66,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
         new String[] {"TestUS1081AllCasesAnalyst", "Login_Screenshot"});
 
 
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
     logger_US1081.info(file_path_abs);
     FillApplCreatePages.page8aFillUp(webDriver, "Yes");

@@ -17,7 +17,7 @@ import gov.sba.automation.AssertionUtils;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import junit.framework.TestCase;
@@ -56,7 +56,7 @@ public class TestApp303and304WOSB extends TestCase {
 
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     // Create application Mpp/Edwosb/Wosb/8a
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
     FillApplCreatePages.page8aFillUp(webDriver, "Yes");
     FillApplCreatePages.finalSignatureSubmit(webDriver);
@@ -70,7 +70,7 @@ public class TestApp303and304WOSB extends TestCase {
 
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
     String checkBoxElement =
         find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));

@@ -32,7 +32,7 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -71,7 +71,7 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
       delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, duns_Number);
       new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();
       // start New WOSB Applicatiom
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
       newLLCQuestionanireDeepa(webDriver);
       FillApplCreatePages.finalSignatureSubmit(webDriver);
 
@@ -189,7 +189,7 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
       login_Data.Login_With_Details();
       try {
         // Create application Mpp/Edwosb
-        programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+        ProgramsPage.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
         page8aFillUp(webDriver, "Yes");
         finalSignatureSubmit(webDriver);
 

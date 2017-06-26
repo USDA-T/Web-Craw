@@ -20,7 +20,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -42,7 +42,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
 
     // Check Pending for MPP
     if (app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-      programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       // TestApp40AndApp190Mpp.info(file_path_abs);
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", "148832876");
@@ -53,7 +53,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
       login_Data.Login_With_Reference();
     } else {
       // For WOSB and EDWOSB Active status - Create new app if not
-      programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       // TestApp40AndApp190Mpp.info(file_path_abs);
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");

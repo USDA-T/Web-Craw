@@ -12,7 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class vendor_Dashboard_Page {
+public class VendorDashboardPage {
 
   public static List<WebElement> verify_Row_In_A_Table_And_Return(WebDriver webDriver,
       String[] values_To_Check) throws Exception {

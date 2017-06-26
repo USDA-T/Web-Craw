@@ -25,8 +25,8 @@ import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.analyst_Cases_Page;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.AnalystCasesPage;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -66,7 +66,7 @@ public class TestUS1457MPPPending extends TestCase {
 
     try {
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "MPP");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "MPP");
       webDriver.findElement(By.id("answers_117_value_yes")).click();
       String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
@@ -140,7 +140,7 @@ public class TestUS1457MPPPending extends TestCase {
       login_Data1.Login_With_Reference();
       logger_US1457.info(login_Data1);
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      analyst_Cases_Page.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
+      AnalystCasesPage.search_Duns_And_Verify(webDriver, duns_Number, "yes", "Pending", "No");
 
     } catch (Exception e) {
       logger_US1457.info(e.toString());

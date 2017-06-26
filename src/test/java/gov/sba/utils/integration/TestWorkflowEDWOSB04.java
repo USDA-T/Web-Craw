@@ -10,9 +10,9 @@ import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Fla
 import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
 import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
 import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.pageObjetcs.analyst_Cases_Page.return_DunsNo_Cases_Table;
-import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.vendor_Dashboard_Page.click_On_App_In_Vend_Dash;
+import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 

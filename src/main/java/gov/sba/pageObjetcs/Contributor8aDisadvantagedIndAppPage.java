@@ -19,10 +19,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
 
-public class contributor_8a_Disadvantaged_IndApp_Page {
+public class Contributor8aDisadvantagedIndAppPage {
 
   private static final Logger logger = LogManager
-      .getLogger(gov.sba.pageObjetcs.contributor_8a_Disadvantaged_IndApp_Page.class.getName());
+      .getLogger(gov.sba.pageObjetcs.Contributor8aDisadvantagedIndAppPage.class.getName());
 
 
 

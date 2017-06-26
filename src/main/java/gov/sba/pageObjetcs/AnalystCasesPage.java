@@ -17,9 +17,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class analyst_Cases_Page {
+public class AnalystCasesPage {
   private static final Logger logger_Cases_Page =
-      LogManager.getLogger(analyst_Cases_Page.class.getName());
+      LogManager.getLogger(AnalystCasesPage.class.getName());
 
   public static void search_Duns_And_Verify(WebDriver webDriver, String which_Duns,
       String click_Duns_YesORNo, String verify_State, String delete_Draft) throws Exception {

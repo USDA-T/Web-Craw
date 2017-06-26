@@ -20,7 +20,7 @@ import org.openqa.selenium.WebDriver;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
@@ -56,7 +56,7 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");
@@ -87,7 +87,7 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
       // Submit the application again
       new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");

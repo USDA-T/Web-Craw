@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import gov.sba.automation.AssertionUtils;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewAddBusinessPartern413Deepa;
@@ -61,7 +61,7 @@ public class TestWorkflowBusinessPartner413AddandRemove extends TestCase {
 
       // start New Applicatiom
       navigationMenuClick(webDriver, "Programs");
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       // Create New Edwosb Application with select No to all questions
       // with one person's 413 form
       NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);

@@ -29,7 +29,7 @@ import org.openqa.selenium.WebElement;
 
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import junit.framework.TestCase;
@@ -63,7 +63,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
     try {
       // Login as vendor admin and submit a application
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       page8aFillUp(webDriver, "Yes");
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "LOGOUT");

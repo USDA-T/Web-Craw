@@ -21,7 +21,7 @@ import gov.sba.automation.AssertionUtils;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.FillApplCreatePages;
 import gov.sba.utils.integration.LoginPageWithReference;
 import junit.framework.TestCase;
@@ -71,7 +71,7 @@ public class TestWorkflowPrepopulateAnswersWOSB extends TestCase {
 
       // start New WOSB Applicatiom
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
       newLLCQuestionanireDeepa(webDriver);
       FillApplCreatePages.finalSignatureSubmit(webDriver);
 
@@ -85,7 +85,7 @@ public class TestWorkflowPrepopulateAnswersWOSB extends TestCase {
 
       // start New WOSB Applicatiom again - to check the prepopulation
 
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
       String checkBoxElement =
           find_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_No").getAttribute("outerHTML");

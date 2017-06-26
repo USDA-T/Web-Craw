@@ -25,7 +25,7 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import junit.framework.TestCase;
 
 @Ignore
@@ -63,7 +63,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
               "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
           .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger.info(get_Current_Duns_No);
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", get_Current_Duns_No);
       FillApplCreatePages.finalSignatureSubmit(webDriver);
       WebElement current_Row_Draft1_A = webDriver.findElement(

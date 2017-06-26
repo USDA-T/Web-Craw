@@ -10,7 +10,7 @@ import static gov.sba.automation.CommonApplicationMethods.setText_Element;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-public class programs_Page {
+public class ProgramsPage {
 
   public static void select_MyCertifications_Table(WebDriver webDriver, String which_Cert)
       throws Exception {

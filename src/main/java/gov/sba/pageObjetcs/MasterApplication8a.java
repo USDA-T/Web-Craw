@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
 
-public class master_Application_8A {
+public class MasterApplication8a {
 
-  private static final Logger logger = LogManager.getLogger(master_Application_8A.class.getName());
+  private static final Logger logger = LogManager.getLogger(MasterApplication8a.class.getName());
 
   public static void masterApp_8a_Page_Click(WebDriver webDriver, String link_To_Click)
       throws Exception {
@@ -264,7 +264,7 @@ public class master_Application_8A {
       Thread.sleep(900);
       click_Element(webDriver, "BasicEligibility_Size_Add_Req_Choose");
       Thread.sleep(900);
-      contributor_8a_Disadvantaged_IndApp_Page.doUpload_Action();
+      Contributor8aDisadvantagedIndAppPage.doUpload_Action();
       Thread.sleep(800);
       click_Element(webDriver, "Upload_Attach_Button");
       new Select(find_Element(webDriver, "BasicEligibility_SBA_Office")).selectByIndex(1);

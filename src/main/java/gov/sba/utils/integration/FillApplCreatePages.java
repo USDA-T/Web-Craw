@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 
 public class FillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(FillApplCreatePages.class.getName());
@@ -119,7 +119,7 @@ public class FillApplCreatePages {
         }
 
         // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
-        programs_Page.generic_file_Upld(webDriver);
+        ProgramsPage.generic_file_Upld(webDriver);
         logger.info("Doc has been uploaded.");
         // click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(3000);
         click_Element(webDriver, "Application_Common_Submit_Button");
@@ -184,7 +184,7 @@ public class FillApplCreatePages {
           }
         }
 
-        programs_Page.generic_file_Upld(webDriver);
+        ProgramsPage.generic_file_Upld(webDriver);
         // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
 
         click_Element(webDriver, "Application_Common_Submit_Button");

@@ -23,7 +23,7 @@ import org.openqa.selenium.support.ui.Select;
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.programs_Page;
+import gov.sba.pageObjetcs.ProgramsPage;
 import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -67,7 +67,7 @@ public class TestSupervisorDecisionDeclined extends TestCase {
       String typ_App = "EDWOSB";
 
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      programs_Page.join_New_Program_CheckBoxes(webDriver, typ_App);
+      ProgramsPage.join_New_Program_CheckBoxes(webDriver, typ_App);
       // logger_TestApp309.info(file_path_abs);
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
