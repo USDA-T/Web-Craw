@@ -1,4 +1,4 @@
-//by Montana.
+// by Montana.
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,15 +15,16 @@ import gov.sba.automation.FixtureUtils;
 import junit.framework.TestCase;
 
 public class ContributorsFinancialSectionPage extends TestCase {
-    private static final Logger logger = LogManager.getLogger(ContributorsFinancialSectionPage.class.getName());
-    WebDriver webDriver;
+  private static final Logger logger =
+      LogManager.getLogger(ContributorsFinancialSectionPage.class.getName());
+  WebDriver webDriver;
 
-    public ContributorsFinancialSectionPage(WebDriver webDriver) {
-      this.webDriver = webDriver;
-    }
+  public ContributorsFinancialSectionPage(WebDriver webDriver) {
+    this.webDriver = webDriver;
+  }
 
-    public void ContributorsFinancialSection() throws Exception {
-      try{
+  public void ContributorsFinancialSection() throws Exception {
+    try {
       WebDriverWait wait = new WebDriverWait(webDriver, 30);
       logger.info("Contributors financial section begins");
       String Actual_Text = null;
@@ -48,13 +49,15 @@ public class ContributorsFinancialSectionPage extends TestCase {
           .findElement(By.cssSelector("#answers_edwosb_savings_balance > fieldset > h4")).getText();
       Expected_Text = "Savings Account(s) Balance";
       assertEquals(Actual_Text, Expected_Text);
-      Actual_Text = webDriver
-          .findElement(By.cssSelector("#answers_edwosb_checking_balance > fieldset > h4")).getText();
+      Actual_Text =
+          webDriver.findElement(By.cssSelector("#answers_edwosb_checking_balance > fieldset > h4"))
+              .getText();
       Expected_Text = "Checking Account(s) Balance";
       assertEquals(Actual_Text, Expected_Text);
       // Detail Section.
-      Actual_Text = webDriver
-          .findElement(By.xpath("//div[@id='answers_edwosb_cash_as_of_date']/fieldset/p")).getText();
+      Actual_Text =
+          webDriver.findElement(By.xpath("//div[@id='answers_edwosb_cash_as_of_date']/fieldset/p"))
+              .getText();
       Expected_Text =
           "Use the date of the information provided (i.e. the last date of the previous month). The information must be no older than 30 days old.";
       assertEquals(Actual_Text, Expected_Text);
@@ -116,23 +119,22 @@ public class ContributorsFinancialSectionPage extends TestCase {
       Expected_Text = "Your Equity in Other Firms";
       assertEquals(Actual_Text, Expected_Text);
       // Detail Section.
-      Actual_Text =
-          webDriver.findElement(By.xpath("//fieldset/p")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//fieldset/p")).getText();
       Expected_Text = "Include yearly salary from applicant firm or other salaried positions.";
       assertEquals(Actual_Text, Expected_Text);
-      Actual_Text =
-          webDriver.findElement(By.cssSelector("#answers_edwosb_other_income_comment > fieldset > p"))
-              .getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_edwosb_other_income_comment > fieldset > p"))
+          .getText();
       Expected_Text =
           "Include income from any other sources not identified elsewhere, such as retirement/pension or disability income. Do not include investment or real estate income, which are detailed in another section. Alimony or child support payments should not be disclosed in “Other Income” unless it is desired to have such payments counted toward total income. If you have other income, please describe the source in the comment box.";
       assertEquals(Actual_Text, Expected_Text);
-      Actual_Text = webDriver.findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p"))
-          .getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p")).getText();
       Expected_Text =
           "This is the value of the individual’s equity interest in the applicant firm. The applicant firm is the firm seeking certification with SBA. Use the applicant firm’s current balance sheet to determine the value of the equity interest. The value of equity interest equals the applicant firm’s net worth multiplied by the individual’s ownership percentage.";
       assertEquals(Actual_Text, Expected_Text);
-      Actual_Text = webDriver.findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p"))
-          .getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_edwosb_biz_equity > fieldset > p")).getText();
       Expected_Text =
           "This is the value of the individual’s equity interest in the applicant firm. The applicant firm is the firm seeking certification with SBA. Use the applicant firm’s current balance sheet to determine the value of the equity interest. The value of equity interest equals the applicant firm’s net worth multiplied by the individual’s ownership percentage.";
       assertEquals(Actual_Text, Expected_Text);
@@ -152,7 +154,7 @@ public class ContributorsFinancialSectionPage extends TestCase {
       CoreUtils.clickContinue(webDriver);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
       Expected_Text = "This field is required.";
-      assertEquals(Actual_Text, Expected_Text);     
+      assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("70000");
       // Locate the Other Income search box and enter Other Income.
       webDriver.findElement(By.xpath("//div[2]/fieldset/div/div[2]/input")).sendKeys("80000");
@@ -236,17 +238,19 @@ public class ContributorsFinancialSectionPage extends TestCase {
       webDriver.findElement(By.cssSelector("button.btn")).click();
       // Upload document.
       String file_path_abs4 = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-      UploadDocumentContributorsPage UploadDocumentContributors2 = new UploadDocumentContributorsPage(webDriver);
+      UploadDocumentContributorsPage UploadDocumentContributors2 =
+          new UploadDocumentContributorsPage(webDriver);
       UploadDocumentContributors2.UploadDocumentContributors(file_path_abs4);
       // Verify the expanded second question.
-      Actual_Text =
-          webDriver.findElement(By.cssSelector("#answers_other_retirement_accounts > fieldset > h4"))
-              .getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_other_retirement_accounts > fieldset > h4"))
+          .getText();
       Expected_Text = "Do you have any other retirement accounts?";
       assertEquals(Actual_Text, Expected_Text);
       // Details.
-      Actual_Text = webDriver
-          .findElement(By.cssSelector("#answers_other_retirement_accounts > fieldset > p")).getText();
+      Actual_Text =
+          webDriver.findElement(By.cssSelector("#answers_other_retirement_accounts > fieldset > p"))
+              .getText();
       Expected_Text =
           "Include all other retirement accounts such as traditional IRA, 401K, Self Employed Pension Plan, Thrift Savings Plan, etc. Include retirement accounts that could be held in a trust. If yes, upload information on the terms and restrictions of the account. Supplying the most recent account statement from your retirement account provider will suffice in most cases. SBA will not include the funds in calculating your net worth if the statement indicates that the funds are not available until retirement age without a significant penalty.";
       assertEquals(Actual_Text, Expected_Text);
@@ -263,8 +267,9 @@ public class ContributorsFinancialSectionPage extends TestCase {
       /// Upload document.
       String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
       ContributorUploadPage2 contributorUpload = new ContributorUploadPage2(webDriver);
-      contributorUpload.ContributorUpload(file_path_abs); 
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
+      contributorUpload.ContributorUpload(file_path_abs);
+      wait.until(
+          ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='commit']")));
       CoreUtils.clickContinue(webDriver);
       // Life Insurance section.
       // Click on the continue button to verify section is required.
@@ -300,7 +305,8 @@ public class ContributorsFinancialSectionPage extends TestCase {
       webDriver.findElement(By.cssSelector("button.btn")).click();
       // Locate and select yes for question, Do you have loan against a life
       // insurance.
-      Actual_Text = webDriver.findElement(By.cssSelector("#answers_life_insurance_loans > fieldset > h4")).getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_life_insurance_loans > fieldset > h4")).getText();
       Expected_Text = "Do you have any loans against a life insurance policy?";
       assertEquals(Actual_Text, Expected_Text);
       wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/fieldset/div/label")));
@@ -323,7 +329,8 @@ public class ContributorsFinancialSectionPage extends TestCase {
       // Detail Section.
       Actual_Text =
           webDriver.findElement(By.xpath("//div[@id='answers_stocks_bonds']/fieldset/p")).getText();
-      Expected_Text = "Total value equals the Market Value Quotation multiplied by the number of shares.";
+      Expected_Text =
+          "Total value equals the Market Value Quotation multiplied by the number of shares.";
       assertEquals(Actual_Text, Expected_Text);
       WebElement StocksBonds =
           webDriver.findElement(By.xpath("//div[@id='answers_stocks_bonds']/fieldset/p"));
@@ -342,7 +349,7 @@ public class ContributorsFinancialSectionPage extends TestCase {
       webDriver.findElement(By.cssSelector("button.btn")).click();
       CoreUtils.clickContinue(webDriver);
       logger.info("Heyyyy! Stocks and Bones section answered.");
-   // Select Yes for Real Estate - Primary Residence Section questions.
+      // Select Yes for Real Estate - Primary Residence Section questions.
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
       Expected_Text = "Real Estate - Primary Residence";
       assertEquals(Actual_Text, Expected_Text);
@@ -388,9 +395,9 @@ public class ContributorsFinancialSectionPage extends TestCase {
       Expected_Text =
           "Is there a lien, 2nd mortgage or Home Equity Line of Credit on your primary residence?";
       assertEquals(Actual_Text, Expected_Text);
-      //Actual_Text = webDriver.findElement(By.xpath("//div[9]/fieldset/h4")).getText();
-      //Expected_Text = "Do you receive income from your primary residence (rent, etc.)?";
-      //assertEquals(Actual_Text, Expected_Text);
+      // Actual_Text = webDriver.findElement(By.xpath("//div[9]/fieldset/h4")).getText();
+      // Expected_Text = "Do you receive income from your primary residence (rent, etc.)?";
+      // assertEquals(Actual_Text, Expected_Text);
       // Details.
       Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
       Expected_Text =
@@ -400,7 +407,7 @@ public class ContributorsFinancialSectionPage extends TestCase {
       HighLight.highLightElement(webDriver, PRDetails);
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/input")));
       webDriver.findElement(By.xpath("//div[2]/input"))
-      .sendKeys("8597 weems rd 2000 ln manassas va 30998");
+          .sendKeys("8597 weems rd 2000 ln manassas va 30998");
       webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
       webDriver.findElement(By.xpath("//div[3]/fieldset/div/div[2]/input")).sendKeys("50");
       webDriver.findElement(By.xpath("//div[4]/fieldset/div/div[2]/input")).sendKeys("98");
@@ -421,7 +428,8 @@ public class ContributorsFinancialSectionPage extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // B-Question
       Actual_Text = webDriver
-          .findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"))
+          .findElement(
+              By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"))
           .getText();
       Expected_Text = "What is the current balance of the lien(s)?";
       assertEquals(Actual_Text, Expected_Text);
@@ -449,16 +457,16 @@ public class ContributorsFinancialSectionPage extends TestCase {
       webDriver.findElement(By.xpath("//div[12]/fieldset/div/input")).click();
       webDriver.findElement(By.xpath("//div[13]/fieldset/div/div[2]/input")).sendKeys("50");
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("section_submit_button")));
-      CoreUtils.clickContinue(webDriver);     
+      CoreUtils.clickContinue(webDriver);
       logger.info("Real Estate - Primary Residence section answered.");
-      //Select Yes for Real Estate - Other section.
+      // Select Yes for Real Estate - Other section.
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
       Expected_Text = "Real Estate - Other";
       assertEquals(Actual_Text, Expected_Text);
       // Click on the continue button to verify section is required.
-      wait.until(ExpectedConditions.elementToBeClickable(By.id("section_submit_button"))); 
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("section_submit_button")));
       Actions act = new Actions(webDriver);
-      act.doubleClick(webDriver.findElement(By.id("section_submit_button"))).build().perform();    
+      act.doubleClick(webDriver.findElement(By.id("section_submit_button"))).build().perform();
       wait.until(ExpectedConditions.alertIsPresent());
       webDriver.switchTo().alert().accept();
       webDriver.findElement(By.xpath("//div/input")).click();
@@ -500,15 +508,20 @@ public class ContributorsFinancialSectionPage extends TestCase {
       Expected_Text =
           "Is there a lien, 2nd mortgage or Home Equity Line of Credit on your Other Real Estate?";
       assertEquals(Actual_Text, Expected_Text);
-      Actual_Text =
-          webDriver.findElement(By.cssSelector("#answers_real_estate_rent_income_1 > fieldset > h4"))
-              .getText();
+      Actual_Text = webDriver
+          .findElement(By.cssSelector("#answers_real_estate_rent_income_1 > fieldset > h4"))
+          .getText();
       Expected_Text = "Do you receive income from your Other Real Estate (rent, etc.)?";
       assertEquals(Actual_Text, Expected_Text);
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='answers_real_estate_address_1']/fieldset/div/div[2]/input")));
-      webDriver.findElement(By.xpath("//div[@id='answers_real_estate_address_1']/fieldset/div/div[2]/input")).sendKeys("1000 go rd, NJ 20990");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(
+          By.xpath("//div[@id='answers_real_estate_address_1']/fieldset/div/div[2]/input")));
+      webDriver
+          .findElement(
+              By.xpath("//div[@id='answers_real_estate_address_1']/fieldset/div/div[2]/input"))
+          .sendKeys("1000 go rd, NJ 20990");
       webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[4]/fieldset/div/div[2]/input")));
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.xpath("//div[4]/fieldset/div/div[2]/input")));
       webDriver.findElement(By.xpath("//div[4]/fieldset/div/div[2]/input")).sendKeys("80");
       webDriver.findElement(By.xpath("//div[5]/fieldset/div/input")).click();
       webDriver.findElement(By.xpath("//div[6]/fieldset/div/div[2]/input")).sendKeys("90");
@@ -528,7 +541,8 @@ public class ContributorsFinancialSectionPage extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // B-Question
       Actual_Text = webDriver
-          .findElement(By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"))
+          .findElement(
+              By.cssSelector("#answers_real_estate_second_mortgage_value_1 > fieldset > h4"))
           .getText();
       Expected_Text = "What is the current balance of the lien(s)?";
       assertEquals(Actual_Text, Expected_Text);
@@ -557,205 +571,212 @@ public class ContributorsFinancialSectionPage extends TestCase {
       webDriver.findElement(By.xpath("//div[14]/fieldset/div/div[2]/input")).sendKeys("50");
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//fieldset/a/span")));
       // Click on the add button to another real estate other section.
-      //======>>>Open this when DE app-1040 is fix.
-            //webDriver.findElement(By.xpath("//fieldset/a/span")).click();
-            //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")));
-            //webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select/option[3]")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div[2]/fieldset/div/div[2]/input")).sendKeys("1000 Long rd Denmark");
-            //webDriver.findElement(By.xpath("//div[2]/div/div[3]/fieldset/div/input")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div[4]/fieldset/div/div[2]/input")).sendKeys("76");
-            //webDriver.findElement(By.xpath("//div[2]/div/div[5]/fieldset/div/input")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div[6]/fieldset/div/div[2]/input")).sendKeys("76");
-            //webDriver.findElement(By.xpath("//div[2]/div/div[7]/fieldset/div/div[2]/input")).sendKeys("7600000.87");
-            //webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input")).sendKeys("8700998.76");
-            // ON the last two question, select Yes to trigger the new question then
-            // select No .
-            //webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
-            //WebElement SecondForm = webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
-            //HighLight.highLightElement(webDriver, SecondForm);
-            //WebElement SecondForm1 = webDriver.findElement(By.xpath("//div[2]/div/div[12]/fieldset/h4"));
-            //HighLight.highLightElement(webDriver, SecondForm1);
-            //webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/input")).click();
-            //WebElement SecondForm2 = webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/h4"));
-            //HighLight.highLightElement(webDriver, SecondForm2);
-            // Select no to disable section.
-            //webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
-            //webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
-            CoreUtils.clickContinue(webDriver);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-            // Beginning Test For Personal Property.
-            Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-            Expected_Text = "Personal Property";
-            assertEquals(Actual_Text, Expected_Text);
-            logger.info("User is being navigated to the Personal Property section, PASS");
-            // Verify the question.
-            Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-            Expected_Text = "Do you own any vehicles?";
-            assertEquals(Actual_Text, Expected_Text);
-            Actual_Text = webDriver
-                .findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4")).getText();
-            Expected_Text = "Do you own any other personal property or assets?";
-            assertEquals(Actual_Text, Expected_Text);
-            // Detail Section.
-            Actual_Text = webDriver.findElement(By.xpath("//fieldset/p")).getText();
-            Expected_Text =
-                "If the vehicle is jointly owned or the loan on the vehicle is a joint debt, include only the individual’s share of the vehicle value and loan balance. You can find the current value of vehicles in the Kelley Blue Book.";
-            assertEquals(Actual_Text, Expected_Text);
-            WebElement PersonalProperty = webDriver.findElement(By.xpath("//fieldset/p"));
-            HighLight.highLightElement(webDriver, PersonalProperty);
-            webDriver.findElement(By.xpath("//div/input")).click();
-            webDriver.findElement(By.xpath("//div/a/span")).click();
-            // Locate current value search box and enter a valid value for you
-            // automobile.
-            webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000000");
-            // Locate the Loan Balance search box and enter a valid balance.
-            webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("20000000");
-            // Locate the description of asset search box and enter the
-            // make,model and year of your automobile.
-            webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("nissan maxima");
-            webDriver.findElement(By.xpath("//div[3]/button")).click();
-            // Does any of the above listed property is pledged as security?
-            // question.
-            Actual_Text = webDriver
-                .findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4")).getText();
-            Expected_Text = "Do you own any other personal property or assets?";
-            assertEquals(Actual_Text, Expected_Text);
-            // Detail Section.
-            Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/p")).getText();
-            Expected_Text =
-                "Include all household goods, jewelry, art, boats, antiques, etc with a value over $2,500. (For example, enter a line for household furnishing with the total value of all furniture.) Include any assets held by a revocable trust for which you are the grantor and beneficiary. If the property is jointly owned, include only the individual’s share of the property.";
-            assertEquals(Actual_Text, Expected_Text);
-            WebElement OtherPersonalProperty = webDriver.findElement(By.xpath("//div[2]/fieldset/p"));
-            HighLight.highLightElement(webDriver, OtherPersonalProperty);
-            // Select Yes for question; 'Do you own any other personal property or
-            // assets?.
-            webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
-            webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
-            webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000000");
-            webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("453000");
-            webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("TOYOTA CAMRY");
-            webDriver.findElement(By.cssSelector("button.btn")).click();
-            CoreUtils.clickContinue(webDriver);
-            // Verify that User navigate to the Next section of 'Notes Payable' in
-            // form 413 successfully.
-            // Click on the continue button to veriy section is required.
-            CoreUtils.clickContinue(webDriver);
-            Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
-            Expected_Text = "Please answer this question";
-            assertTrue(webDriver.getPageSource().contains("Notes Payable"));
-            logger.info("User is being navigated to the 'Notes Payable' section on the form 413, Pass");
-            // Verify the question.
-            Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-            Expected_Text = "Notes Payable and Other Liabilities";
-            assertEquals(Actual_Text, Expected_Text);
-            Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-            Expected_Text = "Do you have any notes payable or other liabilities?";
-            assertEquals(Actual_Text, Expected_Text);
-            // Detail Section.
-            Actual_Text =
-                webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p")).getText();
-            Expected_Text =
-                "List any notes payable including credit cards and personal lines of credit. Include loans owed to the applicant firm, other companies, and individuals. Exclude mortgage and vehicle loans, etc. if listed in previous sections. If you have additional liens or debts against your vehicles or personal property, list them. List all other liabilities, including accounts payable. Do not include contingent liabilities.";
-            assertEquals(Actual_Text, Expected_Text);
-            WebElement NotesPayable =
-                webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
-            HighLight.highLightElement(webDriver, NotesPayable);
-            WebElement otherAccountsPayable =
-                webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
-            HighLight.highLightElement(webDriver, otherAccountsPayable);
-            webDriver.findElement(By.xpath("//div/input")).click();
-            webDriver.findElement(By.xpath("//div/a/span")).click();
-            // Verify the added drop down Type. Open when on develop.
-            Actual_Text = webDriver.findElement(By.id("DTE_Field_type")).getText();
-            Expected_Text =
-                "Credit Card\nLien on Vehicle\nLien on Personal Property\nPersonal Loan\nPersonal Line of Credit\nOther";
-            assertEquals(Actual_Text, Expected_Text);
-            webDriver.findElement(By.id("DTE_Field_type")).click();
-            webDriver.findElement(By.xpath("//option[5]")).click();
-            // Original balance.
-            webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("98090000");
-            // current balance.
-            webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("8766000");
-            // payment amount.
-            webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("8760000");
-            // How Secured.
-            webDriver.findElement(By.id("DTE_Field_collateral_type")).sendKeys("Private home");
-            // Name of note-holder
-            webDriver.findElement(By.id("DTE_Field_noteholder")).sendKeys("Lost Man");
-            // Address of note-holder
-            webDriver.findElement(By.id("DTE_Field_noteholder_address"))
-                .sendKeys("8576 jumple ln manassas va 20998");
-            webDriver.findElement(By.cssSelector("button.btn")).click();
-            CoreUtils.clickContinue(webDriver);
-            // US660 'Assessed Taxes' test begin here.
-            logger.info("US660'Assessed Taxes' test begin here");
-            // Verify that user successfully navigated to the section 'Assessed
-            // Taxes' on form 413.
-            // Click on the continue button to veriy section is required.
-            CoreUtils.clickContinue(webDriver);
-            Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
-            Expected_Text = "Please answer this question";
-            assertTrue(webDriver.getPageSource().contains("Assessed Taxes"));
-            logger.info("User successfully navigated to the section 'Assessed Taxes' on Form 413, Pass");
-            // Verify the question.
-            Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-            Expected_Text = "Do you have any Assessed Taxes that were unpaid?";
-            assertEquals(Actual_Text, Expected_Text);
-            // Detail Section.
-            Actual_Text =
-                webDriver.findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p")).getText();
-            Expected_Text =
-                "Include only assessed taxes that are unpaid. This includes past due personal Federal, state, county, and city taxes. Do not include estimated taxes or business taxes. If this is a joint debt, include only the individual’s share of the debt.";
-            assertEquals(Actual_Text, Expected_Text);
-            WebElement AssessedTaxes =
-                webDriver.findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p"));
-            HighLight.highLightElement(webDriver, AssessedTaxes);
-            webDriver.findElement(By.xpath("//div/input")).click();
-            webDriver.findElement(By.xpath("//div/a/span")).click();
-            webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Test Running");
-            webDriver.findElement(By.id("DTE_Field_amount")).sendKeys("1000045");
-            webDriver.findElement(By.id("DTE_Field_when_due")).clear();
-            webDriver.findElement(By.id("DTE_Field_when_due")).sendKeys("03/24/2017");
-            webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("Factory");
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]/button")));
-            webDriver.findElement(By.xpath("//div[3]/button")).click();
-            // Locate and click on the continue button.
-            CoreUtils.clickContinue(webDriver);
-            //Calculations for contributor's financial summary.
-            ContributorsFinancialCalculationOnSummaryPage contributorsFinancialCalculationOnSummary = new ContributorsFinancialCalculationOnSummaryPage(webDriver);
-            contributorsFinancialCalculationOnSummary.ContributorsFinancialCalculationOnSummary();
-            CoreUtils.clickContinue(webDriver);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-            //Verify the Privacy section page.
-            Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-            Expected_Text = "Privacy Statements";
-            assertEquals(Actual_Text, Expected_Text);
-            //Locate and click on the continue button.
-            CoreUtils.clickContinue(webDriver);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-            //Verify the Review page.
-            Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-            Expected_Text = "Review";
-            assertEquals(Actual_Text, Expected_Text);
-            //Locate and click on the Submit button.
-            CoreUtils.clickContinue(webDriver);
-            //webDriver.switchTo().alert().accept();
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-            //Verify the Signature page.
-            Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-            Expected_Text = "Signature";
-            assertEquals(Actual_Text, Expected_Text);
-            //Click on the signature check boxes.
-            webDriver.findElement(By.id("legal_0")).click();
-            //Locate and click on the continue button.
-            CoreUtils.clickContinue(webDriver);
-            } catch (Exception e) {
-            ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-            screenShot.ScreenShot();
-            logger.info(e.getMessage());
-            Assert.fail();
-            }    
-            }
-            }
+      // ======>>>Open this when DE app-1040 is fix.
+      // webDriver.findElement(By.xpath("//fieldset/a/span")).click();
+      // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")));
+      // webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select/option[3]")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div[2]/fieldset/div/div[2]/input")).sendKeys("1000
+      // Long rd Denmark");
+      // webDriver.findElement(By.xpath("//div[2]/div/div[3]/fieldset/div/input")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div[4]/fieldset/div/div[2]/input")).sendKeys("76");
+      // webDriver.findElement(By.xpath("//div[2]/div/div[5]/fieldset/div/input")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div[6]/fieldset/div/div[2]/input")).sendKeys("76");
+      // webDriver.findElement(By.xpath("//div[2]/div/div[7]/fieldset/div/div[2]/input")).sendKeys("7600000.87");
+      // webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input")).sendKeys("8700998.76");
+      // ON the last two question, select Yes to trigger the new question then
+      // select No .
+      // webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
+      // WebElement SecondForm =
+      // webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
+      // HighLight.highLightElement(webDriver, SecondForm);
+      // WebElement SecondForm1 =
+      // webDriver.findElement(By.xpath("//div[2]/div/div[12]/fieldset/h4"));
+      // HighLight.highLightElement(webDriver, SecondForm1);
+      // webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/input")).click();
+      // WebElement SecondForm2 =
+      // webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/h4"));
+      // HighLight.highLightElement(webDriver, SecondForm2);
+      // Select no to disable section.
+      // webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
+      // webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+      // Beginning Test For Personal Property.
+      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+      Expected_Text = "Personal Property";
+      assertEquals(Actual_Text, Expected_Text);
+      logger.info("User is being navigated to the Personal Property section, PASS");
+      // Verify the question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do you own any vehicles?";
+      assertEquals(Actual_Text, Expected_Text);
+      Actual_Text =
+          webDriver.findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4"))
+              .getText();
+      Expected_Text = "Do you own any other personal property or assets?";
+      assertEquals(Actual_Text, Expected_Text);
+      // Detail Section.
+      Actual_Text = webDriver.findElement(By.xpath("//fieldset/p")).getText();
+      Expected_Text =
+          "If the vehicle is jointly owned or the loan on the vehicle is a joint debt, include only the individual’s share of the vehicle value and loan balance. You can find the current value of vehicles in the Kelley Blue Book.";
+      assertEquals(Actual_Text, Expected_Text);
+      WebElement PersonalProperty = webDriver.findElement(By.xpath("//fieldset/p"));
+      HighLight.highLightElement(webDriver, PersonalProperty);
+      webDriver.findElement(By.xpath("//div/input")).click();
+      webDriver.findElement(By.xpath("//div/a/span")).click();
+      // Locate current value search box and enter a valid value for you
+      // automobile.
+      webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("70000000");
+      // Locate the Loan Balance search box and enter a valid balance.
+      webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("20000000");
+      // Locate the description of asset search box and enter the
+      // make,model and year of your automobile.
+      webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("nissan maxima");
+      webDriver.findElement(By.xpath("//div[3]/button")).click();
+      // Does any of the above listed property is pledged as security?
+      // question.
+      Actual_Text =
+          webDriver.findElement(By.cssSelector("#answers_other_personal_property > fieldset > h4"))
+              .getText();
+      Expected_Text = "Do you own any other personal property or assets?";
+      assertEquals(Actual_Text, Expected_Text);
+      // Detail Section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/p")).getText();
+      Expected_Text =
+          "Include all household goods, jewelry, art, boats, antiques, etc with a value over $2,500. (For example, enter a line for household furnishing with the total value of all furniture.) Include any assets held by a revocable trust for which you are the grantor and beneficiary. If the property is jointly owned, include only the individual’s share of the property.";
+      assertEquals(Actual_Text, Expected_Text);
+      WebElement OtherPersonalProperty = webDriver.findElement(By.xpath("//div[2]/fieldset/p"));
+      HighLight.highLightElement(webDriver, OtherPersonalProperty);
+      // Select Yes for question; 'Do you own any other personal property or
+      // assets?.
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+      webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div[2]/div/a/span")).click();
+      webDriver.findElement(By.id("DTE_Field_current_value")).sendKeys("456000000");
+      webDriver.findElement(By.id("DTE_Field_loan_balance")).sendKeys("453000");
+      webDriver.findElement(By.id("DTE_Field_asset_description")).sendKeys("TOYOTA CAMRY");
+      webDriver.findElement(By.cssSelector("button.btn")).click();
+      CoreUtils.clickContinue(webDriver);
+      // Verify that User navigate to the Next section of 'Notes Payable' in
+      // form 413 successfully.
+      // Click on the continue button to veriy section is required.
+      CoreUtils.clickContinue(webDriver);
+      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Expected_Text = "Please answer this question";
+      assertTrue(webDriver.getPageSource().contains("Notes Payable"));
+      logger.info("User is being navigated to the 'Notes Payable' section on the form 413, Pass");
+      // Verify the question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+      Expected_Text = "Notes Payable and Other Liabilities";
+      assertEquals(Actual_Text, Expected_Text);
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do you have any notes payable or other liabilities?";
+      assertEquals(Actual_Text, Expected_Text);
+      // Detail Section.
+      Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"))
+          .getText();
+      Expected_Text =
+          "List any notes payable including credit cards and personal lines of credit. Include loans owed to the applicant firm, other companies, and individuals. Exclude mortgage and vehicle loans, etc. if listed in previous sections. If you have additional liens or debts against your vehicles or personal property, list them. List all other liabilities, including accounts payable. Do not include contingent liabilities.";
+      assertEquals(Actual_Text, Expected_Text);
+      WebElement NotesPayable =
+          webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
+      HighLight.highLightElement(webDriver, NotesPayable);
+      WebElement otherAccountsPayable =
+          webDriver.findElement(By.xpath("//div[@id='answers_notes_payable']/fieldset/p"));
+      HighLight.highLightElement(webDriver, otherAccountsPayable);
+      webDriver.findElement(By.xpath("//div/input")).click();
+      webDriver.findElement(By.xpath("//div/a/span")).click();
+      // Verify the added drop down Type. Open when on develop.
+      Actual_Text = webDriver.findElement(By.id("DTE_Field_type")).getText();
+      Expected_Text =
+          "Credit Card\nLien on Vehicle\nLien on Personal Property\nPersonal Loan\nPersonal Line of Credit\nOther";
+      assertEquals(Actual_Text, Expected_Text);
+      webDriver.findElement(By.id("DTE_Field_type")).click();
+      webDriver.findElement(By.xpath("//option[5]")).click();
+      // Original balance.
+      webDriver.findElement(By.id("DTE_Field_original_balance")).sendKeys("98090000");
+      // current balance.
+      webDriver.findElement(By.id("DTE_Field_current_balance")).sendKeys("8766000");
+      // payment amount.
+      webDriver.findElement(By.id("DTE_Field_payment_amount")).sendKeys("8760000");
+      // How Secured.
+      webDriver.findElement(By.id("DTE_Field_collateral_type")).sendKeys("Private home");
+      // Name of note-holder
+      webDriver.findElement(By.id("DTE_Field_noteholder")).sendKeys("Lost Man");
+      // Address of note-holder
+      webDriver.findElement(By.id("DTE_Field_noteholder_address"))
+          .sendKeys("8576 jumple ln manassas va 20998");
+      webDriver.findElement(By.cssSelector("button.btn")).click();
+      CoreUtils.clickContinue(webDriver);
+      // US660 'Assessed Taxes' test begin here.
+      logger.info("US660'Assessed Taxes' test begin here");
+      // Verify that user successfully navigated to the section 'Assessed
+      // Taxes' on form 413.
+      // Click on the continue button to veriy section is required.
+      CoreUtils.clickContinue(webDriver);
+      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Expected_Text = "Please answer this question";
+      assertTrue(webDriver.getPageSource().contains("Assessed Taxes"));
+      logger.info("User successfully navigated to the section 'Assessed Taxes' on Form 413, Pass");
+      // Verify the question.
+      Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
+      Expected_Text = "Do you have any Assessed Taxes that were unpaid?";
+      assertEquals(Actual_Text, Expected_Text);
+      // Detail Section.
+      Actual_Text = webDriver
+          .findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p")).getText();
+      Expected_Text =
+          "Include only assessed taxes that are unpaid. This includes past due personal Federal, state, county, and city taxes. Do not include estimated taxes or business taxes. If this is a joint debt, include only the individual’s share of the debt.";
+      assertEquals(Actual_Text, Expected_Text);
+      WebElement AssessedTaxes =
+          webDriver.findElement(By.xpath("//div[@id='answers_assessed_taxes']/fieldset/p"));
+      HighLight.highLightElement(webDriver, AssessedTaxes);
+      webDriver.findElement(By.xpath("//div/input")).click();
+      webDriver.findElement(By.xpath("//div/a/span")).click();
+      webDriver.findElement(By.id("DTE_Field_whom_payable")).sendKeys("Test Running");
+      webDriver.findElement(By.id("DTE_Field_amount")).sendKeys("1000045");
+      webDriver.findElement(By.id("DTE_Field_when_due")).clear();
+      webDriver.findElement(By.id("DTE_Field_when_due")).sendKeys("03/24/2017");
+      webDriver.findElement(By.id("DTE_Field_property_tax_lien")).sendKeys("Factory");
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[3]/button")));
+      webDriver.findElement(By.xpath("//div[3]/button")).click();
+      // Locate and click on the continue button.
+      CoreUtils.clickContinue(webDriver);
+      // Calculations for contributor's financial summary.
+      ContributorsFinancialCalculationOnSummaryPage contributorsFinancialCalculationOnSummary =
+          new ContributorsFinancialCalculationOnSummaryPage(webDriver);
+      contributorsFinancialCalculationOnSummary.ContributorsFinancialCalculationOnSummary();
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+      // Verify the Privacy section page.
+      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+      Expected_Text = "Privacy Statements";
+      assertEquals(Actual_Text, Expected_Text);
+      // Locate and click on the continue button.
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+      // Verify the Review page.
+      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+      Expected_Text = "Review";
+      assertEquals(Actual_Text, Expected_Text);
+      // Locate and click on the Submit button.
+      CoreUtils.clickContinue(webDriver);
+      // webDriver.switchTo().alert().accept();
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+      // Verify the Signature page.
+      Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+      Expected_Text = "Signature";
+      assertEquals(Actual_Text, Expected_Text);
+      // Click on the signature check boxes.
+      webDriver.findElement(By.id("legal_0")).click();
+      // Locate and click on the continue button.
+      CoreUtils.clickContinue(webDriver);
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());
+      Assert.fail();
+    }
+  }
+}

@@ -1,4 +1,4 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
 import gov.sba.automation.CommonApplicationMethods;
@@ -25,7 +25,7 @@ import static gov.sba.pageObjetcs.programs_Page.join_New_Program_CheckBoxes;
 
 public class TestWorkflowAppEmailNotifications extends TestCase {
   private static final Logger logger_App514 =
-          LogManager.getLogger(TestWorkflowAppEmailNotifications.class.getName());
+      LogManager.getLogger(TestWorkflowAppEmailNotifications.class.getName());
   //
   // set the flag as 0 day
   // create application,
@@ -39,12 +39,12 @@ public class TestWorkflowAppEmailNotifications extends TestCase {
   String duns_Number, email, password, flagvalue;
 
   public void setUp() throws Exception {
-    
+
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
-    //CommonApplicationMethods.focus_window();
+    // CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];
@@ -69,9 +69,9 @@ public class TestWorkflowAppEmailNotifications extends TestCase {
         FillApplCreatePages.page8aFillUp(webDriver, "Yes");
         FillApplCreatePages.finalSignatureSubmit(webDriver);
         List<WebElement> count_Active =
-                webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
-                        + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
-                        + "td[position()=5 and (contains(text(),'Active'))]" + "]"));
+            webDriver.findElements(By.xpath("//*[@id='certifications']/tbody/tr" + "["
+                + "td[position()=1]/a[contains(text(),'EDWOSB')]" + " and "
+                + "td[position()=5 and (contains(text(),'Active'))]" + "]"));
 
         assertEquals(count_Active.size(), 1);
         logger_App514.info("Doc has been uploaded.-Edwosb application submitted sucessfully");
@@ -81,19 +81,19 @@ public class TestWorkflowAppEmailNotifications extends TestCase {
         // --after the midnight cron job runs
         // check the status of the certificate to - Expired -- APP387
         String sql_Q_01 = "update SBAONE.certificates " + "   set expiry_date = ("
-                + "select cast(issue_date as date) + 31"
-                + "                           from SBAONE.certificates " + "   where "
-                + "organization_id = (select id from SBAONE.organizations where duns_number = 'replaceDune')"
-                + "and  type = 'Certificate::Edwosb'" + "    ) " + "   where "
-                + "  organization_id = (select id from SBAONE.organizations where duns_number = 'replaceDune')"
-                + "and   type = 'Certificate::Edwosb'";
+            + "select cast(issue_date as date) + 31"
+            + "                           from SBAONE.certificates " + "   where "
+            + "organization_id = (select id from SBAONE.organizations where duns_number = 'replaceDune')"
+            + "and  type = 'Certificate::Edwosb'" + "    ) " + "   where "
+            + "  organization_id = (select id from SBAONE.organizations where duns_number = 'replaceDune')"
+            + "and   type = 'Certificate::Edwosb'";
 
         DatabaseUtils dbcall = new DatabaseUtils();
         DatabaseUtils.executeSQLScript(sql_Q_01.replace("replaceDune", duns_Number));
 
       } catch (Exception e) {
         CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-                new String[] {"TestWorkflowAppEmailNotifications", "Exception"});
+            new String[] {"TestWorkflowAppEmailNotifications", "Exception"});
         throw e;
       }
     }

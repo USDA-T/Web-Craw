@@ -1,10 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
+
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
-
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -34,10 +34,10 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 public class TestApp170LinkDunsNoMpp extends TestCase {
   private static final Logger TestApp170LinkDunsNo =
-          LogManager.getLogger(TestApp170LinkDunsNoMpp.class.getName());
+      LogManager.getLogger(TestApp170LinkDunsNoMpp.class.getName());
   // Set The variabl.es/Define
   WebDriver webDriver;
-  String    duns_Number, email, password;
+  String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
@@ -46,7 +46,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
     webDriver = TestHelpers.getDefaultWebDriver();
     CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
-    //focus_window();
+    // focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];
@@ -63,7 +63,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
       join_New_Program_CheckBoxes(webDriver, "MPP");
 
 
-      page8aFillUpDunsNo(webDriver, "Yes",  duns_Number);
+      page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "Logout");
 
@@ -76,16 +76,16 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
       if (!webDriver.getPageSource().contains("No results found")) {
         // All cases page for Mpp Analyst
         String xpath_Value =
-                "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
-                        + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
+            "//div[@id='table-search']/table/tbody/tr[ " + "td/a[contains(text(),'" + duns_Number
+                + "')]	and " + "td[position()=3 and (text() = '" + typ_App_Passed + "')]" + "]";
         List<WebElement> current_Row = webDriver.findElements(By.xpath(xpath_Value));
         // Vendor Overview page should display clicking on Duns Number
         // Link
         if (current_Row.size() > 0) {
           current_Row.get(0).findElement(By.xpath("td[2]/a")).click();
           WebElement asset_Exists = webDriver
-                  .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
-                          + duns_Number + "')] ]"));
+              .findElement(By.xpath("//p[ b[contains(text(),'DUNS:')] and span[contains(text(),'"
+                  + duns_Number + "')] ]"));
           assertEquals(asset_Exists.getText(), "DUNS:" + duns_Number);
 
         }
@@ -94,7 +94,8 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
 
     } catch (Exception e) {
       TestApp170LinkDunsNo.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[]{"TestApp170LinkDunsNoMpp", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver,
+          new String[] {"TestApp170LinkDunsNoMpp", "Exception"});
       throw e;
     }
   }

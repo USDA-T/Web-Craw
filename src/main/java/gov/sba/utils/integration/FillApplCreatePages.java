@@ -1,5 +1,6 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
+
 import gov.sba.pageObjetcs.programs_Page;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,18 +16,20 @@ public class FillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(FillApplCreatePages.class.getName());
 
   public static void pageCaseOverviewFillup(WebDriver webDriver, String review_Type,
-                                            String curr_Reviewer, String owner, String supervisor) throws Exception {
+      String curr_Reviewer, String owner, String supervisor) throws Exception {
 
     try {
       click_Element(webDriver, "SBA_Case_Overview_Select_Link");
 
       if (review_Type.length() > 0) {
-        Select dropdown1 = new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Review_Type"));
+        Select dropdown1 =
+            new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Review_Type"));
         dropdown1.selectByVisibleText(review_Type);
       }
 
       if (curr_Reviewer.length() > 0) {
-        Select dropdown1 = new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id"));
+        Select dropdown1 =
+            new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id"));
         dropdown1.selectByVisibleText(curr_Reviewer);
       }
 
@@ -36,15 +39,20 @@ public class FillApplCreatePages {
       }
 
       if (supervisor.length() > 0) {
-        Select dropdown1 = new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id"));
+        Select dropdown1 =
+            new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id"));
         dropdown1.selectByVisibleText(supervisor);
       }
 
+    } catch (Exception e) {
+      logger.info(e.toString());
+      throw e;
     }
-    catch (Exception e) { logger.info(e.toString()); throw e; }
   }
 
-  public static void answer_Finance_Questions(WebDriver webDriver, String answer_01_Some_Desc, String answer_02_Some_Desc, String answer_03_Some_Desc, String answer_04_Some_Desc, String answer_05_Some_Desc) throws Exception {
+  public static void answer_Finance_Questions(WebDriver webDriver, String answer_01_Some_Desc,
+      String answer_02_Some_Desc, String answer_03_Some_Desc, String answer_04_Some_Desc,
+      String answer_05_Some_Desc) throws Exception {
     try {
       if (answer_01_Some_Desc.length() > 0) {
         if (answer_01_Some_Desc == "Yes") {
@@ -78,16 +86,17 @@ public class FillApplCreatePages {
   }
 
   public static void pageQuestionReviewFillup(WebDriver webDriver) throws Exception {
-    click_Element(webDriver,"SBA_Question_Review_Fill_Up");
-    click_Element(webDriver,"SBA_Question_Review_Save_Continue");
+    click_Element(webDriver, "SBA_Question_Review_Fill_Up");
+    click_Element(webDriver, "SBA_Question_Review_Save_Continue");
   }
 
   public static void pageSignatureReviewFillup(WebDriver webDriver) throws Exception {
-    click_Element(webDriver,"SBA_Signature_Review_Fill_Up");
-    click_Element(webDriver,"SBA_Signature_Review_Save_Continue");
+    click_Element(webDriver, "SBA_Signature_Review_Fill_Up");
+    click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
   }
 
-  //public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws Exception {
+  // public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws
+  // Exception {
   public static void page8aFillUp(WebDriver webDriver, String answer01) throws Exception {
     try {
       if (answer01.toUpperCase().contains("YES")) {
@@ -103,17 +112,20 @@ public class FillApplCreatePages {
           }
         }
 
-        //new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
+        // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
         programs_Page.generic_file_Upld(webDriver);
         logger.info("Doc has been uploaded.");
-        //click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(3000);
+        // click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(3000);
         click_Element(webDriver, "Application_Common_Submit_Button");
 
         accept_Alert(webDriver, 14);
         logger.info("Doc has been uploaded and accepted");
       } else {
-        try { click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_Yes"); }
-        catch (Exception e1) { click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_247_Yes"); }
+        try {
+          click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_Yes");
+        } catch (Exception e1) {
+          click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_247_Yes");
+        }
         click_Element(webDriver, "Application_Common_Submit_Button");
       }
     } catch (Exception e) {
@@ -122,7 +134,8 @@ public class FillApplCreatePages {
     }
   }
 
-  public static void genericUploadDoc(WebDriver webDriver, String answer01, String path) throws Exception {
+  public static void genericUploadDoc(WebDriver webDriver, String answer01, String path)
+      throws Exception {
     try {
       if (answer01.toUpperCase().contains("YES")) {
         for (int i = 0; i < 10; i++) {
@@ -146,9 +159,10 @@ public class FillApplCreatePages {
     }
   }
 
-  // public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String path, String duns_No_Given) throws Exception
-  public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String duns_No_Given) throws Exception
-  {
+  // public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String path, String
+  // duns_No_Given) throws Exception
+  public static void page8aFillUpDunsNo(WebDriver webDriver, String answer01, String duns_No_Given)
+      throws Exception {
     try {
 
       if (answer01.toUpperCase().contains("YES")) {
@@ -165,16 +179,16 @@ public class FillApplCreatePages {
         }
 
         programs_Page.generic_file_Upld(webDriver);
-        //new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
+        // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
 
         click_Element(webDriver, "Application_Common_Submit_Button");
         setText_Element(webDriver, "SBA_8a_Duns_Confrm_Text", duns_No_Given);
         click_Element(webDriver, "Search_Duns_No");
         accept_Alert(webDriver, 10);
 
-        for ( int i=0; i < 2; i++ ){
+        for (int i = 0; i < 2; i++) {
           WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
-          if ( aa  != null ){
+          if (aa != null) {
             click_Element(webDriver, "Search_Duns_No");
             accept_Alert(webDriver, 10);
             accept_Alert(webDriver, 10);
@@ -182,23 +196,27 @@ public class FillApplCreatePages {
           }
         }
 
-        click_Element(webDriver, "Application_Common_Submit_Button");Thread.sleep(1500);
-        click_Element(webDriver, "Review_Application");Thread.sleep(1500);
+        click_Element(webDriver, "Application_Common_Submit_Button");
+        Thread.sleep(1500);
+        click_Element(webDriver, "Review_Application");
+        Thread.sleep(1500);
         click_Element(webDriver, "Application_Common_Submit_Button");
 
         accept_Alert(webDriver, 10);
         logger.info("Doc has been uploaded and accepted");
         accept_Alert(webDriver, 10);
 
-      }
-      else {
-        try                  { click_Element(webDriver, "General_Answer_Page_8A_117"); }
-        catch (Exception e1) { click_Element(webDriver, "General_Answer_Page_8A_228"); }
+      } else {
+        try {
+          click_Element(webDriver, "General_Answer_Page_8A_117");
+        } catch (Exception e1) {
+          click_Element(webDriver, "General_Answer_Page_8A_228");
+        }
         click_Element(webDriver, "Application_Common_Submit_Button");
       }
     } catch (Exception e) {
       logger.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver,new String[] {"page8aFillUpDunsNo"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"page8aFillUpDunsNo"});
       throw e;
     }
   }
@@ -216,7 +234,7 @@ public class FillApplCreatePages {
       accept_Alert(webDriver, 8);
     } catch (Exception e) {
       logger.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit"});
       throw e;
     }
   }
@@ -229,7 +247,7 @@ public class FillApplCreatePages {
       accept_Alert(webDriver, 14);
     } catch (Exception e) {
       logger.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[]{"finalSignatureSubmit8A"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit8A"});
       throw e;
     }
   }

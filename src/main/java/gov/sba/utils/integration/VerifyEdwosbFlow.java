@@ -32,7 +32,8 @@ public class VerifyEdwosbFlow extends TestCase {
     CommonApplicationMethods.navigationMenuClick(webDriver, "Programs");
     logger.info("Certifications Deleted To start again");
 
-    assertEquals(find_Element(webDriver, "SBA_My_App_Contracting_Programs").getText(), "My SBA Contracting Programs");
+    assertEquals(find_Element(webDriver, "SBA_My_App_Contracting_Programs").getText(),
+        "My SBA Contracting Programs");
 
     assertEquals(find_Element(webDriver, "JoinNewPgm_Add_Cert").getAttribute("disabled"), "true");
     createApplication(webDriver, "EdWOSB");
@@ -50,7 +51,10 @@ public class VerifyEdwosbFlow extends TestCase {
     assertEquals(all_Cells.get(4).getText(), "Draft");
     assertEquals(all_Cells.get(6).getText(), "Delete");
 
-    all_Cells.get(4).findElement(By.xpath("//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]")).click();
+    all_Cells.get(4)
+        .findElement(By.xpath(
+            "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
+        .click();
     CommonApplicationMethods.accept_Alert(webDriver, 4);
 
     click_Element(webDriver, "SBA_Vendor_My_Certifications");

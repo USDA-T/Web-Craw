@@ -1,10 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
+
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
-
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -35,19 +35,19 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 public class TestUS1081AllCasesNewSupervisor extends TestCase {
   private static final Logger logger_US1081 =
-          LogManager.getLogger(TestUS1081AllCasesNewSupervisor.class.getName());
+      LogManager.getLogger(TestUS1081AllCasesNewSupervisor.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
-    
+
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
-    //CommonApplicationMethods.focus_window();
+    // CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];
@@ -81,20 +81,20 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
       logger_US1081.info("Cases link is on Main Navigator is Clicked");
 
       String Allcases_PageTitle = webDriver
-              .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'Cases')]"))
-              .getText();
+          .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'Cases')]"))
+          .getText();
       assertEquals(Allcases_PageTitle, "Cases");
 
       String[] header_Names_Array =
-              new String[] {"Business name", "DUNS", "Program", "Review type", "Submitted", "Owner",
-                      "Current reviewer", "Certificate Status", "Recommendation & Determination"};
+          new String[] {"Business name", "DUNS", "Program", "Review type", "Submitted", "Owner",
+              "Current reviewer", "Certificate Status", "Recommendation & Determination"};
 
       List<WebElement> rows_Header =
-              webDriver.findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
+          webDriver.findElements(By.xpath("//div[@id='table-search']/table/thead/tr/th"));
       // Get Table Header Cells
-      String[]                       header_Names_Array_Validate = new String[9];
-      java.util.Iterator<WebElement> list_elements               = rows_Header.iterator();
-      int                            i                           = 0;
+      String[] header_Names_Array_Validate = new String[9];
+      java.util.Iterator<WebElement> list_elements = rows_Header.iterator();
+      int i = 0;
       logger_US1081.info(rows_Header.size());
       while (list_elements.hasNext()) {
         header_Names_Array_Validate[i] = list_elements.next().getText();
@@ -108,22 +108,22 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
       Statement statement_SQL = databaseConnection.createStatement();
 
       ResultSet result_Set =
-              statement_SQL.executeQuery(" SELECT F.legal_business_name AS legal_Name, "
-                      + "		 C.duns_number AS duns_No, " + "		 G.name AS cert_Name, "
-                      + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
-                      + "		 I.workflow_state AS sub_Status" + " 	FROM "
-                      + "			sbaone.sba_applications A INNER JOIN sbaone.organizations C ON (A.organization_id = C.id), "
-                      + "			sbaone.certificate_types 		G , "
-                      + "			reference.mvw_sam_organizations 	F,"
-                      + "			sbaone.certificates I"
-                      + " 	where(  A.workflow_state 		= 'submitted'				"
-                      + "       AND A.progress 				->>'current' = 'signature')	"
-                      + "       AND C.duns_number 			= F.duns"
-                      + "       AND C.duns_number 			= '" + duns_Number + "' "
-                      + "       and G.name != 'mpp' " + "       and G.name != 'eight_a' "
-                      + "       and G.name != 'edwosb' "
-                      + "       and  I.organization_id =  A.organization_id "
-                      + "		order by sub_Date Asc, cert_Name Desc ;	");
+          statement_SQL.executeQuery(" SELECT F.legal_business_name AS legal_Name, "
+              + "		 C.duns_number AS duns_No, " + "		 G.name AS cert_Name, "
+              + "		 to_char(A.application_submitted_at, 'mm/dd/yyyy') AS sub_Date , "
+              + "		 I.workflow_state AS sub_Status" + " 	FROM "
+              + "			sbaone.sba_applications A INNER JOIN sbaone.organizations C ON (A.organization_id = C.id), "
+              + "			sbaone.certificate_types 		G , "
+              + "			reference.mvw_sam_organizations 	F,"
+              + "			sbaone.certificates I"
+              + " 	where(  A.workflow_state 		= 'submitted'				"
+              + "       AND A.progress 				->>'current' = 'signature')	"
+              + "       AND C.duns_number 			= F.duns"
+              + "       AND C.duns_number 			= '" + duns_Number + "' "
+              + "       and G.name != 'mpp' " + "       and G.name != 'eight_a' "
+              + "       and G.name != 'edwosb' "
+              + "       and  I.organization_id =  A.organization_id "
+              + "		order by sub_Date Asc, cert_Name Desc ;	");
 
       List<ArrayList<String>> db_rows_array = new ArrayList<>();
       while (result_Set.next()) {
@@ -144,8 +144,8 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
       List<ArrayList<String>> ui_rows_array = new ArrayList<>();
       CommonApplicationMethods.search_Cases_Duns_Number_Table(webDriver, duns_Number);
       List<WebElement> rows_Body = webDriver.findElements(By
-              .xpath("//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[ contains( text(),'"
-                      + duns_Number + "') ] ]")); // Get
+          .xpath("//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[ contains( text(),'"
+              + duns_Number + "') ] ]")); // Get
       // the Table rows /logger.info(rows_Body.size());
       for (int j = 0; j < rows_Body.size(); j++) {
         ArrayList<String> ui_rows_Cell = new ArrayList<>();
@@ -170,14 +170,14 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
       rows_Body.get(0).findElement(By.xpath("td[position()=1]/a")).click();
       webDriver
-              .findElement(By.xpath(
-                      "//div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]"))
-              .click();
+          .findElement(By.xpath(
+              "//div[contains(@class,'review_nav')]/p/a[contains(text(),'Vendor Overview')]"))
+          .click();
       CommonApplicationMethods.click_Element(webDriver, "Vendor_Overview_Page_Rt_Vend_All");
       accept_Alert(webDriver, 8);
 
       List<WebElement> rows_Body_01 = webDriver.findElements(By.xpath(
-              "//table[@id='certifications']/tbody/tr[ td[position()=5 and contains(text(),'Draft')]  ]")); // Get
+          "//table[@id='certifications']/tbody/tr[ td[position()=5 and contains(text(),'Draft')]  ]")); // Get
       Assert.assertTrue(rows_Body_01.size() > 0);
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
       CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
@@ -186,7 +186,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
     } catch (Exception e) {
       logger_US1081.info("Cases link is on Main Navigator is not present" + e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-              new String[] {TestUS1081AllCasesNewSupervisor.class.getName(), "Exception"});
+          new String[] {TestUS1081AllCasesNewSupervisor.class.getName(), "Exception"});
       throw e;
     }
 

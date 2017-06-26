@@ -30,7 +30,7 @@ public class TestSearchPage extends TestCase {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     // Get the login based on the environment under test (e.g.
     // 'development', 'qa', 'staging')
@@ -49,10 +49,13 @@ public class TestSearchPage extends TestCase {
     logger.debug("Using test password: " + LoginHelpers.getLoginData().getPassword());
     click_Element(webDriver, "SBA_Login_Button");
 
-    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email", LoginHelpers.getLoginData().getEmail());
-    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd", LoginHelpers.getLoginData().getPassword());
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Email",
+        LoginHelpers.getLoginData().getEmail());
+    CommonApplicationMethods.setText_Element(webDriver, "SBA_Login_Pwd",
+        LoginHelpers.getLoginData().getPassword());
 
-    click_Element(webDriver, "OppSup_Dashboard_Business_Signin"); Thread.sleep(1500); //Deepa Sleep needed here
+    click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
+    Thread.sleep(1500); // Deepa Sleep needed here
     org.junit.Assert.assertTrue(webDriver.getCurrentUrl().contains("dashboard"));
   }
 

@@ -1,4 +1,4 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
 import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
@@ -38,7 +38,7 @@ import junit.framework.TestCase;
 @Category({gov.sba.utils.integration.StableTests.class})
 public class Test1235OppSuppAdminRole extends TestCase {
   private static final Logger logger_US1235 =
-          LogManager.getLogger(Test1235OppSuppAdminRole.class.getName());
+      LogManager.getLogger(Test1235OppSuppAdminRole.class.getName());
   private static WebDriver webDriver;
   String duns_Number, email, password;
 
@@ -50,7 +50,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    //CommonApplicationMethods.focus_window();
+    // CommonApplicationMethods.focus_window();
     get_The_Row_From_Login_Data = 28;
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
@@ -61,17 +61,19 @@ public class Test1235OppSuppAdminRole extends TestCase {
   @Test
   public void testMainTest() throws Exception {
     try {
-    //Login as vendor admin and submit a application
-    new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-    programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-    page8aFillUp(webDriver, "Yes");
-    finalSignatureSubmit(webDriver);
-    navigationMenuClick(webDriver, "LOGOUT");
-    // Login to opp support admin dashboard.
-    new LoginPageWithReference(webDriver, 28).Login_With_Reference();
+      // Login as vendor admin and submit a application
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      programs_Page.join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      page8aFillUp(webDriver, "Yes");
+      finalSignatureSubmit(webDriver);
+      navigationMenuClick(webDriver, "LOGOUT");
+      // Login to opp support admin dashboard.
+      new LoginPageWithReference(webDriver, 28).Login_With_Reference();
       // validate as per the US1235 Acceptance criteria on Opp Support Staft/Admin page
-      duns_Number = "159165917";       // Opp Supp Staft search vendor records.
-      non_Vendor_searchDuns_Number(webDriver, duns_Number);  // Click on the Business Name - opp Supp Staft can access Draft,Completed Application
+      duns_Number = "159165917"; // Opp Supp Staft search vendor records.
+      non_Vendor_searchDuns_Number(webDriver, duns_Number); // Click on the Business Name - opp Supp
+                                                            // Staft can access Draft,Completed
+                                                            // Application
       click_Element(webDriver, "SBA_Business_Search_Business_Name");
       try { // Find Draft,Active,compeleted certification
         List<WebElement> rows_table = find_Elements(webDriver, "SBA_Table_My_Certifications", true);
@@ -81,16 +83,19 @@ public class Test1235OppSuppAdminRole extends TestCase {
           int columns_count = Columns_row.size();
           for (int column = 0; column < columns_count; column++) {
             String celtext = Columns_row.get(column).getText();
-            logger_US1235.info("Cell Value Of row number " + row + " and column number " + column + " Is " + celtext);
+            logger_US1235.info("Cell Value Of row number " + row + " and column number " + column
+                + " Is " + celtext);
           }
           logger_US1235.info("--------------------------------------------------");
         }
+      } catch (Exception e) {
+        logger_US1235.info("No Certifications tested - Should be fine");
       }
-      catch (Exception e) { logger_US1235.info("No Certifications tested - Should be fine"); }
       Set<String> handle = webDriver.getWindowHandles();
       String handle_01_Value = "";
       Assert.assertTrue(handle.size() == 1);
-      for (String s : handle) handle_01_Value = s;
+      for (String s : handle)
+        handle_01_Value = s;
       // Help Link- opp supp Staff cannot have edit functionality on Help Page
       click_Element(webDriver, "Main_Page_Help_Page_Link");
       Boolean element_Found = false;
@@ -105,14 +110,17 @@ public class Test1235OppSuppAdminRole extends TestCase {
         find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
         logger_US1235.info("Opp supp Admin having Edit on Help Page-HelpPage_Edit");
         element_Found = true;
+      } catch (Exception e) {
+        element_Found = false;
+        logger_US1235.info("Test case Passed-HelpPage_Edit funtionality");
       }
-      catch (Exception e) { element_Found = false; logger_US1235.info("Test case Passed-HelpPage_Edit funtionality"); }
 
       Assert.assertEquals(element_Found, true);
 
     } catch (Exception e) {
       logger_US1235.info("Search TextBox is on Main Navigator is not present" + e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"Test1235OppSuppAdminRole", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver,
+          new String[] {"Test1235OppSuppAdminRole", "Exception"});
       throw e;
     }
   }

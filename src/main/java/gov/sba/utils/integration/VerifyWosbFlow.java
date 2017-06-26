@@ -76,7 +76,7 @@ public class VerifyWosbFlow {
         .findElement(By.xpath(
             "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
         .click();
-      accept_Alert(webDriver, 15);
+    accept_Alert(webDriver, 15);
     webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();
     // First Flow - Check For Active
     webDriver

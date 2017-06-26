@@ -1,10 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
+
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
-
 
 import gov.sba.automation.*;
 import gov.sba.pageObjetcs.programs_Page;
@@ -24,7 +24,8 @@ import static gov.sba.automation.CommonApplicationMethods.*;
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp303and304WOSB extends TestCase {
-  private static final Logger logger_303 = LogManager.getLogger(TestApp303and304WOSB.class.getName());
+  private static final Logger logger_303 =
+      LogManager.getLogger(TestApp303and304WOSB.class.getName());
   // Set The variables/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
@@ -36,7 +37,7 @@ public class TestApp303and304WOSB extends TestCase {
     webDriver = TestHelpers.getDefaultWebDriver();
     CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
-    //focus_window();
+    // focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];
@@ -47,13 +48,13 @@ public class TestApp303and304WOSB extends TestCase {
   public void testMainTest() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
 
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     // Create application Mpp/Edwosb/Wosb/8a
-     programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
 
     FillApplCreatePages.page8aFillUp(webDriver, "Yes");
     FillApplCreatePages.finalSignatureSubmit(webDriver);
@@ -68,7 +69,8 @@ public class TestApp303and304WOSB extends TestCase {
     // Verify the Answers are not prefilling from the previous answers when
     // the prepulate falg = 'false';
     programs_Page.join_New_Program_CheckBoxes(webDriver, "WOSB");
-    String checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
+    String checkBoxElement =
+        find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertFalse(checkBoxElement.toLowerCase().contains("checked"));
 
     // Update the - Prepopulate flag- True ---should Prepopluate the answers
@@ -78,7 +80,8 @@ public class TestApp303and304WOSB extends TestCase {
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
     webDriver.navigate().refresh();
-    checkBoxElement = find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
+    checkBoxElement =
+        find_Element(webDriver, "General_Answer_Page_8A_Yes").getAttribute("outerHTML");
     assertTrue(checkBoxElement.toLowerCase().contains("checked"));
 
     // Reset to Default
@@ -90,8 +93,8 @@ public class TestApp303and304WOSB extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    String        sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
-    DatabaseUtils dbcall   = new DatabaseUtils();
+    String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";
+    DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
     webDriver.quit();
   }

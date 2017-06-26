@@ -1,10 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
+
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
-
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -29,7 +29,7 @@ import static gov.sba.automation.CommonApplicationMethods.click_Element;
 
 public class TestApp40AndApp190Wosb extends TestCase {
   private static final Logger TestApp40AndApp190 =
-          LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
+      LogManager.getLogger(TestApp40AndApp190Wosb.class.getName());
   // Set The variables/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
@@ -42,8 +42,8 @@ public class TestApp40AndApp190Wosb extends TestCase {
     if (app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
 
       programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
-      //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      //TestApp40AndApp190.info(file_path_abs);
+      // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+      // TestApp40AndApp190.info(file_path_abs);
       FillApplCreatePages.page8aFillUpDunsNo(webDriver, "Yes", "148832876");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
 
@@ -55,8 +55,8 @@ public class TestApp40AndApp190Wosb extends TestCase {
       // existing
       programs_Page.join_New_Program_CheckBoxes(webDriver, app_Type_Passed);
 
-      //String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      //TestApp40AndApp190.info(file_path_abs);
+      // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+      // TestApp40AndApp190.info(file_path_abs);
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
 
@@ -73,18 +73,18 @@ public class TestApp40AndApp190Wosb extends TestCase {
     // Seperate XPaths for Each Type of Application
     if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
       xpath = "//div[@id='table-search']/table/tbody/tr[ " + "td[position()=2]/a[contains(text(),'"
-              + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'" + "EDWOSB"
-              + "')]	" + "]";
+          + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'" + "EDWOSB"
+          + "')]	" + "]";
     }
     if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")) {
       xpath = "//div[@id='table-search']/table/tbody/tr[ " + "td[position()=2]/a[contains(text(),'"
-              + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'" + "WOSB"
-              + "')]	" + " and " + "td[position()=3 and not(contains(text(),'" + "EDWOSB"
-              + "')) ]	" + "]";
+          + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'" + "WOSB"
+          + "')]	" + " and " + "td[position()=3 and not(contains(text(),'" + "EDWOSB"
+          + "')) ]	" + "]";
     }
     if (app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
       xpath = "//div[@id='table-search']/table/tbody/tr[ " + "td[position()=2]/a[contains(text(),'"
-              + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'MPP')]	" + "]";
+          + duns_No_Passed + "')]" + " and " + "td[position()=3 and contains(text(),'MPP')]	" + "]";
     }
 
     TestApp40AndApp190.info(app_Type_Passed.toLowerCase().trim());
@@ -95,7 +95,7 @@ public class TestApp40AndApp190Wosb extends TestCase {
     TestApp40AndApp190.info(current_Row.size() + ": Is the total Under Review Elements");
     if (current_Row.size() > 0) {
       WebElement a1 =
-              current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
+          current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
       TestApp40AndApp190.info(a1.getText());
       a1.click();
 
@@ -103,22 +103,29 @@ public class TestApp40AndApp190Wosb extends TestCase {
       click_Element(webDriver, "Application_Common_Submit_Button_Id");
       click_Element(webDriver, "Application_Common_Save_Notes_Id");
 
-      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb") || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
-        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
+      if (app_Type_Passed.toLowerCase().trim().contentEquals("wosb")
+          || app_Type_Passed.toLowerCase().trim().contentEquals("mpp")) {
+        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath(
+            "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
         Assert.assertEquals(check_Side_Panels.size(), 0);
         click_Element(webDriver, "Application_Common_Submit_Button");
-        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        webDriver.findElement(
+            By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
         click_Element(webDriver, "Application_Common_Submit_Button");
-        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        webDriver.findElement(
+            By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
       }
       if (app_Type_Passed.toLowerCase().trim().contentEquals("edwosb")) {
-        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath("//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
+        List<WebElement> check_Side_Panels = webDriver.findElements(By.xpath(
+            "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'inancial') and contains(text(),'eview')]"));
         Assert.assertTrue(check_Side_Panels.size() > 0);
         click_Element(webDriver, "Application_Common_Submit_Button");
-        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        webDriver.findElement(
+            By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
         click_Element(webDriver, "Application_Common_Submit_Button");
-        webDriver.findElement(By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
+        webDriver.findElement(
+            By.xpath("//div[contains(@class, 'review_main')]/h1[contains(text(),'etermination')]"));
 
       }
     }
@@ -132,7 +139,7 @@ public class TestApp40AndApp190Wosb extends TestCase {
     webDriver = TestHelpers.getDefaultWebDriver();
     CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
-   //CommonApplicationMethods.focus_window()
+    // CommonApplicationMethods.focus_window()
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];

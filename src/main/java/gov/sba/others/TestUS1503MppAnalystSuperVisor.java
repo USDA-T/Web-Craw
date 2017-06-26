@@ -1,4 +1,4 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
 import java.sql.Connection;
@@ -30,16 +30,16 @@ import junit.framework.TestCase;
 public class TestUS1503MppAnalystSuperVisor extends TestCase {
   private static final Logger logger_US1503 =
       LogManager.getLogger(TestUS1503MppAnalystSuperVisor.class.getName());
-    // Set The variabl.es/Define
-    private static WebDriver webDriver;
+  // Set The variabl.es/Define
+  private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
   @Before
   public void setUp() throws Exception {
-    
-      CommonApplicationMethods.clear_Env_Chrome();
+
+    CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
     // webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 30;

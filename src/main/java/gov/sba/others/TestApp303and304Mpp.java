@@ -1,10 +1,10 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.others;
+
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
 import gov.sba.utils.integration.FillApplCreatePages;
-
 
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
@@ -30,19 +30,20 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestApp303and304Mpp extends TestCase {
-  private static final Logger logger_303 = LogManager.getLogger(TestApp303and304Mpp.class.getName());
+  private static final Logger logger_303 =
+      LogManager.getLogger(TestApp303and304Mpp.class.getName());
   // Set The variables/Define
   private static WebDriver webDriver;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
-    
+
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
     webDriver.get(TestHelpers.getBaseUrl());
-    //CommonApplicationMethods.focus_window();
+    // CommonApplicationMethods.focus_window();
     String[] details = DatabaseUtils.findUnusedDunsNumber();
     email = details[0];
     password = details[1];
@@ -53,36 +54,39 @@ public class TestApp303and304Mpp extends TestCase {
   public void testMainTest() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
-      String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
-      DatabaseUtils dbcall = new DatabaseUtils();
-      DatabaseUtils.executeSQLScript(sql_Q_01);
+    String sql_Q_01 =
+        "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
+    DatabaseUtils dbcall = new DatabaseUtils();
+    DatabaseUtils.executeSQLScript(sql_Q_01);
 
-      LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-      login_Data.Login_With_Details();
+    LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
+    login_Data.Login_With_Details();
 
-      // Create application Mpp/Edwosb/Wosb/8a
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
-     // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-      //logger_303.info(file_path_abs);
-      page8aFillUpDunsNo(webDriver, "Yes",duns_Number);
-      finalSignatureSubmit(webDriver);
+    // Create application Mpp/Edwosb/Wosb/8a
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+    // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
+    // logger_303.info(file_path_abs);
+    page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
+    finalSignatureSubmit(webDriver);
 
-      // Verify the Answers are not prefilling from the previous answers when
-      // the prepulate falg = 'false';
-      programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
-      assertFalse(find_Element(webDriver, "General_Answer_Page_8A_117_Yes").getAttribute("outerHTML").toLowerCase().contains("checked"));
+    // Verify the Answers are not prefilling from the previous answers when
+    // the prepulate falg = 'false';
+    programs_Page.join_New_Program_CheckBoxes(webDriver, "Mpp");
+    assertFalse(find_Element(webDriver, "General_Answer_Page_8A_117_Yes").getAttribute("outerHTML")
+        .toLowerCase().contains("checked"));
 
-      // Update the - Prepopulate flag- True ---should Prepopluate the answers
-      sql_Q_01 = "update sbaone.questions set  prepopulate = true where name in ('8a_certified')";
-      DatabaseUtils.executeSQLScript(sql_Q_01);
-      webDriver.navigate().refresh();
-      webDriver.navigate().refresh();
-      webDriver.navigate().refresh();
-      Thread.sleep(2000); // CheckSleep
-      assertTrue(find_Element(webDriver, "General_Answer_Page_8A_117_Yes").getAttribute("outerHTML").toLowerCase().contains("checked"));
-      // Reset to Default
-      sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
-      new DatabaseUtils().executeSQLScript(sql_Q_01);
+    // Update the - Prepopulate flag- True ---should Prepopluate the answers
+    sql_Q_01 = "update sbaone.questions set  prepopulate = true where name in ('8a_certified')";
+    DatabaseUtils.executeSQLScript(sql_Q_01);
+    webDriver.navigate().refresh();
+    webDriver.navigate().refresh();
+    webDriver.navigate().refresh();
+    Thread.sleep(2000); // CheckSleep
+    assertTrue(find_Element(webDriver, "General_Answer_Page_8A_117_Yes").getAttribute("outerHTML")
+        .toLowerCase().contains("checked"));
+    // Reset to Default
+    sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
+    new DatabaseUtils().executeSQLScript(sql_Q_01);
 
   }
 
@@ -90,7 +94,7 @@ public class TestApp303and304Mpp extends TestCase {
   public void tearDown() throws Exception {
     webDriver.quit();
     String sql_Q_01 =
-            "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
+        "update sbaone.questions set  prepopulate = false where name in ('8a_certified')";
     DatabaseUtils dbcall = new DatabaseUtils();
     DatabaseUtils.executeSQLScript(sql_Q_01);
   }

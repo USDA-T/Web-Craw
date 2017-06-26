@@ -1,4 +1,4 @@
-//TS_Created_By_Deepa_Patri
+// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
 import gov.sba.automation.TestHelpers;
@@ -21,22 +21,24 @@ import static gov.sba.pageObjetcs.vendor_Dashboard_Page.click_On_App_In_Vend_Das
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
-/*  Documentation for Workflow
-WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
-TestWorkflowEDWOSB +  01. Vendor Draft Create , logout. Update draft submit , Analyst Review, Supervisor Approve - 8a Yes
-                      02. Vendor  Create , Submit, Analyst Review, Supervisor Approve  - 8a No
-                      03. Vendor  Create , Submit, Analyst Review, Supervisor Reject - Declined
-                      04. Vendor  Create , Submit, Analyst return, Vendor Change Draft , Resubmit, Analyst Review, Supervisor Approve
-                      05. Vendor  Create , Submit, Analyst return, Vendor Change Draft , Resubmit, AAnalyst Review, Supervisor  reject
-                      06. Vendor  Create , Submit, Annual Review, ReSubmit, Supervisor Review, Supervisor Approve
-                      07. Vendor  Create , Submit, Annual Review, ReSubmit, Supervisor Review, Supervisor Reject
-*/
+/*
+ * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
+ * TestWorkflowEDWOSB + 01. Vendor Draft Create , logout. Update draft submit , Analyst Review,
+ * Supervisor Approve - 8a Yes 02. Vendor Create , Submit, Analyst Review, Supervisor Approve - 8a
+ * No 03. Vendor Create , Submit, Analyst Review, Supervisor Reject - Declined 04. Vendor Create ,
+ * Submit, Analyst return, Vendor Change Draft , Resubmit, Analyst Review, Supervisor Approve 05.
+ * Vendor Create , Submit, Analyst return, Vendor Change Draft , Resubmit, AAnalyst Review,
+ * Supervisor reject 06. Vendor Create , Submit, Annual Review, ReSubmit, Supervisor Review,
+ * Supervisor Approve 07. Vendor Create , Submit, Annual Review, ReSubmit, Supervisor Review,
+ * Supervisor Reject
+ */
 
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestWorkflowWOSB05 extends TestCase {
   Logger logger = LogManager.getLogger(TestWorkflowWOSB03.class.getName());
-  private static WebDriver webDriver; int stop_Exec = 1;
+  private static WebDriver webDriver;
+  int stop_Exec = 1;
   String duns_Number, email, password;
   int get_The_Row_From_Login_Data;
 
@@ -50,7 +52,10 @@ public class TestWorkflowWOSB05 extends TestCase {
     get_The_Row_From_Login_Data = 41;
   }
 
-  /*Test US1647- Edwosb financial section link disabled for application not having financial partners information*/
+  /*
+   * Test US1647- Edwosb financial section link disabled for application not having financial
+   * partners information
+   */
   @Test
   public void testMainTest() throws Exception {
     try {
@@ -63,12 +68,12 @@ public class TestWorkflowWOSB05 extends TestCase {
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "LOGOUT");
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();
-      /*Verify Download Zip or generate Zip link displayed on vendor overview page -APP-473*/
+      /* Verify Download Zip or generate Zip link displayed on vendor overview page -APP-473 */
       return_DunsNo_Cases_Table(webDriver, duns_Number, "WOSB");
       navigationBarClick(webDriver, "LOGOUT");
 
       new LoginPageWithReference(webDriver, 41).Login_With_Reference();
-      /*Resubmit the application*/
+      /* Resubmit the application */
       click_On_App_In_Vend_Dash(webDriver, "WOSB");
       page8aFillUp(webDriver, "Yes");
       finalSignatureSubmit(webDriver);
@@ -97,13 +102,16 @@ public class TestWorkflowWOSB05 extends TestCase {
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
-      if (stop_Exec == 1){return;} /*TODO Hard Coding Remove for QA*/
-      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
-      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO Hard Coding Remove for QA */
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
       navigationBarClick(webDriver, "LOGOUT");
-    }
-    catch (Exception e) {
-      throw  e;
+    } catch (Exception e) {
+      throw e;
     }
   }
 
