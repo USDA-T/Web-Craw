@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -37,10 +36,10 @@ public class TestApp8aInitialMaterApplication extends TestCase {
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
     // Verify if there is an existing certification on the dashboard and
-    // TestWorkFlowxx8aInProgress to start a new certification.
+    // delete to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
     deleteDraftCert.DeleteDraftCert();
-    // TestWorkFlowxx8aInProgress second draft if any.
+    // delete second draft if any.
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
     // Complete the basic eligibility section.

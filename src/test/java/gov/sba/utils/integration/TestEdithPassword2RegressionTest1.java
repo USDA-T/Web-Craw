@@ -4,13 +4,13 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -48,7 +48,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
       webDriver.findElement(By.id("user_password")).sendKeys(Old_PassW);
       // Locate the user Sign-in button and click on it.
       webDriver.findElement(By.id("business_signin")).click();
-      if (webDriver.getPageSource().contains("My business")) {
+      if (webDriver.getPageSource().contains("Dashboard")) {
         // Locate the My Profile button on the left navigation and click
         // on it.
         logger.info("First attempt to log-in with current password was successful, PASS");
@@ -73,6 +73,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         // Verify the strength of the new password and accept only
         // better or
         // strong password.
+        Thread.sleep(2000);
         String actual_Text6 = webDriver.findElement(By.id("text_strength")).getText();
         String expected_Text6 = "Passphrase strength  -  Strong";
         assertEquals(actual_Text6, expected_Text6);
@@ -106,7 +107,6 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
         assertTrue(webDriver.getPageSource().contains("112286644"));
         logger.info("Password Update is Successful");
       } else {
-
         if (webDriver.getPageSource().contains("Invalid email or password")) {
           // webDriver.findElement(By.xpath(".//*[@id='labelid']")).click();
           // Locate the email search box and enter a valid email.
@@ -263,6 +263,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
       logger.info(e.getMessage());
+      Assert.fail();
     }
 
     logger.info("Success");

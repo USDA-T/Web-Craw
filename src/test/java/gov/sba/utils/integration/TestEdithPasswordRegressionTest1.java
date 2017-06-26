@@ -126,7 +126,6 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     logger.info("Success");
   }
 
-
   @After
   public void tearDown() throws Exception {
     webDriver.close();
