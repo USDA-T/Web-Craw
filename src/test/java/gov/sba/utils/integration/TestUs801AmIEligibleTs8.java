@@ -375,7 +375,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
         String actual_Text41 = webDriver
             .findElement(By.xpath("//div[@id='address_in_hubzone']/div/div[2]/ul/li[2]")).getText();
         String expected_Text41 =
-            "Use the HUBZone Maps to find out if your principal office is located in a HUBZone.";
+            "Use the HUBZone Map to find out if your principal office is located in a HUBZone.";
         assertEquals(actual_Text41, expected_Text41);
         webDriver.findElement(By.id("no_button_address_in_hubzone")).click();
         // Verify searched results.
@@ -757,7 +757,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
               webDriver.findElement(By.xpath("//div[@id='address_in_hubzone']/div/div[2]/ul/li[2]"))
                   .getText();
           String expected_Text41 =
-              "Use the HUBZone Maps to find out if your principal office is located in a HUBZone.";
+              "Use the HUBZone Map to find out if your principal office is located in a HUBZone.";
           assertEquals(actual_Text41, expected_Text41);
           webDriver.findElement(By.id("no_button_address_in_hubzone")).click();
           // Verify searched results.
@@ -1148,7 +1148,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
                 .findElement(By.xpath("//div[@id='address_in_hubzone']/div/div[2]/ul/li[2]"))
                 .getText();
             String expected_Text41 =
-                "Use the HUBZone Maps to find out if your principal office is located in a HUBZone.";
+                "Use the HUBZone Map to find out if your principal office is located in a HUBZone.";
             assertEquals(actual_Text41, expected_Text41);
             webDriver.findElement(By.id("no_button_address_in_hubzone")).click();
             // Verify searched results.

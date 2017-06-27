@@ -490,7 +490,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       String actual_Text51 = webDriver
           .findElement(By.xpath("//div[@id='address_in_hubzone']/div/div[2]/ul/li[2]")).getText();
       String expected_Text51 =
-          "Use the HUBZone Maps to find out if your principal office is located in a HUBZone.";
+          "Use the HUBZone Map to find out if your principal office is located in a HUBZone.";
       assertEquals(actual_Text51, expected_Text51);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_address_in_hubzone")).click();
@@ -518,7 +518,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       String actual_Text54 = webDriver
           .findElement(By.xpath("//div[@id='employees_in_hubzone']/div/div[2]/ul/li[2]")).getText();
       String expected_Text54 =
-          "Use the HUBZone Maps to find out if your employees reside in a HUBZone.";
+          "Use the HUBZone Map to find out if your employees reside in a HUBZone.";
       assertEquals(actual_Text54, expected_Text54);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_employees_in_hubzone")).click();
