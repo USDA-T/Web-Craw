@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class})
 
 public class TestUs801AmIEligibleTs10 extends TestCase {
   private static final Logger logger =
