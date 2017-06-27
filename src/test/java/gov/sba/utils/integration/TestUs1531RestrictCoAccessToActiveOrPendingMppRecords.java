@@ -246,8 +246,6 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
         webDriver.findElement(By.id("profileid")).click();
         webDriver.findElement(By.linkText("Logout")).click();
         logger.info("Success");
-
-
       }
     } else {
       // Click on the My Request Link.
