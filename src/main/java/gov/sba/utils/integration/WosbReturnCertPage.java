@@ -95,12 +95,42 @@ public class WosbReturnCertPage extends TestCase {
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("172115728");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    wait.until(ExpectedConditions
-        .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
-    webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("172115728");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("172115728");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("172115728");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("172115728");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+          } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
     // Click on the application link name.
     webDriver.findElement(By.linkText("WOSB Self-Certification")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -184,9 +214,21 @@ public class WosbReturnCertPage extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Click on Vendor Overview link.
     webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
-    webDriver.findElement(By.id("profileid")).click();
-    webDriver.findElement(By.linkText("Logout")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("profileid")).click();
+      webDriver.findElement(By.linkText("Logout")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.linkText("Logout")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.linkText("Logout")).click();
+        } else {
+          webDriver.findElement(By.id("profileid")).click();
+          webDriver.findElement(By.linkText("Logout")).click();
+        }
+      }
+    }
     logger.info("Success");
   }
-
 }

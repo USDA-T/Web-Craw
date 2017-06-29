@@ -97,27 +97,96 @@ public class LLcReturnCertPage extends TestCase {
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("245652494");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    wait.until(ExpectedConditions
-        .visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));
-    webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
-    if (webDriver.getPageSource().contains("Return to Vendor")) {
-      webDriver.findElement(By.linkText("Return to Vendor")).click();
-      // webDriver.switchTo().alert().accept();
-      webDriver.findElement(By.id("profileid")).click();
-      webDriver.findElement(By.linkText("Logout")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("245652494");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
     } else {
-      logger.info("Return to Vendor Link is missing please verify why.");
-      webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-      webDriver.findElement(By.id("submit_button")).click();
-      webDriver.findElement(By.linkText("Determination")).click();
-      webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
-      webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
-      webDriver.findElement(By.linkText("Vendor Overview")).click();
-      webDriver.findElement(By.id("profileid")).click();
-      webDriver.findElement(By.linkText("Logout")).click();
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("245652494");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("245652494");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("245652494");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 70 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 70 Legal Business Name")).click();
+          } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      if (webDriver.getPageSource().contains("Return to Vendor")) {
+        webDriver.findElement(By.linkText("Return to Vendor")).click();
+        // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.id("profileid")).click();
+        webDriver.findElement(By.linkText("Logout")).click();
+      } else {
+        logger.info("Return to Vendor Link is missing please verify why.");
+        webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+        webDriver.findElement(By.id("submit_button")).click();
+        webDriver.findElement(By.linkText("Determination")).click();
+        webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+        webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+        webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.id("profileid")).click();
+        webDriver.findElement(By.linkText("Logout")).click();
+      }
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        if (webDriver.getPageSource().contains("Return to Vendor")) {
+          webDriver.findElement(By.linkText("Return to Vendor")).click();
+          // webDriver.switchTo().alert().accept();
+          webDriver.findElement(By.linkText("Logout")).click();
+        } else {
+          logger.info("Return to Vendor Link is missing please verify why.");
+          webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+          webDriver.findElement(By.id("submit_button")).click();
+          webDriver.findElement(By.linkText("Determination")).click();
+          webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+          webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+          webDriver.findElement(By.linkText("Vendor Overview")).click();
+          webDriver.findElement(By.linkText("Logout")).click();
+        }
+
+      }
+    }
+    if (webDriver.getCurrentUrl().contains("newqa")) {
+      if (webDriver.getPageSource().contains("Return to Vendor")) {
+        webDriver.findElement(By.linkText("Return to Vendor")).click();
+        // webDriver.switchTo().alert().accept();
+        webDriver.findElement(By.linkText("Logout")).click();
+      } else {
+        logger.info("Return to Vendor Link is missing please verify why.");
+        webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
+        webDriver.findElement(By.id("submit_button")).click();
+        webDriver.findElement(By.linkText("Determination")).click();
+        webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
+        webDriver.findElement(By.xpath("//form[@id='new_determination']/input[5]")).click();
+        webDriver.findElement(By.linkText("Vendor Overview")).click();
+        webDriver.findElement(By.linkText("Logout")).click();
+      }
+    } else {
+      logger.info(
+          "if you are seeing this message then the test is running on an undecleared env which need to be added.");
     }
   }
 }

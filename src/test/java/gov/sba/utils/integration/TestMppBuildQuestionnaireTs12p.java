@@ -53,9 +53,9 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       LoginPageWithReference login_Data =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
-      // grt the business DUNS #.
+      // get the business DUNS #.
       String BusinessDuns;
-      BusinessDuns = Actual_Text = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+      BusinessDuns = webDriver.findElement(By.xpath("//p[2]/span")).getText();
       logger.info("This Company DUNS number is " + BusinessDuns);
       // Verify if there is an existing program on the dashboard and
       // TestWorkFlowxx8aInProgress to start a new certification.

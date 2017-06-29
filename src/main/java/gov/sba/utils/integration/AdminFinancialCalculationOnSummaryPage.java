@@ -31,7 +31,7 @@ public class AdminFinancialCalculationOnSummaryPage extends TestCase {
     Object Actual_AdjustedGrossIncome = null;
     Object Expected_AdjustedGrossIncome = null;
     // =====>>>>>Calculate Begins here..
-    try {
+    //try {
       logger.info("Calculations for all the table data.");
       logger.info("Validating calculations for partner's Total Assets");
       // Cash on Hand.
@@ -502,9 +502,9 @@ public class AdminFinancialCalculationOnSummaryPage extends TestCase {
       Expected_AdjustedGrossIncome = TotalAvg;
       assertEquals(Actual_AdjustedGrossIncome, Expected_AdjustedGrossIncome);
       logger.info("Adjusted Gross Income calculations seccessfull");
-    } catch (Exception e) {
-      logger.info(e.getMessage());
-      Assert.fail();
-    }
+    //} catch (Exception e) {
+      //logger.info(e.getMessage());
+      //Assert.fail();
+    //}
   }
 }

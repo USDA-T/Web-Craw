@@ -27,7 +27,7 @@ public class MontanaUploadDocumentPage {
     logger.info("Uploading a new document");
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
     logger.info(webDriver.getCurrentUrl());
-    if (webDriver.getCurrentUrl().contains("qa.sba-one")) {
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
       Thread.sleep(1000);
       webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
       wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/div/button")));
@@ -41,7 +41,7 @@ public class MontanaUploadDocumentPage {
       logger.info("document uploaded successully");
       Thread.sleep(2000);
     } else {
-      if (webDriver.getCurrentUrl().contains("http://localhost/")) {
+      if (webDriver.getCurrentUrl().contains("localhost")) {
         Thread.sleep(1000);
         webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/div/button")));
@@ -55,37 +55,73 @@ public class MontanaUploadDocumentPage {
         logger.info("document uploaded successully");
         Thread.sleep(2000);
       } else {
-        Thread.sleep(2000);
-        logger.debug("Uploading a new document");
-        webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-        Thread.sleep(2000);
-        webDriver.findElement(By.id("doc-upload-button")).click();
-        Thread.sleep(2000);
-        Actions act = new Actions(webDriver);
-        act.doubleClick(webDriver.findElement(By.linkText("Choose a .pdf file"))).build().perform();
-        StringSelection ss = new StringSelection(upload_Path);
-        Thread.sleep(1000);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(2000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        Thread.sleep(2000);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        Thread.sleep(2000);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(2000);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='attach']")));
-        Actions act1 = new Actions(webDriver);
-        act1.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build()
-            .perform();
-        Thread.sleep(2000);
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          Thread.sleep(2000);
+          logger.debug("Uploading a new document");
+          webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
+          Thread.sleep(2000);
+          webDriver.findElement(By.id("doc-upload-button")).click();
+          Thread.sleep(2000);
+          Actions act = new Actions(webDriver);
+          act.doubleClick(webDriver.findElement(By.linkText("Choose a .pdf file"))).build()
+              .perform();
+          StringSelection ss = new StringSelection(upload_Path);
+          Thread.sleep(1000);
+          Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+          Robot robot = new Robot();
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_CONTROL);
+          robot.keyPress(KeyEvent.VK_V);
+          Thread.sleep(2000);
+          robot.keyRelease(KeyEvent.VK_V);
+          robot.keyRelease(KeyEvent.VK_CONTROL);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='attach']")));
+          Actions act1 = new Actions(webDriver);
+          act1.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build()
+              .perform();
+          Thread.sleep(2000);
+        } else {
+          Thread.sleep(2000);
+          logger.debug("Uploading a new document");
+          webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
+          Thread.sleep(2000);
+          webDriver.findElement(By.id("doc-upload-button")).click();
+          Thread.sleep(2000);
+          Actions act = new Actions(webDriver);
+          act.doubleClick(webDriver.findElement(By.linkText("Choose a .pdf file"))).build()
+              .perform();
+          StringSelection ss = new StringSelection(upload_Path);
+          Thread.sleep(1000);
+          Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+          Robot robot = new Robot();
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_CONTROL);
+          robot.keyPress(KeyEvent.VK_V);
+          Thread.sleep(2000);
+          robot.keyRelease(KeyEvent.VK_V);
+          robot.keyRelease(KeyEvent.VK_CONTROL);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          Thread.sleep(2000);
+          robot.keyPress(KeyEvent.VK_ENTER);
+          robot.keyRelease(KeyEvent.VK_ENTER);
+          wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='attach']")));
+          Actions act1 = new Actions(webDriver);
+          act1.doubleClick(webDriver.findElement(By.xpath("//button[@id='attach']"))).build()
+              .perform();
+          Thread.sleep(2000);
+        }
       }
     }
   }

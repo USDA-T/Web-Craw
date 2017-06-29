@@ -99,12 +99,42 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1Page exten
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("158899368");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    wait.until(ExpectedConditions
-        .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
-    webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("158899368");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    } else {
+    if (webDriver.getCurrentUrl().contains("staging")) {
+      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      webDriver.findElement(By.id("query")).sendKeys("158899368");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    } else {
+    if (webDriver.getCurrentUrl().contains("newqa")) {
+      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+      webDriver.findElement(By.id("query")).sendKeys("158899368");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    } else {
+    if (webDriver.getCurrentUrl().contains("localhost")) {
+      webDriver.findElement(By.id("query")).sendKeys("158899368");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
     wait.until(
         ExpectedConditions.visibilityOfElementLocated(By.linkText("EDWOSB Self-Certification")));
     webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
@@ -133,7 +163,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1Page exten
     // Verify Denzel's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$256,651.05";
+    Expected_Text = "$550,412,068.00";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Denzel.
     webDriver.findElement(By.id("note_link")).click();
@@ -151,7 +181,7 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1Page exten
     // Verify Will's net worth.
     Actual_Text = webDriver
         .findElement(By.xpath("//div[@id='table1-pad']/table/tbody/tr[11]/td[2]")).getText();
-    Expected_Text = "-$256,651.05";
+    Expected_Text = "$550,412,068.00";
     assertEquals(Actual_Text, Expected_Text);
     // Add review for Will Smith.
     webDriver.findElement(By.id("note_link")).click();
@@ -210,7 +240,20 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1Page exten
     WebElement ReturnDraft =
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ReturnDraft);
-    webDriver.findElement(By.id("profileid")).click();
-    webDriver.findElement(By.linkText("Logout")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("profileid")).click();
+      webDriver.findElement(By.linkText("Logout")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.linkText("Logout")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.linkText("Logout")).click();
+        } else {
+          webDriver.findElement(By.id("profileid")).click();
+          webDriver.findElement(By.linkText("Logout")).click();
+        }
+      }
+    }
   }
 }
