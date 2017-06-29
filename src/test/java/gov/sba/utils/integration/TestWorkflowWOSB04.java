@@ -1,22 +1,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -26,8 +12,15 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
+import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
 
 /*
  * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
@@ -56,31 +49,36 @@ public class TestWorkflowWOSB04 extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    duns_Number = "137761556";
+    /*duns_Number = "137761556";*/
+    duns_Number = "196374813";
     get_The_Row_From_Login_Data = 41;
   }
 
-  /*
-   * Test US1647- Edwosb financial section link disabled for application not having financial
-   * partners information
-   */
+  /* Test US1647- Edwosb financial section link disabled for application not having financial partners information */
   @Test
   public void testMainTest() throws Exception {
     try {
 
-      return_All_Applications(webDriver, 11, duns_Number);
+      return_All_Applications(webDriver, 55, duns_Number);
+      /*
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      */
       delete_All_Application_Draft(webDriver, 41, duns_Number);
       new LoginPageWithReference(webDriver, 41).Login_With_Reference();
       join_New_Program_CheckBoxes(webDriver, "WOSB");
       newLLCQuestionanireDeepa(webDriver);
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "LOGOUT");
-      new LoginPageWithReference(webDriver, 11).Login_With_Reference();
+      /*new LoginPageWithReference(webDriver, 11).Login_With_Reference();*/
+      new LoginPageWithReference(webDriver, 55).Login_With_Reference();
       /* Verify Download Zip or generate Zip link displayed on vendor overview page -APP-473 */
       return_DunsNo_Cases_Table(webDriver, duns_Number, "WOSB");
       navigationBarClick(webDriver, "LOGOUT");
 
+      /*new LoginPageWithDetails(webDriver, email, password).Login_With_Details();*/
       new LoginPageWithReference(webDriver, 41).Login_With_Reference();
+
       /* Resubmit the application */
       click_On_App_In_Vend_Dash(webDriver, "WOSB");
       page8aFillUp(webDriver, "Yes");
@@ -98,7 +96,9 @@ public class TestWorkflowWOSB04 extends TestCase {
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       navigationBarClick(webDriver, "LOGOUT");
       /* Resubmit */
+      /*new LoginPageWithDetails(webDriver, email, password).Login_With_Details();*/
       new LoginPageWithReference(webDriver, 41).Login_With_Reference();
+
       click_On_App_In_Vend_Dash(webDriver, "WOSB");
       page8aFillUp(webDriver, "Yes");
       finalSignatureSubmit(webDriver);
@@ -111,14 +111,16 @@ public class TestWorkflowWOSB04 extends TestCase {
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       click_Element(webDriver, "SBA_Review_Determ_Made");
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
+
       if (stop_Exec == 1) {
         return;
-      } /* TODO Hard Code Duns Remove */
+      } ; /* TODO - Remove */
+
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(
-          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
+              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
       navigationBarClick(webDriver, "LOGOUT");
 
     } catch (Exception e) {
@@ -128,6 +130,6 @@ public class TestWorkflowWOSB04 extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    // webDriver.quit();
+    webDriver.quit();
   }
 }

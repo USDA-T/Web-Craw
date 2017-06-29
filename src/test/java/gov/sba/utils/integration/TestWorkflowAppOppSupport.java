@@ -1,12 +1,9 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.utils.integration.TestUserAppProfileSearchType.TestuserProfileSearch;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -15,9 +12,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.AppProfileSearchType.TestuserProfileSearch;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -48,7 +44,7 @@ public class TestWorkflowAppOppSupport extends TestCase {
        * US1280- Search Government ; Get Email,First,Name,Last from the Db to use as serach term in
        * UI Connect SBAONE QA DB -to get data from DB
        * TestWorkflowAppOppSupport.info(returned_GovProfile_Rows[1][1]); // pass Government/vendor
-       * profile criteria TestUserAppProfileSearchType.TestuserProfileSearch(webDriver, //
+       * profile criteria AppProfileSearchType.TestuserProfileSearch(webDriver, //
        * returned_GovProfile_Rows[1][1],Gov_Radio_xpath,Expected_Result);
        */
 

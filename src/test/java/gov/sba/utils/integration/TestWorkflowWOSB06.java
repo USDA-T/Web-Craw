@@ -2,15 +2,9 @@
 package gov.sba.utils.integration;
 
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -19,8 +13,14 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 /*
  * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
@@ -33,7 +33,7 @@ import junit.framework.TestCase;
  * Supervisor Approve 07. Vendor Create , Submit, Annual Review, ReSubmit, Supervisor Review,
  * Supervisor Reject
  */
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DeepaTests.class})
 public class TestWorkflowWOSB06 extends TestCase {
   Logger logger = LogManager.getLogger(TestWorkflowWOSB06.class.getName());
   private static WebDriver webDriver;
@@ -46,28 +46,55 @@ public class TestWorkflowWOSB06 extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    duns_Number = "376736143";
-    get_The_Row_From_Login_Data = 64;
+    String[] details = findUnusedDunsNumber();
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
+    /* duns_Number = "376736143";get_The_Row_From_Login_Data = 64; */
   }
 
   @Test
   public void testMainTest() throws Exception {
     try {
-
-      return_All_Applications(webDriver, 11, duns_Number);
-      delete_All_Application_Draft(webDriver, 64, duns_Number);
-      // Create application Edwosb
-      new LoginPageWithReference(webDriver, 64).Login_With_Reference();
+      return_All_Applications(webDriver,55,duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      /* Create application Edwosb */
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "WOSB");
       page8aFillUp(webDriver, "Yes");
       finalSignatureSubmit(webDriver);
 
-      // return; // TODO - Later
+      /* TODO - Later Annual Wosb Review */
+
+      String sql_Q_01 =
+              "update sbaone.certificates set expiry_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where duns_number = '"
+                      + duns_Number + "')";
+      new DatabaseUtils().executeSQLScript(sql_Q_01);
+      /*
+       * check the status of the certificate to Expired verify the Renewal link, submit new renew
+       * application
+       */
+
+      webDriver.navigate().refresh();
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+              new String[] {"WOSB Self-Certification", "Certificate", "Active", "", "", "", "Renew"}));
+
+      /* Create new renew application - submit */
+      click_Element(webDriver, "SBA_WOSB_Table_Renew_Link");
+      click_Element(webDriver, "Application_Common_Accept_Button");
+      page8aFillUp(webDriver, "Yes");
+      finalSignatureSubmit(webDriver);
+
+      /* Verify the old application's status - Expired The renewed Application's status - Active */
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+              new String[] {"WOSB Self-Certification", "", "Active", "", "", "", ""}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+              new String[] {"WOSB Self-Certification", "", "Expired", "", "", "", ""}));
 
     } catch (Exception e) {
       logger.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver,
-          new String[] {TestWorkflowEDWOSB06.class.getName(), "Exception"});
+              new String[] {TestWorkflowEDWOSB06.class.getName(), "Exception"});
       throw e;
     }
   }

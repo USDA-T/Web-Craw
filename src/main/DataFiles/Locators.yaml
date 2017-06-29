@@ -18,6 +18,7 @@ Navigation_Dashboard:       {Locator: 'xpath', Value: "//nav[@role='navigation']
 Navigation_Business:        {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
 Navigation_Documents:       {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Documents')]"}
 Navigation_Home:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Home')]"}
+Navigation_Prepare:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'repare')]"}
 
 # Navigation Links On Top Nav Bar
 Navigation_Bar_Profile:         {Locator: 'id', Value: "profileid"}
@@ -69,9 +70,6 @@ SBA_Question_New_Determination_Reccomend_For_InEligibile:        {Locator: 'xpat
 #Case Overview Fill Up
 SBA_Case_Overview_Select_Link:                {Locator: 'xpath', Value: "//ul[@class='usa-sidenav-list']/li/a[contains(text(),'ase overview')]"}
 SBA_Case_Overview_Select_Review_Type:         {Locator: 'xpath', Value: "//select[@id='review_type']"}
-SBA_Case_Overview_Select_Reviewer_Id:         {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_reviewer_id']"}
-SBA_Case_Overview_Select_Owner_Id:            {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
-SBA_Case_Overview_Select_Supervisor_Id:       {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
 SBA_Case_Overview_Open_Application_Summary:   {Locator: 'xpath', Value: "//button[@id='open_app_sum_button']"}
 SBA_Case_Overview_Return_to_vendor:           {Locator: 'xpath', Value: "//button[@id='ret_to_vendor_button']"}
 SBA_Analyst_Review_Vendor_Overview:           {Locator: 'xpath', Value: "//a [ contains (text(), 'Vendor Overview') ]"}
@@ -417,11 +415,13 @@ SBA_Table_Business_Search_First_App:   {Locator: 'xpath', Value: "//div[@id='bus
 SBA_WOSB_Cert_Link:                 {Locator: 'xpath', Value: "//table[@id='certifications']/tbody/tr/td/a[contains(text(),'WOSB')]"}
 Case_CaseOverview_title:            {Locator: 'xpath', Value: "//article[@id='main-content']/div/div[2]/h1"}
 Case_CaseOverview_startReview:      {Locator: 'xpath', Value: "//h2[@class='usa-width-one-third']"}
-Case_Cancel_Review:                 {Locator: 'xpath', Value: "//a[contains(text(),'Cancel review')]"}
 Case_Current_ReviewType:            {Locator: 'id', Value: "review_type"}
-Case_Current_Reviewer:              {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_reviewer_id']"}
-Case_Current_Owner:                 {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
-Case_Current_Supervisor:            {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
+SBA_Case_Overview_Select_Reviewer_Id:         {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_reviewer_id']"}
+SBA_Case_Overview_Select_Owner_Id:            {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_owner_id']"}
+SBA_Case_Overview_Select_Supervisor_Id:       {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
+SBA_Case_Overview_Link:                       {Locator: 'xpath', Value: "//a[contains(text(),'Case overview')]"}
+SBA_Case_Cancel_Review_Link:                  {Locator: 'xpath', Value: "//a[contains(text(),'Cancel review')]"}
+
 Case_Submit_Button:                 {Locator: 'xpath', Value: "//input[@id='submit_button']"}
 Case_SaveNotes_Button:              {Locator: 'xpath', Value: "//input[@id='save_notes']"}
 

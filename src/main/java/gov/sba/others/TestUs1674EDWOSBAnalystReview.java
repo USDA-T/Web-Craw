@@ -1,13 +1,15 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.pageObjetcs.AnalystCasesPage.search_Duns_And_Verify;
-
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.ProgramsPage;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -18,15 +20,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.ProgramsPage;
-import gov.sba.utils.integration.FillApplCreatePages;
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.AnalystCasesPage.search_Duns_And_Verify;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
@@ -94,10 +91,10 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
         assertEquals("Initial Review",
             new Select(find_Element(webDriver, "Case_Current_ReviewType")).getFirstSelectedOption()
                 .getText());
-        new Select(find_Element(webDriver, "Case_Current_Reviewer")).selectByIndex(0);
-        new Select(find_Element(webDriver, "Case_Current_Owner")).selectByVisibleText("Analyst3 X");
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id")).selectByIndex(0);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Owner_Id")).selectByVisibleText("Analyst3 X");
 
-        new Select(find_Element(webDriver, "Case_Current_Supervisor"))
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id"))
             .selectByVisibleText("Analyst4 X");
         click_Element(webDriver, "Case_Submit_Button");
         click_Element(webDriver, "Case_SaveNotes_Button");

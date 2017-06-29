@@ -1,22 +1,7 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
-
-import java.util.List;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -27,8 +12,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
@@ -57,31 +50,29 @@ public class TestWorkflowMPP03 extends TestCase {
     // clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    duns_Number = "144754156";
-    get_The_Row_From_Login_Data = 42;
+    String[] details = findUnusedDunsNumber();
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
+    /* duns_Number = "144754156";get_The_Row_From_Login_Data = 42; */
+
   }
 
-  /*
-   * Test US1647- MPP financial section link disabled for application not having financial partners
-   * information
-   */
+
   @Test
   public void testMainTest() throws Exception {
     try {
 
-      return_All_Applications(webDriver, 29, duns_Number);
-      delete_All_Application_Draft(webDriver, 42, duns_Number);
-      new LoginPageWithReference(webDriver, 42).Login_With_Reference();
+      return_All_Applications(webDriver, 56, duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"MPP Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
-      /*
-       * Verify the Summary page, Expire+Issue dt - vendor dashboard, Summary Page title:
-       * Us1699,!457,1463
-       */
+      /* Verify the Summary page, Expire+Issue dt - vendor dashboard, Summary Page title: Us1699,!457,1463 */
       /* TODO For expiry date and Issue date */
 
       navigationMenuClick(webDriver, "Logout");
@@ -149,9 +140,8 @@ public class TestWorkflowMPP03 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit */
+      if (stop_Exec == 1) { return; } /* TODO Hard Coded Duns Number */
+
       click_Element(webDriver, "Application_Common_Submit_Button");
 
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
@@ -171,9 +161,7 @@ public class TestWorkflowMPP03 extends TestCase {
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Hard Coded Duns Number */
+      if (stop_Exec == 1) { return; } /* TODO Hard Coded Duns Number */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");

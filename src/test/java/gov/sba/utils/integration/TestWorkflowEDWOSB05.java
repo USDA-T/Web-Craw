@@ -1,21 +1,8 @@
 package gov.sba.utils.integration;
 // TS_Created_By_Deepa_Patri
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -25,8 +12,15 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 /*
  * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
@@ -55,21 +49,21 @@ public class TestWorkflowEDWOSB05 extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    duns_Number = "376736143";
-    get_The_Row_From_Login_Data = 64;
+    String[] details = findUnusedDunsNumber();
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
+    /* duns_Number = "376736143"; //get_The_Row_From_Login_Data = 64; */
+
   }
 
-  /*
-   * Test US1647- Edwosb financial section link disabled for application not having financial
-   * partners information
-   */
   @Test
   public void testMainTest() throws Exception {
     try {
 
-      return_All_Applications(webDriver, 11, duns_Number);
-      delete_All_Application_Draft(webDriver, 64, duns_Number);
-      new LoginPageWithReference(webDriver, 64).Login_With_Reference();
+      return_All_Applications(webDriver, 55, duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       page8aFillUp(webDriver, "Yes");
 
@@ -80,7 +74,7 @@ public class TestWorkflowEDWOSB05 extends TestCase {
       return_DunsNo_Cases_Table(webDriver, duns_Number, "EDWOSB");
       navigationBarClick(webDriver, "LOGOUT");
 
-      new LoginPageWithReference(webDriver, 64).Login_With_Reference();
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* Resubmit the application */
       click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
 
@@ -97,7 +91,7 @@ public class TestWorkflowEDWOSB05 extends TestCase {
       click_Element(webDriver, "SBA_Review_Determination_Save_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       navigationBarClick(webDriver, "LOGOUT");
-      new LoginPageWithReference(webDriver, 64).Login_With_Reference();
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
       page8aFillUp(webDriver, "Yes");
       finalSignatureSubmit(webDriver);

@@ -101,11 +101,11 @@
 // assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 //
 // new Select(find_Element(webDriver,
-//// "Case_Current_Reviewer")).selectByVisibleText("Analyst2 X");
+//// "SBA_Case_Overview_Select_Reviewer_Id")).selectByVisibleText("Analyst2 X");
 // new Select(find_Element(webDriver,
-//// "Case_Current_Owner")).selectByVisibleText("Analyst2 X");
+//// "SBA_Case_Overview_Select_Owner_Id")).selectByVisibleText("Analyst2 X");
 // new Select(find_Element(webDriver,
-//// "Case_Current_Supervisor")).selectByVisibleText("Analyst2 X");
+//// "SBA_Case_Overview_Select_Supervisor_Id")).selectByVisibleText("Analyst2 X");
 // click_Element(webDriver, "Application_Common_Submit_Button_Id");
 // webDriver.navigate().back();
 //

@@ -1,10 +1,11 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-
-import java.util.List;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.ProgramsPage;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -16,32 +17,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.ProgramsPage;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.utils.integration.FillApplCreatePages.pageCaseOverviewFillup;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestWorkflowAppCancelReviewLink extends TestCase {
-  private static final Logger TestApp77CancelReviewLink =
-      LogManager.getLogger(TestWorkflowAppCancelReviewLink.class.getName());
-  // Set The variabl.es/Define
+  Logger logger = LogManager.getLogger(TestWorkflowAppCancelReviewLink.class.getName());
+  /*Set The variables Define*/
   WebDriver webDriver;
   int get_The_Row_From_Login_Data;
   String duns_Number, email, password;
 
   @Before
   public void setUp() throws Exception {
-
     CommonApplicationMethods.clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
-
     webDriver.get(TestHelpers.getBaseUrl());
-    // CommonApplicationMethods.focus_window()
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = findUnusedDunsNumber();
     email = details[0];
     password = details[1];
     duns_Number = details[2];
@@ -50,121 +49,74 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
   @Test
   public void testMainTest() throws Exception {
     try {
+      return_All_Applications(webDriver, 55, duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
 
-      LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
-      login_Data.Login_With_Details();
-
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       ProgramsPage.join_New_Program_CheckBoxes(webDriver, "WOSB");
-      // webDriver.findElement(By.id("answers_188_value_yes")).click();
-      webDriver
-          .findElement(By.xpath(
-              "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
-          .click();
-      // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
-
-      // TestWorkflowAppCancelReviewLink.info(file_path_abs);
       FillApplCreatePages.page8aFillUp(webDriver, "Yes");
       FillApplCreatePages.finalSignatureSubmit(webDriver);
-      TestApp77CancelReviewLink.info("Doc has been uploaded.");
 
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Logout");
-      LoginPageWithReference login_Data_01 = new LoginPageWithReference(webDriver, 11);
-      login_Data_01.Login_With_Reference();
+      navigationMenuClick(webDriver, "Logout");
+      new LoginPageWithReference(webDriver, 11).Login_With_Reference();
 
-      // Start Common Function
+      /* Start Common Function Click on Case Link on main navigator */
+      navigationBarClick(webDriver, "Cases");
+      /* Update - case page based on Elastic search clear the input text before set text */
 
-      // Click on Case Link on main navigator
-      CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-      // upddate - case page based on Elastic search
-      // clear the input text before set text
-      CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
-
-      List<WebElement> current_Row =
-          webDriver.findElements(By.xpath("//div[@id='table-search']/table/tbody/tr" + "[ "
-              + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]	and "
-              + "td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))]	"
-              + "]"));
+      casesPageSearch(webDriver, duns_Number);
+      List<WebElement> current_Row = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr [ td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))] ]");
 
       if (current_Row.size() > 0) {
-        TestApp77CancelReviewLink.info(current_Row.get(0).getAttribute("innerHTML"));
-        WebElement a1 = current_Row.get(0)
-            .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"));
-        TestApp77CancelReviewLink.info(a1.getText() + "__1");
-        a1.click();
-        // webDriver.findElement(By.xpath("//div[@id='table-search']/table[contains(@class,'usa-table')]/tbody/tr/td[text()='WOSB']"));
-        WebElement current_Page_Title =
-            webDriver.findElement(By.xpath("//article[@id='main-content']/div/div[2]/h1"));
-        TestApp77CancelReviewLink.info(current_Page_Title.getText());
 
-        String Expected_Text = "Case Overview";
-        assertEquals(Expected_Text, current_Page_Title.getText());
+        logger.info(current_Row.get(0).getAttribute("innerHTML"));
+        current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
 
-        WebElement current_Review_Text =
-            webDriver.findElement(By.xpath("//h2[@class='usa-width-one-third']"));
-        assertEquals("Start a review", current_Review_Text.getText());
+        assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
 
-        Select dropdown = new Select(webDriver.findElement(By.id("review_type")));
+        Select dropdown = new Select(find_Element(webDriver, "Case_Current_ReviewType"));
         assertEquals(1, dropdown.getOptions().size());
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
-        Select dropdown1 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_reviewer_id']")));
-        dropdown1.selectByIndex(0);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id")).selectByIndex(0);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Owner_Id")).selectByIndex(1);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id")).selectByIndex(1);
 
-        Select dropdown2 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_owner_id']")));
-        dropdown2.selectByIndex(1);
+        click_Element(webDriver, "Case_Submit_Button");
+        click_Element(webDriver, "SBA_Case_Overview_Link");
 
-        Select dropdown3 = new Select(webDriver.findElement(
-            By.xpath("//select[@id='review_current_assignment_attributes_supervisor_id']")));
-        dropdown3.selectByIndex(1);
-
-        webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-        webDriver.findElement(By.xpath("//a[contains(text(),'Case overview')]")).click();
-
-        // End Common Function
-
-        // Verify Cancel Review link -APP 77 Acceptance Criteria
-        webDriver.findElement(By.xpath("//a[contains(text(),'Cancel review')]")).click();
+        /* Verify Cancel Review link -APP 77 Acceptance Criteria */
+        click_Element(webDriver, "SBA_Case_Cancel_Review_Link");
         accept_Alert(webDriver, 10);
-
-        String organization_Id = CommonApplicationMethods.returnOrganization_Id(duns_Number);
 
         String sql_Q = "select count(case_number) from sbaone.reviews "
             + "		where workflow_state = 'cancelled' " + "	and sba_application_id 	 = "
             + "								(select max(id) from sbaone.sba_applications where organization_id = "
-            + organization_Id.toString() + " and deleted_at is null )";
+            + returnOrganization_Id(duns_Number) + " and deleted_at is null )";
 
-        TestApp77CancelReviewLink.info(sql_Q);
+        logger.info(sql_Q);
 
         String[][] count_Case = DatabaseUtils.queryForData(sql_Q, 1, 1);
 
-        String count_Case_Count = count_Case[0][0];
+        assertEquals(count_Case[0][0], "1");
 
-        assertEquals(count_Case_Count, "1");
+        navigationBarClick(webDriver, "Cases");
+        casesPageSearch(webDriver, duns_Number);
 
-        CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
-        CommonApplicationMethods.casesPageSearch(webDriver, duns_Number);
+        find_Element(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[contains(text(),'" + duns_Number + "')] ]").
+                     findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
 
-        webDriver
-            .findElement(By.xpath("//div[@id='table-search']/table/tbody/tr[ "
-                + "td[position()=2]/a[contains(text(),'" + duns_Number + "')]" + "]"))
-            .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+        pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X", "Analyst1 X", "Analyst1 X");
+        click_Element(webDriver, "Case_Submit_Button");
+        click_Element(webDriver, "Case_SaveNotes_Button");
 
-        FillApplCreatePages.pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X",
-            "Analyst1 X", "Analyst1 X");
-        webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
-        webDriver.findElement(By.xpath("//input[@id='save_notes']")).click();
+        click_Element(webDriver, "SBA_Case_Overview_Link");
+        assertNull(find_Element(webDriver, "SBA_Case_Cancel_Review_Link", true));
 
-        webDriver.findElement(By.xpath("//a[contains(text(),'Case overview')]")).click();
-        List<WebElement> cancelLInk =
-            webDriver.findElements(By.xpath("//a[contains(text(),'Cancel review')]"));
-        assertEquals(cancelLInk.size(), 0);
-        //
       }
 
     } catch (Exception e) {
-      TestApp77CancelReviewLink.info(e.toString());
+      logger.info(e.toString());
       CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
           new String[] {"TestWorkflowAppCancelReviewLink", "Exception"});
       throw e;

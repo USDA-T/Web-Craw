@@ -1,19 +1,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
-
-import java.util.List;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -21,10 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
@@ -53,35 +47,31 @@ public class TestWorkflowMPP06 extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    duns_Number = "196374813";
-    get_The_Row_From_Login_Data = 41;
+    String[] details = findUnusedDunsNumber();
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
+    /* duns_Number = "196374813"; get_The_Row_From_Login_Data = 41; */
+
   }
 
-  /*
-   * Test US1647- MPP financial section link disabled for application not having financial partners
-   * information
-   */
   @Test
   public void testMainTest() throws Exception {
     try {
-      return_All_Applications(webDriver, 29, duns_Number);
-      delete_All_Application_Draft(webDriver, 41, duns_Number);
-      new LoginPageWithReference(webDriver, 41).Login_With_Reference();
+      return_All_Applications(webDriver, 56, duns_Number);
+      delete_All_Application_Draft(webDriver, email, password, duns_Number);
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
-      List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
-          new String[] {"MPP Application", "", "Pending", "", "", "", ""});
-      assertNotNull(all_Cells);
 
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
       navigationMenuClick(webDriver, "Dashboard");
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Hard Code Duns No Remove + Continue Flow */
+      if (stop_Exec == 1) { return; } /* TODO Working On */
 
 
     } catch (Exception e) {

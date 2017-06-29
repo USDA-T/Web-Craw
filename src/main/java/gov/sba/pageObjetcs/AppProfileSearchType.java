@@ -1,16 +1,13 @@
 // TS_Created_By_Deepa_Patri
-package gov.sba.utils.integration;
+package gov.sba.pageObjetcs;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
+import junit.framework.TestCase;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.*;
 
-public class TestUserAppProfileSearchType extends TestCase {
+public class AppProfileSearchType extends TestCase {
 
   public static void TestuserProfileSearch(WebDriver webDriver, String last_name,
       String xpathSearch, String Expected_Result) throws Exception {
