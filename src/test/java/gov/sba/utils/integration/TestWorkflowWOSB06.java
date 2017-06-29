@@ -56,7 +56,7 @@ public class TestWorkflowWOSB06 extends TestCase {
   @Test
   public void testMainTest() throws Exception {
     try {
-      return_All_Applications(webDriver,55,duns_Number);
+      return_All_Applications(webDriver, 55, duns_Number);
       delete_All_Application_Draft(webDriver, email, password, duns_Number);
       /* Create application Edwosb */
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -67,8 +67,8 @@ public class TestWorkflowWOSB06 extends TestCase {
       /* TODO - Later Annual Wosb Review */
 
       String sql_Q_01 =
-              "update sbaone.certificates set expiry_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where duns_number = '"
-                      + duns_Number + "')";
+          "update sbaone.certificates set expiry_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where duns_number = '"
+              + duns_Number + "')";
       new DatabaseUtils().executeSQLScript(sql_Q_01);
       /*
        * check the status of the certificate to Expired verify the Renewal link, submit new renew
@@ -77,7 +77,7 @@ public class TestWorkflowWOSB06 extends TestCase {
 
       webDriver.navigate().refresh();
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-              new String[] {"WOSB Self-Certification", "Certificate", "Active", "", "", "", "Renew"}));
+          new String[] {"WOSB Self-Certification", "Certificate", "Active", "", "", "", "Renew"}));
 
       /* Create new renew application - submit */
       click_Element(webDriver, "SBA_WOSB_Table_Renew_Link");
@@ -87,14 +87,14 @@ public class TestWorkflowWOSB06 extends TestCase {
 
       /* Verify the old application's status - Expired The renewed Application's status - Active */
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-              new String[] {"WOSB Self-Certification", "", "Active", "", "", "", ""}));
+          new String[] {"WOSB Self-Certification", "", "Active", "", "", "", ""}));
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-              new String[] {"WOSB Self-Certification", "", "Expired", "", "", "", ""}));
+          new String[] {"WOSB Self-Certification", "", "Expired", "", "", "", ""}));
 
     } catch (Exception e) {
       logger.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver,
-              new String[] {TestWorkflowEDWOSB06.class.getName(), "Exception"});
+          new String[] {TestWorkflowEDWOSB06.class.getName(), "Exception"});
       throw e;
     }
   }

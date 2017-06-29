@@ -1,12 +1,14 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class NewLLCQuestionanireDeepa {
 
@@ -15,19 +17,21 @@ public class NewLLCQuestionanireDeepa {
     String Actual_Text = null;
     String Expected_Text = null;
 
-    /* Locate the 8(a) question and select No and continue.*/
+    /* Locate the 8(a) question and select No and continue. */
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-    Expected_Text = "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
+    Expected_Text =
+        "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
     assertEquals(Actual_Text, Expected_Text);
 
-    /* Verify the More detail meaning for the 8(A) question.*/
+    /* Verify the More detail meaning for the 8(A) question. */
     click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_No");
     click_Element(webDriver, "Application_Common_Submit_Button");
     logger.info(" 8(a) question has been answered");
 
-    /* Locate the Third Party Certification, question1 and select yes and*/
+    /* Locate the Third Party Certification, question1 and select yes and */
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
-    Expected_Text = "Is the qualifying individual(s) certified as a WOSB or EDWOSB by an SBA-approved Third-Party Certifier?";
+    Expected_Text =
+        "Is the qualifying individual(s) certified as a WOSB or EDWOSB by an SBA-approved Third-Party Certifier?";
     assertEquals(Actual_Text, Expected_Text);
 
     click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_189_Y");
@@ -35,7 +39,7 @@ public class NewLLCQuestionanireDeepa {
 
     click_Element(webDriver, "Application_Common_Submit_Button");
 
-    /*Locate the Change in Eligiblity question,Verify,select yes and continue.*/
+    /* Locate the Change in Eligiblity question,Verify,select yes and continue. */
 
     click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_190_Y");
     click_Element(webDriver, "Application_Common_Submit_Button");
@@ -62,9 +66,11 @@ public class NewLLCQuestionanireDeepa {
     click_Element(webDriver, "Application_Common_Submit_Button");
     logger.info("the Ownership questions are answered sucessfully");
 
-    /* Management questions starts*/
-    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper3_q1']/fieldset/h4")).getText();
-    Expected_Text = "Are the management and daily operations of the business controlled by the qualifying individual(s)?";
+    /* Management questions starts */
+    Actual_Text =
+        webDriver.findElement(By.xpath("//div[@id='answers_oper3_q1']/fieldset/h4")).getText();
+    Expected_Text =
+        "Are the management and daily operations of the business controlled by the qualifying individual(s)?";
     assertEquals(Actual_Text, Expected_Text);
 
 
@@ -76,9 +82,9 @@ public class NewLLCQuestionanireDeepa {
     click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_212_N");
     setText_Element(webDriver, "WOSB_financial_Page_Ans_212_setText", "Qa testing");
     click_Element(webDriver, "Application_Common_Submit_Button");
-    click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_213_N"); /*SBA Exam*/
+    click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_213_N"); /* SBA Exam */
     click_Element(webDriver, "Application_Common_Submit_Button");
-    click_Element(webDriver, "Application_Common_Submit_Button"); /* Review Section start*/
+    click_Element(webDriver, "Application_Common_Submit_Button"); /* Review Section start */
     accept_Alert(webDriver, 8);
 
   }

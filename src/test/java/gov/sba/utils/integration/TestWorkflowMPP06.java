@@ -65,13 +65,16 @@ public class TestWorkflowMPP06 extends TestCase {
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
 
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+          new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
       navigationMenuClick(webDriver, "Dashboard");
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
 
-      if (stop_Exec == 1) { return; } /* TODO Working On */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO Working On */
 
 
     } catch (Exception e) {

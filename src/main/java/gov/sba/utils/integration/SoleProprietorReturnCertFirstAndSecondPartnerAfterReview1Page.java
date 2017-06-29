@@ -106,29 +106,29 @@ public class SoleProprietorReturnCertFirstAndSecondPartnerAfterReview1Page exten
           .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
       webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
     } else {
-    if (webDriver.getCurrentUrl().contains("staging")) {
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("158899368");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(ExpectedConditions
-          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
-    } else {
-    if (webDriver.getCurrentUrl().contains("newqa")) {
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("158899368");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(ExpectedConditions
-          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
-    } else {
-    if (webDriver.getCurrentUrl().contains("localhost")) {
-      webDriver.findElement(By.id("query")).sendKeys("158899368");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(ExpectedConditions
-          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
-    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("158899368");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("158899368");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("158899368");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+          } else {
             logger.info(
                 "if you are seeing this message then the test is running on an undecleared env which need to be added.");
           }

@@ -31,21 +31,26 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
       LogManager.getLogger(TestWorkflowAppOppSupportAdmin.class.getName());
   private static WebDriver webDriver;
   String duns_Number, email, password;
-  int get_The_Row_From_Login_Data; int stop_Exec = 1;
+  int get_The_Row_From_Login_Data;
+  int stop_Exec = 1;
 
   @Before
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver(); webDriver.get(TestHelpers.getBaseUrl());
+    webDriver = TestHelpers.getDefaultWebDriver();
+    webDriver.get(TestHelpers.getBaseUrl());
     String[] details = DatabaseUtils.findUnusedDunsNumber();
-    email = details[0]; password = details[1]; duns_Number = details[2]; get_The_Row_From_Login_Data = 28;
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
+    get_The_Row_From_Login_Data = 28;
   }
 
   @Test
   public void testMainTest() throws Exception {
     try {
-      /*Login as vendor admin and submit a application*/
+      /* Login as vendor admin and submit a application */
       return_All_Applications(webDriver, 55, duns_Number);
       delete_All_Application_Draft(webDriver, email, password, duns_Number);
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -54,13 +59,15 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "LOGOUT");
 
-      /*Login to opp support admin dashboard.*/
+      /* Login to opp support admin dashboard. */
       new LoginPageWithReference(webDriver, 28).Login_With_Reference();
-      if (stop_Exec == 1) { return;  /* TODO DE exists on search dun number  */ }
+      if (stop_Exec == 1) {
+        return;
+        /* TODO DE exists on search dun number */ }
 
       non_Vendor_searchDuns_Number(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Business_Search_Business_Name");
-      /* Find Draft,Active,compeleted certification*/
+      /* Find Draft,Active,compeleted certification */
 
       try {
         List<WebElement> rows_table =
@@ -79,38 +86,38 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
       } catch (Exception e) {
         logger.info("No Certifications tested - Should be fine");
       }
-      /* App37 -vendor support link and changing the business type*/
+      /* App37 -vendor support link and changing the business type */
       try {
         click_Element(webDriver, "Ops_Support_Cases_Search_Vendor_Supp_Link");
         click_Element(webDriver, "Ops_Support_Change_Business_Link");
         new Select(find_Element(webDriver, "Ops_Support_Change_Business_Type")).selectByIndex(2);
         click_Element(webDriver, "Application_Common_Save_button");
         navigationBarClick(webDriver, "LOGOUT");
-        /* Login with Analyst/supervisor and return the application*/
-        navigationBarClick(webDriver,"LOGOUT");
+        /* Login with Analyst/supervisor and return the application */
+        navigationBarClick(webDriver, "LOGOUT");
         return_All_Applications(webDriver, 55, duns_Number);
         delete_All_Application_Draft(webDriver, email, password, duns_Number);
 
         new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-        /* Verify the Business type is changes to Scorp[from LLC]*/
+        /* Verify the Business type is changes to Scorp[from LLC] */
 
-         click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
-         assertTrue(find_Element(webDriver,
-         "Vendor_Admin_Dashboard_More_Details_Id").getText().contains("S-Corporation"));
+        click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
+        assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText()
+            .contains("S-Corporation"));
         join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-         navigationMenuClick(webDriver, "Programs");
-         click_Element(webDriver, "JoinNewPgm_Create_App_EDWOSB");
-         click_Element(webDriver, "JoinNewPgm_Add_Cert");
-         click_Element(webDriver, "Application_Common_Accept_Button");
+        navigationMenuClick(webDriver, "Programs");
+        click_Element(webDriver, "JoinNewPgm_Create_App_EDWOSB");
+        click_Element(webDriver, "JoinNewPgm_Add_Cert");
+        click_Element(webDriver, "Application_Common_Accept_Button");
 
-         /*new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();*/
+        /* new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa(); */
 
       } catch (Exception e) {
         logger.info(e.toString());
         throw e;
       }
 
-      /*US1280*/
+      /* US1280 */
       navigationMenuClick(webDriver, "LOGOUT");
       new LoginPageWithReference(webDriver, 28).Login_With_Reference();
       try {
@@ -137,19 +144,17 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
         logger.info(e.toString());
       }
 
-      /*App-45 cases page*/
-      assertEquals("Cases",
-          find_Element(webDriver, "Opp_Support_Page_Cases_Link").getText());
+      /* App-45 cases page */
+      assertEquals("Cases", find_Element(webDriver, "Opp_Support_Page_Cases_Link").getText());
       click_Element(webDriver, "Opp_Support_Page_Cases_Link");
-     assertEquals("Cases",
-          find_Element(webDriver, "Opp_Support_Admin_Page_Cases").getText());
-      /* US1280 -Opp Support Admin should be able to edit help page*/
+      assertEquals("Cases", find_Element(webDriver, "Opp_Support_Admin_Page_Cases").getText());
+      /* US1280 -Opp Support Admin should be able to edit help page */
       Set<String> handle = webDriver.getWindowHandles();
       String handle_01_Value = "";
       assertTrue(handle.size() == 1);
       for (String s : handle)
         handle_01_Value = s;
-      /* Help Link- opp supp Staff cannot have edit functionality on Help Page*/
+      /* Help Link- opp supp Staff cannot have edit functionality on Help Page */
       click_Element(webDriver, "Main_Page_Help_Page_Link");
       Boolean element_Found = false;
       try {
@@ -168,7 +173,7 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
         logger.info("Test case Passed-HelpPage_Edit funtionality");
       }
 
-      assertEquals(element_Found,"true");
+      assertEquals(element_Found, "true");
 
 
     } catch (Exception e) {

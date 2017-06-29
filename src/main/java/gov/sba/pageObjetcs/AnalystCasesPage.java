@@ -1,15 +1,21 @@
 /** Created by deepa on 5/15/2017. */
 package gov.sba.pageObjetcs;
 
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.getLocator;
+import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Map;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static org.junit.Assert.assertNotNull;
 
 public class AnalystCasesPage {
   private static final Logger logger_Cases_Page =
@@ -33,9 +39,9 @@ public class AnalystCasesPage {
         click_Element(webDriver, a1, a2);
       }
     }
-       
- // XXXX
-    
+
+    // XXXX
+
     if (!verify_State.equals(null) && !verify_State.equals("")) {
       if (verify_State.toUpperCase().indexOf("PEND") > 0) {
         click_Element(webDriver, "Cases_Page_Verify_Duns_Pending");

@@ -48,7 +48,7 @@ public class TestWorkflowMPP02 extends TestCase {
   @Before
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
-    //    clear_Env_Chrome();
+    // clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber();
@@ -78,8 +78,9 @@ public class TestWorkflowMPP02 extends TestCase {
       click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
       assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
       assertEquals("Open application summary",
-              find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
-      assertEquals("Return to Vendor", find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
+          find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
+      assertEquals("Return to Vendor",
+          find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
       if (stop_Exec == 1) {
         return;
       } /* TODO After DE */
@@ -88,7 +89,7 @@ public class TestWorkflowMPP02 extends TestCase {
       /* Verify the Question review page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav", true));
       List<WebElement> dropdown =
-              new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+          new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
       logger.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -105,7 +106,7 @@ public class TestWorkflowMPP02 extends TestCase {
       /* Signature page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Signature_Review_SideNav", true));
       dropdown =
-              new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options")).getOptions();
+          new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options")).getOptions();
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
       assertEquals("Information missing", dropdown.get(2).getText());
@@ -118,19 +119,19 @@ public class TestWorkflowMPP02 extends TestCase {
       /* Determination page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Determinations_SideNav", true));
       assertEquals(
-              find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
-              "Review Started");
+          find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
+          "Review Started");
       assertEquals(
-              find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(),
-              "Return for Modification");
+          find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(),
+          "Return for Modification");
       assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile")
-              .getText(), "Recommend Eligible");
+          .getText(), "Recommend Eligible");
       assertEquals(
-              find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile")
-                      .getText(),
-              "Recommend Ineligible");
+          find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile")
+              .getText(),
+          "Recommend Ineligible");
       setText_Element(webDriver, "SBA_Assesment_Note_Body",
-              "Qa Test on DeterminationReview page by Analyst");
+          "Qa Test on DeterminationReview page by Analyst");
 
       /* Verify on Analyst Detremination page -Determination Made, Decision not displayed */
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
@@ -160,7 +161,7 @@ public class TestWorkflowMPP02 extends TestCase {
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(
-              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
 
     } catch (Exception e) {
       logger.info(e.toString());

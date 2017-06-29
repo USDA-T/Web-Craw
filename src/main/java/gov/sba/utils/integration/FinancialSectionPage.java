@@ -588,33 +588,37 @@ public class FinancialSectionPage extends TestCase {
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//fieldset/a/span")));
       // Click on the add button to another real estate other section.
       // ======>>>Open this when DE app-1040 is fix.
-       webDriver.findElement(By.xpath("//fieldset/a/span")).click();
-       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")));
-       webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select/option[3]")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div[2]/fieldset/div/div[2]/input")).sendKeys("1000Long rd Denmark");
-       webDriver.findElement(By.xpath("//div[2]/div/div[3]/fieldset/div/input")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div[4]/fieldset/div/div[2]/input")).sendKeys("76");
-       webDriver.findElement(By.xpath("//div[2]/div/div[5]/fieldset/div/input")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div[6]/fieldset/div/div[2]/input")).sendKeys("76");
-       webDriver.findElement(By.xpath("//div[2]/div/div[7]/fieldset/div/div[2]/input")).sendKeys("760000000");
-       webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input")).sendKeys("870099878");
-       //ON the last two question, select Yes to trigger the new question then select No .
-       webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
-       WebElement SecondForm =
-       webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
-       HighLight.highLightElement(webDriver, SecondForm);
-       WebElement SecondForm1 =
-       webDriver.findElement(By.xpath("//div[2]/div/div[12]/fieldset/h4"));
-       HighLight.highLightElement(webDriver, SecondForm1);
-       webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/input")).click();
-       WebElement SecondForm2 =
-       webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/h4"));
-       HighLight.highLightElement(webDriver, SecondForm2);
-      //Select no to disable section.
-       webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
-       webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//fieldset/a/span")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")));
+      webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select")).click();
+      webDriver.findElement(By.xpath("//div[2]/div/div/fieldset/div/div[2]/select/option[3]"))
+          .click();
+      webDriver.findElement(By.xpath("//div[2]/div/div[2]/fieldset/div/div[2]/input"))
+          .sendKeys("1000Long rd Denmark");
+      webDriver.findElement(By.xpath("//div[2]/div/div[3]/fieldset/div/input")).click();
+      webDriver.findElement(By.xpath("//div[2]/div/div[4]/fieldset/div/div[2]/input"))
+          .sendKeys("76");
+      webDriver.findElement(By.xpath("//div[2]/div/div[5]/fieldset/div/input")).click();
+      webDriver.findElement(By.xpath("//div[2]/div/div[6]/fieldset/div/div[2]/input"))
+          .sendKeys("76");
+      webDriver.findElement(By.xpath("//div[2]/div/div[7]/fieldset/div/div[2]/input"))
+          .sendKeys("760000000");
+      webDriver.findElement(By.xpath("//div[2]/div/div[8]/fieldset/div/div[2]/input"))
+          .sendKeys("870099878");
+      // ON the last two question, select Yes to trigger the new question then select No .
+      webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/input")).click();
+      WebElement SecondForm = webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/h4"));
+      HighLight.highLightElement(webDriver, SecondForm);
+      WebElement SecondForm1 = webDriver.findElement(By.xpath("//div[2]/div/div[12]/fieldset/h4"));
+      HighLight.highLightElement(webDriver, SecondForm1);
+      webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/input")).click();
+      WebElement SecondForm2 = webDriver.findElement(By.xpath("//div[2]/div/div[11]/fieldset/h4"));
+      HighLight.highLightElement(webDriver, SecondForm2);
+      // Select no to disable section.
+      webDriver.findElement(By.xpath("//div[2]/div/div[10]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//div[2]/div/div[9]/fieldset/div/label[2]")).click();
+      webDriver.findElement(By.xpath("//div[2]/div/div[13]/fieldset/div/label[2]")).click();
       CoreUtils.clickContinue(webDriver);
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
       // Beginning Test For Personal Property.

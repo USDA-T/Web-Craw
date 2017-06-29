@@ -72,7 +72,10 @@ public class TestWorkflowMPP03 extends TestCase {
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"MPP Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
-      /* Verify the Summary page, Expire+Issue dt - vendor dashboard, Summary Page title: Us1699,!457,1463 */
+      /*
+       * Verify the Summary page, Expire+Issue dt - vendor dashboard, Summary Page title:
+       * Us1699,!457,1463
+       */
       /* TODO For expiry date and Issue date */
 
       navigationMenuClick(webDriver, "Logout");
@@ -140,7 +143,9 @@ public class TestWorkflowMPP03 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) { return; } /* TODO Hard Coded Duns Number */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO Hard Coded Duns Number */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
 
@@ -161,7 +166,9 @@ public class TestWorkflowMPP03 extends TestCase {
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
 
-      if (stop_Exec == 1) { return; } /* TODO Hard Coded Duns Number */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO Hard Coded Duns Number */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");

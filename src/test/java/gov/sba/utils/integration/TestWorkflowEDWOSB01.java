@@ -38,7 +38,8 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestWorkflowEDWOSB01 extends TestCase {
   private static final Logger logger = LogManager.getLogger(TestWorkflowEDWOSB01.class.getName());
-  private static WebDriver webDriver; int stop_Exec = 1;
+  private static WebDriver webDriver;
+  int stop_Exec = 1;
   String duns_Number, email, password, typ_App;
 
   @Before
@@ -48,12 +49,17 @@ public class TestWorkflowEDWOSB01 extends TestCase {
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber();
-    email = details[0]; password = details[1]; duns_Number = details[2];
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
     // email = "qa115@mailinator.com"; password = "password"; duns_Number = "398245793";
   }
 
   @Test
-  /* Test US1647- EDWosb financial section link disbaled for application not having finacial parterns information */
+  /*
+   * Test US1647- EDWosb financial section link disbaled for application not having finacial
+   * parterns information
+   */
   public void testMainTest() throws Exception {
     try {
       return_All_Applications(webDriver, 55, duns_Number);
@@ -70,13 +76,16 @@ public class TestWorkflowEDWOSB01 extends TestCase {
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
       assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
-      assertEquals("Open application summary", find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
-      assertEquals("Return to Vendor", find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
+      assertEquals("Open application summary",
+          find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
+      assertEquals("Return to Vendor",
+          find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
       click_Element(webDriver, "Case_Submit_Button");
 
       /* Verify the Question review page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav", true));
-      List<WebElement> dropdown = new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+      List<WebElement> dropdown =
+          new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
       logger.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -91,7 +100,9 @@ public class TestWorkflowEDWOSB01 extends TestCase {
       /* For Wosb Financial review link not exist */
       assertNotNull(find_Element(webDriver, "SBA_Question_Financial_Review_SideNav", true));
 
-      if (stop_Exec == 1) {return;  }
+      if (stop_Exec == 1) {
+        return;
+      }
       /* TODO DE exists on submit button */
 
       /* Signature page */
@@ -109,10 +120,18 @@ public class TestWorkflowEDWOSB01 extends TestCase {
 
       /* Determination page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Determinations_SideNav", true));
-      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(), "Review Started");
-      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(), "Return for Modification");
-      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile").getText(), "Recommend Eligible");
-      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile").getText(), "Recommend Ineligible");
+      assertEquals(
+          find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
+          "Review Started");
+      assertEquals(
+          find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(),
+          "Return for Modification");
+      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile")
+          .getText(), "Recommend Eligible");
+      assertEquals(
+          find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile")
+              .getText(),
+          "Recommend Ineligible");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Qa Test");
 
       /* Verify on Analyst Detremination page -Determination Made, Decision not displayed */
@@ -120,12 +139,15 @@ public class TestWorkflowEDWOSB01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
 
-      if (stop_Exec == 1) { return;} /* TODO DE exists on submit button */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO DE exists on submit button */
       // click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: Self Certified"));
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: Self Certified"));
       navigationBarClick(webDriver, "LOGOUT");
 
       /* Supervisor Flow - Approve */
@@ -141,7 +163,8 @@ public class TestWorkflowEDWOSB01 extends TestCase {
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
 
 
     } catch (Exception e) {

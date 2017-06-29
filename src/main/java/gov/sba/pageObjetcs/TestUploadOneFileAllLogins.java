@@ -1,14 +1,15 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.pageObjetcs;
 
-import com.opencsv.CSVParser;
-import com.opencsv.CSVReader;
-import gov.sba.automation.ConfigUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+
+import java.io.FileReader;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -17,10 +18,15 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import java.io.FileReader;
+import com.opencsv.CSVParser;
+import com.opencsv.CSVReader;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import gov.sba.automation.ConfigUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
+import junit.framework.TestCase;
 
 
 /*
@@ -38,7 +44,8 @@ import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 
 @Category({gov.sba.utils.integration.StableTests.class})
 public class TestUploadOneFileAllLogins extends TestCase {
-  private static final Logger logger = LogManager.getLogger(TestUploadOneFileAllLogins.class.getName());
+  private static final Logger logger =
+      LogManager.getLogger(TestUploadOneFileAllLogins.class.getName());
   WebDriver webDriver;
   String duns_Number, email, password, typ_App;
 
@@ -66,11 +73,12 @@ public class TestUploadOneFileAllLogins extends TestCase {
 
         String email = detailFields[0];
         String password = detailFields[1];
-        logger.info(email + "-----" +  password);
+        logger.info(email + "-----" + password);
         new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
         join_New_Program_CheckBoxes(webDriver, "MPP");
         click_Element(webDriver, "All_Answers_Yes");
-        new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(FixtureUtils.fixturesDir() + "Upload.pdf");
+        new newMppUploadDocumentPageDeepa(webDriver)
+            .deepaUploadMppDocument(FixtureUtils.fixturesDir() + "Upload.pdf");
 
         navigationMenuClick(webDriver, "Logout");
         webDriver.get(TestHelpers.getBaseUrl());

@@ -32,7 +32,7 @@ public class TestSimpleLogin {
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
-        
+
   }
 
   @After
@@ -49,7 +49,7 @@ public class TestSimpleLogin {
 
     // CommonApplicationMethods.clear_Env_Chrome();
     webDriver.get(baseUrl);
-    //CommonApplicationMethods.focus_window()
+    // CommonApplicationMethods.focus_window()
 
     // WaitUtils waitUtils = new WaitUtils();
 

@@ -30,7 +30,7 @@ import static gov.sba.utils.integration.FillApplCreatePages.pageCaseOverviewFill
 
 public class TestWorkflowAppCancelReviewLink extends TestCase {
   Logger logger = LogManager.getLogger(TestWorkflowAppCancelReviewLink.class.getName());
-  /*Set The variables Define*/
+  /* Set The variables Define */
   WebDriver webDriver;
   int get_The_Row_From_Login_Data;
   String duns_Number, email, password;
@@ -65,12 +65,16 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
       /* Update - case page based on Elastic search clear the input text before set text */
 
       casesPageSearch(webDriver, duns_Number);
-      List<WebElement> current_Row = find_Elements(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr [ td[position()=2]/a[contains(text(),'" + duns_Number + "')] and td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))] ]");
+      List<WebElement> current_Row = find_Elements(webDriver, "xpath",
+          "//div[@id='table-search']/table/tbody/tr [ td[position()=2]/a[contains(text(),'"
+              + duns_Number
+              + "')] and td[position()=3 and contains(text(),'WOSB') and not(contains(text(),'EDWOSB'))] ]");
 
       if (current_Row.size() > 0) {
 
         logger.info(current_Row.get(0).getAttribute("innerHTML"));
-        current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+        current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"))
+            .click();
 
         assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
 
@@ -78,9 +82,11 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
         assertEquals(1, dropdown.getOptions().size());
         assertEquals("Initial Review", dropdown.getFirstSelectedOption().getText());
 
-        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id")).selectByIndex(0);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Reviewer_Id"))
+            .selectByIndex(0);
         new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Owner_Id")).selectByIndex(1);
-        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id")).selectByIndex(1);
+        new Select(find_Element(webDriver, "SBA_Case_Overview_Select_Supervisor_Id"))
+            .selectByIndex(1);
 
         click_Element(webDriver, "Case_Submit_Button");
         click_Element(webDriver, "SBA_Case_Overview_Link");
@@ -103,10 +109,13 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
         navigationBarClick(webDriver, "Cases");
         casesPageSearch(webDriver, duns_Number);
 
-        find_Element(webDriver, "xpath", "//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[contains(text(),'" + duns_Number + "')] ]").
-                     findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
+        find_Element(webDriver, "xpath",
+            "//div[@id='table-search']/table/tbody/tr[ td[position()=2]/a[contains(text(),'"
+                + duns_Number + "')] ]")
+                    .findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]")).click();
 
-        pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X", "Analyst1 X", "Analyst1 X");
+        pageCaseOverviewFillup(webDriver, "Initial Review", "Analyst1 X", "Analyst1 X",
+            "Analyst1 X");
         click_Element(webDriver, "Case_Submit_Button");
         click_Element(webDriver, "Case_SaveNotes_Button");
 

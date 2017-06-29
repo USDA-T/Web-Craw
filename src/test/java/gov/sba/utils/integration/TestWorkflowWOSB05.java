@@ -109,9 +109,9 @@ public class TestWorkflowWOSB05 extends TestCase {
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       /* TODO Hard Coding Remove for QA */
       assertTrue(
-              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
       assertTrue(
-              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
       navigationBarClick(webDriver, "LOGOUT");
     } catch (Exception e) {
       throw e;

@@ -1,11 +1,14 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.pageObjetcs;
 
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
+import junit.framework.TestCase;
 
 public class AppProfileSearchType extends TestCase {
 

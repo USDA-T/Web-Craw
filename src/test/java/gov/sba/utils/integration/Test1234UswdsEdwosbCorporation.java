@@ -37,7 +37,7 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
-    //get the business DUNS #.
+    // get the business DUNS #.
     String BusinessDuns;
     BusinessDuns = webDriver.findElement(By.xpath("//p[2]/span")).getText();
     logger.info("This Company DUNS number is " + BusinessDuns);

@@ -80,10 +80,14 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       new LoginPageWithReference(webDriver, 55).Login_With_Reference();
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
-      click_Element(webDriver, "Application_Common_Submit_Button_Id"); Thread.sleep(2000); //Sleep neded here
-      click_Element(webDriver, "Application_Common_Save_Notes_Id"); Thread.sleep(2000); //Sleep neded here
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav"); Thread.sleep(2000); //Sleep neded here
-      click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(2000); //Sleep neded here
+      click_Element(webDriver, "Application_Common_Submit_Button_Id");
+      Thread.sleep(2000); // Sleep neded here
+      click_Element(webDriver, "Application_Common_Save_Notes_Id");
+      Thread.sleep(2000); // Sleep neded here
+      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+      Thread.sleep(2000); // Sleep neded here
+      click_Element(webDriver, "Application_Common_Submit_Button");
+      Thread.sleep(2000); // Sleep neded here
       click_Element(webDriver, "SBA_Review_Return_For_Mod");
       click_Element(webDriver, "SBA_Review_Determination_Save_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
@@ -100,12 +104,15 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       click_Element(webDriver, "SBA_Review_Determ_Made");
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
-      if (stop_Exec == 1) { return; } /* TODO Hard Coded Duns Number */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO Hard Coded Duns Number */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
       navigationBarClick(webDriver, "LOGOUT");
 
     } catch (Exception e) {

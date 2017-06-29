@@ -50,8 +50,12 @@ public class TestWorkflowWOSB03 extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    /*String[] details = findUnusedDunsNumber(); email = details[0]; password = details[1]; duns_Number = details[2];*/
-     duns_Number = "223111594";get_The_Row_From_Login_Data = 47;
+    /*
+     * String[] details = findUnusedDunsNumber(); email = details[0]; password = details[1];
+     * duns_Number = details[2];
+     */
+    duns_Number = "223111594";
+    get_The_Row_From_Login_Data = 47;
 
   }
 
@@ -60,10 +64,10 @@ public class TestWorkflowWOSB03 extends TestCase {
   public void testMainTest() throws Exception {
     try {
       return_All_Applications(webDriver, 55, duns_Number);
-      /*Only for dynamic Duns*/
+      /* Only for dynamic Duns */
       /*
-         delete_All_Application_Draft(webDriver, email, password, duns_Number);
-         new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+       * delete_All_Application_Draft(webDriver, email, password, duns_Number); new
+       * LoginPageWithDetails(webDriver, email, password).Login_With_Details();
        */
       delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, duns_Number);
       new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();

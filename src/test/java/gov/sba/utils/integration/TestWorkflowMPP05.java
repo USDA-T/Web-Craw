@@ -47,7 +47,7 @@ public class TestWorkflowMPP05 extends TestCase {
   @Before
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
-//    clear_Env_Chrome();
+    // clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber();
@@ -69,7 +69,7 @@ public class TestWorkflowMPP05 extends TestCase {
       finalSignatureSubmit(webDriver);
 
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-              new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
+          new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
 
       /*
        * Verify the Summary page, Expire date and Issue date in vendor dashboard Summary Page title
@@ -133,9 +133,9 @@ public class TestWorkflowMPP05 extends TestCase {
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       assertTrue(
-              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
       assertTrue(
-              find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
       navigationBarClick(webDriver, "LOGOUT");
 
     } catch (Exception e) {
