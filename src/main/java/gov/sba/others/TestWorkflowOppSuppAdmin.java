@@ -47,7 +47,7 @@ public class TestWorkflowOppSuppAdmin extends TestCase {
     webDriver.get(TestHelpers.getBaseUrl());
     // CommonApplicationMethods.focus_window();
     get_The_Row_From_Login_Data = 28;
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];

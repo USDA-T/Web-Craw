@@ -38,7 +38,7 @@
 //
 // webDriver.get(TestHelpers.getBaseUrl());
 // CommonApplicationMethods.focus_window();
-// String[] details = DatabaseUtils.findUnusedDunsNumber();
+// String[] details = DatabaseUtils.findUnusedDunsNumber("");
 // email = details[0];
 // password = details[1];
 // duns_Number = details[2];
@@ -87,7 +87,7 @@
 //
 // searchDuns_Number(webDriver, duns_Number);
 //
-// click_Element(webDriver, "SBA_Legal_Businesss_Name_Link");
+// click_Element(webDriver, "SBA_Legal_Business_Name_Link");
 //
 // click_Element(webDriver, "SBA_WOSB_Cert_Link");
 // assertEquals("Case Overview", find_Element(webDriver,

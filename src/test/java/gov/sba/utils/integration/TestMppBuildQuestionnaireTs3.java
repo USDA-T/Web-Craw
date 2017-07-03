@@ -1,8 +1,10 @@
 // @Montana
 package gov.sba.utils.integration;
 
-import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
+import gov.sba.automation.CoreUtils;
+import gov.sba.automation.FixtureUtils;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -16,10 +18,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import gov.sba.automation.CoreUtils;
-import gov.sba.automation.FixtureUtils;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+
+import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class TestMppBuildQuestionnaireTs3 extends TestCase {
   private static final Logger logger =

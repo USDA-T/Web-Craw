@@ -37,7 +37,7 @@ public class Testapp244AllCases8a extends TestCase {
         
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];
@@ -330,7 +330,7 @@ public class Testapp244AllCasesMpp extends TestCase {
         
     webDriver.get(TestHelpers.getBaseUrl());
     CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];
@@ -596,7 +596,7 @@ public class Testapp244AllCasesMpp extends TestCase {
 
 //  public static void return_All_Applications(WebDriver webDriver, int login_Id, String duns_Number) throws Exception {
 //
-//    Logger logger = LogManager.getLogger(gov.sba.automation.CommonApplicationMethods.class.getName());
+//    Logger logger = LogManager.getLogger(CommonApplicationMethods.class.getName());
 //    new LoginPageWithReference(webDriver, login_Id).Login_With_Reference();
 //    non_Vendor_searchDuns_Number(webDriver, duns_Number);
 //

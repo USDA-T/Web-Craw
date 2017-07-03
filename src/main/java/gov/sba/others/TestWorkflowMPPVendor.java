@@ -49,7 +49,7 @@ public class TestWorkflowMPPVendor extends TestCase {
     clear_Env_Chrome();
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];

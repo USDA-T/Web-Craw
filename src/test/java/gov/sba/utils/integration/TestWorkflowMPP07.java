@@ -1,6 +1,3 @@
-// TS_Created_By_Deepa_Patri
-//
-// ______________________________
 package gov.sba.utils.integration;
 
 import gov.sba.automation.TestHelpers;
@@ -13,36 +10,28 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
 import static gov.sba.pageObjetcs.ProgramsPage.generic_file_Upld;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
- * TestWorkflowMPP + 01. Vendor Draft Create , logout. Update draft submit , Analyst Review,
- * Supervisor Approve - 8a Yes 02. Vendor Create , Submit, Analyst Review, Supervisor Approve - 8a
- * ,no Size determination,no active plan agreement, no needs. No 03. Vendor Create , Submit, Analyst Review, Supervisor Reject - Declined 04. Vendor Create ,
- * Submit, Analyst return, Vendor Change Draft , Resubmit, Analyst Review, Supervisor Approve 05.
- * Vendor Create , Submit, Analyst return, Vendor Change Draft , Resubmit, AAnalyst Review,
- * Supervisor reject 06. Vendor Create , Submit, Vendor Create another Submit 06. Vendor Create
- * ......
+ * TestWorkflowMPP + 07- Vendor admin create MPP application with having size detemination,Active Agreement and with Needs
+ * Analyst Review the Submitted MPP application, Supervisor approves it.
  */
 
 
-@Category({gov.sba.utils.integration.StableTests.class})
-
-public class TestWorkflowMPP02 extends TestCase {
-    private static final Logger logger = LogManager.getLogger(TestWorkflowMPP02.class.getName());
+@Category({StableTests.class}) public class TestWorkflowMPP07 extends TestCase {
+    Logger logger = LogManager.getLogger(TestWorkflowMPP07.class.getName());
     private static WebDriver webDriver;
     int stop_Exec = 1;
     String duns_Number, email, password;
+    int get_The_Row_From_Login_Data;
 
     @Before public void setUp() throws Exception {
         get_Stop_Execution_Flag();
@@ -53,13 +42,12 @@ public class TestWorkflowMPP02 extends TestCase {
         email = details[0];
         password = details[1];
         duns_Number = details[2];
-    /* duns_Number = "246235962";get_The_Row_From_Login_Data = 49; */
+    /* duns_Number = "196374813"; get_The_Row_From_Login_Data = 41; */
 
     }
 
     @Test public void testMainTest() throws Exception {
         try {
-
            /* return_All_Applications(webDriver, 56, duns_Number);
             delete_All_Application_Draft(webDriver, email, password, duns_Number);*/
             new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -67,21 +55,41 @@ public class TestWorkflowMPP02 extends TestCase {
             MPPQuestionaairePage.answers_8a_Questioannaire(webDriver, "No");
             MPPQuestionaairePage.eligibilityPage(webDriver, "Yes", "Yes", "No", "No");
             MPPQuestionaairePage.select_NALCS_Code(webDriver, "Yes", "Yes");
-            MPPQuestionaairePage.size_Determination(webDriver, "No");
+            MPPQuestionaairePage.size_Determination(webDriver, "Yes");
+            MPPQuestionaairePage.size_ReDetermination(webDriver, "Yes");
+            MPPQuestionaairePage.reDetermination_Info(webDriver);
             generic_file_Upld(webDriver);
-            MPPQuestionaairePage.plan_Agreement(webDriver, "No");
+            MPPQuestionaairePage.plan_Agreement(webDriver, "Yes");
+            MPPQuestionaairePage.activeAgreement(webDriver);
+            generic_file_Upld(webDriver);
             generic_file_Upld(webDriver);
             MPPQuestionaairePage
-                .determination_Needs_Page(webDriver, "No", "No", "No", "No", "No", "No");
+                .determination_Needs_Page(webDriver, "Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
+            String Text =
+                "Detailed information regarding the value of all assets (including cash on hand and in banks, accounts and notes receivable, retirement accounts, stocks, bonds, real estate, personal property, life insurance, and any other assets), liabilities (such as loans, mortgages, tax debts, and any other liabilities), and income (including salary, investment income, real estate income, and any other income). Funds invested in an Individual Retirement Account (IRA) or other official retirement account that are unavailable to an individual until retirement age without a significant penalty will not be considered in determining an individual's net worth. In order to properly assess whether funds invested in a retirement account may be excluded from an individual's net worth, the individual must provide information about the terms and restrictions of the account to SBA and certify that the retirement account is legitimateThree most recent personal Federal income tax returns (IRS Form 1040) including all schedules, statements, and forms(W-2, 1099-R, etc.) for qualifying individual(s) and his/her spouse";
+            MPPQuestionaairePage.Management_and_Technical_Needs(webDriver, Text);
+            MPPQuestionaairePage.Financial_Needs(webDriver, Text);
+            MPPQuestionaairePage.Contracting_Needs(webDriver, Text);
+            MPPQuestionaairePage.Intl_Trade_Needs(webDriver, Text);
+            MPPQuestionaairePage.Business_Development_Needs(webDriver, Text);
+            MPPQuestionaairePage.General_and_Administrative_Needs(webDriver, Text);
             generic_file_Upld(webDriver);
             MPPQuestionaairePage.mpp_BusinessInfo(webDriver, duns_Number);
+            /*Review Page submit*/
+            if (stop_Exec == 1) {
+                return; /* TODO DE App-1296  Exist on Submit Button on review Page*/
+            }
             click_Element(webDriver, "Application_Common_Submit_Button");
             accept_Alert(webDriver, 10);
             finalSignatureSubmit(webDriver);
+            assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+                new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
             navigationMenuClick(webDriver, "LOGOUT");
+            /* Analyst Login  start Review  Process*/
             new LoginPageWithReference(webDriver, 29).Login_With_Reference();
             navigationBarClick(webDriver, "Cases");
             search_Cases_Duns_Number_Table(webDriver, duns_Number);
+            /* case Overview Page*/
             click_Element(webDriver, "SBA_Legal_Business_Name_Link");
             assertEquals("Case Overview",
                 find_Element(webDriver, "Case_CaseOverview_title").getText());
@@ -90,79 +98,30 @@ public class TestWorkflowMPP02 extends TestCase {
             assertEquals("Return to Vendor",
                 find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
             click_Element(webDriver, "Case_Submit_Button");
-
-      /* Verify the Question review page */
-            assertNotNull(find_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav", true));
-            List<WebElement> dropdown =
-                new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
-            logger.info(dropdown.get(0).getText());
-            assertEquals("Confirmed", dropdown.get(0).getText());
-            assertEquals("Not reviewed", dropdown.get(1).getText());
-            assertEquals("Information missing", dropdown.get(2).getText());
-
-            assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-            assertEquals("Needs further review", dropdown.get(4).getText());
+            /* Question review page */
             click_Element(webDriver, "SBA_Note_Link");
             setText_Element(webDriver, "SBA_Assesments_Note_Body",
                 "Adding notes QAquestion Review page");
-            click_Element(webDriver, "Application_Common_Save_Notes_Id");
-
-      /* For MPP Financial review link not exist */
-            assertNull(find_Element(webDriver, "SBA_Question_Financial_Review_SideNav", true));
-      /* Signature page */
-            assertNotNull(find_Element(webDriver, "SBA_Question_Signature_Review_SideNav", true));
-            dropdown = new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options"))
-                .getOptions();
-            assertEquals("Confirmed", dropdown.get(0).getText());
-            assertEquals("Not reviewed", dropdown.get(1).getText());
-            assertEquals("Information missing", dropdown.get(2).getText());
-            assertEquals("Makes vendor ineligible", dropdown.get(3).getText());
-            assertEquals("Needs further review", dropdown.get(4).getText());
+             /*Signature page */
             click_Element(webDriver, "SBA_Note_Link");
             setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
             click_Element(webDriver, "SBA_Common_Page_Commit");
-
-      /* Determination page */
-            assertNotNull(find_Element(webDriver, "SBA_Question_Determinations_SideNav", true));
-            assertEquals(
-                find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
-                "Review Started");
-            assertEquals(
-                find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(),
-                "Return for Modification");
-            assertEquals(
-                find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile")
-                    .getText(), "Recommend Eligible");
-            assertEquals(
-                find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile")
-                    .getText(), "Recommend Ineligible");
-            setText_Element(webDriver, "SBA_Assesment_Note_Body",
-                "Qa Test on DeterminationReview page by Analyst");
-
-      /* Verify on Analyst Detremination page -Determination Made, Decision not displayed */
+             /* Determination page */
             assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
             assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
-
             if (stop_Exec == 1) {
                 return;
-            } /* TODO DE exists on submit */
-
+            } /* TODO DE exists on submit  App-1148*/
             click_Element(webDriver, "Application_Common_Submit_Button");
-
-            click_Element(webDriver, "SBA_Question_Determinations_SideNav");
-
             assertTrue(
-                find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-
-
+                find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Pending"));
             navigationBarClick(webDriver, "LOGOUT");
-      /* Supervisor Flow - Approve */
+            /* Supervisor make Determination SBA Approve */
             new LoginPageWithReference(webDriver, 56).Login_With_Reference();
             search_Cases_Duns_Number_Table(webDriver, duns_Number);
             click_Element(webDriver, "SBA_Legal_Business_Name_Link");
             click_Element(webDriver, "SBA_Question_Determinations_SideNav");
-      /* Verify on Analyst Determination page -Determination Made, Decision not displayed */
-
+            /* Determination SBA Approved */
             click_Element(webDriver, "SBA_Review_Determ_Made");
             assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
             new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
@@ -173,14 +132,18 @@ public class TestWorkflowMPP02 extends TestCase {
                 .contains("Decision: SBA Approved"));
 
         } catch (Exception e) {
-            logger.info(e.toString());
+            logger.info("NACIS Code not popluating for this duns number" + e.toString());
             take_ScreenShot_TestCaseName(webDriver,
-                new String[] {"TestWorkflowMPP02", "Exception"});
+                new String[] {"TestWorkflowMPP07", "Exception"});
             throw e;
+
         }
     }
 
+
     @After public void tearDown() throws Exception {
-        webDriver.quit();
+         webDriver.quit();
     }
 }
+
+

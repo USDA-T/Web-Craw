@@ -1,14 +1,12 @@
 // Created BY Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class NewLLCQuestionanireDeepa {
 
@@ -21,7 +19,7 @@ public class NewLLCQuestionanireDeepa {
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
     Expected_Text =
         "Is the qualifying individual(s) currently certified by the U.S. Small Business Administration as an 8(a) Business Development (BD) Program Participant and does this woman own at least 51% of the business?";
-    assertEquals(Actual_Text, Expected_Text);
+    assertEquals (Actual_Text, Expected_Text);
 
     /* Verify the More detail meaning for the 8(A) question. */
     click_Element(webDriver, "WOSB_Questionnaire_Page_Ans_188_No");
@@ -67,8 +65,7 @@ public class NewLLCQuestionanireDeepa {
     logger.info("the Ownership questions are answered sucessfully");
 
     /* Management questions starts */
-    Actual_Text =
-        webDriver.findElement(By.xpath("//div[@id='answers_oper3_q1']/fieldset/h4")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[@id='answers_oper3_q1']/fieldset/h4")).getText();
     Expected_Text =
         "Are the management and daily operations of the business controlled by the qualifying individual(s)?";
     assertEquals(Actual_Text, Expected_Text);

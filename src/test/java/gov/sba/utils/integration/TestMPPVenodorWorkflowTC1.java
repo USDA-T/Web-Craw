@@ -1,6 +1,19 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.ProgramsPage;
+import junit.framework.TestCase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.*;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,24 +22,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.ProgramsPage;
-import junit.framework.TestCase;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -43,7 +38,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
     webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     // CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];
@@ -172,6 +167,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
 
       WebElement duns_Row_Pending_Check =
           webDriver.findElement(By.xpath("//td[contains(text(),'ending')]"));
+      assertEquals("pending",duns_Row_Pending_Check.getText());
 
       // else Delete it if in Draft all of the Draft applications
       Boolean isPresent = (webDriver

@@ -17,50 +17,47 @@ import static gov.sba.automation.CommonApplicationMethods.*;
 @Category({gov.sba.utils.integration.StableTests.class})
 
 public class TestWorkflowAppMppPrepareLinkAndCopyUdates extends TestCase {
-  private static final Logger logger =
-      LogManager.getLogger(TestWorkflowAppMppPrepareLinkAndCopyUdates.class);
-  // Set The variables/Define
-  private static WebDriver webDriver;
+    private static final Logger logger =
+        LogManager.getLogger(TestWorkflowAppMppPrepareLinkAndCopyUdates.class);
+    private static WebDriver webDriver;
 
-  @Before
-  public void setUp() throws Exception {
-    CommonApplicationMethods.clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
-    webDriver.get(TestHelpers.getBaseUrl());
-    System.out.println(logger.isInfoEnabled());
-    logger.entry();
-  }
+    @Before public void setUp() throws Exception {
+        get_Stop_Execution_Flag();
+        clear_Env_Chrome();
+        webDriver = TestHelpers.getDefaultWebDriver();
+        webDriver.get(TestHelpers.getBaseUrl());
+        System.out.println(logger.isInfoEnabled());
+        logger.entry();
+    }
 
-  @Test
-  public void testMainTest() throws Exception {
+    @Test public void testMainTest() throws Exception {
 
-    try {
-      String Actual_Text;
-      String expected_Text;
-      navigationMenuClick(webDriver, "Prepare");
+        try {
+            String expected_Text;
+            navigationMenuClick(webDriver, "Prepare");
       /* Check the Top part of the text for MPP Link */
 
-      expected_Text = "All Small Mentor-Protégé Program Preparation Checklist";
-      assertEquals(expected_Text, find_Element(webDriver, "id", "mpp-anc").getText());
-      click_Element(webDriver, "xpath", "//a[contains( @href , '#mpp-anc' )]");
+            expected_Text = "All Small Mentor-Protégé Program Preparation Checklist";
+            assertEquals(expected_Text, find_Element(webDriver, "id", "mpp-anc").getText());
+            click_Element(webDriver, "xpath", "//a[contains( @href , '#mpp-anc' )]");
 
-      // Check the bottom part of the text for MPP Link
-      expected_Text =
-          " A Mentor-Protégé relationship should be established before starting the application – this is not a matching program. The Protégé firm must meet the size standard for small in the NAICS code in which they are seeking business development assistance.";
-      String xpath = "//p [ contains( text(), 'replace_Text') ]";
-      find_Element(webDriver, "xpath", xpath.replace("replace_Text", expected_Text));
+      /*Check the bottom part of the text for MPP Link*/
+            expected_Text =
+                " A Mentor-Protégé relationship should be established before starting the application – this is not a matching program. The Protégé firm must meet the size standard for small in the NAICS code in which they are seeking business development assistance.";
+            String xpath = "//p [ contains( text(), 'replace_Text') ]";
+            find_Element(webDriver, "xpath", xpath.replace("replace_Text", expected_Text));
 
-    } catch (Exception e) {
-      logger.info("Link is not present" + e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {TestWorkflowAppMppPrepareLinkAndCopyUdates.class.getName(), "Exception"});
-      throw e;
+        } catch (Exception e) {
+            logger.info("Link is not present" + e.toString());
+            CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
+                new String[] {TestWorkflowAppMppPrepareLinkAndCopyUdates.class.getName(),
+                    "Exception"});
+            throw e;
+        }
     }
-  }
 
-  @After
-  public void tearDown() throws Exception {
-    webDriver.quit();
-  }
+    @After public void tearDown() throws Exception {
+        webDriver.quit();
+    }
 
 }

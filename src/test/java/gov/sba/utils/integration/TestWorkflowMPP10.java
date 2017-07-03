@@ -1,7 +1,8 @@
-// TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
+
 import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.MPPQuestionaairePage;
 import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,26 +14,18 @@ import org.openqa.selenium.WebDriver;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.generic_file_Upld;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
- * TestWorkflowMPP + 01. Vendor Draft Create , logout. Update draft submit , Analyst Review,
- * Supervisor Approve - 8a Yes 02. Vendor Create , Submit, Analyst Review, Supervisor Approve - 8a
- * No 03. Vendor Create , Submit, Analyst Review, Supervisor Reject - Declined 04. Vendor Create ,
- * Submit, Analyst return, Vendor Change Draft , Resubmit, Analyst Review, Supervisor Approve 05.
- * Vendor Create , Submit, Analyst return, Vendor Change Draft , Resubmit, AAnalyst Review,
- * Supervisor reject 06. Vendor Create , Submit, Vendor Create another Submit 06. Vendor Create
- * ......
- * 
+ * TestWorkflowMPP +10 Vendor admin create MPP application with having size detemination, No Active Agreement and without Needs
+ *  The Answers are pre-populated while resubmitting another application..
  */
-
-
-@Category({StableTests.class}) public class TestWorkflowMPP06 extends TestCase {
-    Logger logger = LogManager.getLogger(TestWorkflowMPP06.class.getName());
+@Category({StableTests.class}) public class TestWorkflowMPP10 extends TestCase {
+    Logger logger = LogManager.getLogger(TestWorkflowMPP10.class.getName());
     private static WebDriver webDriver;
     int stop_Exec = 1;
     String duns_Number, email, password;
@@ -50,32 +43,45 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
     /* duns_Number = "196374813"; get_The_Row_From_Login_Data = 41; */
 
     }
-
     @Test public void testMainTest() throws Exception {
         try {
+
             /*return_All_Applications(webDriver, 56, duns_Number);
             delete_All_Application_Draft(webDriver, email, password, duns_Number);*/
             new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
             join_New_Program_CheckBoxes(webDriver, "MPP");
-            page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
-            finalSignatureSubmit(webDriver);
+            MPPQuestionaairePage.answers_8a_Questioannaire(webDriver, "No");
+            MPPQuestionaairePage.eligibilityPage(webDriver, "Yes", "Yes", "No", "No");
+            MPPQuestionaairePage.select_NALCS_Code(webDriver, "Yes", "Yes");
+            MPPQuestionaairePage.size_Determination(webDriver, "Yes");
+            MPPQuestionaairePage.size_ReDetermination(webDriver, "Yes");
+            MPPQuestionaairePage.reDetermination_Info(webDriver);
+            generic_file_Upld(webDriver);
+            MPPQuestionaairePage.plan_Agreement(webDriver, "No");
+            generic_file_Upld(webDriver);
+            MPPQuestionaairePage.determination_Needs_Page(webDriver, "No", "No", "No", "No", "No", "No");
+            generic_file_Upld(webDriver);
+            MPPQuestionaairePage.mpp_BusinessInfo(webDriver, duns_Number);
 
+            /*Review Page submit*/
+            //if (stop_Exec == 1) { return;}  /* TODO DE App-1296  Exist on Submit Button on review Page*/
+            click_Element(webDriver, "Application_Common_Submit_Button");
+            accept_Alert(webDriver, 10);
+            finalSignatureSubmit(webDriver);
             assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-                new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
-            navigationMenuClick(webDriver, "Dashboard");
+            new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
+           /* Verify the answers are being pre- populated while Resubmitting  another  the application */
             join_New_Program_CheckBoxes(webDriver, "MPP");
-            page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
-            finalSignatureSubmit(webDriver);
-
+            MPPQuestionaairePage.answers_8a_Questioannaire(webDriver, "assert_no");
+            MPPQuestionaairePage.eligibilityPage(webDriver, "assert_yes", "assert_yes", "assert_no", "assert_no");
             if (stop_Exec == 1) {
                 return;
             } /* TODO Working On */
 
-
         } catch (Exception e) {
-            logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
+            logger.info("NACIS Code not popluating for this duns number" + e.toString());
             take_ScreenShot_TestCaseName(webDriver,
-                new String[] {"TestWorkflowMPP05", "Exception"});
+                new String[] {"TestWorkflowMPP09", "Exception"});
             throw e;
 
         }
@@ -86,5 +92,4 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
         webDriver.quit();
     }
 }
-
 

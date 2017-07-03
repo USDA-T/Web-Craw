@@ -48,7 +48,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 
     webDriver.get(TestHelpers.getBaseUrl());
     // CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];

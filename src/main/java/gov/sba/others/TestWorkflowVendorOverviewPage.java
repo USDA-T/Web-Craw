@@ -43,7 +43,7 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
     CommonApplicationMethods.get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
     // CommonApplicationMethods.focus_window();
-    String[] details = DatabaseUtils.findUnusedDunsNumber();
+    String[] details = DatabaseUtils.findUnusedDunsNumber("");
     email = details[0];
     password = details[1];
     duns_Number = details[2];

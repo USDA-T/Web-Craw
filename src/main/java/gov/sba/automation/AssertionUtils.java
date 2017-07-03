@@ -1,18 +1,7 @@
 package gov.sba.automation;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Map;
-
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -20,8 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
+import java.util.List;
+import java.util.Map;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static org.junit.Assert.*;
 
 public class AssertionUtils {
   public static void verify_Element_Property(WebDriver webdriver, String locator_Yaml,
@@ -262,8 +254,7 @@ public class AssertionUtils {
   public static void return_All_Applications(WebDriver webDriver, int login_Id, String duns_Number)
       throws Exception {
 
-    Logger logger =
-        LogManager.getLogger(gov.sba.automation.CommonApplicationMethods.class.getName());
+    Logger logger = LogManager.getLogger(CommonApplicationMethods.class.getName());
     new LoginPageWithReference(webDriver, login_Id).Login_With_Reference();
     non_Vendor_searchDuns_Number(webDriver, duns_Number);
 
@@ -295,8 +286,7 @@ public class AssertionUtils {
   public static void delete_All_Application_Draft(WebDriver webDriver, int login_Id,
       String duns_Number) throws Exception {
 
-    Logger logger =
-        LogManager.getLogger(gov.sba.automation.CommonApplicationMethods.class.getName());
+    Logger logger = LogManager.getLogger(CommonApplicationMethods.class.getName());
     new LoginPageWithReference(webDriver, login_Id).Login_With_Reference();
 
     for (int i = 0; i < 6; i++) {
@@ -317,7 +307,7 @@ public class AssertionUtils {
       String password, String duns_Number) throws Exception {
 
     Logger logger =
-        LogManager.getLogger(gov.sba.automation.CommonApplicationMethods.class.getName());
+        LogManager.getLogger(CommonApplicationMethods.class.getName());
     new LoginPageWithDetails(webDriver, email_Id, password).Login_With_Details();
 
     for (int i = 0; i < 6; i++) {
