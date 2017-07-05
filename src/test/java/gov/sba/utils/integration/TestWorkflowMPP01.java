@@ -70,7 +70,7 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
             click_On_App_In_Vend_Dash(webDriver, "MPP");
             finalSignatureSubmit(webDriver);
             List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
-                new String[] {"MPP Application", "", "Pending", "", "", "", ""});
+                new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
             assertNotNull(all_Cells);
 
       /* Verify the Summary page, Expire date and Issue date in vendor dashboard */
