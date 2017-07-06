@@ -33,88 +33,93 @@ import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
  */
 
 
-@Category({gov.sba.utils.integration.StableTests.class}) public class TestWorkflowEDWOSB05
-    extends TestCase {
-    Logger logger = LogManager.getLogger(TestWorkflowEDWOSB05.class.getName());
-    private static WebDriver webDriver;
-    int stop_Exec = 1;
-    String duns_Number, email, password;
-    int get_The_Row_From_Login_Data;
+@Category({gov.sba.utils.integration.StableTests.class})
+public class TestWorkflowEDWOSB05 extends TestCase {
+  Logger logger = LogManager.getLogger(TestWorkflowEDWOSB05.class.getName());
+  private static WebDriver webDriver;
+  int stop_Exec = 1;
+  String duns_Number, email, password;
+  int get_The_Row_From_Login_Data;
 
-    @Before public void setUp() throws Exception {
-        get_Stop_Execution_Flag();
-        clear_Env_Chrome();
-        webDriver = TestHelpers.getDefaultWebDriver();
-        webDriver.get(TestHelpers.getBaseUrl());
-        String[] details = findUnusedDunsNumber("");
-        email = details[0];
-        password = details[1];
-        duns_Number = details[2];
+  @Before
+  public void setUp() throws Exception {
+    get_Stop_Execution_Flag();
+    clear_Env_Chrome();
+    webDriver = TestHelpers.getDefaultWebDriver();
+    webDriver.get(TestHelpers.getBaseUrl());
+    String[] details = findUnusedDunsNumber("");
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
     /* duns_Number = "376736143"; //get_The_Row_From_Login_Data = 64; */
 
-    }
+  }
 
-    @Test public void testMainTest() throws Exception {
-        try {
+  @Test
+  public void testMainTest() throws Exception {
+    try {
 
-           /* return_All_Applications(webDriver, 55, duns_Number);
-            delete_All_Application_Draft(webDriver, email, password, duns_Number);*/
-            new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-            join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-            page8aFillUp(webDriver, "Yes");
-            finalSignatureSubmit(webDriver);
-            navigationMenuClick(webDriver, "LOGOUT");
-            new LoginPageWithReference(webDriver, 11).Login_With_Reference();
+      /*
+       * return_All_Applications(webDriver, 55, duns_Number);
+       * delete_All_Application_Draft(webDriver, email, password, duns_Number);
+       */
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      page8aFillUp(webDriver, "Yes");
+      finalSignatureSubmit(webDriver);
+      navigationMenuClick(webDriver, "LOGOUT");
+      new LoginPageWithReference(webDriver, 11).Login_With_Reference();
       /* Verify Download Zip or generate Zip link displayed on vendor overview page -APP-473 */
-            return_DunsNo_Cases_Table(webDriver, duns_Number, "EDWOSB");
-            navigationBarClick(webDriver, "LOGOUT");
-            new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      return_DunsNo_Cases_Table(webDriver, duns_Number, "EDWOSB");
+      navigationBarClick(webDriver, "LOGOUT");
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* Resubmit the application */
-            click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
+      click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
 
-            page8aFillUp(webDriver, "Yes");
-            finalSignatureSubmit(webDriver);
-            navigationMenuClick(webDriver, "LOGOUT");
-            new LoginPageWithReference(webDriver, 55).Login_With_Reference();
-            search_Cases_Duns_Number_Table(webDriver, duns_Number);
-            click_Element(webDriver, "SBA_Legal_Business_Name_Link");
-            click_Element(webDriver, "Application_Common_Submit_Button_Id");
-            click_Element(webDriver, "Application_Common_Save_Notes_Id");
-            click_Element(webDriver, "Application_Common_Submit_Button");
-            click_Element(webDriver, "SBA_Review_Return_For_Mod");
-            click_Element(webDriver, "SBA_Review_Determination_Save_Button");
-            click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
-            navigationBarClick(webDriver, "LOGOUT");
-            new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-            click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
-            page8aFillUp(webDriver, "Yes");
-            finalSignatureSubmit(webDriver);
-            navigationMenuClick(webDriver, "LOGOUT");
-            new LoginPageWithReference(webDriver, 55).Login_With_Reference();
-            search_Cases_Duns_Number_Table(webDriver, duns_Number);
-            click_Element(webDriver, "SBA_Legal_Business_Name_Link");
-            click_Element(webDriver, "Application_Common_Submit_Button_Id");
-            click_Element(webDriver, "SBA_Question_Determinations_SideNav");
-            click_Element(webDriver, "SBA_Review_Determ_Made");
-            new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
+      page8aFillUp(webDriver, "Yes");
+      finalSignatureSubmit(webDriver);
+      navigationMenuClick(webDriver, "LOGOUT");
+      new LoginPageWithReference(webDriver, 55).Login_With_Reference();
+      search_Cases_Duns_Number_Table(webDriver, duns_Number);
+      click_Element(webDriver, "SBA_Legal_Business_Name_Link");
+      click_Element(webDriver, "Application_Common_Submit_Button_Id");
+      click_Element(webDriver, "Application_Common_Save_Notes_Id");
+      click_Element(webDriver, "Application_Common_Submit_Button");
+      click_Element(webDriver, "SBA_Review_Return_For_Mod");
+      click_Element(webDriver, "SBA_Review_Determination_Save_Button");
+      click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
+      navigationBarClick(webDriver, "LOGOUT");
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      click_On_App_In_Vend_Dash(webDriver, "EDWOSB");
+      page8aFillUp(webDriver, "Yes");
+      finalSignatureSubmit(webDriver);
+      navigationMenuClick(webDriver, "LOGOUT");
+      new LoginPageWithReference(webDriver, 55).Login_With_Reference();
+      search_Cases_Duns_Number_Table(webDriver, duns_Number);
+      click_Element(webDriver, "SBA_Legal_Business_Name_Link");
+      click_Element(webDriver, "Application_Common_Submit_Button_Id");
+      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+      click_Element(webDriver, "SBA_Review_Determ_Made");
+      new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
       /* TODO Duns No Hard Coding */
-            if (stop_Exec == 1) {
-                return;
-            }
+      if (stop_Exec == 1) {
+        return;
+      }
 
-            click_Element(webDriver, "Application_Common_Submit_Button");
-            click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
-            assertTrue(
-                find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
-            assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText()
-                .contains("Decision: SBA Declined"));
-            navigationBarClick(webDriver, "LOGOUT");
-        } catch (Exception e) {
-            throw e;
-        }
+      click_Element(webDriver, "Application_Common_Submit_Button");
+      click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
+      assertTrue(
+          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
+      navigationBarClick(webDriver, "LOGOUT");
+    } catch (Exception e) {
+      throw e;
     }
+  }
 
-    @After public void tearDown() throws Exception {
-        webDriver.quit();
-    }
+  @After
+  public void tearDown() throws Exception {
+    webDriver.quit();
+  }
 }

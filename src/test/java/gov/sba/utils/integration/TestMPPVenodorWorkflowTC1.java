@@ -53,9 +53,8 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
     try {
       // Us1699,!457,1463
       // Check Dashboard Pending status
-      String get_Current_Duns_No = webDriver
-          .findElement(By.xpath(
-              "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
+      String get_Current_Duns_No = webDriver.findElement(By.xpath(
+          "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
           .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger.info(get_Current_Duns_No);
       ProgramsPage.join_New_Program_CheckBoxes(webDriver, "Mpp");
@@ -167,7 +166,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
 
       WebElement duns_Row_Pending_Check =
           webDriver.findElement(By.xpath("//td[contains(text(),'ending')]"));
-      assertEquals("pending",duns_Row_Pending_Check.getText());
+      assertEquals("pending", duns_Row_Pending_Check.getText());
 
       // else Delete it if in Draft all of the Draft applications
       Boolean isPresent = (webDriver

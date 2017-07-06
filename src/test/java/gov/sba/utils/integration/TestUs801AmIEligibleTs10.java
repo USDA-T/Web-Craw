@@ -198,49 +198,42 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
           "If you do not know the NAICS code(s) in which your business operates, please review the NAICS manual available at http://www.census.gov/eos/www/naics/.";
       assertEquals(actual_Text16, expected_Text16);
       webDriver.findElement(By.id("yes_button_small_naics")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#women_owning_business > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#women_owning_business > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 7th question and select Yes and verify the More Detail
       // meaning of the question.
-      String actual_Text17 = webDriver
-          .findElement(By.cssSelector(
-              "#women_owning_business > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text17 = webDriver.findElement(By.cssSelector(
+          "#women_owning_business > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text17 =
           "Are the qualifying individual(s) of the firm women who own at least 51% of the firm?";
       assertEquals(actual_Text17, expected_Text17);
       // Verify the detail meaning for the 7th question.
-      String actual_Text18 = webDriver
-          .findElement(By.cssSelector(
-              "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
+      String actual_Text18 = webDriver.findElement(By.cssSelector(
+          "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
           .getText();
       String expected_Text18 = "None";
       assertEquals(actual_Text18, expected_Text18);
-      String actual_Text19 = webDriver
-          .findElement(By.cssSelector(
-              "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
+      String actual_Text19 = webDriver.findElement(By.cssSelector(
+          "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
           .getText();
       String expected_Text19 = "None";
       assertEquals(actual_Text19, expected_Text19);
-      String actual_Text20 = webDriver
-          .findElement(By.cssSelector(
-              "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
+      String actual_Text20 = webDriver.findElement(By.cssSelector(
+          "#women_owning_business > div.q.makeitonehundredpercent > div.details.usa-width-one-half > p"))
           .getText();
       String expected_Text20 = "None";
       assertEquals(actual_Text20, expected_Text20);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_women_owning_business")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#naics_fed_set_asides > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#naics_fed_set_asides > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 8th question and select Yes and verify the More Detail
       // meaning of the question.
-      String actual_Text21 = webDriver
-          .findElement(By.cssSelector(
-              "#naics_fed_set_asides > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text21 = webDriver.findElement(By.cssSelector(
+          "#naics_fed_set_asides > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text21 =
           "Are WOSB Federal Contract Program set-asides available in your primary NAICS code?";
@@ -264,15 +257,13 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       String actual_Text0 = webDriver
           .findElement(By.xpath("//div[@id='naics_fed_set_asides']/div[2]/div/div/div")).getText();
       assertEquals(expected_Text0, actual_Text0);
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 9th question and select Yes and verify the More Detail
       // meaning of the question.
-      String actual_Text24 = webDriver
-          .findElement(By.cssSelector(
-              "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text24 = webDriver.findElement(By.cssSelector(
+          "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text24 =
           "Are the qualifying individual(s) economically disadvantaged women under the guidelines of the Women-Owned Small Business (WOSB) Program?";
@@ -284,9 +275,8 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       String expected_Text25 =
           "Firms owned by economically disadvantaged women may qualify as Economically Disadvantaged Women-Owned Small Businesses (EDWOSBs) under the WOSB Program. Under this program, the determination of whether an individual is an economically disadvantaged woman requires an evaluation of her total assets, net worth, and personal income for the past three years. To be considered an economically disadvantaged woman for the WOSB program, the individual must meet the thresholds described below:";
       assertEquals(actual_Text25, expected_Text25);
-      String actual_Text26 = webDriver
-          .findElement(By.cssSelector(
-              "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text26 = webDriver.findElement(By.cssSelector(
+          "#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text26 =
           "The woman’s total assets must be valued at $6 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account that are unavailable until retirement age without a significant penalty.";
@@ -305,16 +295,14 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text28, expected_Text28);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_economically_disadvantaged_wosb")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 10th question and select Yes and verify the More
       // Detail
       // meaning of the question.
-      String actual_Text29 = webDriver
-          .findElement(By.cssSelector(
-              "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text29 = webDriver.findElement(By.cssSelector(
+          "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text29 =
           "Are the individual(s) interested in participating in SBA small business programs economically disadvantaged under 8(a) BD Program guidelines?";
@@ -326,9 +314,8 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       String expected_Text30 =
           "Firms owned by economically disadvantaged individuals may qualify for the 8(a) BD Program. Under the 8(a) BD Program, the determination of whether an individual is economically disadvantaged requires an evaluation of the individual’s total assets, net worth, and personal income for the past three years. To be considered an economically disadvantaged individual for the 8(a) BD Program, the individual must meet the thresholds described below:";
       assertEquals(actual_Text30, expected_Text30);
-      String actual_Text31 = webDriver
-          .findElement(By.cssSelector(
-              "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text31 = webDriver.findElement(By.cssSelector(
+          "#economically_disadvantaged_8a > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text31 =
           "The individual’s total assets must be valued at $4 million or less. This calculation is based on the fair market value of all assets, including the primary residence and the value of the business concern. This calculation excludes funds invested in a qualified IRA account or other official retirement account.";
@@ -347,16 +334,14 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text33, expected_Text33);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_economically_disadvantaged_8a")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 11th question and select Yes and verify the More
       // Detail
       // meaning of the question.
-      String actual_Text34 = webDriver
-          .findElement(By.cssSelector(
-              "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text34 = webDriver.findElement(By.cssSelector(
+          "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text34 = "Do you identify as one of the following?";
       assertEquals(actual_Text34, expected_Text34);
@@ -368,9 +353,8 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
           "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
       assertEquals(actual_Text36, expected_Text36);
       // Validate all the race.
-      String actual_Text37 = webDriver
-          .findElement(By.cssSelector(
-              "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > ul > li"))
+      String actual_Text37 = webDriver.findElement(By.cssSelector(
+          "#socially_disadvantaged > div.q.makeitonehundredpercent > div.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text37 = "Black American";
       assertEquals(actual_Text37, expected_Text37);
@@ -392,16 +376,14 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text41, expected_Text41);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_socially_disadvantaged")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#socially_disadvantaged_chronic > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#socially_disadvantaged_chronic > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 12th question and select Yes and verify the More
       // Detail
       // meaning of the question.
-      String actual_Text42 = webDriver
-          .findElement(By.cssSelector(
-              "#socially_disadvantaged_chronic > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text42 = webDriver.findElement(By.cssSelector(
+          "#socially_disadvantaged_chronic > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text42 =
           "Do you consider yourself socially disadvantaged because of you experienced bias of a chronic and substantial nature?";
@@ -415,22 +397,19 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text43, expected_Text43);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_socially_disadvantaged_chronic")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#eighta_certified > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#eighta_certified > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 13th question and select NO and verify the More Detail
       // meaning of the question.
-      String actual_Text44 = webDriver
-          .findElement(By.cssSelector(
-              "#eighta_certified > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text44 = webDriver.findElement(By.cssSelector(
+          "#eighta_certified > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text44 = "Has the firm previously been certified as an 8(a) participant?";
       assertEquals(actual_Text44, expected_Text44);
       // Verify the detail meaning for the 13th question.
-      String actual_Text45 = webDriver
-          .findElement(By.cssSelector(
-              "#eighta_certified > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text45 = webDriver.findElement(By.cssSelector(
+          "#eighta_certified > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text45 =
           "There is a “one time use of eligibility” restriction for individuals and firms to participate in the 8(a) BD Program.";
@@ -442,47 +421,41 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text46, expected_Text46);
       // verify and click on the NO button.
       webDriver.findElement(By.id("no_button_eighta_certified")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#eighta_one_time_used > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#eighta_one_time_used > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 14th question and select NO and verify the More Detail
       // meaning of the question.
-      String actual_Text47 = webDriver
-          .findElement(By.cssSelector(
-              "#eighta_one_time_used > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text47 = webDriver.findElement(By.cssSelector(
+          "#eighta_one_time_used > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text47 =
           "Have any individual(s) claiming social and economic disadvantage previously used their one time 8(a) eligibility to qualify a business for the 8(a) BD Program?";
       assertEquals(actual_Text47, expected_Text47);
       // Verify the detail meaning for the 14th question.
-      String actual_Text48 = webDriver
-          .findElement(By.cssSelector(
-              "#eighta_one_time_used > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text48 = webDriver.findElement(By.cssSelector(
+          "#eighta_one_time_used > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text48 =
           "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
       assertEquals(actual_Text48, expected_Text48);
       // verify and click on the NO button.
       webDriver.findElement(By.id("no_button_eighta_one_time_used")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#address_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#address_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 15th question and select Yes and verify the More
       // Detail
       // meaning of the question.
-      String actual_Text49 = webDriver
-          .findElement(By.cssSelector(
-              "#address_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text49 = webDriver.findElement(By.cssSelector(
+          "#address_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text49 =
           "Is the address of the location where the majority of the firm’s employees work located in a HUBZone?";
       assertEquals(actual_Text49, expected_Text49);
       // Verify the detail meaning for the 15th question.
-      String actual_Text50 = webDriver
-          .findElement(By.cssSelector(
-              "#address_in_hubzone > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text50 = webDriver.findElement(By.cssSelector(
+          "#address_in_hubzone > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text50 =
           "The Historically Underutilized Business Zone (HUBZone) program provides federal contracting assistance for qualified small business firms located in HUBZones in an effort to increase employment opportunities, investment, and economic development in such areas.";
@@ -494,23 +467,20 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
       assertEquals(actual_Text51, expected_Text51);
       // verify and click on the Yes button.
       webDriver.findElement(By.id("yes_button_address_in_hubzone")).click();
-      wait.until(ExpectedConditions.elementSelectionStateToBe(
-          By.cssSelector(
-              "#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(
+          "#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
           false));
       // Locate the 16th question and select Yes and verify the More
       // Detail
       // meaning of the question.
-      String actual_Text52 = webDriver
-          .findElement(By.cssSelector(
-              "#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
+      String actual_Text52 = webDriver.findElement(By.cssSelector(
+          "#employees_in_hubzone > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"))
           .getText();
       String expected_Text52 = "Do 35% or more of the firm’s employees reside in a HUBZone?";
       assertEquals(actual_Text52, expected_Text52);
       // Verify the detail meaning for the 16th question.
-      String actual_Text53 = webDriver
-          .findElement(By.cssSelector(
-              "#employees_in_hubzone > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
+      String actual_Text53 = webDriver.findElement(By.cssSelector(
+          "#employees_in_hubzone > div.q.makeitonehundredpercent > div.details.usa-width-one-half > ul > li"))
           .getText();
       String expected_Text53 =
           "A firm which has at least 35 percent of its employees residing in a HUBZone may qualify for the HUBZone program.";

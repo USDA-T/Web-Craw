@@ -73,9 +73,8 @@ public class VerifyWosbFlow {
     // assertEquals(all_Cells.get(1).getText(), "");
     assertEquals(all_Cells.get(4).getText(), "Draft");
     assertEquals(all_Cells.get(6).getText(), "Delete");
-    all_Cells.get(4)
-        .findElement(By.xpath(
-            "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
+    all_Cells.get(4).findElement(By.xpath(
+        "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
         .click();
     accept_Alert(webDriver, 15);
     webDriver.findElement(By.xpath("//a[@href='/vendor_admin/my_certifications']")).click();

@@ -25,8 +25,9 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       LogManager.getLogger(TestMppBuildQuestionnaireTs12p.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
-  double elapsed_Seconds= 0; long tStart;
-    private boolean acceptNextAlert = true;
+  double elapsed_Seconds = 0;
+  long tStart;
+  private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
@@ -41,7 +42,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
   @Test
   public void testMainTest() throws Exception {
     try {
-    //WebDriverWait wait = new WebDriverWait(webDriver, 30); //Deepa_Todo
+      // WebDriverWait wait = new WebDriverWait(webDriver, 30); //Deepa_Todo
       WebDriverWait wait = new WebDriverWait(webDriver, 5);
       String Actual_Text;
       String Expected_Text;
@@ -281,16 +282,16 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
       MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
       MontanaUploadDocument.MontanaUploadDocument(file_path_abs);
-      //Deeps_start
-        tStart = System.currentTimeMillis();
-        elapsed_Seconds = 0;
-        logger.info("Start:" +  elapsed_Seconds);
-      //Deeps_End
+      // Deeps_start
+      tStart = System.currentTimeMillis();
+      elapsed_Seconds = 0;
+      logger.info("Start:" + elapsed_Seconds);
+      // Deeps_End
       wait.until(ExpectedConditions.elementToBeClickable(By.id("section_submit_button")));
-        //Deeps_start
-        elapsed_Seconds = (System.currentTimeMillis() - tStart) / 1000.0;
-        logger.info("End:" +  elapsed_Seconds);
-        //Deeps_End
+      // Deeps_start
+      elapsed_Seconds = (System.currentTimeMillis() - tStart) / 1000.0;
+      logger.info("End:" + elapsed_Seconds);
+      // Deeps_End
       CoreUtils.clickContinue(webDriver);
       assertEquals("", webDriver.getTitle());
       // Training Section(Subsection 2.1), Verifying Question.
@@ -1028,8 +1029,8 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       HighLight.highLightElement(webDriver, ReturnDraft);
       webDriver.findElement(By.linkText("Logout")).click();
     } catch (Exception e) {
-        elapsed_Seconds = (System.currentTimeMillis() - tStart) / 1000.0;
-        logger.info("End:" +  elapsed_Seconds);
+      elapsed_Seconds = (System.currentTimeMillis() - tStart) / 1000.0;
+      logger.info("End:" + elapsed_Seconds);
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
       logger.info(e.getMessage());

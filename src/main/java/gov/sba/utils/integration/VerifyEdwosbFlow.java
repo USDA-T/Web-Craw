@@ -52,9 +52,8 @@ public class VerifyEdwosbFlow extends TestCase {
     assertEquals(all_Cells.get(4).getText(), "Draft");
     assertEquals(all_Cells.get(6).getText(), "Delete");
 
-    all_Cells.get(4)
-        .findElement(By.xpath(
-            "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
+    all_Cells.get(4).findElement(By.xpath(
+        "//a[contains(@class,'delete-cert')][contains(@data-method,'delete')][contains(text(),'Delete')]"))
         .click();
     CommonApplicationMethods.accept_Alert(webDriver, 4);
 

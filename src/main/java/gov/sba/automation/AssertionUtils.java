@@ -101,29 +101,25 @@ public class AssertionUtils {
     new LoginPageWithReference(webDriver, which_Loginto_ReturnApp).Login_With_Reference();
     non_Vendor_searchDuns_Number(webDriver, duns_Number);
 
-    webDriver
-        .findElement(By.xpath(
-            "//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
+    webDriver.findElement(By.xpath(
+        "//*[@id='business_search']/div[h2[contains(text(),'Search Results')]]/div[1]/div/h4/a"))
         .click();
     switch (type_Of_App.toLowerCase() + status_Of_App.toLowerCase()) {
       case "edwosbactive":
-        webDriver
-            .findElement(By.xpath(
-                "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
+        webDriver.findElement(By.xpath(
+            "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'EDWOSB') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
         accept_Alert(webDriver, 22);
         break;
       case "wosbactive":
-        webDriver
-            .findElement(By.xpath(
-                "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
+        webDriver.findElement(By.xpath(
+            "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'WOSB') and not(contains(text(),'EDWOSB')) ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
         accept_Alert(webDriver, 22);
         break;
       case "mppactive":
-        webDriver
-            .findElement(By.xpath(
-                "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'MPP') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
+        webDriver.findElement(By.xpath(
+            "//table[@id='certifications']/tbody/tr[ (td[position()=1]/a[contains(text(),'MPP') ]) and ( td[ position()=5 and contains(text(),'Active') ] ) ]/td[position()=7]/a[contains(text(),'Return to Vendor')]"))
             .click();
         accept_Alert(webDriver, 22);
         break;
@@ -306,8 +302,7 @@ public class AssertionUtils {
   public static void delete_All_Application_Draft(WebDriver webDriver, String email_Id,
       String password, String duns_Number) throws Exception {
 
-    Logger logger =
-        LogManager.getLogger(CommonApplicationMethods.class.getName());
+    Logger logger = LogManager.getLogger(CommonApplicationMethods.class.getName());
     new LoginPageWithDetails(webDriver, email_Id, password).Login_With_Details();
 
     for (int i = 0; i < 6; i++) {

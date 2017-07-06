@@ -104,53 +104,53 @@ public class NewScorpQuestionPageDeepa {
     CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N");
     CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
     logger.info("EDWOSB application questions have been answered");
-     New413formQuestionPageDeepa();
+    New413formQuestionPageDeepa();
   }
 
-    public void New413formQuestionPageDeepa() throws Exception {
-        // Validate that user successfully navigated to the Financial Data
-        // section.
-        String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
-        String expected_Text49 = "Financial Data";
-        assertEquals(actual_Text49, expected_Text49);
-        String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-        String expected_Text52 =
-            "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
-        assertEquals(actual_Text52, expected_Text52);
-        // Validate the Personal Information.
-        CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Add_Person");
-        // Verify that the section to Create new record is been seen by user and
-        // enter record2.
-        logger.info("the page to Create and Add new Record is Present, PASS");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_FirstName",
-            "Deepa");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_LastName",
-            "MaheshP");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_SSN",
-            "123456789");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Email",
-            "DeepaMaheshP@gmail.com");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_City", "Mclean");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Address",
-            "8421 Broad Street");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_State",
-            "Virgina");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Postal",
-            "22190");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Co", "Usa");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_HPhone",
-            "1234561234");
-        CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Bphone",
-            "1012023004");
-        new Select(CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_title"))
+  public void New413formQuestionPageDeepa() throws Exception {
+    // Validate that user successfully navigated to the Financial Data
+    // section.
+    String actual_Text49 = webDriver.findElement(By.cssSelector("h2")).getText();
+    String expected_Text49 = "Financial Data";
+    assertEquals(actual_Text49, expected_Text49);
+    String actual_Text52 = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
+    String expected_Text52 =
+        "This section must be completed by each individual claiming economic disadvantage in connection with the 8(a) Program and/or the Women-Owned Small Business Federal Contract Program. If married, the spouse must complete this section, except when the individual and the spouse are legally separated. If separated, provide copy of separation document.";
+    assertEquals(actual_Text52, expected_Text52);
+    // Validate the Personal Information.
+    CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Add_Person");
+    // Verify that the section to Create new record is been seen by user and
+    // enter record2.
+    logger.info("the page to Create and Add new Record is Present, PASS");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_FirstName",
+        "Deepa");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_LastName",
+        "MaheshP");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_SSN",
+        "123456789");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Email",
+        "DeepaMaheshP@gmail.com");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_City", "Mclean");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Address",
+        "8421 Broad Street");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_State",
+        "Virgina");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Postal",
+        "22190");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Co", "Usa");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_HPhone",
+        "1234561234");
+    CommonApplicationMethods.setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Bphone",
+        "1012023004");
+    new Select(CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_title"))
+        .selectByIndex(2);
+    new Select(
+        CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_MaritalSt"))
             .selectByIndex(2);
-        new Select(
-            CommonApplicationMethods.find_Element(webDriver, "EDWOSB_Questionnaire_Page_MaritalSt"))
-            .selectByIndex(2);
-        CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Done_Button");
-        CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_423_N");
-        CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
-    }
+    CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Done_Button");
+    CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_423_N");
+    CommonApplicationMethods.click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+  }
 
 
 }

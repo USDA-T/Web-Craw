@@ -68,9 +68,8 @@ public class SuperVisorReviewPage extends TestCase {
       webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
       webDriver.findElement(By.xpath("//input[@id='submit_button']")).click();
       // Question Review Page
-      webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
+      webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_outer')]/div[contains(@class,'review_nav')]/div/aside/ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Question review')]"))
           .click();
       List<WebElement> dropdown11 =
           new Select(webDriver.findElement(By.xpath("//select[@id='assessments__status']")))
@@ -87,9 +86,8 @@ public class SuperVisorReviewPage extends TestCase {
       webDriver.findElement(By.id("save_notes")).click();
 
       // Signature Review Page
-      webDriver
-          .findElement(By.xpath(
-              "//div[@id='question-review']/div/div/aside/ul[@class='usa-sidenav-list']/li/a[contains(text(),'Signature review')]"))
+      webDriver.findElement(By.xpath(
+          "//div[@id='question-review']/div/div/aside/ul[@class='usa-sidenav-list']/li/a[contains(text(),'Signature review')]"))
           .click();
       dropdown11 = new Select(webDriver.findElement(By.xpath("//select[@id='assessment_status']")))
           .getOptions();
@@ -114,39 +112,33 @@ public class SuperVisorReviewPage extends TestCase {
               "//ul[contains(@class,'usa-sidenav-list')]/li/a[contains(text(),'Determination')]"))
           .click();
 
-      String text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]"))
+      String text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Review Started')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Review Started");
 
-      text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]"))
+      text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Return for Modification')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Return for Modification");
 
-      text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Eligible')]"))
+      text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Eligible')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Recommend Eligible");
 
-      text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]"))
+      text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Recommend Ineligible')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Recommend Ineligible");
 
-      text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Determination Made')]"))
+      text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Determination Made')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Determination Made");
 
-      text_CheckBox_Labels = webDriver
-          .findElement(By.xpath(
-              "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Decision')]"))
+      text_CheckBox_Labels = webDriver.findElement(By.xpath(
+          "//div[contains(@class,'review_main')]/form[@id='new_determination']/fieldset/ul/li[input[contains(@name,'review[workflow_state]')]]/label[contains(text(),'Decision')]"))
           .getText();
       Assert.assertEquals(text_CheckBox_Labels, "Decision");
 

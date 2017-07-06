@@ -108,12 +108,12 @@ public class ProgramsPage {
     try {
       click_Element(webDriver, "File_Up1_Add_Req");
       Thread.sleep(800);
-        click_Element(webDriver, "File_Up1_Choose_Doc_Library");
-        Thread.sleep(800);
-        click_Element(webDriver, "File_Up1_Choose_Doc");
-        Thread.sleep(900);
-        click_Element(webDriver, "File_Up1_Associate_Button");
-        Thread.sleep(900);
+      click_Element(webDriver, "File_Up1_Choose_Doc_Library");
+      Thread.sleep(800);
+      click_Element(webDriver, "File_Up1_Choose_Doc");
+      Thread.sleep(900);
+      click_Element(webDriver, "File_Up1_Associate_Button");
+      Thread.sleep(900);
       click_Element(webDriver, "Application_Common_Submit_Button");
       Thread.sleep(900);
     } catch (Exception e) {
@@ -121,23 +121,24 @@ public class ProgramsPage {
     }
   }
 
-  public static void generic_file_Upld(WebDriver webDriver, String  add_File_Locator) throws Exception {
-        // Elements Tags: @Generic file attach-upload
-        try {
-            Map locator = getLocator(add_File_Locator);
+  public static void generic_file_Upld(WebDriver webDriver, String add_File_Locator)
+      throws Exception {
+    // Elements Tags: @Generic file attach-upload
+    try {
+      Map locator = getLocator(add_File_Locator);
 
-            click_Element(webDriver, "xpath", locator.get("L1").toString());
-            Thread.sleep(800);
-            click_Element(webDriver, "xpath",locator.get("L2").toString());
-            Thread.sleep(800);
-            click_Element(webDriver, "xpath",locator.get("L3").toString());
-            Thread.sleep(900);
-            click_Element(webDriver, "xpath",locator.get("L4").toString());
-            Thread.sleep(900);
-        } catch (Exception e) {
-            throw e;
-        }
+      click_Element(webDriver, "xpath", locator.get("L1").toString());
+      Thread.sleep(800);
+      click_Element(webDriver, "xpath", locator.get("L2").toString());
+      Thread.sleep(800);
+      click_Element(webDriver, "xpath", locator.get("L3").toString());
+      Thread.sleep(900);
+      click_Element(webDriver, "xpath", locator.get("L4").toString());
+      Thread.sleep(900);
+    } catch (Exception e) {
+      throw e;
     }
+  }
 
 
   public static void contributor_login(WebDriver webDriver, String FullName, String EmailAddress)
@@ -152,40 +153,5 @@ public class ProgramsPage {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
