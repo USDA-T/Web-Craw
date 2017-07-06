@@ -72,9 +72,8 @@ public class TestUS1463MppReviewSummaryLink extends TestCase {
       assertTrue(webDriver.getPageSource().toString().contains(duns_Number));
       // Come back later for CAGE Assertion with DB
 
-      String stext = webDriver
-          .findElement(By.xpath(
-              "//h4[contains(text(),'ation is processed and evaluated, a member of the All Smal')]"))
+      String stext = webDriver.findElement(By.xpath(
+          "//h4[contains(text(),'ation is processed and evaluated, a member of the All Smal')]"))
           .getText();
       logger_US1463.info(stext);
       assertEquals(stext,

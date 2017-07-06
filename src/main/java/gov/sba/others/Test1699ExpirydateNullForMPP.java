@@ -60,9 +60,8 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
     try {
       // Check Dashboard Pending status
-      String get_Current_Duns_No = webDriver
-          .findElement(By.xpath(
-              "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
+      String get_Current_Duns_No = webDriver.findElement(By.xpath(
+          "//article[@id='main-content']/section[@class='usa-width-one-whole']/article[@class='usa-width-three-fourths']/div[@class='usa-width-one-whole']/div/div/p/b[contains(text(),'DUNS:')]"))
           .findElement(By.xpath("..")).findElement(By.xpath("span")).getText();
       logger_US1699.info(get_Current_Duns_No);
 

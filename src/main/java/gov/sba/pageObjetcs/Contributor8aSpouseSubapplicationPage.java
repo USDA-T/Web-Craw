@@ -1,18 +1,23 @@
 // Ts Created by Deepa Patri
 package gov.sba.pageObjetcs;
 
-import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.find_Element;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
+import static gov.sba.automation.FixtureUtils.fixturesDir;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.automation.FixtureUtils.fixturesDir;
+import gov.sba.utils.integration.newMppUploadDocumentPageDeepa;
 
 
 public class Contributor8aSpouseSubapplicationPage {

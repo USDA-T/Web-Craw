@@ -2,12 +2,15 @@
 
 package gov.sba.pageObjetcs;
 
-import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+import static gov.sba.automation.CommonApplicationMethods.click_Element;
+import static gov.sba.automation.CommonApplicationMethods.getLocator;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.automation.CommonApplicationMethods.setText_Element;
 
 import java.util.Map;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 public class ProgramsPage {
 

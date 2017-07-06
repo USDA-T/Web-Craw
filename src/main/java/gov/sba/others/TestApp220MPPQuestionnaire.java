@@ -51,9 +51,8 @@ public class TestApp220MPPQuestionnaire extends TestCase {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       ProgramsPage.join_New_Program_CheckBoxes(webDriver, "MPP");
-      webDriver
-          .findElement(By.xpath(
-              "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
+      webDriver.findElement(By.xpath(
+          "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"))
           .click();
 
       // String file_path_abs = FixtureUtils.fixturesDir() + "Upload.pdf";
