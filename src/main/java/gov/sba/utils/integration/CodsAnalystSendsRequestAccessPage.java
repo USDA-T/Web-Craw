@@ -6,25 +6,36 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import junit.framework.TestCase;
 
-public class CodsSupervisorSendsRequestAccessPage extends TestCase {
+public class CodsAnalystSendsRequestAccessPage extends TestCase {
   private static final Logger logger =
-      LogManager.getLogger(CodsSupervisorSendsRequestAccessPage.class.getName());
+      LogManager.getLogger(CodsAnalystSendsRequestAccessPage.class.getName());
   WebDriver webDriver;
 
-  public CodsSupervisorSendsRequestAccessPage(WebDriver webDriver) {
+  public CodsAnalystSendsRequestAccessPage(WebDriver webDriver) {
     this.webDriver = webDriver;
   }
 
-  public void CodsSupervisorSendsRequestAccess() throws Exception {
+  public void CodsAnalystSendsRequestAccess() throws Exception {
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text = null;
     String Expected_Text = null;
-    logger.info("Completing Request access for CODS supervisors");
-    // Select SBA Supervisor.
-    webDriver.findElement(By.xpath("//li/input")).click();
+    logger.info("Completing Request access for CODS Analyst");
+    // Verify the Selecting role is required before user can continue.
+    try {
+      webDriver.findElement(By.xpath("//form/button")).click();
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
+      Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
+      Expected_Text = "What program will you be supporting?";
+      assertNotSame(Actual_Text, Expected_Text);
+    } catch (Exception e) {
+      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      screenShot.ScreenShot();
+      logger.info(e.getMessage());
+    }
+    // Select SBA Analyst.
+    webDriver.findElement(By.xpath("//li[2]/input")).click();
     wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form/button")));
     webDriver.findElement(By.xpath("//form/button")).click();
     wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
@@ -35,6 +46,7 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
     // Verify that user can not continue without selecting a program.
     try {
       webDriver.findElement(By.xpath("//form/button")).click();
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
       Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
       Expected_Text = "What is your business unit?";
       assertNotSame(Actual_Text, Expected_Text);
@@ -52,7 +64,6 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "What is your business unit?";
     assertEquals(Actual_Text, Expected_Text);
-
     // Select Area Office.
     webDriver.findElement(By.xpath("//li/input")).click();
     // Click on the Next button.
@@ -60,9 +71,10 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h1")));
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Where is your duty station?";
-    //Verify and Select duty station.
+    // Verify and Select duty station.
     Actual_Text = webDriver.findElement(By.id("duty_station_duty_station")).getText();
-    Expected_Text = "Connecticut\nMaine\nMassachusetts\nN Hampshire\nRhode Island\nVermont\nBuffalo\nNew Jersey\nNew York\nPR & USVI\nSyracuse\nBaltimore\nDelaware\nPhiladelphia\nPittsburgh\nRichmond\nWashington\nWest Virginia\nAlabama\nGeorgia\nKentucky\nMississippi\nN Carolina\nN Florida\nS Carolina\nS Florida\nTennessee\nCleveland\nColumbus\nIllinois\nIndiana\nMichigan\nMinnesota\nWisconsin\nArkansas\nDallas\nEl Paso\nHouston\nLouisiana\nLower Rio G V\nLubbock\nNew Mexico\nOklahoma\nSan Antonio\nDes Moines\nKansas City\nNebraska\nSt. Louis\nWichita\nColorado\nMontana\nN Dakota\nS Dakota\nUtah\nWyoming\nArizona\nFresno\nHawaii\nLos Angeles\nNevada\nSacramento\nSan Diego\nSan Francisco\nSanta Ana\nAlaska\nBoise\nPortland\nSeattle";
+    Expected_Text =
+        "Connecticut\nMaine\nMassachusetts\nN Hampshire\nRhode Island\nVermont\nBuffalo\nNew Jersey\nNew York\nPR & USVI\nSyracuse\nBaltimore\nDelaware\nPhiladelphia\nPittsburgh\nRichmond\nWashington\nWest Virginia\nAlabama\nGeorgia\nKentucky\nMississippi\nN Carolina\nN Florida\nS Carolina\nS Florida\nTennessee\nCleveland\nColumbus\nIllinois\nIndiana\nMichigan\nMinnesota\nWisconsin\nArkansas\nDallas\nEl Paso\nHouston\nLouisiana\nLower Rio G V\nLubbock\nNew Mexico\nOklahoma\nSan Antonio\nDes Moines\nKansas City\nNebraska\nSt. Louis\nWichita\nColorado\nMontana\nN Dakota\nS Dakota\nUtah\nWyoming\nArizona\nFresno\nHawaii\nLos Angeles\nNevada\nSacramento\nSan Diego\nSan Francisco\nSanta Ana\nAlaska\nBoise\nPortland\nSeattle";
     assertEquals(Actual_Text, Expected_Text);
     // Click the back button and select CODS
     webDriver.findElement(By.xpath("//form/a")).click();
@@ -126,3 +138,4 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
     logger.info("CODS Supervisor request is Successfull");
   }
 }
+
