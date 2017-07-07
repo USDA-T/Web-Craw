@@ -30,16 +30,22 @@ public class BasicEligibilityMasterAppPage extends TestCase {
     logger.info(
         "8(a) Applicant determines their Basic Eligibility (i.e., a section) for the program");
     // Locate the accept button and click on it.
-    if (webDriver.getCurrentUrl().contains("qa.sba-one")) {
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
       webDriver.navigate().to(
           "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     } else {
-      if (webDriver.getCurrentUrl().contains("newqa")) {
+      if (webDriver.getCurrentUrl().contains("internal.qa.sba")) {
         webDriver.navigate().to(
-            "https://newqa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+            "https://demo-internal.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
       } else {
-        webDriver.navigate().to(
-            "http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.navigate().to(
+              "http://newqa.sba-one.net/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+        } else {
+          webDriver.navigate().to(
+              "http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+
+        }
       }
     }
     // Verify new introduction page.
@@ -320,14 +326,27 @@ public class BasicEligibilityMasterAppPage extends TestCase {
     WebElement EligibilityCompleteStatus1 = webDriver.findElement(By.xpath("//td[3]"));
     HighLight.highLightElement(webDriver, EligibilityCompleteStatus1);
     logger.info("First scenario completed, starting second scenario");
-
-
-
     webDriver.findElement(By.xpath("//a/span")).click();
     DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert2.DeleteDraftCert();
-    webDriver.navigate().to(
-        "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.navigate().to(
+          "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+    } else {
+      if (webDriver.getCurrentUrl().contains("internal.qa.sba")) {
+        webDriver.navigate().to(
+            "https://demo-internal.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.navigate().to(
+              "http://newqa.sba-one.net/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+        } else {
+          webDriver.navigate().to(
+              "http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+
+        }
+      }
+    }
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
     Expected_Text =
