@@ -150,7 +150,7 @@ public class BusinessOwnershipSubsectionMasterPage extends TestCase {
     Actual_Text = webDriver.findElement(By.xpath("//fieldset/div/span")).getText();
     Expected_Text = "Please answer this question";
     assertEquals(Actual_Text, Expected_Text);
-    Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/span")).getText();
     Expected_Text = "This field is required.";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("300.89");
@@ -164,7 +164,7 @@ public class BusinessOwnershipSubsectionMasterPage extends TestCase {
     // Click on the continue button.
     CoreUtils.clickContinue(webDriver);
     // Validate that user must enter % less than or equal to 100%.
-    Actual_Text = webDriver.findElement(By.xpath("//div[2]/span")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/span")).getText();
     Expected_Text = "Please enter a value less than or equal to 100.";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.xpath("//div[6]/div[2]/span")).getText();

@@ -3,11 +3,12 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -30,7 +31,7 @@ public class TestApp8aInitialMaterApplication extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    // try{
+    try{
     logger.info("Test for 8a initial master Flow");
     // Login to dashboard.
     LoginPageWithReference login_Data =
@@ -76,13 +77,13 @@ public class TestApp8aInitialMaterApplication extends TestCase {
     ContributorOtherIndividualsQuestionPage contributorOtherIndividualsQuestion =
         new ContributorOtherIndividualsQuestionPage(webDriver);
     contributorOtherIndividualsQuestion.ContributorOtherIndividualsQuestion();
-    // webDriver.findElement(By.linkText("Logout")).click();
-    // } catch (Exception e) {
-    // ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-    // screenShot.ScreenShot();
-    // logger.info(e.getMessage());
-    // Assert.fail();
-    // }
+     webDriver.findElement(By.linkText("Logout")).click();
+     } catch (Exception e) {
+     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+     screenShot.ScreenShot();
+     logger.info(e.getMessage());
+     Assert.fail();
+     }
     logger.info("Success");
   }
 

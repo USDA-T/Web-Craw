@@ -333,17 +333,16 @@ public class BasicEligibilityMasterAppPage extends TestCase {
       webDriver.navigate().to(
           "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
     } else {
-      if (webDriver.getCurrentUrl().contains("internal.qa.sba")) {
+      if (webDriver.getCurrentUrl().contains("internal")) {
         webDriver.navigate().to(
             "https://demo-internal.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
       } else {
         if (webDriver.getCurrentUrl().contains("newqa")) {
           webDriver.navigate().to(
-              "http://newqa.sba-one.net/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+              "https://newqa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
         } else {
           webDriver.navigate().to(
               "http://localhost/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
-
         }
       }
     }
