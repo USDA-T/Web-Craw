@@ -49,6 +49,7 @@ public class TestCreateVendorUser {
       Thread.sleep(1800);
       webDriver_01.switchTo().frame("publicshowmaildivcontent");
       click_Element(webDriver_01, "Activate_Account");
+        webDriver_01.quit();
 
     } catch (Exception e) {
       logger.info(e.toString());

@@ -33,7 +33,7 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
   @Before
   public void setUp() throws Exception {
     CommonApplicationMethods.clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];

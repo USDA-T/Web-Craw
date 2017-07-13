@@ -332,23 +332,23 @@ SBA_Table_Search:       {Locator: 'xpath', Value: "//div[@id='table-search']/tab
 # My Contracting SBA Program End
 
 # @8a_Initial_Program  Start
-8a_Application_Page_Contributers_Link:                 {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] ]/td/a "}
-8a_Application_Page_Contributers_Link_Start_Indv:      {Locator: 'xpath', Value: "//a[ contains (@href, 'eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
-Contributor_Add_DisAdv_Ind_Link:                       {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text() , 'Add another Disadvantaged Individual, if applicable' ) ]"}
-Contributor_Add_Spouse_Ind_Link:                       {Locator: 'xpath', Value: "//a[ contains ( text(), 'Add a spouse of a Disadvantaged Individual ) ]"}
-Contributor_Add_Business_Ind_Link:                     {Locator: 'xpath', Value: "//a[ contains ( text(), 'Add other individuals' ) ]"}
+8a_Application_Page_Contributers_Link:                        {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] ]/td/a "}
+8a_Application_Page_Contributers_Link_Start_Indv:             {Locator: 'xpath', Value: "//a[ contains (@href, 'eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
+Contributor_Add_DisAdv_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text() , 'Add another Disadvantaged Individual, if applicable' ) ]"}
+Contributor_Add_Spouse_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text(), 'Add a spouse of a Disadvantaged Individual' ) ]"}
+Contributor_Add_Business_Ind_Link:                            {Locator: 'xpath', Value: "//a[ contains ( text(), 'Add other individuals' ) ]"}
 
 #Contributor Page Start
-Contributor_Login_FullName:       {Locator: "id",  Value: "contributor_full_name"}
-Contributor_Login_EmailAddress:   {Locator: "id",  Value: "contributor_email"}
-Contributor_Login_Button:         {Locator: "name", Value: "commit"}
+Contributor_Login_FullName_8a_Spouse:                         {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[@id='contributor_full_name']"}
+Contributor_Login_EmailAddress_8a_Spouse:                     {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[@id='contributor_email']"}
+Contributor_Login_Button_8a_Spouse:                           {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[contains(@name,'commit')]"}
 #Contributor Page End
 
-8a_Application_Page_BasicEligibility_Link:           {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility')] ]/td/a "}
-8a_Application_Page_Business_Ownership_Link:         {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership')] ]/td/a "}
-8a_Application_Page_Character_Link:                  {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character')]  ]/td/a "}
-8a_Application_Page_Potential_for_Success_Link:      {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr/td/a[ contains(text(),'Potential for Success')] "}
-8a_Application_Page_Control_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ]  ]/td/a "}
+8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility')] ]/td/a "}
+8a_Application_Page_Business_Ownership_Link:                  {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership')] ]/td/a "}
+8a_Application_Page_Character_Link:                           {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character')]  ]/td/a "}
+8a_Application_Page_Potential_for_Success_Link:               {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr/td/a[ contains(text(),'Potential for Success')] "}
+8a_Application_Page_Control_Link:                             {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ]  ]/td/a "}
 #8a_Application_Page_Company_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company')]  ]/td/a "}
 # @8a_Initial_Program  End
 
@@ -651,14 +651,14 @@ Review_Application:               {Locator: "id", Value: "review"}
 #@contributor_8a_DisAdv_Page_martial_Status End
 
 #@contributor_8a_Spouse_DisAdv_Application_Page_Social_Secuirty_Number Page
-8a_spousesubapp_Social_Security_Number:     {Locator: 'id', Value: "answers[640][value]"}
+8a_Spouse_SubSpp_Social_Security_Number:     {Locator: 'id', Value: "input-type-text-640"}
 #@contributor_8a_Spouse_DisAdv_Application_Page_Social_Secuirty_Number End
 
 #@Contributor_8a_DisAdv_Page_Social_Secuirty_Number Page
 8a_DisApp8a_Page_Social_Security_Number:     {Locator: 'id', Value: "input-type-text-739"}
 
 #@contributor_8a_Spouse_DisAdv_Application_Page_ContactInfo Page
-8a_spousesubApp_Page_Contact_Info:     {Locator: 'id', Value: "answers[641][value]"}
+8a_spousesubApp_Page_Contact_Info:     {Locator: 'id', Value: "input-type-text-641"}
 
 #@contributor_8a_DisAdv_Page_ContactInfo Page
 8a_DisAdv_Page_ContactInfo:     {Locator: 'id', Value: "input-type-text-740"}
@@ -720,7 +720,7 @@ Review_Application:               {Locator: "id", Value: "review"}
 8a_sposueSubapp_Page_PreviousCity:              {Locator: 'xpath', Value: "//input[contains(@id,'answers_647_value_city')]"}
 8a_sposueSubapp_Page_PreviousState:             {Locator: 'xpath', Value: "//select[contains(@id,'answers_647_value_state')]"}
 8a_sposueSubapp_Page_PreviousZip:               {Locator: 'xpath', Value: "//input[contains(@id,'answers_647_value_zip')]"}
-8a_sposueSubapp_Page_Previouscountry:           {Locator: 'xpath', Value: "//select[contains(@id,'answers_746_value_country')]"}
+8a_sposueSubapp_Page_Previouscountry:           {Locator: 'xpath', Value: "//select[contains(@id,'answers_647_value_country')]"}
 8a_sposueSubapp_Page_DateOfFromMonth:           {Locator: 'xpath', Value: "//input[contains(@id,'start-date-month')]"}
 8a_sposueSubapp_Page_DateOfFromDay:             {Locator: 'xpath', Value: "//input[contains(@id,'start-date-day')]"}
 8a_sposueSubapp_Page_DateOfFromYear:            {Locator: 'xpath', Value: "//input[contains(@id,'start-date-year')]"}
@@ -732,7 +732,7 @@ Review_Application:               {Locator: "id", Value: "review"}
 
 #@contributor_8a_spouse_Application_Page_Date and palce of Birth Start
 8a_spouseSubapp_DateofBirth:                     {Locator: 'name', Value: "answers[649][value]"}
-8a_spouseSubapp_PlaceofBirth:                    {Locator: 'id',   Value: "answers[650][value]"}
+8a_spouseSubapp_PlaceofBirth:                    {Locator: 'name',   Value: "answers[650][value]"}
 8a_spouseSubapp_CountryofBirth:                  {Locator: 'xpath', Value: "//select[contains(@id,'answers_651_value')]"}
 #@contributor_8a_spouse_Application_Page_Date and palce of Birth End
 

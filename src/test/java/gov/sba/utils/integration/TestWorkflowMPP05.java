@@ -1,23 +1,7 @@
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
-import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
-import static gov.sba.pageObjetcs.ProgramsPage.generic_file_Upld;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
-import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -27,8 +11,15 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.AnalystCasesPage.return_DunsNo_Cases_Table;
+import static gov.sba.pageObjetcs.ProgramsPage.generic_file_Upld;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
@@ -55,7 +46,7 @@ public class TestWorkflowMPP05 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];

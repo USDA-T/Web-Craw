@@ -1,24 +1,10 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
-import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-
-import java.util.List;
-import java.util.Set;
-
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.others.TestuserProfileSearchType;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -30,10 +16,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.others.TestuserProfileSearchType;
-import junit.framework.TestCase;
+import java.util.List;
+import java.util.Set;
+
+import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
+import static gov.sba.automation.AssertionUtils.return_All_Applications;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 
 // US1235
@@ -50,7 +41,7 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* (get_The_Row_From_Login_Data = 42;duns_Number = "144754156"; */
     String[] details = DatabaseUtils.findUnusedDunsNumber("");

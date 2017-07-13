@@ -1,22 +1,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-
-import java.util.List;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -27,8 +13,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 /*
  * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
@@ -54,7 +45,8 @@ public class TestWorkflowEDWOSB03 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+      webDriver = TestHelpers.getDefaultWebDriver();
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];

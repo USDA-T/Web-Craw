@@ -37,7 +37,7 @@ public class TestWorkFlowxx8aInProgress extends TestCase {
     clear_Env_Chrome();
     logger.info("Set as head");
     TestHelpers.set_Headless();
-    webDriver = TestHelpers.getDefaultWebDriver();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* get_The_Row_From_Login_Data = 43; */
     String[] details = findUnusedDunsNumber("");

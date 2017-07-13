@@ -25,7 +25,7 @@ public class TestWorkflowAppMppPrepareLinkAndCopyUdates extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     System.out.println(logger.isInfoEnabled());
     logger.entry();
@@ -51,8 +51,7 @@ public class TestWorkflowAppMppPrepareLinkAndCopyUdates extends TestCase {
 
     } catch (Exception e) {
       logger.info("Link is not present" + e.toString());
-      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver,
-          new String[] {TestWorkflowAppMppPrepareLinkAndCopyUdates.class.getName(), "Exception"});
+      CommonApplicationMethods.take_ScreenShot_TestCaseName(webDriver, new String[] {TestWorkflowAppMppPrepareLinkAndCopyUdates.class.getName(), "Exception"});
       throw e;
     }
   }

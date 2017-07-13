@@ -1,12 +1,9 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.pageObjetcs.AppProfileSearchType.TestuserProfileSearch;
-
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -15,9 +12,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.pageObjetcs.AppProfileSearchType.TestuserProfileSearch;
 
 
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -31,7 +27,7 @@ public class TestWorkflowAppOppSupport extends TestCase {
   public void setUp() throws Exception {
     CommonApplicationMethods.clear_Env_Chrome();
     get_Stop_Execution_Flag();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 27;
   }

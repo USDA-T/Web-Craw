@@ -44,7 +44,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
     clear_Env_Chrome();
     logger.info("Set as head");
     TestHelpers.set_Headless();
-    webDriver = TestHelpers.getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];

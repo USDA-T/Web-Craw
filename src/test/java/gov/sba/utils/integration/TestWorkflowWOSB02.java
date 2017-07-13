@@ -2,23 +2,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.search_Cases_Duns_Number_Table;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
-import static gov.sba.automation.TestHelpers.getBaseUrl;
-import static gov.sba.automation.TestHelpers.getDefaultWebDriver;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
-
-import java.util.List;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -29,7 +14,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.automation.TestHelpers.getBaseUrl;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
 
 
 
@@ -58,7 +49,7 @@ public class TestWorkflowWOSB02 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    webDriver = getDefaultWebDriver();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(getBaseUrl());
     /* duns_Number = "263426685"; get_The_Row_From_Login_Data = 50; */
     String[] details = findUnusedDunsNumber("llc");
