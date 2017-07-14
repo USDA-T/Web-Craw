@@ -43,7 +43,6 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
     logger.info("Set as head");
     TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-    set_Locators();
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 43;
     /*
