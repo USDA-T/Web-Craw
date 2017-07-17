@@ -142,7 +142,7 @@ public class TestWorkflowEDWOSB02 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-     /* if (stop_Exec == 1) { return;  } /* TODO DE App-1201 exists on submit button */
+      /* if (stop_Exec == 1) { return; } /* TODO DE App-1201 exists on submit button */
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");

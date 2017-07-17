@@ -819,9 +819,10 @@ public class FinancialSectionPage extends TestCase {
       assertEquals(actual_Text2, expected_Text2);
       webDriver.findElement(By.xpath("//form/ul/li[2]/a")).click();
       // Total assets.
-      //Actual_Text = webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]")).getText();
-      //Expected_Text = "$550,412,068.00";
-      //assertEquals(Actual_Text, Expected_Text);
+      // Actual_Text =
+      // webDriver.findElement(By.xpath("//div[2]/table/tbody/tr[11]/td[2]")).getText();
+      // Expected_Text = "$550,412,068.00";
+      // assertEquals(Actual_Text, Expected_Text);
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[4]")));
       webDriver.findElement(By.xpath("//input[4]")).click();
       wait.until(ExpectedConditions.alertIsPresent());

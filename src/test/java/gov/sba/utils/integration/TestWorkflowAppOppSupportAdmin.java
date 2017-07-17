@@ -38,7 +38,7 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = DatabaseUtils.findUnusedDunsNumber("llc");
     email = details[0];

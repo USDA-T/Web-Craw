@@ -60,7 +60,9 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       /* delete_All_Application_Draft(webDriver, email, password, duns_Number); */
       /* Login to Dashboard. */
       /* delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, "165324125"); */
-      /* new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data) .Login_With_Reference();*/
+      /*
+       * new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data) .Login_With_Reference();
+       */
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 
       /* new programs_Page().select_MyCertifications_Table(webDriver, "Delete_8a_Initial_Draft"); */
@@ -167,7 +169,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-     webDriver.quit();
+    webDriver.quit();
   }
 }
 

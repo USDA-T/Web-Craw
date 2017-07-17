@@ -21,7 +21,7 @@ public class MasterApplication8a {
 
   public static void masterApp_8a_Page_Click(WebDriver webDriver, String link_To_Click)
       throws Exception {
-    /* Elements tag: @8a_Initial_Program*/
+    /* Elements tag: @8a_Initial_Program */
     if (!link_To_Click.equals(null) && !link_To_Click.equals("")) {
       switch (link_To_Click.toLowerCase()) {
         case "page_contributors":
@@ -194,7 +194,7 @@ public class MasterApplication8a {
         }
       }
       Thread.sleep(1200);// Sleep Needed here as elements are dynamically moving by the time we
-      /* click any button*/
+      /* click any button */
       if (!BrokenYesNo.equals(null) && !BrokenYesNo.equals("")) {
         switch (BrokenYesNo.toLowerCase()) {
           case "yes":
@@ -206,7 +206,7 @@ public class MasterApplication8a {
         }
       }
       Thread.sleep(1200);// Sleep Needed here as elements are dynamically moving by the time we
-      /* click any button*/
+      /* click any button */
       if (!RevenueYesNo.equals(null) && !RevenueYesNo.equals("")) {
         switch (RevenueYesNo.toLowerCase()) {
           case "yes":
@@ -312,7 +312,7 @@ public class MasterApplication8a {
   public static void BasicEligiblity_Outside_Assistance_Page(WebDriver webDriver, String YesNo)
       throws Exception {
     try {
-      /*Elements tag: @8a_Initial_Program Basic Eligiblity-Prior 8(a) Involvement*/
+      /* Elements tag: @8a_Initial_Program Basic Eligiblity-Prior 8(a) Involvement */
       if (!YesNo.equals(null) && !YesNo.equals("")) {
         switch (YesNo.toLowerCase()) {
           case "yes":
@@ -753,7 +753,7 @@ public class MasterApplication8a {
       spousesubapp_Bank_Acct_Access_Page(webDriver, "yes", "Anything");
       spousesubapp_Prior_Ownership_Page(webDriver, "yes", "Anything", "yes");
       spousesubapp_Business_Affiliations_Page(webDriver, "yes", "yes", "something To Test");
-      spousesubapp_8a_Prior_Involvement_Page(webDriver, "yes", "yes", "no"); /*To Do */
+      spousesubapp_8a_Prior_Involvement_Page(webDriver, "yes", "yes", "no"); /* To Do */
       spousesubapp_8a_Federal_Employment_Page(webDriver, "yes");
       spousesubapp_8a_Financial_Page(webDriver, "yes", "yes", "yes", "yes");
       spousesubapp_8a_Criminal_History_Page(webDriver, "yes", "Anything", "yes", "yes", "yes");

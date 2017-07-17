@@ -149,9 +149,9 @@ public class TestWorkflowMPP01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-     /* if (stop_Exec == 1) { return; } /* TODO DE exists on submit */
+      /* if (stop_Exec == 1) { return; } /* TODO DE exists on submit */
 
-     click_Element(webDriver, "Application_Common_Submit_Button");
+      click_Element(webDriver, "Application_Common_Submit_Button");
 
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
@@ -169,7 +169,7 @@ public class TestWorkflowMPP01 extends TestCase {
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
       click_Element(webDriver, "Application_Common_Submit_Button");
-      /*if (stop_Exec == 1) { return; } /* TODO Remove Hard coded duns_Number */
+      /* if (stop_Exec == 1) { return; } /* TODO Remove Hard coded duns_Number */
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(

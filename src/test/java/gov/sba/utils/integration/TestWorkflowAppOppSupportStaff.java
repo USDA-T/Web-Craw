@@ -41,7 +41,7 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* (get_The_Row_From_Login_Data = 42;duns_Number = "144754156"; */
     String[] details = DatabaseUtils.findUnusedDunsNumber("");

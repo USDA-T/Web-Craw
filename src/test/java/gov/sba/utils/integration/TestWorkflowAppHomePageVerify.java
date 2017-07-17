@@ -31,7 +31,7 @@ public class TestWorkflowAppHomePageVerify extends TestCase {
   @Before
   public void setUp() throws Exception {
     CommonApplicationMethods.clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     get_Stop_Execution_Flag();
     webDriver.get(TestHelpers.getBaseUrl());
   }

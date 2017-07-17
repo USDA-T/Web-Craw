@@ -68,21 +68,23 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_SocialSecNum_Page(WebDriver webDriver, String ssntext)
       throws Exception {
-    /*Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_Social_Secuirty_Number Page*/
+    /*
+     * Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_Social_Secuirty_Number Page
+     */
     setText_Element(webDriver, "8a_Spouse_SubSpp_Social_Security_Number", ssntext);
     click_Element(webDriver, "Application_Common_Continue_Button");
   }
 
   public static void spousesubapp_ContactInfo_Page(WebDriver webDriver, String cotactinfo)
       throws Exception {
-    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_ContactInfo Page*/
+    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_ContactInfo Page */
     setText_Element(webDriver, "8a_spousesubApp_Page_Contact_Info", cotactinfo);
     click_Element(webDriver, "Application_Common_Continue_Button");
   }
 
   public static void spousesubapp_CuurentHomeAddress_Page(WebDriver webDriver, String StreetAdd,
       String CityAdd, String State, String Zip, String Contry, String Date) throws Exception {
-    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_CurrentHomeAddress Page*/
+    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_CurrentHomeAddress Page */
     setText_Element(webDriver, "8a_spouseSubApp_StreetAddress", StreetAdd);
     setText_Element(webDriver, "8a_spouseSubApp_City", CityAdd);
     new Select(find_Element(webDriver, "8a_spouseSubApp_State")).selectByValue(State);
@@ -95,7 +97,7 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_Role_Appl_firm_Page(WebDriver webDriver, String which_value)
       throws Exception {
-    /* Elements Tags: @contributor_spouse_SubApp_Full_time_Devotion Citizenship Page*/
+    /* Elements Tags: @contributor_spouse_SubApp_Full_time_Devotion Citizenship Page */
     if (!which_value.equals(null) && !which_value.equals("")) {
       switch (which_value.toLowerCase()) {
         case "yes":
@@ -111,7 +113,7 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_LengthofResidency_Page(WebDriver webDriver, String which_value)
       throws Exception {
-    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_length of Residency*/
+    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_length of Residency */
     if (!which_value.equals(null) && !which_value.equals("")) {
       switch (which_value.toLowerCase()) {
         case "yes":
@@ -127,7 +129,7 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_PreviousHomeAddress_Page(WebDriver webDriver, String which_value,
       String StreetAdd, String CityAdd, String State, String Zip, String Country) throws Exception {
-    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_PreviousHomeAddress Page*/
+    /* Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_PreviousHomeAddress Page */
     if (!which_value.equals(null) && !which_value.equals("")) {
       switch (which_value.toLowerCase()) {
         case "yes":
@@ -142,7 +144,8 @@ public class Contributor8aSpouseSubapplicationPage {
       new Select(find_Element(webDriver, "8a_sposueSubapp_Page_PreviousState"))
           .selectByValue(State);
       setText_Element(webDriver, "8a_sposueSubapp_Page_PreviousZip", Zip);
-      new Select(find_Element(webDriver, "8a_sposueSubapp_Page_Previouscountry")).selectByValue(Country);
+      new Select(find_Element(webDriver, "8a_sposueSubapp_Page_Previouscountry"))
+          .selectByValue(Country);
       setText_Element(webDriver, "8a_sposueSubapp_Page_DateOfFromMonth", "01");
       setText_Element(webDriver, "8a_sposueSubapp_Page_DateOfFromDay", "02");
       setText_Element(webDriver, "8a_sposueSubapp_Page_DateOfFromYear", "1999");
@@ -156,7 +159,10 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_DateandPlaceofBirth_Page(WebDriver webDriver, String DtofBirth,
       String Place, String Country) throws Exception {
-    /*Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_Date and palce of Birth page*/
+    /*
+     * Elements Tags: @contributor_spouse_SubApp_Master_Application_Page_Date and palce of Birth
+     * page
+     */
     setText_Element(webDriver, "8a_spouseSubapp_DateofBirth", DtofBirth);
     setText_Element(webDriver, "8a_spouseSubapp_PlaceofBirth", Place);
     new Select(find_Element(webDriver, "8a_spouseSubapp_CountryofBirth")).selectByValue(Country);
@@ -165,12 +171,15 @@ public class Contributor8aSpouseSubapplicationPage {
 
   public static void spousesubapp_Us_Citizenship_Page(WebDriver webDriver, String which_value)
       throws Exception {
-    /*Elements Tags: @contributor_spouse_SubApp__US Citizenship Page*/
+    /* Elements Tags: @contributor_spouse_SubApp__US Citizenship Page */
     if (!which_value.equals(null) && !which_value.equals("")) {
       switch (which_value.toLowerCase()) {
         case "yes":
           click_Element(webDriver, "8a_spouseSubapp_US_Citizenship_yes");
-          /* new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() + "Upload.pdf"); */
+          /*
+           * new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(fixturesDir() +
+           * "Upload.pdf");
+           */
           generic_file_Upld(webDriver);
           break;
         case "no":

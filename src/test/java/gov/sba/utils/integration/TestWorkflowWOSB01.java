@@ -102,9 +102,9 @@ public class TestWorkflowWOSB01 extends TestCase {
       /* For Wosb Financial review link not exist */
       assertNull(find_Element(webDriver, "SBA_Question_Financial_Review_SideNav", true));
 
-     /* if (stop_Exec == 1) {return;  } /* TODO Hard Code Duns No Remove */
+      /* if (stop_Exec == 1) {return; } /* TODO Hard Code Duns No Remove */
 
-     /* Signature page */
+      /* Signature page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Signature_Review_SideNav", true));
       dropdown =
           new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options")).getOptions();
@@ -137,7 +137,7 @@ public class TestWorkflowWOSB01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-     /* if (stop_Exec == 1) {return;  } /* TODO Hard Code Duns No Remove */
+      /* if (stop_Exec == 1) {return; } /* TODO Hard Code Duns No Remove */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
