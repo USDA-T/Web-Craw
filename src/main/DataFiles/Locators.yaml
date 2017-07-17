@@ -342,6 +342,15 @@ Contributor_Add_Business_Ind_Link:                            {Locator: 'xpath',
 Contributor_Login_FullName_8a_Spouse:                         {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[@id='contributor_full_name']"}
 Contributor_Login_EmailAddress_8a_Spouse:                     {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[@id='contributor_email']"}
 Contributor_Login_Button_8a_Spouse:                           {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_spouse') ]//input[contains(@name,'commit')]"}
+
+Contributor_Login_FullName_8a_Disadv:                         {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_disadvantaged_individual') ]//input[@id='contributor_full_name']"}
+Contributor_Login_EmailAddress_8a_Disadv:                     {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_disadvantaged_individual') ]//input[@id='contributor_email']"}
+Contributor_Login_Button_8a_Disadv:                           {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_disadvantaged_individual') ]//input[contains(@name,'commit')]"}
+
+Contributor_Login_FullName_8a_BusPart:                         {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_business_partner') ]//input[@id='contributor_full_name']"}
+Contributor_Login_EmailAddress_8a_BusPart:                     {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_business_partner') ]//input[@id='contributor_email']"}
+Contributor_Login_Button_8a_BusPart:                           {Locator: "xpath",  Value: "//form[ contains(@action, 'eight_a_business_partner') ]//input[contains(@name,'commit')]"}
+
 #Contributor Page End
 
 8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility')] ]/td/a "}

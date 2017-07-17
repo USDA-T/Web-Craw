@@ -44,7 +44,9 @@ public class TestWorkflowEDWOSB06 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];

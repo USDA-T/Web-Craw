@@ -46,7 +46,9 @@ public class TestWorkflowWOSB04 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("llc");
     email = details[0];
@@ -106,9 +108,7 @@ public class TestWorkflowWOSB04 extends TestCase {
       click_Element(webDriver, "SBA_Review_Determ_Made");
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
 
-      if (stop_Exec == 1) {
-        return;
-      } ; /* TODO - Remove */
+     /* if (stop_Exec == 1) {return;  } ; /* TODO - Remove */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");

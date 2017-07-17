@@ -43,7 +43,9 @@ public class TestWorkflowMPP06 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];
@@ -66,16 +68,13 @@ public class TestWorkflowMPP06 extends TestCase {
       finalSignatureSubmit(webDriver);
 
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-          new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
+      new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
       navigationMenuClick(webDriver, "Dashboard");
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Working On */
-
+     /* if (stop_Exec == 1) {return;  } /* TODO Working On */
 
     } catch (Exception e) {
       logger.info("Search TextBox is on Main Navigator is not present" + e.toString());

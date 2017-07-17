@@ -46,8 +46,9 @@ public class TestWorkflowEDWOSB01 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-      webDriver = TestHelpers.getDefaultWebDriver();
+     logger.info("Set as head");
+     TestHelpers.set_Headless();
+     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];
@@ -102,11 +103,7 @@ public class TestWorkflowEDWOSB01 extends TestCase {
       /* For Wosb Financial review link not exist */
       assertNotNull(find_Element(webDriver, "SBA_Question_Financial_Review_SideNav", true));
 
-      if (stop_Exec == 1) {
-        return;
-      }
-      /* TODO DE exists on submit button */
-
+     /* if (stop_Exec == 1) {return;} /* TODO DE exists on submit button -Sloved */
       /* Signature page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Signature_Review_SideNav", true));
       dropdown =
@@ -141,10 +138,8 @@ public class TestWorkflowEDWOSB01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit button */
-      // click_Element(webDriver, "Application_Common_Submit_Button");
+      /*if (stop_Exec == 1) {return; } /* TODO DE exists on submit button */
+      click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));

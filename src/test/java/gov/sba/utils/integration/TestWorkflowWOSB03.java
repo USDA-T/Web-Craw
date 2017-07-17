@@ -48,7 +48,9 @@ public class TestWorkflowWOSB03 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("llc");
     email = details[0];
@@ -139,11 +141,9 @@ public class TestWorkflowWOSB03 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE App-1148 exist */
+      /*if (stop_Exec == 1) {  return;  } /* TODO DE App-1148 exist */
 
-      click_Element(webDriver, "Application_Common_Submit_Button");
+       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
@@ -163,9 +163,9 @@ public class TestWorkflowWOSB03 extends TestCase {
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Hard Code Duns No Remove */
+     /* if (stop_Exec == 1) {return; } /* TODO Hard Code Duns No Remove */
+
+
 
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(

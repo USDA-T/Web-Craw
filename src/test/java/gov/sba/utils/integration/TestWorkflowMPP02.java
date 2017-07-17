@@ -48,7 +48,9 @@ public class TestWorkflowMPP02 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];
@@ -144,11 +146,9 @@ public class TestWorkflowMPP02 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit */
+      /*if (stop_Exec == 1) {return;    } /* TODO DE exists on submit */
 
-      click_Element(webDriver, "Application_Common_Submit_Button");
+     click_Element(webDriver, "Application_Common_Submit_Button");
 
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 

@@ -31,7 +31,7 @@ bin
 *.iml
 *.ipr
 *.iws
-default.properties
+xxxdefault.properties
 
 # Project Files
 */misc/*.*

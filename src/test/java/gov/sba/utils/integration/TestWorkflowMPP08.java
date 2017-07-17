@@ -38,6 +38,8 @@ public class TestWorkflowMPP08 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -72,11 +74,9 @@ public class TestWorkflowMPP08 extends TestCase {
       MPPQuestionaairePage.mpp_BusinessInfo(webDriver, duns_Number);
 
       /* Review Page submit */
+      /*if (stop_Exec == 1) { return;   } /* TODO DE App-1296 Exist on Submit Button on review Page */
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE App-1296 Exist on Submit Button on review Page */
-      click_Element(webDriver, "Application_Common_Submit_Button");
+     click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 10);
       finalSignatureSubmit(webDriver);
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
@@ -104,9 +104,8 @@ public class TestWorkflowMPP08 extends TestCase {
       /* Determination page */
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit App-1148 */
+      /*if (stop_Exec == 1) {return;  } /* TODO DE exists on submit App-1148 */
+
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Pending"));
       navigationBarClick(webDriver, "LOGOUT");

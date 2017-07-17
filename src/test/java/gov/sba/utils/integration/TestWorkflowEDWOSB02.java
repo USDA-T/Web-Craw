@@ -49,7 +49,9 @@ public class TestWorkflowEDWOSB02 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* duns_Number = "246235962";get_The_Row_From_Login_Data = 49; */
     String[] details = findUnusedDunsNumber("s-corp");
@@ -71,7 +73,7 @@ public class TestWorkflowEDWOSB02 extends TestCase {
       join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
       new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
-      finalSignatureSubmit(webDriver); // TODO - Defect on EDWOSB's AGI
+      finalSignatureSubmit(webDriver); /* TODO - Defect on EDWOSB's App-1198 AGI */
       navigationMenuClick(webDriver, "LOGOUT");
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();
       navigationBarClick(webDriver, "Cases");
@@ -140,9 +142,7 @@ public class TestWorkflowEDWOSB02 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit button */
+     /* if (stop_Exec == 1) { return;  } /* TODO DE App-1201 exists on submit button */
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");

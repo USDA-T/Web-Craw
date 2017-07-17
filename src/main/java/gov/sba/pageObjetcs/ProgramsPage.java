@@ -141,7 +141,7 @@ public class ProgramsPage {
   }
 
 
-  public static void contributor_login(WebDriver webDriver, String FullName, String EmailAddress)
+  public static void contributor_Spouse_login(WebDriver webDriver, String FullName, String EmailAddress)
       throws Exception {
     // Elements Tags: @Generic file attach-upload
     try {
@@ -152,6 +152,28 @@ public class ProgramsPage {
       throw e;
     }
   }
+    public static void contributor_Disadv_login(WebDriver webDriver, String FullName, String EmailAddress)
+        throws Exception {
+        // Elements Tags: @Generic file attach-upload
+        try {
+            setText_Element(webDriver, "Contributor_Login_FullName_8a_Disadv", FullName);
+            setText_Element(webDriver, "Contributor_Login_EmailAddress_8a_Disadv", EmailAddress);
+            click_Element(webDriver, "Contributor_Login_Button_8a_Disadv");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    public static void contributor_BusinessPartner_login(WebDriver webDriver, String FullName, String EmailAddress)
+        throws Exception {
+        // Elements Tags: @Generic file attach-upload
+        try {
+            setText_Element(webDriver, "Contributor_Login_FullName_8a_BusinessPartner", FullName);
+            setText_Element(webDriver, "Contributor_Login_EmailAddress_8a_BusinessPartner", EmailAddress);
+            click_Element(webDriver, "Contributor_Login_Button_8a_BusinessPartner");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 }
 
 

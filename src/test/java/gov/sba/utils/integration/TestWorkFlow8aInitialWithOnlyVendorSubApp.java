@@ -44,7 +44,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
     clear_Env_Chrome();
     logger.info("Set as head");
     TestHelpers.set_Headless();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];
@@ -60,10 +60,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       /* delete_All_Application_Draft(webDriver, email, password, duns_Number); */
       /* Login to Dashboard. */
       /* delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, "165324125"); */
-      /*
-       * new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data) .Login_With_Reference();
-       */
-
+      /* new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data) .Login_With_Reference();*/
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 
       /* new programs_Page().select_MyCertifications_Table(webDriver, "Delete_8a_Initial_Draft"); */
@@ -71,7 +68,6 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
           "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
       click_Element(webDriver, "Application_Common_Accept_Button");
       /* masterApp_8a_Page_Click(webDriver,"page_basiceligibility"); */
-
       /* Basic Eligibility Page */
       BasicEligiblity_General_Assessment_Page(webDriver, "Yes", "no", "Yes", "Yes", "Yes");
       BasicEligiblity_Prior_8a_Involvement_Page(webDriver, "no", "Yes", "Yes");
@@ -162,18 +158,6 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       setText_Element(webDriver, "SBA_Login_Pwd", "password");
       click_Element(webDriver, "SBA_Login_Sign_in");
       /* For Demo End - July 6 */
-
-      /* TO Do :: Contributor Page- 8a DisAdvantaged Individual Sub application */
-      /*
-       * Contributor_Page(webDriver, "8a_DisAdvInd_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole9", "norole9@mailinator.com");
-       * Contributor_Page(webDriver, "8a_AddSpouse_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole10", "norole10@mailinator.com");
-       * Contributor_Page(webDriver, "8a_AddSpouse_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole11", "norole11@mailinator.com");
-       */
-
-
     } catch (Exception e) {
       logger.info(e.toString());
       take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP05", "Exception"});
@@ -183,7 +167,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    // webDriver.quit();
+     webDriver.quit();
   }
 }
 

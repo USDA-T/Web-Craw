@@ -37,6 +37,8 @@ public class TestWorkflowMPP10 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -82,9 +84,7 @@ public class TestWorkflowMPP10 extends TestCase {
       MPPQuestionaairePage.answers_8a_Questioannaire(webDriver, "assert_no");
       MPPQuestionaairePage.eligibilityPage(webDriver, "assert_yes", "assert_yes", "assert_no",
           "assert_no");
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Working On */
+    /*  if (stop_Exec == 1) { return; } /* TODO Working On */
 
     } catch (Exception e) {
       logger.info("NACIS Code not popluating for this duns number" + e.toString());

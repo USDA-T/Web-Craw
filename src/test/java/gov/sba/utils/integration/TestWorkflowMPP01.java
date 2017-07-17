@@ -1,16 +1,8 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.*;
-import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
-import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
-import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
-import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
-
-import java.util.List;
-
+import gov.sba.automation.TestHelpers;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -21,8 +13,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.TestHelpers;
-import junit.framework.TestCase;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
+import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
+import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
@@ -49,7 +48,9 @@ public class TestWorkflowMPP01 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
     email = details[0];
@@ -148,11 +149,9 @@ public class TestWorkflowMPP01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO DE exists on submit */
+     /* if (stop_Exec == 1) { return; } /* TODO DE exists on submit */
 
-      click_Element(webDriver, "Application_Common_Submit_Button");
+     click_Element(webDriver, "Application_Common_Submit_Button");
 
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
@@ -170,9 +169,8 @@ public class TestWorkflowMPP01 extends TestCase {
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
       click_Element(webDriver, "Application_Common_Submit_Button");
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Remove Hard coded duns_Number */
+      /*if (stop_Exec == 1) { return; } /* TODO Remove Hard coded duns_Number */
+
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));

@@ -18,7 +18,6 @@ import java.util.List;
 
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.automation.DatabaseUtils.findUnusedDunsNumber;
-import static gov.sba.automation.TestHelpers.getBaseUrl;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
 
@@ -49,8 +48,10 @@ public class TestWorkflowWOSB02 extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-    webDriver.get(getBaseUrl());
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver.get(TestHelpers.getBaseUrl());
     /* duns_Number = "263426685"; get_The_Row_From_Login_Data = 50; */
     String[] details = findUnusedDunsNumber("llc");
     email = details[0];
@@ -134,9 +135,7 @@ public class TestWorkflowWOSB02 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
-      if (stop_Exec == 1) {
-        return;
-      } /* TODO Hard Code Duns No Remove */
+     /* if (stop_Exec == 1) { return; } /* TODO Hard Code Duns No Remove */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
 
