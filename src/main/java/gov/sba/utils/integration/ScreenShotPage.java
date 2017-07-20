@@ -25,7 +25,7 @@ public class ScreenShotPage {
     try {
       // now copy the screenshot to desired location using copyFile method
 
-      FileUtils.copyFile(src, new File("C:/SbaProject/sba-automation-develop/ScreenShots/"
+      FileUtils.copyFile(src, new File("C:/SbaProject/sba-automation-develop/MontanaScreenShots/"
           + System.currentTimeMillis() + ".png"));
     }
 
