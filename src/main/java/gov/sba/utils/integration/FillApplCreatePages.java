@@ -1,22 +1,16 @@
 // TS created by Deepa Patri
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-
-import java.util.List;
-
+import gov.sba.pageObjetcs.ProgramsPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.pageObjetcs.ProgramsPage;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class FillApplCreatePages {
   private static final Logger logger = LogManager.getLogger(FillApplCreatePages.class.getName());
@@ -191,20 +185,23 @@ public class FillApplCreatePages {
         click_Element(webDriver, "Application_Common_Submit_Button");
         setText_Element(webDriver, "SBA_8a_Duns_Confrm_Text", duns_No_Given);
         click_Element(webDriver, "Search_Duns_No");
-        accept_Alert(webDriver, 10);
+        accept_Alert(webDriver, 2);
 
-        for (int i = 0; i < 2; i++) {
+          logger.info("___");
+
+//        for (int i = 0; i < 2; i++) {
           WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
           if (aa != null) {
             click_Element(webDriver, "Search_Duns_No");
-            accept_Alert(webDriver, 10);
-            accept_Alert(webDriver, 10);
-            i = 9999;
+            accept_Alert(webDriver, 2);
+            accept_Alert(webDriver, 2);
+//            i = 9999;
           }
-        }
+//        }
+          logger.info("___");
 
         click_Element(webDriver, "Application_Common_Submit_Button");
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         click_Element(webDriver, "Review_Application");
         Thread.sleep(1500);
         click_Element(webDriver, "Application_Common_Submit_Button");
@@ -258,5 +255,17 @@ public class FillApplCreatePages {
       throw e;
     }
   }
-
+    public static void mppReportSignatureSubmit(WebDriver webDriver) throws Exception {
+        try {
+            click_Element(webDriver, "SBA_Sig_Submit_Legal_0");
+            click_Element(webDriver, "SBA_Sig_Submit_Legal_1");
+            click_Element(webDriver, "SBA_Sig_Submit_Legal_2");
+            click_Element(webDriver, "SBA_Sig_Submit_Legal_3");
+            click_Element(webDriver, "Application_Common_Submit_Button");
+           } catch (Exception e) {
+            logger.info(e.toString());
+            take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit"});
+            throw e;
+        }
+    }
 }

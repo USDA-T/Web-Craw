@@ -88,6 +88,7 @@ SBA_Case_Overview_Select_Review_Type:         {Locator: 'xpath', Value: "//selec
 SBA_Case_Overview_Open_Application_Summary:   {Locator: 'xpath', Value: "//button[@id='open_app_sum_button']"}
 SBA_Case_Overview_Return_to_vendor:           {Locator: 'xpath', Value: "//button[@id='ret_to_vendor_button']"}
 SBA_Analyst_Review_Vendor_Overview:           {Locator: 'xpath', Value: "//a [ contains (text(), 'Vendor Overview') ]"}
+SBA_Analyst_Annual_Report_Link:               {Locator: 'xpath', Value: "//a [ contains (@href, 'annual_reports') ]"}
 
 #Common
 Application_Common_Accept_Button:             {Locator: 'classname', Value: "accept_button"}
@@ -276,6 +277,7 @@ SBA_EDWOSB_Table_Renew_Link:      {Locator: 'linktext', Value: "Renew"}
 SBA_WOSB_Table_Link:              {Locator: 'linktext', Value: "WOSB Self-Certification"}
 SBA_WOSB_Table_Renew_Link:        {Locator: 'linktext', Value: "Renew"}
 SBA_MPP_Table_Link:               {Locator: 'linktext', Value: "MPP Application"}
+SBA_MPP_Report_Link:              {Locator: 'linktext', Value: "New Annual Report"}
 SBA_8aInitial_Table_Link:         {Locator: 'linktext', Value: "8(a) Initial Program"}
 
 #Dashboard
