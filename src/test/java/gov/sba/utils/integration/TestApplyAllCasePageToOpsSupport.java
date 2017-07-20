@@ -12,9 +12,9 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestApp45ApplyAllCasePageToOpsSupport extends TestCase {
+public class TestApplyAllCasePageToOpsSupport extends TestCase {
   private static final Logger logger =
-      LogManager.getLogger(TestApp45ApplyAllCasePageToOpsSupport.class.getName());
+      LogManager.getLogger(TestApplyAllCasePageToOpsSupport.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
@@ -29,7 +29,7 @@ public class TestApp45ApplyAllCasePageToOpsSupport extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApplyAllCasePageToOpsSupport() throws Exception {
     logger.info("Adding All Case page to ops support admin.");
     String Actual_Text;
     String Expected_Text;
@@ -38,17 +38,17 @@ public class TestApp45ApplyAllCasePageToOpsSupport extends TestCase {
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
     // Verify that the Case tap was added.
-    WebElement Case = webDriver.findElement(By.xpath("//li[2]/a/span"));
+    WebElement Case = webDriver.findElement(By.linkText("Cases"));
     HighLight.highLightElement(webDriver, Case);
-    Actual_Text = webDriver.findElement(By.xpath("//li[2]/a/span")).getText();
+    Actual_Text = webDriver.findElement(By.linkText("Cases")).getText();
     Expected_Text = "Cases";
     assertEquals(Actual_Text, Expected_Text);
     // Verify that upon clicking, user is navigated to the all case page.
-    webDriver.findElement(By.xpath("//li[2]/a/span")).click();
+    webDriver.findElement(By.linkText("Cases")).click();
     WebElement AllCase = webDriver.findElement(By.cssSelector("h1"));
     HighLight.highLightElement(webDriver, AllCase);
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-    Expected_Text = "All cases";
+    Expected_Text = "Cases";
     assertEquals(Actual_Text, Expected_Text);
     logger.info("Success");
   }

@@ -30,7 +30,7 @@ public class TestApp8aInitialMaterApplication extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp8aInitialMaterApplication() throws Exception {
      try{
     logger.info("Test for 8a initial master Flow");
     // Login to dashboard.

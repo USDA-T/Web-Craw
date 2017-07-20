@@ -19,7 +19,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
@@ -46,10 +45,10 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testMppBuildQuestionnaireTs12p() throws Exception {
     try {
-      // WebDriverWait wait = new WebDriverWait(webDriver, 30); //Deepa_Todo
-      WebDriverWait wait = new WebDriverWait(webDriver, 5);
+       WebDriverWait wait = new WebDriverWait(webDriver, 30); 
+       //Deepa_Todo
       String Actual_Text;
       String Expected_Text;
       // Login to dashboard.
@@ -222,7 +221,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       CoreUtils.clickContinue(webDriver);
       webDriver.findElement(By.id("answers_122_value")).click();
       webDriver.findElement(By.xpath("//option[3]")).click();
-
       Actual_Text = webDriver.findElement(By.id("answers[123][value]-error")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);

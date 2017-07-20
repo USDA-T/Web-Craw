@@ -29,7 +29,7 @@ public class Test1234UswdsLLcRegressionTest extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234UswdsLLcRegressionTest() throws Exception {
     try {
       logger.info("Test EDWOSB llc Flow");
       // Login to dashboard.

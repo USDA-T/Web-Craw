@@ -31,7 +31,7 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testCompleteAccessRequestFlowForCodsAnalysts() throws Exception {
     // try {
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text = null;

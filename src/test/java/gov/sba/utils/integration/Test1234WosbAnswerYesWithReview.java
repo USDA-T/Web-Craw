@@ -29,7 +29,7 @@ public class Test1234WosbAnswerYesWithReview extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234WosbAnswerYesWithReview() throws Exception {
     try {
       logger.info("Test WOSB Partnership Flow (Select Yes with review");
       // Login to dashboard.

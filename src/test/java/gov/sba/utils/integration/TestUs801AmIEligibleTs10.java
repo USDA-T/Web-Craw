@@ -31,7 +31,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUs801AmIEligibleTs10() throws Exception {
     try {
       logger.info("User is eligible for ALL programs, 8(a), WOSB, EDWOSB set-asides & Hob-zone");
       WebDriverWait wait = new WebDriverWait(webDriver, 30);

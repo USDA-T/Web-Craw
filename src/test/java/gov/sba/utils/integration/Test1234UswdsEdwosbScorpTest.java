@@ -31,7 +31,7 @@ public class Test1234UswdsEdwosbScorpTest extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234UswdsEdwosbScorpTest() throws Exception {
     try {
       logger.info("Test EDWOSB Scorp Flow");
       // Login to dashboard.

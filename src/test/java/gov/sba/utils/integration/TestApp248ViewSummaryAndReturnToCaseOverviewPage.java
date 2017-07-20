@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
 
   private static final Logger logger =
-      LogManager.getLogger(TestUs1531RestrictCoAccessToActiveOrPendingMppRecords.class.getName());
+      LogManager.getLogger(TestRestrictCoAccessToActiveOrPendingMppRecords.class.getName());
   // Set The variabl.es/Define
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
@@ -35,7 +35,7 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void tesApp248ViewSummaryAndReturnToCaseOverviewPage() throws Exception {
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text = null;
     String Expected_Text = null;

@@ -16,9 +16,9 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
+public class TestStaticLandingPageForEightAInterim extends TestCase {
   private static final Logger logger =
-      LogManager.getLogger(TestApp73StaticLandingPageForEightAInterim.class.getName());
+      LogManager.getLogger(TestStaticLandingPageForEightAInterim.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
   String BaseUrl;
@@ -34,7 +34,7 @@ public class TestApp73StaticLandingPageForEightAInterim extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testStaticLandingPageForEightAInterim() throws Exception {
     String Actual_Text = null;
     String Expected_Text = null;
     logger.info("Create a static landing page for 8a Interim");

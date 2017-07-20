@@ -34,7 +34,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUs801AmIEligibleTs8() throws Exception {
     if (webDriver.getCurrentUrl().contains("qa.sba-one")) {
       try {
         // Open Firefox,Chrome or IE and navigate to the certify.sba.gov

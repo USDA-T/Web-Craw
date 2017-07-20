@@ -31,7 +31,7 @@ public class Test1234UswdsEdwosbPartnership extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234UswdsEdwosbPartnership() throws Exception {
     try {
       logger.info("Test EDWOSB Partnership Flow");
       // Login to dashboard.

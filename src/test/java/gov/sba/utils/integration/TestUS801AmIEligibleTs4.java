@@ -33,7 +33,7 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS801AmIEligibleTs4() throws Exception {
     try {
       // Open Firefox,Chrome or IE and navigate to the certify.sba.gov
       // landing

@@ -38,7 +38,7 @@ public class TestEdithPassword2RegressionTest1 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testEdithPassword2RegressionTest1() throws Exception {
 
     try {
       WebDriverWait wait = new WebDriverWait(webDriver, 30);

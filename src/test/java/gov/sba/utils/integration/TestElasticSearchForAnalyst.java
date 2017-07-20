@@ -7,17 +7,21 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestApp580ElasticSearchForAnalyst extends TestCase {
+@Category({gov.sba.utils.integration.UnstableTests.class})
+
+public class TestElasticSearchForAnalyst extends TestCase {
 
   private static final Logger logger =
-      LogManager.getLogger(TestApp580ElasticSearchForAnalyst.class.getName());
+      LogManager.getLogger(TestElasticSearchForAnalyst.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
@@ -31,7 +35,8 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testElasticSearchForAnalyst() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 30); 
     // try{
     String Actual_Text;
     String Expected_Text;
@@ -52,7 +57,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     // Verify Status.
     webDriver.findElement(By.xpath("//div/div[2]/button")).click();
     // Click on the search button without selecting any filter and verify.
-    webDriver.findElement(By.cssSelector("li > button.usa-accordion-button")).click();
+    webDriver.findElement(By.xpath("//form/div/div/ul/li/button")).click();
     // Select program, Review Type and status.
     webDriver.findElement(By.id("hubzone")).click();
     webDriver.findElement(By.id("continuing_eligibility")).click();
@@ -146,6 +151,7 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     WebElement OwnerBoxCleared = webDriver.findElement(By.xpath("//div[2]/div/input"));
     HighLight.highLightElement(webDriver, OwnerBoxCleared);
     // Logout, log back in and submit some application.
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
     // Login to dashboard.
     get_The_Row_From_Login_Data = 3;
@@ -178,10 +184,10 @@ public class TestApp580ElasticSearchForAnalyst extends TestCase {
     edwobEightAMppTest.EdwobEightAMppTest();
     // verify the two active programs.
     WebElement MppPending =
-        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+        webDriver.findElement(By.xpath("//table[2]/tbody/tr/td[3]"));
     HighLight.highLightElement(webDriver, MppPending);
     WebElement EdwosbActive =
-        webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr[2]/td[5]"));
+        webDriver.findElement(By.xpath("//td[6]"));
     HighLight.highLightElement(webDriver, EdwosbActive);
     // Logout and login back as an analyst.
     webDriver.findElement(By.linkText("Logout")).click();

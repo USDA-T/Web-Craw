@@ -28,7 +28,7 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234EdwosbAddSecondPartnerAfterReview() throws Exception {
     try {
       logger.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
       // Login to dashboard.

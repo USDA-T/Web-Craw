@@ -39,7 +39,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testMppBuildQuestionnaireTs3() throws Exception {
     try {
       WebDriverWait wait = new WebDriverWait(webDriver, 30);
       String Actual_Text;

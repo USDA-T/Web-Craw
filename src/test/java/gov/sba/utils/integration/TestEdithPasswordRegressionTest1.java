@@ -40,11 +40,11 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     Weak_PassW = "1234";
     New_PassW = "Map Effect Applied Furniture 9883";
     Confirm_New_PassW = "Map Effect Applied Furniture 9883";
-    Better_PW = "Derico#33658712DDD";
+    Better_PW = "Derico#33658712DDDyu";
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testEdithPasswordRegressionTest1() throws Exception {
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Open Firefox,Chrome,and IE and navigate to the valid url.
     EdithpasswordPage edithpassword = new EdithpasswordPage(webDriver);
@@ -113,7 +113,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     // weak password.
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password_strength")));
     String actual_Text4 = webDriver.findElement(By.id("password_strength")).getText();
-    String expected_Text4 = "Weak";
+    String expected_Text4 = "Very Weak";
     assertEquals(actual_Text4, expected_Text4);
     webDriver.findElement(By.id("user_password")).clear();
     webDriver.findElement(By.id("user_password")).sendKeys(Better_PW);
@@ -121,7 +121,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     // weak password.
     Thread.sleep(2000);
     String actual_Text3 = webDriver.findElement(By.xpath("//div[3]/span")).getText();
-    String expected_Text3 = "Better";
+    String expected_Text3 = "Weak";
     assertEquals(actual_Text3, expected_Text3);
     logger.info("Success");
   }

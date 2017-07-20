@@ -29,7 +29,7 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234UswdsEdwosbCorporation() throws Exception {
     // try{
     logger.info("Test EDWOSB Corporation Flow");
     // Login to dashboard.

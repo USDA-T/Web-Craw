@@ -34,7 +34,7 @@ public class TestUS801AmIEligibleTs2 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS801AmIEligibleTs2() throws Exception {
     try {
 
       logger.info(

@@ -29,7 +29,7 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234UswdsEdwosbUswdsSoleProprietor() throws Exception {
     try {
       String Actual_Text;
       String Expected_Text;

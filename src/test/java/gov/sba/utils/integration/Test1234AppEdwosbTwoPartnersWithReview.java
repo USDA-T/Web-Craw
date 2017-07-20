@@ -29,7 +29,7 @@ public class Test1234AppEdwosbTwoPartnersWithReview extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234AppEdwosbTwoPartnersWithReview() throws Exception {
     try {
       logger.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
       // Login to Dashboard.

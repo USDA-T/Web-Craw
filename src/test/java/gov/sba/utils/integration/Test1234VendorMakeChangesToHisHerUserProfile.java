@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestApp356VendorMakeChangesToHisHerUserProfile extends TestCase {
+public class Test1234VendorMakeChangesToHisHerUserProfile extends TestCase {
   private static final Logger logger =
-      LogManager.getLogger(TestApp356VendorMakeChangesToHisHerUserProfile.class.getName());
+      LogManager.getLogger(Test1234VendorMakeChangesToHisHerUserProfile.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
 
@@ -32,7 +32,7 @@ public class TestApp356VendorMakeChangesToHisHerUserProfile extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1234VendorMakeChangesToHisHerUserProfile() throws Exception {
     try {
       String Actual_Text;
       String Expected_Text;

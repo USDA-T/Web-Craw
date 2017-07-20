@@ -18,11 +18,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
+public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
   // Set The variabl.es/Define
   private static WebDriver webDriver;
   private static final Logger logger =
-      LogManager.getLogger(TestUs1531RestrictCoAccessToActiveOrPendingMppRecords.class.getName());
+      LogManager.getLogger(TestRestrictCoAccessToActiveOrPendingMppRecords.class.getName());
   int get_The_Row_From_Login_Data;
 
   @Before
@@ -36,7 +36,7 @@ public class TestUs1531RestrictCoAccessToActiveOrPendingMppRecords extends TestC
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testRestrictCoAccessToActiveOrPendingMppRecords() throws Exception {
     WebDriverWait wait = new WebDriverWait(webDriver, 30);
     String Actual_Text = null;
     String Expected_Text = null;
