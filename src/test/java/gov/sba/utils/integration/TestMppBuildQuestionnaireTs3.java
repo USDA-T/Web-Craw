@@ -496,7 +496,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -524,7 +524,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -552,7 +552,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -580,7 +580,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -608,7 +608,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -636,7 +636,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();

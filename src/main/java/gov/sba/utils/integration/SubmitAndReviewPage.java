@@ -6,7 +6,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import junit.framework.TestCase;
 
@@ -20,6 +23,7 @@ public class SubmitAndReviewPage extends TestCase {
   }
 
   public void SubmitAndReview() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text;
     String Expected_Text;
     logger.debug("Returning submited certification back to the two partners (Vendor)");
@@ -73,7 +77,6 @@ public class SubmitAndReviewPage extends TestCase {
     Expected_Text =
         "In order to submit your application, you must accept all of the conditions of authorization.";
     assertEquals(Actual_Text, Expected_Text);
-    Thread.sleep(3000);
     // Step 10 - Accept the error message
     logger.info("Step 10 - Accept the error message");
     webDriver.switchTo().alert().accept();
@@ -85,7 +88,6 @@ public class SubmitAndReviewPage extends TestCase {
     webDriver.findElement(By.id("legal_3")).click();
     webDriver.findElement(By.id("legal_4")).click();
     webDriver.findElement(By.id("legal_5")).click();
-    Thread.sleep(2000);
     webDriver.findElement(By.id("accept-button")).click();
     // Click on the dashboard button.
     webDriver.findElement(By.linkText("Dashboard")).click();
@@ -93,45 +95,75 @@ public class SubmitAndReviewPage extends TestCase {
         webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
     HighLight.highLightElement(webDriver, ActiveCert);
     // Login as WOSB-analyst and return WOSB program back to vendor.
-    Thread.sleep(2000);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Logout")));
     webDriver.findElement(By.linkText("Logout")).click();
     get_The_Row_From_Login_Data = 0;
     LoginPageWithReference login_Data7 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data7.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("158899368");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    Thread.sleep(2000);
-    webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
-    Thread.sleep(2000);
-    Thread.sleep(2000);
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("158899368");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("158899368");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("158899368");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("158899368");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 23 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 23 Legal Business Name")).click();
+          } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
     if (webDriver.getPageSource().contains("Return to Vendor")) {
       webDriver.findElement(By.linkText("Return to Vendor")).click();
       // webDriver.switchTo().alert().accept();
       // Logout and log back in with the vendor to add the second partner.
+      webDriver.findElement(By.id("profileid")).click();
       webDriver.findElement(By.linkText("Logout")).click();
       get_The_Row_From_Login_Data = 8;
       LoginPageWithReference login_Data8 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data8.Login_With_Reference();
       // Verify the returned draft certification.
-      Thread.sleep(2000);
-      Actual_Text =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")));
+      Actual_Text = webDriver.findElement(By.xpath("//td[3]")).getText();
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
-      WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+      WebElement ReturnDraft = webDriver.findElement(By.xpath("//td[3]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       // Click on the Draft cert.
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
       // Navigate to the financial section form413 and add a new partner.
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("form413")));
       webDriver.findElement(By.id("form413")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//fieldset/div[2]/button")));
       webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.xpath("(//input[@id='owners__first_name'])[2]")));
       webDriver.findElement(By.xpath("(//input[@id='owners__first_name'])[2]")).sendKeys("Will");
       webDriver.findElement(By.xpath("(//input[@id='owners__last_name'])[2]")).sendKeys("Smith");
       webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
@@ -152,30 +184,18 @@ public class SubmitAndReviewPage extends TestCase {
           .sendKeys("7024762987");
       webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]"))
           .sendKeys("7023764876");
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[3]/div[14]/button[2]")));
       webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
-      Thread.sleep(3000);
-      // Select No for question Is anyone listed above divorced? If yes,
-      // please provide separation documents.
-      Actions act4 = new Actions(webDriver);
-      act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build()
-          .perform();
-      // Locate the Continue Button and click on it to continue.
-      Thread.sleep(2000);
-      // Upload document.
-      String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-      Upload2pdfOnSamePage upload2pdfOnSame2 = new Upload2pdfOnSamePage(webDriver);
-      upload2pdfOnSame2.Upload2pdfOnSame(file_path_abs);
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+
+      CoreUtils.clickContinue(webDriver);
       // click on the first person personal summary and navigate to the
       // second person cash on hand.
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.id("personal_summary_denzel_washington")));
       webDriver.findElement(By.id("personal_summary_denzel_washington")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
+      CoreUtils.clickContinue(webDriver);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
       String actual_Text111 = webDriver.findElement(By.cssSelector("h2")).getText();
       String expected_Text111 = "Cash On Hand";
       assertEquals(actual_Text111, expected_Text111);
@@ -183,7 +203,7 @@ public class SubmitAndReviewPage extends TestCase {
     } else {
       logger.info("Return to Vendor Link is missing please verify why.");
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
-      Thread.sleep(3000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("submit_button")));
       webDriver.findElement(By.id("submit_button")).click();
       webDriver.findElement(By.linkText("Determination")).click();
       webDriver.findElement(By.id("review_workflow_state_returned_for_modification")).click();
@@ -194,22 +214,21 @@ public class SubmitAndReviewPage extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data8.Login_With_Reference();
       // Verify the returned draft certification.
-      Thread.sleep(2000);
-      Actual_Text =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]")).getText();
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[5]")));
+      Actual_Text = webDriver.findElement(By.xpath("//td[5]")).getText();
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
-      WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
+      WebElement ReturnDraft = webDriver.findElement(By.xpath("//td[5]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       // Click on the Draft cert.
       webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
       // Navigate to the financial section form413 and add a new partner.
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.id("form413")));
       webDriver.findElement(By.id("form413")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//fieldset/div[2]/button")));
       webDriver.findElement(By.xpath("//fieldset/div[2]/button")).click();
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.xpath("(//input[@id='owners__first_name'])[2]")));
       webDriver.findElement(By.xpath("(//input[@id='owners__first_name'])[2]")).sendKeys("Will");
       webDriver.findElement(By.xpath("(//input[@id='owners__last_name'])[2]")).sendKeys("Smith");
       webDriver.findElement(By.xpath("(//select[@id='owners__title'])[2]")).click();
@@ -230,7 +249,7 @@ public class SubmitAndReviewPage extends TestCase {
           .sendKeys("7024762987");
       webDriver.findElement(By.xpath("(//input[@id='owners__business_phone'])[2]"))
           .sendKeys("7023764876");
-      Thread.sleep(2000);
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[3]/div[14]/button[2]")));
       webDriver.findElement(By.xpath("//div[3]/div[14]/button[2]")).click();
       Thread.sleep(3000);
       // Select No for question Is anyone listed above divorced? If yes,
@@ -239,21 +258,21 @@ public class SubmitAndReviewPage extends TestCase {
       act4.doubleClick(webDriver.findElement(By.xpath("//div[2]/fieldset/div/input"))).build()
           .perform();
       // Locate the Continue Button and click on it to continue.
-      Thread.sleep(2000);
       // Upload document.
       String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
       Upload2pdfOnSamePage upload2pdfOnSame2 = new Upload2pdfOnSamePage(webDriver);
       upload2pdfOnSame2.Upload2pdfOnSame(file_path_abs);
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      // Click on the continue button
+      CoreUtils.clickContinue(webDriver);
       // click on the first person personal summary and navigate to the
       // second person cash on hand.
-      Thread.sleep(2000);
+      wait.until(
+          ExpectedConditions.elementToBeClickable(By.id("personal_summary_denzel_washington")));
       webDriver.findElement(By.id("personal_summary_denzel_washington")).click();
+      // Click on the continue button
+      CoreUtils.clickContinue(webDriver);
       Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
-      Thread.sleep(2000);
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      CoreUtils.clickContinue(webDriver);
       String actual_Text111 = webDriver.findElement(By.cssSelector("h2")).getText();
       String expected_Text111 = "Cash On Hand";
       assertEquals(actual_Text111, expected_Text111);

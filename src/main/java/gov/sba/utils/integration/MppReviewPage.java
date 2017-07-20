@@ -163,6 +163,7 @@ public class MppReviewPage extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     // Click on Vendor Overview link.
     webDriver.findElement(By.xpath("//a[contains(text(),'Vendor Overview')]")).click();
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
   }
 }

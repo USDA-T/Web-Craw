@@ -31,59 +31,59 @@ public class TestApp8aInitialMaterApplication extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    try {
-      logger.info("Test for 8a initial master Flow");
-      // Login to dashboard.
-      LoginPageWithReference login_Data =
-          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
-      login_Data.Login_With_Reference();
-      // Verify if there is an existing certification on the dashboard and
-      // delete to start a new certification.
-      DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
-      deleteDraftCert.DeleteDraftCert();
-      // delete second draft if any.
-      DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
-      deleteDraftCert1.DeleteDraftCert();
-      // Complete the basic eligibility section.
-      BasicEligibilityMasterAppPage basicEligibilityMasterApp =
-          new BasicEligibilityMasterAppPage(webDriver);
-      basicEligibilityMasterApp.BasicEligibilityMasterApp();
-      // Complete the Business Ownership section.
-      BusinessOwnershipSubsectionMasterPage businessOwnershipSubsectionMaster =
-          new BusinessOwnershipSubsectionMasterPage(webDriver);
-      businessOwnershipSubsectionMaster.BusinessOwnershipSubsectionMaster();
-      // Complete the character section.
-      CharacterMasterAppSectionPage characterMasterAppSection =
-          new CharacterMasterAppSectionPage(webDriver);
-      characterMasterAppSection.CharacterMasterAppSection();
-      // ====>>>Add Potential for Success here.
-      // Complete the Control section.
-      ControlMasterAppSubsectionPage controlMasterAppSubsection =
-          new ControlMasterAppSubsectionPage(webDriver);
-      controlMasterAppSubsection.ControlMasterAppSubsection();
-      // Complete the Individual section.
-      IndividualApplicationSectionPage individualApplicationSection =
-          new IndividualApplicationSectionPage(webDriver);
-      individualApplicationSection.IndividualApplicationSection();
-      // Complete the DvD section.
-      ContributorDisadvantageIndividualQuetionPage contributorDisadvantageIndividualQuetion =
-          new ContributorDisadvantageIndividualQuetionPage(webDriver);
-      contributorDisadvantageIndividualQuetion.ContributorDisadvantageIndividualQuetion();
-      // Complete the SDvD section.
-      ContributorSpouseOfaDisadvantageIndividualPage contributorSpouseOfaDisadvantageIndividual =
-          new ContributorSpouseOfaDisadvantageIndividualPage(webDriver);
-      contributorSpouseOfaDisadvantageIndividual.ContributorSpouseOfaDisadvantageIndividual();
-      // Complete the Other Individuals section.
-      ContributorOtherIndividualsQuestionPage contributorOtherIndividualsQuestion =
-          new ContributorOtherIndividualsQuestionPage(webDriver);
-      contributorOtherIndividualsQuestion.ContributorOtherIndividualsQuestion();
-      webDriver.findElement(By.linkText("Logout")).click();
-    } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());
-      Assert.fail();
-    }
+     try{
+    logger.info("Test for 8a initial master Flow");
+    // Login to dashboard.
+    LoginPageWithReference login_Data =
+        new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+    login_Data.Login_With_Reference();
+    // Verify if there is an existing certification on the dashboard and
+    // delete to start a new certification.
+    DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert.DeleteDraftCert();
+    // delete second draft if any.
+    DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert1.DeleteDraftCert();
+    // Complete the basic eligibility section.
+    BasicEligibilityMasterAppPage basicEligibilityMasterApp =
+        new BasicEligibilityMasterAppPage(webDriver);
+    basicEligibilityMasterApp.BasicEligibilityMasterApp();
+    // Complete the Business Ownership section.
+    BusinessOwnershipSubsectionMasterPage businessOwnershipSubsectionMaster =
+        new BusinessOwnershipSubsectionMasterPage(webDriver);
+    businessOwnershipSubsectionMaster.BusinessOwnershipSubsectionMaster();
+    // Complete the character section.
+    CharacterMasterAppSectionPage characterMasterAppSection =
+        new CharacterMasterAppSectionPage(webDriver);
+    characterMasterAppSection.CharacterMasterAppSection();
+    // ====>>>Add Potential for Success here.
+    // Complete the Control section.
+    ControlMasterAppSubsectionPage controlMasterAppSubsection =
+        new ControlMasterAppSubsectionPage(webDriver);
+    controlMasterAppSubsection.ControlMasterAppSubsection();
+    // Complete the Individual section.
+    IndividualApplicationSectionPage individualApplicationSection =
+        new IndividualApplicationSectionPage(webDriver);
+    individualApplicationSection.IndividualApplicationSection();
+    // Complete the DvD section.
+    ContributorDisadvantageIndividualQuetionPage contributorDisadvantageIndividualQuetion =
+        new ContributorDisadvantageIndividualQuetionPage(webDriver);
+    contributorDisadvantageIndividualQuetion.ContributorDisadvantageIndividualQuetion();
+    // Complete the SDvD section.
+    ContributorSpouseOfaDisadvantageIndividualPage contributorSpouseOfaDisadvantageIndividual =
+        new ContributorSpouseOfaDisadvantageIndividualPage(webDriver);
+    contributorSpouseOfaDisadvantageIndividual.ContributorSpouseOfaDisadvantageIndividual();
+    // Complete the Other Individuals section.
+    ContributorOtherIndividualsQuestionPage contributorOtherIndividualsQuestion =
+        new ContributorOtherIndividualsQuestionPage(webDriver);
+    contributorOtherIndividualsQuestion.ContributorOtherIndividualsQuestion();
+     webDriver.findElement(By.linkText("Logout")).click();
+     } catch (Exception e) {
+     ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+     screenShot.ScreenShot();
+     logger.info(e.getMessage());
+     Assert.fail();
+     }
     logger.info("Success");
   }
 

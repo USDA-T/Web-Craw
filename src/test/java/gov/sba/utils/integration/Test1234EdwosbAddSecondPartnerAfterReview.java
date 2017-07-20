@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -30,7 +29,7 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
-    try {
+    //try {
       logger.info("Test EDWOSB Sole-Proprietorship two partners on form413 with review");
       // Login to dashboard.
       LoginPageWithReference login_Data =
@@ -74,12 +73,12 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
           webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       webDriver.findElement(By.linkText("Logout")).click();
-    } catch (Exception e) {
-      ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-      screenShot.ScreenShot();
-      logger.info(e.getMessage());
-      Assert.fail();
-    }
+    //} catch (Exception e) {
+      //ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+      //screenShot.ScreenShot();
+      //logger.info(e.getMessage());
+      //Assert.fail();
+    //}
     logger.info("Success");
   }
 

@@ -1,3 +1,4 @@
+// Montana
 package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +9,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
@@ -33,6 +36,7 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
 
   @Test
   public void testMainTest() throws Exception {
+    WebDriverWait wait = new WebDriverWait(webDriver, 40);
     String Actual_Text = null;
     String Expected_Text = null;
     // Login to dashboard.
@@ -74,10 +78,42 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     LoginPageWithReference login_Data61 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data61.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("137151292");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("137151292");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("137151292");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("137151292");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("137151292");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+          } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
     // Locate the Active EDWOSB application and click on it.
     webDriver.findElement(By.linkText("EDWOSB Self-Certification")).click();
     // Verify the Open Application Summary link.
@@ -95,19 +131,51 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     // Click on the Return to Vendor link.
     webDriver.findElement(By.xpath("//div[2]/a/button")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-    Expected_Text = "A new application has been reopenned for the vendor";
+    Expected_Text = "A new application has been reopened for the vendor";
     assertEquals(Actual_Text, Expected_Text);
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
     // Login as MPP-analyst and return MPP program back to vendor.
     get_The_Row_From_Login_Data = 29;
     LoginPageWithReference login_Data71 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data71.Login_With_Reference();
-    webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-    webDriver.findElement(By.id("query")).sendKeys("137151292");
-    webDriver.findElement(By.xpath("//form/div/button")).click();
-    // Locate the business name and click on it.
-    webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+    if (webDriver.getCurrentUrl().contains("certify.qa")) {
+      webDriver.findElement(By.id("query")).sendKeys("137151292");
+      webDriver.findElement(By.xpath("//form/div/button")).click();
+      wait.until(ExpectedConditions
+          .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+      webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+    } else {
+      if (webDriver.getCurrentUrl().contains("staging")) {
+        webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+        webDriver.findElement(By.id("query")).sendKeys("137151292");
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("newqa")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys("137151292");
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("localhost")) {
+            webDriver.findElement(By.id("query")).sendKeys("137151292");
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 399 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
+          } else {
+            logger.info(
+                "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+          }
+        }
+      }
+    }
     // Locate the Pending MPP application and click on it.
     webDriver.findElement(By.linkText("MPP Application")).click();
     // Verify the Open Application Summary link.
@@ -125,16 +193,17 @@ public class TestApp248ViewSummaryAndReturnToCaseOverviewPage extends TestCase {
     // Click on the Return to Vendor link.
     webDriver.findElement(By.xpath("//div[2]/a/button")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("p.usa-alert-text")).getText();
-    Expected_Text = "A new application has been reopenned for the vendor";
+    Expected_Text = "A new application has been reopened for the vendor";
     assertEquals(Actual_Text, Expected_Text);
+    webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();
     get_The_Row_From_Login_Data = 25;
     LoginPageWithReference login_Data1 =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data1.Login_With_Reference();
-    WebElement ReturnMppDraft = webDriver.findElement(By.xpath("//td[5]"));
+    WebElement ReturnMppDraft = webDriver.findElement(By.xpath("//table[2]/tbody/tr/td[3]"));
     HighLight.highLightElement(webDriver, ReturnMppDraft);
-    WebElement ReturnEDWASBdraft = webDriver.findElement(By.xpath("//tr[2]/td[5]"));
+    WebElement ReturnEDWASBdraft = webDriver.findElement(By.xpath("//td[3]"));
     HighLight.highLightElement(webDriver, ReturnEDWASBdraft);
     webDriver.findElement(By.linkText("Logout")).click();
     logger.info("Success");

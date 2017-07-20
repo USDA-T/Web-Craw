@@ -778,7 +778,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -806,7 +806,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Attempt to commit and verify alert message.
       CoreUtils.clickContinue(webDriver);
-      Actual_Text = webDriver.findElement(By.xpath("//div/span")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
       Expected_Text = "Please answer this question";
       assertEquals(Actual_Text, Expected_Text);
       Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div/span")).getText();
@@ -913,7 +913,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       Expected_Text = "The selected business is: Entity 45 Legal Business Name";
       assertEquals(Actual_Text, Expected_Text);
       CoreUtils.clickContinue(webDriver);
-      assertEquals("", webDriver.getTitle());
       // Review page.
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
       Expected_Text = "Review";
@@ -1009,7 +1008,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       HighLight.highLightElement(webDriver, ActiveCert);
       webDriver.findElement(By.linkText("Logout")).click();
 
-      // Login as MPP-analyst and return MPP back to vendor.
+      // Login as MPP-analyst and Complete the Review .
       get_The_Row_From_Login_Data = 29;
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
