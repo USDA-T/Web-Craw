@@ -38,7 +38,7 @@ public class TestWorkflowMPP10 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -50,7 +50,7 @@ public class TestWorkflowMPP10 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPP10() throws Exception {
     try {
 
       /*
@@ -88,7 +88,7 @@ public class TestWorkflowMPP10 extends TestCase {
 
     } catch (Exception e) {
       logger.info("NACIS Code not popluating for this duns number" + e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP09", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP10", "Exception"});
       throw e;
 
     }

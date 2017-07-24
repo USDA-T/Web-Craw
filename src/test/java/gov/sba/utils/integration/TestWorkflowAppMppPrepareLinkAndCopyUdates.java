@@ -23,16 +23,14 @@ public class TestWorkflowAppMppPrepareLinkAndCopyUdates extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    get_Stop_Execution_Flag();
-    clear_Env_Chrome();
-    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-    webDriver.get(TestHelpers.getBaseUrl());
-    System.out.println(logger.isInfoEnabled());
-    logger.entry();
+      get_Stop_Execution_Flag();
+      clear_Env_Chrome();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+      webDriver.get(TestHelpers.getBaseUrl());
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppMppPrepareLinkAndCopyUdates() throws Exception {
 
     try {
       String expected_Text;

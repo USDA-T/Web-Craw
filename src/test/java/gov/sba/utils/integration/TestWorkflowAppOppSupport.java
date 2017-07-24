@@ -33,7 +33,7 @@ public class TestWorkflowAppOppSupport extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppOppSupport() throws Exception {
     // Login to dashboard.
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);

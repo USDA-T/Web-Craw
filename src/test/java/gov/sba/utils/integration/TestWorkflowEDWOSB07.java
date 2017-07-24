@@ -34,7 +34,7 @@ public class TestWorkflowEDWOSB07 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("corp");
@@ -46,7 +46,7 @@ public class TestWorkflowEDWOSB07 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowEDWOSB06() throws Exception {
     try {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "EDWOSB");

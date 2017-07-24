@@ -180,30 +180,40 @@ public class FillApplCreatePages {
         }
 
         ProgramsPage.generic_file_Upld(webDriver);
-        // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
+        /*new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);*/
 
-        click_Element(webDriver, "Application_Common_Submit_Button");
+        /*click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(2000);*/
         setText_Element(webDriver, "SBA_8a_Duns_Confrm_Text", duns_No_Given);
+
         click_Element(webDriver, "Search_Duns_No");
-        accept_Alert(webDriver, 2);
 
-          logger.info("___");
+        accept_Alert(webDriver, 5);
 
-//        for (int i = 0; i < 2; i++) {
-          WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
-          if (aa != null) {
-            click_Element(webDriver, "Search_Duns_No");
-            accept_Alert(webDriver, 2);
-            accept_Alert(webDriver, 2);
-//            i = 9999;
-          }
-//        }
-          logger.info("___");
+
+        //for (int i = 0; i < 2; i++) {
+              WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
+
+              if (aa != null) {
+                click_Element(webDriver, "Search_Duns_No");
+
+
+                accept_Alert(webDriver, 5);
+
+                accept_Alert(webDriver, 5);
+
+    //            i = 9999;
+              }
+        //}
+
+
 
         click_Element(webDriver, "Application_Common_Submit_Button");
+
         Thread.sleep(1000);
+
         click_Element(webDriver, "Review_Application");
         Thread.sleep(1500);
+
         click_Element(webDriver, "Application_Common_Submit_Button");
 
         accept_Alert(webDriver, 10);

@@ -24,7 +24,7 @@ import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 @Ignore
-@Category({gov.sba.utils.integration.StableTests.class})
+@Category({gov.sba.utils.integration.UnstableTests.class})
 
 public class TestWorkflowAppEmailNotifications extends TestCase {
   private static final Logger logger =
@@ -40,6 +40,8 @@ public class TestWorkflowAppEmailNotifications extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
+    logger.info("Set as head");
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -50,7 +52,7 @@ public class TestWorkflowAppEmailNotifications extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppEmailNotifications() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 55, duns_Number);

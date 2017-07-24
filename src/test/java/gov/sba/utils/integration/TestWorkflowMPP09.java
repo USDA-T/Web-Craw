@@ -39,7 +39,7 @@ public class TestWorkflowMPP09 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -51,7 +51,7 @@ public class TestWorkflowMPP09 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPP09() throws Exception {
     try {
 
       /*
@@ -121,7 +121,6 @@ public class TestWorkflowMPP09 extends TestCase {
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
-
     } catch (Exception e) {
       logger.info("NACIS Code not popluating for this duns number" + e.toString());
       take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP09", "Exception"});

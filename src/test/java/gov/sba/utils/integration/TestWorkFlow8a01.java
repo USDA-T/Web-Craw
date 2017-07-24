@@ -23,9 +23,9 @@ import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_
 
 // Still in progress
 @Category({gov.sba.utils.integration.UnstableTests.class})
-public class TestWorkFlowxx8aInProgress extends TestCase {
+public class TestWorkFlow8a01 extends TestCase {
   // Set The variabl.es/Define
-  Logger logger = LogManager.getLogger(TestWorkFlowxx8aInProgress.class.getName());
+  Logger logger = LogManager.getLogger(TestWorkFlow8a01.class.getName());
   private static WebDriver webDriver;
   /* int get_The_Row_From_Login_Data; */
   String duns_Number, email, password;
@@ -36,7 +36,7 @@ public class TestWorkFlowxx8aInProgress extends TestCase {
       return;
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* get_The_Row_From_Login_Data = 43; */
@@ -47,7 +47,7 @@ public class TestWorkFlowxx8aInProgress extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkFlow8a01() throws Exception {
     try {
 
       /* return_All_Applications(webDriver, 11, "165324125"); */
@@ -148,8 +148,7 @@ public class TestWorkFlowxx8aInProgress extends TestCase {
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
-      /* For Demo Start - July 6 */
-      Thread.sleep(4000);
+      /* For Demo Start - July 6 To show 8a cod's supervsior page displaying the Unassigned cases*/
       navigationMenuClick(webDriver, "Logout");
       webDriver.get(TestHelpers.getBaseUrl());
       click_Element(webDriver, "SBA_Login_Button");
@@ -158,27 +157,16 @@ public class TestWorkFlowxx8aInProgress extends TestCase {
       click_Element(webDriver, "SBA_Login_Sign_in");
       /* For Demo End - July 6 */
 
-      /* TO Do :: Contributor Page- 8a DisAdvantaged Individual Sub application */
-      /*
-       * Contributor_Page(webDriver, "8a_DisAdvInd_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole9", "norole9@mailinator.com");
-       * Contributor_Page(webDriver, "8a_AddSpouse_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole10", "norole10@mailinator.com");
-       * Contributor_Page(webDriver, "8a_AddSpouse_contributor");
-       * ProgramsPage.contributor_login(webDriver, "norole11", "norole11@mailinator.com");
-       */
-
-
     } catch (Exception e) {
       logger.info(e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP05", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkFlow8a01", "Exception"});
       throw e;
     }
   }
 
   @After
   public void tearDown() throws Exception {
-    // webDriver.quit();
+    webDriver.quit();
   }
 }
 

@@ -44,7 +44,7 @@ public class TestWorkflowMPP06 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -56,7 +56,7 @@ public class TestWorkflowMPP06 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPP06() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 56, duns_Number);
@@ -78,7 +78,7 @@ public class TestWorkflowMPP06 extends TestCase {
 
     } catch (Exception e) {
       logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP05", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPP06", "Exception"});
       throw e;
 
     }

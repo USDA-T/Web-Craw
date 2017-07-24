@@ -52,7 +52,7 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppOppSupportStaff() throws Exception {
     try {
       /* Login as vendor admin and submit a application */
       /*

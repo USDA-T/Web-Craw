@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
 import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
 import static gov.sba.automation.CommonApplicationMethods.set_Timeouts;
 
@@ -30,14 +31,16 @@ public class TestWorkflowAppHomePageVerify extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-    CommonApplicationMethods.clear_Env_Chrome();
-    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-    get_Stop_Execution_Flag();
-    webDriver.get(TestHelpers.getBaseUrl());
+      get_Stop_Execution_Flag();
+      clear_Env_Chrome();
+      logger.info("Set as head");
+     //TestHelpers.set_Headless();
+      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+      webDriver.get(TestHelpers.getBaseUrl());
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppHomePageVerify() throws Exception {
 
     String Actual_Text = null;
     String Expected_Text;

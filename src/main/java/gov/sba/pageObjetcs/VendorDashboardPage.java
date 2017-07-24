@@ -65,6 +65,9 @@ public class VendorDashboardPage {
       case "mppreport":
        click_Element(webDriver, "SBA_MPP_Report_Link");
         break;
+      case "mppreportdraft":
+            click_Element(webDriver, "SBA_MPP_Report_Draft");
+            break;
     }
   }
 

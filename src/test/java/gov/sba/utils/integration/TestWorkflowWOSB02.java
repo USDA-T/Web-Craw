@@ -49,7 +49,7 @@ public class TestWorkflowWOSB02 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* duns_Number = "263426685"; get_The_Row_From_Login_Data = 50; */
@@ -60,7 +60,7 @@ public class TestWorkflowWOSB02 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowEDWOSB02() throws Exception {
     /* Login to dashboard. */
     try {
       /*
@@ -161,10 +161,9 @@ public class TestWorkflowWOSB02 extends TestCase {
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
 
-
     } catch (Exception e) {
       logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowEDWOSB01", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowEDWOSB02", "Exception"});
       throw e;
 
     }

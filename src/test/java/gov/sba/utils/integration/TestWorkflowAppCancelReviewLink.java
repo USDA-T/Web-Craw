@@ -42,7 +42,7 @@ public class TestWorkflowAppCancelReviewLink extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowAppCancelReviewLink() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 55, duns_Number);

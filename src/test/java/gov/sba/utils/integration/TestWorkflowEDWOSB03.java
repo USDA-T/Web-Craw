@@ -46,7 +46,7 @@ public class TestWorkflowEDWOSB03 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -57,7 +57,7 @@ public class TestWorkflowEDWOSB03 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowEDWOSB03() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 55, duns_Number);
@@ -159,8 +159,6 @@ public class TestWorkflowEDWOSB03 extends TestCase {
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
-
-
     } catch (Exception e) {
       logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
       take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowEDWOSB03", "Exception"});

@@ -47,7 +47,7 @@ public class TestWorkflowMPP05 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+   //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -59,7 +59,7 @@ public class TestWorkflowMPP05 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPP05() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 56, duns_Number);
@@ -131,11 +131,11 @@ public class TestWorkflowMPP05 extends TestCase {
       /* if (stop_Exec == 1) {return; } /* TODO After DE */
 
       click_Element(webDriver, "Application_Common_Submit_Button");
-      click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
+        click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
       navigationBarClick(webDriver, "LOGOUT");
 
     } catch (Exception e) {

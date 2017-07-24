@@ -49,7 +49,7 @@ public class TestWorkflowMPP01 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+    //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -61,13 +61,11 @@ public class TestWorkflowMPP01 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPP01() throws Exception {
     try {
 
-      /*
-       * return_All_Applications(webDriver, 56, duns_Number);
-       * delete_All_Application_Draft(webDriver, email, password, duns_Number);
-       */
+      //return_All_Applications(webDriver, 56, duns_Number);
+      //delete_All_Application_Draft(webDriver, email, password, duns_Number);
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
@@ -75,33 +73,28 @@ public class TestWorkflowMPP01 extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       click_On_App_In_Vend_Dash(webDriver, "MPP");
       finalSignatureSubmit(webDriver);
-      List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
-          new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
+      List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
-
       /* Verify the Summary page, Expire date and Issue date in vendor dashboard */
-
       /* Summary Page title Us1699,!457,1463 */
-      /* TODO For expiry date and Issue date */
 
+      /* TODO For expiry date and Issue date */
       navigationMenuClick(webDriver, "Logout");
 
       /* TODO For expiry date and Issue date */
+
       new LoginPageWithReference(webDriver, 29).Login_With_Reference();
       navigationBarClick(webDriver, "Cases");
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Business_Name_Link");
       assertEquals("Case Overview", find_Element(webDriver, "Case_CaseOverview_title").getText());
-      assertEquals("Open application summary",
-          find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
-      assertEquals("Return to Vendor",
-          find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
+      assertEquals("Open application summary", find_Element(webDriver, "SBA_Case_Overview_Open_Application_Summary").getText());
+      assertEquals("Return to Vendor", find_Element(webDriver, "SBA_Case_Overview_Return_to_vendor").getText());
       click_Element(webDriver, "Case_Submit_Button");
 
       /* Verify the Question review page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Review_Fill_Up_SideNav", true));
-      List<WebElement> dropdown =
-          new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
+      List<WebElement> dropdown =  new Select(find_Element(webDriver, "SBA_Assesment_Status")).getOptions();
       logger.info(dropdown.get(0).getText());
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
@@ -118,8 +111,7 @@ public class TestWorkflowMPP01 extends TestCase {
 
       /* Signature page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Signature_Review_SideNav", true));
-      dropdown =
-          new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options")).getOptions();
+      dropdown = new Select(find_Element(webDriver, "SBA_Question_Assesment_Status_Options")).getOptions();
       assertEquals("Confirmed", dropdown.get(0).getText());
       assertEquals("Not reviewed", dropdown.get(1).getText());
       assertEquals("Information missing", dropdown.get(2).getText());
@@ -131,18 +123,10 @@ public class TestWorkflowMPP01 extends TestCase {
 
       /* Determination page */
       assertNotNull(find_Element(webDriver, "SBA_Question_Determinations_SideNav", true));
-      assertEquals(
-          find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
-          "Review Started");
-      assertEquals(
-          find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(),
-          "Return for Modification");
-      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile")
-          .getText(), "Recommend Eligible");
-      assertEquals(
-          find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile")
-              .getText(),
-          "Recommend Ineligible");
+      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(), "Review Started");
+      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Return_For_Mod").getText(), "Return for Modification");
+      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_Eligibile").getText(), "Recommend Eligible");
+      assertEquals(find_Element(webDriver, "SBA_Question_New_Determination_Reccomend_For_InEligibile").getText(), "Recommend Ineligible");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Qa Test");
 
       /* Verify on Analyst Detremination page -Determination Made, Decision not displayed */
@@ -150,15 +134,11 @@ public class TestWorkflowMPP01 extends TestCase {
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
 
       /* if (stop_Exec == 1) { return; } /* TODO DE exists on submit */
-
       click_Element(webDriver, "Application_Common_Submit_Button");
-
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
-
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Pending"));
-
-
       navigationBarClick(webDriver, "LOGOUT");
+
       /* Supervisor Flow - Approve */
       new LoginPageWithReference(webDriver, 56).Login_With_Reference();
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
@@ -172,8 +152,7 @@ public class TestWorkflowMPP01 extends TestCase {
       /* if (stop_Exec == 1) { return; } /* TODO Remove Hard coded duns_Number */
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-      assertTrue(
-          find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
+      assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
 
 
     } catch (Exception e) {
@@ -182,7 +161,6 @@ public class TestWorkflowMPP01 extends TestCase {
       throw e;
     }
   }
-
 
   @After
   public void tearDown() throws Exception {

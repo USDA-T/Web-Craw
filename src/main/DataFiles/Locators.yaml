@@ -278,6 +278,8 @@ SBA_WOSB_Table_Link:              {Locator: 'linktext', Value: "WOSB Self-Certif
 SBA_WOSB_Table_Renew_Link:        {Locator: 'linktext', Value: "Renew"}
 SBA_MPP_Table_Link:               {Locator: 'linktext', Value: "MPP Application"}
 SBA_MPP_Report_Link:              {Locator: 'linktext', Value: "New Annual Report"}
+SBA_MPP_Report_Draft:             {Locator: 'xpath', Value: "//table[ @id='certifications' ]/tbody/tr[ td[ position=2 ][ contains( text() , 'Annual Report' ) ] and td[ position=6 ][ not( contains( text() , 'ed' ) ) ] ]/td[1]/a"}
+
 SBA_8aInitial_Table_Link:         {Locator: 'linktext', Value: "8(a) Initial Program"}
 
 #Dashboard
@@ -599,6 +601,10 @@ SBA_Case_Overview_Select_Owner_Id:            {Locator: 'xpath', Value: "//selec
 SBA_Case_Overview_Select_Supervisor_Id:       {Locator: 'xpath', Value: "//select[@id='review_current_assignment_attributes_supervisor_id']"}
 SBA_Case_Overview_Link:                       {Locator: 'xpath', Value: "//a[contains(text(),'Case overview')]"}
 SBA_Case_Cancel_Review_Link:                  {Locator: 'xpath', Value: "//a[contains(text(),'Cancel review')]"}
+SBA_MPP_Report_Return:                        {Locator: 'xpath', Value: "//input[ @type='submit' and contains(@value, 'Return')]"}
+SBA_MPP_Report_Approve:                       {Locator: 'xpath', Value: "//input[ @type='submit' and contains(@value, 'Approve')]"}
+SBA_MPP_Report_Decline:                      {Locator: 'xpath', Value: "//input[ @type='submit' and contains(@value, 'Decline')]"}
+SBA_MPPReport_Business_Name_Link:   {Locator: 'xpath', Value: "//a[contains(@href,'annual_reports) and contains(text(),'Legal Business Name')]"}
 
 Case_Submit_Button:                 {Locator: 'xpath', Value: "//input[@id='submit_button']"}
 Case_SaveNotes_Button:              {Locator: 'xpath', Value: "//input[@id='save_notes']"}
