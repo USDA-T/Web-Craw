@@ -25,4 +25,4 @@ fi
 #export TEST_ENV=development && mvn clean test -e -Dtest=TestWorkflowEDWOSB06*
 
 ## Run test and see if we can handle the alert properly
-export TEST_ENV=development && xvfb-run mvn clean test -e -Dtest=TestSimpleLogin
+export TEST_ENV=development && mvn clean test -e -Dtest=TestSimpleLogin
