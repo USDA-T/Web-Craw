@@ -47,7 +47,7 @@ public class TestWorkflowWOSB01 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-   //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");

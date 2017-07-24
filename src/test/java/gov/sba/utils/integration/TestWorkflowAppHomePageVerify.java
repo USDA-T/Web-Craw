@@ -31,12 +31,12 @@ public class TestWorkflowAppHomePageVerify extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-      get_Stop_Execution_Flag();
-      clear_Env_Chrome();
-      logger.info("Set as head");
-     //TestHelpers.set_Headless();
-      webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-      webDriver.get(TestHelpers.getBaseUrl());
+    get_Stop_Execution_Flag();
+    clear_Env_Chrome();
+    logger.info("Set as head");
+    // TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver.get(TestHelpers.getBaseUrl());
   }
 
   @Test

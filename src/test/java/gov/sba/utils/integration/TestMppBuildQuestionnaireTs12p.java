@@ -47,8 +47,8 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
   @Test
   public void testMppBuildQuestionnaireTs12p() throws Exception {
     try {
-       WebDriverWait wait = new WebDriverWait(webDriver, 30); 
-       //Deepa_Todo
+      WebDriverWait wait = new WebDriverWait(webDriver, 30);
+      // Deepa_Todo
       String Actual_Text;
       String Expected_Text;
       // Login to dashboard.

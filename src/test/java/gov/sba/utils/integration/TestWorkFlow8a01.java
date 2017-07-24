@@ -36,7 +36,7 @@ public class TestWorkFlow8a01 extends TestCase {
       return;
     clear_Env_Chrome();
     logger.info("Set as head");
-   //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* get_The_Row_From_Login_Data = 43; */
@@ -148,7 +148,7 @@ public class TestWorkFlow8a01 extends TestCase {
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
-      /* For Demo Start - July 6 To show 8a cod's supervsior page displaying the Unassigned cases*/
+      /* For Demo Start - July 6 To show 8a cod's supervsior page displaying the Unassigned cases */
       navigationMenuClick(webDriver, "Logout");
       webDriver.get(TestHelpers.getBaseUrl());
       click_Element(webDriver, "SBA_Login_Button");

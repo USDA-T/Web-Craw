@@ -36,7 +36,7 @@ public class TestElasticSearchForAnalyst extends TestCase {
 
   @Test
   public void testElasticSearchForAnalyst() throws Exception {
-    WebDriverWait wait = new WebDriverWait(webDriver, 30); 
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // try{
     String Actual_Text;
     String Expected_Text;
@@ -183,11 +183,9 @@ public class TestElasticSearchForAnalyst extends TestCase {
     EdwobEightAMppTestPage edwobEightAMppTest = new EdwobEightAMppTestPage(webDriver);
     edwobEightAMppTest.EdwobEightAMppTest();
     // verify the two active programs.
-    WebElement MppPending =
-        webDriver.findElement(By.xpath("//table[2]/tbody/tr/td[3]"));
+    WebElement MppPending = webDriver.findElement(By.xpath("//table[2]/tbody/tr/td[3]"));
     HighLight.highLightElement(webDriver, MppPending);
-    WebElement EdwosbActive =
-        webDriver.findElement(By.xpath("//td[6]"));
+    WebElement EdwosbActive = webDriver.findElement(By.xpath("//td[6]"));
     HighLight.highLightElement(webDriver, EdwosbActive);
     // Logout and login back as an analyst.
     webDriver.findElement(By.linkText("Logout")).click();

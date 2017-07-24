@@ -25,7 +25,7 @@ public class TestNewVendoradminAccount extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-   //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver(), 10, 10, 10);
     webDriver.get(TestHelpers.getBaseUrl());
   }

@@ -67,12 +67,10 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
       LoginPageWithReference login_Data1 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data1.Login_With_Reference();
-      Actual_Text =
-          webDriver.findElement(By.xpath("//td[3]")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//td[3]")).getText();
       Expected_Text = "Draft";
       assertEquals(Actual_Text, Expected_Text);
-      WebElement ReturnDraft =
-          webDriver.findElement(By.xpath("//td[3]"));
+      WebElement ReturnDraft = webDriver.findElement(By.xpath("//td[3]"));
       HighLight.highLightElement(webDriver, ReturnDraft);
       webDriver.findElement(By.linkText("Logout")).click();
     } catch (Exception e) {

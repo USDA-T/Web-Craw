@@ -1,10 +1,10 @@
-/*TS Created by Deepa Patri*/
+/* TS Created by Deepa Patri */
 package gov.sba.utils.integration;
 
 /*
  * Documentation for Workflow WorkFlows for MPP - Accommodating best minimal Workflow Tests
- * TestWorkflowMPPReportApprove Vendor admin create MPP application ,approved by supervisor submit Mpp
- * annual report. Mpp analyst review the MPP annual report and approves report..
+ * TestWorkflowMPPReportApprove Vendor admin create MPP application ,approved by supervisor submit
+ * Mpp annual report. Mpp analyst review the MPP annual report and approves report..
  */
 
 import gov.sba.automation.DatabaseUtils;
@@ -44,7 +44,7 @@ public class TestWorkflowMPPReportApprove extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-     TestHelpers.set_Headless();
+    TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -58,15 +58,16 @@ public class TestWorkflowMPPReportApprove extends TestCase {
   @Test
   public void testWorkflowMPPReportApprove() throws Exception {
     try {
-      /*App-!279,App-1219
-       * return_All_Applications(webDriver, 56, duns_Number);
+      /*
+       * App-!279,App-1219 return_All_Applications(webDriver, 56, duns_Number);
        * delete_All_Application_Draft(webDriver, email, password, duns_Number);
        */
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       join_New_Program_CheckBoxes(webDriver, "MPP");
       page8aFillUpDunsNo(webDriver, "Yes", duns_Number);
       finalSignatureSubmit(webDriver);
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+          new String[] {"MPP Application", "", "Pending", "", "", "", ""}));
       navigationMenuClick(webDriver, "LOGOUT");
       /* Supervisor make Determination SBA Approve */
       new LoginPageWithReference(webDriver, 56).Login_With_Reference();
@@ -94,7 +95,8 @@ public class TestWorkflowMPPReportApprove extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* For demo - used sleep -will remove sleep after demo */
       Thread.sleep(5000);
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "", "Active", "", "", "SBA Approved", "New Annual Report"}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
+          "Active", "", "", "SBA Approved", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");
       click_Element(webDriver, "Application_Common_Accept_Button");
       generic_file_Upld(webDriver);
@@ -107,28 +109,32 @@ public class TestWorkflowMPPReportApprove extends TestCase {
       new LoginPageWithReference(webDriver, 29).Login_With_Reference();
       click_Element(webDriver, "SBA_Analyst_Annual_Report_Link");
 
-      String xpath_Business_Name_Report = "//a [ contains (@href, 'annual_reports') and contains( text(), 'replace_Value' ) ]".replace("replace_Value", get_Business_Name);
+      String xpath_Business_Name_Report =
+          "//a [ contains (@href, 'annual_reports') and contains( text(), 'replace_Value' ) ]"
+              .replace("replace_Value", get_Business_Name);
       click_Element(webDriver, "xpath", xpath_Business_Name_Report);
-      /* Submitted Mpp Annual report below assertions*/
-      find_Element(webDriver,"SBA_MPP_Report_Return");
-      find_Element(webDriver,"SBA_MPP_Report_Decline");
-      click_Element(webDriver,"SBA_MPP_Report_Approve");
+      /* Submitted Mpp Annual report below assertions */
+      find_Element(webDriver, "SBA_MPP_Report_Return");
+      find_Element(webDriver, "SBA_MPP_Report_Decline");
+      click_Element(webDriver, "SBA_MPP_Report_Approve");
 
-      /* Verify the status as approved  after Mpp Report is approved by the MPP ana;yst*/
-      /* Verify on teh Vendor dashbaord page -App-1279*/
-      navigationBarClick(webDriver,"Cases");
+      /* Verify the status as approved after Mpp Report is approved by the MPP ana;yst */
+      /* Verify on teh Vendor dashbaord page -App-1279 */
+      navigationBarClick(webDriver, "Cases");
       Map locator = getLocator("Cases_Page_Search_Duns_Link");
       String loc = locator.get("Locator").toString();
       String val = locator.get("Value").toString().replace("duns_Number_Replace", duns_Number);
       click_Element(webDriver, loc, val);
 
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application","Annual Report","","","Active","SBA_approved","View summary"}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application",
+          "Annual Report", "", "", "Active", "SBA_approved", "View summary"}));
 
       /* For Demo on -7-21 */
 
     } catch (Exception e) {
       logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
-      take_ScreenShot_TestCaseName(webDriver, new String[] {"TestWorkflowMPPReportApprove", "Exception"});
+      take_ScreenShot_TestCaseName(webDriver,
+          new String[] {"TestWorkflowMPPReportApprove", "Exception"});
       throw e;
 
     }
@@ -137,7 +143,7 @@ public class TestWorkflowMPPReportApprove extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-     webDriver.quit();
+    webDriver.quit();
   }
 }
 
