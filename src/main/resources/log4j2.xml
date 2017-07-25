@@ -2,7 +2,8 @@
 <Configuration status="INFO">
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+            <!-- <PatternLayout pattern="[%&#45;5level] %d{yyyy&#45;MM&#45;dd HH:mm:ss.SSS} [%t] %c{1} &#45; %msg%n"/> -->
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS}#%5p#[%t]#%m#%C{1}#%M#%L#%n" />
         </Console>
     </Appenders>
     <Loggers>
