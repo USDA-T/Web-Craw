@@ -51,7 +51,7 @@ public class TestApp170LinkDunsNo8a extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp170LinkDunsNo8a() throws Exception {
     try {
 
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

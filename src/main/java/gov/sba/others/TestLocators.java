@@ -33,7 +33,7 @@ public class TestLocators extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testLocators() throws Exception {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();

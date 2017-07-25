@@ -47,7 +47,7 @@ public class TestApp303and304WOSB extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp303and304WOSB() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
     String sql_Q_01 = "update sbaone.questions set  prepopulate = false where name in ('8aq1')";

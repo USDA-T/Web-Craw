@@ -29,7 +29,7 @@ public class TestApp8AInterimQuestion extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp8AInterimQuestion() throws Exception {
     String Actual_Text = null;
     String Expected_Text = null;
     // Locate the accept button at the bottom of the EDWOSB agreement and

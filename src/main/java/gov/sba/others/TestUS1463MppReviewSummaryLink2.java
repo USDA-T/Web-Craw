@@ -59,7 +59,7 @@ public class TestUS1463MppReviewSummaryLink2 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS1463MppReviewSummaryLink2() throws Exception {
 
     // Login to dashboard.
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

@@ -35,7 +35,7 @@ public class TestMaster8aQuestionCompanyInfo extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testMaster8aQuestionCompanyInfo() throws Exception {
     String Actual_Text;
     String Expected_Text;
     logger.info(

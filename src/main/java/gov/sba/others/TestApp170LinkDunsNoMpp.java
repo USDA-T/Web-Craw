@@ -54,7 +54,7 @@ public class TestApp170LinkDunsNoMpp extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp170LinkDunsNoMpp() throws Exception {
     try {
       // __________________________________________________________________________________
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

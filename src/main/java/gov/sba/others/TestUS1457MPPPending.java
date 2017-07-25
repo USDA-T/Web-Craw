@@ -58,7 +58,7 @@ public class TestUS1457MPPPending extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS1457MPPPending() throws Exception {
 
     // Login to dashboard.
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

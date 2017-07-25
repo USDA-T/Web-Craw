@@ -55,7 +55,7 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflow8aInitalSelectingNoAllSections() throws Exception {
     try {
 
       /* return_All_Applications(webDriver, 11, "165324125");144754156 */

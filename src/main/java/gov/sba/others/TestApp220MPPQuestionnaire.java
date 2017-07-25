@@ -46,7 +46,7 @@ public class TestApp220MPPQuestionnaire extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp220MPPQuestionnaire() throws Exception {
     try {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();

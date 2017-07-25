@@ -52,7 +52,7 @@ public class TestUs1674EDWOSBAnalystReview extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUs1674EDWOSBAnalystReview() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

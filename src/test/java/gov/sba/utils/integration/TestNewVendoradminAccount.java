@@ -31,7 +31,7 @@ public class TestNewVendoradminAccount extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testNewVendoradminAccount() throws Exception {
     try {
 
       /* Create New Vendor */

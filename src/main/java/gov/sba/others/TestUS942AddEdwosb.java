@@ -38,7 +38,7 @@ public class TestUS942AddEdwosb extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS942AddEdwosb() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

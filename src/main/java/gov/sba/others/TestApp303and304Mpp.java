@@ -46,7 +46,7 @@ public class TestApp303and304Mpp extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp303and304Mpp() throws Exception {
     // Before testing - verify the prepopulate flag - false -Should not
     // prepoluate the answers
     String sql_Q_01 =

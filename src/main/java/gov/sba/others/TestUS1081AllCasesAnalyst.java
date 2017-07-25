@@ -56,7 +56,7 @@ public class TestUS1081AllCasesAnalyst extends TestCase {
 
   @Ignore
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS1081AllCasesAnalyst() throws Exception {
 
     // Create a application to check
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

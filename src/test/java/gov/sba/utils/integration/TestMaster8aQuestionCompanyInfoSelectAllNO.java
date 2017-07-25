@@ -32,7 +32,7 @@ public class TestMaster8aQuestionCompanyInfoSelectAllNO extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testMaster8aQuestionCompanyInfoSelectAllNO() throws Exception {
     String Actual_Text;
     String Expected_Text;
     logger.info(

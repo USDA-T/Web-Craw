@@ -46,7 +46,7 @@ public class Test1235OPPSupportStaffRole extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1235OPPSupportStaffRole() throws Exception {
     // Login to dashboard.
     new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();
     /*

@@ -43,7 +43,7 @@ public class TestAnalystReview {
 
   @Ignore
   @Test
-  public void testMainTest() throws Exception {
+  public void testAnalystReview() throws Exception {
     try {
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
       login_Data.Login_With_Details();

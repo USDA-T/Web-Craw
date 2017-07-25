@@ -49,7 +49,7 @@ public class TestApp37OpsSupportStaffChangeBusinessType extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp37OpsSupportStaffChangeBusinessType() throws Exception {
 
     new LoginPageWithReference(webDriver, 27).Login_With_Reference();
 

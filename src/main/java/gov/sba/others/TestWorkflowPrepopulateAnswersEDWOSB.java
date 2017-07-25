@@ -55,7 +55,7 @@ public class TestWorkflowPrepopulateAnswersEDWOSB extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowPrepopulateAnswersEDWOSB() throws Exception {
     // Login to dashboard.
     try {
       // Check Dashboard Pending status

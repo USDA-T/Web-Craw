@@ -58,7 +58,7 @@ public class TestWorkflowMPPVendorSelecting8aYes extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPPVendorSelecting8aYest() throws Exception {
     try {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();

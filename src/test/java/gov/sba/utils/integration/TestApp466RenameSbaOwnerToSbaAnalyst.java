@@ -27,7 +27,7 @@ public class TestApp466RenameSbaOwnerToSbaAnalyst extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp466RenameSbaOwnerToSbaAnalyst() throws Exception {
     String Actual_Text;
     String Expected_Text;
     logger.info("Test, changing role name sba_owner to SBA_Analyst");

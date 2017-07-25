@@ -57,7 +57,7 @@ public class TestSupervisorDecisionDeclined extends TestCase {
 
   @Test
   // Test APP-309 Decision Ineligible
-  public void testMainTest() throws Exception {
+  public void testSupervisorDecisionDeclined() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

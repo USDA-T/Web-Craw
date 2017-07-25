@@ -42,7 +42,7 @@ public class TestWorkflowBusinessPartner413AddandRemove extends TestCase {
     get_The_Row_From_Login_Data = 49;
   }
 
-  public void testMainTest() throws Exception {
+  public void testWorkflowBusinessPartner413AddandRemove() throws Exception {
     // Login to dashboard.
     try {
       // Check Dashboard Pending status

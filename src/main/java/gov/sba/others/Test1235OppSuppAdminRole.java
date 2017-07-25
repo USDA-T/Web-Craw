@@ -59,7 +59,7 @@ public class Test1235OppSuppAdminRole extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void test1235OppSuppAdminRole() throws Exception {
     try {
       // Login as vendor admin and submit a application
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();

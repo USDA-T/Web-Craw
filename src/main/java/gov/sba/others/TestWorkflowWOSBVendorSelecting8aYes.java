@@ -52,7 +52,7 @@ public class TestWorkflowWOSBVendorSelecting8aYes extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowWOSBVendorSelecting8aYes() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

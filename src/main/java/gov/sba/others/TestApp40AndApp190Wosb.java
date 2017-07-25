@@ -150,7 +150,7 @@ public class TestApp40AndApp190Wosb extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp40AndApp190Wosb() throws Exception {
 
     new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
     TestApp40AndApp190.info(duns_Number);

@@ -61,7 +61,7 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
 
   @Test
   // US1647 -Analyst page for Wosb application
-  public void testMainTest() throws Exception {
+  public void testWorkflowWOSBAnalyst() throws Exception {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
@@ -180,8 +180,10 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
       password = details[1];
       duns_Number = details[2];
     }
-
-    @Test
+    
+    //TODO: may be this is cut-and-paste issue, we should keep only one main test per file!
+    //XXX: please review and remove one if applicable!
+    @Test 
     public void testMainTest() throws Exception {
 
       // Login to dashboard.

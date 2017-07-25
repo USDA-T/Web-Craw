@@ -48,7 +48,7 @@ public class TestMPPVenodorWorkflowTC1 extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testMPPVenodorWorkflowTC1() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

@@ -56,7 +56,7 @@ public class TestWorkflowMPPVendor extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowMPPVendor() throws Exception {
 
     try {
       // Us1699,!457,1463 Check Dashboard Pending status

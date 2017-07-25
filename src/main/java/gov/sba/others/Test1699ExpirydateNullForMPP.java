@@ -53,7 +53,7 @@ public class Test1699ExpirydateNullForMPP extends TestCase {
 
   @Ignore
   @Test
-  public void testMainTest() throws Exception {
+  public void test1699ExpirydateNullForMPP() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();

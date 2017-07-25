@@ -57,7 +57,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS1081AllCasesNewSupervisor() throws Exception {
 
     // Create a application to check
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

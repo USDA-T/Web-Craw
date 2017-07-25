@@ -50,7 +50,7 @@ public class TestWorkflowVendorOverviewPage extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkflowVendorOverviewPage() throws Exception {
     try {
       // Test APP170, Test APP473- download file zip
       LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);

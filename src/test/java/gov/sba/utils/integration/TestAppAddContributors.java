@@ -28,7 +28,7 @@ public class TestAppAddContributors extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testAppAddContributors() throws Exception {
     String Actual_Text;
     String Expected_Text;
     logger.info(

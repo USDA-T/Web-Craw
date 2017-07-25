@@ -38,7 +38,7 @@ public class TestUS1280_OppSuppStaff extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUS1280_OppSuppStaff() throws Exception {
     try {
 
       String sql_query =

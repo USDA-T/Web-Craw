@@ -143,7 +143,7 @@ public class TestApp40AndApp190Mpp extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testApp40AndApp190Mpp() throws Exception {
 
     LoginPageWithDetails login_Data = new LoginPageWithDetails(webDriver, email, password);
     login_Data.Login_With_Details();
