@@ -43,7 +43,7 @@ public class TestSimpleLogin {
 
   @After
   public void tearDown() throws Exception {
-    // webDriver.quit();
+    webDriver.quit();
   }
 
   @Test
@@ -51,7 +51,7 @@ public class TestSimpleLogin {
 
     String baseUrl = TestHelpers.getBaseUrl();
 
-    logger.debug("FYI: your test baseUrl: " + baseUrl);
+    logger.info("FYI: your test baseUrl: " + baseUrl);
 
     webDriver.get(baseUrl);
 
