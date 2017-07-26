@@ -58,7 +58,7 @@ public class TestUploadOneFileAllLogins extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testUploadOneFileAllLogins() throws Exception {
     try {
 
       String csvFile = FixtureUtils.resourcesDir()

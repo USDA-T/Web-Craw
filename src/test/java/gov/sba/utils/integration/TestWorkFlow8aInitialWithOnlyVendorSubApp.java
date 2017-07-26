@@ -53,7 +53,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testWorkFlow8aInitialWithOnlyVendorSubApp() throws Exception {
     try {
 
       /* return_All_Applications(webDriver, 11, "165324125"); */

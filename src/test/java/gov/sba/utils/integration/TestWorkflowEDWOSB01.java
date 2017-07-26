@@ -61,7 +61,7 @@ public class TestWorkflowEDWOSB01 extends TestCase {
   /*
    * Test US1647- EDWosb financial section link disbaled for application not having finacial
    * parterns information
-   */ public void testMainTest() throws Exception {
+   */ public void testWorkflowEDWOSB01() throws Exception {
     try {
       /*
        * return_All_Applications(webDriver, 55, duns_Number);

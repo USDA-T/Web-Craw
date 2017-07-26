@@ -37,7 +37,7 @@ public class TestAppSessionExpire extends TestCase {
   }
 
   @Test
-  public void testMainTest() throws Exception {
+  public void testAppSessionExpire() throws Exception {
     try {
       // For all below test cases we are just deleting cookies. Further updates can be done to
       // Expire them Login to dashboard. Ops Support Staff
