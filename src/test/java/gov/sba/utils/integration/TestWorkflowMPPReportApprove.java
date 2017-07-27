@@ -44,7 +44,7 @@ public class TestWorkflowMPPReportApprove extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+    //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -87,7 +87,7 @@ public class TestWorkflowMPPReportApprove extends TestCase {
       navigationBarClick(webDriver, "LOGOUT");
       /* Make changes in Database - next-annual-report-date to current date */
       String sql_Q_01 =
-          "update sbaone.certificates set next_annual_report_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where duns_number = '"
+          "update sbaone.certificates set next_annual_report_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where type = 'Certificate::Mpp' and  duns_number = '"
               + duns_Number + "')";
       new DatabaseUtils().executeSQLScript(sql_Q_01);
 

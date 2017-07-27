@@ -72,7 +72,7 @@ public class TestWorkflowWOSB06 extends TestCase {
 
       /* TODO - Later Annual Wosb Review */
       String sql_Q_01 =
-          "update sbaone.certificates set expiry_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where duns_number = '"
+          "update sbaone.certificates set expiry_date = CURRENT_TIMESTAMP where organization_id = (select id from sbaone.organizations where type = 'Certificate::Wosb' and duns_number = '"
               + duns_Number + "')";
       new DatabaseUtils().executeSQLScript(sql_Q_01);
       /*
