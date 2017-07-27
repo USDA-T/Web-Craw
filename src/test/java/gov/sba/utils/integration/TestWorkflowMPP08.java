@@ -99,11 +99,12 @@ public class TestWorkflowMPP08 extends TestCase {
       /* Question review page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QAquestion Review page");
+       click_Element(webDriver, "SBA_Common_Page_Commit");
       /* Signature page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
       click_Element(webDriver, "SBA_Common_Page_Commit");
-      /* Determination page */
+       /* Determination page */
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Made", true));
       assertNull(find_Element(webDriver, "SBA_Review_Determ_Decision", true));
       /* if (stop_Exec == 1) {return; } /* TODO DE exists on submit App-1148 */

@@ -67,7 +67,6 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       join_New_Program_CheckBoxes(webDriver, "EDWOSB");
       new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
       new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
-
       finalSignatureSubmit(webDriver);
       navigationMenuClick(webDriver, "LOGOUT");
       new LoginPageWithReference(webDriver, 11).Login_With_Reference();

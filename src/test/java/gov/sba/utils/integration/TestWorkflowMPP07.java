@@ -106,6 +106,7 @@ public class TestWorkflowMPP07 extends TestCase {
       /* Question review page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QAquestion Review page");
+       click_Element(webDriver, "SBA_Common_Page_Commit");
       /* Signature page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");

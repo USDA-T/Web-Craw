@@ -38,9 +38,10 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
+    //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
-    String[] details = DatabaseUtils.findUnusedDunsNumber("llc");
+    String[] details = DatabaseUtils.findUnusedDunsNumber("corp");
     email = details[0];
     password = details[1];
     duns_Number = details[2];
@@ -63,11 +64,8 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
 
       /* Login to opp support admin dashboard. */
       new LoginPageWithReference(webDriver, 28).Login_With_Reference();
-      if (stop_Exec == 1) {
-        return;
-        /* TODO DE exists on App-1285 search dun number */
-      }
-      non_Vendor_searchDuns_Number(webDriver, duns_Number);
+      /*if (stop_Exec == 1) {return;} /* TODO DE exists on App-1285 search dun number */
+       non_Vendor_searchDuns_Number(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Business_Search_Business_Name");
       /* Find Draft,Active,compeleted certification */
 
@@ -96,20 +94,18 @@ public class TestWorkflowAppOppSupportAdmin extends TestCase {
         click_Element(webDriver, "Application_Common_Save_button");
         navigationBarClick(webDriver, "LOGOUT");
         /* Login with Analyst/supervisor and return the application */
-        navigationBarClick(webDriver, "LOGOUT");
-        return_All_Applications(webDriver, 55, duns_Number);
+        return_All_Applications(webDriver, 11, duns_Number);
         delete_All_Application_Draft(webDriver, email, password, duns_Number);
-        new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+
         /* Verify the Business type is changes to Scorp[from LLC] */
+        new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
         click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
         assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText()
             .contains("S-Corporation"));
         join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-        navigationMenuClick(webDriver, "Programs");
-        click_Element(webDriver, "JoinNewPgm_Create_App_EDWOSB");
-        click_Element(webDriver, "JoinNewPgm_Add_Cert");
-        click_Element(webDriver, "Application_Common_Accept_Button");
         new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
+        new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
+        finalSignatureSubmit(webDriver);
 
       } catch (Exception e) {
         logger.info(e.toString());
