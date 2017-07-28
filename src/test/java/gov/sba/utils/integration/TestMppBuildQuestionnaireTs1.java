@@ -23,7 +23,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       LogManager.getLogger(TestMppBuildQuestionnaireTs1.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
-
+  String DunsNumber;
   @Before
   public void setUp() throws Exception {
     webDriver = TestHelpers.getDefaultWebDriver();
@@ -31,6 +31,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 25;
+    DunsNumber = null;
   }
 
   @Test
@@ -44,12 +45,28 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       LoginPageWithReference login_Data =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
+      //Get the vendor Duns Number.
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
+      DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+      logger.info("The Duns number for this business is " +DunsNumber);
       // Verify if there is an existing program on the dashboard and
       // delete to start a new certification.
       DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
       deleteDraftCert.DeleteDraftCert();
-      // Verify for active and Draft program on the dashboard, if draft
-      // delete and start a new one.
+      //Verify for active and Draft certification on the dashboard, if draft
+      // delete and start a new one, if active or pending, Return it.
+      ReturnActiveCert2Page returnActiveCert = new ReturnActiveCert2Page(webDriver);
+      returnActiveCert.ReturnActiveCert2();
+      ReturnPendingCert2Page returnPendingCert = new ReturnPendingCert2Page(webDriver);
+      returnPendingCert.ReturnPendingCert2();
+      //Verify if there is an existing certification on the dashboard and
+      // TestWorkFlowxx8aInProgress to start a new certification.
+      DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert111.DeleteDraftCert();
+      //Start the application.
       AddOrStartNewMppProgramPage addOrStartNewMppProgram =
           new AddOrStartNewMppProgramPage(webDriver);
       addOrStartNewMppProgram.AddOrStartNewMppProgram();
@@ -80,7 +97,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
       Thread.sleep(2000);
       CoreUtils.clickContinue(webDriver);
       // Enter a valid DUNS# and verify business.
-      webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
+      webDriver.findElement(By.id("duns-value-167")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
       webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
       wait.until(ExpectedConditions.alertIsPresent());
@@ -245,7 +262,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
       // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("137151292");
+      webDriver.findElement(By.id("query")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       webDriver.findElement(By.linkText("Entity 399 Legal Business Name")).click();
       if (webDriver.getPageSource().contains("Return to Vendor")) {

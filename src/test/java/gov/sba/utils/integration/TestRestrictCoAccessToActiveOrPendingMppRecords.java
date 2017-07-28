@@ -14,7 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
@@ -24,6 +23,7 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
   private static final Logger logger =
       LogManager.getLogger(TestRestrictCoAccessToActiveOrPendingMppRecords.class.getName());
   int get_The_Row_From_Login_Data;
+  String DunsNumber;
 
   @Before
   public void setUp() throws Exception {
@@ -32,6 +32,7 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();
     get_The_Row_From_Login_Data = 3;
+    DunsNumber = null;
 
   }
 
@@ -45,6 +46,10 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
     logger.info("US1531Restrict search results on Request Access to View Records page for CO role");
+    // Get the vendor Duns Number.
+    wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
+    DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+    logger.info("The Duns number for this business is " + DunsNumber);
     // Verify if there is an existing certification on the dashboard and
     // TestWorkFlowxx8aInProgress to start a new certification.
     DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -53,7 +58,22 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
-    // TestWorkFlowxx8aInProgress and start a new EDWOSB certification.
+    // TestWorkFlowxx8aInProgress and start a new EDWOSB certification if Active or Pending, Return
+    // them.
+    ReturnActiveCertPage returnActiveCert = new ReturnActiveCertPage(webDriver);
+    returnActiveCert.ReturnActiveCert();
+    ReturnPendingCertPage returnPendingCert = new ReturnPendingCertPage(webDriver);
+    returnPendingCert.ReturnPendingCert();
+    // Verify if there is an existing certification on the dashboard and
+    // TestWorkFlowxx8aInProgress to start a new certification.
+    DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert11.DeleteDraftCert();
+    DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert111.DeleteDraftCert();
+    // Delete second draft if any.
+    DeleteDraftCertPage deleteDraftCert1111 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert1111.DeleteDraftCert();
+    // Complete WOSB.
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();
@@ -84,18 +104,33 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
     // account.
     if (webDriver.getPageSource().contains("Welcome to certify.SBA.gov!")) {
       logger.info("The CO Account has no role, new CO role is requested.");
-      Actual_Text = webDriver.findElement(By.xpath("//article/div/div/p")).getText();
+      Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
       Expected_Text =
-          "If you are a federal contracting officer, contracting specialist, or authorized SBA personnel, please request access to the system by selecting the role below.";
+          "To get started, we'll need to know a little more about your role and responsibilities to grant you access.";
       assertEquals(Actual_Text, Expected_Text);
-      webDriver.findElement(By.id("role_name_checkbox_Legacy_CO_CO")).click();
-      webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+      webDriver.findElement(By.id("role-contracting-officer")).click();
+      webDriver.findElement(By.xpath("//form/button")).click();
       // Search valid DUNs with no Active certification and verify
       // message.
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
+      Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
+      Expected_Text = "You would like to use certify.SBA.gov as:";
+      assertEquals(Actual_Text, Expected_Text);
+      // Submit Request.
+      webDriver.findElement(By.xpath("//form/button")).click();
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
+      Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
+      Expected_Text = "Thank you!";
+      assertEquals(Actual_Text, Expected_Text);
+      // Click Get Started.
+      webDriver.findElement(By.xpath("//p[2]/a")).click();
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h1"), false));
+      Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
+      Expected_Text = "Request access to view records";
+      assertEquals(Actual_Text, Expected_Text);
       webDriver.findElement(By.id("duns_number")).sendKeys("135453634");
       webDriver.findElement(By.id("find_business")).click();
-      wait.until(ExpectedConditions
-          .elementSelectionStateToBe(By.xpath(".//*[@id='vendor_found_not_certified']/h3"), false));
+      Thread.sleep(2000);
       Actual_Text =
           webDriver.findElement(By.xpath(".//*[@id='vendor_found_not_certified']/h3")).getText();
       Expected_Text =
@@ -111,8 +146,7 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       webDriver.findElement(By.id("duns_number")).clear();
       webDriver.findElement(By.id("duns_number")).sendKeys("135000634");
       webDriver.findElement(By.id("find_business")).click();
-      wait.until(ExpectedConditions
-          .elementSelectionStateToBe(By.xpath(".//*[@id='no_vendor_found']/h3"), false));
+      Thread.sleep(2000);
       Actual_Text = webDriver.findElement(By.xpath(".//*[@id='no_vendor_found']/h3")).getText();
       Expected_Text =
           "No vendor exists in certify.SBA.gov for the DUNS number you have entered. Please contact the vendor to direct them to self-certify at certify.SBA.gov.";
@@ -124,7 +158,7 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       screenShot1.ScreenShot();
       // Search valid DUNs With active MPP and WOSB verify..
       webDriver.findElement(By.id("duns_number")).clear();
-      webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
+      webDriver.findElement(By.id("duns_number")).sendKeys(DunsNumber);
       webDriver.findElement(By.id("find_business")).click();
       wait.until(ExpectedConditions.elementSelectionStateToBe(By.id("vendor_name"), false));
       Actual_Text = webDriver.findElement(By.id("vendor_name")).getText();
@@ -197,12 +231,42 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("172115728");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(
-          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      if (webDriver.getCurrentUrl().contains("certify.qa")) {
+        webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("staging")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("newqa")) {
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+          } else {
+            if (webDriver.getCurrentUrl().contains("localhost")) {
+              webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+              webDriver.findElement(By.xpath("//form/div/button")).click();
+              wait.until(ExpectedConditions
+                  .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+              webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            } else {
+              logger.info(
+                  "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+            }
+          }
+        }
+      }
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -224,12 +288,42 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       LoginPageWithReference login_Data71 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data71.Login_With_Reference();
-      webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("172115728");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(
-          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      if (webDriver.getCurrentUrl().contains("certify.qa")) {
+        webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("staging")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("newqa")) {
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+          } else {
+            if (webDriver.getCurrentUrl().contains("localhost")) {
+              webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+              webDriver.findElement(By.xpath("//form/div/button")).click();
+              wait.until(ExpectedConditions
+                  .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+              webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            } else {
+              logger.info(
+                  "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+            }
+          }
+        }
+      }
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -248,6 +342,9 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
         logger.info("Success");
       }
     } else {
+      Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
+      Expected_Text = "My requests";
+      assertEquals(Actual_Text, Expected_Text);
       // Click on the My Request Link.
       webDriver.findElement(By.linkText("Request access")).click();
       Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
@@ -289,7 +386,7 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       screenShot3.ScreenShot();
       // Search valid DUNs With active MPP and WOSB verify..
       webDriver.findElement(By.id("duns_number")).clear();
-      webDriver.findElement(By.id("duns_number")).sendKeys("172115728");
+      webDriver.findElement(By.id("duns_number")).sendKeys(DunsNumber);
       webDriver.findElement(By.id("find_business")).click();
       // Enter a Solicitation and NAICS number.
       webDriver.findElement(By.id("access_request_solicitation_number")).sendKeys("1721157");
@@ -357,12 +454,42 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       LoginPageWithReference login_Data61 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
-      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("172115728");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(
-          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      if (webDriver.getCurrentUrl().contains("certify.qa")) {
+        webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("staging")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("newqa")) {
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+          } else {
+            if (webDriver.getCurrentUrl().contains("localhost")) {
+              webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+              webDriver.findElement(By.xpath("//form/div/button")).click();
+              wait.until(ExpectedConditions
+                  .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+              webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            } else {
+              logger.info(
+                  "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+            }
+          }
+        }
+      }
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();
@@ -384,12 +511,42 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
       LoginPageWithReference login_Data71 =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data71.Login_With_Reference();
-      // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("172115728");
-      webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(
-          ExpectedConditions.elementToBeClickable(By.linkText("Entity 81 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      if (webDriver.getCurrentUrl().contains("certify.qa")) {
+        webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+        webDriver.findElement(By.xpath("//form/div/button")).click();
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+        webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+      } else {
+        if (webDriver.getCurrentUrl().contains("staging")) {
+          webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+          webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+          webDriver.findElement(By.xpath("//form/div/button")).click();
+          wait.until(ExpectedConditions
+              .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+          webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+        } else {
+          if (webDriver.getCurrentUrl().contains("newqa")) {
+            webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
+            webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+            webDriver.findElement(By.xpath("//form/div/button")).click();
+            wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+            webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+          } else {
+            if (webDriver.getCurrentUrl().contains("localhost")) {
+              webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
+              webDriver.findElement(By.xpath("//form/div/button")).click();
+              wait.until(ExpectedConditions
+                  .visibilityOfElementLocated(By.linkText("Entity 81 Legal Business Name")));
+              webDriver.findElement(By.linkText("Entity 81 Legal Business Name")).click();
+            } else {
+              logger.info(
+                  "if you are seeing this message then the test is running on an undecleared env which need to be added.");
+            }
+          }
+        }
+      }
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();
         // webDriver.switchTo().alert().accept();

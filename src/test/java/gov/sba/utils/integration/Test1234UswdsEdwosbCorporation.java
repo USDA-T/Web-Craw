@@ -49,7 +49,23 @@ public class Test1234UswdsEdwosbCorporation extends TestCase {
     DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1.DeleteDraftCert();
     // Verify for active and Draft certification on the dashboard, if draft
-    // delete and start a new one.
+    // delete and start a new one, if active or pending, Return it.
+    ReturnActiveCert4Page returnActiveCert = new ReturnActiveCert4Page(webDriver);
+    returnActiveCert.ReturnActiveCert4();
+    ReturnActiveCert4Page returnActiveCert1 = new ReturnActiveCert4Page(webDriver);
+    returnActiveCert1.ReturnActiveCert4();
+    ReturnPendingCert4Page ReturnPendingCert4 = new ReturnPendingCert4Page(webDriver);
+    ReturnPendingCert4.ReturnPendingCert4();
+    ReturnPendingCert4Page ReturnPendingCert41 = new ReturnPendingCert4Page(webDriver);
+    ReturnPendingCert41.ReturnPendingCert4();
+    // Verify if there is an existing certification on the dashboard and
+    // TestWorkFlowxx8aInProgress to start a new certification.
+    DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert11.DeleteDraftCert();
+    // Delete second draft if any.
+    DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert111.DeleteDraftCert();
+    // Start the application.
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
     addOrStartCertification.AddOrStartCertification();

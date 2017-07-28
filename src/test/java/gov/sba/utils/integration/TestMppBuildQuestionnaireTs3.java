@@ -28,6 +28,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       LogManager.getLogger(TestMppBuildQuestionnaireTs3.class.getName());
   private static WebDriver webDriver;
   int get_The_Row_From_Login_Data;
+  String DunsNumber;
 
   @Before
   public void setUp() throws Exception {
@@ -49,6 +50,10 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       LoginPageWithReference login_Data =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
+      //Get the vendor Duns Number.
+      wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
+      DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+      logger.info("The Duns number for this business is " +DunsNumber);
       // Verify if there is an existing program on the dashboard and
       // TestWorkFlowxx8aInProgress to start a new certification.
       DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
@@ -760,7 +765,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       CoreUtils.clickContinue(webDriver);
       // Enter an invalid DUNS# and verify message.
-      webDriver.findElement(By.xpath("//input[@id='duns-value-167']")).sendKeys("153915244");
+      webDriver.findElement(By.xpath("//input[@id='duns-value-167']")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
       Actual_Text = webDriver
           .findElement(By.xpath("//div[@id='answers_mpp_duns']/fieldset/div/div/span")).getText();
@@ -873,7 +878,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
       // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("182431789");
+      webDriver.findElement(By.id("query")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       wait.until(
           ExpectedConditions.elementToBeClickable(By.linkText("Entity 179 Legal Business Name")));

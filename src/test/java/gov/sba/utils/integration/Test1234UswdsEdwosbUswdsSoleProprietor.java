@@ -45,9 +45,24 @@ public class Test1234UswdsEdwosbUswdsSoleProprietor extends TestCase {
       // TestWorkFlowxx8aInProgress second draft if any.
       DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
       deleteDraftCert1.DeleteDraftCert();
-      // Verify for active and Draft certification on the dashboard, if
-      // draft
-      // TestWorkFlowxx8aInProgress and start a new one.
+      //Verify for active and Draft certification on the dashboard, if draft
+      // delete and start a new one, if active or pending, Return it.
+      ReturnActiveCert1Page returnActiveCert = new ReturnActiveCert1Page(webDriver);
+      returnActiveCert.ReturnActiveCert1();
+      ReturnActiveCert1Page returnActiveCert1 = new ReturnActiveCert1Page(webDriver);
+      returnActiveCert1.ReturnActiveCert1();
+      ReturnPendingCert1Page returnPendingCert = new ReturnPendingCert1Page(webDriver);
+      returnPendingCert.ReturnPendingCert1();
+      ReturnPendingCert1Page returnPendingCert1 = new ReturnPendingCert1Page(webDriver);
+      returnPendingCert1.ReturnPendingCert1();
+      //Verify if there is an existing certification on the dashboard and
+      // TestWorkFlowxx8aInProgress to start a new certification.
+      DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert111.DeleteDraftCert();
+      //Start the application.
       AddOrStartCertificationPage addOrStartCertification =
           new AddOrStartCertificationPage(webDriver);
       addOrStartCertification.AddOrStartCertification();

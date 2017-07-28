@@ -892,7 +892,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       CoreUtils.clickContinue(webDriver);
       assertEquals("", webDriver.getTitle());
       // Enter a valid DUNS# and verify business.
-      webDriver.findElement(By.id("duns-value-167")).sendKeys("153915244");
+      webDriver.findElement(By.id("duns-value-167")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
       Actual_Text = webDriver.findElement(By.xpath("//span[@id='duns-value-167-error']")).getText();
       Expected_Text = "You must confirm the DUNS number";
@@ -1012,7 +1012,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
       // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("129913885");
+      webDriver.findElement(By.id("query")).sendKeys("DunsNumber");
       webDriver.findElement(By.xpath("//form/div/button")).click();
       webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
       wait.until(ExpectedConditions.elementToBeClickable(By.linkText("MPP Application")));
