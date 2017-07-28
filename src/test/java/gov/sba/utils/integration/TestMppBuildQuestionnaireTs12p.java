@@ -64,8 +64,32 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       // TestWorkFlowxx8aInProgress to start a new certification.
       DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
       deleteDraftCert.DeleteDraftCert();
-      // Verify for active and Draft program on the dashboard, if draft
-      // TestWorkFlowxx8aInProgress and start a new one.
+      DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert1.DeleteDraftCert();
+      // Verify for active and Draft certification on the dashboard, if draft
+      // delete and start a new one, if active or pending, Return it.
+      ReturnActiveCert3Page returnActiveCert = new ReturnActiveCert3Page(webDriver);
+      returnActiveCert.ReturnActiveCert3();
+      ReturnActiveCert3Page returnActiveCert1 = new ReturnActiveCert3Page(webDriver);
+      returnActiveCert1.ReturnActiveCert3();
+      ReturnPendingCert3Page returnPendingCert = new ReturnPendingCert3Page(webDriver);
+      returnPendingCert.ReturnPendingCert3();
+      ReturnPendingCert3Page returnPendingCert1 = new ReturnPendingCert3Page(webDriver);
+      returnPendingCert1.ReturnPendingCert3();
+      // Verify if there is an existing certification on the dashboard and
+      // TestWorkFlowxx8aInProgress to start a new certification.
+      DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert1111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert1111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert11111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11111.DeleteDraftCert();
+      // Start the application.
       AddOrStartNewMppProgramPage addOrStartNewMppProgram =
           new AddOrStartNewMppProgramPage(webDriver);
       addOrStartNewMppProgram.AddOrStartNewMppProgram();

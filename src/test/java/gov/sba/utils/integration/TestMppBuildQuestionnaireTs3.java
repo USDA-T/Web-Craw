@@ -50,16 +50,40 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       LoginPageWithReference login_Data =
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data.Login_With_Reference();
-      //Get the vendor Duns Number.
+      // Get the vendor Duns Number.
       wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
       DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
-      logger.info("The Duns number for this business is " +DunsNumber);
+      logger.info("The Duns number for this business is " + DunsNumber);
       // Verify if there is an existing program on the dashboard and
       // TestWorkFlowxx8aInProgress to start a new certification.
       DeleteDraftCertPage deleteDraftCert = new DeleteDraftCertPage(webDriver);
       deleteDraftCert.DeleteDraftCert();
-      // Verify for active and Draft program on the dashboard, if draft
-      // TestWorkFlowxx8aInProgress and start a new one.
+      DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert1.DeleteDraftCert();
+      // Verify for active and Draft certification on the dashboard, if draft
+      // delete and start a new one, if active or pending, Return it.
+      ReturnActiveCert4Page returnActiveCert = new ReturnActiveCert4Page(webDriver);
+      returnActiveCert.ReturnActiveCert4();
+      ReturnActiveCert4Page returnActiveCert1 = new ReturnActiveCert4Page(webDriver);
+      returnActiveCert1.ReturnActiveCert4();
+      ReturnPendingCert4Page ReturnPendingCert4 = new ReturnPendingCert4Page(webDriver);
+      ReturnPendingCert4.ReturnPendingCert4();
+      ReturnPendingCert4Page ReturnPendingCert41 = new ReturnPendingCert4Page(webDriver);
+      ReturnPendingCert41.ReturnPendingCert4();
+      // Verify if there is an existing certification on the dashboard and
+      // TestWorkFlowxx8aInProgress to start a new certification.
+      DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert1111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert1111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert11111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11111.DeleteDraftCert();
+      // Start the application.
       AddOrStartNewMppProgramPage addOrStartNewMppProgram =
           new AddOrStartNewMppProgramPage(webDriver);
       addOrStartNewMppProgram.AddOrStartNewMppProgram();

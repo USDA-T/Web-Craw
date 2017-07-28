@@ -56,6 +56,12 @@ public class Test1234EdwosbAddSecondPartnerAfterReview extends TestCase {
       // Delete second draft if any.
       DeleteDraftCertPage deleteDraftCert111 = new DeleteDraftCertPage(webDriver);
       deleteDraftCert111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert1111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert1111.DeleteDraftCert();
+      // Delete second draft if any.
+      DeleteDraftCertPage deleteDraftCert11111 = new DeleteDraftCertPage(webDriver);
+      deleteDraftCert11111.DeleteDraftCert();
       // Start the application.
       AddOrStartCertificationPage addOrStartCertification =
           new AddOrStartCertificationPage(webDriver);

@@ -73,6 +73,9 @@ public class TestRestrictCoAccessToActiveOrPendingMppRecords extends TestCase {
     // Delete second draft if any.
     DeleteDraftCertPage deleteDraftCert1111 = new DeleteDraftCertPage(webDriver);
     deleteDraftCert1111.DeleteDraftCert();
+    // Delete second draft if any.
+    DeleteDraftCertPage deleteDraftCert11111 = new DeleteDraftCertPage(webDriver);
+    deleteDraftCert11111.DeleteDraftCert();
     // Complete WOSB.
     AddOrStartCertificationPage addOrStartCertification =
         new AddOrStartCertificationPage(webDriver);
