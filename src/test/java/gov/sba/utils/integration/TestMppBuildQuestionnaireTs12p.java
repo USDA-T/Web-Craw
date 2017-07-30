@@ -916,7 +916,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       CoreUtils.clickContinue(webDriver);
       assertEquals("", webDriver.getTitle());
       // Enter a valid DUNS# and verify business.
-      webDriver.findElement(By.id("duns-value-167")).sendKeys("DunsNumber");
+      webDriver.findElement(By.id("duns-value-167")).sendKeys(BusinessDuns);
       webDriver.findElement(By.xpath("//a[contains(text(),'Confirm DUNS')]")).click();
       Actual_Text = webDriver.findElement(By.xpath("//span[@id='duns-value-167-error']")).getText();
       Expected_Text = "You must confirm the DUNS number";
@@ -925,15 +925,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       webDriver.findElement(By.id("search-duns-167")).click();
       wait.until(ExpectedConditions.alertIsPresent());
       logger.info(webDriver.switchTo().alert().getText());
-      Actual_Text = webDriver.switchTo().alert().getText();
-      Expected_Text =
-          "Please confirm that this is the correct business:\nEntity 45 Legal Business Name";
-      assertEquals(Actual_Text, Expected_Text);
       webDriver.switchTo().alert().accept();
-      // Verify business.
-      Actual_Text = webDriver.findElement(By.id("duns-biz-name-167")).getText();
-      Expected_Text = "The selected business is: Entity 45 Legal Business Name";
-      assertEquals(Actual_Text, Expected_Text);
       CoreUtils.clickContinue(webDriver);
       // Review page.
       Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -994,10 +986,6 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Verify fifth paragraph
       logger.info("  Verify fifth paragraph");
-      Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-      Expected_Text =
-          "By submitting this certification I, QA User, am an officer or owner of Entity 412 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
-      assertEquals(Actual_Text, Expected_Text);
       // Verify sixth paragraph
       logger.info("  Verify sixth paragraph");
       Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
@@ -1036,9 +1024,10 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
       // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("DunsNumber");
+      webDriver.findElement(By.id("query")).sendKeys(BusinessDuns);
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      webDriver.findElement(By.linkText("Entity 412 Legal Business Name")).click();
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h4/a")));
+      webDriver.findElement(By.xpath("//h4/a")).click();
       wait.until(ExpectedConditions.elementToBeClickable(By.linkText("MPP Application")));
       // Click on the MPP Program link name.
       webDriver.findElement(By.linkText("MPP Application")).click();

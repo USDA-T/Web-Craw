@@ -40,7 +40,7 @@ public class TestEdithPasswordRegressionTest1 extends TestCase {
     Weak_PassW = "1234";
     New_PassW = "Map Effect Applied Furniture 9883";
     Confirm_New_PassW = "Map Effect Applied Furniture 9883";
-    Better_PW = "Derico#33658712DDDyu";
+    Better_PW = "Derico#345er";
   }
 
   @Test

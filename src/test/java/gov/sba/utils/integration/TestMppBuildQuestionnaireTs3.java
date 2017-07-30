@@ -789,7 +789,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       CoreUtils.clickContinue(webDriver);
       // Enter an invalid DUNS# and verify message.
-      webDriver.findElement(By.xpath("//input[@id='duns-value-167']")).sendKeys("DunsNumber");
+      webDriver.findElement(By.xpath("//input[@id='duns-value-167']")).sendKeys(DunsNumber);
       webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
       Actual_Text = webDriver
           .findElement(By.xpath("//div[@id='answers_mpp_duns']/fieldset/div/div/span")).getText();
@@ -798,10 +798,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       webDriver.findElement(By.xpath("//a[@id='search-duns-167']")).click();
       wait.until(ExpectedConditions.alertIsPresent());
       logger.info(webDriver.switchTo().alert().getText());
-      Actual_Text = webDriver.switchTo().alert().getText();
-      Expected_Text =
-          "Please confirm that this is the correct business:\nEntity 45 Legal Business Name";
-      assertEquals(Actual_Text, Expected_Text);
       webDriver.switchTo().alert().accept();
       CoreUtils.clickContinue(webDriver);
       // Review page.
@@ -826,21 +822,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
       Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
       assertEquals(Actual_Text, Expected_Text);
-      // Verify Business name
-      logger.info("  Verify Business name");
-      Actual_Text = webDriver.findElement(By.cssSelector("h3")).getText();
-      Expected_Text = "Entity 179 Legal Business Name";
-      assertEquals(Actual_Text, Expected_Text);
-      // Verify DUNS label
-      logger.info("  Verify DUNS label");
-      Actual_Text = webDriver.findElement(By.xpath("//b")).getText();
-      Expected_Text = "DUNS:";
-      // assertEquals(actual_error9, expected_error9);
-      // Verify DUNS number
-      logger.info("  Verify DUNS number");
-      Actual_Text = webDriver.findElement(By.cssSelector("p > span")).getText();
-      Expected_Text = "182431789";
-      assertEquals(Actual_Text, Expected_Text);
       // Verify first paragraph
       logger.info("  Verify first paragraph");
       Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
@@ -861,10 +842,6 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
       assertEquals(Actual_Text, Expected_Text);
       // Verify fifth paragraph
       logger.info("  Verify fifth paragraph");
-      Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-      Expected_Text =
-          "By submitting this certification I, QA User, am an officer or owner of Entity 179 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
-      assertEquals(Actual_Text, Expected_Text);
       // Verify sixth paragraph
       logger.info("  Verify sixth paragraph");
       Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
@@ -902,11 +879,10 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
           new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
       login_Data61.Login_With_Reference();
       // webDriver.findElement(By.xpath("//button[@id='searchtext']")).click();
-      webDriver.findElement(By.id("query")).sendKeys("DunsNumber");
+      webDriver.findElement(By.id("query")).sendKeys(DunsNumber);
       webDriver.findElement(By.xpath("//form/div/button")).click();
-      wait.until(
-          ExpectedConditions.elementToBeClickable(By.linkText("Entity 179 Legal Business Name")));
-      webDriver.findElement(By.linkText("Entity 179 Legal Business Name")).click();
+      wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//h4/a")));
+      webDriver.findElement(By.xpath("//h4/a")).click();
       wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Return to Vendor")));
       if (webDriver.getPageSource().contains("Return to Vendor")) {
         webDriver.findElement(By.linkText("Return to Vendor")).click();

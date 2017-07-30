@@ -63,7 +63,7 @@ public class TestStaticLandingPageForEightAInterim extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
     Expected_Text =
-        "For general questions about uploading 8(a) documents, please email: certify@sba.gov.";
+        "For general questions about uploading 8(a) documents, please email: help@certify.sba.gov.";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text = webDriver.findElement(By.cssSelector("ol > li")).getText();
     Expected_Text =
@@ -79,12 +79,12 @@ public class TestStaticLandingPageForEightAInterim extends TestCase {
     // registration page.
     webDriver.findElement(By.cssSelector("button.button-full")).click();
     Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-    Expected_Text = "New User Registration";
+    Expected_Text = "Create certify.SBA.gov Account";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.navigate().back();
     // Verify the login button navigates to the login page.
     webDriver.findElement(By.linkText("Login")).click();
-    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+    Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
     Expected_Text = "Sign in to certify.SBA.gov";
     assertEquals(Actual_Text, Expected_Text);
     webDriver.navigate().back();
