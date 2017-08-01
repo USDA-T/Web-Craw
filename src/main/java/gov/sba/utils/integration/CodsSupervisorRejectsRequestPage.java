@@ -54,14 +54,14 @@ public class CodsSupervisorRejectsRequestPage extends TestCase {
       Actions act = new Actions(webDriver);
       act.doubleClick(webDriver.findElement(By.linkText("Reject"))).build().perform();
       webDriver.switchTo().alert().accept();
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/p")));
+      Actual_Text = webDriver.findElement(By.xpath("//div[2]/p")).getText();
+      Expected_Text = "Rejected";
+      assertEquals(Actual_Text, Expected_Text);
       Thread.sleep(2000);
     } catch (Error e) {
       logger.info(e.getMessage());
     }
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/p")));
-    Actual_Text = webDriver.findElement(By.xpath("//div[2]/p")).getText();
-    Expected_Text = "Rejected";
-    assertEquals(Actual_Text, Expected_Text);
     // Logout.
     webDriver.findElement(By.id("profileid")).click();
     webDriver.findElement(By.linkText("Logout")).click();

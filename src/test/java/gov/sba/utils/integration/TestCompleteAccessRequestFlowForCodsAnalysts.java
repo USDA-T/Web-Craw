@@ -41,6 +41,20 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
+    if (webDriver.getPageSource().contains("Access Pending")) {
+      // Logout and rejects request.
+      webDriver.findElement(By.linkText("Logout")).click();
+      // Complete process, CODS supervisor Rejects Request from other Cods Supervisor.
+      CodsSupervisorRejectsRequestPage codsSupervisorRejectsRequest =
+          new CodsSupervisorRejectsRequestPage(webDriver);
+      codsSupervisorRejectsRequest.CodsSupervisorRejectsRequest();
+      get_The_Row_From_Login_Data = 66;
+      LoginPageWithReference login_Data1 =
+          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+      login_Data1.Login_With_Reference();
+    } else {
+      logger.info("No pending request as of now, all good.");
+    }
     if (webDriver.getPageSource().contains("Welcome to certify.SBA.gov!")) {
       wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//article/div/p"), false));
       Actual_Text = webDriver.findElement(By.xpath("//article/div/p")).getText();
@@ -343,11 +357,7 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
           screenShot.ScreenShot();
           logger.info(e.getMessage());
         }
-      }
-
-
-
-      else {
+      } else {
         if (webDriver.getPageSource().contains("Your Request Has Been Rejected")) {
           webDriver.findElement(By.xpath("//form/button")).click();
           wait.until(

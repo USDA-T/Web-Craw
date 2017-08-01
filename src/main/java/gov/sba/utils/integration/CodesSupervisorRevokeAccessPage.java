@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -62,6 +63,15 @@ public class CodesSupervisorRevokeAccessPage extends TestCase {
       ScreenShotPage screenShot = new ScreenShotPage(webDriver);
       screenShot.ScreenShot();
       logger.info(e.getMessage());
+    }
+    if (webDriver.getPageSource().contains("Accepted")) {
+      webDriver.findElement(By.linkText("Revoke")).click();
+      webDriver.switchTo().alert().accept();
+      Actual_Text = webDriver.findElement(By.xpath("//article/div/div/div/div/p")).getText();
+      Expected_Text = "Access request has been revoked";
+      assertEquals(Actual_Text, Expected_Text);
+    } else {
+      logger.info("No Accepted request as of now, all good.");
     }
     // Logout.
     webDriver.findElement(By.id("profileid")).click();
