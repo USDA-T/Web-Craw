@@ -41,6 +41,21 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
     LoginPageWithReference login_Data =
         new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
     login_Data.Login_With_Reference();
+    if (webDriver.getPageSource().contains("Dashboard")) {
+      // Logout and revoke access.
+      webDriver.findElement(By.id("profileid")).click();
+      webDriver.findElement(By.linkText("Logout")).click();
+      // Completing the Revoke Access process.
+      CodesSupervisorRevokeAccessPage codesSupervisorRevokeAccess =
+          new CodesSupervisorRevokeAccessPage(webDriver);
+      codesSupervisorRevokeAccess.CodesSupervisorRevokeAccess();
+      get_The_Row_From_Login_Data = 66;
+      LoginPageWithReference login_Data1 =
+          new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
+      login_Data1.Login_With_Reference();
+    } else {
+      logger.info("No pending request as of now, all good.");
+    }
     if (webDriver.getPageSource().contains("Access Pending")) {
       // Logout and rejects request.
       webDriver.findElement(By.linkText("Logout")).click();
