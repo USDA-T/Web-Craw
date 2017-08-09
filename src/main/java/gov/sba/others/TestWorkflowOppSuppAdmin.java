@@ -1,20 +1,11 @@
 package gov.sba.others;
 
 
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
-import static gov.sba.others.TestuserProfileSearchType.TestuserProfileSearch;
-
-import java.util.List;
-import java.util.Set;
-
+import gov.sba.automation.DatabaseUtils;
+import gov.sba.automation.TestHelpers;
+import gov.sba.utils.integration.LoginPageWithDetails;
+import gov.sba.utils.integration.LoginPageWithReference;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -26,11 +17,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import gov.sba.automation.DatabaseUtils;
-import gov.sba.automation.TestHelpers;
-import gov.sba.utils.integration.LoginPageWithDetails;
-import gov.sba.utils.integration.LoginPageWithReference;
-import junit.framework.TestCase;
+import java.util.List;
+import java.util.Set;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
+import static gov.sba.others.TestuserProfileSearchType.TestuserProfileSearch;
 
 public class TestWorkflowOppSuppAdmin extends TestCase {
   // US1235
@@ -79,13 +70,13 @@ public class TestWorkflowOppSuppAdmin extends TestCase {
           int columns_count = Columns_row.size();
           for (int column = 0; column < columns_count; column++) {
             String celtext = Columns_row.get(column).getText();
-            logger.info("Cell Value Of row number " + row + " and column number " + column + " Is "
+            logger.debug("Cell Value Of row number " + row + " and column number " + column + " Is "
                 + celtext);
           }
           logger.info("--------------------------------------------------");
         }
       } catch (Exception e) {
-        logger.info("No Certifications tested - Should be fine");
+        logger.debug("No Certifications tested - Should be fine");
       }
       // App37 -vendor support link and changing the business type
       try {
@@ -106,7 +97,7 @@ public class TestWorkflowOppSuppAdmin extends TestCase {
         // click_Element(webDriver, "Application_Common_Accept_Button");
         // new NewScorpQuestionPageDeepa(webDriver).NewScorpQuestionPageDeepa();
       } catch (Exception e) {
-        logger.info(e.toString());
+        logger.debug(e.toString());
         throw e;
       }
 
@@ -161,11 +152,11 @@ public class TestWorkflowOppSuppAdmin extends TestCase {
           }
         }
         find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
-        logger.info("Opp supp Admin having Edit on Help Page-HelpPage_Edit");
+        logger.debug("Opp supp Admin having Edit on Help Page-HelpPage_Edit");
         element_Found = true;
       } catch (Exception e) {
         element_Found = false;
-        logger.info("Test case Passed-HelpPage_Edit funtionality");
+        logger.debug("Test case Passed-HelpPage_Edit funtionality");
       }
 
       Assert.assertEquals(element_Found, true);

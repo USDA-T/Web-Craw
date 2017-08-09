@@ -97,7 +97,7 @@ public class TestWorkflowEDWOSB07 extends TestCase {
 
 
     } catch (Exception e) {
-      logger.info(e.toString());
+      logger.debug(e.toString());
       take_ScreenShot_TestCaseName(webDriver,
           new String[] {TestWorkflowEDWOSB07.class.getName(), "Exception"});
       throw e;

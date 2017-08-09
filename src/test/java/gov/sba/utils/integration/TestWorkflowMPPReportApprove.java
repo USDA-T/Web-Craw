@@ -133,7 +133,7 @@ public class TestWorkflowMPPReportApprove extends TestCase {
       /* For Demo on -7-21 */
 
     } catch (Exception e) {
-      logger.info("Search TextBox is on Main Navigator is not present" + e.toString());
+      logger.debug("Search TextBox is on Main Navigator is not present" + e.toString());
       take_ScreenShot_TestCaseName(webDriver,
           new String[] {"TestWorkflowMPPReportApprove", "Exception"});
       throw e;

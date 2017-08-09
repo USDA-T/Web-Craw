@@ -19,10 +19,10 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.Set;
 
-import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
 import static gov.sba.automation.AssertionUtils.return_All_Applications;
 import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
@@ -99,14 +99,14 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
         navigationBarClick(webDriver, "LOGOUT");
         /* Return the Application by Analyst after the Busniees type is changed. */
         return_All_Applications(webDriver, 11, duns_Number);
-        delete_All_Application_Draft(webDriver, email, password, duns_Number);
+
 
         /* Verify the Business type is changes to LLC] */
         new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
         click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
         assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText()
             .contains("Limited Liability"));
-        join_New_Program_CheckBoxes(webDriver, "WOSB");
+         click_On_App_In_Vend_Dash(webDriver, "WOSB");
         new NewLLCQuestionanireDeepa().newLLCQuestionanireDeepa(webDriver);
         finalSignatureSubmit(webDriver);
       } catch (Exception e) {
