@@ -27,83 +27,85 @@ import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
  */
 
 
-@Category({gov.sba.utils.integration.StableTests.class}) public class TestWorkflowEDWOSB07
-    extends TestCase {
-    private static final Logger logger = LogManager.getLogger(TestWorkflowEDWOSB07.class.getName());
-    private static WebDriver webDriver;
-    int stop_Exec = 1;
-    String duns_Number, email, password;
+@Category({gov.sba.utils.integration.StableTests.class})
+public class TestWorkflowEDWOSB07 extends TestCase {
+  private static final Logger logger = LogManager.getLogger(TestWorkflowEDWOSB07.class.getName());
+  private static WebDriver webDriver;
+  int stop_Exec = 1;
+  String duns_Number, email, password;
 
-    @Before public void setUp() throws Exception {
-        get_Stop_Execution_Flag();
-        clear_Env_Chrome();
-        logger.info("Set as head");
-        TestHelpers.set_Headless();
-        webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
-        webDriver.get(TestHelpers.getBaseUrl());
-        String[] details = findUnusedDunsNumber("corp");
-        email = details[0];
-        password = details[1];
-        duns_Number = details[2];
+  @Before
+  public void setUp() throws Exception {
+    get_Stop_Execution_Flag();
+    clear_Env_Chrome();
+    logger.info("Set as head");
+    TestHelpers.set_Headless();
+    webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
+    webDriver.get(TestHelpers.getBaseUrl());
+    String[] details = findUnusedDunsNumber("corp");
+    email = details[0];
+    password = details[1];
+    duns_Number = details[2];
     /* duns_Number = "376736143";get_The_Row_From_Login_Data = 64; */
 
-    }
+  }
 
-    @Test public void testWorkflowEDWOSB07() throws Exception {
-        try {
-            new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
-            join_New_Program_CheckBoxes(webDriver, "EDWOSB");
-      /*EDwosb questionnaire till Scorp-Coperation  */
-            Edwosb_Questionnaire_8a_Page(webDriver, "no");
-            Edwosb_Questionnaire_ThridParty_Page(webDriver, "yes");
-            Edwosb_Questionnaire_ChangeEligiblity_Page(webDriver, "yes");
-            EDWOSB_Questionnaire_cooperation_Scorp_Page(webDriver, "yes", "yes", "yes", "yes",
-                "yes", "yes");
-            Edwosb_Questionnaire_CitizenShip_Page(webDriver, "yes");
-            EDWOSB_Questionnaire_cooperation_Ownership_Page(webDriver, "yes", "yes", "yes");
-            EDWOSB_Questionnaire_cooperation_Management_Page(webDriver, "yes", "yes", "yes", "yes",
-                "yes", "yes");
-            Edwosb_Questionnaire_SBAExam_Page(webDriver, "yes");
-            Edwosb_Questionnaire_NetWorth_Page(webDriver, "yes");
-            Edwosb_Questionnaire_AdjustedGrossIncome_Page(webDriver, "yes", "Yes");
-            Edwosb_Questionnaire_Assets_Page(webDriver, "yes", "yes", "yes");
-            Edwosb_Questionnaire_EconomicDisadvantage_Page(webDriver, "yes");
+  @Test
+  public void testWorkflowEDWOSB07() throws Exception {
+    try {
+      new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+      join_New_Program_CheckBoxes(webDriver, "EDWOSB");
+      /* EDwosb questionnaire till Scorp-Coperation */
+      Edwosb_Questionnaire_8a_Page(webDriver, "no");
+      Edwosb_Questionnaire_ThridParty_Page(webDriver, "yes");
+      Edwosb_Questionnaire_ChangeEligiblity_Page(webDriver, "yes");
+      EDWOSB_Questionnaire_cooperation_Scorp_Page(webDriver, "yes", "yes", "yes", "yes", "yes",
+          "yes");
+      Edwosb_Questionnaire_CitizenShip_Page(webDriver, "yes");
+      EDWOSB_Questionnaire_cooperation_Ownership_Page(webDriver, "yes", "yes", "yes");
+      EDWOSB_Questionnaire_cooperation_Management_Page(webDriver, "yes", "yes", "yes", "yes", "yes",
+          "yes");
+      Edwosb_Questionnaire_SBAExam_Page(webDriver, "yes");
+      Edwosb_Questionnaire_NetWorth_Page(webDriver, "yes");
+      Edwosb_Questionnaire_AdjustedGrossIncome_Page(webDriver, "yes", "Yes");
+      Edwosb_Questionnaire_Assets_Page(webDriver, "yes", "yes", "yes");
+      Edwosb_Questionnaire_EconomicDisadvantage_Page(webDriver, "yes");
       /* 413 form to including first and secnodn partners */
-            NewFinancialQuestion(webDriver, "deepa", "patri", "123456789", "deepa@gmail.com", "12",
-                "VA", "12345", "123-123-1234", "123-123-1234", "MClean", "USA");
-            Edwosb_legalseparation(webDriver, "yes");
-      /*EDWOSB financial question page */
-            edwosb_financial_CashOnHand_Page(webDriver, "01/01/2018", "111", "111", "111");
-            edwosb_financial_OtherSource_Page(webDriver, "111", "111", "other income comments",
-                "111", "111");
-            edwosb_financial_Notes_Receivable_Page(webDriver, "yes");
-            edwosb_financial_Retirement_Account_Page(webDriver, "yes", "yes");
-            edwosb_financial_Life_Insurance_Page(webDriver, "yes", "yes");
-            edwosb_financial_StocksAndBonds_Page(webDriver, "yes");
-            edwosb_financial_RealEstate_Page(webDriver, "yes", "yes", "yes", "yes", "yes", "yes");
-            edwosb_financial_RealEstateOther_Page(webDriver, "yes", "yes", "yes", "yes", "yes",
-                "yes");
-            edwosb_financial_Personal_Property_Page(webDriver, "yes", "yes");
-            edwosb_financial_NotesPayableandOther_Page(webDriver, "yes");
-            edwosb_financial_Assessed_Taxes_Page(webDriver, "yes");
-            edwosb_financial_PersonalSummary_Page(webDriver);
-            edwosb_financial_PrivacyStatements_Page(webDriver);
-            edwosb_financial_Review_Page(webDriver);
-            edwosb_Signature_Page(webDriver);
+      NewFinancialQuestion(webDriver, "deepa", "patri", "123456789", "deepa@gmail.com", "12", "VA",
+          "12345", "123-123-1234", "123-123-1234", "MClean", "USA");
+      Edwosb_legalseparation(webDriver, "yes");
+      /* EDWOSB financial question page */
+      edwosb_financial_CashOnHand_Page(webDriver, "01/01/2018", "111", "111", "111");
+      edwosb_financial_OtherSource_Page(webDriver, "111", "111", "other income comments", "111",
+          "111");
+      edwosb_financial_Notes_Receivable_Page(webDriver, "yes");
+      edwosb_financial_Retirement_Account_Page(webDriver, "yes", "yes");
+      edwosb_financial_Life_Insurance_Page(webDriver, "yes", "yes");
+      edwosb_financial_StocksAndBonds_Page(webDriver, "yes");
+      edwosb_financial_RealEstate_Page(webDriver, "yes", "yes", "yes", "yes", "yes", "yes");
+      edwosb_financial_RealEstateOther_Page(webDriver, "yes", "yes", "yes", "yes", "yes", "yes");
+      edwosb_financial_Personal_Property_Page(webDriver, "yes", "yes");
+      edwosb_financial_NotesPayableandOther_Page(webDriver, "yes");
+      edwosb_financial_Assessed_Taxes_Page(webDriver, "yes");
+      edwosb_financial_PersonalSummary_Page(webDriver);
+      edwosb_financial_PrivacyStatements_Page(webDriver);
+      edwosb_financial_Review_Page(webDriver);
+      edwosb_Signature_Page(webDriver);
 
 
-      /*if (stop_Exec == 1) {return;} /* TODO Working On */
+      /* if (stop_Exec == 1) {return;} /* TODO Working On */
 
 
-        } catch (Exception e) {
-            logger.info(e.toString());
-            take_ScreenShot_TestCaseName(webDriver,
-                new String[] {TestWorkflowEDWOSB07.class.getName(), "Exception"});
-            throw e;
-        }
+    } catch (Exception e) {
+      logger.info(e.toString());
+      take_ScreenShot_TestCaseName(webDriver,
+          new String[] {TestWorkflowEDWOSB07.class.getName(), "Exception"});
+      throw e;
     }
+  }
 
-    @After public void tearDown() throws Exception {
-        webDriver.quit();
-    }
+  @After
+  public void tearDown() throws Exception {
+    webDriver.quit();
+  }
 }

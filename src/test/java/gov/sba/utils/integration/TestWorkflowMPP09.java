@@ -96,7 +96,7 @@ public class TestWorkflowMPP09 extends TestCase {
       /* Question review page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesments_Note_Body", "Adding notes QAquestion Review page");
-       click_Element(webDriver, "SBA_Common_Page_Commit");
+      click_Element(webDriver, "SBA_Common_Page_Commit");
       /* Signature page */
       click_Element(webDriver, "SBA_Note_Link");
       setText_Element(webDriver, "SBA_Assesment_Note_Body", "Adding notes QA Signature Page");
@@ -120,7 +120,9 @@ public class TestWorkflowMPP09 extends TestCase {
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
-        if (stop_Exec == 1) { return; } /* TODO DE APP-1499 exist */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO DE APP-1499 exist */
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
     } catch (Exception e) {

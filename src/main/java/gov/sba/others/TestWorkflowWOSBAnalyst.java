@@ -181,8 +181,8 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
       duns_Number = details[2];
     }
 
-    //TODO: may be this is cut-and-paste issue, we should keep only one main test per file!
-    //XXX: please review and remove one if applicable!
+    // TODO: may be this is cut-and-paste issue, we should keep only one main test per file!
+    // XXX: please review and remove one if applicable!
     @Test
     public void testMainTest() throws Exception {
 

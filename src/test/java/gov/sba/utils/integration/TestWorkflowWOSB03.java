@@ -169,7 +169,9 @@ public class TestWorkflowWOSB03 extends TestCase {
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
 
-        if (stop_Exec == 1) { return; } /* TODO DE APP-1499 exist */
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO DE APP-1499 exist */
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
 

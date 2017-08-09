@@ -25,7 +25,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 
   @Before
   public void setUp() throws Exception {
-     webDriver = TestHelpers.getDefaultWebDriver();
+    webDriver = TestHelpers.getDefaultWebDriver();
 
     webDriver.get(TestHelpers.getBaseUrl());
     webDriver.manage().window().maximize();

@@ -91,8 +91,8 @@ public class TestSimpleLogin {
 
     org.junit.Assert.assertTrue(url.contains("dashboard"));
 
-    //NOTE: need setup with at least one 'Draft' application for 'wosb'
-    //deleteDraftApplicationIfAny(webDriver, webDriverWait, "wosb");
+    // NOTE: need setup with at least one 'Draft' application for 'wosb'
+    // deleteDraftApplicationIfAny(webDriver, webDriverWait, "wosb");
   }
 
   public void deleteDraftApplicationIfAny(WebDriver driver, WebDriverWait wdriver,

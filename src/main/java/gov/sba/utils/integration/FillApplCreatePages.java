@@ -112,10 +112,10 @@ public class FillApplCreatePages {
         ProgramsPage.generic_file_Upld(webDriver);
         logger.info("Doc has been uploaded.");
 
-          accept_Alert(webDriver, 14);
-          click_Element(webDriver, "Application_Common_Submit_Button");
+        accept_Alert(webDriver, 14);
+        click_Element(webDriver, "Application_Common_Submit_Button");
 
-          accept_Alert(webDriver, 30);
+        accept_Alert(webDriver, 30);
         logger.info("Doc has been uploaded and accepted");
       } else {
         try {
@@ -176,9 +176,9 @@ public class FillApplCreatePages {
         }
 
         ProgramsPage.generic_file_Upld(webDriver);
-        /*new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);*/
+        /* new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path); */
 
-        /*click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(2000);*/
+        /* click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(2000); */
         setText_Element(webDriver, "SBA_8a_Duns_Confrm_Text", duns_No_Given);
 
         click_Element(webDriver, "Search_Duns_No");
@@ -186,20 +186,20 @@ public class FillApplCreatePages {
         accept_Alert(webDriver, 5);
 
 
-        //for (int i = 0; i < 2; i++) {
-              WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
+        // for (int i = 0; i < 2; i++) {
+        WebElement aa = find_Element(webDriver, "SBA_8a_Duns_Confrm_Text_Error", true);
 
-              if (aa != null) {
-                click_Element(webDriver, "Search_Duns_No");
+        if (aa != null) {
+          click_Element(webDriver, "Search_Duns_No");
 
 
-                accept_Alert(webDriver, 5);
+          accept_Alert(webDriver, 5);
 
-                accept_Alert(webDriver, 5);
+          accept_Alert(webDriver, 5);
 
-    //            i = 9999;
-              }
-        //}
+          // i = 9999;
+        }
+        // }
 
 
 
@@ -261,19 +261,20 @@ public class FillApplCreatePages {
       throw e;
     }
   }
-    public static void mppReportSignatureSubmit(WebDriver webDriver) throws Exception {
-        try {
-            click_Element(webDriver, "SBA_Sig_Submit_Legal_0");
-            click_Element(webDriver, "SBA_Sig_Submit_Legal_1");
-            click_Element(webDriver, "SBA_Sig_Submit_Legal_2");
-            click_Element(webDriver, "SBA_Sig_Submit_Legal_3");
-            accept_Alert(webDriver, 14);
-            click_Element(webDriver, "Application_Common_Submit_Button");
-            accept_Alert(webDriver, 14);
-           } catch (Exception e) {
-            logger.info(e.toString());
-            take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit"});
-            throw e;
-        }
+
+  public static void mppReportSignatureSubmit(WebDriver webDriver) throws Exception {
+    try {
+      click_Element(webDriver, "SBA_Sig_Submit_Legal_0");
+      click_Element(webDriver, "SBA_Sig_Submit_Legal_1");
+      click_Element(webDriver, "SBA_Sig_Submit_Legal_2");
+      click_Element(webDriver, "SBA_Sig_Submit_Legal_3");
+      accept_Alert(webDriver, 14);
+      click_Element(webDriver, "Application_Common_Submit_Button");
+      accept_Alert(webDriver, 14);
+    } catch (Exception e) {
+      logger.info(e.toString());
+      take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit"});
+      throw e;
     }
+  }
 }

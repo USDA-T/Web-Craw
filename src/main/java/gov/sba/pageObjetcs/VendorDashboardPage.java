@@ -63,11 +63,11 @@ public class VendorDashboardPage {
         // find_Elements(webDriver, "SBA_MPP_Table_Link").get(0).click();
         break;
       case "mppreport":
-       click_Element(webDriver, "SBA_MPP_Report_Link");
+        click_Element(webDriver, "SBA_MPP_Report_Link");
         break;
       case "mppreportdraft":
-            click_Element(webDriver, "SBA_MPP_Report_Draft");
-            break;
+        click_Element(webDriver, "SBA_MPP_Report_Draft");
+        break;
     }
   }
 

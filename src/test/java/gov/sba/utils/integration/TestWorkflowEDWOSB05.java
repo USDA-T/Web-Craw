@@ -46,7 +46,7 @@ public class TestWorkflowEDWOSB05 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -108,7 +108,9 @@ public class TestWorkflowEDWOSB05 extends TestCase {
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Ineligible"));
 
-       if (stop_Exec == 1) { return;} /* TODO App-1499 DE exist*/
+      if (stop_Exec == 1) {
+        return;
+      } /* TODO App-1499 DE exist */
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Declined"));
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");

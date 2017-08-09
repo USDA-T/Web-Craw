@@ -115,13 +115,16 @@ public class ProgramsPage {
       Thread.sleep(900);
       click_Element(webDriver, "File_Up1_Associate_Button");
       Thread.sleep(4600);
-      /*Between file association and some JS execution we need time. Both before and after JHS the button is still valid.
-        But if we click sooner than its failing*/
+      /*
+       * Between file association and some JS execution we need time. Both before and after JHS the
+       * button is still valid. But if we click sooner than its failing
+       */
 
-        Actions actions = new Actions(webDriver);
+      Actions actions = new Actions(webDriver);
 
-        actions.moveToElement(find_Element(webDriver, "Application_Common_Submit_Button")).click().perform();
-        click_Element(webDriver, "Application_Common_Submit_Button");
+      actions.moveToElement(find_Element(webDriver, "Application_Common_Submit_Button")).click()
+          .perform();
+      click_Element(webDriver, "Application_Common_Submit_Button");
       Thread.sleep(900);
     } catch (Exception e) {
       throw e;

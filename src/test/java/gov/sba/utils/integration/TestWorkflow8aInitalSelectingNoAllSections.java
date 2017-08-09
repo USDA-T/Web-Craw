@@ -43,7 +43,7 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
       return;
     clear_Env_Chrome();
     logger.info("Set as head");
-    //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 43;
@@ -85,7 +85,7 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
       generic_file_Upld(webDriver);
       accept_Alert(webDriver, 10);
       /* Business_Ownership_Corporations_Page(webDriver); */
-      //click_Element(webDriver, "Application_Common_Submit_Button");
+      // click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 10);
       /* Character Page selecting all no */
       masterApp_8a_Page_Click(webDriver, "page_character_link");

@@ -41,7 +41,7 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
   public void setUp() throws Exception {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
-    //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     /* (get_The_Row_From_Login_Data = 42;duns_Number = "144754156"; */
@@ -64,7 +64,10 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
       /* Login to opp support admin dashboard. */
       new LoginPageWithReference(webDriver, 27).Login_With_Reference();
       /* validate as per the US1235 Acceptance criteria on Opp Support Staft/Admin page */
-      /*if (stop_Exec == 1) {return;} /* TODO De App-1285 Exist while search for a dun number by staft */
+      /*
+       * if (stop_Exec == 1) {return;} /* TODO De App-1285 Exist while search for a dun number by
+       * staft
+       */
       non_Vendor_searchDuns_Number(webDriver, duns_Number);
       /* Click on the Business Name - opp Supp Staft can access Draft,Completed Application */
       click_Element(webDriver, "SBA_Business_Search_Business_Name");
@@ -99,7 +102,7 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
         delete_All_Application_Draft(webDriver, email, password, duns_Number);
 
         /* Verify the Business type is changes to LLC] */
-         new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
+        new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
         click_Element(webDriver, "Vendor_Admin_Dashboard_More_Details");
         assertTrue(find_Element(webDriver, "Vendor_Admin_Dashboard_More_Details_Id").getText()
             .contains("Limited Liability"));
@@ -156,10 +159,10 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
             webDriver.switchTo().window(s);
         }
 
-        } catch (Exception e) {
-          find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
-          logger.info("Opp supp Staft not having Edit on Help Page-HelpPage_Edit");
-          logger.info("Test case Passed-HelpPage_Edit funtionality");
+      } catch (Exception e) {
+        find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
+        logger.info("Opp supp Staft not having Edit on Help Page-HelpPage_Edit");
+        logger.info("Test case Passed-HelpPage_Edit funtionality");
       }
 
     } catch (Exception e) {

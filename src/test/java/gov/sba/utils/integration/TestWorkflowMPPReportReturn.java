@@ -95,8 +95,8 @@ public class TestWorkflowMPPReportReturn extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* For demo - used sleep -will remove sleep after demo */
       Thread.sleep(5000);
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
-          "Active", "", "", "", "New Annual Report"}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+          new String[] {"MPP Application", "", "Active", "", "", "", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");
       click_Element(webDriver, "Application_Common_Accept_Button");
       generic_file_Upld(webDriver);

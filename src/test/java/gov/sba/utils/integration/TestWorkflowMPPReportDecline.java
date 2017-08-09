@@ -46,7 +46,7 @@ public class TestWorkflowMPPReportDecline extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    //TestHelpers.set_Headless();
+    // TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -97,10 +97,12 @@ public class TestWorkflowMPPReportDecline extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* For demo - used sleep -will remove sleep after demo */
       Thread.sleep(5000);
-      /*assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
-          "Active", "", "", "SBA Approved", "New Annual Report"}));*/
-       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
-          "Active", "", "", "", "New Annual Report"}));
+      /*
+       * assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application",
+       * "", "Active", "", "", "SBA Approved", "New Annual Report"}));
+       */
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+          new String[] {"MPP Application", "", "Active", "", "", "", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");
       click_Element(webDriver, "Application_Common_Accept_Button");
       generic_file_Upld(webDriver);
@@ -129,8 +131,8 @@ public class TestWorkflowMPPReportDecline extends TestCase {
       String val = locator.get("Value").toString().replace("duns_Number_Replace", duns_Number);
       click_Element(webDriver, loc, val);
 
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application",
-          "Annual Report", "", "", "", "Declined", ""}));
+      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
+          new String[] {"MPP Application", "Annual Report", "", "", "", "Declined", ""}));
 
       /* For Demo on -7-21 */
 
