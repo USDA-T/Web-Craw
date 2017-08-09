@@ -152,7 +152,6 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
       /* For Demo Start - July 6 */
-      Thread.sleep(4000);
       navigationMenuClick(webDriver, "Logout");
       webDriver.get(TestHelpers.getBaseUrl());
       click_Element(webDriver, "SBA_Login_Button");

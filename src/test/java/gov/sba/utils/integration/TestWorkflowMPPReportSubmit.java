@@ -94,7 +94,6 @@ public class TestWorkflowMPPReportSubmit extends TestCase {
       /* Log in to vendor admin account */
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* For demo - used sleep -will remove sleep after demo */
-      Thread.sleep(5000);
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"MPP Application", "", "Active", "", "", "", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");

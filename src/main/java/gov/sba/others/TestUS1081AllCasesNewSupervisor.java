@@ -1,28 +1,6 @@
 // TS_Created_By_Deepa_Patri
 package gov.sba.others;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
-import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
 import gov.sba.automation.CommonApplicationMethods;
 import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
@@ -31,6 +9,23 @@ import gov.sba.pageObjetcs.ProgramsPage;
 import gov.sba.utils.integration.LoginPageWithDetails;
 import gov.sba.utils.integration.LoginPageWithReference;
 import junit.framework.TestCase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.*;
+import org.junit.experimental.categories.Category;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 
 @Ignore
 @Category({gov.sba.utils.integration.StableTests.class})
@@ -79,8 +74,7 @@ public class TestUS1081AllCasesNewSupervisor extends TestCase {
 
       CommonApplicationMethods.navigationMenuClick(webDriver, "Cases");
       CommonApplicationMethods.casesPageSearch(webDriver, "WOSB");
-      Thread.sleep(1000);
-      logger_US1081.info("Cases link is on Main Navigator is Clicked");
+           logger_US1081.info("Cases link is on Main Navigator is Clicked");
 
       String Allcases_PageTitle = webDriver
           .findElement(By.xpath("//article[@id='main-content']//h1[contains(text(),'Cases')]"))

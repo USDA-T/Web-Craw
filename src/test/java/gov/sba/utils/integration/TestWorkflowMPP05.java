@@ -115,7 +115,6 @@ public class TestWorkflowMPP05 extends TestCase {
       accept_Alert(webDriver, 10);
       generic_file_Upld(webDriver);
       click_Element(webDriver, "Application_Common_Submit_Button");
-      click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 10);
       finalSignatureSubmit(webDriver);
 

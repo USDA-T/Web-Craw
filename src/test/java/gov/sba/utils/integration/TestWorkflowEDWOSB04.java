@@ -90,7 +90,7 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       Thread.sleep(2000); // Sleep neded here
       click_Element(webDriver, "Application_Common_Submit_Button");
-      Thread.sleep(2000); // Sleep neded here
+      Thread.sleep(1000); // Sleep neded here
       click_Element(webDriver, "SBA_Review_Return_For_Mod");
       click_Element(webDriver, "SBA_Review_Determination_Save_Button");
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");
