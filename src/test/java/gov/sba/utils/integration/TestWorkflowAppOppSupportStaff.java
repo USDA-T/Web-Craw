@@ -148,7 +148,6 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
       click_Element(webDriver, "Main_Page_Help_Page_Link");
 
       /* Help Link- opp supp Staff cannot have edit functionality on Help Page */
-      Boolean element_Found = false;
       try {
         Set<String> handle_02 = webDriver.getWindowHandles();
         for (String s : handle_02) {
@@ -156,14 +155,12 @@ public class TestWorkflowAppOppSupportStaff extends TestCase {
           if (handle_01_Value != s)
             webDriver.switchTo().window(s);
         }
-        find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
-        logger.info("Opp supp Staft not having Edit on Help Page-HelpPage_Edit");
-        element_Found = true;
-      } catch (Exception e) {
-        element_Found = true;
-        logger.info("Test case Passed-HelpPage_Edit funtionality");
+
+        } catch (Exception e) {
+          find_Element(webDriver, "Main_Page_Help_Page_Link_Edit");
+          logger.info("Opp supp Staft not having Edit on Help Page-HelpPage_Edit");
+          logger.info("Test case Passed-HelpPage_Edit funtionality");
       }
-      Assert.assertEquals(element_Found, true);
 
     } catch (Exception e) {
       logger.info("help page  is edit not present" + e.toString());

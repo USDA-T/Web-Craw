@@ -1,7 +1,14 @@
 package gov.sba.others;
 
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-
+import gov.sba.automation.AssertionUtils;
+import gov.sba.automation.CommonApplicationMethods;
+import gov.sba.automation.TestHelpers;
+import gov.sba.pageObjetcs.ProgramsPage;
+import gov.sba.utils.integration.FillApplCreatePages;
+import gov.sba.utils.integration.LoginPageWithReference;
+import gov.sba.utils.integration.NewFinancialSectionQuestionDeepa;
+import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
+import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
@@ -9,16 +16,8 @@ import org.junit.Before;
 import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 
-import gov.sba.automation.AssertionUtils;
-import gov.sba.automation.CommonApplicationMethods;
-import gov.sba.automation.TestHelpers;
-import gov.sba.pageObjetcs.ProgramsPage;
-import gov.sba.utils.integration.FillApplCreatePages;
-import gov.sba.utils.integration.LoginPageWithReference;
-import gov.sba.utils.integration.NewAddBusinessPartern413Deepa;
-import gov.sba.utils.integration.NewFinancialSectionQuestionDeepa;
-import gov.sba.utils.integration.NewScorpQuestionPageDeepa;
-import junit.framework.TestCase;
+import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
+import static gov.sba.pageObjetcs.NewAddBusinessPartern413Deepa.NewFinancialQuestion;
 
 
 @Category({gov.sba.utils.integration.UnstableTests.class})
@@ -66,9 +65,7 @@ public class TestWorkflowBusinessPartner413AddandRemove extends TestCase {
       // with one person's 413 form
       NewScorpQuestionPageDeepa scorpQuestionsPage = new NewScorpQuestionPageDeepa(webDriver);
       scorpQuestionsPage.NewScorpQuestionPageDeepa();
-
-      new NewAddBusinessPartern413Deepa(webDriver).NewFinancialQuestion("Mahesh", "Prem",
-          "987654321", "12@gmail.com", "1234", "Virginia", "11111", "123", "123", "Mclean", "USA");
+      NewFinancialQuestion (webDriver,"Mahesh","prem","123456789","Dee@gmail.com","12345","VA","12345","123-123-1234","123-123-1234","MClean","USA");
       new NewFinancialSectionQuestionDeepa(webDriver).NewFinancialQuestion();
       FillApplCreatePages.finalSignatureSubmit(webDriver);
       // Return the Applicatiom;

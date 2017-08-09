@@ -4,6 +4,7 @@ package gov.sba.pageObjetcs;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.Map;
 
@@ -113,8 +114,14 @@ public class ProgramsPage {
       click_Element(webDriver, "File_Up1_Choose_Doc");
       Thread.sleep(900);
       click_Element(webDriver, "File_Up1_Associate_Button");
-      Thread.sleep(900);
-      click_Element(webDriver, "Application_Common_Submit_Button");
+      Thread.sleep(4600);
+      /*Between file association and some JS execution we need time. Both before and after JHS the button is still valid.
+        But if we click sooner than its failing*/
+
+        Actions actions = new Actions(webDriver);
+
+        actions.moveToElement(find_Element(webDriver, "Application_Common_Submit_Button")).click().perform();
+        click_Element(webDriver, "Application_Common_Submit_Button");
       Thread.sleep(900);
     } catch (Exception e) {
       throw e;

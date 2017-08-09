@@ -96,10 +96,11 @@ public class TestWorkflowMPPReportSubmit extends TestCase {
       /* For demo - used sleep -will remove sleep after demo */
       Thread.sleep(5000);
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
-          "Active", "", "", "SBA Approved", "New Annual Report"}));
+          "Active", "", "", "", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");
       click_Element(webDriver, "Application_Common_Accept_Button");
       generic_file_Upld(webDriver);
+      accept_Alert(webDriver, 10);
       click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 10);
       Thread.sleep(500);
@@ -124,7 +125,7 @@ public class TestWorkflowMPPReportSubmit extends TestCase {
       String val = locator.get("Value").toString().replace("duns_Number_Replace", duns_Number);
       click_Element(webDriver, loc, val);
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver,
-          new String[] {"MPP Application", "Annual Report", "", "", "Active", "", "View summary"}));
+          new String[] {"MPP Application", "Annual Report", "", "", "", "", ""}));
 
       /* For Demo on -7-21 */
 

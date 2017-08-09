@@ -95,8 +95,6 @@ public class FillApplCreatePages {
     click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
   }
 
-  // public static void page8aFillUp(WebDriver webDriver, String answer01, String path) throws
-  // Exception {
   public static void page8aFillUp(WebDriver webDriver, String answer01) throws Exception {
     try {
       if (answer01.toUpperCase().contains("YES")) {
@@ -111,15 +109,13 @@ public class FillApplCreatePages {
             throw e;
           }
         }
-
-        // new newMppUploadDocumentPageDeepa(webDriver).deepaUploadMppDocument(path);
-        // click_Element(webDriver, "Application_Common_Submit_Button"); Thread.sleep(3000);
         ProgramsPage.generic_file_Upld(webDriver);
         logger.info("Doc has been uploaded.");
 
-        click_Element(webDriver, "Application_Common_Submit_Button");
+          accept_Alert(webDriver, 14);
+          click_Element(webDriver, "Application_Common_Submit_Button");
 
-        accept_Alert(webDriver, 14);
+          accept_Alert(webDriver, 30);
         logger.info("Doc has been uploaded and accepted");
       } else {
         try {
@@ -271,7 +267,9 @@ public class FillApplCreatePages {
             click_Element(webDriver, "SBA_Sig_Submit_Legal_1");
             click_Element(webDriver, "SBA_Sig_Submit_Legal_2");
             click_Element(webDriver, "SBA_Sig_Submit_Legal_3");
+            accept_Alert(webDriver, 14);
             click_Element(webDriver, "Application_Common_Submit_Button");
+            accept_Alert(webDriver, 14);
            } catch (Exception e) {
             logger.info(e.toString());
             take_ScreenShot_TestCaseName(webDriver, new String[] {"finalSignatureSubmit"});

@@ -27,7 +27,9 @@ import static gov.sba.pageObjetcs.ProgramsPage.generic_file_Upld;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
 import static gov.sba.pageObjetcs.VendorDashboardPage.click_On_App_In_Vend_Dash;
 import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_Return;
-import static gov.sba.utils.integration.FillApplCreatePages.*;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.mppReportSignatureSubmit;
+import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUpDunsNo;
 
 
 @Category({StableTests.class})
@@ -44,7 +46,7 @@ public class TestWorkflowMPPReportDecline extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    // TestHelpers.set_Headless();
+    //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -95,11 +97,14 @@ public class TestWorkflowMPPReportDecline extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
       /* For demo - used sleep -will remove sleep after demo */
       Thread.sleep(5000);
-      assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
-          "Active", "", "", "SBA Approved", "New Annual Report"}));
+      /*assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
+          "Active", "", "", "SBA Approved", "New Annual Report"}));*/
+       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application", "",
+          "Active", "", "", "", "New Annual Report"}));
       click_On_App_In_Vend_Dash(webDriver, "mppreport");
       click_Element(webDriver, "Application_Common_Accept_Button");
       generic_file_Upld(webDriver);
+      accept_Alert(webDriver, 10);
       click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 10);
       Thread.sleep(500);
@@ -125,7 +130,7 @@ public class TestWorkflowMPPReportDecline extends TestCase {
       click_Element(webDriver, loc, val);
 
       assertNotNull(verify_Row_In_A_Table_And_Return(webDriver, new String[] {"MPP Application",
-          "Annual Report", "", "", "Active", "Declined", "View summary"}));
+          "Annual Report", "", "", "", "Declined", ""}));
 
       /* For Demo on -7-21 */
 

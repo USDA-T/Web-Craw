@@ -138,7 +138,7 @@ Opp_Support_Page_Vendor_Prof_Search:            {Locator: 'xpath', Value:  "//in
 Opp_Support_Page_Test_Search:                   {Locator: 'xpath', Value:  "//div[contains(@class, 'business_search_result')]//table/tbody/tr[1]/td[1]/a"}
 Opp_Support_Page_Test_Search_User_Profile:      {Locator: 'xpath', Value:  "//article[@id='main-content']/div/div/div/h1[contains(text(),'user profile')]"}
 Opp_Support_Page_Test_Business_Search:          {Locator: 'xpath', Value:  "//div[@id='business_search']/div/div/a"}
-Opp_Support_Page_Test_Business_Name:            {Locator: 'xpath', Value:  "//table/tbody/tr/td/a[contains(text(),'Business Name')]"}
+Opp_Support_Page_Test_Business_Name:            {Locator: 'xpath', Value:  "//table/tbody/tr/td[contains(text(),'Business Name')]"}
 SBA_Business_Search_Business_Name:              {Locator: 'xpath', Value:  "//div[@id='business_search']//div[contains(@class,'business_search_result_per_entry')]//h4/a[contains(text(),'Legal Business Name')]"}
 Opp_Support_Page_Cases_Link:                    {Locator: 'xpath', Value:  "//div[contains(@class,'usa-width-three-fourths')]/ul/li/a[contains(text(),'Cases')]"}
 Opp_Support_Admin_Page_Cases:                   {Locator: 'xpath', Value:  "//article[@id='main-content']/h1"}
@@ -148,41 +148,83 @@ EDWOSB_Questionnaire_Page_Titl1_Main: {Locator: 'xpath', Value: "//div[@id='answ
 
 
 EDWOSB_Questionnaire_Page_Ans_389_N: {Locator: 'id', Value: "answers_389_value_no"}
+EDWOSB_Questionnaire_Page_Ans_389_Y: {Locator: 'id', Value: "answers_389_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_390_Y: {Locator: 'id', Value: "answers_390_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_390_N: {Locator: 'id', Value: "answers_390_value_no"}
 EDWOSB_Questionnaire_Page_Ans_391_Y: {Locator: 'id', Value: "answers_391_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_391_N: {Locator: 'id', Value: "answers_391_value_no"}
+EDWOSB_Questionnaire_Page_Ans_392_Y: {Locator: 'id', Value: "answers_392_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_392_N: {Locator: 'id', Value: "answers_392_value_no"}
 EDWOSB_Questionnaire_Page_Ans_393_N: {Locator: 'id', Value: "answers_393_value_no"}
+EDWOSB_Questionnaire_Page_Ans_393_Y: {Locator: 'id', Value: "answers_393_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_393_setText: {Locator: 'id', Value: "answers_393_comment"}
 EDWOSB_Questionnaire_Page_Ans_394_N: {Locator: 'id', Value: "answers_394_value_no"}
+EDWOSB_Questionnaire_Page_Ans_394_Y: {Locator: 'id', Value: "answers_394_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_395_N: {Locator: 'id', Value: "answers_395_value_no"}
+EDWOSB_Questionnaire_Page_Ans_395_Y: {Locator: 'id', Value: "answers_395_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_396_N: {Locator: 'id', Value: "answers_396_value_no"}
+EDWOSB_Questionnaire_Page_Ans_396_Y: {Locator: 'id', Value: "answers_396_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_397_N: {Locator: 'id', Value: "answers_397_value_no"}
+EDWOSB_Questionnaire_Page_Ans_397_Y: {Locator: 'id', Value: "answers_397_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_398_N: {Locator: 'id', Value: "answers_398_value_no"}
+EDWOSB_Questionnaire_Page_Ans_398_Y: {Locator: 'id', Value: "answers_398_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_399_N: {Locator: 'id', Value: "answers_399_value_no"}
+EDWOSB_Questionnaire_Page_Ans_399_Y: {Locator: 'id', Value: "answers_399_value_yes"}
+EDWOSB_financial_page_Ans_Attahment_All:  {L1:  "//div[@id='answers[399][attachment]']//div[@id='add-req-doc-button']/a",
+                                           L2:  "//div[@id='answers[399][attachment]']//button[@id='doc-lib-button']",
+                                           L3: "//div[@id='answers[399][attachment]']//*[@id='truth']",
+                                           L4: "//div[@id='answers[399][attachment]']//button[@id='document_library_associate']"}
 EDWOSB_Questionnaire_Page_Ans_399_setText: {Locator: 'id', Value: "answers_399_comment"}
 #EDWOSB_Questionnaire_Page_Ans_400_N: {Locator: 'id', Value: "answers_400_value_no"}
 #EDWOSB_Questionnaire_Page_Ans_401_N: {Locator: 'id', Value: "answers_401_value_no"}
 #EDWOSB_Questionnaire_Page_Ans_402_N: {Locator: 'id', Value: "answers_402_value_no"}
 #EDWOSB_Questionnaire_Page_Ans_403_N: {Locator: 'id', Value: "answers_403_value_no"}
 EDWOSB_Questionnaire_Page_Ans_404_N: {Locator: 'id', Value: "answers_404_value_no"}
+EDWOSB_Questionnaire_Page_Ans_404_Y: {Locator: 'id', Value: "answers_404_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_405_N: {Locator: 'id', Value: "answers_405_value_no"}
+EDWOSB_Questionnaire_Page_Ans_405_Y: {Locator: 'id', Value: "answers_405_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_406_N: {Locator: 'id', Value: "answers_406_value_no"}
+EDWOSB_Questionnaire_Page_Ans_406_Y: {Locator: 'id', Value: "answers_406_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_407_N: {Locator: 'id', Value: "answers_407_value_no"}
+EDWOSB_Questionnaire_Page_Ans_407_Y: {Locator: 'id', Value: "answers_407_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_407_NA: {Locator: 'id', Value: "answers_407_value_na"}
 EDWOSB_Questionnaire_Page_Ans_407_setText: {Locator: 'id', Value: "answers_407_comment"}
 EDWOSB_Questionnaire_Page_Ans_408_N: {Locator: 'id', Value: "answers_408_value_no"}
+EDWOSB_Questionnaire_Page_Ans_408_Y: {Locator: 'id', Value: "answers_408_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_409_N: {Locator: 'id', Value: "answers_409_value_no"}
+EDWOSB_Questionnaire_Page_Ans_409_Y: {Locator: 'id', Value: "answers_409_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_410_N: {Locator: 'id', Value: "answers_410_value_no"}
+EDWOSB_Questionnaire_Page_Ans_410_Y: {Locator: 'id', Value: "answers_410_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_411_N: {Locator: 'id', Value: "answers_411_value_no"}
+EDWOSB_Questionnaire_Page_Ans_411_Y: {Locator: 'id', Value: "answers_411_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_412_N: {Locator: 'id', Value: "answers_412_value_no"}
+EDWOSB_Questionnaire_Page_Ans_412_Y: {Locator: 'id', Value: "answers_412_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_413_N: {Locator: 'id', Value: "answers_413_value_no"}
+EDWOSB_Questionnaire_Page_Ans_413_N: {Locator: 'id', Value: "answers_413_value_no"}
+EDWOSB_Questionnaire_Page_Ans_413_Y: {Locator: 'id', Value: "answers_413_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_413_setText: {Locator: 'id', Value: "answers_413_comment"}
 EDWOSB_Questionnaire_Page_Ans_414_N: {Locator: 'id', Value: "answers_414_value_no"}
+EDWOSB_Questionnaire_Page_Ans_414_Y: {Locator: 'id', Value: "answers_414_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_415_N: {Locator: 'id', Value: "answers_415_value_no"}
+EDWOSB_Questionnaire_Page_Ans_415_Y: {Locator: 'id', Value: "answers_415_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_416_N: {Locator: 'id', Value: "answers_416_value_no"}
+EDWOSB_Questionnaire_Page_Ans_416_Y: {Locator: 'id', Value: "answers_416_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_417_N: {Locator: 'id', Value: "answers_417_value_no"}
+EDWOSB_Questionnaire_Page_Ans_417_Y: {Locator: 'id', Value: "answers_417_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_417_setText: {Locator: 'id', Value: "answers_417_comment"}
+EDWOSB_Questionnaire_Page_Ans_417_NA: {Locator: 'id', Value: "answers_417_value_na"}
 EDWOSB_Questionnaire_Page_Ans_418_N: {Locator: 'id', Value: "answers_418_value_no"}
+EDWOSB_Questionnaire_Page_Ans_418_Y: {Locator: 'id', Value: "answers_418_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_419_N: {Locator: 'id', Value: "answers_419_value_no"}
+EDWOSB_Questionnaire_Page_Ans_419_Y: {Locator: 'id', Value: "answers_419_value_yes"}
 EDWOSB_Questionnaire_Page_Ans_420_N: {Locator: 'id', Value: "answers_420_value_no"}
+EDWOSB_Questionnaire_Page_Ans_420_Y: {Locator: 'id', Value: "answers_420_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_420_setText: {Locator: 'id', Value: "answers_420_comment"}
+EDWOSB_Questionnaire_Page_Ans_420_NA: {Locator: 'id', Value: "answers_420_value_na"}
 EDWOSB_Questionnaire_Page_Ans_421_N: {Locator: 'id', Value: "answers_421_value_no"}
+EDWOSB_Questionnaire_Page_Ans_421_Y: {Locator: 'id', Value: "answers_421_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_422_Y: {Locator: 'id', Value: "answers_422_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_422_N: {Locator: 'id', Value: "answers_422_value_no"}
 # FinancialData Page - EDWOSB
 EDWOSB_Questionnaire_Page_Add_Person:          {Locator: 'xpath', Value: "//button[ contains(@class,'owner_add_button')]"}
 EDWOSB_Questionnaire_Page_FinancialPage_Link:  {Locator: 'xpath', Value: "//ul[ contains(@class,'usa-sidenav-list')]/li/a[ contains(text(),'Financial Data')]"}
@@ -218,21 +260,155 @@ EDWOSB_financial_Page_Ans_365_setText: {Locator: 'xpath', Value: "//*[@id='answe
 EDWOSB_financial_Page_Ans_366_setText: {Locator: 'xpath', Value: "//*[@id='answers_366_value']"}
 EDWOSB_financial_Page_Ans_367_setText: {Locator: 'xpath', Value: "//*[@id='answers_367_value']"}
 EDWOSB_financial_Page_Ans_368_setText: {Locator: 'id', Value: 'answers_368_value'}
+EDWOSB_financial_Page_Ans_368_comment: {Locator: 'id', Value: 'answers_368_comment'}
 EDWOSB_financial_Page_Ans_369_setText: {Locator: 'id', Value: 'answers_369_value'}
 EDWOSB_financial_Page_Ans_370_setText: {Locator: 'id', Value: 'answers_370_value'}
 
 EDWOSB_financial_Page_Ans_371_N: {Locator: 'id', Value: "answers_371_value_no"}
+EDWOSB_financial_Page_Ans_371_Y: {Locator: 'id', Value: "answers_371_value_yes"}
+EDWOSB_financial_Notes_Receivable_New_Button: {Locator: 'xpath', Value: "//div[ @class = 'dt-buttons']/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Notes_Name_Of_Debtor:        {Locator: 'id', Value: "DTE_Field_debtor_name"}
+EDWOSB_financial_Notes_Addr_Of_Debtor:        {Locator: 'id', Value: "DTE_Field_debtor_address"}
+EDWOSB_financial_Notes_Original_Balance:      {Locator: 'id', Value: "DTE_Field_original_balance"}
+EDWOSB_financial_Notes_Current_Balance:       {Locator: 'id', Value: "DTE_Field_current_balance"}
+EDWOSB_financial_Notes_Payment_Amount:        {Locator: 'id', Value: "DTE_Field_pay_amount"}
+EDWOSB_financial_Notes_Type_Of_Collateral:    {Locator: 'id', Value: "DTE_Field_collateral_type"}
+
+
 EDWOSB_financial_Page_Ans_372_N: {Locator: 'id', Value: "answers_372_value_no"}
+EDWOSB_financial_Page_Ans_372_Y: {Locator: 'id', Value: "answers_372_value_yes"}
+EDWOSB_financial_Retirement_Accounts_IRA_New_Button:     {Locator: 'xpath', Value: "//div[ @id = 'answers_372_details_table_wrapper']/div/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Retirement Accounts_IRA_Type:           {Locator: 'xpath', Value: "//select[ @id = 'DTE_Field_type']"}
+EDWOSB_financial_Retirement_Accounts_IRA_TotVal:          {Locator: 'id', Value: "DTE_Field_total_value"}
+EDWOSB_financial_Retirement_Accounts_IRA_Contributions:  {Locator: 'id', Value: "DTE_Field_contributions_thus_far"}
+EDWOSB_financial_Retirement_Accounts_IRA_Date_Of_InCon:  {Locator: 'id', Value: "DTE_Field_date_of_initial_contribution"}
+EDWOSB_financial_Retirement_Accounts_IRA_Name_Of_InvCom: {Locator: 'id', Value: "DTE_Field_investment_company"}
+
 EDWOSB_financial_Page_Ans_373_N: {Locator: 'id', Value: "answers_373_value_no"}
+EDWOSB_financial_Page_Ans_373_Y: {Locator: 'id', Value: "answers_373_value_yes"}
+EDWOSB_financial_Retirement_Accounts_OTH_New_Button:     {Locator: 'xpath', Value: "//div[ @id = 'answers_373_details_table_wrapper']/div/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Retirement_Accounts_OTH_Type:           {Locator: 'xpath', Value: "//select[ @id = 'DTE_Field_type']"}
+EDWOSB_financial_Retirement_Accounts_OTH_TotalValue:     {Locator: 'id', Value: "DTE_Field_total_value"}
+EDWOSB_financial_Retirement_Accounts_OTH_Name_Of_InvCom: {Locator: 'id', Value: "DTE_Field_investment_company"}
+EDWOSB_financial_Retirement_Accounts_OTH_All:            {L1:  "//div[@id='answers[373][attachment]']//div[@id='add-req-doc-button']/a",
+                                                             L2:  "//div[@id='answers[373][attachment]']//button[@id='doc-lib-button']",
+                                                             L3: "//div[@id='answers[373][attachment]']//*[@id='truth']",
+                                                             L4: "//div[@id='answers[373][attachment]']//button[@id='document_library_associate']"}
+
+
 EDWOSB_financial_Page_Ans_374_N: {Locator: 'id', Value: "answers_374_value_no"}
-EDWOSB_financial_Page_Ans_375_N: {Locator: 'id', Value: "answers_375_value_no"}
-EDWOSB_financial_Page_Ans_377_N: {Locator: 'id', Value: "answers_377_value_no"}
+EDWOSB_financial_Page_Ans_374_Y: {Locator: 'id', Value: "answers_374_value_yes"}
+EDWOSB_financial_Life_Insurance_Policy_Yes:                    {Locator: 'id', Value: "answers_374_value_yes"}
+EDWOSB_financial_Life_Insurance_Policy_No:                    {Locator: 'id', Value: "answers_374_value_no"}
+EDWOSB_financial_Life_Insurance_Policy_New_Button:             {Locator: 'xpath', Value: "//div[ @id = 'answers_374_details_table_wrapper']/div/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Life_Insurance_Policy_Name:                   {Locator: 'id', Value: "DTE_Field_company_name"}
+EDWOSB_financial_Life_Insurance_Policy_Cash:                   {Locator: 'id', Value: "DTE_Field_cash_surrender_value"}
+EDWOSB_financial_Life_Insurance_Policy_Amount:                 {Locator: 'id', Value: "DTE_Field_face_amount"}
+EDWOSB_financial_Life_Insurance_Policy_Beneficiaries:          {Locator: 'id', Value: "DTE_Field_beneficiaries"}
+#Do you have any loans against a life insurance policy?
+EDWOSB_financial_Life_Insurance_Loan_Yes:                     {Locator: 'id', Value: "answers_375_value_yes"}
+EDWOSB_financial_Life_Insurance_Loan_Balance:                 {Locator: 'id', Value: "answers_376_value"}
+EDWOSB_financial_Life_Insurance_Loan_No:                      {Locator: 'id', Value: "answers_375_value_no"}
+#@contributor_8a_DisAdv_financial_Life Insurance End
+EDWOSB_financial_Page_Ans_375_N:                       {Locator: 'id', Value: "answers_375_value_no"}
+EDWOSB_financial_Page_Ans_377_N:                       {Locator: 'id', Value: "answers_377_value_no"}
+EDWOSB_financial_Page_Ans_377_Y:                       {Locator: 'id', Value: "answers_377_value_yes"}
+EDWOSB_financial_StockandBonds_New_Button:             {Locator: 'xpath', Value: "//div[ @class = 'dt-buttons']/a/span[contains(text(),'New')]"}
+EDWOSB_financial_StockandBonds_Type:                   {Locator: 'xpath', Value: "//select[ @id = 'DTE_Field_type']"}
+EDWOSB_financial_StockandBonds_Name:                   {Locator: 'id', Value: "DTE_Field_securities_name"}
+EDWOSB_financial_StockandBonds_totlVal:                {Locator: 'id', Value: "DTE_Field_total_value"}
+EDWOSB_financial_StockandBonds_Share:                  {Locator: 'id', Value: "DTE_Field_num_of_shares"}
+EDWOSB_financial_StockandBonds_Cost:                   {Locator: 'id', Value: "DTE_Field_cost"}
+EDWOSB_financial_StockandBonds_Market_Val:             {Locator: 'id', Value: "DTE_Field_market_value"}
+EDWOSB_financial_StockandBonds_Date:                   {Locator: 'id', Value: "DTE_Field_date"}
+EDWOSB_financial_StockandBonds_dividends:              {Locator: 'id', Value: "DTE_Field_interest_dividends"}
+EDWOSB_financial_StockandBonds_No:                     {Locator: 'id', Value: "answers_377_value_no"}
+
 EDWOSB_financial_Page_Ans_378_N: {Locator: 'id', Value: "answers_378_value_no"}
-EDWOSB_financial_Page_Ans_380_N: {Locator: 'id', Value: "answers_380_value_no"}
+EDWOSB_financial_Page_Ans_378_Y: {Locator: 'id', Value: "answers_378_value_yes"}
+
+EDWOSB_financial_Real_Estate_Primary_Address:        {Locator: 'id', Value: "answers_379_1_1_value"}
+EDWOSB_financial_Real_Estate_Jointly_Owned_Yes:      {Locator: 'id', Value: "answers_379_1_2_value_yes"}
+EDWOSB_financial_Real_Estate_Jointly_Owned_No:       {Locator: 'id', Value: "answers_379_1_2_value_no"}
+EDWOSB_financial_Real_Estate_Percentage_Ownership:   {Locator: 'id', Value: "answers_379_1_3_value"}
+EDWOSB_financial_Real_Estate_Percentage_Mortage:     {Locator: 'id', Value: "answers_379_1_4_value"}
+EDWOSB_financial_Real_Estate_Name_Mortage_Yes:       {Locator: 'id', Value: "answers_379_1_5_value_yes"}
+EDWOSB_financial_Real_Estate_Name_Mortage_No:        {Locator: 'id', Value: "answers_379_1_5_value_no"}
+EDWOSB_financial_Real_Estate_Current_Residence_Val:  {Locator: 'id', Value: "answers_379_1_6_value"}
+EDWOSB_financial_Real_Estate_Mortage_Balance_Val:    {Locator: 'id', Value: "answers_379_1_7_value"}
+EDWOSB_financial_Real_Estate_2nd_Mortgage_Yes:       {Locator: 'id', Value: "answers_379_1_8_value_yes"}
+EDWOSB_financial_Real_Estate_2nd_Mortgage_No:        {Locator: 'id', Value: "answers_379_1_8_value_no"}
+EDWOSB_financial_Real_Estate_Name_2nd_Mortgage_Yes:  {Locator: 'id', Value: "answers_379_1_9_value_yes"}
+EDWOSB_financial_Real_Estate_Name_2nd_Mortgage_No:   {Locator: 'id', Value: "answers_379_1_9_value_no"}
+EDWOSB_financial_Real_Estate_Percentage_2nd_Mortgage: {Locator: 'id', Value: "answers_379_1_10_value"}
+EDWOSB_financial_Real_Estate_CurrBal_2nd_Mortgage:    {Locator: 'id', Value: "answers_379_1_11_value"}
+EDWOSB_financial_Real_Estate_Income_yes:              {Locator: 'id', Value: "answers_379_1_12_value_yes"}
+EDWOSB_financial_Real_Estate_Income_No:               {Locator: 'id', Value: "answers_379_1_12_value_no"}
+EDWOSB_financial_Real_Estate_Income_Val:              {Locator: 'id', Value: "answers_379_1_13_value"}
+
+
+EDWOSB_financial_Page_Ans_380_N:                        {Locator: 'id', Value: "answers_380_value_no"}
+EDWOSB_financial_Page_Ans_380_Y:                        {Locator: 'id', Value: "answers_380_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Yes:                    {Locator: 'id', Value: "answers_380_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Add_Button:              {Locator: 'xpath', Value: "//a[ @id = 'add_real_estate']/span[contains(text(),'Add')]"}
+EDWOSB_financial_Real_Estate_Oth_Type:                   {Locator: 'id', Value: "answers_381_1_0_value"}
+EDWOSB_financial_Real_Estate_Oth_Address:                {Locator: 'id', Value: "answers_381_1_1_value"}
+EDWOSB_financial_Real_Estate_Oth_Jointly_Owned_Yes:      {Locator: 'id', Value: "answers_381_1_2_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Jointly_Owned_No:       {Locator: 'id', Value: "answers_381_1_2_value_no"}
+EDWOSB_financial_Real_Estate_Oth_Percentage_RealEstate:  {Locator: 'id', Value: "answers_381_1_3_value"}
+EDWOSB_financial_Real_Estate_Oth_Name_Mortage_Yes:       {Locator: 'id', Value: "answers_381_1_4_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Name_Mortage_No:        {Locator: 'id', Value: "answers_381_1_4_value_no"}
+EDWOSB_financial_Real_Estate_Oth_Percentage_Mortage:     {Locator: 'id', Value: "answers_381_1_5_value"}
+EDWOSB_financial_Real_Estate_Oth_Current_Val:            {Locator: 'id', Value: "answers_381_1_6_value"}
+EDWOSB_financial_Real_Estate_Oth_Mortage_Balance_Val:    {Locator: 'id', Value: "answers_381_1_7_value"}
+EDWOSB_financial_Real_Estate_Oth_2nd_Mortgage_Yes:       {Locator: 'id', Value: "answers_381_1_8_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_2nd_Mortgage_No:        {Locator: 'id', Value: "answers_381_1_8_value_no"}
+EDWOSB_financial_Real_Estate_Oth_Name_2nd_Mortgage_Yes:  {Locator: 'id', Value: "answers_381_1_9_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Name_2nd_Mortgage_No:   {Locator: 'id', Value: "answers_381_1_9_value_no"}
+EDWOSB_financial_Real_Estate_Oth_Percentage_2nd_Mortgage: {Locator: 'id', Value: "answers_381_1_10_value"}
+EDWOSB_financial_Real_Estate_Oth_CurrBal_2nd_Mortgage:    {Locator: 'id', Value: "answers_381_1_11_value"}
+EDWOSB_financial_Real_Estate_Oth_Income_yes:              {Locator: 'id', Value: "answers_381_1_12_value_yes"}
+EDWOSB_financial_Real_Estate_Oth_Income_No:               {Locator: 'id', Value: "answers_381_1_12_value_no"}
+EDWOSB_financial_Real_Estate_Oth_Income_Val:              {Locator: 'id', Value: "answers_381_1_13_value"}
+
 EDWOSB_financial_Page_Ans_382_N: {Locator: 'id', Value: "answers_382_value_no"}
+EDWOSB_financial_Page_Ans_382_Y: {Locator: 'id', Value: "answers_382_value_yes"}
+EDWOSB_financial_Personal_Property_Yes:                    {Locator: 'id', Value: "answers_382_value_yes"}
+EDWOSB_financial_Personal_Property_New_Button:             {Locator: 'xpath', Value: "//div[ @id = 'answers_382_details_table_wrapper']/div/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Personal_Property_CurrVal:                {Locator: 'id', Value: "DTE_Field_current_value"}
+EDWOSB_financial_Personal_Property_LoadBal:                {Locator: 'id', Value: "DTE_Field_loan_balance"}
+EDWOSB_financial_Personal_Property_DescAss:                {Locator: 'id', Value: "DTE_Field_asset_description"}
+EDWOSB_financial_Personal_Property_No:                     {Locator: 'id', Value: "answers_382_value_no"}
+#Do you own any other personal property or assets?
+EDWOSB_financial_Oth_Personal_Property_Yes:               {Locator: 'id', Value: "answers_383_value_yes"}
+EDWOSB_financial_Oth_Personal_Property_New_Button:        {Locator: 'xpath', Value: "//div[ @id = 'answers_799_details_table_wrapper']/div/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Oth_Personal_Property_CurrVal:           {Locator: 'id', Value: "DTE_Field_current_value"}
+EDWOSB_financial_Oth_Personal_Property_LoadBal:           {Locator: 'id', Value: "DTE_Field_loan_balance"}
+EDWOSB_financial_Oth_Personal_Property_DescAss:           {Locator: 'id', Value: "DTE_Field_asset_description"}
+EDWOSB_financial_Oth_Personal_Property_No:                {Locator: 'id', Value: "answers_383_value_no"}
 EDWOSB_financial_Page_Ans_383_N: {Locator: 'id', Value: "answers_383_value_no"}
+##@Edwosb NotesPayable_OtherLiabities
 EDWOSB_financial_Page_Ans_384_N: {Locator: 'id', Value: "answers_384_value_no"}
-EDWOSB_financial_Page_Ans_385_N: {Locator: 'id', Value: "answers_385_value_no"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Yes:            {Locator: 'id', Value: "answers_384_value_yes"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_New_Button:     {Locator: 'xpath', Value: "//div[ @class= 'dt-buttons']/a/span[contains(text(),'New')]"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Type:           {Locator: 'id', Value: "DTE_Field_type"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_OrgBal:         {Locator: 'id', Value: "DTE_Field_original_balance"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_CurrBal:        {Locator: 'id', Value: "DTE_Field_current_balance"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Amount:         {Locator: 'id', Value: "DTE_Field_payment_amount"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Collateral:     {Locator: 'id', Value: "DTE_Field_collateral_type"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Noteholder:     {Locator: 'id', Value: "DTE_Field_noteholder"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_Addressholder:   {Locator: 'id', Value: "DTE_Field_noteholder_address"}
+EDWOSB_financial_NotesPayable_OtherLiabilities_No:              {Locator: 'id', Value: "answers_384_value_no"}
+##@Edwosb financial_Assessed Taxes
+EDWOSB_financial_Page_Ans_385_N:                {Locator: 'id', Value: "answers_385_value_no"}
+EDWOSB_financial_Assessed_Taxes_Yes:            {Locator: 'id', Value: "answers_385_value_yes"}
+EDWOSB_financial_Assessed_Taxes_New_Button:     {Locator: 'xpath', Value: "//div[ @class= 'dt-buttons']/a/span[contains(text(),'New')]"}
+EDWOSB_financial_Assessed_Taxes_Whom_Payable:   {Locator: 'id', Value: "DTE_Field_whom_payable"}
+EDWOSB_financial_Assessed_Taxes_Amount:         {Locator: 'id', Value: "DTE_Field_amount"}
+EDWOSB_financial_Assessed_Taxes_Whendue:        {Locator: 'id', Value: "DTE_Field_when_due"}
+EDWOSB_financial_Assessed_Property_Tax_Lien:    {Locator: 'id', Value: "DTE_Field_property_tax_lien"}
+EDWOSB_financial_Assessed_Taxes_No:             {Locator: 'id', Value: "answers_385_value_no"}
+
 EDWOSB_financial_Page_Ans_386_SetText: {Locator: 'id', Value: "answers_386_value"}
 EDWOSB_financial_Page_Ans_387_SetText: {Locator: 'id', Value: "answers_387_value"}
 EDWOSB_financial_Page_Ans_388_SetText: {Locator: 'id', Value: "answers_388_value"}

@@ -110,6 +110,7 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       /* if (stop_Exec == 1) { return;}/* TODO Hard Coded Duns Number */
       click_Element(webDriver, "Application_Common_Submit_Button");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
+        if (stop_Exec == 1) {return; } /* TODO DE exists App-1499 */
       assertTrue(
           find_Element(webDriver, "SBA_Review_Nav").getText().contains("Decision: SBA Approved"));
       click_Element(webDriver, "SBA_Analyst_Review_Vendor_Overview");

@@ -27,6 +27,7 @@ public class TestWorkflowAppOppSupport extends TestCase {
   public void setUp() throws Exception {
     CommonApplicationMethods.clear_Env_Chrome();
     get_Stop_Execution_Flag();
+    /* TestHelpers.set_Headless();*/
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     get_The_Row_From_Login_Data = 27;
@@ -58,9 +59,9 @@ public class TestWorkflowAppOppSupport extends TestCase {
        */
       TestuserProfileSearch(webDriver, "QA", "Opp_Support_Page_Vendor_Prof_Search",
           "Vendor user profile");
-      click_Element(webDriver, "Opp_Support_Page_Test_Business_Name");
-      assertEquals("Vendor Support",
-          find_Element(webDriver, "Opp_Support_Page_Test_Business_Search").getText().toString());
+      /*click_Element(webDriver, "Opp_Support_Page_Test_Business_Name");
+       assertEquals("Vendor Support",
+       find_Element(webDriver, "Opp_Support_Page_Test_Business_Search").getText().toString());*/
 
     } catch (Exception e) {
       logger.info(e.toString());
