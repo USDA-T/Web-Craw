@@ -205,7 +205,7 @@ public class MasterApplication8a {
             break;
         }
       }
-      Thread.sleep(1200);// Sleep Needed here as elements are dynamically moving by the time we
+      Thread.sleep(1500);// Sleep Needed here as elements are dynamically moving by the time we
       /* click any button */
       if (!RevenueYesNo.equals(null) && !RevenueYesNo.equals("")) {
         switch (RevenueYesNo.toLowerCase()) {

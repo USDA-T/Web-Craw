@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -30,7 +31,7 @@ import static gov.sba.pageObjetcs.VendorDashboardPage.verify_Row_In_A_Table_And_
  */
 // Still in progress
 @Category({gov.sba.utils.integration.StableTests.class})
-public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
+public class TestWorkFlow8aInitialWithOnlyVendorSubApp {
   // Set The variabl.es/Define
   Logger logger = LogManager.getLogger(TestWorkFlow8aInitialWithOnlyVendorSubApp.class.getName());
   private static WebDriver webDriver;
@@ -43,7 +44,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       return;
     clear_Env_Chrome();
     logger.info("Set as head");
-    // TestHelpers.set_Headless();
+     TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("");
@@ -66,8 +67,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 
       /* new programs_Page().select_MyCertifications_Table(webDriver, "Delete_8a_Initial_Draft"); */
-      webDriver.navigate().to(
-          "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+      webDriver.navigate().to("https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
       click_Element(webDriver, "Application_Common_Accept_Button");
       /* masterApp_8a_Page_Click(webDriver,"page_basiceligibility"); */
       /* Basic Eligibility Page */
@@ -150,7 +150,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase {
       navigationMenuClick(webDriver, "DASHBOARD");
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
-      assertNotNull(all_Cells);
+      Assert.assertNotNull(all_Cells);
       /* For Demo Start - July 6 */
       navigationMenuClick(webDriver, "Logout");
       webDriver.get(TestHelpers.getBaseUrl());

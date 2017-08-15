@@ -46,16 +46,17 @@ public class NewAddBusinessPartern413Deepa {
       if (!yesno.equals(null) && !yesno.equals("")) {
         switch (yesno.toLowerCase()) {
           case "yes":
-            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_422_Y");
+            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_423_Y");
             generic_file_Upld(webDriver);
             break;
           case "no":
-            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_422_N");
+            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_423_N");
+            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
             break;
 
         }
       }
-      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+
     } catch (Exception e) {
       logger.info(e.toString());
       throw e;

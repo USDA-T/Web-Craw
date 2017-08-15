@@ -53,20 +53,20 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vcontributor_8a_DisAdv_financial_Notes Receivable Page
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_371_Y");
-            click_Element(webDriver, "EDWOSB_financial_Notes_Receivable_New_Button:");
+            click_Element(webDriver, "EDWOSB_financial_Notes_Receivable_New_Button");
             setText_Element(webDriver, "EDWOSB_financial_Notes_Name_Of_Debtor", "ABC");
             setText_Element(webDriver, "EDWOSB_financial_Notes_Addr_Of_Debtor", "1234");
             setText_Element(webDriver, "EDWOSB_financial_Notes_Original_Balance", "100");
             setText_Element(webDriver, "EDWOSB_financial_Notes_Current_Balance", "100");
-            setText_Element(webDriver, "EDWOSB_financial_Notes_Payment_Amoun", "100");
+            setText_Element(webDriver, "EDWOSB_financial_Notes_Payment_Amount", "100");
             setText_Element(webDriver, "EDWOSB_financial_Notes_Type_Of_Collateral", "XYZ");
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_371_N");
             break;
         }
@@ -85,7 +85,7 @@ public class EDWOSBFinancialDataSection {
       // Elements Tags: @contributor_8a_DisAdv_financial_Retirement Accounts #Do you have a Roth
       // IRA?
       if (!IRAYesNo.equals(null) && !IRAYesNo.equals("")) {
-        switch (IRAYesNo) {
+        switch (IRAYesNo.toLowerCase()) {
           case "Yes":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_372_Y");
             click_Element(webDriver, "EDWOSB_financial_Retirement_Accounts_IRA_New_Button");
@@ -106,15 +106,15 @@ public class EDWOSBFinancialDataSection {
             generic_file_Upld(webDriver);
             break;
           case "No":
-            click_Element(webDriver, "8a_DisAdv_financial_Retirement_Accounts_IRA_No");
+            click_Element(webDriver, "EDWOSB_financial_Page_Ans_372_N");
             break;
         }
       }
       // Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts Do you have any other
       // retirement accounts?
       if (!OTHYesNo.equals(null) && !OTHYesNo.equals("")) {
-        switch (OTHYesNo) {
-          case "Yes":
+        switch (OTHYesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_373_Y");
             click_Element(webDriver, "EDWOSB_financial_Retirement_Accounts_OTH_New_Button");
             new Select(find_Element(webDriver, "EDWOSB_financial_Retirement_Accounts_OTH_Type"))
@@ -126,12 +126,8 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             generic_file_Upld(webDriver, "EDWOSB_financial_Retirement_Accounts_OTH_All");
-            /*
-             * new newMppUploadDocumentPageDeepa(webDriver) .deepaUploadMppDocument(fixturesDir() +
-             * "Upload.pdf");
-             */
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_373_N");
             break;
         }
@@ -149,8 +145,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Life_Insurance
       if (!PolicyYesNo.equals(null) && !PolicyYesNo.equals("")) {
-        switch (PolicyYesNo) {
-          case "Yes":
+        switch (PolicyYesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Life_Insurance_Policy_Yes");
             click_Element(webDriver, "EDWOSB_financial_Life_Insurance_Policy_New_Button");
             setText_Element(webDriver, "EDWOSB_financial_Life_Insurance_Policy_Name", "ABC");
@@ -161,7 +157,7 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Life_Insurance_Policy_No");
             break;
         }
@@ -169,12 +165,12 @@ public class EDWOSBFinancialDataSection {
       // Elements Tags: @Contributor_8a_Disadv_life insurance
       // retirement accounts?
       if (!LoanesNo.equals(null) && !LoanesNo.equals("")) {
-        switch (LoanesNo) {
-          case "Yes":
+        switch (LoanesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Life_Insurance_Loan_Yes");
             setText_Element(webDriver, "EDWOSB_financial_Life_Insurance_Loan_Balance", "100");
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Life_Insurance_Loan_No");
             break;
         }
@@ -192,8 +188,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_377_Y");
             click_Element(webDriver, "EDWOSB_financial_StockandBonds_New_Button");
             new Select(find_Element(webDriver, "8a_DisAdv_financial_StockandBonds_Type"))
@@ -211,7 +207,7 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_378_N");
             break;
         }
@@ -230,8 +226,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Real Estate
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "8EDWOSB_financial_Page_Ans_378_Y");
             setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Primary_Address", "ABCD");
             if (!JointOwnedYesNo.equals(null) && !JointOwnedYesNo.equals("")) {
@@ -243,16 +239,16 @@ public class EDWOSBFinancialDataSection {
                   setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Percentage_Ownership",
                       "10");
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Percentage_Mortagee");
               }
             }
             if (!MortageNameYesNo.equals(null) && !MortageNameYesNo.equals("")) {
-              switch (MortageNameYesNo) {
-                case "Yes":
+              switch (MortageNameYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Name_Mortage_Yes");
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Name_Mortage_No");
               }
             }
@@ -261,12 +257,12 @@ public class EDWOSBFinancialDataSection {
             setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Mortage_Balance_Val", "111");
 
             if (!ndMortageYesNo.equals(null) && !ndMortageYesNo.equals("")) {
-              switch (ndMortageYesNo) {
-                case "Yes":
+              switch (ndMortageYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_2nd_Mortgage_Yes");
                   if (!ndMortageNameYesNo.equals(null) && !ndMortageNameYesNo.equals("")) {
-                    switch (ndMortageNameYesNo) {
-                      case "Yes":
+                    switch (ndMortageNameYesNo.toLowerCase()) {
+                      case "yes":
                         click_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_Name_2nd_Mortgage_Yes");
                         setText_Element(webDriver,
@@ -274,29 +270,29 @@ public class EDWOSBFinancialDataSection {
                         setText_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_CurrBal_2nd_Mortgage", "1111");
                         break;
-                      case "No":
+                      case "no":
                         click_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_Name_2nd_Mortgage_No");
                     }
                   }
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_2nd_Mortgage_No");
               }
             }
             if (!IncomeYesNo.equals(null) && !IncomeYesNo.equals("")) {
-              switch (IncomeYesNo) {
-                case "Yes":
+              switch (IncomeYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Income_yes");
                   setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Income_Val", "1000");
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Income_No");
               }
             }
 
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_378_N");
             break;
         }
@@ -315,16 +311,16 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Real Estate Other
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_380_Y");
             click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Add_Button");
             new Select(find_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Type"))
                 .selectByIndex(1);
             setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Address", "11111");
             if (!OthJointOwnedYesNo.equals(null) && !OthJointOwnedYesNo.equals("")) {
-              switch (OthJointOwnedYesNo) {
-                case "Yes":
+              switch (OthJointOwnedYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Jointly_Owned_Yes");
                   setText_Element(webDriver,
                       "EDWOSB_financial_Real_Estate_Oth_Percentage_RealEstate", "100");
@@ -334,11 +330,11 @@ public class EDWOSBFinancialDataSection {
               }
             }
             if (!OthMortageNameYesNo.equals(null) && !OthMortageNameYesNo.equals("")) {
-              switch (OthMortageNameYesNo) {
-                case "Yes":
+              switch (OthMortageNameYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Name_Mortage_Yes");
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Name_Mortage_No");
               }
             }
@@ -348,12 +344,12 @@ public class EDWOSBFinancialDataSection {
                 "111");
 
             if (!OthndMortageYesNo.equals(null) && !OthndMortageYesNo.equals("")) {
-              switch (OthndMortageYesNo) {
-                case "Yes":
+              switch (OthndMortageYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_2nd_Mortgage_Yes");
                   if (!OthndMortageNameYesNo.equals(null) && !OthndMortageNameYesNo.equals("")) {
-                    switch (OthndMortageNameYesNo) {
-                      case "Yes":
+                    switch (OthndMortageNameYesNo.toLowerCase()) {
+                      case "yes":
                         click_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_Oth_Name_2nd_Mortgage_Yes");
                         setText_Element(webDriver,
@@ -361,29 +357,29 @@ public class EDWOSBFinancialDataSection {
                         setText_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_Oth_CurrBal_2nd_Mortgage", "1111");
                         break;
-                      case "No":
+                      case "no":
                         click_Element(webDriver,
                             "EDWOSB_financial_Real_Estate_Oth_Name_2nd_Mortgage_No");
                     }
                   }
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_2nd_Mortgage_No");
               }
             }
             if (!OthIncomeYesNo.equals(null) && !OthIncomeYesNo.equals("")) {
-              switch (OthIncomeYesNo) {
-                case "Yes":
+              switch (OthIncomeYesNo.toLowerCase()) {
+                case "yes":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Income_yes");
                   setText_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Income_Val", "1000");
                   break;
-                case "No":
+                case "no":
                   click_Element(webDriver, "EDWOSB_financial_Real_Estate_Oth_Income_No");
               }
             }
 
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_380_N");
             break;
         }
@@ -401,8 +397,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Retirement Accounts #Do you have a Roth IRA?
       if (!PersonalYesNo.equals(null) && !PersonalYesNo.equals("")) {
-        switch (PersonalYesNo) {
-          case "Yes":
+        switch (PersonalYesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Personal_Property_Yes");
             click_Element(webDriver, "EDWOSB_financial_Personal_Property_New_Button");
             setText_Element(webDriver, "EDWOSB_financial_Personal_Property_CurrVal", "100");
@@ -411,14 +407,14 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Page_Ans_382_N");
             break;
         }
       }
       if (!OthPersonalYesNo.equals(null) && !OthPersonalYesNo.equals("")) {
-        switch (OthPersonalYesNo) {
-          case "Yes":
+        switch (OthPersonalYesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Oth_Personal_Property_Yes");
             click_Element(webDriver, "EDWOSB_financial_Oth_Personal_Property_New_Button");
             setText_Element(webDriver, "EDWOSB_financial_Oth_Personal_Property_CurrVal", "100");
@@ -428,7 +424,7 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Oth_Personal_Property_No");
             break;
         }
@@ -446,8 +442,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Notes Payable and Other Liabilities
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_NotesPayable_OtherLiabilities_Yes");
             click_Element(webDriver, "EDWOSB_financial_NotesPayable_OtherLiabilities_New_Button");
             new Select(
@@ -468,7 +464,7 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "8a_DisAdv_financial_NotesPayable_OtherLiabilities_No");
             break;
         }
@@ -486,8 +482,8 @@ public class EDWOSBFinancialDataSection {
     try {
       // Elements Tags: @vendor_Admin_8a_financial_Assessed Taxes Start
       if (!YesNo.equals(null) && !YesNo.equals("")) {
-        switch (YesNo) {
-          case "Yes":
+        switch (YesNo.toLowerCase()) {
+          case "yes":
             click_Element(webDriver, "EDWOSB_financial_Assessed_Taxes_Yes");
             click_Element(webDriver, "EDWOSB_financial_Assessed_Taxes_New_Button");
             setText_Element(webDriver, "EDWOSB_financial_Assessed_Taxes_Whom_Payable", "ABCD");
@@ -501,7 +497,7 @@ public class EDWOSBFinancialDataSection {
             click_Element(webDriver, "Application_Common_Create_button");
             Thread.sleep(2000);
             break;
-          case "No":
+          case "no":
             click_Element(webDriver, "EDWOSB_financial_Assessed_Taxes_No");
             break;
         }
@@ -537,6 +533,7 @@ public class EDWOSBFinancialDataSection {
   public static void edwosb_financial_Review_Page(WebDriver webDriver) throws Exception {
     try {
       // Elements Tags: Application_Common_Submit_Button
+      accept_Alert(webDriver, 4);
       click_Element(webDriver, "Application_Common_Submit_Button");
       accept_Alert(webDriver, 4);
     } catch (Exception e) {
@@ -545,18 +542,5 @@ public class EDWOSBFinancialDataSection {
     }
 
   }
-
-  public static void edwosb_Signature_Page(WebDriver webDriver) throws Exception {
-    try {
-      // Elements Tags: contributor_8a_DisAdv_Signature Page
-      click_Element(webDriver, "8a_AllApp_Signature_id");
-      click_Element(webDriver, "Application_Common_Continue_Button");
-    } catch (Exception e) {
-      logger.info(e.toString());
-      throw e;
-    }
-
   }
-
-}
 

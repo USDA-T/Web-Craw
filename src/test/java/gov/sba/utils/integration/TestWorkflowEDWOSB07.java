@@ -18,6 +18,7 @@ import static gov.sba.pageObjetcs.EDWOSBFinancialDataSection.*;
 import static gov.sba.pageObjetcs.NewAddBusinessPartern413Deepa.Edwosb_legalseparation;
 import static gov.sba.pageObjetcs.NewAddBusinessPartern413Deepa.NewFinancialQuestion;
 import static gov.sba.pageObjetcs.ProgramsPage.join_New_Program_CheckBoxes;
+import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 
 /*
  * Documentation for Workflow WorkFlows for EDWOSB - Accommodating best minimal Workflow Tests
@@ -39,7 +40,7 @@ public class TestWorkflowEDWOSB07 extends TestCase {
     get_Stop_Execution_Flag();
     clear_Env_Chrome();
     logger.info("Set as head");
-    TestHelpers.set_Headless();
+    //TestHelpers.set_Headless();
     webDriver = set_Timeouts(TestHelpers.getDefaultWebDriver());
     webDriver.get(TestHelpers.getBaseUrl());
     String[] details = findUnusedDunsNumber("corp");
@@ -70,10 +71,11 @@ public class TestWorkflowEDWOSB07 extends TestCase {
       Edwosb_Questionnaire_AdjustedGrossIncome_Page(webDriver, "yes", "Yes");
       Edwosb_Questionnaire_Assets_Page(webDriver, "yes", "yes", "yes");
       Edwosb_Questionnaire_EconomicDisadvantage_Page(webDriver, "yes");
+      accept_Alert(webDriver,5);
       /* 413 form to including first and secnodn partners */
       NewFinancialQuestion(webDriver, "deepa", "patri", "123456789", "deepa@gmail.com", "12", "VA",
           "12345", "123-123-1234", "123-123-1234", "MClean", "USA");
-      Edwosb_legalseparation(webDriver, "yes");
+      Edwosb_legalseparation(webDriver, "no");
       /* EDWOSB financial question page */
       edwosb_financial_CashOnHand_Page(webDriver, "01/01/2018", "111", "111", "111");
       edwosb_financial_OtherSource_Page(webDriver, "111", "111", "other income comments", "111",
@@ -90,11 +92,9 @@ public class TestWorkflowEDWOSB07 extends TestCase {
       edwosb_financial_PersonalSummary_Page(webDriver);
       edwosb_financial_PrivacyStatements_Page(webDriver);
       edwosb_financial_Review_Page(webDriver);
-      edwosb_Signature_Page(webDriver);
-
+      finalSignatureSubmit(webDriver);
 
       /* if (stop_Exec == 1) {return;} /* TODO Working On */
-
 
     } catch (Exception e) {
       logger.debug(e.toString());

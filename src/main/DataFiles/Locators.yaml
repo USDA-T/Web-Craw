@@ -223,8 +223,8 @@ EDWOSB_Questionnaire_Page_Ans_420_setText: {Locator: 'id', Value: "answers_420_c
 EDWOSB_Questionnaire_Page_Ans_420_NA: {Locator: 'id', Value: "answers_420_value_na"}
 EDWOSB_Questionnaire_Page_Ans_421_N: {Locator: 'id', Value: "answers_421_value_no"}
 EDWOSB_Questionnaire_Page_Ans_421_Y: {Locator: 'id', Value: "answers_421_value_yes"}
-EDWOSB_Questionnaire_Page_Ans_422_Y: {Locator: 'id', Value: "answers_422_value_yes"}
-EDWOSB_Questionnaire_Page_Ans_422_N: {Locator: 'id', Value: "answers_422_value_no"}
+EDWOSB_Questionnaire_Page_Ans_423_Y: {Locator: 'id', Value: "answers_423_value_yes"}
+EDWOSB_Questionnaire_Page_Ans_423_N: {Locator: 'id', Value: "answers_423_value_no"}
 # FinancialData Page - EDWOSB
 EDWOSB_Questionnaire_Page_Add_Person:          {Locator: 'xpath', Value: "//button[ contains(@class,'owner_add_button')]"}
 EDWOSB_Questionnaire_Page_FinancialPage_Link:  {Locator: 'xpath', Value: "//ul[ contains(@class,'usa-sidenav-list')]/li/a[ contains(text(),'Financial Data')]"}
@@ -420,22 +420,57 @@ WOSB_Questionnaire_Page_Ans_189_Yes: {Locator: 'id', Value: "answers_189_value_y
 WOSB_Questionnaire_Page_Ans_188_N: {Locator: 'xpath', Value: "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_no') ]"}
 WOSB_Questionnaire_Page_Ans_189_Y: {Locator: 'xpath', Value: "//input[@type='radio' and contains(@id,'answers_') and contains(@id,'_value_yes') ]"}
 WOSB_Questionnaire_Page_Ans_190_Y: {Locator: 'id', Value: "answers_190_value_yes"}
+WOSB_Questionnaire_Page_Ans_190_N: {Locator: 'id', Value: "answers_190_value_no"}
+WOSB_Questionnaire_Page_Ans_191_Y: {Locator: 'id', Value: "answers_191_value_yes"}
+WOSB_Questionnaire_Page_Ans_191_N: {Locator: 'id', Value: "answers_191_value_no"}
+WOSB_Questionnaire_Page_Ans_192_Y: {Locator: 'id', Value: "answers_192_value_yes"}
+WOSB_Questionnaire_Page_Ans_192_Comment: {Locator: 'id', Value: "answers_192_comment"}
+WOSB_Questionnaire_Page_Ans_192_N: {Locator: 'id', Value: "answers_192_value_no"}
+WOSB_Questionnaire_Page_Ans_193_Y: {Locator: 'id', Value: "answers_193_value_yes"}
+WOSB_Questionnaire_Page_Ans_193_N: {Locator: 'id', Value: "answers_193_value_no"}
+WOSB_Questionnaire_Page_Ans_194_Y: {Locator: 'id', Value: "answers_194_value_yes"}
+WOSB_Questionnaire_Page_Ans_194_N: {Locator: 'id', Value: "answers_194_value_no"}
+WOSB_Questionnaire_Page_Ans_195_Y: {Locator: 'id', Value: "answers_195_value_yes"}
+WOSB_Questionnaire_Page_Ans_195_N: {Locator: 'id', Value: "answers_195_value_no"}
+WOSB_Questionnaire_Page_Ans_196_Y: {Locator: 'id', Value: "answers_196_value_yes"}
+WOSB_Questionnaire_Page_Ans_196_N: {Locator: 'id', Value: "answers_196_value_no"}
+WOSB_Questionnaire_Page_Ans_197_Y: {Locator: 'id', Value: "answers_197_value_yes"}
+WOSB_Questionnaire_Page_Ans_197_N: {Locator: 'id', Value: "answers_197_value_no"}
+WOSB_Questionnaire_Page_Ans_198_Y: {Locator: 'id', Value: "answers_198_value_yes"}
+WOSB_Questionnaire_Page_Ans_Attachment_All:  {L1:  "//div[@id='answers[198][attachment]']//div[@id='add-req-doc-button']/a",
+                                           L2:  "//div[@id='answers[198][attachment]']//button[@id='doc-lib-button']",
+                                           L3: "//div[@id='answers[198][attachment]']//*[@id='truth']",
+                                           L4: "//div[@id='answers[198][attachment]']//button[@id='document_library_associate']"}
+WOSB_Questionnaire_Page_Ans_198_N: {Locator: 'id', Value: "answers_198_value_no"}
+WOSB_Questionnaire_Page_Ans_198_Comment: {Locator: 'id', Value: "answers_198_comment"}
 WOSB_Questionnaire_Page_Ans_201_N: {Locator: 'id', Value: "answers_201_value_no"}
 WOSB_financial_Page_Ans_201_setText: {Locator: 'id', Value: "answers_201_comment"}
 WOSB_Questionnaire_Page_Ans_202_N: {Locator: 'id', Value: "answers_202_value_no"}
 WOSB_financial_Page_Ans_202_setText: {Locator: 'id', Value: "answers_202_comment"}
 WOSB_Questionnaire_Page_Ans_203_N: {Locator: 'id', Value: "answers_203_value_no"}
+WOSB_Questionnaire_Page_Ans_203_Y: {Locator: 'id', Value: "answers_203_value_yes"}
 WOSB_Questionnaire_Page_Ans_204_N: {Locator: 'id', Value: "answers_204_value_no"}
+WOSB_Questionnaire_Page_Ans_204_Y: {Locator: 'id', Value: "answers_204_value_yes"}
 WOSB_Questionnaire_Page_Ans_205_N: {Locator: 'id', Value: "answers_205_value_no"}
+WOSB_Questionnaire_Page_Ans_205_Y: {Locator: 'id', Value: "answers_205_value_yes"}
+WOSB_Questionnaire_Page_Ans_206_Y: {Locator: 'id', Value: "answers_206_value_yes"}
 WOSB_Questionnaire_Page_Ans_206_N: {Locator: 'id', Value: "answers_206_value_no"}
+WOSB_Questionnaire_Page_Ans_206_NA: {Locator: 'id', Value: "answers_206_value_na"}
 WOSB_financial_Page_Ans_206_setText: {Locator: 'id', Value: "answers_206_comment"}
+WOSB_Questionnaire_Page_Ans_207_Y: {Locator: 'id', Value: "answers_207_value_yes"}
 WOSB_Questionnaire_Page_Ans_207_N: {Locator: 'id', Value: "answers_207_value_no"}
+WOSB_Questionnaire_Page_Ans_208_Y: {Locator: 'id', Value: "answers_208_value_yes"}
 WOSB_Questionnaire_Page_Ans_208_N: {Locator: 'id', Value: "answers_208_value_no"}
+WOSB_Questionnaire_Page_Ans_209_Y: {Locator: 'id', Value: "answers_209_value_yes"}
 WOSB_Questionnaire_Page_Ans_209_N: {Locator: 'id', Value: "answers_209_value_no"}
+WOSB_Questionnaire_Page_Ans_210_Y: {Locator: 'id', Value: "answers_210_value_yes"}
 WOSB_Questionnaire_Page_Ans_210_N: {Locator: 'id', Value: "answers_210_value_no"}
+WOSB_Questionnaire_Page_Ans_211_Y: {Locator: 'id', Value: "answers_211_value_yes"}
 WOSB_Questionnaire_Page_Ans_211_N: {Locator: 'id', Value: "answers_211_value_no"}
+WOSB_Questionnaire_Page_Ans_212_Y: {Locator: 'id', Value: "answers_212_value_yes"}
 WOSB_Questionnaire_Page_Ans_212_N: {Locator: 'id', Value: "answers_212_value_no"}
 WOSB_financial_Page_Ans_212_setText: {Locator: 'id', Value: "answers_212_comment"}
+WOSB_Questionnaire_Page_Ans_213_Y: {Locator: 'id', Value: "answers_213_value_yes"}
 WOSB_Questionnaire_Page_Ans_213_N: {Locator: 'id', Value: "answers_213_value_no"}
 WOSB_Questionnaire_Page_Ans_247_Yes: {Locator: 'id', Value: "answers_247_value_yes"}
 
@@ -533,11 +568,11 @@ Contributor_Login_Button_8a_BusPart:                           {Locator: "xpath"
 
 #Contributor Page End
 
-8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'BasicEligibility')] ]/td/a "}
-8a_Application_Page_Business_Ownership_Link:                  {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Business Ownership')] ]/td/a "}
-8a_Application_Page_Character_Link:                           {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Character')]  ]/td/a "}
-8a_Application_Page_Potential_for_Success_Link:               {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr/td/a[ contains(text(),'Potential for Success')] "}
-8a_Application_Page_Control_Link:                             {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Control') ]  ]/td/a "}
+8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'BasicEligibility' ) ] "}
+8a_Application_Page_Business_Ownership_Link:                  {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'business_ownership' ) ] "}
+8a_Application_Page_Character_Link:                           {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Character' ) ]  "}
+8a_Application_Page_Potential_for_Success_Link:               {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Potential for Success' ) ] "}
+8a_Application_Page_Control_Link:                             {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Control' ) ]   "}
 #8a_Application_Page_Company_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company')]  ]/td/a "}
 # @8a_Initial_Program  End
 

@@ -183,11 +183,11 @@ public class EDWOSBCooperationQuestionnairePage {
           case "no":
             click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_399_N");
             setText_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_399_setText", "QA testing");
-            click_Element(webDriver, "Application_Common_Submit_Button");
             break;
         }
-      }
 
+      }
+        click_Element(webDriver, "Application_Common_Submit_Button");
       /* Scorp questions ends */
     } catch (Exception e) {
       logger.info(e.toString());
@@ -474,10 +474,11 @@ public class EDWOSBCooperationQuestionnairePage {
             break;
           case "no":
             click_Element(webDriver, "EDWOSB_Questionnaire_Page_Ans_421_N");
+            click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
             break;
         }
       }
-      click_Element(webDriver, "EDWOSB_Questionnaire_Page_Commit");
+
     } catch (Exception e) {
       logger.info(e.toString());
       throw e;
