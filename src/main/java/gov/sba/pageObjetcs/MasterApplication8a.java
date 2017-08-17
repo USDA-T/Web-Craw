@@ -25,10 +25,12 @@ public class MasterApplication8a {
     if (!link_To_Click.equals(null) && !link_To_Click.equals("")) {
       switch (link_To_Click.toLowerCase()) {
         case "page_contributors":
-          click_Element(webDriver, "8a_Application_Page_Contributers_Link");
+          find_Element(webDriver,"8a_Application_Page_Contributers_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Contributers_Link");
           break;
         case "page_contributors_start_indv_cont":
-          click_Element(webDriver, "8a_Application_Page_Contributers_Link");
+          find_Element(webDriver,"8a_Application_Page_Contributers_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Contributers_Link");
           click_Element(webDriver, "8a_Application_Page_Contributers_Link_Start_Indv");
           click_Element(webDriver, "Application_Common_Accept_Button");
           break;
@@ -36,16 +38,20 @@ public class MasterApplication8a {
           click_Element(webDriver, "8a_Application_Page_BasicEligibility_Link");
           break;
         case "page_business_ownership":
-          click_Element(webDriver, "8a_Application_Page_Business_Ownership_Link");
+          find_Element(webDriver, "8a_Application_Page_Business_Ownership_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Business_Ownership_Link");
           break;
         case "page_character_link":
-          click_Element(webDriver, "8a_Application_Page_Character_Link");
+          find_Element(webDriver,"8a_Application_Page_Character_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Character_Link");
           break;
         case "page_potential_for_success_link":
-          click_Element(webDriver, "8a_Application_Page_Potential_for_Success_Link");
+          find_Element(webDriver,"8a_Application_Page_Potential_for_Success_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Potential_for_Success_Link");
           break;
         case "page_control_link":
-          click_Element(webDriver, "8a_Application_Page_Control_Link");
+          find_Element(webDriver,"8a_Application_Page_Control_Link").click();
+          //click_Element(webDriver, "8a_Application_Page_Control_Link");
           break;
       }
 

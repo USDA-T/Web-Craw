@@ -154,7 +154,7 @@ public class TestWorkflowWOSBSupervisor extends TestCase {
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(0);
       click_Element(webDriver, "Application_Common_Submit_Button");
 
-      // click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+      //  double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       // click_Element(webDriver, "SBA_Review_Return_For_Mod");
       // click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
 

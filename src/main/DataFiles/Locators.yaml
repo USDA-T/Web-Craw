@@ -36,7 +36,18 @@ Navigation_Dashboard:       {Locator: 'xpath', Value: "//nav[@role='navigation']
 Navigation_Business:        {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Business')]"}
 Navigation_Documents:       {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Documents')]"}
 Navigation_Home:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'Home')]"}
-Navigation_Prepare:            {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'repare')]"}
+Navigation_Prepare:         {Locator: 'xpath', Value: "//nav[@role='navigation']/div/ul/li/a/span[contains(text(),'repare')]"}
+Navigation_Present_Or_Not:  {Locator: 'xpath', Value: "//nav[@role='navigation']"}
+
+Navigation_Logout_02:           {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'ogout') ] ] ]"}
+Navigation_Help_02:             {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'Help') ] ] ]"}
+Navigation_Cases_02:            {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'ases') ] ] ]"}
+Navigation_Programs_02:         {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'rograms') ] ] ]"}
+Navigation_Dashboard_02:        {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'Dashboard') ] ] ]"}
+Navigation_Business_02:         {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'Business') ] ] ]"}
+Navigation_Documents_02:        {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'Documents') ] ] ]"}
+Navigation_Home_02:             {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'Home') ] ] ]"}
+Navigation_Prepare_02:          {Locator: 'xpath', Value: "//div[ contains(@class, 'usa-navbar') ]//li [ a [ span[ contains(text(), 'repare') ] ] ]"}
 
 # Navigation Links On Top Nav Bar
 Navigation_Bar_Profile:         {Locator: 'id', Value: "profileid"}
@@ -547,7 +558,7 @@ SBA_Table_Search:       {Locator: 'xpath', Value: "//div[@id='table-search']/tab
 # My Contracting SBA Program End
 
 # @8a_Initial_Program  Start
-8a_Application_Page_Contributers_Link:                        {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Contributors') ] ]/td/a "}
+8a_Application_Page_Contributers_Link:                        {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'contributor_sections' ) ] "}
 8a_Application_Page_Contributers_Link_Start_Indv:             {Locator: 'xpath', Value: "//a[ contains (@href, 'eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
 Contributor_Add_DisAdv_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text() , 'Add another Disadvantaged Individual, if applicable' ) ]"}
 Contributor_Add_Spouse_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text(), 'Add a spouse of a Disadvantaged Individual' ) ]"}
@@ -568,13 +579,14 @@ Contributor_Login_Button_8a_BusPart:                           {Locator: "xpath"
 
 #Contributor Page End
 
-8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'BasicEligibility' ) ] "}
+8a_Application_Page_BasicEligibility_Link:                    {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'eligibility' ) ] "}
 8a_Application_Page_Business_Ownership_Link:                  {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'business_ownership' ) ] "}
-8a_Application_Page_Character_Link:                           {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Character' ) ]  "}
-8a_Application_Page_Potential_for_Success_Link:               {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Potential for Success' ) ] "}
-8a_Application_Page_Control_Link:                             {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(text(),'Control' ) ]   "}
+8a_Application_Page_Character_Link:                           {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'character' )  ]  "}
+8a_Application_Page_Potential_for_Success_Link:               {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'potential_for_success' ) ] "}
+8a_Application_Page_Control_Link:                             {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'control' )  ]   "}
 #8a_Application_Page_Company_Link:                    {Locator: 'xpath', Value: "//table[@class='eight_a_sections']/tbody/tr[ td[2]/a[ contains(text(),'Company')]  ]/td/a "}
 # @8a_Initial_Program  End
+
 
 # @8a_Initial_Program Basic Eligiblity -General Assessment Start
 #@General Assessment

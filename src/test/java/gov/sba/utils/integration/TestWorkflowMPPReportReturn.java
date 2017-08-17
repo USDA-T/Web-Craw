@@ -77,7 +77,7 @@ public class TestWorkflowMPPReportReturn extends TestCase {
       /* case Overview Page */
       verify_Text(webDriver, "Case_CaseOverview_title", "Case Overview");
       click_Element(webDriver, "Case_Submit_Button");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       /* Determination SBA Approved */
       click_Element(webDriver, "SBA_Review_Determ_Made");
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));

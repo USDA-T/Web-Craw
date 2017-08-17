@@ -87,7 +87,7 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       Thread.sleep(2000); // Sleep neded here
       click_Element(webDriver, "Application_Common_Save_Notes_Id");
       Thread.sleep(2000); // Sleep neded here
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       Thread.sleep(2000); // Sleep neded here
       click_Element(webDriver, "Application_Common_Submit_Button");
       Thread.sleep(1000); // Sleep neded here
@@ -104,7 +104,7 @@ public class TestWorkflowEDWOSB04 extends TestCase {
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Business_Name_Link");
       click_Element(webDriver, "Application_Common_Submit_Button_Id");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       click_Element(webDriver, "SBA_Review_Determ_Made");
       new Select(find_Element(webDriver, "Analyst_Review_Determ_Decision")).selectByIndex(1);
       /* if (stop_Exec == 1) { return;}/* TODO Hard Coded Duns Number */

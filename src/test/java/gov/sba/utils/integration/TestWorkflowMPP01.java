@@ -148,7 +148,7 @@ public class TestWorkflowMPP01 extends TestCase {
 
       /* if (stop_Exec == 1) { return; } /* TODO DE exists on submit */
       click_Element(webDriver, "Application_Common_Submit_Button");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Pending"));
       navigationBarClick(webDriver, "LOGOUT");
 
@@ -156,7 +156,7 @@ public class TestWorkflowMPP01 extends TestCase {
       new LoginPageWithReference(webDriver, 56).Login_With_Reference();
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Business_Name_Link");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       click_Element(webDriver, "SBA_Review_Determ_Made");
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));

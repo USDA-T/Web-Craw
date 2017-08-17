@@ -3,14 +3,7 @@ package gov.sba.others;
 
 import static gov.sba.automation.AssertionUtils.delete_All_Application_Draft;
 import static gov.sba.automation.AssertionUtils.return_All_Applications;
-import static gov.sba.automation.CommonApplicationMethods.clear_Env_Chrome;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.get_Stop_Execution_Flag;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-import static gov.sba.automation.CommonApplicationMethods.take_ScreenShot_TestCaseName;
+import static gov.sba.automation.CommonApplicationMethods.*;
 import static gov.sba.utils.integration.FillApplCreatePages.finalSignatureSubmit;
 import static gov.sba.utils.integration.FillApplCreatePages.page8aFillUp;
 import static gov.sba.utils.integration.NewLLCQuestionanireDeepa.newLLCQuestionanireDeepa;
@@ -141,7 +134,7 @@ public class TestWorkflowWOSBAnalyst extends TestCase {
 
       click_Element(webDriver, "Application_Common_Submit_Button");
 
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       click_Element(webDriver, "SBA_Review_Return_For_Mod");
       // click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
 

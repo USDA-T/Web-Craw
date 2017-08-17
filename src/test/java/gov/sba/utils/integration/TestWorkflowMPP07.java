@@ -122,7 +122,7 @@ public class TestWorkflowMPP07 extends TestCase {
       new LoginPageWithReference(webDriver, 56).Login_With_Reference();
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Business_Name_Link");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
       /* Determination SBA Approved */
       click_Element(webDriver, "SBA_Review_Determ_Made");
       assertNotNull(find_Element(webDriver, "Analyst_Review_Determ_Decision", true));

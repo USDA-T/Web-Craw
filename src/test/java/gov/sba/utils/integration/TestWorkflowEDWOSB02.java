@@ -145,7 +145,7 @@ public class TestWorkflowEDWOSB02 extends TestCase {
       /* if (stop_Exec == 1) { return; } /* TODO DE App-1201 exists on submit button */
       click_Element(webDriver, "Application_Common_Submit_Button");
       click_Element(webDriver, "Application_Common_Submit_Button");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       assertTrue(find_Element(webDriver, "SBA_Review_Nav").getText().contains("Status: Active"));
       assertTrue(
@@ -156,7 +156,7 @@ public class TestWorkflowEDWOSB02 extends TestCase {
       new LoginPageWithReference(webDriver, 55).Login_With_Reference();
       search_Cases_Duns_Number_Table(webDriver, duns_Number);
       click_Element(webDriver, "SBA_Legal_Business_Name_Link");
-      click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+       double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
       /* Verify on Analyst Detremination page -Determination Made, Decision not displayed */
       click_Element(webDriver, "SBA_Review_Determ_Made");

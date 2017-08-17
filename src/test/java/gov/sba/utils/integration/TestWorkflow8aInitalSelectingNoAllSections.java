@@ -60,14 +60,12 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 
       /* return_All_Applications(webDriver, 11, "165324125");144754156 */
       /* delete_All_Application_Draft(webDriver, email, password, duns_Number); */
-      delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, "165324125");
+      //delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, "165324125");
       new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();
       /* Login to Dashboard. */
 
       /* new LoginPageWithDetails(webDriver, email, password).Login_With_Details(); */
-      webDriver.navigate().to(
-          "https://certify.qa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
-      click_Element(webDriver, "Application_Common_Accept_Button");
+      join_New_Program_CheckBoxes(webDriver, "8A");
       /* asterApp_8a_Page_Click(webDriver,"page_basiceligibility"); */
       /* Basic Eligibility Page selecting all no */
       BasicEligiblity_General_Assessment_Page(webDriver, "no", "no", "no", "no", "no");
@@ -160,7 +158,7 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});
       assertNotNull(all_Cells);
       /* For Demo Start - July 6 */
-      navigationMenuClick(webDriver, "Logout");
+      navigationMenuClick(webDriver, "LOGOUT");
       webDriver.get(TestHelpers.getBaseUrl());
       click_Element(webDriver, "SBA_Login_Button");
       setText_Element(webDriver, "SBA_Login_Email", "sba_supervisor_8a_cods_5@mailinator.com");
@@ -185,7 +183,7 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 
   @After
   public void tearDown() throws Exception {
-    // webDriver.quit();
+     webDriver.quit();
   }
 }
 

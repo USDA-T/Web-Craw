@@ -1,11 +1,6 @@
 package gov.sba.automation;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.navigationBarClick;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.non_Vendor_searchDuns_Number;
+import static gov.sba.automation.CommonApplicationMethods.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -211,7 +206,7 @@ public class AssertionUtils {
 
           current_Row.get(0).findElement(By.xpath("td/a[contains(text(),'Legal Business Name')]"))
               .click();
-          click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+           double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
           click_Element(webDriver, "SBA_Review_Return_For_Mod");
           click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
           webDriver.navigate().back();
@@ -237,7 +232,7 @@ public class AssertionUtils {
 
           accept_Alert(webDriver, 15);
 
-          click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+           double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
           click_Element(webDriver, "SBA_Review_Return_For_Mod");
           click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
 

@@ -2,15 +2,6 @@
 
 package gov.sba.utils.integration;
 
-import static gov.sba.automation.CommonApplicationMethods.accept_Alert;
-import static gov.sba.automation.CommonApplicationMethods.checkApplicationExists;
-import static gov.sba.automation.CommonApplicationMethods.click_Element;
-import static gov.sba.automation.CommonApplicationMethods.deleteApplication;
-import static gov.sba.automation.CommonApplicationMethods.find_Element;
-import static gov.sba.automation.CommonApplicationMethods.find_Elements;
-import static gov.sba.automation.CommonApplicationMethods.navigationMenuClick;
-import static gov.sba.automation.CommonApplicationMethods.setText_Element;
-
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +16,8 @@ import gov.sba.automation.DatabaseUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.pageObjetcs.ProgramsPage;
 import junit.framework.TestCase;
+
+import static gov.sba.automation.CommonApplicationMethods.*;
 
 public class AnalystReviewPage extends TestCase {
   private static final Logger AnalystReviewPage =
@@ -240,7 +233,7 @@ public class AnalystReviewPage extends TestCase {
         click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
         // *[@id="main-content"]/div[2]/div[1]/div/aside/ul/li[5]/a
 
-        click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+         double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
 
         Assert.assertEquals(
             find_Element(webDriver, "SBA_Question_New_Determination_Review_Started").getText(),
@@ -259,7 +252,7 @@ public class AnalystReviewPage extends TestCase {
         setText_Element(webDriver, "SBA_Assesment_Note_Body", "Qa Test");
         click_Element(webDriver, "Application_Common_Submit_Button");
 
-        click_Element(webDriver, "SBA_Question_Determinations_SideNav");
+         double_Click_Element(webDriver, "SBA_Question_Determinations_SideNav");
         click_Element(webDriver, "SBA_Review_Return_For_Mod");
         click_Element(webDriver, "SBA_Signature_Review_Save_Continue");
 
