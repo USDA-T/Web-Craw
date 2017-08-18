@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,11 +32,16 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     Expected_Text = "Control";
     assertEquals(Actual_Text, Expected_Text);
     // Verify Status.
-    Actual_Text = webDriver.findElement(By.xpath("//tr[3]/td[3]")).getText();
-    Expected_Text = "NOT STARTED";
+    Actual_Text = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "Not started";
     assertEquals(Actual_Text, Expected_Text);
+    WebElement EligibilityCompleteStatus = webDriver
+			.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span"));
+	HighLight.highLightElement(webDriver, EligibilityCompleteStatus);
     // Click on the link to start eligibility check.
-    webDriver.findElement(By.linkText("Control")).click();
+    WebElement rateElement = webDriver.findElement(By.linkText("Control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement);
+	JavascriptExecutor jse = (JavascriptExecutor) webDriver;
     // Verify intro page.
     // Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
     // Expected_Text =
@@ -156,19 +162,24 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     // question1, 1.4a
     webDriver.findElement(By.xpath("//label[2]")).click();
     // question2, 1.4b
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // question 3, 1.4c
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")));
     // question 4, 1.4d
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // question 5, 1.4e Upload Doc only
     // Upload a document.
     String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage4 contributorUpload5 = new ContributorUploadPage4(webDriver);
-    contributorUpload5.ContributorUpload(file_path_abs);
+	Upload4pdfOnSamePage contributorUpload4 = new Upload4pdfOnSamePage(webDriver);
+	contributorUpload4.Upload4pdfOnSame(file_path_abs);
     // question 6, 1.4f with comment.
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
     // question 7, 1.4g select with skip to Review.
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")).click();
     // Click on the save and continue button and verify that user is
     // requested to enter comment.
@@ -179,7 +190,7 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     // Enter comment.
     webDriver.findElement(By.id("answers_176_comment")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
-    webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+    CoreUtils.clickContinue(webDriver);
     // Review Page.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -194,14 +205,18 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     // Navigate back and verify in-progress status for the draft.
     webDriver.findElement(By.xpath("//a/span")).click();
     // click on the draft 8(a) Initial Program.
-    webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-    Actual_Text = webDriver.findElement(By.xpath("//tr[6]/td[3]")).getText();
-    Expected_Text = "IN PROGRESS";
+    WebElement rateElement2 = webDriver.findElement(By.linkText("8(a) Initial Application"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement2);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")));
+    Actual_Text = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "In progress";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement CharacterInProgressStatus = webDriver.findElement(By.xpath("//tr[6]/td[3]"));
-    HighLight.highLightElement(webDriver, CharacterInProgressStatus);
-    webDriver.findElement(By.linkText("Control")).click();
-    webDriver.findElement(By.id("eight_a_firm_control")).click();
+    WebElement CharacterInProgressStatus1 = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span"));
+    HighLight.highLightElement(webDriver, CharacterInProgressStatus1);
+	WebElement rateElement111 = webDriver.findElement(By.linkText("Control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement111);  
+    WebElement rateElement4 = webDriver.findElement(By.id("eight_a_firm_control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement4); 
     CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Review";
@@ -212,8 +227,10 @@ public class ControlMasterAppSubsectionPage extends TestCase {
         "Control section first scenario with NO selection is completed, second scenario for YES selection begins");
     // ++++++++++======>>>>>
     // Click on the control link.
-    webDriver.findElement(By.linkText("Control")).click();
-    webDriver.findElement(By.id("eight_a_firm_control")).click();
+    WebElement rateElement6 = webDriver.findElement(By.linkText("Control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement6);     
+    WebElement rateElement41 = webDriver.findElement(By.id("eight_a_firm_control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement41); 
     // CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -316,31 +333,37 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
     MontanaUploadDocument.MontanaUploadDocument(file_path_abs1);
     // question2, 1.4b
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage2 contributorUpload = new ContributorUploadPage2(webDriver);
-    contributorUpload.ContributorUpload(file_path_abs);
+	Upload2pdfOnSamePage ContributorUpload2 = new Upload2pdfOnSamePage(webDriver);
+	ContributorUpload2.Upload2pdfOnSame(file_path_abs);
     // question 3, 1.4c
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")));
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage3 contributorUpload1 = new ContributorUploadPage3(webDriver);
-    contributorUpload1.ContributorUpload(file_path_abs);
+	Upload3pdfOnSamePage contributorUpload3 = new Upload3pdfOnSamePage(webDriver);
+	contributorUpload3.Upload3pdfOnSame(file_path_abs);
     // question 4, 1.4d
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")));
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")).click();
     // question 5, 1.4e Upload Doc only
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage4 contributorUpload2 = new ContributorUploadPage4(webDriver);
-    contributorUpload2.ContributorUpload(file_path_abs);
+	Upload4pdfOnSamePage contributorUpload41 = new Upload4pdfOnSamePage(webDriver);
+	contributorUpload41.Upload4pdfOnSame(file_path_abs);
     // question 6, 1.4f with comment.
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[6]/fieldset/div/input")));
     webDriver.findElement(By.xpath("//div[6]/fieldset/div/input")).click();
     // question 6, Upload Doc only
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage5 contributorUpload3 = new ContributorUploadPage5(webDriver);
-    contributorUpload3.ContributorUpload(file_path_abs);
+	Upload5pdfOnSamePage contributorUpload5 = new Upload5pdfOnSamePage(webDriver);
+	contributorUpload5.Upload5pdfOnSame(file_path_abs);
     // question 7, 1.4g select with no skip.
-    webDriver.findElement(By.xpath("//div[7]/fieldset/div/input")).click();
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.xpath("//div[7]/fieldset/div/input")));
+	    webDriver.findElement(By.xpath("//div[7]/fieldset/div/input")).click();
     // Enter comment.
     webDriver.findElement(By.id("answers_174_comment")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
@@ -383,15 +406,19 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     Expected_Text =
         "Do any other firms or individuals provide financial support or bonding support to the applicant firm?";
     // Navigate back and verify in-progress status for the draft.
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//a/span")));
     webDriver.findElement(By.xpath("//a/span")).click();
     // click on the draft 8(a) Initial Program.
-    webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-    Actual_Text = webDriver.findElement(By.xpath("//tr[6]/td[3]")).getText();
-    Expected_Text = "IN PROGRESS";
+    WebElement rateElement7 = webDriver.findElement(By.linkText("8(a) Initial Application"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement7);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")));    
+	Actual_Text = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "In progress";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement CharacterInProgressStatus1 = webDriver.findElement(By.xpath("//tr[6]/td[3]"));
-    HighLight.highLightElement(webDriver, CharacterInProgressStatus1);
-    webDriver.findElement(By.linkText("Control")).click();
+    WebElement CharacterInProgressStatus11 = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span"));
+    HighLight.highLightElement(webDriver, CharacterInProgressStatus11);
+    WebElement rateElement51 = webDriver.findElement(By.linkText("Control"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement51);   	
     webDriver.findElement(By.id("eight_a_control_leased_facility")).click();
     CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -401,10 +428,10 @@ public class ControlMasterAppSubsectionPage extends TestCase {
     CoreUtils.clickContinue(webDriver);
     // webDriver.switchTo().alert().accept();
     // Verify status.
-    Actual_Text = webDriver.findElement(By.xpath("//tr[6]/td[3]")).getText();
-    Expected_Text = "COMPLETE";
+    Actual_Text = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "Complete";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement ControlComplteStatus = webDriver.findElement(By.xpath("//tr[6]/td[3]"));
+    WebElement ControlComplteStatus = webDriver.findElement(By.xpath("//div[3]/div[2]/div/div[2]/table/tbody/tr/td/span"));
     HighLight.highLightElement(webDriver, ControlComplteStatus);
   }
 }

@@ -1,11 +1,18 @@
 package gov.sba.utils.integration;
 
+import java.util.NoSuchElementException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import jdk.nashorn.internal.scripts.JS;
 import junit.framework.TestCase;
 
 public class DeleteDraftCertPage extends TestCase {
@@ -20,20 +27,25 @@ public class DeleteDraftCertPage extends TestCase {
 
   public void DeleteDraftCert() throws Exception {
     logger.debug("Draft cert will be deleted");
+    WebDriverWait wait = new WebDriverWait(webDriver, 30);
     // Verify if there is an existing certification on the dashboard and
     // delete to start a new certification.
-    try {
-      assertTrue(webDriver.getPageSource().contains("Draft"));
-      Actions act = new Actions(webDriver);
-      act.doubleClick(webDriver.findElement(By.linkText("Delete"))).build().perform();
-      webDriver.switchTo().alert().accept();
-      try {
-        Thread.sleep(5000);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
+    if (webDriver.getPageSource().contains("Draft")) {
       webDriver.navigate().refresh();
-    } catch (Error e) {
+     
+    
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Delete")));
+    //WebElement rateElement = webDriver.findElement(By.linkText("Delete"));
+    JavascriptExecutor jse2 = (JavascriptExecutor)webDriver;
+    jse2.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.linkText("Delete"))); 
+    
+    webDriver.findElement(By.linkText("Delete")).click();    
+      //Actions act = new Actions(webDriver);
+      //act.doubleClick(webDriver.findElement(By.linkText("Delete"))).build().perform();
+      Thread.sleep(2000);
+      webDriver.switchTo().alert().accept();
+    } else {
+      logger.info("No Draft application on the dashboard, all good.");
     }
   }
 

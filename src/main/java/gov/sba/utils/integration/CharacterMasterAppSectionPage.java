@@ -3,6 +3,7 @@ package gov.sba.utils.integration;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,15 +33,20 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text = "Character";
     assertEquals(Actual_Text, Expected_Text);
     // Verify Status.
-    Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
-    Expected_Text = "NOT STARTED";
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "Not started";
     assertEquals(Actual_Text, Expected_Text);
+    WebElement EligibilityCompleteStatus = webDriver
+			.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span"));
+	HighLight.highLightElement(webDriver, EligibilityCompleteStatus);
     // Click on the link to start eligibility check.
-    webDriver.findElement(By.linkText("Character")).click();
+    WebElement rateElement = webDriver.findElement(By.linkText("Character"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
     Expected_Text = "Character";
     assertEquals(Actual_Text, Expected_Text);
+	JavascriptExecutor jse = (JavascriptExecutor) webDriver;
     // Verify question and detail section and Select Yes and upload a
     // document.
     Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -78,6 +84,7 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "Report any obligations including delinquent tax returns and delinquent SBA loans. If yes, provide any of the following that may apply:";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_170_value_no")));
     webDriver.findElement(By.id("answers_170_value_no")).click();
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
@@ -97,6 +104,7 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "If yes, summarize its interest in the suit, the claims, the current status, and provide a copy of the complaint, answer, and/or counterclaim filed in the suit.";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_171_value_no")));
     webDriver.findElement(By.id("answers_171_value_no")).click();
     // Click on the on the Save and continue button and verify that user is
     // prompted to answer the question.
@@ -117,6 +125,7 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "If yes, provide details and a copy of the bankruptcy court’s final order or discharge.";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_172_value_no")));
     webDriver.findElement(By.id("answers_172_value_no")).click();
     CoreUtils.clickContinue(webDriver);
     // Review Section.
@@ -145,14 +154,16 @@ public class CharacterMasterAppSectionPage extends TestCase {
     // Navigate back and verify in-progress status for the draft.
     webDriver.findElement(By.xpath("//a/span")).click();
     // click on the draft 8(a) Initial Program.
-    webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-    Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
-    Expected_Text = "IN PROGRESS";
+    WebElement rateElement2 = webDriver.findElement(By.linkText("8(a) Initial Application"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement2);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")));
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "In progress";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement CharacterInProgressStatus = webDriver.findElement(By.xpath("//tr[4]/td[3]"));
+    WebElement CharacterInProgressStatus = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span"));
     HighLight.highLightElement(webDriver, CharacterInProgressStatus);
-    webDriver.findElement(By.linkText("Character")).click();
-    // Thread.sleep(2000);
+    WebElement rateElement1 = webDriver.findElement(By.linkText("Character"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement1);    // Thread.sleep(2000);
     webDriver.findElement(By.id("character")).click();
     CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -160,9 +171,8 @@ public class CharacterMasterAppSectionPage extends TestCase {
     assertEquals(Actual_Text, Expected_Text);
     CoreUtils.clickContinue(webDriver);
     logger.info("Character section first scenario completed, second scenario begins");
-
-
-    webDriver.findElement(By.linkText("Character")).click();
+    WebElement rateElement21 = webDriver.findElement(By.linkText("Character"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement21);    
     webDriver.findElement(By.id("character")).click();
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -198,11 +208,12 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "Report any obligations including delinquent tax returns and delinquent SBA loans. If yes, provide any of the following that may apply:";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_170_value_yes")));
     webDriver.findElement(By.id("answers_170_value_yes")).click();
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage2 contributorUpload4 = new ContributorUploadPage2(webDriver);
-    contributorUpload4.ContributorUpload(file_path_abs);
+	Upload2pdfOnSamePage ContributorUpload2 = new Upload2pdfOnSamePage(webDriver);
+	ContributorUpload2.Upload2pdfOnSame(file_path_abs);
     // Pending Lawsuit section.
     // Verify question and detail section and Select Yes and upload a
     // document.
@@ -216,12 +227,12 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "If yes, summarize its interest in the suit, the claims, the current status, and provide a copy of the complaint, answer, and/or counterclaim filed in the suit.";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_171_value_yes")));
     webDriver.findElement(By.id("answers_171_value_yes")).click();
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage3 contributorUpload5 = new ContributorUploadPage3(webDriver);
-    contributorUpload5.ContributorUpload(file_path_abs);
-
+	Upload3pdfOnSamePage contributorUpload3 = new Upload3pdfOnSamePage(webDriver);
+	contributorUpload3.Upload3pdfOnSame(file_path_abs);
     // Verify question and detail section and Select Yes and upload a
     // document.
     Actual_Text =
@@ -235,11 +246,12 @@ public class CharacterMasterAppSectionPage extends TestCase {
     Expected_Text =
         "If yes, provide details and a copy of the bankruptcy court’s final order or discharge.";
     assertEquals(Actual_Text, Expected_Text);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_172_value_yes")));
     webDriver.findElement(By.id("answers_172_value_yes")).click();
     // Upload a document.
     file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
-    ContributorUploadPage4 contributorUpload6 = new ContributorUploadPage4(webDriver);
-    contributorUpload6.ContributorUpload(file_path_abs);
+	Upload4pdfOnSamePage contributorUpload4 = new Upload4pdfOnSamePage(webDriver);
+	contributorUpload4.Upload4pdfOnSame(file_path_abs);
     CoreUtils.clickContinue(webDriver);
     // Review Section.
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -267,13 +279,16 @@ public class CharacterMasterAppSectionPage extends TestCase {
     // Navigate back and verify in-progress status for the draft.
     webDriver.findElement(By.xpath("//a/span")).click();
     // click on the draft 8(a) Initial Program.
-    webDriver.findElement(By.linkText("8(a) Initial Program")).click();
-    Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
-    Expected_Text = "IN PROGRESS";
+    WebElement rateElement211 = webDriver.findElement(By.linkText("8(a) Initial Application"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement211);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")));
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "In progress";
     assertEquals(Actual_Text, Expected_Text);
-    WebElement CharacterInProgressStatus1 = webDriver.findElement(By.xpath("//tr[4]/td[3]"));
+    WebElement CharacterInProgressStatus1 = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span"));
     HighLight.highLightElement(webDriver, CharacterInProgressStatus1);
-    webDriver.findElement(By.linkText("Character")).click();
+	WebElement rateElement111 = webDriver.findElement(By.linkText("Character"));
+    ((JavascriptExecutor)webDriver).executeScript("arguments[0].click();", rateElement111);   
     webDriver.findElement(By.id("character")).click();
     CoreUtils.clickContinue(webDriver);
     Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
@@ -283,11 +298,13 @@ public class CharacterMasterAppSectionPage extends TestCase {
     // webDriver.switchTo().alert().accept();
     // Click on the Save and Continue button.
     // Verify status.
-    Actual_Text = webDriver.findElement(By.xpath("//tr[4]/td[3]")).getText();
-    Expected_Text = "COMPLETE";
-    assertEquals(Actual_Text, Expected_Text);
-    WebElement CharacterComplteStatus = webDriver.findElement(By.xpath("//tr[4]/td[3]"));
-    HighLight.highLightElement(webDriver, CharacterComplteStatus);
+    // Verify Status.
+    Actual_Text = webDriver.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span")).getText();
+    Expected_Text = "Complete";
+		assertEquals(Actual_Text, Expected_Text);
+	    WebElement EligibilityCompleteStatus1 = webDriver
+			.findElement(By.xpath("//div[2]/div[2]/div/div[2]/table/tbody/tr/td/span"));
+	HighLight.highLightElement(webDriver, EligibilityCompleteStatus1);
 
   }
 }
