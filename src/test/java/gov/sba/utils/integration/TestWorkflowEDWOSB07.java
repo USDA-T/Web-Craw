@@ -71,10 +71,11 @@ public class TestWorkflowEDWOSB07 extends TestCase {
       Edwosb_Questionnaire_AdjustedGrossIncome_Page(webDriver, "yes", "Yes");
       Edwosb_Questionnaire_Assets_Page(webDriver, "yes", "yes", "yes");
       Edwosb_Questionnaire_EconomicDisadvantage_Page(webDriver, "yes");
-      accept_Alert(webDriver,5);
+      accept_Alert(webDriver,15);
       /* 413 form to including first and secnodn partners */
       NewFinancialQuestion(webDriver, "deepa", "patri", "123456789", "deepa@gmail.com", "12", "VA",
           "12345", "123-123-1234", "123-123-1234", "MClean", "USA");
+      accept_Alert(webDriver,15);
       Edwosb_legalseparation(webDriver, "no");
       /* EDWOSB financial question page */
       edwosb_financial_CashOnHand_Page(webDriver, "01/01/2018", "111", "111", "111");
@@ -89,6 +90,7 @@ public class TestWorkflowEDWOSB07 extends TestCase {
       edwosb_financial_Personal_Property_Page(webDriver, "yes", "yes");
       edwosb_financial_NotesPayableandOther_Page(webDriver, "yes");
       edwosb_financial_Assessed_Taxes_Page(webDriver, "yes");
+      edwosb_financial_Adjusted_Gross_Income_Page(webDriver);
       edwosb_financial_PersonalSummary_Page(webDriver);
       edwosb_financial_PrivacyStatements_Page(webDriver);
       edwosb_financial_Review_Page(webDriver);
