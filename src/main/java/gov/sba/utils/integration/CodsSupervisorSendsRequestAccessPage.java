@@ -25,7 +25,7 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		logger.info("Completing Request access for CODS supervisors");
 		// Select SBA Supervisor.
-		webDriver.findElement(By.xpath("//li/input")).click();
+		webDriver.findElement(By.xpath("//li/label")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form/button")));
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//form/button")));
 		webDriver.findElement(By.xpath("//form/button")).click();
@@ -47,7 +47,7 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
 			logger.info(e.getMessage());
 		}
 		// Select 8a.
-		webDriver.findElement(By.xpath("//li/input")).click();
+		webDriver.findElement(By.xpath("//li/label")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//form/button")));
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//form/button")));
 		webDriver.findElement(By.xpath("//form/button")).click();
@@ -57,7 +57,7 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
 		Expected_Text = "What is your business unit?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Area Office.
-		webDriver.findElement(By.xpath("//li/input")).click();
+		webDriver.findElement(By.xpath("//li/label")).click();
 		// Click on the Next button.
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//form/button")));
 		webDriver.findElement(By.xpath("//form/button")).click();
@@ -75,10 +75,10 @@ public class CodsSupervisorSendsRequestAccessPage extends TestCase {
 		Expected_Text = "What is your business unit?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Unchecked Area Office.
-		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//li/input")));
-		webDriver.findElement(By.xpath("//li/input")).click();
+		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//li/label")));
+		webDriver.findElement(By.xpath("//li/label")).click();
 		// Select CODS.
-		webDriver.findElement(By.id("bu_cods")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Click on Next.
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//form/button")));
 		webDriver.findElement(By.xpath("//form/button")).click();

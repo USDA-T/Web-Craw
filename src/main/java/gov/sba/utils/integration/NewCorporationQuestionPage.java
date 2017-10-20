@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,7 +24,8 @@ public class NewCorporationQuestionPage {
 
   public void NewCorporationQuestion() throws Exception {
     WebDriverWait wait = new WebDriverWait(webDriver, 40);
-    logger.debug(" new sole proprietorship question page");
+		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+	    logger.debug(" new sole proprietorship question page");
     String Actual_Text = null;
     String Expected_Text = null;
     // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -97,6 +99,7 @@ public class NewCorporationQuestionPage {
     Expected_Text = "Does the corporation have more than one class of voting stock?";
     assertEquals(Actual_Text, Expected_Text);
     // Select No and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     Actual_Text = webDriver.findElement(By.xpath("//div[3]/fieldset/h4")).getText();
@@ -104,6 +107,7 @@ public class NewCorporationQuestionPage {
         "Do the corporation’s stock ledger and stock certificates show that at least 51% of each class of voting stock is owned by the qualifying individual(s)?";
     assertEquals(Actual_Text, Expected_Text);
     // Select No and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // 4th question
     Actual_Text = webDriver.findElement(By.xpath("//div[4]/fieldset/h4")).getText();
@@ -117,6 +121,7 @@ public class NewCorporationQuestionPage {
         "Do not consider unexercised stock options that are held by the qualifying individual(s). If you answered “yes” to this question, please return to the questions above and revise your answers.";
     assertEquals(Actual_Text, Expected_Text);
     // Select No and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // 5th question.
     Actual_Text = webDriver.findElement(By.xpath("//div[5]/fieldset/h4")).getText();
@@ -129,6 +134,7 @@ public class NewCorporationQuestionPage {
         "In determining unconditional ownership of the business, any unexercised stock options or similar agreements held by a woman will be disregarded. However, any unexercised stock option or other agreement, including the right to convert non-voting stock or debentures into voting stock, held by any other individual or entity will be treated as having been exercised. Reference: 13 C.F.R. 127.201(f)";
     assertEquals(Actual_Text, Expected_Text);
     // Select No and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
     // 6th question.
     Actual_Text =
@@ -149,6 +155,7 @@ public class NewCorporationQuestionPage {
         "If yes, please upload Articles of Incorporation and any amendments; By-laws and any amendments; all stock certificates issued, including the front and back copies signed in accordance with the By-laws (this also applies to all cancelled stock certificates); and the Joint Venture Agreement, if applicable. Women are considered to control the Board of Directors when either: (1) one or more women own at least 51% of all voting stock of the business, are on the Board of Directors and have the percentage of voting stock necessary to overcome any super majority voting requirements; or (2) women comprise the majority of voting directors through actual numbers or, where permitted by state law, through weighted voting. Reference: 13 C.F.R. 127.202(f)";
     assertEquals(Actual_Text, Expected_Text);
     // Select No and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[7]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//div[7]/fieldset/div[4]/textarea")).sendKeys(
         "Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
@@ -191,6 +198,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b)";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     Actual_Text =
@@ -205,6 +213,7 @@ public class NewCorporationQuestionPage {
         "If the ownership is not held through a trust, select N/A. SBA will treat ownership by a trust, such as a living trust, as the functional equivalent of ownership by the qualifying individual where the trust is revocable, and the qualifying individual is the grantor, the trustee, and the sole current beneficiary of the trust. Reference: 13 C.F.R. 127.201(c)";
     assertEquals(Actual_Text, Expected_Text);
     // select no and continue.
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Also is their earth so. Dry given, place itself for were third. Itself second gathered fruit from");
@@ -233,6 +242,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "If yes, please upload a resume to show managerial experience. The woman must have managerial experience of the extent and complexity needed to run the business. Reference: 13 C.F.R. 127.202(b)";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     Actual_Text =
@@ -246,6 +256,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "The woman manager does not need to have the technical expertise or possess the required license to be found to control the business if she can demonstrate that she has ultimate managerial and supervisory control over those who possess the required licenses or technical expertise. Reference: 13 C.F.R. 127.202(b)";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     // 4th question.
     Actual_Text =
@@ -259,6 +270,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "The qualifying individual(s) may not engage in outside employment that prevents her from devoting sufficient time and attention to the daily affairs or the business. Reference: 13 C.F.R. 127.202(c)";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
     // 5th question.
     Actual_Text =
@@ -272,6 +284,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "Men or other entities may be involved in the management of the business and may be stockholders, partners or limited liability members of the business, provided that no males or other entity exercise actual control or have the power to control the business. Reference: 13 C.F.R. 127.202(g)";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
     // 6th question meaning.
     Actual_Text =
@@ -279,6 +292,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "Is the qualifying individual(s) in control of long-term decision making and day-to-day operations?";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[6]/fieldset/div/label[2]")).click();
     webDriver.findElement(By.xpath("//textarea")).sendKeys(
         "Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
@@ -357,6 +371,7 @@ public class NewCorporationQuestionPage {
         .getText();
     Expected_Text = "If this situation does not apply, select N/A.";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     CoreUtils.clickContinue(webDriver);
     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
@@ -388,6 +403,7 @@ public class NewCorporationQuestionPage {
     Expected_Text =
         "Assets that a qualifying individual(s) transferred within two years of the date of the concern's certification will be attributed to the qualifying individual(s) if the assets were transferred to an immediate family member, or to a trust that has as a beneficiary an immediate family member. The transferred assets within the two-year period will not be attributed to the woman if the transfer was:";
     assertEquals(Actual_Text, Expected_Text);
+    jse.executeScript("arguments[0].scrollIntoView()",webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")));
     webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
     // 3rd question.
     Actual_Text = webDriver
@@ -403,7 +419,9 @@ public class NewCorporationQuestionPage {
     Expected_Text = "If this situation does not apply, select N/A.";
     assertEquals(Actual_Text, Expected_Text);
     // select no and continue.
-    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
+	    webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
     CoreUtils.clickContinue(webDriver);
     // ==>Economic Disadvantage section.
     Actual_Text = webDriver.findElement(By.xpath("//h4")).getText();

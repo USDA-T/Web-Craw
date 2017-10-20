@@ -19,8 +19,8 @@ import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class })
 
-public class TestUs801AmIEligibleTs10 extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestUs801AmIEligibleTs10.class.getName());
+public class Test1234US801AmIEligibleTs10 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(Test1234US801AmIEligibleTs10.class.getName());
 	public WebDriver webDriver;
 
 	@Before
@@ -31,7 +31,7 @@ public class TestUs801AmIEligibleTs10 extends TestCase {
 	}
 
 	@Test
-	public void testUs801AmIEligibleTs10() throws Exception {
+	public void test1234US801AmIEligibleTs10() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		try {
 			logger.info("User is eligible for ALL programs, 8(a), WOSB, EDWOSB set-asides & Hob-zone");

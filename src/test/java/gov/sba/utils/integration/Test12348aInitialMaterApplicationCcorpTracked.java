@@ -23,7 +23,7 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 90;
+		get_The_Row_From_Login_Data = 92;
 
 	}
 
@@ -45,9 +45,14 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 		// Check if user already has pending app.
 		InitialCcorpUsersPage Verifyaccount = new InitialCcorpUsersPage(webDriver);
 		Verifyaccount.InitialCcorpUsers();
+		// delete second draft if any.
+		DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+		deleteDraftCert11.DeleteDraftCert();
 		// Complete the basic eligibility section.
 		BasicEligibilityMasterAppPage basicEligibilityMasterApp = new BasicEligibilityMasterAppPage(webDriver);
 		basicEligibilityMasterApp.BasicEligibilityMasterApp();
+		// *[@id="answers_817_value"]
+
 		// Complete the Business Ownership section.
 		BusinessOwnershipSubsectionMasterCcorpPage businessOwnershipSubsectionMaster = new BusinessOwnershipSubsectionMasterCcorpPage(
 				webDriver);
@@ -72,7 +77,7 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 			contributorDisadvantageIndividualQuetion.ContributorDisadvantageIndividualQuetion();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 90;
+			get_The_Row_From_Login_Data = 92;
 			LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data1.Login_With_Reference();
 			// Click on the dashboard.
@@ -82,7 +87,7 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 			// Contributors is verify to be completed, but click on it to
 			// add
 			// other
-			// contributors.
+			// *[@id="answers[693][value]-error"]
 			Actual_Text = webDriver.findElement(By.xpath("//div[2]/div/section/div/div[2]/table/tbody/tr/td/span"))
 					.getText();
 			Expected_Text = "Complete";
@@ -96,7 +101,7 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 			contributorSpouseOfaDisadvantageIndividual.ContributorSpouseOfaDisadvantageIndividual();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 90;
+			get_The_Row_From_Login_Data = 92;
 			LoginPageWithReference login_Data11 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data11.Login_With_Reference();
 			// Click on the dashboard.
@@ -119,7 +124,7 @@ public class Test12348aInitialMaterApplicationCcorpTracked extends TestCase {
 			contributorOtherIndividualsQuestion.ContributorOtherIndividualsQuestion();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 90;
+			get_The_Row_From_Login_Data = 92;
 			LoginPageWithReference login_Data111 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data111.Login_With_Reference();
 			// Click on the dashboard.

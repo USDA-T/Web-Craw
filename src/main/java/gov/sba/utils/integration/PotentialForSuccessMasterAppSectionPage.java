@@ -44,7 +44,7 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			if (second >= 60)
 				fail("timeout");
 			try {
-				if ("Taxes".equals(webDriver.findElement(By.cssSelector("h2")).getText()))
+				if ("Taxes".equals(webDriver.findElement(By.xpath("//article/h2")).getText()))
 					break;
 			} catch (Exception e) {
 			}
@@ -65,7 +65,7 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			if (second >= 60)
 				fail("timeout");
 			try {
-				if ("Revenue".equals(webDriver.findElement(By.cssSelector("h2")).getText()))
+				if ("Revenue".equals(webDriver.findElement(By.xpath("//article/h2")).getText()))
 					break;
 			} catch (Exception e) {
 			}
@@ -78,10 +78,10 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			logger.info(e.getMessage());
 		}
 		// select yes for both question.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		jse.executeScript("arguments[0].scrollIntoView()",
 				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		webDriver.findElement(By.xpath("//div/div[2]/input")).sendKeys("87");
 		webDriver.findElement(By.xpath("//tr[3]/td/input")).clear();
 		webDriver.findElement(By.xpath("//tr[3]/td/input")).sendKeys("12333");
@@ -155,28 +155,28 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			if (second >= 60)
 				fail("timeout");
 			try {
-				if ("Potential for Success".equals(webDriver.findElement(By.cssSelector("h2")).getText()))
+				if ("Potential for Success".equals(webDriver.findElement(By.xpath("//article/h2")).getText()))
 					break;
 			} catch (Exception e) {
 				logger.info(e.getMessage());
 			}
 		}
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument11 = new MontanaUploadDocumentPage(webDriver);
 		MontanaUploadDocument11.MontanaUploadDocument(file_path_abs);
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload2pdfOnSamePage ContributorUpload211 = new Upload2pdfOnSamePage(webDriver);
 		ContributorUpload211.Upload2pdfOnSame(file_path_abs);
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload3pdfOnSamePage contributorUpload3 = new Upload3pdfOnSamePage(webDriver);
 		contributorUpload3.Upload3pdfOnSame(file_path_abs);
@@ -186,7 +186,7 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			if (second >= 60)
 				fail("timeout");
 			try {
-				if ("Review".equals(webDriver.findElement(By.cssSelector("h2")).getText()))
+				if ("Review".equals(webDriver.findElement(By.xpath("//article/h2")).getText()))
 					break;
 			} catch (Exception e) {
 			}

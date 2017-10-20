@@ -19,8 +19,8 @@ import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class })
 
-public class TestUs801AmIEligibleTs8 extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestUs801AmIEligibleTs8.class.getName());
+public class Test1234US801AmIEligibleTs8 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(Test1234US801AmIEligibleTs8.class.getName());
 	public WebDriver webDriver;
 	String naics;
 
@@ -34,7 +34,7 @@ public class TestUs801AmIEligibleTs8 extends TestCase {
 	}
 
 	@Test
-	public void testUs801AmIEligibleTs8() throws Exception {
+	public void test1234US801AmIEligibleTs8() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		if (webDriver.getCurrentUrl().contains("qa.sba-one")) {
 			try {

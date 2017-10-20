@@ -11,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,14 +38,16 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 		String Actual_Text;
 		String Expected_Text;
-		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+		// JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		// Login to dashboard.
 		logger.info("Mpp question test Scenario 1 possitive");
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		// Get the vendor Duns Number.
+		webDriver.findElement(By.xpath("//li[4]/a/span")).click();
 		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
 		DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+		webDriver.findElement(By.xpath("//a/span")).click();
 		logger.info("The Duns number for this business is " + DunsNumber);
 		// Verify if there is an existing program on the dashboard and
 		// delete to start a new certification.
@@ -94,7 +95,7 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 		Expected_Text = "Please answer this question";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select No and commit.
-		webDriver.findElement(By.id("answers_117_value_yes")).click();
+		webDriver.findElement(By.cssSelector("label.yes")).click();
 		// Upload document.
 		String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
@@ -141,99 +142,20 @@ public class TestMppBuildQuestionnaireTs1 extends TestCase {
 		// Verify Second paragraph
 		logger.info("  Verify second paragraph");
 		if (webDriver.getCurrentUrl().contains("qa.sba-one")) {
-			Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
-			Expected_Text = "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify third paragraph
-			logger.info("  Verify third paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[3]")).getText();
-			Expected_Text = "I understand that the information submitted may be given to Federal, State and local agencies for determining violations of law and other purposes.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fourth paragraph
-			logger.info("  Verify fourth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[4]")).getText();
-			Expected_Text = "I understand that I may not misrepresent my status as a small business to: 1) obtain a contract under the Small Business Act; or 2) obtain any benefit under a provision of Federal law that references the All Small MPP for a definition of program eligibility.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fifth paragraph
-			logger.info("  Verify fifth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[5]")).getText();
-			Expected_Text = "By submitting this certification I, QA User, am an officer or owner of Entity 399 Legal Business Name authorized to represent it and electronically sign this certification on its behalf.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify sixth paragraph
-			logger.info("  Verify sixth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
-			Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Step 9 - Click the Continue button
-			logger.info("Step 9 - Click the Continue button");
-			webDriver.findElement(By.id("accept-button")).click();
-			// Step 10 - Accept the error message
-			logger.info(webDriver.switchTo().alert().getText());
-			Actual_Text = webDriver.switchTo().alert().getText();
-			Expected_Text = "In order to submit your application, you must accept all of the conditions of authorization.";
-			assertEquals(Actual_Text, Expected_Text);
-			wait.until(ExpectedConditions.alertIsPresent());
-			webDriver.switchTo().alert().accept();
-			// Step 11 - Accept the statements and click Continue
-			logger.info("Step 11 - Click to accept the statements");
-			webDriver.findElement(By.id("legal_0")).click();
-			webDriver.findElement(By.id("legal_1")).click();
-			webDriver.findElement(By.id("legal_2")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_3")));
-			webDriver.findElement(By.id("legal_3")).click();
-			webDriver.findElement(By.id("legal_4")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_5")));
-			webDriver.findElement(By.id("legal_5")).click();
-			webDriver.findElement(By.id("accept-button")).click();
+			MppSignaturePage mppSignature = new MppSignaturePage(webDriver);
+			mppSignature.MppSignature();
 			webDriver.findElement(By.xpath("//a/span")).click();
 			WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
 			HighLight.highLightElement(webDriver, ActiveCert);
+			webDriver.findElement(By.id("profileid")).click();
 			webDriver.findElement(By.linkText("Logout")).click();
 		} else {
-			Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
-			Expected_Text = "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify third paragraph
-			logger.info("  Verify third paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[3]")).getText();
-			Expected_Text = "I understand that the information submitted may be given to Federal, State and local agencies for determining violations of law and other purposes.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fourth paragraph
-			logger.info("  Verify fourth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[4]")).getText();
-			Expected_Text = "I understand that I may not misrepresent my status as a small business to: 1) obtain a contract under the Small Business Act; or 2) obtain any benefit under a provision of Federal law that references the All Small MPP for a definition of program eligibility.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fifth paragraph
-			logger.info("  Verify fifth paragraph");
-			// Verify sixth paragraph
-			logger.info("  Verify sixth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
-			Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Step 9 - Click the Continue button
-			logger.info("Step 9 - Click the Continue button");
-			webDriver.findElement(By.id("accept-button")).click();
-			// Step 10 - Accept the error message
-			logger.info(webDriver.switchTo().alert().getText());
-			Actual_Text = webDriver.switchTo().alert().getText();
-			Expected_Text = "In order to submit your application, you must accept all of the conditions of authorization.";
-			assertEquals(Actual_Text, Expected_Text);
-			wait.until(ExpectedConditions.alertIsPresent());
-			webDriver.switchTo().alert().accept();
-			// Step 11 - Accept the statements and click Continue
-			logger.info("Step 11 - Click to accept the statements");
-			webDriver.findElement(By.id("legal_0")).click();
-			webDriver.findElement(By.id("legal_1")).click();
-			webDriver.findElement(By.id("legal_2")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_3")));
-			webDriver.findElement(By.id("legal_3")).click();
-			webDriver.findElement(By.id("legal_4")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_5")));
-			webDriver.findElement(By.id("legal_5")).click();
-			webDriver.findElement(By.id("accept-button")).click();
+			MppSignaturePage mppSignature = new MppSignaturePage(webDriver);
+			mppSignature.MppSignature();
 			webDriver.findElement(By.xpath("//a/span")).click();
 			WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
 			HighLight.highLightElement(webDriver, ActiveCert);
+			webDriver.findElement(By.id("profileid")).click();
 			webDriver.findElement(By.linkText("Logout")).click();
 		}
 		// Login as MPP-analyst and return MPP back to vendor.

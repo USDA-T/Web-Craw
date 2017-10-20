@@ -34,7 +34,6 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		WebElement rateElement = webDriver.findElement(By.linkText("Business Ownership"));
 		((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2")));
 		// Verify and validate the questions for this section.
 		// First question.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -173,8 +172,8 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		webDriver.findElement(By.xpath("//div[5]/div[2]/input")).sendKeys("34");
 		webDriver.findElement(By.xpath("//div[6]/div[2]/input")).sendKeys("45");
 		// Select Yes, upload a document and continue.
-		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//fieldset/div/input")));
-		webDriver.findElement(By.xpath("//fieldset/div/input")).click();
+		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//fieldset/div/label")));
+		webDriver.findElement(By.xpath("//fieldset/div/label")).click();
 		webDriver.findElement(By.xpath("//textarea")).sendKeys(
 				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 		// Upload document.
@@ -184,8 +183,8 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		CoreUtils.clickContinue(webDriver);
 		// Ownership Details section.
 		logger.info("Ownership Details section");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article/h2")));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Ownership Details";
 		assertEquals(Actual_Text, Expected_Text);
 		// verify that section is required.
@@ -257,8 +256,8 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		webDriver.findElement(By.xpath("//div[5]/fieldset/div/label[2]")).click();
 		// click on the continue button.
 		CoreUtils.clickContinue(webDriver);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h2"), false));
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//article/h2"), false));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Corporations";
 		assertEquals(Actual_Text, Expected_Text);
 		// Click back on Entity Ownership and verify that notes are being saved.
@@ -270,8 +269,8 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		logger.info("Entity Ownership notes are being saved");
 		// click on the continue button.
 		CoreUtils.clickContinue(webDriver);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h2"), false));
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//article/h2"), false));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Ownership Details";
 		assertEquals(Actual_Text, Expected_Text);
 		// change answer from No to Yes, add comment and upload doc when
@@ -285,27 +284,27 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
 		MontanaUploadDocument1.MontanaUploadDocument(file_path_abs1);
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		// Upload a document.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload2pdfOnSamePage ContributorUpload2 = new Upload2pdfOnSamePage(webDriver);
 		ContributorUpload2.Upload2pdfOnSame(file_path_abs);
-		WebElement rateElement21 = webDriver.findElement(By.xpath("//div[4]/fieldset/div/input"));
+		WebElement rateElement21 = webDriver.findElement(By.xpath("//div[4]/fieldset/div/label"));
 		((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement21);
 		// Upload a document.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload3pdfOnSamePage contributorUpload3 = new Upload3pdfOnSamePage(webDriver);
 		contributorUpload3.Upload3pdfOnSame(file_path_abs);
-		WebElement rateElement3 = webDriver.findElement(By.xpath("//div[5]/fieldset/div/input"));
+		WebElement rateElement3 = webDriver.findElement(By.xpath("//div[5]/fieldset/div/label"));
 		((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement3);
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload4pdfOnSamePage contributorUpload4 = new Upload4pdfOnSamePage(webDriver);
 		contributorUpload4.Upload4pdfOnSame(file_path_abs);
 		// click on the continue button.
 		CoreUtils.clickContinue(webDriver);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article/h2")));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Corporations";
 		assertEquals(Actual_Text, Expected_Text);
 		// Verify that this section is required.
@@ -349,8 +348,8 @@ public class BusinessOwnershipSubsectionMasterScorpPage extends TestCase {
 		MontanaUploadDocument7.Upload3pdfOnSame(file_path_abs);
 		// click on the continue button.
 		CoreUtils.clickContinue(webDriver);
-		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//h2"), false));
-		Actual_Text = webDriver.findElement(By.xpath("//h2")).getText();
+		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//article/h2"), false));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Review";
 		assertEquals(Actual_Text, Expected_Text);
 		// click on continue.

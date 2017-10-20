@@ -14,15 +14,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import gov.sba.automation.Constants;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class })
 
-public class TestUs801AmIEligibleTs5 extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestUs801AmIEligibleTs5.class.getName());
+public class Test1234US801AmIEligibleTs7 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(Test1234US801AmIEligibleTs7.class.getName());
 	public WebDriver webDriver;
+	String naics;
 
 	@Before
 	public void setUp() throws Exception {
@@ -30,19 +30,18 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
 
 		webDriver.get(TestHelpers.getBaseUrl());
 		// webDriver.manage().window().maximize();
-		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
-
+		naics = "335932";
 	}
 
 	@Test
-	public void testUs801AmIEligibleTs5() throws Exception {
+	public void test1234US801AmIEligibleTs7() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		try {
 			// Open Firefox,Chrome or IE and navigate to the certify.sba.gov
 			// landing
 			// page.
 			logger.info(
-					"User is NOT eligible for Any of the programs because user answer NO for Qs4: 8(a), WOSB, EDWOSB & Hob-zone");
+					"User is NOT eligible for Any of the programs because user answer NO for Qs6: 8(a), WOSB, EDWOSB & Hob-zone");
 			WebDriverWait wait = new WebDriverWait(webDriver, 30);
 			// Locate the Am I Eligible or the Find Out button on the
 			// Certify.SBA.Gov landing page and click on it.
@@ -119,7 +118,7 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
 			webDriver.findElement(By.id("yes_button_for_profit")).click();
 			wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='non_suspended']/div/div/p"),
 					false));
-			// Locate the 4th question and select NO and verify the More Detail
+			// Locate the 4th question and select yes and verify the More Detail
 			// meaning of the question.
 			String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
 			String expected_Text10 = "Do you affirm that neither this firm, nor any of its owners, have ever been debarred or suspended by any federal entity?";
@@ -128,13 +127,31 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
 			String actual_Text11 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div[2]/p")).getText();
 			String expected_Text11 = "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
 			assertEquals(actual_Text11, expected_Text11);
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("no_button_non_suspended")));
-			webDriver.findElement(By.id("no_button_non_suspended")).click();
+			jse.executeScript("arguments[0].scrollIntoView()",
+					webDriver.findElement(By.id("yes_button_non_suspended")));
+			webDriver.findElement(By.id("yes_button_non_suspended")).click();
+			wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='us_business']/div/div/p"),
+					false));
+			// Locate the 6th question and select Yes and verify the More Detail
+			// meaning of the question.
+			String actual_Text14 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div/p")).getText();
+			String expected_Text14 = "Does the firm have a place of business in the U.S. and operate primarily within the United States, or makes a significant contribution to the U.S. economy through payment of taxes or use of American products, materials or labors?";
+			assertEquals(actual_Text14, expected_Text14);
+			logger.info("6th question was validated");
+			String actual_Text15 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]"))
+					.getText();
+			String expected_Text15 = "None";
+			assertEquals(actual_Text15, expected_Text15);
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("yes_button_us_business")));
+			webDriver.findElement(By.id("yes_button_us_business")).click();
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("no_button_small_naics")));
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("no_button_small_naics")));
+			webDriver.findElement(By.id("no_button_small_naics")).click();
 			// Verify searched results.
 			wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("span.message"), false));
-			String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
-			String expected_Text1 = "In order to participate in SBA small business programs, the owner(s) of the firm must not have been debarred or suspended by a federal entity.";
-			assertEquals(actual_Text1, expected_Text1);
+			String actual_Text17 = webDriver.findElement(By.cssSelector("span.message")).getText();
+			String expected_Text17 = "In order to participate in SBA small business programs, the firm must be designated as small in accordance with its primary NAICS code.";
+			assertEquals(actual_Text17, expected_Text17);
 			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.linkText("Exit")));
 			webDriver.findElement(By.linkText("Exit")).click();
 		} catch (Exception e) {
@@ -144,6 +161,7 @@ public class TestUs801AmIEligibleTs5 extends TestCase {
 			Assert.fail();
 		}
 		logger.info("Success");
+
 	}
 
 	@After

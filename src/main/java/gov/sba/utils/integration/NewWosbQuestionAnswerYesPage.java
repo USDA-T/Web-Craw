@@ -54,7 +54,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "El Paso Hispanic Chamber of Commerce (WOSB and EDWOSB)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Answer Yes.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Upload document.
 		String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
@@ -62,7 +62,7 @@ public class NewWosbQuestionAnswerYesPage {
 		CoreUtils.clickContinue(webDriver);
 		// ======>>>>Changes in Eligibility section.
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		CoreUtils.clickContinue(webDriver);
 		// ======>Partnership program 1st question.
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h4")));
@@ -74,7 +74,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "If yes, please upload the Partnership Agreement and any amendments; the Joint Venture Agreement if applicable. Reference: 13 C.F.R. 127.201(d)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes for both questions and upload documents..
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Upload document.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
@@ -89,8 +89,8 @@ public class NewWosbQuestionAnswerYesPage {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		Upload2pdfOnSamePage upload2pdfOnSame = new Upload2pdfOnSamePage(webDriver);
 		upload2pdfOnSame.Upload2pdfOnSame(file_path_abs);
@@ -104,7 +104,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "If yes, please upload birth certificates, naturalization papers, or current, unexpired U.S. passports for all qualifying individual(s).";
 		assertEquals(Actual_Text, Expected_Text);
 		// select Yes and Upload document.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Upload document.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument2 = new MontanaUploadDocumentPage(webDriver);
@@ -119,7 +119,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "In order for ownership to be unconditional, there cannot be any arrangements that could pass the business to a person or entity not eligible for the WOSB Program. However, stock ownership interest pledged as collateral would be still considered unconditional if the terms follow commercial practices and the owner retains control. Reference: 13 C.F.R. 127.201(b)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// 2nd question
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper2_q1 > fieldset > h4")).getText();
 		Expected_Text = "Is the qualifying individual’s ownership direct; that is the ownership is not held through another business entity (including employee stock ownership plan) that is, in turn, owned and controlled by the qualifying individual(s)?";
@@ -129,6 +129,8 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "Under the WOSB Program, the 51% ownership must be direct and not through another business entity or a trust (including employee stock ownership plan). Companies which attain 51% ownership by a qualifying individual(s) through a trust or other arrangement that is owned and controlled by women are generally not eligible for the program. Reference: 13 CFR 127.201(b)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
 		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		// 3rd question.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper2_q2 > fieldset > h4")).getText();
@@ -139,7 +141,9 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "If the ownership is not held through a trust, select N/A. SBA will treat ownership by a trust, such as a living trust, as the functional equivalent of ownership by the qualifying individual where the trust is revocable, and the qualifying individual is the grantor, the trustee, and the sole current beneficiary of the trust. Reference: 13 C.F.R. 127.201(c)";
 		assertEquals(Actual_Text, Expected_Text);
 		// select Yes and continue.
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		CoreUtils.clickContinue(webDriver);
 		// ==>Management section.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -150,7 +154,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "Control means that both the long-term decision making and the day-to-day management and administration of the business operations are conducted by the qualifying individuals. Reference: 13 C.F.R. 127.202(a)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// 2nd question.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper3_q2 > fieldset > h4")).getText();
 		Expected_Text = "Does the qualifying individual(s) hold the highest officer position in the business and does she have the managerial experience needed to run the business?";
@@ -161,8 +165,8 @@ public class NewWosbQuestionAnswerYesPage {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and upload a document.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		// Upload document.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument3 = new MontanaUploadDocumentPage(webDriver);
@@ -177,8 +181,8 @@ public class NewWosbQuestionAnswerYesPage {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		// 4th question.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper4_q2 > fieldset > h4")).getText();
 		Expected_Text = "Does the qualifying individual(s) who holds the highest officer position manage the business on a full-time basis and devote full-time attention to the business during the normal working hours of similar businesses?";
@@ -189,8 +193,8 @@ public class NewWosbQuestionAnswerYesPage {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")).click();
 		// 5th question.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper5_q2 > fieldset > h4")).getText();
 		Expected_Text = "Does the qualifying individual(s) fully control the business, that is, no one else has actual control or has the power to control the business?";
@@ -201,9 +205,8 @@ public class NewWosbQuestionAnswerYesPage {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[5]/fieldset/div/input")));
-
-		webDriver.findElement(By.xpath("//div[5]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")).click();
 		// 6th question meaning.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_oper6_q2 > fieldset > h4")).getText();
 		Expected_Text = "Is the qualifying individual(s) in control of long-term decision making and day-to-day operations?";
@@ -233,7 +236,9 @@ public class NewWosbQuestionAnswerYesPage {
 			}
 		}
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div[6]/fieldset/div/input")).click();
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.xpath("//div[6]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[6]/fieldset/div/label")).click();
 		CoreUtils.clickContinue(webDriver);
 		// ==>SBA Exam section.
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -244,7 +249,7 @@ public class NewWosbQuestionAnswerYesPage {
 		Expected_Text = "Any business that SBA found to be ineligible for the WOSB Program may request that SBA re- examine its WOSB or EDWOSB eligibility at any time if it believes in good faith that it has cured the reason(s) for its ineligibility. Reference: 13 C.F.R. 127.405(g)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and continue.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		CoreUtils.clickContinue(webDriver);
 		// Review page.
 		Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();

@@ -12,32 +12,33 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class })
 
-public class TestUs801AmIEligibleTs9 extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestUs801AmIEligibleTs9.class.getName());
+public class Test1234US801AmIEligibleTs1 extends TestCase {
+
+	private static final Logger logger = LogManager.getLogger(Test1234US801AmIEligibleTs1.class.getName());
 	public WebDriver webDriver;
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
-
 		webDriver.get(TestHelpers.getBaseUrl());
 		// webDriver.manage().window().maximize();
 	}
 
 	@Test
-	public void testUs801AmIEligibleTs9() throws Exception {
+	public void Test1234US801AmIEligibleTs1() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		// Open Firefox,Chrome or IE and navigate to the certify.sba.gov
 		// landing
 		// page.
+		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 		logger.info(
 				"User is NOT eligible for Any of the programs because user answer NO for Qs7 and the rest of the questions that apply: 8(a), WOSB, EDWOSB & Hob-zone");
-		WebDriverWait wait = new WebDriverWait(webDriver, 30);
 		// Locate the Am I Eligible or the Find Out button on the
 		// Certify.SBA.Gov landing page and click on it.
 		webDriver.findElement(By.xpath("//div[@id='header_nav']/header/nav/div/ul/li[3]/a/span")).click();
@@ -127,6 +128,7 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 		String actual_Text13 = webDriver.findElement(By.xpath("//div[@id='us_business']/div/div[2]/p[2]")).getText();
 		String expected_Text13 = "None";
 		assertEquals(actual_Text13, expected_Text13);
+		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("yes_button_us_business")));
 		webDriver.findElement(By.id("yes_button_us_business")).click();
 		wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='small_naics']/div/div/p"), false));
 		// Locate the 6th question and select Yes and verify the More Detail
@@ -205,12 +207,14 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("naics_button")));
 		webDriver.findElement(By.id("naics_button")).click();
 		// Verify that the entered NAICS Code for WOSB set-asides.
-		wait.until(ExpectedConditions
-				.elementSelectionStateToBe(By.xpath("//div[@id='naics_fed_set_asides']/div[2]/div/div/div"), false));
 		String actual_Text0 = webDriver.findElement(By.xpath("//div[@id='naics_fed_set_asides']/div[2]/div/div/div"))
 				.getText();
 		String expected_Text0 = "Yes, WOSB Federal Contract Program set-asides are available in your primary NAICS code.";
 		assertEquals(actual_Text0, expected_Text0);
+		wait.until(ExpectedConditions.elementSelectionStateToBe(
+				By.cssSelector(
+						"#economically_disadvantaged_wosb > div.q.makeitonehundredpercent > div.usa-width-one-half > p.lead-para"),
+				false));
 		// Locate the 9th question and select Yes and verify the More Detail
 		// meaning of the question.
 		String actual_Text24 = webDriver
@@ -291,7 +295,6 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 				.getText();
 		String expected_Text34 = "Do you identify as one of the following?";
 		assertEquals(actual_Text34, expected_Text34);
-
 		String actual_Text36 = webDriver
 				.findElement(By.xpath("//div[@id='socially_disadvantaged']/div/div[2]/ul/li[2]")).getText();
 		String expected_Text36 = "If you are not a member of a presumed group, you may still be eligible for admission to the 8(a) BD program on a case-by-case basis if you demonstrate you have experienced bias of a chronic and substantial nature.";
@@ -469,6 +472,26 @@ public class TestUs801AmIEligibleTs9 extends TestCase {
 		String actual_Text03 = webDriver.findElement(By.cssSelector("#hubzone > div.eligible > p > b")).getText();
 		String expected_Text03 = "Based on the information you provided, you may be eligible for the HUBZone Program.";
 		assertEquals(actual_Text03, expected_Text03);
+		// Verify and validate changing answers.
+		String actual_Text04 = webDriver.findElement(By.cssSelector("div.usa-width-one-third > #employees_in_hubzone"))
+				.getText();
+		String expected_Text04 = "| Change Answer";
+		assertEquals(actual_Text04, expected_Text04);
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.cssSelector("div.usa-width-one-third > #employees_in_hubzone")));
+		webDriver.findElement(By.cssSelector("div.usa-width-one-third > #employees_in_hubzone")).click();
+		String actual_Text05 = webDriver.findElement(By.xpath("//div[16]/div/div/p")).getText();
+		String expected_Text05 = "Do 35% or more of the firm’s employees reside in a HUBZone?";
+		assertEquals(actual_Text05, expected_Text05);
+		// Click on the Clear all responses button and validate the nav
+		// page.
+		jse.executeScript("arguments[0].scrollIntoView()",
+				webDriver.findElement(By.cssSelector("input.usa-button-gray")));
+		webDriver.findElement(By.cssSelector("input.usa-button-gray")).click();
+		String actual_Text07 = webDriver.findElement(By.cssSelector("h1")).getText();
+		String expected_Text07 = "Is there an SBA Contracting Program for me?";
+		assertEquals(actual_Text07, expected_Text07);
+
 		logger.info("Success");
 
 	}

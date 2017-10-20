@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,11 +34,14 @@ public class MontanaUploadDocumentPage {
 			jse.executeScript("arguments[0].scrollIntoView()",
 					webDriver.findElement(By.cssSelector("#add-req-doc-button > a")));
 			webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/div/button")));
-			webDriver.findElement(By.xpath("//div[2]/div/button")).click();
-			// wait.until(ExpectedConditions.elementToBeClickable(By.name("selector")));
-			webDriver.findElement(By.name("selector")).click();
+			wait.until(ExpectedConditions.elementToBeClickable(By.id("doc-lib-button")));
+			webDriver.findElement(By.id("doc-lib-button")).click();
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[@id='document_library_file_name']/ul/li/label")));
+			WebElement rateElement11 = webDriver.findElement(By.xpath("//td[@id='document_library_file_name']/ul/li/label"));
+			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='document_library_associate']")));
+			jse.executeScript("arguments[0].scrollIntoView()",
+					webDriver.findElement(By.xpath("//button[@id='document_library_associate']")));
 			webDriver.findElement(By.xpath("//button[@id='document_library_associate']")).click();
 			logger.info("document uploaded successully");
 			Thread.sleep(1000);
@@ -47,10 +51,11 @@ public class MontanaUploadDocumentPage {
 				jse.executeScript("arguments[0].scrollIntoView()",
 						webDriver.findElement(By.cssSelector("#add-req-doc-button > a")));
 				webDriver.findElement(By.cssSelector("#add-req-doc-button > a")).click();
-				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[2]/div/button")));
-				webDriver.findElement(By.xpath("//div[2]/div/button")).click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.id("doc-lib-button")));
+				webDriver.findElement(By.id("doc-lib-button")).click();
 				// wait.until(ExpectedConditions.elementToBeClickable(By.name("selector")));
-				webDriver.findElement(By.name("selector")).click();
+				WebElement rateElement11 = webDriver.findElement(By.cssSelector("li > label"));
+				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);
 				wait.until(ExpectedConditions
 						.elementToBeClickable(By.xpath("//button[@id='document_library_associate']")));
 				webDriver.findElement(By.xpath("//button[@id='document_library_associate']")).click();

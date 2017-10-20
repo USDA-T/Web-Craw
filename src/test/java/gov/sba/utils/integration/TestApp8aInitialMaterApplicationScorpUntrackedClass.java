@@ -12,9 +12,9 @@ import org.openqa.selenium.WebElement;
 import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class TestApp8aInitialMaterApplicationUntrackedClass extends TestCase {
+public class TestApp8aInitialMaterApplicationScorpUntrackedClass extends TestCase {
 	private static final Logger logger = LogManager
-			.getLogger(TestApp8aInitialMaterApplicationUntrackedClass.class.getName());
+			.getLogger(TestApp8aInitialMaterApplicationScorpUntrackedClass.class.getName());
 	private static WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
@@ -45,6 +45,9 @@ public class TestApp8aInitialMaterApplicationUntrackedClass extends TestCase {
 		// Check if user already has pending app.
 		InitialScorpUsersPage Verifyaccount = new InitialScorpUsersPage(webDriver);
 		Verifyaccount.InitialScorpUsers();
+		// delete second draft if any.
+		DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+		deleteDraftCert11.DeleteDraftCert();
 		// Complete the basic eligibility section.
 		BasicEligibilityMasterAppPage basicEligibilityMasterApp = new BasicEligibilityMasterAppPage(webDriver);
 		basicEligibilityMasterApp.BasicEligibilityMasterApp();
@@ -65,7 +68,7 @@ public class TestApp8aInitialMaterApplicationUntrackedClass extends TestCase {
 		// Complete the Individual section.
 		IndividualApplicationSectionPage individualApplicationSection = new IndividualApplicationSectionPage(webDriver);
 		individualApplicationSection.IndividualApplicationSection();
-		try {
+		//try {
 			// Complete the DvD section.
 			ContributorDisadvantageIndividualQuetionPage contributorDisadvantageIndividualQuetion = new ContributorDisadvantageIndividualQuetionPage(
 					webDriver);
@@ -141,11 +144,11 @@ public class TestApp8aInitialMaterApplicationUntrackedClass extends TestCase {
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement2);
 			WebElement rateElement = webDriver.findElement(By.linkText("Logout"));
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
-		} catch (Exception e) {
-			ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-			screenShot.ScreenShot();
-			logger.info("Upload will not run on headless " + e.getMessage());
-		}
+		//} catch (Exception e) {
+			//ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+			//screenShot.ScreenShot();
+			//logger.info("Upload will not run on headless " + e.getMessage());
+		//}
 		logger.info("Success");
 	}
 
