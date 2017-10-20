@@ -2,38 +2,27 @@ package gov.sba.utils.integration;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import gov.sba.automation.TestHelpers;
 import junit.framework.TestCase;
 
-public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
-	private static final Logger logger = LogManager
-			.getLogger(Test12348aInitialMaterApplicationLLCTracked.class.getName());
-	private static WebDriver webDriver;
+public class Complete8aForMessagingPage extends TestCase {
+	private static final Logger logger = LogManager.getLogger(Complete8aForMessagingPage.class.getName());
+	WebDriver webDriver;
 	int get_The_Row_From_Login_Data;
 
-	@Before
-	public void setUp() throws Exception {
-		webDriver = TestHelpers.getDefaultWebDriver();
-		webDriver.get(TestHelpers.getBaseUrl());
-		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 14;
-
+	public Complete8aForMessagingPage(WebDriver webDriver) {
+		this.webDriver = webDriver;
 	}
 
-	@Test
-	public void test12348aInitialMaterApplicationLLCTracked() throws Exception {
+	public void Complete8aForMessaging() throws Exception {
 		String Actual_Text = null;
 		String Expected_Text = null;
-		// try {
 		logger.info("Test for 8a initial master Flow");
 		// Login to dashboard.
+		get_The_Row_From_Login_Data = 7;
 		LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 		login_Data.Login_With_Reference();
 		// Verify if there is an existing certification on the dashboard and
@@ -44,8 +33,8 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 		DeleteDraftCertPage deleteDraftCert1 = new DeleteDraftCertPage(webDriver);
 		deleteDraftCert1.DeleteDraftCert();
 		// Check if user already has pending app.
-		InitialLlcUsersPage Verifyaccount = new InitialLlcUsersPage(webDriver);
-		Verifyaccount.InitialLlcUsers();
+		InitialCcorpUsersPage Verifyaccount = new InitialCcorpUsersPage(webDriver);
+		Verifyaccount.InitialCcorpUsers();
 		// delete second draft if any.
 		DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
 		deleteDraftCert11.DeleteDraftCert();
@@ -53,9 +42,9 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 		BasicEligibilityMasterAppPage basicEligibilityMasterApp = new BasicEligibilityMasterAppPage(webDriver);
 		basicEligibilityMasterApp.BasicEligibilityMasterApp();
 		// Complete the Business Ownership section.
-		BusinessOwnershipSubsectionMasterLlcPage businessOwnershipSubsectionMasterLlc = new BusinessOwnershipSubsectionMasterLlcPage(
+		BusinessOwnershipSubsectionMasterCcorpPage businessOwnershipSubsectionMaster = new BusinessOwnershipSubsectionMasterCcorpPage(
 				webDriver);
-		businessOwnershipSubsectionMasterLlc.BusinessOwnershipSubsectionMasterLlc();
+		businessOwnershipSubsectionMaster.BusinessOwnershipSubsectionMasterCcorp();
 		// Complete the character section.
 		CharacterMasterAppSectionPage characterMasterAppSection = new CharacterMasterAppSectionPage(webDriver);
 		characterMasterAppSection.CharacterMasterAppSection();
@@ -76,7 +65,7 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 			contributorDisadvantageIndividualQuetion.ContributorDisadvantageIndividualQuetion();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 14;
+			get_The_Row_From_Login_Data = 7;
 			LoginPageWithReference login_Data1 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data1.Login_With_Reference();
 			// Click on the dashboard.
@@ -100,7 +89,7 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 			contributorSpouseOfaDisadvantageIndividual.ContributorSpouseOfaDisadvantageIndividual();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 14;
+			get_The_Row_From_Login_Data = 7;
 			LoginPageWithReference login_Data11 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data11.Login_With_Reference();
 			// Click on the dashboard.
@@ -123,7 +112,7 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 			contributorOtherIndividualsQuestion.ContributorOtherIndividualsQuestion();
 			// Verify status flow.
 			// Login to the Admin dashboard.
-			get_The_Row_From_Login_Data = 14;
+			get_The_Row_From_Login_Data = 7;
 			LoginPageWithReference login_Data111 = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data111.Login_With_Reference();
 			// Click on the dashboard.
@@ -141,20 +130,15 @@ public class Test12348aInitialMaterApplicationLLCTracked extends TestCase {
 					.findElement(By.xpath("//div[2]/div/section/div/div[2]/table/tbody/tr/td/span"));
 			HighLight.highLightElement(webDriver, ContributorCompleteStatus311);
 			logger.info("All Required sections are completed, Ready to Review, Sign and Submit.");
-			WebElement rateElement2 = webDriver.findElement(By.id("profileid"));
-			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement2);
-			WebElement rateElement = webDriver.findElement(By.linkText("Logout"));
-			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
+			// Sign and submit.
+			SignAndSubmit8aApplicationPage SignAndSubmit = new SignAndSubmit8aApplicationPage(webDriver);
+			SignAndSubmit.SignAndSubmit8aApplication();
 		} catch (Exception e) {
 			ScreenShotPage screenShot = new ScreenShotPage(webDriver);
 			screenShot.ScreenShot();
 			logger.info("Upload will not run on headless " + e.getMessage());
 		}
-		logger.info("Success");
+		logger.info("8a initial application is successfully submitted");
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		webDriver.close();
-	}
 }

@@ -519,12 +519,12 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
           }
         } else {
 
-        }
+        //}
 
         logger.info(
             "Make a new request button not on this page because access was not rejected but was either revoked or never been submited");
       }
-
+      }
     }
   }
 

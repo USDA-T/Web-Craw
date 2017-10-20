@@ -19,9 +19,9 @@ import junit.framework.TestCase;
 
 @Category({gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class})
 
-public class TestUS801AmIEligibleTs3 extends TestCase {
+public class Test1234US801AmIEligibleTs3 extends TestCase {
   private static final Logger logger =
-      LogManager.getLogger(TestUS801AmIEligibleTs3.class.getName());
+      LogManager.getLogger(Test1234US801AmIEligibleTs3.class.getName());
   private static WebDriver webDriver;
 
   @Before
@@ -33,7 +33,7 @@ public class TestUS801AmIEligibleTs3 extends TestCase {
   }
 
   @Test
-  public void testUS801AmIEligibleTs3() throws Exception {
+  public void test1234US801AmIEligibleTs3() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
     try {
       // Open Firefox,Chrome or IE and navigate to the certify.sba.gov

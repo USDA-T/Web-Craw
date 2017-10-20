@@ -34,11 +34,12 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
 		} else {
 			if (webDriver.getCurrentUrl().contains("internal.qa.sba")) {
-				webDriver.findElement(By.xpath("//input[@name='commit']")).click();
+				WebElement rateElement = webDriver.findElement(By.linkText("8(a) Initial Application"));
+				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
 			} else {
 				if (webDriver.getCurrentUrl().contains("newqa")) {
-					webDriver.navigate().to(
-							"http://newqa.sba-one.net/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
+					WebElement rateElement = webDriver.findElement(By.linkText("8(a) Initial Application"));
+					((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
 				} else {
 					WebElement rateElement = webDriver.findElement(By.linkText("8(a) Initial Application"));
 					((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
@@ -46,7 +47,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 			}
 		}
 		// Verify new introduction page.
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/div/div/h2")));
 		Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
 		Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
 		assertEquals(Actual_Text, Expected_Text);
@@ -63,14 +64,14 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "The applicant firm must be a for-profit business in order to qualify for the 8(a) Business Development Program. If the applicant firm is not a for-profit business, it is not eligible for program participation.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Q1.1.b.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_is_broker > fieldset > h4")).getText();
 		Expected_Text = "Is the applicant firm operating as a broker?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_is_broker > fieldset > p")).getText();
-		Expected_Text = "A broker adds no material value to an item being supplied to a procuring activity. If the applicant firm does not take ownership or possession of, or handle the item being procured with its own equipment or facilities, the applicant firm may be operating as a broker. Please note that SBA’s definition of ‘broker’ does not include real estate or investment brokers.";
+		Expected_Text = "A broker adds no material value to an item being supplied to a procuring activity. If the applicant firm does not take ownership or possession of, or handle the item being procured with its own equipment or facilities, the applicant firm may be operating as a broker. Please note that SBA’s definition of ‘broker’ does not include real estate or investment brokers. Reference: 13 CFR § 124.108(d)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select No.
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
@@ -82,11 +83,11 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "Has the firm generated any revenue?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section Paragraph1.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_generate_revenue > fieldset > p")).getText();
-		Expected_Text = "Your firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the business concern has not yet generated revenues, you will not be successful in obtaining a waiver. Reference: 13 CFR § 124.107.\n\nPlease note that firms owned by Alaska Native Corporations, Tribes, Native Hawaiian Organizations, and Community Development Corporations have special rules regarding potential for success. Therefore, if your firm is entity-owned, select “Not applicable”. Reference: 13 CFR §§ 124.109(c)(6), 124.110(g), and 124.111(f).";
+		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+		Expected_Text = "Your firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the applicant firm has not yet generated revenues, you will not be successful in obtaining a waiver. Reference: 13 CFR § 124.107.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		// Q1.1.d.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_disadvantaged_citizens > fieldset > h4"))
 				.getText();
@@ -98,8 +99,8 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[4]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")).click();
 		// Q1.1.e.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_have_dba > fieldset > h4")).getText();
 		Expected_Text = "Does the applicant firm have a Doing Business As (DBA) Name?";
@@ -109,7 +110,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "If yes, please add names. Doing Business As Name may include an Assumed Name, Fictitious Name, or Trade Name.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and enter comment.
-		webDriver.findElement(By.xpath("//div[5]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")).click();
 		webDriver.findElement(By.xpath("//textarea")).sendKeys(
 				"Cats are among the most feared and revered creatures on the planet.  Their power, strength, and enigmatic nature have fascinated us for centuries.  They’ve dominated human culture since the dawn of civilization.  Go from the rainforests, to the savannah, to the mountain peaks all the way into the comfort of our homes.  Get an in-depth look at this unique species and the evolutionary tricks and adaptations that truly make a cat, a cat. Cats are loving animals as all creature of mother nature are.");
 		// Click on the Save and Continue button.
@@ -117,7 +118,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		// ===>Subsection 1.2: Prior 8(a) Involvement.
 		// Q1.2.a.
 		// Verify and Validate this Question.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Prior 8(a) Involvement";
 		assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -153,12 +154,12 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Actual_Text = webDriver
 				.findElement(By.cssSelector("#answers_previous_participant_assets_over_50_percent > fieldset > p"))
 				.getText();
-		Expected_Text = "If yes, provide the name of the 8(a) Program Participant and any relevant acquisition documents. Assets may include machinery, contracts, equipment, etc. At the time of application, if the assets of a former 8(a) Program Participant constitute 50% or more of applicant firm’s assets, then the applicant firm will not be eligible for participation in the program because of one-time eligibility.";
+		Expected_Text = "If yes, provide any relevant acquisition documents. The documents should contain the name of the 8(a) Program Participant. Assets may include machinery, contracts, equipment, etc. At the time of application, if the assets of a former 8(a) Program Participant constitute 50% or more of applicant firm’s assets, then the applicant firm will not be eligible for participation in the program because of one-time eligibility.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and attached a doc.
 		jse.executeScript("arguments[0].scrollIntoView()",
 				webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[3]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 		// Upload document.
 		String file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument = new MontanaUploadDocumentPage(webDriver);
@@ -177,7 +178,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and attached a doc.
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div/input")));
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Upload Doc.
 		file_path_abs = FixtureUtils.fixturesDir() + "MainTestUploadDoc.pdf";
 		MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
@@ -191,11 +192,14 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "Is the applicant firm considered small in accordance with its primary North American Industry Classification System (NAICS) code?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section.
-		Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		Expected_Text = "If no, the applicant firm may be denied participation in the 8(a) Business Development Program, or a formal size determination may be requested by SBA officials.\n\nThe applicant firm must be small according to SBA’s size standards to participate in the program. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations, 13 CFR § 121.201. The applicable size standard is the one corresponding to the applicant firm’s primary NAICS code.";
+		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+		Expected_Text = "If no, the applicant firm may be denied participation in the 8(a) Business Development Program, or a formal size determination may be requested by SBA officials.";
+		assertEquals(Actual_Text, Expected_Text);
+		Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
+		Expected_Text = "The applicant firm must be small according to SBA’s size standards to participate in the program. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations, 13 CFR § 121.201. The applicable size standard is the one corresponding to the applicant firm’s primary NAICS code.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		// Q1.4.b.
 		// Verify and Validate this Question.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_formal_determination > fieldset > h4")).getText();
@@ -226,7 +230,8 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 				.getText();
 		Expected_Text = "SBA Area Office 1\nSBA Area Office 2\nSBA Area Office 3\nSBA Area Office 4\nSBA Area Office 5\nSBA Area Office 6\nSBA Headquarters";
 		assertEquals(Actual_Text, Expected_Text);
-		webDriver.findElement(By.xpath("//select")).click();
+		WebElement rateElement11 = webDriver.findElement(By.xpath("//select"));
+		((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);
 		Actions act = new Actions(webDriver);
 		act.doubleClick(webDriver.findElement(By.xpath("//option[3]"))).build().perform();
 		// Q1.4.1.c.
@@ -274,13 +279,13 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		webDriver.findElement(By.xpath("//label[2]")).click();
 		// Click on the Save and Continue button.
 		CoreUtils.clickContinue(webDriver);
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Business Size";
 		assertEquals(Actual_Text, Expected_Text);
 		// Click on the Save and Continue button.
 		CoreUtils.clickContinue(webDriver);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article/h2")));
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Size Determination";
 		assertEquals(Actual_Text, Expected_Text);
 		// Click on the Save and Continue button.
@@ -297,7 +302,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		WebElement EligibilityCompleteStatus1 = webDriver.findElement(By.xpath("//td/span"));
 		HighLight.highLightElement(webDriver, EligibilityCompleteStatus1);
-		logger.info("First scenario completed, starting second scenario");
+		logger.info("Starting second scenario with skip logic");
 		WebElement rateElement = webDriver.findElement(By.xpath("//a/span"));
 		((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
 		DeleteDraftCertPage deleteDraftCert2 = new DeleteDraftCertPage(webDriver);
@@ -315,10 +320,11 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 							"https://newqa.sba-one.net/questionnaires/eight_a_initial/sba_applications/new?application_type_id=initial&certificate_type_id=eight_a_initial");
 				} else {
 					WebElement rateElement1 = webDriver.findElement(By.linkText("8(a) Initial Application"));
-					((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement1);}
+					((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement1);
+				}
 			}
 		}
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("h2")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//form/div/div/h2")));
 		Actual_Text = webDriver.findElement(By.xpath("//form/div/div/p")).getText();
 		Expected_Text = "The Federal government relies on the information in the forms and any documents or supplemental information submitted to determine whether your business is eligible to participate in the 8(a) Business Development Program. The definition of important terms are set forth in the Small Business Act, U.S. Small Business Administration (SBA) regulations (13 CFR § 124.3), and also any statutory and regulatory provision referenced in those authorities. In addition, please note that the SBA may request further clarification or supporting documentation in order to assist in the verification of any of the information provided and that each person providing information may be prosecuted if they have provided false information. The Government may pursue criminal, civil or administrative remedies for incorrect or incomplete information given, even if correct information has been included in other materials submitted to SBA.";
 		assertEquals(Actual_Text, Expected_Text);
@@ -347,12 +353,12 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_is_broker > fieldset > p")).getText();
-		Expected_Text = "A broker adds no material value to an item being supplied to a procuring activity. If the applicant firm does not take ownership or possession of, or handle the item being procured with its own equipment or facilities, the applicant firm may be operating as a broker. Please note that SBA’s definition of ‘broker’ does not include real estate or investment brokers.";
+		Expected_Text = "A broker adds no material value to an item being supplied to a procuring activity. If the applicant firm does not take ownership or possession of, or handle the item being procured with its own equipment or facilities, the applicant firm may be operating as a broker. Please note that SBA’s definition of ‘broker’ does not include real estate or investment brokers. Reference: 13 CFR § 124.108(d)";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and verify the disqualifying warning message.
 		jse.executeScript("arguments[0].scrollIntoView()",
 				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[2]/fieldset/div[2]/div/div/p")));
 		Actual_Text = webDriver.findElement(By.xpath("//div[2]/fieldset/div[2]/div/div/p")).getText();
 		Expected_Text = "In order to participate in 8(a) Business Development Program, the applicant firm must not be a broker. Please email 8aBD@sba.gov for assistance if you are unsure about your status as a broker. Include your firm name, DUNS number and address in the email.";
@@ -362,8 +368,11 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "Has the firm generated any revenue?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section Paragraph1.
-		Actual_Text = webDriver.findElement(By.cssSelector("#answers_generate_revenue > fieldset > p")).getText();
-		Expected_Text = "Your firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the business concern has not yet generated revenues, you will not be successful in obtaining a waiver. Reference: 13 CFR § 124.107.\n\nPlease note that firms owned by Alaska Native Corporations, Tribes, Native Hawaiian Organizations, and Community Development Corporations have special rules regarding potential for success. Therefore, if your firm is entity-owned, select “Not applicable”. Reference: 13 CFR §§ 124.109(c)(6), 124.110(g), and 124.111(f).";
+		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+		Expected_Text = "Your firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the applicant firm has not yet generated revenues, you will not be successful in obtaining a waiver. Reference: 13 CFR § 124.107.";
+		assertEquals(Actual_Text, Expected_Text);
+		Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
+		Expected_Text = "Please note that firms owned by Alaska Native Corporations, Tribes, Native Hawaiian Organizations, and Community Development Corporations have special rules regarding potential for success. Therefore, if your firm is entity-owned, select “Not applicable”. Reference: 13 CFR §§ 124.109(c)(6), 124.110(g), and 124.111(f).";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select No and verify the disqualifying warning message.
 		webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
@@ -371,7 +380,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[3]")));
 		Actual_Text = webDriver.findElement(By.xpath("(//div[@id='disqualifier-warning']/div/div/p)[3]")).getText();
-		Expected_Text = "In order to participate in 8(a) Business Development Program, the applicant firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the business concern has not yet generated revenues, you will not be successful in obtaining a waiver. Please note this is not applicable to entity-owned firms. Please email 8aBD@sba.gov for assistance if you are unsure about the firm’s revenue status. Include your firm name, DUNS number and address in the email.";
+		Expected_Text = "In order to participate in 8(a) Business Development Program, the applicant firm must demonstrate potential for success by showing that it has been in business in its primary industry for two years, or you will need to request a waiver of this requirement. If the applicant firm has not yet generated revenues, you will not be successful in obtaining a waiver. Please note this is not applicable to entity-owned firms. Please email 8aBD@sba.gov for assistance if you are unsure about the firm’s revenue status. Include your firm name, DUNS number and address in the email.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Q1.1.d.
 		Actual_Text = webDriver.findElement(By.cssSelector("#answers_disadvantaged_citizens > fieldset > h4"))
@@ -400,7 +409,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "If yes, please add names. Doing Business As Name may include an Assumed Name, Fictitious Name, or Trade Name.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and enter comment.
-		webDriver.findElement(By.xpath("//div[5]/fieldset/div/input")).click();
+		webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")).click();
 		webDriver.findElement(By.xpath("//textarea")).sendKeys(
 				"Cats are among the most feared and revered creatures on the planet.  Their power, strength, and enigmatic nature have fascinated us for centuries.  They’ve dominated human culture since the dawn of civilization.  Go from the rainforests, to the savannah, to the mountain peaks all the way into the comfort of our homes.  Get an in-depth look at this unique species and the evolutionary tricks and adaptations that truly make a cat, a cat. Cats are loving animals as all creature of mother nature are.");
 		// Click on the Save and Continue button.
@@ -408,7 +417,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		// ===>Subsection 1.2: Prior 8(a) Involvement.
 		// Q1.2.a.
 		// Verify and Validate this Question.
-		Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 		Expected_Text = "Prior 8(a) Involvement";
 		assertEquals(Actual_Text, Expected_Text);
 		Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -419,7 +428,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "The 8(a) Business Development Program has one-time eligibility. The applicant firm must not have participated in the 8(a) Business Development Program in the past (including participation under another name, voluntary withdrawal, termination, or graduation).";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes and verify the disqualifying warning message.
-		webDriver.findElement(By.xpath("//div/input")).click();
+		webDriver.findElement(By.xpath("//label")).click();
 		wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='disqualifier-warning']/div/div/p")));
 		Actual_Text = webDriver.findElement(By.xpath("//div[@id='disqualifier-warning']/div/div/p")).getText();
@@ -436,8 +445,8 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		assertEquals(Actual_Text, Expected_Text);
 		// Select Yes.
 		jse.executeScript("arguments[0].scrollIntoView()",
-				webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")));
-		webDriver.findElement(By.xpath("//div[2]/fieldset/div/input")).click();
+				webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+		webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
 		// 1.2.c
 		// Verify and Validate this Question.
 		Actual_Text = webDriver
@@ -449,7 +458,7 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Actual_Text = webDriver
 				.findElement(By.cssSelector("#answers_previous_participant_assets_over_50_percent > fieldset > p"))
 				.getText();
-		Expected_Text = "If yes, provide the name of the 8(a) Program Participant and any relevant acquisition documents. Assets may include machinery, contracts, equipment, etc. At the time of application, if the assets of a former 8(a) Program Participant constitute 50% or more of applicant firm’s assets, then the applicant firm will not be eligible for participation in the program because of one-time eligibility.";
+		Expected_Text = "If yes, provide any relevant acquisition documents. The documents should contain the name of the 8(a) Program Participant. Assets may include machinery, contracts, equipment, etc. At the time of application, if the assets of a former 8(a) Program Participant constitute 50% or more of applicant firm’s assets, then the applicant firm will not be eligible for participation in the program because of one-time eligibility.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select NO and attached a doc.
 		jse.executeScript("arguments[0].scrollIntoView()",
@@ -482,8 +491,11 @@ public class BasicEligibilityMasterAppPage extends TestCase {
 		Expected_Text = "Is the applicant firm considered small in accordance with its primary North American Industry Classification System (NAICS) code?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Detail Section. open when fix.
-		Actual_Text = webDriver.findElement(By.cssSelector("fieldset > p")).getText();
-		Expected_Text = "If no, the applicant firm may be denied participation in the 8(a) Business Development Program, or a formal size determination may be requested by SBA officials.\n\nThe applicant firm must be small according to SBA’s size standards to participate in the program. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations, 13 CFR § 121.201. The applicable size standard is the one corresponding to the applicant firm’s primary NAICS code.";
+		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+		Expected_Text = "If no, the applicant firm may be denied participation in the 8(a) Business Development Program, or a formal size determination may be requested by SBA officials.";
+		assertEquals(Actual_Text, Expected_Text);
+		Actual_Text = webDriver.findElement(By.xpath("//p[3]")).getText();
+		Expected_Text = "The applicant firm must be small according to SBA’s size standards to participate in the program. Size standards have been established for types of economic activity, or industry, under the North American Industry Classification System (NAICS). To determine the size standard associated with a particular NAICS code, refer to the table of size standards in the Small Business Size Regulations, 13 CFR § 121.201. The applicable size standard is the one corresponding to the applicant firm’s primary NAICS code.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Select No and verify the disqualifying warning message.
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[2]")));

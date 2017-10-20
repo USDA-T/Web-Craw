@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import gov.sba.automation.FixtureUtils;
 
@@ -18,6 +20,8 @@ public class EDWOSBEightATestPage {
   }
 
   public void EDWOSBEightATest() throws Exception {
+   JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+
     String Actual_Text = null;
     String Expected_Text = null;
     // Locate the accept button at the bottom of the EDWOSB agreement and
@@ -37,7 +41,7 @@ public class EDWOSBEightATestPage {
     webDriver.findElement(By.id("section_submit_button")).click();
     logger.info("  8(a) question has been answered");
     // Review page.
-    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
     Expected_Text = "Review";
     assertEquals(Actual_Text, Expected_Text);
     Actual_Text =
@@ -52,7 +56,7 @@ public class EDWOSBEightATestPage {
     logger.info("Step  - Verify the Signature page for MPP");
     // Verify you are on the Signature page
     logger.info("  Verify you are on the Signature page");
-    Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+    Actual_Text = webDriver.findElement(By.xpath("//article/div/h2")).getText();
     Expected_Text = "Signature";
     assertEquals(Actual_Text, Expected_Text);
     // Verify DUNS label
@@ -108,16 +112,20 @@ public class EDWOSBEightATestPage {
     // Step 9 - Click the Continue button
     logger.info("Step 9 - Click the Continue button");
     // webDriver.findElement(By.id("accept-button")).click();
-    Thread.sleep(3000);
-    logger.info("Step 11 - Click to accept the statements");
-    webDriver.findElement(By.id("legal_0")).click();
-    webDriver.findElement(By.id("legal_1")).click();
-    webDriver.findElement(By.id("legal_2")).click();
-    webDriver.findElement(By.id("legal_3")).click();
-    webDriver.findElement(By.id("legal_4")).click();
-    webDriver.findElement(By.id("legal_5")).click();
+    WebElement rateElement = webDriver.findElement(By.xpath("//label"));
+	((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[2]")));
+	webDriver.findElement(By.xpath("//label[2]")).click();
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[3]")));
+	webDriver.findElement(By.xpath("//label[3]")).click();
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[4]")));
+	webDriver.findElement(By.xpath("//label[4]")).click();
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[5]")));
+	webDriver.findElement(By.xpath("//label[5]")).click();
+	jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label[6]")));
+	webDriver.findElement(By.xpath("//label[6]")).click();
     Thread.sleep(2000);
-    webDriver.findElement(By.id("accept-button")).click();
+		webDriver.findElement(By.id("accept-button")).click();
 
   }
 

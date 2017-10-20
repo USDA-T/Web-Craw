@@ -20,27 +20,29 @@ import junit.framework.TestCase;
 
 @Category({ gov.sba.utils.integration.StableTests.class, gov.sba.utils.integration.DericTests.class })
 
-public class TestUS801AmIEligibleTs4 extends TestCase {
-	private static final Logger logger = LogManager.getLogger(TestUS801AmIEligibleTs4.class.getName());
-	private static WebDriver webDriver;
+public class Test1234US801AmIEligibleTs5 extends TestCase {
+	private static final Logger logger = LogManager.getLogger(Test1234US801AmIEligibleTs5.class.getName());
+	public WebDriver webDriver;
 
 	@Before
 	public void setUp() throws Exception {
 		webDriver = TestHelpers.getDefaultWebDriver();
 
 		webDriver.get(TestHelpers.getBaseUrl());
+		// webDriver.manage().window().maximize();
 		logger.info("FYI: your environment under test:" + System.getProperty(Constants.TEST_ENV));
+
 	}
 
 	@Test
-	public void testUS801AmIEligibleTs4() throws Exception {
+	public void test1234US801AmIEligibleTs5() throws Exception {
 		JavascriptExecutor jse = (JavascriptExecutor) webDriver;
 		try {
 			// Open Firefox,Chrome or IE and navigate to the certify.sba.gov
 			// landing
 			// page.
 			logger.info(
-					"User is NOT eligible for Any of the programs because user answer NO for Qs3: 8(a), WOSB, EDWOSB & Hob-zone");
+					"User is NOT eligible for Any of the programs because user answer NO for Qs4: 8(a), WOSB, EDWOSB & Hob-zone");
 			WebDriverWait wait = new WebDriverWait(webDriver, 30);
 			// Locate the Am I Eligible or the Find Out button on the
 			// Certify.SBA.Gov landing page and click on it.
@@ -67,7 +69,7 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
 			webDriver.findElement(By.cssSelector("button.yes_button")).click();
 			wait.until(ExpectedConditions.elementSelectionStateToBe(
 					By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p"), false));
-			// Locate the 2nd question and select No and verify the More Detail
+			// Locate the 2nd question and select yes and verify the More Detail
 			// meaning of the question.
 			String actual_error3 = webDriver
 					.findElement(By.xpath(".//*[@id='unconditional_direct_51_percent']/div[1]/div[1]/p")).getText();
@@ -113,12 +115,25 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
 					.getText();
 			String expected_Text9 = "Exceptions: This rule does not necessarily apply to Community Development Corporations (CDC) or businesses interested in participating as mentors in Mentor Protégé programs.";
 			assertEquals(actual_Text9, expected_Text9);
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("no_button_for_profit")));
-			webDriver.findElement(By.id("no_button_for_profit")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("yes_button_for_profit")));
+			webDriver.findElement(By.id("yes_button_for_profit")).click();
+			wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//div[@id='non_suspended']/div/div/p"),
+					false));
+			// Locate the 4th question and select NO and verify the More Detail
+			// meaning of the question.
+			String actual_Text10 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div/p")).getText();
+			String expected_Text10 = "Do you affirm that neither this firm, nor any of its owners, have ever been debarred or suspended by any federal entity?";
+			assertEquals(actual_Text10, expected_Text10);
+			logger.info("4th question was validated");
+			String actual_Text11 = webDriver.findElement(By.xpath("//div[@id='non_suspended']/div/div[2]/p")).getText();
+			String expected_Text11 = "Debarred or suspended firms or firms owned by debarred or suspended individual(s) are ineligible for admission to SBA small business programs.";
+			assertEquals(actual_Text11, expected_Text11);
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("no_button_non_suspended")));
+			webDriver.findElement(By.id("no_button_non_suspended")).click();
 			// Verify searched results.
 			wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("span.message"), false));
 			String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
-			String expected_Text1 = "In order to participate in SBA small business programs, firms must be for profit.";
+			String expected_Text1 = "In order to participate in SBA small business programs, the owner(s) of the firm must not have been debarred or suspended by a federal entity.";
 			assertEquals(actual_Text1, expected_Text1);
 			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.linkText("Exit")));
 			webDriver.findElement(By.linkText("Exit")).click();
@@ -129,7 +144,6 @@ public class TestUS801AmIEligibleTs4 extends TestCase {
 			Assert.fail();
 		}
 		logger.info("Success");
-
 	}
 
 	@After

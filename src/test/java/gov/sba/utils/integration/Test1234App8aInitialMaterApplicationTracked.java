@@ -44,13 +44,16 @@ public class Test1234App8aInitialMaterApplicationTracked extends TestCase {
 		// Check if user already has pending app.
 		InitialScorpUsersPage Verifyaccount = new InitialScorpUsersPage(webDriver);
 		Verifyaccount.InitialScorpUsers();
+		// delete second draft if any.
+	    DeleteDraftCertPage deleteDraftCert11 = new DeleteDraftCertPage(webDriver);
+		deleteDraftCert11.DeleteDraftCert();
 		// Complete the basic eligibility section.
 		BasicEligibilityMasterAppPage basicEligibilityMasterApp = new BasicEligibilityMasterAppPage(webDriver);
 		basicEligibilityMasterApp.BasicEligibilityMasterApp();
 		// Complete the Business Ownership section.
-		BusinessOwnershipSubsectionMasterScorpPage businessOwnershipSubsectionMaster = new BusinessOwnershipSubsectionMasterScorpPage(
+		BusinessOwnershipSubsectionMasterCcorpPage businessOwnershipSubsectionMaster = new BusinessOwnershipSubsectionMasterCcorpPage(
 				webDriver);
-		businessOwnershipSubsectionMaster.BusinessOwnershipSubsectionMaster();
+		businessOwnershipSubsectionMaster.BusinessOwnershipSubsectionMasterCcorp();
 		// Complete the character section.
 		CharacterMasterAppSectionPage characterMasterAppSection = new CharacterMasterAppSectionPage(webDriver);
 		characterMasterAppSection.CharacterMasterAppSection();

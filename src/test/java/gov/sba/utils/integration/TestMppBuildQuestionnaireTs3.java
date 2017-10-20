@@ -3,11 +3,9 @@ package gov.sba.utils.integration;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -18,7 +16,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import gov.sba.automation.CoreUtils;
 import gov.sba.automation.FixtureUtils;
 import gov.sba.automation.TestHelpers;
@@ -41,7 +38,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 
 	@Test
 	public void testMppBuildQuestionnaireTs3() throws Exception {
-		try {
+		//try {
 			WebDriverWait wait = new WebDriverWait(webDriver, 30);
 			String Actual_Text;
 			String Expected_Text;
@@ -50,9 +47,10 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			logger.info("Mpp question test Scenario 3 possitive + skip Logic");
 			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data.Login_With_Reference();
-			// Get the vendor Duns Number.
+			webDriver.findElement(By.xpath("//li[4]/a/span")).click();
 			wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//p[2]/span"), false));
 			DunsNumber = webDriver.findElement(By.xpath("//p[2]/span")).getText();
+			webDriver.findElement(By.xpath("//a/span")).click();
 			logger.info("The Duns number for this business is " + DunsNumber);
 			// Verify if there is an existing program on the dashboard and
 			// TestWorkFlowxx8aInProgress to start a new certification.
@@ -97,7 +95,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			Expected_Text = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
 			assertEquals(Actual_Text, Expected_Text);
 			// Select No and commit.
-			webDriver.findElement(By.id("answers_117_value_no")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_117_value_no")));
+			webDriver.findElement(By.xpath("//label[2]")).click();
 			CoreUtils.clickContinue(webDriver);
 			// Eligibility Section, Verifying Question.
 			Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -144,14 +143,14 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			Expected_Text = "Please answer this question";
 			assertEquals(Actual_Text, Expected_Text);
 			// Select yes for the first two questions.
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_118_value_yes")));
-			webDriver.findElement(By.id("answers_118_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_119_value_yes")));
-			webDriver.findElement(By.id("answers_119_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_120_value_no")));
-			webDriver.findElement(By.id("answers_120_value_no")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_121_value_no")));
-			webDriver.findElement(By.id("answers_121_value_no")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label")));
+			webDriver.findElement(By.xpath("//label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")));
+			webDriver.findElement(By.xpath("//div[3]/fieldset/div/label[2]")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")));
+			webDriver.findElement(By.xpath("//div[4]/fieldset/div/label[2]")).click();
 			CoreUtils.clickContinue(webDriver);
 			// NAICS Code Section, Verifying Question.
 			Actual_Text = webDriver.findElement(By.cssSelector("h4")).getText();
@@ -196,10 +195,10 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			Expected_Text = "Please answer this question";
 			assertEquals(Actual_Text, Expected_Text);
 			// Select yes for the first two questions.
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_123_value_yes")));
-			webDriver.findElement(By.id("answers_123_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_124_value_yes")));
-			webDriver.findElement(By.id("answers_124_value_yes")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div/label")));
+			webDriver.findElement(By.xpath("//div/label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
 			CoreUtils.clickContinue(webDriver);
 			// Size Determination Section(Sub-Subsection 1.1), Verifying
 			// Question.
@@ -215,7 +214,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			// Expected_Text = "Please answer this question";
 			// assertEquals(Actual_Text, Expected_Text);
 			// Select yes for the first two questions.
-			webDriver.findElement(By.id("answers_125_value_no")).click();
+			webDriver.findElement(By.xpath("//label[2]")).click();
 			CoreUtils.clickContinue(webDriver);
 			// Verify the Size Redetermination Section(Sub-Subsection 1.2) is
 			// disabled , Verifying Question.
@@ -231,8 +230,8 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			Actions act1 = new Actions(webDriver);
 			act1.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
 			// Plan and Agreements
-			wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector("h2"), false));
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			wait.until(ExpectedConditions.elementSelectionStateToBe(By.xpath("//article/h2"), false));
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Plans and Agreements";
 			assertEquals(Actual_Text, Expected_Text);
 			// Click on the continue button without answering the question and
@@ -249,7 +248,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			MontanaUploadDocumentPage MontanaUploadDocument1 = new MontanaUploadDocumentPage(webDriver);
 			MontanaUploadDocument1.MontanaUploadDocument(file_path_abs);
 			// Select yes for the Second questions.
-			webDriver.findElement(By.id("answers_132_value_no")).click();
+			webDriver.findElement(By.xpath("//div[2]/fieldset/div/label[2]")).click();
 			Actions act3 = new Actions(webDriver);
 			act3.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform();
 			// verify Active Agreements Section Disabled.
@@ -436,18 +435,18 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 				}
 			}
 			// **** Select Yes for all question in this section.
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_136_value_yes")));
-			webDriver.findElement(By.id("answers_136_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_137_value_yes")));
-			webDriver.findElement(By.id("answers_137_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_138_value_yes")));
-			webDriver.findElement(By.id("answers_138_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_139_value_yes")));
-			webDriver.findElement(By.id("answers_139_value_yes")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("answers_140_value_yes")));
-			webDriver.findElement(By.id("answers_140_value_yes")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//label")));
+			webDriver.findElement(By.xpath("//label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[2]/fieldset/div/label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[3]/fieldset/div/label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[4]/fieldset/div/label")).click();
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")));
+			webDriver.findElement(By.xpath("//div[5]/fieldset/div/label")).click();
 			Actions act6 = new Actions(webDriver);
-			act6.doubleClick(webDriver.findElement(By.id("answers_141_value_yes"))).build().perform();
+			act6.doubleClick(webDriver.findElement(By.xpath("//div[6]/fieldset/div/label"))).build().perform();
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='commit']")));
 			Actions act4 = new Actions(webDriver);
 			act4.doubleClick(webDriver.findElement(By.xpath("//input[@name='commit']"))).build().perform(); // Management/Technical
@@ -497,7 +496,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 			CoreUtils.clickContinue(webDriver);
 			// Financial Needs Section.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Financial Needs";
 			assertEquals(Actual_Text, Expected_Text);
 			// Attempt to commit and verify alert message.
@@ -525,7 +524,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 			CoreUtils.clickContinue(webDriver);
 			// Contracting Needs Section.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Contracting Needs";
 			assertEquals(Actual_Text, Expected_Text);
 			// Attempt to commit and verify alert message.
@@ -553,7 +552,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 			CoreUtils.clickContinue(webDriver);
 			// Trade Education Needs Section.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Intl Trade Education Needs";
 			assertEquals(Actual_Text, Expected_Text);
 			// Attempt to commit and verify alert message.
@@ -581,7 +580,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 			CoreUtils.clickContinue(webDriver);
 			// Business Development Needs Section.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Business Development Needs";
 			assertEquals(Actual_Text, Expected_Text);
 			// Attempt to commit and verify alert message.
@@ -609,7 +608,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 					"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
 			CoreUtils.clickContinue(webDriver);
 			// General/ Administrative Needs Section.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "General/Administrative Needs";
 			assertEquals(Actual_Text, Expected_Text);
 			// Attempt to commit and verify alert message.
@@ -719,7 +718,7 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			assertNotSame(Actual_Text, Expected_Text);
 			CoreUtils.clickContinue(webDriver);
 			// Training.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Training";
 			assertEquals(Actual_Text, Expected_Text);
 			CoreUtils.clickContinue(webDriver);
@@ -736,73 +735,20 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 			webDriver.switchTo().alert().accept();
 			CoreUtils.clickContinue(webDriver);
 			// Review page.
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
+			Actual_Text = webDriver.findElement(By.xpath("//article/h2")).getText();
 			Expected_Text = "Review";
 			assertEquals(Actual_Text, Expected_Text);
 			Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
 			Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
 			assertEquals(Actual_Text, Expected_Text);
 			CoreUtils.clickContinue(webDriver);
-			// logger.info(webDriver.switchTo().alert().getText());
-			// webDriver.switchTo().alert().accept();
-			// Step - Verify the Signature page for MPP
-			logger.info("Step  - Verify the Signature page for MPP");
-			// Verify you are on the Signature page
-			logger.info("  Verify you are on the Signature page");
-			Actual_Text = webDriver.findElement(By.cssSelector("h2")).getText();
-			Expected_Text = "Signature";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify title
-			logger.info("  Verify title");
-			Actual_Text = webDriver.findElement(By.cssSelector("h1")).getText();
-			Expected_Text = "All Small Mentor Protégé Program Program Self-Certification Summary";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify first paragraph
-			logger.info("  Verify first paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[2]")).getText();
-			Expected_Text = "All the statements and information provided in this form and any documents submitted are true, accurate and complete. If assistance was obtained in completing this form and the supporting documentation, I have personally reviewed the information and it is true and accurate. I understand that these statements are made for the purpose of determining eligibility for participation in the All Small MPP.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify third paragraph
-			logger.info("  Verify third paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[3]")).getText();
-			Expected_Text = "I understand that the information submitted may be given to Federal, State and local agencies for determining violations of law and other purposes.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fourth paragraph
-			logger.info("  Verify fourth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[4]")).getText();
-			Expected_Text = "I understand that I may not misrepresent my status as a small business to: 1) obtain a contract under the Small Business Act; or 2) obtain any benefit under a provision of Federal law that references the All Small MPP for a definition of program eligibility.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Verify fifth paragraph
-			logger.info("  Verify fifth paragraph");
-			// Verify sixth paragraph
-			logger.info("  Verify sixth paragraph");
-			Actual_Text = webDriver.findElement(By.xpath("//label[6]")).getText();
-			Expected_Text = "Warning: By clicking the Submit button, you are certifying that you are representing on your own behalf that the information provided in this application, and any document or supplemental information submitted, is true and correct as of the date set forth opposite your signature. Any intentional or negligent misrepresentation of the information contained in this certification may result in criminal, civil or administrative sanctions including, but not limited to: 1) fines of up to $500,000, and imprisonment of up to 10 years, or both, as set forth in 15 U.S.C. § 645 and 18 U.S.C. § 1001, as well as any other applicable criminal laws; 2) treble damages and civil penalties under the False Claims Act; 3) double damages and civil penalties under the Program Fraud Civil Remedies Act; 4) suspension and/or debarment from all Federal procurement and non-procurement transactions; and 5) program termination.";
-			assertEquals(Actual_Text, Expected_Text);
-			// Step 9 - Click the Continue button
-			logger.info("Step 9 - Click the Continue button");
-			webDriver.findElement(By.id("accept-button")).click();
-			// Step 10 - Accept the error message
-			logger.info(webDriver.switchTo().alert().getText());
-			Actual_Text = webDriver.switchTo().alert().getText();
-			Expected_Text = "In order to submit your application, you must accept all of the conditions of authorization.";
-			assertEquals(Actual_Text, Expected_Text);
-			wait.until(ExpectedConditions.alertIsPresent());
-			webDriver.switchTo().alert().accept();
-			// Step 11 - Accept the statements and click Continue
-			logger.info("Step 11 - Click to accept the statements");
-			webDriver.findElement(By.id("legal_0")).click();
-			webDriver.findElement(By.id("legal_1")).click();
-			webDriver.findElement(By.id("legal_2")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_3")));
-			webDriver.findElement(By.id("legal_3")).click();
-			webDriver.findElement(By.id("legal_4")).click();
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.id("legal_5")));
-			webDriver.findElement(By.id("legal_5")).click();
-			webDriver.findElement(By.id("accept-button")).click();
+			// Signature page.
+			MppSignaturePage mppSignature = new MppSignaturePage(webDriver);
+			mppSignature.MppSignature();
 			webDriver.findElement(By.xpath("//a/span")).click();
 			WebElement ActiveCert = webDriver.findElement(By.xpath("//table[@id='certifications']/tbody/tr/td[5]"));
 			HighLight.highLightElement(webDriver, ActiveCert);
+			webDriver.findElement(By.id("profileid")).click();
 			webDriver.findElement(By.linkText("Logout")).click();
 			// Login as MPP-analyst and return MPP back to vendor.
 			get_The_Row_From_Login_Data = 56;
@@ -831,12 +777,12 @@ public class TestMppBuildQuestionnaireTs3 extends TestCase {
 				webDriver.findElement(By.id("profileid")).click();
 				webDriver.findElement(By.linkText("Logout")).click();
 			}
-		} catch (Exception e) {
-			ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-			screenShot.ScreenShot();
-			logger.info(e.getMessage());
-			Assert.fail();
-		}
+		//} catch (Exception e) {
+			//ScreenShotPage screenShot = new ScreenShotPage(webDriver);
+			//screenShot.ScreenShot();
+			//logger.info(e.getMessage());
+			//Assert.fail();
+		//}
 
 		logger.info("Success");
 	}

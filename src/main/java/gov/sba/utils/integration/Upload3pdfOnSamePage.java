@@ -27,28 +27,33 @@ public class Upload3pdfOnSamePage {
 		logger.debug("Uploading a new document");
 		WebDriverWait wait = new WebDriverWait(webDriver, 40);
 		if (webDriver.getCurrentUrl().contains("certify.qa")) {
+			Thread.sleep(2000);
 			WebElement rateElement2 = webDriver
 					.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[3]"));
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement2);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@id='doc-lib-button'])[3]")));
 			WebElement rateElement1 = webDriver.findElement(By.xpath("(//button[@id='doc-lib-button'])[3]"));
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement1);
-			WebElement rateElement11 = webDriver.findElement(By.xpath("(//input[@id='truth'])[3]"));
-			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//td[@id='document_library_file_name']/ul/li/label)[3]")));
+			WebElement rateElement11 = webDriver.findElement(By.xpath("(//td[@id='document_library_file_name']/ul/li/label)[3]"));
+			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);	
 			WebElement rateElement111 = webDriver
 					.findElement(By.xpath("(//div[@id='document_library']/fieldset/div/div/button)[3]"));
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement111);
 			logger.info("document uploaded successully");
 			Thread.sleep(1000);
-			;
 		} else {
 			if (webDriver.getCurrentUrl().contains("localhost")) {
+				Thread.sleep(2000);
 				WebElement rateElement2 = webDriver
 						.findElement(By.xpath("(//a[contains(text(),'Add required documents')])[3]"));
 				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement2);
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[@id='doc-lib-button'])[3]")));
 				WebElement rateElement1 = webDriver.findElement(By.xpath("(//button[@id='doc-lib-button'])[3]"));
 				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement1);
-				WebElement rateElement11 = webDriver.findElement(By.xpath("(//input[@id='truth'])[3]"));
-				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//td[@id='document_library_file_name']/ul/li/label)[3]")));
+				WebElement rateElement11 = webDriver.findElement(By.xpath("(//td[@id='document_library_file_name']/ul/li/label)[3]"));
+				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement11);	
 				WebElement rateElement111 = webDriver
 						.findElement(By.xpath("(//div[@id='document_library']/fieldset/div/div/button)[3]"));
 				((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement111);
