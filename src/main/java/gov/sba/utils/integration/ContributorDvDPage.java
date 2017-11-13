@@ -320,8 +320,8 @@ public class ContributorDvDPage extends TestCase {
 				webDriver.findElement(By.xpath("//select")).getText());
 		webDriver.findElement(By.xpath("//select")).click();
 		webDriver.findElement(By.xpath("//option[6]")).click();
-		webDriver.findElement(By.xpath("//textarea")).sendKeys(
-				"Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
+		//webDriver.findElement(By.xpath("//textarea")).sendKeys(
+				//"Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
 		// click on continue.
 		CoreUtils.clickContinue(webDriver);
 		// Other Basis of Disadvantage
@@ -329,8 +329,6 @@ public class ContributorDvDPage extends TestCase {
 		assertEquals("Other Basis of Disadvantage", webDriver.findElement(By.xpath("//article/h2")).getText());
 		// verify the Other Basis of Disadvantage drop-down.
 		webDriver.findElement(By.xpath("//option[4]")).click();
-		webDriver.findElement(By.xpath("//textarea")).sendKeys(
-				"Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
 		CoreUtils.clickContinue(webDriver);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article/h2")));
 		assertEquals("Social Narrative", webDriver.findElement(By.xpath("//article/h2")).getText());

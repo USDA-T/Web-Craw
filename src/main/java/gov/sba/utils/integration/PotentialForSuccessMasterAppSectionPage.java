@@ -52,7 +52,8 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 		}
 		webDriver.findElement(By.id("section_submit_button")).click();
 		try {
-			assertEquals("Attachment is required", webDriver.findElement(By.xpath("//div/span")).getText());
+			assertEquals("Attachment is required",
+					webDriver.findElement(By.xpath("//fieldset/div/div/span")).getText());
 		} catch (Error e) {
 			logger.info(e.getMessage());
 		}
@@ -71,9 +72,11 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 			}
 			Thread.sleep(1000);
 		}
-		CoreUtils.clickContinue(webDriver);
 		try {
-			assertEquals("Please answer this question", webDriver.findElement(By.xpath("//div/span")).getText());
+			CoreUtils.clickContinue(webDriver);
+			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//fieldset/div/span")));
+			assertEquals("Please answer this question",
+					webDriver.findElement(By.xpath("//fieldset/div/span")).getText());
 		} catch (Error e) {
 			logger.info(e.getMessage());
 		}
@@ -92,19 +95,19 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 		webDriver.findElement(By.xpath("//tr[3]/td[4]/input")).clear();
 		webDriver.findElement(By.xpath("//tr[3]/td[4]/input")).sendKeys("thebdb 34");
 		webDriver.findElement(By.xpath("//td[6]/button")).click();
-		for (int second = 0;; second++) {
-			if (second >= 60)
-				fail("timeout");
-			try {
-				if ("The award date should be in MM/DD/YYYY format\nThe NAICS code should be a 5 or 6 digit number"
-						.equals(webDriver.findElement(By.xpath("//div[2]/div/div/p")).getText()))
-					break;
-			} catch (Exception e) {
-				logger.info(e.getMessage());
-			}
-			Thread.sleep(1000);
+		try {
+			if ("The award date should be in MM/DD/YYYY format.\nThe NAICS code should be a 5 or 6 digit number.\nPlease provide the value of the contract."
+					.equals(webDriver.findElement(By.xpath("//div[2]/div/div/p")).getText()))
+				;
+			// break;
+		} catch (Exception e) {
+			logger.info(e.getMessage());
 		}
-		assertEquals("The award date should be in MM/DD/YYYY format\nThe NAICS code should be a 5 or 6 digit number",
+
+		Thread.sleep(1000);
+
+		assertEquals(
+				"The award date should be in MM/DD/YYYY format.\nThe NAICS code should be a 5 or 6 digit number.\nPlease provide the value of the contract.",
 				webDriver.findElement(By.xpath("//div[2]/div/div/p")).getText());
 		webDriver.findElement(By.xpath("//tr[3]/td/input")).clear();
 		webDriver.findElement(By.xpath("//tr[3]/td/input")).sendKeys("03/12/2016");
@@ -151,8 +154,8 @@ public class PotentialForSuccessMasterAppSectionPage extends TestCase {
 		ContributorUpload21.Upload2pdfOnSame(file_path_abs);
 		CoreUtils.clickContinue(webDriver);
 		assertEquals("", webDriver.getTitle());
-		for (int second = 0;; second++) {
-			if (second >= 60)
+		for (int second1 = 0;; second1++) {
+			if (second1 >= 60)
 				fail("timeout");
 			try {
 				if ("Potential for Success".equals(webDriver.findElement(By.xpath("//article/h2")).getText()))

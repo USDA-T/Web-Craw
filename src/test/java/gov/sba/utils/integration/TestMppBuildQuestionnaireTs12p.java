@@ -100,7 +100,7 @@ public class TestMppBuildQuestionnaireTs12p extends TestCase {
 		Expected_Text = "Are you an existing 8(a) firm in your final 6 months of the program, wishing to transfer your Mentor-Protégé relationship to the All Small Mentor-Protégé Program?";
 		assertEquals(Actual_Text, Expected_Text);
 		// Verifying detail meaning for question.
-		Actual_Text = webDriver.findElement(By.xpath("//p[2]")).getText();
+		Actual_Text = webDriver.findElement(By.xpath("//fieldset/p[2]")).getText();
 		Expected_Text = "If yes, please upload your dated 8(a) Mentor-Protégé Approval Letter and your current 8(a) Mentor-Protégé Agreement. You are eligible for the All Small Mentor-Protégé Program and you will skip forward to the “Review” section of this application.";
 		assertEquals(Actual_Text, Expected_Text);
 		// Click on the continue button without answering the question and

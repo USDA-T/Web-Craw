@@ -74,7 +74,7 @@ public class Test1234US801AmIEligibleTs10 extends TestCase {
 			assertEquals(actual_Text2, expected_Text2);
 			// Validate the meaning for question one.
 			String actual_Text3 = webDriver.findElement(By.cssSelector("div.details.usa-width-one-half > p")).getText();
-			String expected_Text3 = "A U.S.citizenmeans a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
+			String expected_Text3 = "A U.S. citizen means a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
 			assertEquals(actual_Text3, expected_Text3);
 			// verify and click on the Yes button.
 			jse.executeScript("arguments[0].scrollIntoView()",
