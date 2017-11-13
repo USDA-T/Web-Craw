@@ -144,7 +144,8 @@ public class IndividualApplicationSectionPage extends TestCase {
 		assertEquals("Applicant Firm Ownership", webDriver.findElement(By.xpath("//article/h2")).getText());
 		// Verify section is required.
 		CoreUtils.clickContinue(webDriver);
-		assertEquals("Please answer this question", webDriver.findElement(By.xpath("//fieldset/div/div[2]/span")).getText());
+		assertEquals("Please answer this question",
+				webDriver.findElement(By.xpath("//fieldset/div/div[2]/span")).getText());
 		webDriver.findElement(By.xpath("//div[2]/input")).sendKeys("76");
 		webDriver.findElement(By.xpath("//textarea")).sendKeys(
 				"Also is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit fromAlso is their earth so. Dry female let doesn't void unto kind. Him two days set green us. Darkness from you'll. Him winged winged fifth man heaven won't it first male saw gathered deep. Abundantly herb it own. Darkness from, created great gathering us called deep abundantly. Divide. So replenish rule together beginning fowl seas light gathering air fill, saw darkness divide doesn't greater fly they're all fly. Shall light from given, place itself for were third. Itself second gathered fruit from");
@@ -310,8 +311,6 @@ public class IndividualApplicationSectionPage extends TestCase {
 		jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.xpath("//select")));
 		webDriver.findElement(By.xpath("//select")).click();
 		webDriver.findElement(By.xpath("//option[3]")).click();
-		webDriver.findElement(By.xpath("//textarea")).sendKeys(
-				"Like any other social media site Facebook has length requirements when it comes to writing on the wall, providing status, messaging and commenting. Understanding how many characters you can use, enables you to more effectively use Facebook as a business or campaign tool");
 		// click on continue.
 		CoreUtils.clickContinue(webDriver);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//article/h2")));

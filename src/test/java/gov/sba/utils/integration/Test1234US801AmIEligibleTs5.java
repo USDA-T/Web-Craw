@@ -61,7 +61,7 @@ public class Test1234US801AmIEligibleTs5 extends TestCase {
 			assertEquals(actual_Text2, expected_Text2);
 			// Validate the meaning for question one.
 			String actual_Text3 = webDriver.findElement(By.cssSelector("div.details.usa-width-one-half > p")).getText();
-			String expected_Text3 = "A U.S.citizenmeans a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
+			String expected_Text3 = "A U.S. citizen means a person born or naturalized in the United States. Resident aliens and holders of permanent visas are not considered to be citizens for program purposes.";
 			assertEquals(actual_Text3, expected_Text3);
 			// verify and click on the Yes button.
 			jse.executeScript("arguments[0].scrollIntoView()",
@@ -135,8 +135,9 @@ public class Test1234US801AmIEligibleTs5 extends TestCase {
 			String actual_Text1 = webDriver.findElement(By.cssSelector("span.message")).getText();
 			String expected_Text1 = "In order to participate in SBA small business programs, the owner(s) of the firm must not have been debarred or suspended by a federal entity.";
 			assertEquals(actual_Text1, expected_Text1);
-			jse.executeScript("arguments[0].scrollIntoView()", webDriver.findElement(By.linkText("Exit")));
-			webDriver.findElement(By.linkText("Exit")).click();
+			// jse.executeScript("arguments[0].scrollIntoView()",
+			// webDriver.findElement(By.linkText("Exit")));
+			// webDriver.findElement(By.linkText("Exit")).click();
 		} catch (Exception e) {
 			ScreenShotPage screenShot = new ScreenShotPage(webDriver);
 			screenShot.ScreenShot();
