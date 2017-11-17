@@ -101,7 +101,7 @@ public class TestWorkFlow8a01 extends TestCase {
       masterApp_8a_Page_Click(webDriver, "page_contributors_Start_Indv_Cont");
       contributorsubApp_8aDisAdvInd(webDriver);
       /* To complete 8a Master Application. */
-      master8aApp_final_ReviewSign(webDriver);
+       master8aApp_final_ReviewSign(webDriver);
       navigationMenuClick(webDriver, "DASHBOARD");
       List<WebElement> all_Cells = verify_Row_In_A_Table_And_Return(webDriver,
           new String[] {"8(a) Initial Application", "", "Pending", "", "", "", ""});

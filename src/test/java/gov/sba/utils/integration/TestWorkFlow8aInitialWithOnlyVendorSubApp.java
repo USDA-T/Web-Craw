@@ -55,7 +55,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase{
   }
 
   @Test
-  public void testWorkFlow8aInitialWithOnlyVendorSubApp() throws Exception {
+  public void testWorkFlow8aInitialWithOnlyVendorSubApp() throws   Exception {
     try {
 
       new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
@@ -113,7 +113,7 @@ public class TestWorkFlow8aInitialWithOnlyVendorSubApp extends TestCase{
       disAdvApp_8a_Financial_Page(webDriver, "yes", "yes", "yes", "yes");
       disAdvApp_8a_Criminal_History_Page(webDriver, "yes", "Anything", "yes", "yes", "yes");
       disAdvApp_criminal_Hist_Doc_Page(webDriver);
-      disAdvApp_Basic_Of_Disadvantage_Page(webDriver, "Black American", "Anything");
+      disAdvApp_Basic_Of_Disadvantage_Page(webDriver, "Black American");
       //disAdvApp_Social_Narrative_Page(webDriver);
       disAdvApp_Transfer_Assets_Page(webDriver, "Yes", "Anything");
       disAdvApp_Tax_Returns_Page(webDriver);

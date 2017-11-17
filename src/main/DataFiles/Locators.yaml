@@ -539,7 +539,7 @@ Main_Page_Help_Page_Link_Edit: {Locator: 'xpath', Value: "//a[@href='/help_pages
 
 Analyst_Review_Determ_Page_Link: {Locator: 'xpath', Value: "//ul[contains(@class, 'sidenav-list')]/li/a[contains(text(),'etermination')]"}
 Analyst_Review_Legal_Business_Name: {Locator: 'xpath', Value: "td/a[contains(text(),'Legal Business Name')]"}
-SBA_Review_Determ_Made:           {Locator: 'xpath', Value: "label[@for='review_workflow_state_determination_made']"}
+SBA_Review_Determ_Made:           {Locator: 'xpath', Value: "//label[@for='review_workflow_state_determination_made']"}
 SBA_Review_Determ_Decision:       {Locator: 'xpath', Value: "//select[@id='determination_decision')]"}
 SBA_Review_Review_Started:        {Locator: 'xpath', Value: "//label[@for='review_workflow_state_assigned_in_progress']"}
 SBA_Review_Return_For_Mod:        {Locator: 'xpath', Value: "//label[@for='review_workflow_state_returned_for_modification']"}
@@ -573,7 +573,7 @@ SBA_Table_Search:       {Locator: 'xpath', Value: "//div[@id='table-search']/tab
 
 # @8a_Initial_Program  Start
 8a_Application_Page_Contributers_Link:                        {Locator: 'xpath', Value: "//div[contains(@class, 'card')]//a[ contains(@href,'contributor_sections' ) ] "}
-8a_Application_Page_Contributers_Link_Start_Indv:             {Locator: 'xpath', Value: "//a[ contains (@href, 'eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
+8a_Application_Page_Contributers_Link_Start_Indv:             {Locator: 'xpath', Value: "//a[ contains (@href, 'contributor_va_eight_a_disadvantaged_individual/questionnaires/eight_a_disadvantaged_individual/contributor_sections/vendor_admin/sba_applications/new' ) ]"}
 Contributor_Add_DisAdv_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text() , 'Add another Disadvantaged Individual, if applicable' ) ]"}
 Contributor_Add_Spouse_Ind_Link:                              {Locator: 'xpath', Value: "//a[ contains (@id,'add_link') and contains ( text(), 'Add a spouse of a Disadvantaged Individual' ) ]"}
 Contributor_Add_Business_Ind_Link:                            {Locator: 'xpath', Value: "//a[ contains ( text(), 'Add other individuals' ) ]"}
@@ -699,9 +699,10 @@ Potential_Sucess_Revenue_NAICS_Comment:             {Locator: "id", Value: "answ
 Potential_Sucess_Revenue_Primary_Yes:               {Locator: "xpath", Value: "//label[@for= 'answers_631_value_yes']"}
 Potential_Sucess_Revenue_Primary_No:                {Locator: "xpath", Value: "//label[@for= 'answers_631_value_no']"}
 Potential_Sucess_Revenue_Precentage:                {Locator: "id", Value: "answers_632_value"}
-Potential_Sucess_Present_Past_Contracts_Insert_Row: {Locator: "id", Value: "jsgrid-insert"}
+#Potential_Sucess_Present_Past_Contracts_Insert_Row: {Locator: "id", Value: "jsgrid-insert"}
+Potential_Sucess_Present_Past_Contracts_Insert_Row: {Locator: "xpath", Value: "//input[contains(@class,'jsgrid-insert-button')]"}
 Potential_Sucess_Present_Past_Contracts_All_Cells:    {Locator: "xpath", Value: "//div[@id='answers[633][value]']//tr[contains(@class,'jsgrid-insert-row')]/td/input"}
-Potential_Sucess_Present_Past_Contracts_Btn_Insert:   {Locator: "xpath", Value: "//div[@id='answers[633][value]']//tr[contains(@class,'jsgrid-insert-row')]/td/button[contains(@class,'insert')]"}
+Potential_Sucess_Present_Past_Contracts_Btn_Insert:   {Locator: "xpath", Value: "//div[@id='answers[633][value]']//tr[contains(@class,'jsgrid-insert-row')]/td/input[contains(@class,'insert')]"}
 Potential_Sucess_Present_Past_Contracts_Btn_Delete:   {Locator: "xpath", Value: "//div[@id='answers[633][value]']//tr[contains(@class,'jsgrid-insert-row')]/td/button[contains(@class,'cancel-edit')]"}
 Potential_Sucess_Present_Past_balance_Sheet_Attach:   {Locator: "xpath", Value: "//div[@id='answers[634][attachment]']//div[@id='add-req-doc-button']/a/i"}
 Potential_Sucess_Present_Past_balance_Sheet_Attach_All:   {L1:  "//div[@id='answers[634][attachment]']//div[@id='add-req-doc-button']/a",

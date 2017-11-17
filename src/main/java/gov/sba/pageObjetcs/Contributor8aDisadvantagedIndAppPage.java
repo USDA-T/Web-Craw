@@ -448,11 +448,11 @@ public class Contributor8aDisadvantagedIndAppPage {
     }
   }
 
-  public static void disAdvApp_Basic_Of_Disadvantage_Page(WebDriver webDriver, String Option,
-      String Text) throws Exception {
+  public static void disAdvApp_Basic_Of_Disadvantage_Page(WebDriver webDriver, String Option
+      ) throws Exception {
 
     new Select(find_Element(webDriver, "8a_DisAdv_Basic_Of_DisAdv_Sel")).selectByValue(Option);
-    setText_Element(webDriver, "8a_DisAdv_Basic_Of_DisAdv_Text", Text);
+   // setText_Element(webDriver, "8a_DisAdv_Basic_Of_DisAdv_Text", Text);
     click_Element(webDriver, "Application_Common_Continue_Button");
   }
 
