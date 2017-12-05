@@ -32,7 +32,7 @@ public class TestUsdaLogin extends TestCase {
 		webDriver = TestHelpers.getDefaultWebDriver();
 		webDriver.get(TestHelpers.getBaseUrl());
 		webDriver.manage().window().maximize();
-		get_The_Row_From_Login_Data = 103;
+		get_The_Row_From_Login_Data = 9;
 
 	}
 
@@ -45,7 +45,7 @@ public class TestUsdaLogin extends TestCase {
 
 		// Verify the logout private page.
 		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lnkLogIn")));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lnkLogIn_45")));
 			// Locate and click on the Login link.
 			click_Element(webDriver, "Click_Login_Link");
 			assertEquals("User ID & Password", find_Element(webDriver, "Verify_Login_Page").getText());
@@ -74,13 +74,16 @@ public class TestUsdaLogin extends TestCase {
 			assertEquals("Himaashri Gottumukkala", find_Element(webDriver, "Verify_Private_Login_Page").getText());
 			logger.info("Completed negative login test, starting advanced search");
 		} catch (Exception ex) {
+			// Take screenshot
+			ScreenShotPage1 ScreenShot = new ScreenShotPage1(webDriver);
+			ScreenShot.ScreenShot();
 			logger.info(ex);
 			throw new RuntimeException(ex);
 		}
-		//complete advanced search.
+		// complete advanced search.
 		AdvancedSearchValdationPage advancedSearchValdation = new AdvancedSearchValdationPage(webDriver);
 		advancedSearchValdation.AdvancedSearchValdation();
-		//Complete Adding a new opreation.
+		// Complete Adding a new opreation.
 		AddNewOperationPage addNewOperation = new AddNewOperationPage(webDriver);
 		addNewOperation.AddNewOperation();
 		// Logout and login to verify all negative login flow.
