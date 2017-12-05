@@ -1,6 +1,6 @@
 #Login
-SBA_Login_Email:        {Locator: 'name', Value: "user[email]"}
-SBA_Login_Pwd:          {Locator: 'name', Value: "user[password]"}
+SBA_Login_Email:        {Locator: 'id', Value: "USERID"}
+SBA_Login_Pwd:          {Locator: 'id', Value: "PASS"}
 SBA_Login_Button:       {Locator:  'xpath', Value: "//button[contains(@class,'button-full')]"}
 SBA_Login_Sign_in:      {Locator:  'id', Value: "business_signin"}
 SBA_GetStarted_Login:   {Locator: 'xpath', Value: "//button[contains(@class,'usa-color-gold')]"}
@@ -519,7 +519,7 @@ SBA_MPP_Report_Draft:             {Locator: 'xpath', Value: "//table[ @id='certi
 SBA_8aInitial_Table_Link:         {Locator: 'linktext', Value: "8(a) Initial Program"}
 
 #Dashboard
-OppSup_Dashboard_Business_Signin: {Locator: 'id', Value: "business_signin"}
+OppSup_Dashboard_Business_Signin: {Locator: 'id', Value: "ibLogin"}
 OppSup_Dashboard_Govt_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_gov_user']]/label"}
 OppSup_Dashboard_Govt_User_Radio_Bt: {Locator: 'id', Value: "user_type_gov_user"}
 OppSup_Dashboard_Vend_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_vendor_user']]/label"}
@@ -1762,6 +1762,59 @@ MPP_Montor_Agrement_Up1_Add_Req:                      {Locator: 'xpath', Value: 
 SBA_8a_Duns_Confrm_Text:                    {Locator: 'xpath', Value: "//input[@type='number' and contains(@id,'duns-value')]"}
 SBA_8a_Duns_Confrm_Text_Error:              {Locator: 'xpath', Value: "//span[ contains( text(), 'You must confirm') and contains(@id,'duns-value')]"}
 MPP_8a_Duns_Change_Duns:                    {Locator: 'xpath', Value: "//input[@type='number' and contains(@id,'change-duns-167')]"}
+
+
+#Login verification locators
+Usda_Logout:        {Locator: 'id', Value: "lnkLogout"}
+Verify_Private_Login_Page:        {Locator: 'id', Value: "lnkMyProfile"}
+Verify_Public_Loggedout_Page:        {Locator: 'id', Value: "lnkLogIn"}
+Verify_Login_Page:        {Locator: 'xpath', Value: "//div[2]/div/div"}
+User_ID_Locator:        {Locator: 'id', Value: "USERID"}
+User_Password_Locator:        {Locator: 'id', Value: "PASS"}
+Click_Login_Button:        {Locator: 'id', Value: "ibLogin"}
+UserID_Validation_Message:        {Locator: 'id', Value: "rfvUSERID"}
+Password_Validation_Message:        {Locator: 'id', Value: "rfvPASS"}
+UserID_Password_Validation_Error:        {Locator: 'xpath', Value: "//font"}
+Click_Login_Link:        {Locator: 'id', Value: "lnkLogIn"}
+
+#Advanced search locators.
+Search_Tab_Locator:        {Locator: 'xpath', Value: "//li[4]/a"}
+Select_Advanced_From_Dropdown:        {Locator: 'xpath', Value: "//li[4]/div/ul/li[2]/a"}
+Advanced_Search_Page_Title:        {Locator: 'xpath', Value: "//div/h2"}
+Select_Operation:        {Locator: 'xpath', Value: "//div/table/tbody/tr[2]/td/a"}
+Get_NOP_ID:        {Locator: 'xpath', Value: "//div[10]/table/tbody/tr[2]/td[2]"}
+NOP_ID_Search_Box_Locator:        {Locator: 'xpath', Value: "//div/div/input[2]"}
+Get_Operation_Name:        {Locator: 'xpath', Value: "//td[2]/span"}
+Click_Top_Search_Button:        {Locator: 'xpath', Value: "//span/input"}
+Click_Bottom_Search_Button:        {Locator: 'xpath', Value: "//div[3]/span/input"}
+Return_search_data:        {Locator: 'xpath', Value: "//div[2]/div/div/table/tbody/tr/td/a"}
+
+#Operations locators.
+Operations_Tab_Locator:        {Locator: 'xpath', Value: "//li[8]/a"}
+Select_A_Certifier:        {Locator: 'xpath', Value: "//li[8]/div/ul/li[2]/a"}
+Chose_one_Certifier:        {Locator: 'linkText', Value: "Open"}
+Click_Add_an_Operation:        {Locator: 'xpath', Value: "//li[3]/div/ul/li/a/span/span[2]"}
+Add_Operation_page:        {Locator: 'xpath', Value: "//div/h2"}
+Create_Button:        {Locator: 'xpath', Value: "//div/span/input"}
+Reqired_feild_error_message:        {Locator: 'xpath', Value: ".//*[@id='vs0']/ul"}
+Operaion_Name:        {Locator: 'xpath', Value: "//tr[5]/td[2]/input"}
+Operaion_status:        {Locator: 'xpath', Value: "//select"}
+City:        {Locator: 'xpath', Value: "//td/table/tbody/tr[3]/td[2]/input"}
+Address_line1:        {Locator: 'xpath', Value: "//td/table/tbody/tr[2]/td[2]/input"}
+Address_line2:        {Locator: 'xpath', Value: "//td[2]/table/tbody/tr[2]/td[2]/input"}
+City_line1:        {Locator: 'xpath', Value: "//td/table/tbody/tr[4]/td[2]/input"}
+City_line2:        {Locator: 'xpath', Value: "//td[2]/table/tbody/tr[4]/td[2]/input"}
+State_For_line1:        {Locator: 'xpath', Value: "//td/table/tbody/tr[5]/td[2]/select"}
+State_For_line2:        {Locator: 'xpath', Value: "//td[2]/table/tbody/tr[5]/td[2]/select"}
+Zip_code1:        {Locator: 'xpath', Value: "//tr[7]/td[2]/input"}
+Zip_code2:        {Locator: 'xpath', Value: "//td[2]/table/tbody/tr[7]/td[2]/input"}
+Country1:        {Locator: 'xpath', Value: "//tr[8]/td[2]/select"}
+Country2:        {Locator: 'xpath', Value: "//td[2]/table/tbody/tr[8]/td[2]/select"}
+Effective_date:        {Locator: 'xpath', Value: "//td[2]/a"}
+Address_Type:        {Locator: 'xpath', Value: "//div[3]/div/table/tbody/tr[2]/td[2]/input"}
+Select_day:        {Locator: 'linkText', Value: "1"}
+Create_button:        {Locator: 'xpath', Value: "//div/span/input"}
+Operation_success_message:        {Locator: 'xpath', Value: "//div[3]/div/div/div"}
 
 
 #@MPP  Questionnaires  Start  End
