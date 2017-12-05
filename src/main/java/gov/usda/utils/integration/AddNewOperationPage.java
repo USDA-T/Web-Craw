@@ -99,6 +99,9 @@ public class AddNewOperationPage extends TestCase {
 			assertEquals("The Operation was Created.", find_Element(webDriver, "Operation_success_message").getText());
 
 		} catch (Exception ex) {
+			// Take screenshot
+			ScreenShotPage1 ScreenShot = new ScreenShotPage1(webDriver);
+			ScreenShot.ScreenShot();
 			logger.info(ex);
 			throw new RuntimeException(ex);
 		}
