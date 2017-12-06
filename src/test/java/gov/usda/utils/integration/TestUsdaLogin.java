@@ -45,7 +45,7 @@ public class TestUsdaLogin extends TestCase {
 
 		// Verify the logout private page.
 		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lnkLogIn_45")));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lnkLogIn")));
 			// Locate and click on the Login link.
 			click_Element(webDriver, "Click_Login_Link");
 			assertEquals("User ID & Password", find_Element(webDriver, "Verify_Login_Page").getText());
