@@ -22,7 +22,7 @@ public class ScreenShotPage1 {
 		try {
 			// now copy the screenshot to desired location using copyFile method
 			FileUtils.copyFile(Psrc, new File(
-					"C:/UsdaEE/sba-automation-develop/misc/ScreenShot/Screenshot" + System.currentTimeMillis() + ".png"));
+					"C:/UsdaEE/Web-Craw/src/main/Screenshots/Screenshots" + System.currentTimeMillis() + ".png"));
 			logger.info("Screenshot taken");
 		} catch (Exception ex) {
 			logger.info(ex);

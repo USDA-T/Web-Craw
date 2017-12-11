@@ -1,4 +1,3 @@
-// TS_Created_By_Deepa_Patri
 package gov.usda.others;
 
 import org.apache.logging.log4j.LogManager;

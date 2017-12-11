@@ -1,4 +1,3 @@
-// TS created by Deepa Patri
 package gov.usda.utils.integration;
 
 import static gov.sba.automation.CommonApplicationMethods.click_Element;
@@ -29,11 +28,11 @@ public class LoginPageWithReference {
 					+ LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
 			WebElement rateElement = webDriver.findElement(By.linkText("Log In"));
 			((JavascriptExecutor) webDriver).executeScript("arguments[0].click();", rateElement);
-			setText_Element(webDriver, "SBA_Login_Email",
+			setText_Element(webDriver, "ID_Locator",
 					LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getEmail());
-			setText_Element(webDriver, "SBA_Login_Pwd",
+			setText_Element(webDriver, "USDA_Login_Pwd",
 					LoginHelpers.getLoginDataWithIndex(get_Row_From_credentials_Recvd).getPassword());
-			click_Element(webDriver, "OppSup_Dashboard_Business_Signin");
+			click_Element(webDriver, "Click_Login_Button");
 		} catch (Exception e) {
 			logger.info("Login error " + e.getMessage());
 		}

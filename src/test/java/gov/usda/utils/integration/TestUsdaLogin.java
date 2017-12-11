@@ -40,9 +40,12 @@ public class TestUsdaLogin extends TestCase {
 	public void testUsdaLogin() throws Exception {
 
 		WebDriverWait wait = new WebDriverWait(webDriver, 30);
+		webDriver.get("chrome://settings/clearBrowserData");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("* /deep/ #clearBrowsingDataConfirm")));
+		click_Element(webDriver, "Clear_Cash_button");
+		webDriver.navigate().back();
 		// Login to dashboard.
 		logger.info("Test for Usda login verification");
-
 		// Verify the logout private page.
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("lnkLogIn")));
