@@ -1,6 +1,6 @@
 #Login
 SBA_Login_Email:        {Locator: 'id', Value: "USERID"}
-SBA_Login_Pwd:          {Locator: 'id', Value: "PASS"}
+USDA_Login_Pwd:          {Locator: 'id', Value: "PASS"}
 SBA_Login_Button:       {Locator:  'xpath', Value: "//button[contains(@class,'button-full')]"}
 SBA_Login_Sign_in:      {Locator:  'id', Value: "business_signin"}
 SBA_GetStarted_Login:   {Locator: 'xpath', Value: "//button[contains(@class,'usa-color-gold')]"}
@@ -519,7 +519,7 @@ SBA_MPP_Report_Draft:             {Locator: 'xpath', Value: "//table[ @id='certi
 SBA_8aInitial_Table_Link:         {Locator: 'linktext', Value: "8(a) Initial Program"}
 
 #Dashboard
-OppSup_Dashboard_Business_Signin: {Locator: 'id', Value: "ibLogin"}
+ID_Locator: {Locator: 'id', Value: "USERID"}
 OppSup_Dashboard_Govt_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_gov_user']]/label"}
 OppSup_Dashboard_Govt_User_Radio_Bt: {Locator: 'id', Value: "user_type_gov_user"}
 OppSup_Dashboard_Vend_User_Radio: {Locator: 'xpath', Value: "//li[input[@id='user_type_vendor_user']]/label"}
@@ -1815,6 +1815,9 @@ Address_Type:        {Locator: 'xpath', Value: "//div[3]/div/table/tbody/tr[2]/t
 Select_day:        {Locator: 'linkText', Value: "1"}
 Create_button:        {Locator: 'xpath', Value: "//div/span/input"}
 Operation_success_message:        {Locator: 'xpath', Value: "//div[3]/div/div/div"}
+
+#chrome clear chash.
+Clear_Cash_button:        {Locator: 'cssSelector', Value: "* /deep/ #clearBrowsingDataConfirm"}
 
 
 #@MPP  Questionnaires  Start  End
