@@ -38,12 +38,10 @@ public class TestUsdaLogin extends TestCase {
 
 	@Test
 	public void testUsdaLogin() throws Exception {
-
 		WebDriverWait wait = new WebDriverWait(webDriver, 30);
-		webDriver.get("chrome://settings/clearBrowserData");
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("* /deep/ #clearBrowsingDataConfirm")));
-		click_Element(webDriver, "Clear_Cash_button");
-		webDriver.navigate().back();
+		// Clear cash if chrome.
+		ChromeClearCashPage chromeClearCash = new ChromeClearCashPage(webDriver);
+		chromeClearCash.ChromeClearCash();
 		// Login to dashboard.
 		logger.info("Test for Usda login verification");
 		// Verify the logout private page.
@@ -69,6 +67,7 @@ public class TestUsdaLogin extends TestCase {
 			// Navigate back.
 			webDriver.navigate().back();
 			webDriver.navigate().back();
+			webDriver.navigate().refresh();
 			// Login to dashboard.
 			LoginPageWithReference login_Data = new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data);
 			login_Data.Login_With_Reference();
