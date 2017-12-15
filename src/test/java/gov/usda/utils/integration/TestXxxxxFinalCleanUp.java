@@ -12,23 +12,25 @@ import org.junit.experimental.categories.Category;
 import java.io.PrintWriter;
 //delete_Any_File_For_Headless
 
-@Category({gov.usda.utils.integration.StableTests.class})
+@Category({ gov.usda.utils.integration.StableTests.class })
 public class TestXxxxxFinalCleanUp {
 
-  @Before
-  public void setUp() throws Exception {}
+	@Before
+	public void setUp() throws Exception {
+	}
 
-  @Test
-  public static void testXxxxxFinalCleanUp() throws Exception {
-    PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
-    writer.println("Should_Execution_Stop: \"False\"");
-    writer.close();
-    CommonApplicationMethods.delete_Any_File_For_Headless();
-   // CommonApplicationMethods.delete_Any_File(FixtureUtils.fixturesDir() + "test8asubmission_output.txt");
-  }
+	@Test
+	public static void testXxxxxFinalCleanUp() throws Exception {
+		PrintWriter writer = new PrintWriter(FixtureUtils.rootDirExecutionFile(), "UTF-8");
+		writer.println("Should_Execution_Stop: \"False\"");
+		writer.close();
+		CommonApplicationMethods.delete_Any_File_For_Headless();
+		// CommonApplicationMethods.delete_Any_File(FixtureUtils.fixturesDir() +
+		// "test8asubmission_output.txt");
+	}
 
-  @After
-  public void tearDown() throws Exception {
+	@After
+	public void tearDown() throws Exception {
 
-  }
+	}
 }
