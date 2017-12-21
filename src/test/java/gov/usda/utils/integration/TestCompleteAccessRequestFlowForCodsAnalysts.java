@@ -117,10 +117,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 				// Logout.
 				webDriver.findElement(By.id("profileid")).click();
 				webDriver.findElement(By.linkText("Logout")).click();
-			} catch (Exception e) {
-				ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-				screenShot.ScreenShot();
-				logger.info(e.getMessage());
+			} catch (Exception ex) {
+				logger.info(ex);
+				throw new RuntimeException(ex);
 			}
 			// Completing the Revoke Access process.
 			CodesSupervisorRevokeAccessPage codesSupervisorRevokeAccess = new CodesSupervisorRevokeAccessPage(
@@ -151,10 +150,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 						Assert.fail();
 					}
 				}
-			} catch (Exception e) {
-				ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-				screenShot.ScreenShot();
-				logger.info(e.getMessage());
+			} catch (Exception ex) {
+				logger.info(ex);
+				throw new RuntimeException(ex);
 			}
 			// Completing the Revoke Process.
 			// Login to dashboard.
@@ -182,10 +180,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 				Expected_Text = "Access Pending";
 				assertEquals(Actual_Text, Expected_Text);
 				webDriver.findElement(By.linkText("Logout")).click();
-			} catch (Exception e) {
-				ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-				screenShot.ScreenShot();
-				logger.info(e.getMessage());
+			} catch (Exception ex) {
+				logger.info(ex);
+				throw new RuntimeException(ex);
 			}
 			// Complete process, CODS supervisor Rejects Request from other Cods
 			// Supervisor.
@@ -208,10 +205,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 				assertEquals(Actual_Text, Expected_Text);
 				// Logout.
 				webDriver.findElement(By.linkText("Logout")).click();
-			} catch (Exception e) {
-				ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-				screenShot.ScreenShot();
-				logger.info(e.getMessage());
+			} catch (Exception ex) {
+				logger.info(ex);
+				throw new RuntimeException(ex);
 			}
 		}
 
@@ -308,10 +304,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 							Assert.fail();
 						}
 					}
-				} catch (Exception e) {
-					ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-					screenShot.ScreenShot();
-					logger.info(e.getMessage());
+				} catch (Exception ex) {
+					logger.info(ex);
+					throw new RuntimeException(ex);
 				}
 				// Completing the Revoke Process.
 				// Login to dashboard.
@@ -339,10 +334,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 					Expected_Text = "Access Pending";
 					assertEquals(Actual_Text, Expected_Text);
 					webDriver.findElement(By.linkText("Logout")).click();
-				} catch (Exception e) {
-					ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-					screenShot.ScreenShot();
-					logger.info(e.getMessage());
+				} catch (Exception ex) {
+					logger.info(ex);
+					throw new RuntimeException(ex);
 				}
 				// Complete process, CODS supervisor Rejects Request from other
 				// Cods Supervisor.
@@ -365,10 +359,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 					assertEquals(Actual_Text, Expected_Text);
 					// Logout.
 					webDriver.findElement(By.linkText("Logout")).click();
-				} catch (Exception e) {
-					ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-					screenShot.ScreenShot();
-					logger.info(e.getMessage());
+				} catch (Exception ex) {
+					logger.info(ex);
+					throw new RuntimeException(ex);
 				}
 			} else {
 				if (webDriver.getPageSource().contains("Your Request Has Been Rejected")) {
@@ -393,10 +386,9 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 						Expected_Text = "Access Pending";
 						assertEquals(Actual_Text, Expected_Text);
 						webDriver.findElement(By.linkText("Logout")).click();
-					} catch (Exception e) {
-						ScreenShotPage screenShot = new ScreenShotPage(webDriver);
-						screenShot.ScreenShot();
-						logger.info(e.getMessage());
+					} catch (Exception ex) {
+						logger.info(ex);
+						throw new RuntimeException(ex);
 					}
 					// Complete process, CODS supervisor Approve Request from
 					// other Cods Supervisor.
@@ -531,6 +523,11 @@ public class TestCompleteAccessRequestFlowForCodsAnalysts extends TestCase {
 
 	@After
 	public void tearDown() throws Exception {
-		webDriver.close();
+		try {
+			webDriver.close();
+		} catch (Exception ex) {
+			logger.info(ex);
+			throw new RuntimeException(ex);
+		}
 	}
 }
