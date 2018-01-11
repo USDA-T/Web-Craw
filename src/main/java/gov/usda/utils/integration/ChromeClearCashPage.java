@@ -49,8 +49,8 @@ public class ChromeClearCashPage extends TestCase {
 			// Select dropdown = new Select(mySelectElement1);
 			// dropdown.selectByVisibleText("the beginning of time");
 			click_Element(webDriver, "Clear_Cash_button");
-			webDriver.navigate().back();
-			webDriver.navigate().refresh();
+			webDriver.get("https://organic.ams.usda.gov/Integrity/");
+			//webDriver.navigate().refresh();
 		} else {
 			logger.info("The test browser is not Chrome");
 		}

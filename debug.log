@@ -4,3 +4,24 @@
 [1026/100822.577:ERROR:file_io_win.cc(161)] CreateFile C:\Users\DERECN~1\AppData\Local\Temp\scoped_dir8800_16631\Crashpad\settings.dat: The system cannot find the path specified. (0x3)
 [1026/100822.578:ERROR:file_io_win.cc(170)] CreateFile C:\Users\DERECN~1\AppData\Local\Temp\scoped_dir8800_16631\Crashpad\reports\5c9eb301-b406-4745-87ec-ec4502ffea14.dmp: The system cannot find the path specified. (0x3)
 [1026/100822.578:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[1218/160022.822:ERROR:process_info.cc(632)] range at 0x5a0035a600000000, size 0x1ac fully unreadable
+[1218/160022.823:ERROR:process_info.cc(632)] range at 0x5a00360a00000000, size 0x1ac fully unreadable
+[1218/160022.823:ERROR:process_info.cc(632)] range at 0x0, size 0x1ac fully unreadable
+[1218/160155.381:ERROR:process_info.cc(632)] range at 0xb4df35a400000000, size 0x1be fully unreadable
+[1218/160155.381:ERROR:process_info.cc(632)] range at 0xb4df360800000000, size 0x1be fully unreadable
+[1218/160155.381:ERROR:process_info.cc(632)] range at 0x0, size 0x1be fully unreadable
+[1218/160226.881:ERROR:process_info.cc(632)] range at 0x3c5b35a200000000, size 0x1d1 fully unreadable
+[1218/160226.881:ERROR:process_info.cc(632)] range at 0x3c5b360400000000, size 0x1d1 fully unreadable
+[1218/160226.881:ERROR:process_info.cc(632)] range at 0x0, size 0x1d1 fully unreadable
+[1218/160333.064:ERROR:process_info.cc(632)] range at 0xf0fc35a600000000, size 0x159 fully unreadable
+[1218/160333.064:ERROR:process_info.cc(632)] range at 0xf0fc360a00000000, size 0x159 fully unreadable
+[1218/160333.064:ERROR:process_info.cc(632)] range at 0x0, size 0x159 fully unreadable
+[1218/160354.950:ERROR:process_info.cc(632)] range at 0xd76535a600000000, size 0x1e9 fully unreadable
+[1218/160354.950:ERROR:process_info.cc(632)] range at 0xd765360a00000000, size 0x1e9 fully unreadable
+[1218/160354.950:ERROR:process_info.cc(632)] range at 0x0, size 0x1e9 fully unreadable
+[1218/160358.603:ERROR:process_info.cc(632)] range at 0xa1a835a800000000, size 0x29b fully unreadable
+[1218/160358.603:ERROR:process_info.cc(632)] range at 0xa1a8360c00000000, size 0x29b fully unreadable
+[1218/160358.603:ERROR:process_info.cc(632)] range at 0x0, size 0x29b fully unreadable
+[1218/160401.756:ERROR:process_info.cc(632)] range at 0x7bf135a800000000, size 0x202 fully unreadable
+[1218/160401.756:ERROR:process_info.cc(632)] range at 0x7bf1360c00000000, size 0x202 fully unreadable
+[1218/160401.756:ERROR:process_info.cc(632)] range at 0x0, size 0x202 fully unreadable

@@ -49,8 +49,8 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 		webDriver.get(TestHelpers.getBaseUrl());
 		get_The_Row_From_Login_Data = 43;
 		/*
-		 * String[] details = findUnusedDunsNumber(""); email = details[0];
-		 * password = details[1]; duns_Number = details[2];
+		 * String[] details = findUnusedDunsNumber(""); email = details[0]; password =
+		 * details[1]; duns_Number = details[2];
 		 */
 
 	}
@@ -61,16 +61,14 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 
 			/* return_All_Applications(webDriver, 11, "165324125");144754156 */
 			/*
-			 * delete_All_Application_Draft(webDriver, email, password,
-			 * duns_Number);
+			 * delete_All_Application_Draft(webDriver, email, password, duns_Number);
 			 */
 			delete_All_Application_Draft(webDriver, get_The_Row_From_Login_Data, "165324125");
 			new LoginPageWithReference(webDriver, get_The_Row_From_Login_Data).Login_With_Reference();
 			/* Login to Dashboard. */
 
 			/*
-			 * new LoginPageWithDetails(webDriver, email,
-			 * password).Login_With_Details();
+			 * new LoginPageWithDetails(webDriver, email, password).Login_With_Details();
 			 */
 			join_New_Program_CheckBoxes(webDriver, "8A");
 			/* asterApp_8a_Page_Click(webDriver,"page_basiceligibility"); */
@@ -140,26 +138,24 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 			navigationMenuClick(webDriver, "LOGOUT");
 			/* TO Do :: Contributor Page- 8a Spouse Sub application */
 			/*
-			 * Create new Contributor user to submit their individual sub
-			 * application
+			 * Create new Contributor user to submit their individual sub application
 			 */
 			/* navigationMenuClick(webDriver,"LOGOUT"); */
 			/* Create New Vendor */
 			/*
-			 * String Email = "Deepa.test." + get_currentTimestamp()
-			 * +"@mailinator.com"; createVendorUser(webDriver,"Deepa","test1",
+			 * String Email = "Deepa.test." + get_currentTimestamp() +"@mailinator.com";
+			 * createVendorUser(webDriver,"Deepa","test1",
 			 * Email,"Deepa.test2@mailinator.com"); /* Activate the Account
 			 */
 			/*
 			 * activateEmail(TestHelpers.getDefaultWebDriver(), Email);
 			 * webDriver.get(TestHelpers.getBaseUrl()); click_Element(webDriver,
-			 * "SBA_Login_Button"); setText_Element(webDriver,
-			 * "SBA_Login_Email", "deepa.parternship@mailinator.com");
-			 * setText_Element(webDriver, "SBA_Login_Pwd", "password");
-			 * click_Element(webDriver, "SBA_Login_Sign_in");
+			 * "SBA_Login_Button"); setText_Element(webDriver, "SBA_Login_Email",
+			 * "deepa.parternship@mailinator.com"); setText_Element(webDriver,
+			 * "SBA_Login_Pwd", "password"); click_Element(webDriver, "SBA_Login_Sign_in");
 			 * 
-			 * /* * Log in back ith vendor admin and click on 8a Inital Progam
-			 * draft application and click on contributor section
+			 * /* * Log in back ith vendor admin and click on 8a Inital Progam draft
+			 * application and click on contributor section
 			 * click_On_App_In_Vend_Dash(webDriver, "8aInitial");
 			 * Contributor_Page(webDriver,"8a_addbuspart_contributor");
 			 * contributor_BusinessPartner_login(webDriver, "Deepa", Email);
@@ -184,9 +180,8 @@ public class TestWorkflow8aInitalSelectingNoAllSections extends TestCase {
 			 * Contributor_Page(webDriver, "8a_AddSpouse_contributor");
 			 * ProgramsPage.contributor_login(webDriver, "norole10",
 			 * "norole10@mailinator.com"); Contributor_Page(webDriver,
-			 * "8a_AddSpouse_contributor");
-			 * ProgramsPage.contributor_login(webDriver, "norole11",
-			 * "norole11@mailinator.com");
+			 * "8a_AddSpouse_contributor"); ProgramsPage.contributor_login(webDriver,
+			 * "norole11", "norole11@mailinator.com");
 			 */
 
 		} catch (Exception e) {
