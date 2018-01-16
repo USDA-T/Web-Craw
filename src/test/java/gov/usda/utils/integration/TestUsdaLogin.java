@@ -52,6 +52,7 @@ public class TestUsdaLogin extends TestCase {
 			assertEquals("User ID & Password", find_Element(webDriver, "Verify_Login_Page").getText());
 			// Attempt to login with wrong data to validate all the login search
 			// boxes.
+
 			click_Element(webDriver, "Click_Login_Button");
 			// Verify validation for for both User id and password.
 			assertEquals("User ID is a required field", find_Element(webDriver, "UserID_Validation_Message").getText());
