@@ -1820,4 +1820,16 @@ Operation_success_message:        {Locator: 'xpath', Value: "//div[3]/div/div/di
 Clear_Cash_button:        {Locator: 'cssSelector', Value: "* /deep/ #clearBrowsingDataConfirm"}
 Clear_Passwords:        {Locator: 'cssSelector', Value: "* /deep/ #checkboxContainer"}
 
+#A-Net Locators.
+Click_HomePage_Login_Link:        {Locator: 'xpath', Value: "//strong"}
+FullName_TextBox:        {Locator: 'xpath', Value: "//span/input"}
+Select_FullName:        {Locator: 'xpath', Value: "//a/span"}
+Click_Display_Name:        {Locator: 'xpath', Value: "//li/div"}
+Click_Submit_Button:        {Locator: 'xpath', Value: "//td/input"}
+
+
+
+
+
+
 #@MPP  Questionnaires  Start  End

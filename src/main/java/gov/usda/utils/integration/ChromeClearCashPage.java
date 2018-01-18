@@ -36,24 +36,53 @@ public class ChromeClearCashPage extends TestCase {
 			logger.info(os);
 			String v = cap.getVersion().toString();
 			logger.info(v);
+			try {
 			Actual_Browser = browserName;
 			Expected_Browser = "chrome";
 			assertEquals(Actual_Browser, Expected_Browser);
+			} catch (Exception ex) {
+				// Take screenshot
+				ScreenShotPage1 ScreenShot = new ScreenShotPage1(webDriver);
+				ScreenShot.ScreenShot();
+				logger.info(ex);
+				throw new RuntimeException(ex);
+			}
 			logger.info("Clearing chome cash");
 			webDriver.get("chrome://settings/clearBrowserData");
 			wait.until(ExpectedConditions
 					.visibilityOfElementLocated(By.cssSelector("* /deep/ #clearBrowsingDataConfirm")));
-			// Select the begining of time from the drop down.
-			// WebElement mySelectElement1 = find_Element(webDriver,
-			// "Clear_Cash_Interval");
-			// Select dropdown = new Select(mySelectElement1);
-			// dropdown.selectByVisibleText("the beginning of time");
 			click_Element(webDriver, "Clear_Cash_button");
 			webDriver.get("https://organic.ams.usda.gov/Integrity/");
-			//webDriver.navigate().refresh();
+			// webDriver.navigate().refresh();
 		} else {
-			logger.info("The test browser is not Chrome");
+			if (webDriver.getPageSource().contains("AssuranceNet")) {
+				Capabilities cap = ((RemoteWebDriver) webDriver).getCapabilities();
+				String browserName = cap.getBrowserName().toLowerCase();
+				logger.info(browserName);
+				String os = cap.getPlatform().toString();
+				logger.info(os);
+				String v = cap.getVersion().toString();
+				logger.info(v);
+				try {
+				Actual_Browser = browserName;
+				Expected_Browser = "chrome";
+				assertEquals(Actual_Browser, Expected_Browser);
+				} catch (Exception ex) {
+					// Take screenshot
+					ScreenShotPage1 ScreenShot = new ScreenShotPage1(webDriver);
+					ScreenShot.ScreenShot();
+					logger.info(ex);
+					throw new RuntimeException(ex);
+				}
+				logger.info("Clearing chome cash");
+				webDriver.get("chrome://settings/clearBrowserData");
+				wait.until(ExpectedConditions
+						.visibilityOfElementLocated(By.cssSelector("* /deep/ #clearBrowsingDataConfirm")));
+				click_Element(webDriver, "Clear_Cash_button");
+				webDriver.get("https://dev.assurancenet.fsis.usda.gov/assurancenet/loginAction.do");
+			} else {
+				logger.info("The test browser is not Chrome");
+			}
 		}
 	}
-
 }
